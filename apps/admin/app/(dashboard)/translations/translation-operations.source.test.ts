@@ -65,8 +65,10 @@ describe("translation operations admin boundary", () => {
       "LAST ERROR",
     ]) expect(page).toContain(label);
     expect(selfTestAction).toContain("premiumTranslationSelfTest()");
-    expect(selfTestAction).toContain("begin_translation_provider_self_test");
-    expect(selfTestAction).toContain("finish_translation_provider_self_test");
+    expect(selfTestAction).toContain("begin_translation_provider_config_self_test");
+    expect(selfTestAction).toContain("finish_translation_provider_config_self_test");
+    expect(selfTestAction).toContain("parsePremiumTranslationProbeReservation");
+    expect(selfTestAction).toContain("parsePremiumTranslationProbeCompletion");
     expect(selfTestAction).not.toMatch(/\.message|error=/u);
   });
 

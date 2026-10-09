@@ -1,10 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { unstable_rethrow } from "next/navigation";
+import { after } from "next/server";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
 import { articleEditPath } from "@/lib/admin-routes";
+import { parseArticleSaveResult, type ArticleSaveResult, type ArticleSaveReceipt } from "@/lib/article-save-result";
+import { articleOperationSaveResult, type ArticleOperationResultContext } from "@/lib/article-operation-result";
 import { articlePublicPath } from "@/lib/article-route";
 import {
   buildArticleMetadataDraft,
@@ -46,7 +50,6 @@ import { requestPublicBuild } from "@/lib/publication";
 import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
 
 import {
   promoteArticleWorkingDraftRpc,
@@ -55,8 +58,10 @@ import {
 } from "./article-bundle-rpc";
 import {
   articleWorkingDraftEnglishEnvelope,
+  parseArticleWorkingDraft,
   saveArticleWorkingDraftRpc,
 } from "./article-working-draft";
+import { ArticleOperationRpcError } from "./article-operation-rpc";
 
 const articleSchema = z.object({
   id: z.string().uuid().optional(),
@@ -199,6 +204,33 @@ const allowedArticleHtml = {
   },
 };
 
+function isExistingArticleRead(value: unknown): value is {
+  slug: string; status: string; published_at: string | null; updated_at: string;
+  categories: { slug: string } | { slug: string }[] | null;
+} {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const row = value as Record<string, unknown>;
+  const category = (entry: unknown) => Boolean(entry && typeof entry === "object" &&
+    !Array.isArray(entry) && typeof (entry as Record<string, unknown>).slug === "string");
+  return typeof row.slug === "string" && typeof row.updated_at === "string" && typeof row.status === "string" &&
+    ["draft", "review", "scheduled", "published", "hidden", "archived"].includes(row.status) &&
+    (row.published_at === null || typeof row.published_at === "string") &&
+    (row.categories === null || (Array.isArray(row.categories) ? row.categories.every(category) : category(row.categories)));
+}
+
+function isExistingEnglishRead(value: unknown): value is ExistingEnglishTranslation {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const row = value as Record<string, unknown>;
+  if (!["updated_at", "title", "slug", "content_html"].every((key) => typeof row[key] === "string") ||
+    !Object.hasOwn(row, "content_json") || row.content_json === undefined || typeof row.status !== "string" ||
+    !["draft", "review", "approved", "published", "stale", "archived"].includes(row.status)) return false;
+  if (!["source_content_hash", "subtitle", "excerpt", "cover_alt", "seo_title", "seo_description",
+    "canonical_url", "og_title", "og_description", "approved_at", "published_at"].every((key) =>
+    row[key] === null || typeof row[key] === "string")) return false;
+  return ["sources", "bibliography"].every((key) => row[key] === null || Array.isArray(row[key])) &&
+    (row.seo_keywords === null || (Array.isArray(row.seo_keywords) && row.seo_keywords.every((item) => typeof item === "string")));
+}
+
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
   return text || null;
@@ -215,22 +247,31 @@ function commaList(value: FormDataEntryValue | null) {
 function lineItems(value: FormDataEntryValue | null) {
   return String(value || "")
     .split(/\r?\n/u)
-    .map((item) => item.trim())
-    .filter(Boolean)
-    .slice(0, 100)
+    .filter((item) => item.trim().length > 0)
     .map((text) => ({ text }));
 }
 
-function saveErrorPath(articleId: string | undefined, message: string) {
-  return articleId
-    ? articleEditPath(articleId, { error: message })
-    : `/articles/new?error=${encodeURIComponent(message)}`;
+function scheduleArticleReceiptRevalidation(paths: string[]): "scheduled" | "unknown" {
+  try {
+    after(() => {
+      try { paths.forEach(path => revalidatePath(path)); }
+      catch (error) { unstable_rethrow(error); }
+    });
+    return "scheduled";
+  } catch (error) {
+    unstable_rethrow(error);
+    return "unknown";
+  }
 }
 
-export async function saveStandardArticleAtomically(formData: FormData) {
+export async function saveStandardArticleAtomically(
+  formData: FormData,
+  operationContext?: ArticleOperationResultContext
+) {
   normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
+  const receiptMode = Boolean(operationContext) || formData.get("article_result_mode") === "receipt";
   const actorId = session.user.id;
   const expectedUpdatedAt = optionalText(formData.get("expected_updated_at"));
   const englishExpectedUpdatedAt = optionalText(
@@ -247,7 +288,6 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   const skipAutomaticTranslation =
     automaticTranslationDeferred ||
     formData.get("skip_automatic_translation") === "1";
-  const submittedArticleId = optionalText(formData.get("id")) || undefined;
   const submittedStatus = String(formData.get("status") || "draft");
   const requestedStatus =
     intent === "publish"
@@ -262,23 +302,13 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   const generatedSlug = createSlug(rawSlug || title) || `material-${Date.now()}`;
   const scheduledAt = optionalText(formData.get("scheduled_at"));
   if (requestedStatus === "scheduled" && !scheduledAt) {
-    redirect(
-      saveErrorPath(
-        submittedArticleId,
-        "Для запланированной публикации укажите дату и время."
-      )
-    );
+    return { outcome: "rejected", reason: "schedule" } satisfies ArticleSaveResult;
   }
   const status = requestedStatus;
   const canonicalUrl = optionalText(formData.get("canonical_url"));
   const publicationOverride = formData.get("publication_override") === "1";
   if (publicationOverride && session.role !== "owner") {
-    redirect(
-      saveErrorPath(
-        submittedArticleId,
-        "Ручное подтверждение контрольного списка доступно только владельцу."
-      )
-    );
+    return { outcome: "rejected", reason: "permission" } satisfies ArticleSaveResult;
   }
 
   const subtitle = String(formData.get("subtitle") || "");
@@ -329,13 +359,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   });
 
   if (!parsed.success) {
-    const failedArticleId = optionalText(formData.get("id")) || undefined;
-    redirect(
-      saveErrorPath(
-        failedArticleId,
-        "Проверьте обязательные поля статьи, адреса и допустимую длину текста."
-      )
-    );
+    return { outcome: "rejected", reason: "validation" } satisfies ArticleSaveResult;
   }
 
   const englishEnabled = formData.get("english_enabled") === "on";
@@ -388,13 +412,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     : null;
 
   if (parsedEnglish && !parsedEnglish.success) {
-    const failedArticleId = optionalText(formData.get("id")) || undefined;
-    redirect(
-      saveErrorPath(
-        failedArticleId,
-        "Проверьте обязательные поля, адреса и длину английской версии статьи."
-      )
-    );
+    return { outcome: "rejected", reason: "english-validation" } satisfies ArticleSaveResult;
   }
 
   const englishData = parsedEnglish?.success ? parsedEnglish.data : null;
@@ -408,15 +426,8 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       )
     );
   } catch (error) {
-    const failedArticleId = optionalText(formData.get("id")) || undefined;
-    redirect(
-      saveErrorPath(
-        failedArticleId,
-        error instanceof Error
-          ? error.message
-          : "Русская версия статьи: JSON редактора повреждён."
-      )
-    );
+    unstable_rethrow(error);
+    return { outcome: "rejected", reason: "content" } satisfies ArticleSaveResult;
   }
   let submittedEnglishContentJson: unknown = null;
   if (englishData) {
@@ -432,15 +443,8 @@ export async function saveStandardArticleAtomically(formData: FormData) {
         )
       );
     } catch (error) {
-      const failedArticleId = optionalText(formData.get("id")) || undefined;
-      redirect(
-        saveErrorPath(
-          failedArticleId,
-          error instanceof Error
-            ? error.message
-            : "Английская версия статьи: JSON редактора повреждён."
-        )
-      );
+      unstable_rethrow(error);
+      return { outcome: "rejected", reason: "english-content" } satisfies ArticleSaveResult;
     }
   }
   const publicationIssues = new Set<string>();
@@ -474,15 +478,8 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       );
     }
   } catch (error) {
-    const failedArticleId = optionalText(formData.get("id")) || undefined;
-    redirect(
-      saveErrorPath(
-        failedArticleId,
-        error instanceof Error
-          ? error.message
-          : "Сохранение остановлено: данные изображений в редакторе расходятся."
-      )
-    );
+    unstable_rethrow(error);
+    return { outcome: "rejected", reason: "media" } satisfies ArticleSaveResult;
   }
 
   const currentSourceHash = articleTranslationSourceHash({
@@ -511,8 +508,14 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     );
   }
 
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/articles/new?error=База данных не подключена");
+  let supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>;
+  try {
+    supabase = await createServerSupabaseClient();
+  } catch (error) {
+    unstable_rethrow(error);
+    return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+  }
+  if (!supabase) return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
 
   const now = new Date().toISOString();
   const articleId = parsed.data.id;
@@ -524,12 +527,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       .min(0)
       .safeParse(formData.get("working_draft_version") || "0");
     if (!parsedWorkingDraftVersion.success) {
-      redirect(
-        saveErrorPath(
-          articleId,
-          "Версия рабочего черновика устарела. Обновите страницу и повторите правку."
-        )
-      );
+      return { outcome: "conflict", scope: "article" } satisfies ArticleSaveResult;
     }
     expectedWorkingDraftVersion = parsedWorkingDraftVersion.data;
   }
@@ -541,57 +539,64 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   let categorySlug: string | null = null;
   if (parsed.data.categoryId) {
-    const { data: category } = await supabase
-      .from("categories")
-      .select("slug")
-      .eq("id", parsed.data.categoryId)
-      .maybeSingle();
+    let categoryResponse;
+    try {
+      categoryResponse = await supabase
+        .from("categories")
+        .select("slug")
+        .eq("id", parsed.data.categoryId)
+        .maybeSingle();
+    } catch (error) {
+      unstable_rethrow(error);
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
+    if (!categoryResponse || categoryResponse.error || !categoryResponse.data ||
+      typeof categoryResponse.data.slug !== "string") {
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
+    const category = categoryResponse.data;
     categorySlug = category?.slug || null;
   }
 
   if (articleId) {
+    let existingBundle;
+    try {
+      existingBundle = await Promise.all([
+        supabase
+          .from("articles")
+          .select("slug,status,published_at,updated_at,categories(slug)")
+          .eq("id", articleId)
+          .single(),
+        supabase
+          .from("article_translations")
+          .select(
+            "status,source_content_hash,title,subtitle,excerpt,content_json,content_html,cover_alt,slug,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,approved_at,published_at,updated_at"
+          )
+          .eq("article_id", articleId)
+          .eq("locale", "en")
+          .maybeSingle(),
+      ]);
+    } catch (error) {
+      unstable_rethrow(error);
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
+    if (existingBundle.some((response) => !response || !Object.hasOwn(response, "data"))) {
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
     const [
       { data: previous, error: previousError },
       { data: englishTranslation, error: englishError },
-    ] = await Promise.all([
-      supabase
-        .from("articles")
-        .select("slug,status,published_at,updated_at,categories(slug)")
-        .eq("id", articleId)
-        .single(),
-      supabase
-        .from("article_translations")
-        .select(
-          "status,source_content_hash,title,subtitle,excerpt,content_json,content_html,cover_alt,slug,sources,bibliography,seo_title,seo_description,seo_keywords,canonical_url,og_title,og_description,approved_at,published_at,updated_at"
-        )
-        .eq("article_id", articleId)
-        .eq("locale", "en")
-        .maybeSingle(),
-    ]);
+    ] = existingBundle;
 
-    if (previousError || !previous) {
-      redirect(
-        articleEditPath(articleId, {
-          error: previousError
-            ? operatorDataError("articles", "load")
-            : "Исходная статья не найдена.",
-        })
-      );
+    if (previousError || !isExistingArticleRead(previous)) {
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
     }
     if (!expectedUpdatedAt || previous.updated_at !== expectedUpdatedAt) {
-      redirect(
-        articleEditPath(articleId, {
-          error:
-            "Статья уже изменена в другой вкладке. Обновите страницу и повторите правку.",
-        })
-      );
+      return { outcome: "conflict", scope: "article" } satisfies ArticleSaveResult;
     }
-    if (englishError) {
-      redirect(
-        articleEditPath(articleId, {
-          error: operatorDataError("articles", "load"),
-        })
-      );
+    if (englishError || englishTranslation === undefined ||
+      (englishTranslation !== null && !isExistingEnglishRead(englishTranslation))) {
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
     }
 
     existingEnglishTranslation =
@@ -601,12 +606,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       (!englishExpectedUpdatedAt ||
         existingEnglishTranslation.updated_at !== englishExpectedUpdatedAt)
     ) {
-      redirect(
-        articleEditPath(articleId, {
-          error:
-            "Английская версия уже изменена в другой вкладке. Обновите страницу и повторите правку.",
-        })
-      );
+      return { outcome: "conflict", scope: "english" } satisfies ArticleSaveResult;
     }
 
     previousSlug = previous.slug || null;
@@ -618,9 +618,37 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     previousCategorySlug = previousCategory?.slug || null;
   }
 
+  let continuingReleasedWorkingDraft = false;
+  if (articleId && persistedPreviousStatus && ["scheduled", "hidden", "archived"].includes(persistedPreviousStatus)
+    && (intent === "save" || intent === "preview") && expectedWorkingDraftVersion > 0) {
+    let draftResponse;
+    try {
+      draftResponse = await supabase.from("article_working_drafts")
+        .select("article_id,base_article_updated_at,payload,english_payload,expected_english_updated_at,version,updated_at,draft_scope,draft_english_enabled")
+        .eq("article_id", articleId).maybeSingle();
+    } catch (error) {
+      unstable_rethrow(error);
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
+    if (!draftResponse || draftResponse.error || draftResponse.data === undefined) {
+      return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult;
+    }
+    if (draftResponse.data === null) return { outcome: "conflict", scope: "article" } satisfies ArticleSaveResult;
+    let draft;
+    try { draft = parseArticleWorkingDraft(draftResponse.data); }
+    catch { return { outcome: "dependency-unavailable" } satisfies ArticleSaveResult; }
+    if (draft.article_id.toLowerCase() !== articleId.toLowerCase() || draft.version !== expectedWorkingDraftVersion
+      || draft.base_article_updated_at !== expectedUpdatedAt) {
+      return { outcome: "conflict", scope: "article" } satisfies ArticleSaveResult;
+    }
+    if (draft.expected_english_updated_at !== englishExpectedUpdatedAt) {
+      return { outcome: "conflict", scope: "english" } satisfies ArticleSaveResult;
+    }
+    continuingReleasedWorkingDraft = true;
+  }
   const isPublishedWorkingDraftSave = Boolean(
     articleId &&
-      persistedPreviousStatus === "published" &&
+      (persistedPreviousStatus === "published" || continuingReleasedWorkingDraft) &&
       (intent === "save" || intent === "preview")
   );
   if (
@@ -628,12 +656,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     !isPublishedWorkingDraftSave &&
     !["draft", "review"].includes(parsed.data.status)
   ) {
-    redirect(
-      saveErrorPath(
-        articleId,
-        "Редактор может сохранять черновик и передавать его на проверку. Публикация и планирование доступны владельцу или администратору."
-      )
-    );
+    return { outcome: "rejected", reason: "permission" } satisfies ArticleSaveResult;
   }
 
   const isNewRelease =
@@ -958,38 +981,57 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   if (saveToPublishedWorkingDraft) {
     if (!articleId || !expectedUpdatedAt) {
-      redirect(
-        saveErrorPath(
-          articleId,
-          "Не удалось определить версию опубликованной статьи. Обновите страницу."
-        )
-      );
+      return { outcome: "conflict", scope: "article" } satisfies ArticleSaveResult;
     }
+    let savedDraft: Awaited<ReturnType<typeof saveArticleWorkingDraftRpc>>;
     try {
-      await saveArticleWorkingDraftRpc(supabase, {
+      savedDraft = await saveArticleWorkingDraftRpc(supabase, {
         articleId,
         baseArticleUpdatedAt: expectedUpdatedAt,
         articlePayload,
         englishEnvelope: articleWorkingDraftEnglishEnvelope(englishPayload),
         expectedEnglishUpdatedAt: englishExpectedUpdatedAt,
         expectedVersion: expectedWorkingDraftVersion,
-      });
+      }, operationContext);
     } catch (error) {
-      const safeMessage =
-        error instanceof Error &&
-        [
-          "Черновик или опубликованная статья",
-          "Английская версия",
-          "Отдельный рабочий черновик",
-          "Недостаточно прав",
-          "Не удалось безопасно сохранить",
-          "Рабочий черновик сохранён",
-        ].some((prefix) => error.message.startsWith(prefix))
-          ? error.message
-          : "Не удалось безопасно сохранить рабочий черновик. Опубликованная версия не изменена.";
-      redirect(saveErrorPath(articleId, safeMessage));
+      unstable_rethrow(error);
+      if (operationContext && error instanceof ArticleOperationRpcError) throw error;
+      return { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
     }
-
+    if (operationContext && savedDraft.operationResult?.replayed) {
+      return articleOperationSaveResult(savedDraft.operationResult, operationContext)
+        ?? { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
+    }
+    if (receiptMode) {
+      const result = {
+        outcome: "saved" as const,
+        ...(operationContext ? { operationId: operationContext.operationId,
+          englishState: englishPayload ? "saved" as const : "preserved" as const } : {}),
+        persistence: "working-draft" as const,
+        receipt: {
+          articleId: savedDraft.articleId,
+          articleUpdatedAt: expectedUpdatedAt,
+          englishUpdatedAt: englishExpectedUpdatedAt,
+          workingDraftVersion: savedDraft.version,
+          workingDraftUpdatedAt: savedDraft.updatedAt,
+          canonicalStatus: savedDraft.operationResult?.canonicalStatus
+            ?? persistedPreviousStatus as ArticleSaveReceipt["canonicalStatus"],
+          ...(savedDraft.operationResult?.workingDraft ? { workingDraft: savedDraft.operationResult.workingDraft } : {}),
+        },
+        publicationState: "not-requested" as const,
+        revalidationState: "unknown" as "scheduled" | "unknown",
+        destination: intent === "preview"
+          ? `/articles/${articleId}/preview?locale=${previewLocale}`
+          : articleEditPath(articleId, { saved: "working-draft", error: publicationBlockMessage }),
+      } satisfies ArticleSaveResult;
+      if (!parseArticleSaveResult(result, {
+        articleId, articleUpdatedAt: expectedUpdatedAt, englishUpdatedAt: englishExpectedUpdatedAt,
+        workingDraftVersion: expectedWorkingDraftVersion,
+        ...(operationContext ? { operationId: operationContext.operationId } : {}),
+      })) return { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
+      result.revalidationState = scheduleArticleReceiptRevalidation(["/articles/edit", `/articles/${articleId}/preview`]);
+      return result;
+    }
     revalidatePath("/articles/edit");
     revalidatePath(`/articles/${articleId}/preview`);
     if (intent === "preview") {
@@ -1074,22 +1116,45 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       ? await promoteArticleWorkingDraftRpc(supabase, {
           ...bundleInput,
           expectedWorkingDraftVersion,
-        })
-      : await saveArticleBundleRpc(supabase, bundleInput);
+        }, operationContext)
+      : await saveArticleBundleRpc(supabase, bundleInput, operationContext);
   } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : "Не удалось атомарно сохранить статью.";
-    redirect(saveErrorPath(articleId, message));
+    unstable_rethrow(error);
+    if (operationContext && error instanceof ArticleOperationRpcError) throw error;
+    return { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
+  }
+  if (operationContext && saved.operationResult?.replayed) {
+    return articleOperationSaveResult(saved.operationResult, operationContext)
+      ?? { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
   }
 
-  let publicationState: "started" | "queued" | "queue-error" | null = null;
+  if (receiptMode && ((englishMode === "none") !== (saved.englishUpdatedAt === null))) {
+    return { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
+  }
+  const confirmedReceipt = receiptMode ? parseArticleSaveResult({
+    outcome: "saved", persistence: shouldPromoteExistingArticle ? "working-draft-promotion" : "article-bundle",
+    ...(operationContext ? { operationId: operationContext.operationId,
+      englishState: ({ save: "saved", none: "preserved", stale: "status-only" } as const)[englishMode] } : {}),
+    receipt: { articleId: saved.articleId, articleUpdatedAt: saved.articleUpdatedAt,
+      englishUpdatedAt: saved.englishUpdatedAt, workingDraftVersion: saved.operationResult?.workingDraft?.version ?? 0,
+      workingDraftUpdatedAt: saved.operationResult?.workingDraft?.updatedAt ?? null,
+      canonicalStatus: saved.operationResult?.canonicalStatus ?? savedStatus,
+      ...(saved.operationResult?.workingDraft ? { workingDraft: saved.operationResult.workingDraft } : {}) },
+    publicationState: "not-requested", revalidationState: "unknown",
+    destination: articleEditPath(saved.articleId),
+  }, { articleId: articleId || null, articleUpdatedAt: expectedUpdatedAt, englishUpdatedAt: englishExpectedUpdatedAt,
+    workingDraftVersion: expectedWorkingDraftVersion,
+    ...(operationContext ? { operationId: operationContext.operationId } : {}) }) : null;
+  if (receiptMode && (!confirmedReceipt || confirmedReceipt.outcome !== "saved")) {
+    return { outcome: "unknown-outcome" } satisfies ArticleSaveResult;
+  }
+
+  let publicationState: "started" | "queued" | "queue-error" | "unknown" | null = null;
   if (
     intent === "publish" &&
     ["published", "scheduled", "hidden", "archived"].includes(savedStatus)
   ) {
-    const publication = await requestPublicBuild({
+    const requestPublication = () => requestPublicBuild({
       supabase,
       actorId,
       entityType: "article",
@@ -1104,7 +1169,31 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       },
       skipAutoTranslation: skipAutomaticTranslation,
     });
-    publicationState = publication.state;
+    if (receiptMode) {
+      try {
+        const publication = await requestPublication();
+        publicationState = publication && ["started", "queued", "queue-error"].includes(publication.state)
+          ? publication.state : "unknown";
+      } catch (error) {
+        unstable_rethrow(error);
+        publicationState = "unknown";
+      }
+    } else {
+      publicationState = (await requestPublication()).state;
+    }
+  }
+
+  if (receiptMode && confirmedReceipt?.outcome === "saved") {
+    return {
+      ...confirmedReceipt,
+      publicationState: publicationState ?? "not-requested",
+      revalidationState: scheduleArticleReceiptRevalidation(["/dashboard", "/articles"]),
+      destination: intent === "preview"
+        ? `/articles/${saved.articleId}/preview?locale=${previewLocale}`
+        : articleEditPath(saved.articleId, { saved: 1, error: publicationBlockMessage, publish: publicationState,
+            released: intent === "publish" ? savedStatus : null,
+            translation: automaticTranslationDeferred ? "deferred" : null, replaced: saved.homepageReplaced || null }),
+    } satisfies ArticleSaveResult;
   }
 
   revalidatePath("/dashboard");

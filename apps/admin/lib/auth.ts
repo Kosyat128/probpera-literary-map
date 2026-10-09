@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { unstable_rethrow } from "next/navigation";
 
 import {
   shouldRequireStaffMfa,
@@ -62,6 +63,7 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
     } = await supabase.auth.getUser();
 
     if (userError) {
+      unstable_rethrow(userError);
       if (userError.name !== "AuthSessionMissingError") logAuthFailure("session_check", userError);
       return {
         configured: true,
@@ -88,6 +90,7 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
       .maybeSingle();
 
     if (membershipError) {
+      unstable_rethrow(membershipError);
       logAuthFailure("membership_check", membershipError);
       return {
         configured: true,
@@ -126,6 +129,7 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
         }),
       };
     } catch (error) {
+      unstable_rethrow(error);
       const message = authServiceError(error) || "Не удалось проверить защиту учётной записи. Повторите попытку позже.";
       logAuthFailure("mfa_assurance_check", error);
       mfa = {
@@ -144,6 +148,7 @@ export const getStaffSession = cache(async (): Promise<StaffSession> => {
       mfa,
     };
   } catch (error) {
+    unstable_rethrow(error);
     logAuthFailure("session_check", error);
     return {
       configured: true,

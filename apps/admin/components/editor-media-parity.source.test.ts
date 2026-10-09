@@ -63,7 +63,8 @@ describe("shared editor media parity", () => {
     expect(workflowSource).toContain("target.expectedSrc");
     expect(pageSource).toContain("Изображение с компьютера");
     expect(pageSource).not.toContain("window.prompt");
-    expect(pageSource).toContain("disabled={imageUploadPending}");
+    // Both submit intents retain the upload guard alongside pending/unknown saves.
+    expect(pageSource.match(/disabled=\{imageUploadPending \|\| savePending \|\| saveBlocked \|\| readUnavailable \|\| !operationRecoveryReady\}/gu)?.length).toBe(2);
   });
 
   it("keeps ordered multi-file cursor insertion and single exact replacement", () => {

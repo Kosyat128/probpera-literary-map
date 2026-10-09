@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { z } from "zod";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
+import { adminReadMessage, readAdminList } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { safeCount } from "@/lib/format";
 import {
   TAXONOMY_TAG_PAGE_SIZE,
   parseTaxonomyCatalogQuery,
@@ -51,13 +54,20 @@ function CatalogContext({
   );
 }
 
-function savedMessage(value?: string) {
-  if (value === "category-created") return "Рубрика создана.";
-  if (value === "category-updated") return "Рубрика сохранена.";
-  if (value === "tag-created") return "Тег создан.";
-  if (value === "tag-updated") return "Тег сохранён.";
-  return value ? "Изменение сохранено." : "";
+function validTaxonomyRow(row: Category | Tag) {
+  return typeof row.id === "string" && /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/iu.test(row.id)
+    && [row.name, row.slug, row.description].every(value => typeof value === "string")
+    && typeof row.updated_at === "string" && Number.isFinite(Date.parse(row.updated_at));
 }
+
+function validCategoryRow(row: Category) {
+  return validTaxonomyRow(row) && typeof row.is_visible === "boolean"
+    && Number.isInteger(row.display_order) && row.display_order >= -2147483648 && row.display_order <= 2147483647
+    && [row.seo_title, row.seo_description].every(value => value === null || typeof value === "string");
+}
+
+// Preserve the existing action's identity contract without narrowing readable SQL UUIDs.
+const actionIdentity = z.object({ id: z.string().uuid(), updated_at: z.string().datetime({ offset: true }) });
 
 export default async function CategoriesPage({
   searchParams,
@@ -83,7 +93,7 @@ export default async function CategoriesPage({
     .order("id", { ascending: true });
   if (catalog.orFilter) tagsRequest = tagsRequest.or(catalog.orFilter);
 
-  const [categoriesResponse, tagsResponse] = await Promise.all([
+  const [categoriesResponse, tagsResponse] = await Promise.allSettled([
     supabase
       .from("categories")
       .select(
@@ -94,16 +104,18 @@ export default async function CategoriesPage({
       .order("id", { ascending: true }),
     tagsRequest.range(catalog.from, catalog.to),
   ]);
-  const categories = (categoriesResponse.data || []) as Category[];
-  const tags = (tagsResponse.data || []) as Tag[];
-  const tagCount = tagsResponse.count || 0;
-  const tagPages = Math.max(1, Math.ceil(tagCount / TAXONOMY_TAG_PAGE_SIZE));
+  const categoriesRead = readAdminList<Category>(categoriesResponse, validCategoryRow);
+  const tagsRead = readAdminList<Tag>(tagsResponse, validTaxonomyRow);
+  const categories = categoriesRead.status === "success" ? categoriesRead.data : [];
+  const tags = tagsRead.status === "success" ? tagsRead.data : [];
+  const tagCount = safeCount(tagsResponse.status === "fulfilled" ? tagsResponse.value : null);
+  const tagPages = tagCount === null ? null : Math.max(1, Math.ceil(tagCount / TAXONOMY_TAG_PAGE_SIZE));
+  const tagsReady = tagsRead.status === "success" && tagCount !== null;
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}${taxonomyCatalogHref(catalog)}`;
 
-  if (!tagsResponse.error && catalog.page > tagPages) {
+  if (tagsReady && tagPages !== null && catalog.page > tagPages) {
     redirect(taxonomyCatalogHref(catalog, { page: tagPages }));
   }
-
-  const saved = savedMessage(query.saved);
 
   return (
     <>
@@ -118,30 +130,17 @@ export default async function CategoriesPage({
         </div>
       </header>
 
-      {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
-      {saved && <p className="form-message form-success">{saved}</p>}
-      {query.deleted === "category" && <p className="form-message form-success">Рубрика удалена.</p>}
-      {query.deleted === "tag" && <p className="form-message form-success">Тег удалён.</p>}
-      {query.published === "started" && (
-        <p className="form-message form-success">Публичная сборка с изменениями структуры запущена.</p>
-      )}
-      {query.published === "queued" && (
-        <p className="form-message form-success">
-          Изменение сохранено в резервной очереди публикации; запуск сборки пока не подтверждён.
-        </p>
-      )}
-      {query.published === "queue-error" && (
-        <p className="form-message form-error" role="alert">
-          Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.
-        </p>
+      {query.error && <p className="form-message form-error" role="alert">Не удалось подтвердить изменение структуры. Проверьте текущие данные перед повтором.</p>}
+      {(query.saved || query.deleted || query.published === "started" || query.published === "queued" || query.published === "queue-error") && (
+        <p className="form-message">Результат изменения и публикации не подтверждён параметрами ссылки. Проверьте текущие данные и очередь публикаций.</p>
       )}
 
       <div className="dashboard-grid">
         <section className="panel">
           <h2>Рубрики</h2>
-          {categoriesResponse.error ? (
+          {categoriesRead.status === "failed" ? (
             <p className="form-message form-error" role="alert">
-              {operatorDataError("categories", "load")}
+              {adminReadMessage(categoriesRead.issue)} <a href={retryHref}>Повторить загрузку</a>
             </p>
           ) : categories.length ? (
             <table className="data-table">
@@ -158,6 +157,7 @@ export default async function CategoriesPage({
                     <td>/{category.slug}</td>
                     <td><span className="badge">{category.is_visible ? "Показывается" : "Скрыта"}</span></td>
                     <td>
+                      {actionIdentity.safeParse(category).success ? <>
                       <details className="admin-editor-details">
                         <summary>Изменить</summary>
                         <form className="settings-stack taxonomy-edit-form" action={updateTaxonomyItemAction}>
@@ -184,6 +184,7 @@ export default async function CategoriesPage({
                           Удалить
                         </ConfirmSubmitButton>
                       </form>
+                      </> : <span>Редактирование недоступно для этой версии записи.</span>}
                     </td>
                   </tr>
                 ))}
@@ -194,14 +195,14 @@ export default async function CategoriesPage({
           )}
         </section>
 
-        <form className="panel settings-stack" action={createTaxonomyItemAction}>
+        {categoriesRead.status === "success" && <form className="panel settings-stack" action={createTaxonomyItemAction}>
           <h2>Добавить рубрику</h2>
           <input type="hidden" name="kind" value="category" />
           <CatalogContext catalog={catalog} />
           <label className="field"><span>Название</span><input name="name" required minLength={2} maxLength={120} /></label>
           <label className="field"><span>Описание</span><textarea name="description" maxLength={1000} /></label>
           <button className="button" type="submit">Создать рубрику</button>
-        </form>
+        </form>}
       </div>
 
       <div className="dashboard-grid" style={{ marginTop: 18 }}>
@@ -218,10 +219,13 @@ export default async function CategoriesPage({
             </div>
           </form>
 
-          <p>{tagCount ? `Найдено тегов: ${tagCount}` : catalog.term ? "Совпадений нет." : "Тегов пока нет."}</p>
-          {tagsResponse.error ? (
+          <p>{tagCount === null ? "Количество тегов: Недоступно" : tagCount ? `Найдено тегов: ${tagCount}` : "Найдено тегов: 0"}</p>
+          {tagsRead.status === "success" && tagCount === null && <p className="form-message form-error" role="alert">
+            Не удалось проверить количество тегов. <a href={retryHref}>Повторить загрузку</a>
+          </p>}
+          {tagsRead.status === "failed" ? (
             <p className="form-message form-error" role="alert">
-              {operatorDataError("categories", "load")}
+              {adminReadMessage(tagsRead.issue)} <a href={retryHref}>Повторить загрузку</a>
             </p>
           ) : tags.length ? (
             <table className="data-table">
@@ -232,6 +236,7 @@ export default async function CategoriesPage({
                     <td className="data-title"><strong>#{tag.name}</strong><small>{tag.description}</small></td>
                     <td>/{tag.slug}</td>
                     <td>
+                      {tagsReady && actionIdentity.safeParse(tag).success ? <>
                       <details className="admin-editor-details">
                         <summary>Изменить</summary>
                         <form className="settings-stack" action={updateTaxonomyItemAction}>
@@ -254,6 +259,7 @@ export default async function CategoriesPage({
                           Удалить тег
                         </ConfirmSubmitButton>
                       </form>
+                      </> : <span>Редактирование недоступно до проверки данных.</span>}
                     </td>
                   </tr>
                 ))}
@@ -265,7 +271,7 @@ export default async function CategoriesPage({
             </div>
           )}
 
-          {!tagsResponse.error && tagPages > 1 && (
+          {tagsReady && tagPages !== null && tagPages > 1 && (
             <nav className="pagination" aria-label="Страницы тегов">
               {catalog.page > 1 ? <Link href={taxonomyCatalogHref(catalog, { page: 1 })}>Первая</Link> : <span aria-disabled="true">Первая</span>}
               {catalog.page > 1 ? <Link href={taxonomyCatalogHref(catalog, { page: catalog.page - 1 })}>Назад</Link> : <span aria-disabled="true">Назад</span>}
@@ -276,14 +282,14 @@ export default async function CategoriesPage({
           )}
         </section>
 
-        <form className="panel settings-stack" action={createTaxonomyItemAction}>
+        {tagsReady && <form className="panel settings-stack" action={createTaxonomyItemAction}>
           <h2>Добавить тег</h2>
           <input type="hidden" name="kind" value="tag" />
           <CatalogContext catalog={catalog} />
           <label className="field"><span>Название</span><input name="name" required minLength={2} maxLength={80} /></label>
           <label className="field"><span>Пояснение</span><textarea name="description" maxLength={1000} /></label>
           <button className="button" type="submit">Создать тег</button>
-        </form>
+        </form>}
       </div>
     </>
   );

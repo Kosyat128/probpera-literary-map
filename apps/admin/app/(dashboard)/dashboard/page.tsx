@@ -3,26 +3,17 @@ import Link from "next/link";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { safeCount } from "@/lib/format";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 
 export const metadata = { title: "Обзор" };
+
+const displayCount = (value: number | null) =>
+  value === null ? "Недоступно" : value.toLocaleString("ru-RU");
 
 export default async function DashboardPage() {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
-  const [
-    allArticles,
-    publishedArticles,
-    reviewArticles,
-    scheduledArticles,
-    comments,
-    views,
-    media,
-    works,
-    editions,
-    verifiedCovers,
-    readers,
-    ratings,
-  ] = await Promise.all([
+  const queries = await Promise.allSettled([
     supabase
       .from("articles")
       .select("id", { count: "exact", head: true })
@@ -67,6 +58,25 @@ export default async function DashboardPage() {
     supabase.from("profiles").select("id", { count: "exact", head: true }),
     supabase.from("ratings").select("id", { count: "exact", head: true }),
   ]);
+  const results = queries.map((result) =>
+    result.status === "fulfilled" ? result.value : null
+  );
+  const [
+    allArticles,
+    publishedArticles,
+    reviewArticles,
+    scheduledArticles,
+    comments,
+    views,
+    media,
+    works,
+    editions,
+    verifiedCovers,
+    readers,
+    ratings,
+  ] = results;
+  const hasUnavailableCount = results.some((result) => safeCount(result) === null);
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}/dashboard`;
 
   const metrics = [
     ["Всего статей", safeCount(allArticles), "в редакционной базе"],
@@ -94,11 +104,18 @@ export default async function DashboardPage() {
         <Link className="button" href="/articles/new">＋ Новая статья</Link>
       </header>
 
+      {hasUnavailableCount && (
+        <p className="notice" role="status">
+          Некоторые показатели сейчас недоступны.{" "}
+          <a href={retryHref}>Повторить загрузку</a>
+        </p>
+      )}
+
       <section className="stats-grid" aria-label="Основные показатели">
         {metrics.map(([label, value, note]) => (
           <article className="stat-card" key={label}>
             <span>{label}</span>
-            <strong>{value.toLocaleString("ru-RU")}</strong>
+            <strong>{displayCount(value)}</strong>
             <small>{note}</small>
           </article>
         ))}
@@ -130,9 +147,9 @@ export default async function DashboardPage() {
         <aside className="panel">
           <h2>Состояние системы</h2>
           <div className="status-list">
-            <div><span>Просмотры</span><strong>{safeCount(views).toLocaleString("ru-RU")}</strong></div>
-            <div><span>Медиафайлы</span><strong>{safeCount(media).toLocaleString("ru-RU")}</strong></div>
-            <div><span>Оценки книг и статей</span><strong>{safeCount(ratings).toLocaleString("ru-RU")}</strong></div>
+            <div><span>Просмотры</span><strong>{displayCount(safeCount(views))}</strong></div>
+            <div><span>Медиафайлы</span><strong>{displayCount(safeCount(media))}</strong></div>
+            <div><span>Оценки книг и статей</span><strong>{displayCount(safeCount(ratings))}</strong></div>
             <div><span>Плановая публикация</span><strong>Каждые 30 минут</strong></div>
             <div><span>Защита ролей</span><strong>Включена</strong></div>
             <div><span>История версий</span><strong>Включена</strong></div>

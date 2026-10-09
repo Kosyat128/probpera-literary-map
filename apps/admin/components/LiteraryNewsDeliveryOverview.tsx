@@ -10,6 +10,7 @@ const runLabels: Record<string, string> = { "native-cron": "Нативный п�
 const showTime = (value: string | null) => value ? <time dateTime={value}>{stamp(value)}</time> : "Нет подтверждения";
 
 export default function LiteraryNewsDeliveryOverview({ snapshot, page: requestedPage, query, canManage = false }: { canManage?: boolean; snapshot: LiteraryNewsRuntimeOverview; page?: string; query: { q?: string; source?: string; page?: string } }) {
+  const completeSnapshot = snapshot.complete && !snapshot.readError && snapshot.invalidRows === 0;
   const pages = Math.max(1, Math.ceil(snapshot.posts.length / NEWS_RUNTIME_PAGE_SIZE));
   const numeric = Number(requestedPage || 1);
   const page = Number.isSafeInteger(numeric) ? Math.max(1, Math.min(pages, numeric)) : 1;
@@ -24,7 +25,7 @@ export default function LiteraryNewsDeliveryOverview({ snapshot, page: requested
     <h2 id="news-delivery-title">Отправка литературной повестки</h2>
     <p>Запуск планировщика и подтверждение публикации в канале учитываются отдельно. {canManage ? "Решения по паузе и неопределённым результатам сохраняются с проверкой версии записи." : "Этот обзор доступен только для чтения."}</p>
     {!snapshot.configured ? <p className="form-message form-error">Редакционная база не подключена. Состояние отправок неизвестно.</p>
-      : !snapshot.hasRuntime && !snapshot.readError ? <p className="empty-state">Журнал отправок ещё не получен. Работа планировщика, подключение схемы и доставка в каналы не подтверждены.</p>
+      : !snapshot.hasRuntime && completeSnapshot ? <p className="empty-state">Журнал отправок ещё не получен. Работа планировщика, подключение схемы и доставка в каналы не подтверждены.</p>
         : <>
           {snapshot.readError && <p className="form-message form-error" role="alert">Журнал прочитан не полностью: доступ к базе или необходимой схеме недоступен. Счётчики ниже охватывают только полученные записи.</p>}
           {!snapshot.complete && !snapshot.readError && <p className="form-message form-error" role="alert">Обзор неполный: достигнут предел чтения или обнаружены некорректные записи. Полное количество ожидающих отправок неизвестно; проценты доставки не рассчитываются.</p>}
@@ -45,7 +46,7 @@ export default function LiteraryNewsDeliveryOverview({ snapshot, page: requested
                     <p className="catalog-summary">Сводка проверена: {showTime(snapshot.nativeDelivery.finishedAt)}. Правки ранее опубликованных сообщений не считаются новыми отправками.</p>
                   </>}
           </section>
-          {snapshot.destinations.length === 0 ? <p>Сохранённые назначения каналов не найдены. Доставка не включена этим обзором.</p> : snapshot.destinations.map(destination => <article key={`${destination.platform}:${destination.id}`} style={{ marginBlock: 20, overflowWrap: "anywhere" }}>
+          {snapshot.destinations.length === 0 ? <p>{completeSnapshot ? "Сохранённые назначения каналов не найдены. Доставка не включена этим обзором." : "Наличие сохранённых назначений каналов пока неизвестно: обзор прочитан не полностью."}</p> : snapshot.destinations.map(destination => <article key={`${destination.platform}:${destination.id}`} style={{ marginBlock: 20, overflowWrap: "anywhere" }}>
             <h3>{destination.platform === "telegram" ? "Telegram" : "VK"} · {destination.id}</h3>
             <p>Режим: <strong>{modeLabels[destination.mode] || modeLabels.unknown}</strong>. Пауза: {destination.paused === true ? "включена" : destination.paused === false ? "выключена" : "не подтверждена"}. История: {destination.historyReconciled ? "отмечена как сверенная" : "сверка не подтверждена"}.</p>
             {destination.pauseReason && <p>Причина паузы: <code>{destination.pauseReason}</code></p>}
@@ -55,7 +56,7 @@ export default function LiteraryNewsDeliveryOverview({ snapshot, page: requested
             <ul>{newsDeliveryStatuses.filter(status => destination.counts[status] > 0).map(status => <li key={status}>{statusLabels[status]}: <strong>{destination.counts[status]}</strong></li>)}</ul>
           </article>)}
           <h3>Подготовленные публикации и подтверждения</h3>
-          {posts.length === 0 ? <p>Сохранённых заданий отправки пока нет.</p> : posts.map(post => <article key={post.key} style={{ borderTop: "1px solid var(--line, #e5dfe6)", paddingBlock: 16, overflowWrap: "anywhere" }}>
+          {posts.length === 0 ? <p>{completeSnapshot ? "Сохранённых заданий отправки пока нет." : "Наличие заданий отправки пока неизвестно: обзор прочитан не полностью."}</p> : posts.map(post => <article key={post.key} style={{ borderTop: "1px solid var(--line, #e5dfe6)", paddingBlock: 16, overflowWrap: "anywhere" }}>
             <h4>{post.platform === "telegram" ? "Telegram" : "VK"} · {post.destinationId} · {post.newsId}</h4>
             <p><strong>{statusLabels[post.status]}</strong>. Поступило в журнал: {showTime(post.admittedAt)}.</p>
             {post.acknowledgedAt && <p>Есть подтверждение доставки от {showTime(post.acknowledgedAt)}{post.status !== "sent_current" && "; оно не подтверждает текущую версию"}.</p>}

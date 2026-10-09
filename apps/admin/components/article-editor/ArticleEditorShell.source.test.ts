@@ -29,10 +29,17 @@ describe("article editor shell boundaries", () => {
     for (const group of ["identity", "publication", "russian", "english"]) {
       expect(article).toContain(`${group}: {`);
     }
-    expect(article).toContain("id: article.id");
-    expect(article).toContain('expectedUpdatedAt: article.updated_at || ""');
+    expect(article).toContain("id: savedIdentity.articleId || undefined");
+    expect(article).toContain('expectedUpdatedAt: savedIdentity.articleUpdatedAt || ""');
     expect(article).toContain(
-      'englishExpectedUpdatedAt: englishTranslation?.updated_at || ""'
+      'englishExpectedUpdatedAt: savedIdentity.englishUpdatedAt || ""'
+    );
+    expect(article).toContain("articleId: article.id || null");
+    expect(article).toContain("articleUpdatedAt: article.updated_at || null");
+    expect(article).toContain("englishUpdatedAt: englishTranslation?.updated_at || null");
+    expect(article).toContain("parseArticleSaveResult(response, submittedContext)");
+    expect(article.indexOf('if (result.outcome === "saved")')).toBeLessThan(
+      article.indexOf("setSavedIdentity({")
     );
     expect(article).toContain('override: "0"');
 

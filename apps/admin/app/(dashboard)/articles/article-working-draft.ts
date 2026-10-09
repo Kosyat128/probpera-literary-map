@@ -1,6 +1,10 @@
 import { z } from "zod";
 
 import type { createServerSupabaseClient } from "@/lib/supabase/server";
+import type { ArticleOperationResult, ArticleOperationResultContext } from "@/lib/article-operation-result";
+import { sameArticleRetryRevision } from "../../../lib/article-retry-revision";
+
+import { saveArticleOperationRpc } from "./article-operation-rpc";
 
 type ServerSupabaseClient = NonNullable<
   Awaited<ReturnType<typeof createServerSupabaseClient>>
@@ -92,7 +96,9 @@ const workingDraftSchema = z
       .string()
       .datetime({ offset: true })
       .nullable(),
-    version: z.coerce.number().int().positive(),
+    draft_scope: z.enum(["bundle", "english-only"]).default("bundle"),
+    draft_english_enabled: z.boolean().optional(),
+    version: z.coerce.number().int().positive().safe(),
     updated_at: z.string().datetime({ offset: true }),
   })
   .strict();
@@ -101,6 +107,12 @@ export type ArticleWorkingDraft = z.infer<typeof workingDraftSchema>;
 export type ArticleWorkingDraftEnglishEnvelope = z.infer<
   typeof englishEnvelopeSchema
 >;
+export type ArticleWorkingDraftRpcResult = {
+  articleId: string;
+  version: number;
+  updatedAt: string;
+  operationResult?: ArticleOperationResult;
+};
 
 export function articleWorkingDraftEnglishEnvelope(
   payload: Record<string, unknown> | null
@@ -117,12 +129,16 @@ export function articleWorkingDraftEnglishEnvelope(
 
 export function parseArticleWorkingDraft(value: unknown) {
   const parsed = workingDraftSchema.safeParse(value);
-  if (!parsed.success) {
+  if (!parsed.success || parsed.data.draft_scope === "english-only" && parsed.data.english_payload.mode !== "save"
+    || parsed.success && parsed.data.draft_english_enabled === true && parsed.data.english_payload.mode !== "save") {
     throw new Error(
       "Рабочий черновик повреждён и не был открыт. Опубликованная версия оставлена без изменений."
     );
   }
-  return parsed.data;
+  return {
+    ...parsed.data,
+    draft_english_enabled: parsed.data.draft_english_enabled ?? parsed.data.english_payload.mode === "save",
+  };
 }
 
 export function articleWithWorkingDraft<
@@ -130,13 +146,36 @@ export function articleWithWorkingDraft<
 >(article: Article, draft: ArticleWorkingDraft) {
   return {
     ...article,
-    ...draft.payload,
+    ...(draft.draft_scope === "english-only" ? {} : draft.payload),
     id: article.id,
     // Keep the live CAS boundary captured when the working copy was created.
     // A concurrent live change must conflict instead of being overwritten.
     updated_at: draft.base_article_updated_at,
     working_draft_version: draft.version,
+    working_draft_scope: draft.draft_scope || "bundle",
+    working_draft_updated_at: draft.updated_at,
+    working_draft_english_enabled: draft.draft_english_enabled ?? draft.english_payload.mode === "save",
   };
+}
+
+function workingDraftReviewIdentities(
+  translation: Record<string, unknown> | null,
+  payload: ArticleWorkingDraftEnglishEnvelope & { mode: "save" },
+) {
+  const identities: Record<string, unknown> = {};
+  for (const [actorField, dateField] of [
+    ["reviewed_by", "reviewed_at"],
+    ["approved_by", "approved_at"],
+  ] as const) {
+    if (!translation || !Object.hasOwn(translation, actorField)) continue;
+    const privateDate = payload.payload[dateField];
+    const canonicalDate = translation[dateField];
+    // A canonical actor belongs to its own dated review. The private payload
+    // carries dates, but cannot establish a different reviewer identity.
+    identities[actorField] = privateDate !== null && typeof canonicalDate === "string" &&
+      sameArticleRetryRevision(privateDate, canonicalDate) ? translation[actorField] : null;
+  }
+  return identities;
 }
 
 export function englishTranslationWithWorkingDraft<
@@ -154,6 +193,7 @@ export function englishTranslationWithWorkingDraft<
   return {
     ...(translation || {}),
     ...envelope.payload,
+    ...workingDraftReviewIdentities(translation, envelope),
     id: translation?.id,
     article_id: translation?.article_id,
     locale: "en",
@@ -169,6 +209,7 @@ export function previewEnglishTranslationWithWorkingDraft<
   return {
     ...(translation || {}),
     ...envelope.payload,
+    ...workingDraftReviewIdentities(translation, envelope),
     id: translation?.id,
     article_id: translation?.article_id,
     locale: "en" as const,
@@ -208,8 +249,9 @@ export async function saveArticleWorkingDraftRpc(
     englishEnvelope: ArticleWorkingDraftEnglishEnvelope;
     expectedEnglishUpdatedAt: string | null;
     expectedVersion: number;
-  }
-) {
+  },
+  operationContext?: ArticleOperationResultContext
+): Promise<ArticleWorkingDraftRpcResult> {
   const articlePayload = articlePayloadSchema.safeParse(input.articlePayload);
   const englishEnvelope = englishEnvelopeSchema.safeParse(input.englishEnvelope);
   if (!articlePayload.success || !englishEnvelope.success) {
@@ -217,20 +259,29 @@ export async function saveArticleWorkingDraftRpc(
       "Не удалось безопасно сохранить рабочий черновик. Проверьте поля статьи."
     );
   }
-  const { data, error } = await supabase.rpc("save_article_working_draft", {
+  const args = {
     p_article_id: input.articleId,
     p_base_article_updated_at: input.baseArticleUpdatedAt,
     p_payload: articlePayload.data,
     p_english_payload: englishEnvelope.data,
     p_expected_english_updated_at: input.expectedEnglishUpdatedAt,
     p_expected_version: input.expectedVersion,
-  });
+  };
+  const operationResult = operationContext
+    ? await saveArticleOperationRpc(supabase, "save_article_working_draft", args, operationContext)
+    : null;
+  const { data, error } = operationContext
+    ? { data: operationResult?.result, error: null }
+    : await supabase.rpc("save_article_working_draft", args);
   if (error) throw new Error(workingDraftRpcError(error));
 
   const result = z
     .object({
       articleId: z.string().uuid(),
-      version: z.coerce.number().int().positive(),
+      version: z.union([
+        z.number().int().positive().safe(),
+        z.string().max(19).regex(/^[1-9]\d*$/u).transform(Number).pipe(z.number().int().positive().safe()),
+      ]),
       updatedAt: z.string().datetime({ offset: true }),
     })
     .strict()
@@ -240,7 +291,7 @@ export async function saveArticleWorkingDraftRpc(
       "Рабочий черновик сохранён с некорректным ответом сервера. Обновите страницу перед следующей правкой."
     );
   }
-  return result.data;
+  return operationResult ? { ...result.data, operationResult } : result.data;
 }
 
 export async function discardArticleWorkingDraftRpc(

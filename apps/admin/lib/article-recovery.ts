@@ -1,3 +1,5 @@
+import { canUseRecoveryCopy, persistRecoveryCopy, readRecoveryCopy, recoveryCopyStorageKey } from "./editor-recovery-owner";
+
 export const PENDING_ARTICLE_SAVE_KEY = "probpera-editor-pending-save-key";
 export const LATEST_ARTICLE_DRAFT_POINTER_PREFIX =
   "probpera-editor-draft-latest-";
@@ -17,11 +19,12 @@ export function latestArticleDraftPointerKey(scope: string) {
   return `${LATEST_ARTICLE_DRAFT_POINTER_PREFIX}${safeArticleDraftScope(scope)}`;
 }
 
-function isRecoverySnapshot(value: string | null) {
+function isRecoverySnapshot(value: string | null, actorId?: string) {
   if (!value) return false;
   try {
     const parsed = JSON.parse(value) as unknown;
-    return Boolean(parsed && typeof parsed === "object" && !Array.isArray(parsed));
+    return Boolean(parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      && canUseRecoveryCopy(parsed, actorId));
   } catch {
     return false;
   }
@@ -30,36 +33,46 @@ function isRecoverySnapshot(value: string | null) {
 export function resolveArticleDraftRecoverySource(
   storage: RecoveryStorage,
   scope: string,
-  currentRecoveryKey: string
+  currentRecoveryKey: string,
+  actorId?: string
 ) {
-  if (isRecoverySnapshot(storage.getItem(currentRecoveryKey))) {
+  if (isRecoverySnapshot(readRecoveryCopy(storage, currentRecoveryKey, actorId), actorId)) {
     return currentRecoveryKey;
   }
 
   const safeScope = safeArticleDraftScope(scope);
   const pointerKey = latestArticleDraftPointerKey(safeScope);
   const expectedRecoveryPrefix = articleDraftRecoveryKeyPrefix(safeScope);
-  const pointerValue = storage.getItem(pointerKey);
+  const pointerValue = readRecoveryCopy(storage, pointerKey, actorId);
   if (pointerValue) {
+    let pointer: {
+      version?: unknown;
+      scope?: unknown;
+      recoveryKey?: unknown;
+    } | null = null;
     try {
-      const pointer = JSON.parse(pointerValue) as {
+      pointer = JSON.parse(pointerValue) as {
         version?: unknown;
         scope?: unknown;
         recoveryKey?: unknown;
       };
-      if (
-        pointer.version === 1 &&
-        pointer.scope === safeScope &&
-        typeof pointer.recoveryKey === "string" &&
-        pointer.recoveryKey.startsWith(expectedRecoveryPrefix) &&
-        isRecoverySnapshot(storage.getItem(pointer.recoveryKey))
-      ) {
-        return pointer.recoveryKey;
-      }
     } catch {
       // Invalid pointers are removed below without touching any recovery copy.
     }
-    storage.removeItem(pointerKey);
+    if (
+      pointer &&
+      pointer.version === 1 &&
+      pointer.scope === safeScope &&
+      typeof pointer.recoveryKey === "string" &&
+      pointer.recoveryKey.startsWith(expectedRecoveryPrefix) &&
+      canUseRecoveryCopy(pointer, actorId) &&
+      isRecoverySnapshot(readRecoveryCopy(storage, pointer.recoveryKey, actorId), actorId)
+    ) {
+      return pointer.recoveryKey;
+    }
+    // A shared pointer belonging to another actor is not ours to remove.
+    if (pointer && !canUseRecoveryCopy(pointer, actorId)) return currentRecoveryKey;
+    storage.removeItem(recoveryCopyStorageKey(pointerKey, actorId));
   }
   return currentRecoveryKey;
 }
@@ -68,18 +81,19 @@ export function persistArticleRecoverySnapshot(
   storage: WritableRecoveryStorage,
   recoveryKey: string,
   serializedSnapshot: string,
-  scope: string | null
+  scope: string | null,
+  actorId?: string
 ) {
-  storage.setItem(recoveryKey, serializedSnapshot);
+  if (actorId) persistRecoveryCopy(storage, recoveryKey, JSON.parse(serializedSnapshot) as object, actorId);
+  else storage.setItem(recoveryKey, serializedSnapshot);
   if (scope === null) return;
 
   const safeScope = safeArticleDraftScope(scope);
   const expectedRecoveryPrefix = articleDraftRecoveryKeyPrefix(safeScope);
   if (!recoveryKey.startsWith(expectedRecoveryPrefix)) return;
-  storage.setItem(
-    latestArticleDraftPointerKey(safeScope),
-    JSON.stringify({ version: 1, scope: safeScope, recoveryKey })
-  );
+  const pointer = { version: 1, scope: safeScope, recoveryKey };
+  if (actorId) persistRecoveryCopy(storage, latestArticleDraftPointerKey(safeScope), pointer, actorId);
+  else storage.setItem(latestArticleDraftPointerKey(safeScope), JSON.stringify(pointer));
 }
 
 export function recoveryContentFingerprint(snapshot: unknown) {
@@ -91,6 +105,8 @@ export function recoveryContentFingerprint(snapshot: unknown) {
     activeLocale: undefined,
     savedAt: undefined,
     reason: undefined,
+    pendingArticleOperation: undefined,
+    recoveryActorId: undefined,
   };
   return JSON.stringify(normalized);
 }

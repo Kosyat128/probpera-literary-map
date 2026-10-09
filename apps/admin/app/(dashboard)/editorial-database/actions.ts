@@ -376,7 +376,7 @@ export async function saveEditorialProfileAction(formData: FormData) {
           supabase,
           actorId: session.user.id,
           countryId: edit.countryId,
-          sourceFields,
+          sourceFields: editorialSourceFields(editorialCatalog, edit.countryId, null),
         });
   }
 

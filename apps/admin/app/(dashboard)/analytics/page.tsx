@@ -1,6 +1,10 @@
 import { adminEnv } from "@/lib/env";
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import AdminStatusState from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { isAnalyticsReport } from "@/lib/analytics-load-validation";
 import {
   analyticsPeriods,
   normalizeAnalyticsReport,
@@ -14,10 +18,12 @@ export default async function AnalyticsPage({
 }: {
   searchParams: Promise<{ period?: string }>;
 }) {
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) return <AdminDependencyState />;
   const query = await searchParams;
   const range = resolveAnalyticsRange(query.period);
+  const basePath = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH);
+  const retryHref = `${basePath}/analytics?period=${range.period}`;
+  const supabase = await createServerSupabaseClient();
+  if (!supabase) return <><AdminDependencyState /><a className="button-secondary" href={retryHref}>Повторить загрузку</a></>;
 
   const metrikaCounterId = /^\d{1,15}$/u.test(adminEnv.metrikaCounterId)
     ? adminEnv.metrikaCounterId
@@ -26,15 +32,14 @@ export default async function AnalyticsPage({
     ? `https://metrika.yandex.ru/stat/geo?period=month&id=${encodeURIComponent(metrikaCounterId)}`
     : "https://metrika.yandex.ru/list";
 
-  const { data: reportData, error: reportError } = await supabase.rpc(
+  const [reportResult] = await Promise.allSettled([Promise.resolve().then(() => supabase.rpc(
     "get_admin_analytics_report",
     { p_from: range.from, p_to: range.to }
-  );
-  const report = normalizeAnalyticsReport(reportData, range.from, range.to);
-  const trackingNotice = reportError
-    ? "Статистика временно недоступна: примените актуальную production-схему."
-    : "";
-  const maxDailyViews = Math.max(1, ...report.daily.map((item) => item.views));
+  ))]);
+  const reportRead = readAdminResult(reportResult, (data) => isAnalyticsReport(data, range.from, range.to));
+  const report = reportRead.status === "success"
+    ? normalizeAnalyticsReport(reportRead.data, range.from, range.to) : null;
+  const maxDailyViews = report ? Math.max(1, ...report.daily.map((item) => item.views)) : 1;
 
   return (
     <>
@@ -50,7 +55,12 @@ export default async function AnalyticsPage({
         </div>
       </header>
 
-      {trackingNotice && <p className="form-message">{trackingNotice}</p>}
+      {reportRead.status === "failed" && <AdminStatusState
+        eyebrow="Статистика"
+        title="Не удалось загрузить отчёт"
+        description={adminReadMessage(reportRead.issue)}
+        action={<a className="button-secondary" href={retryHref}>Повторить загрузку</a>}
+      />}
 
       <section className="panel analytics-period-controls" aria-label="Период отчёта">
         <form method="get">
@@ -63,10 +73,10 @@ export default async function AnalyticsPage({
             </select>
           </label>
           <button className="button" type="submit">Показать</button>
-          {!reportError && (
+          {report && (
             <a
               className="button-secondary"
-              href={`/analytics/export?period=${range.period}`}
+              href={`${basePath}/analytics/export?period=${range.period}`}
             >
               Скачать CSV
             </a>
@@ -110,6 +120,7 @@ export default async function AnalyticsPage({
         </div>
       </section>
 
+      {report && <>
       <section className="stats-grid analytics-stats">
         <article className="stat-card">
           <span>Просмотры за период</span>
@@ -128,7 +139,7 @@ export default async function AnalyticsPage({
         </article>
         <article className="stat-card">
           <span>Средняя оценка</span>
-          <strong>{report.averageRating ? report.averageRating.toFixed(2) : "-"}</strong>
+          <strong>{report.averageRating !== null ? report.averageRating.toFixed(2) : "-"}</strong>
           <small>{report.ratings.toLocaleString("ru-RU")} оценок за период</small>
         </article>
         <article className="stat-card">
@@ -186,9 +197,10 @@ export default async function AnalyticsPage({
         <div className="status-list analytics-list">
           {report.topTransitions.length ? report.topTransitions.slice(0, 10).map((item) => (
             <div key={`${item.from}\u0000${item.to}`}><span>{item.from} → {item.to}</span><strong>{item.views}</strong></div>
-          )) : <p>Маршруты появятся после применения миграции и новых переходов читателей.</p>}
+          )) : <p>Переходы внутри сайта за выбранный период ещё не зарегистрированы.</p>}
         </div>
       </section>
+      </>}
     </>
   );
 }

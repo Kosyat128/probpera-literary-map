@@ -1,3 +1,5 @@
+import { unstable_rethrow } from "next/navigation";
+import type { ReactNode } from "react";
 import ArticleEditorLoader, {
   type ArticleTranslation,
   type CustomTemplate,
@@ -6,12 +8,16 @@ import ArticleCopyPicker, {
   type CopyableArticle,
 } from "@/components/ArticleCopyPicker";
 import { INITIAL_ARTICLE_COPY_OPTIONS_LIMIT } from "@/lib/article-copy-search";
-import { getStaffSession } from "@/lib/auth";
+import { requireStaffRead } from "@/lib/admin-read-access";
 import { adminEnv } from "@/lib/env";
 import { createSlug } from "@/lib/slug";
+import ArticleLoadState from "@/components/ArticleLoadState";
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import AdminStatusState from "@/components/AdminStatusState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { readAdminList, readAdminResult, rethrowAdminReadControlFlow } from "@/lib/admin-read-result";
+import { validArticleRead, validCopyOptionRead, validEnglishRead, validTemplateRead } from "@/lib/article-load-validation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
 
 export const metadata = { title: "Новая статья" };
 
@@ -26,24 +32,35 @@ export default async function NewArticlePage({
 }: {
   searchParams: Promise<{ error?: string; copyFrom?: string }>;
 }) {
+  const staff = await requireStaffRead();
+  if (!staff) return <AdminStatusState eyebrow="Доступ ограничен"
+    title="Редакционные данные недоступны"
+    description="Не удалось подтвердить редакционную роль. Обратитесь к владельцу сайта." />;
   const { error, copyFrom } = await searchParams;
-  const staff = await getStaffSession();
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) return <AdminDependencyState />;
-
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}/articles/new${copyFrom ? `?copyFrom=${encodeURIComponent(copyFrom)}` : ""}`;
   const copyFromId =
     copyFrom && /^[0-9a-f-]{36}$/iu.test(copyFrom) ? copyFrom : null;
+  const editorKey = copyFrom ? `copy:${copyFrom.toLowerCase()}` : "new";
+  const unavailableEditor = (fallback: ReactNode) => <ArticleEditorLoader
+    key={editorKey} editorKey={editorKey} actorId={staff.user?.id} current={null} fallback={fallback} retryHref={retryHref}
+  />;
+  let supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>;
+  try {
+    supabase = await createServerSupabaseClient();
+  } catch (error) {
+    unstable_rethrow(error);
+    return unavailableEditor(<ArticleLoadState issue="unavailable" retryHref={retryHref} />);
+  }
+  if (!supabase) return unavailableEditor(<><AdminDependencyState /><div className="state-actions"><a className="button-secondary" href={retryHref}>Повторить загрузку</a></div></>);
+  if (copyFrom && !copyFromId) return unavailableEditor(<ArticleLoadState issue="invalid" retryHref={retryHref} />);
 
   const [
-    { data: categoriesResult },
-    { data: templatesResult },
-    { data: articlesResult },
-    { data: sourceArticleResult },
-    {
-      data: sourceEnglishTranslationResult,
-      error: sourceEnglishTranslationError,
-    },
-  ] = await Promise.all([
+    categoriesResult,
+    templatesResult,
+    articlesResult,
+    sourceArticleResult,
+    sourceEnglishTranslationResult,
+  ] = await Promise.allSettled([
     supabase
       .from("categories")
       .select("id,name,slug")
@@ -73,7 +90,7 @@ export default async function NewArticlePage({
       ? supabase
           .from("article_translations")
           .select(
-            "title,subtitle,excerpt,slug,content_html,content_json,cover_alt,sources,bibliography,seo_title,seo_description,seo_keywords,og_title,og_description"
+            "article_id,locale,title,subtitle,excerpt,slug,content_html,content_json,cover_alt,sources,bibliography,seo_title,seo_description,seo_keywords,og_title,og_description"
           )
           .eq("article_id", copyFromId)
           .eq("locale", "en")
@@ -82,22 +99,45 @@ export default async function NewArticlePage({
       : Promise.resolve({ data: null, error: null }),
   ]);
 
-  const categories = categoriesResult || [];
-  const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
+  rethrowAdminReadControlFlow(categoriesResult, templatesResult, articlesResult,
+    sourceArticleResult, sourceEnglishTranslationResult);
+  const categoriesRead = readAdminList(categoriesResult, (item) =>
+    typeof item.id === "string" && typeof item.name === "string" && typeof item.slug === "string");
+  if (categoriesRead.status === "failed") {
+    return unavailableEditor(<ArticleLoadState issue={categoriesRead.issue} retryHref={retryHref} />);
+  }
+  const sourceArticleRead = readAdminResult(sourceArticleResult, (data) =>
+    data === null || (copyFromId !== null && validArticleRead(data, copyFromId, "copy")));
+  if (sourceArticleRead.status === "failed") {
+    return unavailableEditor(<ArticleLoadState issue={sourceArticleRead.issue} retryHref={retryHref} />);
+  }
+  if (copyFromId && !sourceArticleRead.data) {
+    return unavailableEditor(<ArticleLoadState issue="permission" retryHref={retryHref} />);
+  }
+  const englishRead = readAdminResult(sourceEnglishTranslationResult, (data) =>
+    data === null || (copyFromId !== null && validEnglishRead(data, copyFromId, "copy")));
+  if (englishRead.status === "failed") {
+    return unavailableEditor(<ArticleLoadState issue={englishRead.issue} retryHref={retryHref} />);
+  }
+  const categories = categoriesRead.data;
+  const templatesRead = readAdminList(templatesResult, validTemplateRead);
+  const templates: CustomTemplate[] = (templatesRead.status === "success" ? templatesRead.data : []).map((template) => ({
     id: template.id,
     label: template.label,
     html: template.content_html,
     visibility: template.visibility as "personal" | "shared",
     canDelete: template.owner_id === staff.user?.id,
   }));
-  const copyableArticles: CopyableArticle[] = (articlesResult || []).map((item) => ({
+  const articlesRead = readAdminList(articlesResult, validCopyOptionRead);
+  const copyableArticles: CopyableArticle[] = (articlesRead.status === "success" ? articlesRead.data : []).map((item) => ({
     id: item.id,
     title: item.title,
     status: item.status,
     updatedAt: item.updated_at,
   }));
 
-  const sourceArticle = sourceArticleResult || null;
+  const sourceArticle = sourceArticleRead.data;
+  const sourceEnglishTranslation = englishRead.data;
   const copyToken = copyFromId
     ? `${copyFromId.slice(0, 8)}-${crypto.randomUUID().slice(0, 8)}`
     : null;
@@ -130,37 +170,48 @@ export default async function NewArticlePage({
       }
     : null;
   const copiedEnglishTranslation: ArticleTranslation | undefined =
-    sourceArticle && sourceEnglishTranslationResult
+    sourceArticle && sourceEnglishTranslation
       ? {
           locale: "en",
-          title: sourceEnglishTranslationResult.title,
-          subtitle: sourceEnglishTranslationResult.subtitle,
-          excerpt: sourceEnglishTranslationResult.excerpt,
-          content_html: sourceEnglishTranslationResult.content_html,
-          content_json: sourceEnglishTranslationResult.content_json,
-          cover_alt: sourceEnglishTranslationResult.cover_alt,
-          sources: sourceEnglishTranslationResult.sources,
-          bibliography: sourceEnglishTranslationResult.bibliography,
-          seo_title: sourceEnglishTranslationResult.seo_title,
-          seo_description: sourceEnglishTranslationResult.seo_description,
-          seo_keywords: sourceEnglishTranslationResult.seo_keywords,
-          og_title: sourceEnglishTranslationResult.og_title,
-          og_description: sourceEnglishTranslationResult.og_description,
+          title: sourceEnglishTranslation.title,
+          subtitle: sourceEnglishTranslation.subtitle,
+          excerpt: sourceEnglishTranslation.excerpt,
+          content_html: sourceEnglishTranslation.content_html,
+          content_json: sourceEnglishTranslation.content_json,
+          cover_alt: sourceEnglishTranslation.cover_alt,
+          sources: sourceEnglishTranslation.sources,
+          bibliography: sourceEnglishTranslation.bibliography,
+          seo_title: sourceEnglishTranslation.seo_title,
+          seo_description: sourceEnglishTranslation.seo_description,
+          seo_keywords: sourceEnglishTranslation.seo_keywords,
+          og_title: sourceEnglishTranslation.og_title,
+          og_description: sourceEnglishTranslation.og_description,
           status: "draft",
           slug: copiedDraftSlug(
-            sourceEnglishTranslationResult.slug,
+            sourceEnglishTranslation.slug,
             copyToken || "draft-en"
           ),
           canonical_url: null,
         }
       : undefined;
-  const copyLoadError =
-    copyFromId && sourceEnglishTranslationError
-      ? operatorDataError("articles", "load")
-      : null;
 
   return (
-    <>
+    <ArticleEditorLoader
+      key={editorKey}
+      editorKey={editorKey}
+      retryHref={retryHref}
+      current={{
+        article: copiedArticle ? copiedArticle : { status: "draft" },
+        englishTranslation: copiedEnglishTranslation,
+        categories,
+        publicSiteUrl: adminEnv.publicSiteUrl,
+        templates,
+        draftKey: copyFromId ? `copy-${copyFromId}` : undefined,
+        actorId: staff.user?.id,
+        canPublish: staff.role === "owner" || staff.role === "admin",
+        canOverridePublicationChecklist: staff.role === "owner",
+      }}
+      before={<>
       <header className="page-heading">
         <div>
           <span className="eyebrow">Новый материал</span>
@@ -171,22 +222,20 @@ export default async function NewArticlePage({
           </p>
         </div>
       </header>
-      {(error || copyLoadError) && (
-        <p className="form-message">{error || copyLoadError}</p>
+      {error && (
+        <p className="form-message">{error}</p>
       )}
-      <ArticleCopyPicker articles={copyableArticles} />
-      {!copyLoadError && (
-        <ArticleEditorLoader
-          article={copiedArticle ? copiedArticle : { status: "draft" }}
-          englishTranslation={copiedEnglishTranslation}
-          categories={categories}
-          publicSiteUrl={adminEnv.publicSiteUrl}
-          templates={templates}
-          draftKey={copyFromId ? `copy-${copyFromId}` : undefined}
-          canPublish={staff.role === "owner" || staff.role === "admin"}
-          canOverridePublicationChecklist={staff.role === "owner"}
-        />
+      {articlesRead.status === "failed" ? (
+        <p className="notice" role="status">
+          Список статей для копирования временно недоступен. <a href={retryHref}>Повторить загрузку</a>
+        </p>
+      ) : <ArticleCopyPicker articles={copyableArticles} />}
+      {templatesRead.status === "failed" && (
+        <p className="notice" role="status">
+          Шаблоны временно недоступны. <a href={retryHref}>Повторить загрузку</a>
+        </p>
       )}
-    </>
+      </>}
+    />
   );
 }

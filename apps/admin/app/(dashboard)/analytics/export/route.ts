@@ -6,28 +6,32 @@ import {
   resolveAnalyticsRange,
 } from "@/lib/analytics-report";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import { isAnalyticsReport } from "@/lib/analytics-load-validation";
 
 export async function GET(request: Request) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
     return NextResponse.json(
       { error: "База данных не подключена." },
-      { status: 503 }
+      { status: 503, headers: { "Cache-Control": "private, no-store" } }
     );
   }
   const url = new URL(request.url);
   const range = resolveAnalyticsRange(url.searchParams.get("period"));
-  const { data, error } = await supabase.rpc("get_admin_analytics_report", {
+  const [result] = await Promise.allSettled([Promise.resolve().then(() => supabase.rpc("get_admin_analytics_report", {
     p_from: range.from,
     p_to: range.to,
-  });
-  if (error) {
+  }))]);
+  const read = readAdminResult(result, (data) => isAnalyticsReport(data, range.from, range.to));
+  if (read.status === "failed") {
     return NextResponse.json(
-      { error: "Отчёт временно недоступен." },
-      { status: error.code === "42501" ? 403 : 503 }
+      { error: adminReadMessage(read.issue) },
+      { status: read.issue === "permission" ? 403 : 503,
+        headers: { "Cache-Control": "private, no-store" } }
     );
   }
-  const report = normalizeAnalyticsReport(data, range.from, range.to);
+  const report = normalizeAnalyticsReport(read.data, range.from, range.to);
   return new NextResponse(analyticsReportCsv(report), {
     headers: {
       "Cache-Control": "private, no-store",

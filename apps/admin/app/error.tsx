@@ -12,7 +12,7 @@ export default function AdminError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Admin route rendering failed", error);
+    console.error("Admin route rendering failed");
   }, [error]);
 
   return (

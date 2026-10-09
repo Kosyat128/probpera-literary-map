@@ -6,10 +6,6 @@ import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profil
 import { requireStaff } from "@/lib/auth";
 import { loadEditorialCatalog } from "@/lib/editorial-catalog";
 import { redirect } from "@/lib/navigation";
-import {
-  premiumTranslationRuntimeMetadata,
-} from "@/lib/premium-translation-runtime";
-import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   advanceBackfillCursor,
@@ -56,6 +52,8 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     candidates.length
   );
   let translated = 0;
+  let reviewPending = 0;
+  let stale = 0;
   let current = 0;
   let manual = 0;
   let skipped = 0;
@@ -81,11 +79,13 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     });
     runItems.push({
       entityId: country.id,
-      state: result.state,
+      state: result.state === "not-ready" ? "not-configured" : result.state,
       error: result.error,
       model: result.model,
     });
     if (result.state === "translated") translated += 1;
+    else if (result.state === "review-pending") reviewPending += 1;
+    else if (result.state === "stale") stale += 1;
     else if (result.state === "current") current += 1;
     else if (result.state === "manual") manual += 1;
     else if (result.state === "failed") {
@@ -110,37 +110,13 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
   }
 
-  let publication: string | null = null;
-  if (translated > 0) {
-    const runtime = premiumTranslationRuntimeMetadata();
-    publication = (
-      await requestPublicBuild({
-        supabase,
-        actorId: session.user.id,
-        entityType: "premium_translation_batch",
-        entityId: "countries-en",
-        reason: "premium-translation.countries",
-        metadata: {
-          premiumEnglish: true,
-          kind: "countries",
-          translated,
-          provider: runtime.provider,
-          model: runtime.model,
-          reviewerModel: runtime.reviewerModel,
-          twoPassReview: runtime.twoPassReview,
-        },
-      })
-    ).state;
-  }
-
   revalidatePath("/translations");
   revalidatePath("/editorial-database");
   redirect(
     translationsUrl({
       ...cursorParams,
-      success: `Страны: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      success: `Страны: новых машинных черновиков ${translated}, ожидают проверки ${reviewPending}, устаревших черновиков ${stale}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}. Машинные черновики не опубликованы.`,
       errorCode: firstError ? translationErrorCode(firstError) : null,
-      publication,
       countryCursor: nextCountryCursor,
     })
   );

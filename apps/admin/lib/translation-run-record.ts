@@ -1,10 +1,13 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { z } from "zod";
+import { unstable_rethrow } from "next/navigation";
 
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 import { translationErrorCode } from "./translation-errors";
 
 export type TranslationRunState =
   | "translated"
+  | "review-pending"
   | "current"
   | "manual"
   | "skipped"
@@ -18,6 +21,7 @@ export type TranslationRunItem = {
   state: TranslationRunState;
   error?: string;
   model?: string;
+  sourceHash?: string;
 };
 
 function durableOutcome(item: TranslationRunItem) {
@@ -49,7 +53,7 @@ export async function recordTranslationSyncRun(input: {
   supabase: SupabaseClient;
   kind: "article" | "literary_work" | "writer" | "country" | "site_copy";
   items: readonly TranslationRunItem[];
-  resumeCursor?: Record<string, number>;
+  resumeCursor?: Record<string, unknown>;
 }) {
   if (!input.items.length) return null;
   const runtime = premiumTranslationRuntimeMetadata();
@@ -59,11 +63,13 @@ export async function recordTranslationSyncRun(input: {
     p_items: input.items.map((item) => ({
       entityType: input.kind,
       entityId: item.entityId,
+      ...(item.sourceHash ? { sourceHash: item.sourceHash } : {}),
     })),
     p_outcomes: input.items.map(durableOutcome),
     p_resume_cursor: input.resumeCursor || {},
   });
-  if (response.error || typeof response.data !== "string") {
+  unstable_rethrow(response.error);
+  if (response.error || !z.string().uuid().safeParse(response.data).success) {
     throw new Error("translation run record failed");
   }
   return response.data;

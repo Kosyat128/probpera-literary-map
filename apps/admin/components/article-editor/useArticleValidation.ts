@@ -36,6 +36,7 @@ export type ArticleValidationInput = {
   englishBibliographyText: string;
   englishConfirmedCurrentSource: boolean;
   englishSourceContentHash?: string | null;
+  englishPreviouslyHumanConfirmed?: boolean;
   russianSourceChanged: boolean;
 };
 
@@ -188,7 +189,7 @@ export function buildArticleValidation(
           ok:
             input.englishConfirmedCurrentSource ||
             (!input.russianSourceChanged &&
-              Boolean(input.englishSourceContentHash)),
+              input.englishPreviouslyHumanConfirmed === true),
         },
       ]
     : russianChecks;
@@ -226,6 +227,7 @@ export function useArticleValidation(input: ArticleValidationInput) {
       input.englishSeoTitle,
       input.englishSlug,
       input.englishSourceContentHash,
+      input.englishPreviouslyHumanConfirmed,
       input.englishSourceText,
       input.englishStatus,
       input.englishSubtitle,
@@ -241,4 +243,3 @@ export function useArticleValidation(input: ArticleValidationInput) {
     ]
   );
 }
-

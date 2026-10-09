@@ -1,4 +1,8 @@
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import SiteStudioLoadState from "@/components/SiteStudioLoadState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { isReadRecord } from "@/lib/admin-read-result";
+import { isStudioFont, isStudioTypography, isStudioTypographyRevision, readStudioRows, studioActionUuid, studioTypographyEditorSettings, studioTypographyRevisionIdentity } from "@/lib/site-studio-load-validation";
 import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import {
@@ -96,59 +100,81 @@ export default async function SiteTypographyPage({
   if (!supabase) return <AdminDependencyState />;
   const canManage = session.role === "owner" || session.role === "admin";
 
-  const [assetResult, overrideResult, revisionResult] = await Promise.all([
+  const [assetResult, overrideResult, revisionResult] = await Promise.allSettled([
     supabase
       .from("font_assets")
       .select(
-        "id,display_name,family_name,source_type,format,font_style,weight_min,weight_max,byte_size,is_variable,license_name,license_url,created_at,cas_version"
+        "id,display_name,family_name,source_type,format,font_style,weight_min,weight_max,byte_size,is_variable,license_name,license_url,created_at,cas_version",
+        { count: "exact" }
       )
       .is("deleted_at", null)
       .order("family_name")
       .order("weight_min"),
     supabase
       .from("site_typography_overrides")
-      .select("*")
+      .select("*", { count: "exact" })
       .order("layer")
       .order("target_key")
       .order("semantic_scope")
       .order("breakpoint"),
     supabase
       .from("site_typography_revisions")
-      .select("*")
+      .select("*", { count: "exact" })
       .order("created_at", { ascending: false })
       .order("id", { ascending: false })
       .limit(30),
   ]);
 
-  const fonts = (assetResult.data || []) as FontAssetView[];
-  const overrides = (overrideResult.data || []).flatMap((value) => {
-    const normalized = normalizeOverride(value);
-    return normalized ? [normalized] : [];
-  });
-  const revisions = (revisionResult.data || []).flatMap((value) => {
-    const normalized = normalizeRevision(value);
-    return normalized ? [normalized] : [];
-  });
-  const messages: TypographyPageMessages = {
-    error: query.error,
-    saved: query.saved,
-    published: query.published,
-    restored: query.restored,
-    reset: query.reset,
-    archived: query.archived,
+  const fontRead = readStudioRows(assetResult, isStudioFont, (row) => String(row.id));
+  const overrideRead = readStudioRows(overrideResult, isStudioTypography, (row) => String(row.id));
+  const revisionRead = readStudioRows(revisionResult, isStudioTypographyRevision, (row) => String(row.id), false);
+  const fonts = fontRead.rows as unknown as FontAssetView[];
+  const settingsHaveKnownFont = (settings: unknown) => {
+    if (!isReadRecord(settings) || !studioTypographyEditorSettings(settings)) return false;
+    if (!settings.familyId) return true;
+    const familyId = typeof settings.familyId === "string" ? settings.familyId.trim().toLowerCase() : null;
+    return familyId !== null && fonts.some((font) => font.id.toLowerCase() === familyId);
   };
+  const selectedOverride = query.override ? overrideRead.rows.find((row) => String(row.id).toLowerCase() === query.override!.toLowerCase()) : null;
+  const compatible = fonts.every((font) => studioActionUuid(font.id, true))
+    && overrideRead.rows.every((row) => studioActionUuid(row.id, true) && settingsHaveKnownFont(row.draft_settings)
+      && (row.published_settings === null || settingsHaveKnownFont(row.published_settings)))
+    && revisionRead.rows.every((row) => {
+      const snapshot = row.snapshot;
+      return overrideRead.rows.some((current) => current.id === row.override_id)
+        && studioTypographyRevisionIdentity(snapshot) && settingsHaveKnownFont(snapshot.publishedSettings)
+        && overrideRead.rows.every((current) => current.id === row.override_id
+          || current.layer !== snapshot.layer || current.target_key !== snapshot.targetKey
+          || current.semantic_scope !== snapshot.semanticScope || current.breakpoint !== snapshot.breakpoint);
+    })
+    && (!query.override || Boolean(selectedOverride));
+  const issue = fontRead.issue ?? overrideRead.issue ?? revisionRead.issue ?? (compatible ? null : "invalid");
+  const overrides = issue ? [] : overrideRead.rows.map((value) => normalizeOverride(value)!);
+  const revisions = issue ? [] : revisionRead.rows.map((value) => normalizeRevision(value)!);
+  const messages: TypographyPageMessages = {};
+  const retrySearch = new URLSearchParams();
+  if (query.override) retrySearch.set("override", query.override);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/site-studio/fonts" + (retrySearch.size ? `?${retrySearch}` : "");
+  const notice = query.error || query.saved || query.published || query.restored || query.reset || query.archived;
 
   return (
-    <TypographyWorkspaceLoader
+    <>
+    {notice && <p className="form-message" role="status">Результат действия по параметрам страницы не подтверждён. Проверьте актуальные данные.</p>}
+    {issue ? <SiteStudioLoadState issue={issue} retryHref={retryHref}
+      message={!fontRead.issue && !overrideRead.issue && !revisionRead.issue ? "Загруженные данные несовместимы с текущим редактором. Изменение недоступно до проверки." : undefined}
+      sections={[
+      { label: "Шрифты", rows: fonts.map((row) => row.display_name || row.family_name) },
+      { label: "Настройки", rows: overrideRead.rows.map((row) => `${row.layer} · ${row.target_key} · ${row.semantic_scope}: ${JSON.stringify(row.draft_settings)}`) },
+      { label: "История", rows: revisionRead.rows.map((row) => `${row.action} · ${row.revision_number}`) },
+    ]} /> : <TypographyWorkspaceLoader
       fonts={fonts}
       overrides={overrides}
       revisions={revisions}
-      selectedId={query.override || null}
+      selectedId={selectedOverride ? String(selectedOverride.id) : null}
       messages={messages}
-      schemaUnavailable={Boolean(
-        assetResult.error || overrideResult.error || revisionResult.error
-      )}
+      schemaUnavailable={false}
       canManage={canManage}
-    />
+    />}
+    </>
   );
 }

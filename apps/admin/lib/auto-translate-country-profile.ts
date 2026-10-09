@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { unstable_rethrow } from "next/navigation";
 import { z } from "zod";
 
 import { adminEnv } from "./env";
@@ -6,6 +7,11 @@ import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 import { translationErrorCode } from "./translation-errors";
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
+import {
+  PremiumTranslationDraftError, premiumTranslationCandidateOutcome,
+  readPremiumTranslationWorkingDraft, samePremiumTranslationJson, stagePremiumTranslationWorkingDraft,
+  type PremiumTranslationCandidateOutcome,
+} from "./premium-translation-working-draft";
 
 const timelineItemSchema = z.object({
   year: z.string().max(80),
@@ -215,6 +221,9 @@ function compactFields(value: CountryTranslationSource) {
 
 export type CountryTranslationState =
   | "translated"
+  | "review-pending"
+  | "stale"
+  | "not-ready"
   | "current"
   | "manual"
   | "skipped"
@@ -233,7 +242,7 @@ export async function ensureCountryEnglishProfile(input: {
   model?: string;
   reviewerModel?: string | null;
   error?: string;
-}> {
+} & Partial<PremiumTranslationCandidateOutcome>> {
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
   if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
     return { state: "not-configured" };
@@ -261,10 +270,16 @@ export async function ensureCountryEnglishProfile(input: {
 
   const translations = objectValue(effectiveFields.translations);
   const existingEnglish = objectValue(translations.en);
+  const sourceTranslations = objectValue(input.sourceFields.translations);
+  const hasEnglish = Object.prototype.hasOwnProperty.call(translations, "en");
+  // An override may hide the catalog's translations map. Preserve existing
+  // English unless the effective entry is explicitly machine-owned.
+  const protectedEnglish = hasEnglish
+    ? existingEnglish
+    : objectValue(sourceTranslations.en);
   if (
-    existingEnglish.locale === "en" &&
-    existingEnglish.method !== "machine-translation" &&
-    new Set(["reviewed", "verified"]).has(String(existingEnglish.status))
+    (hasEnglish || Object.prototype.hasOwnProperty.call(sourceTranslations, "en")) &&
+    (protectedEnglish.locale !== "en" || protectedEnglish.method !== "machine-translation")
   ) {
     return { state: "manual" };
   }
@@ -277,6 +292,29 @@ export async function ensureCountryEnglishProfile(input: {
     new Set(["reviewed", "verified"]).has(String(existingEnglish.status))
   ) {
     return { state: "current" };
+  }
+
+  const sourceRevision = { overrideId: existing?.id || null, overrideUpdatedAt: existing?.updated_at || null,
+    catalogSourceHash: await sha256(input.sourceFields) };
+  const targetRevision = { id: existing?.id || null, updatedAt: existing?.updated_at || null };
+  try {
+    const pending = await readPremiumTranslationWorkingDraft(input.supabase, {
+      entityType: "country", entityId: input.countryId,
+    });
+    if (pending) {
+      if (pending.sourceHash !== sourceHash || pending.entityType !== "country" ||
+          pending.sourceRevision.catalogSourceHash !== sourceRevision.catalogSourceHash) {
+        return { state: "stale", error: "Country source changed; the saved private candidate requires review or discard" };
+      }
+      if (!samePremiumTranslationJson(pending.targetRevision, targetRevision)) {
+        return { state: "conflict", error: "Country override changed after the private candidate was saved" };
+      }
+      return { state: "review-pending", ...premiumTranslationCandidateOutcome(pending),
+        model: pending.provenance.translatorModel, reviewerModel: pending.provenance.reviewerModel };
+    }
+  } catch (error) {
+    unstable_rethrow(error);
+    return { state: "not-ready", error: "Private translation drafts are unavailable" };
   }
 
   const runtime = premiumTranslationRuntimeMetadata();
@@ -314,56 +352,22 @@ export async function ensureCountryEnglishProfile(input: {
       return { state: "conflict", error: "country override changed during translation" };
     }
 
-    const generatedAt = new Date().toISOString();
-    const fields = {
-      ...overrideFields,
-      translations: {
-        ...translations,
-        en: {
-          locale: "en",
-          status: "reviewed",
-          method: "machine-translation",
-          sourceHash,
-          generatedAt,
-          provider: runtime.provider,
-          model: translated.translatorModel,
-          reviewerModel: translated.reviewerModel,
-          fields: compactFields(translated.value),
-        },
+    const saved = await stagePremiumTranslationWorkingDraft(input.supabase, {
+      entityType: "country", entityId: input.countryId,
+      sourceHash, sourceSnapshot: source, sourceRevision, targetRevision,
+      payload: { fields: translated.value },
+      provenance: {
+        provider: runtime.provider, translatorModel: translated.translatorModel,
+        reviewerModel: translated.reviewerModel, translatorRequestId: translated.translatorRequestId || null,
+        reviewerRequestId: translated.reviewerRequestId || null, generatedAt: new Date().toISOString(),
       },
-    };
-    const payload = {
-      country_id: input.countryId,
-      fields,
-      is_enabled: true,
-      updated_by: input.actorId,
-    };
-    const saved = existing
-      ? await input.supabase
-          .from("country_profile_overrides")
-          .update(payload)
-          .eq("id", existing.id)
-          .eq("updated_at", existing.updated_at)
-          .select("id")
-          .maybeSingle()
-      : await input.supabase
-          .from("country_profile_overrides")
-          .insert(payload)
-          .select("id")
-          .maybeSingle();
-
-    if (saved.error || !saved.data) {
-      return {
-        state: existing && !saved.error ? "conflict" : "failed",
-        error: saved.error?.message || "country override changed concurrently",
-      };
-    }
+    });
 
     await input.supabase.from("admin_audit_log").insert({
       actor_id: input.actorId,
-      action: "country_profile.auto_translation.succeeded",
+      action: "country_profile.auto_translation.staged",
       entity_type: "country_profile",
-      entity_id: saved.data.id,
+      entity_id: input.countryId,
       metadata: {
         countryId: input.countryId,
         locale: "en",
@@ -377,15 +381,22 @@ export async function ensureCountryEnglishProfile(input: {
         output_tokens: translated.outputTokens,
         review_input_tokens: translated.reviewInputTokens,
         review_output_tokens: translated.reviewOutputTokens,
+        working_draft_id: saved.id,
+        human_review: "pending",
       },
     });
 
     return {
       state: "translated",
+      ...premiumTranslationCandidateOutcome(saved),
       model: translated.translatorModel,
       reviewerModel: translated.reviewerModel,
     };
   } catch (error) {
+    unstable_rethrow(error);
+    if (error instanceof PremiumTranslationDraftError && error.code === "conflict") {
+      return { state: "conflict", error: error.message };
+    }
     const message =
       error instanceof Error ? error.message : "country profile translation failed";
     await input.supabase.from("admin_audit_log").insert({
@@ -404,3 +415,9 @@ export async function ensureCountryEnglishProfile(input: {
     return { state: "failed", error: message };
   }
 }
+
+export {
+  sourceFromFields as countryProfileTranslationSource,
+  validateCountryTranslation as validateCountryTranslationCandidate,
+  compactFields as compactCountryTranslationFields,
+};

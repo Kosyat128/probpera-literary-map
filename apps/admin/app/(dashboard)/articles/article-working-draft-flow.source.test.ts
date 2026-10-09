@@ -43,7 +43,7 @@ describe("published article working-draft flow", () => {
     expect(action).toContain('session.role === "editor"');
     expect(action).toContain('["draft", "review"].includes(parsed.data.status)');
     expect(action).toContain('session.role !== "owner"');
-    expect(action).toContain("Для запланированной публикации укажите дату и время.");
+    expect(action).toContain('outcome: "rejected", reason: "schedule"');
     expect(action).not.toContain(
       'requestedStatus === "scheduled" && !scheduledAt ? "draft"'
     );
@@ -55,6 +55,7 @@ describe("published article working-draft flow", () => {
     );
     expect(wrapper.indexOf('releaseStatus === "scheduled"'))
       .toBeLessThan(wrapper.indexOf("translateArticleSourceToEnglish({"));
+    expect(wrapper).toContain('outcome: "rejected", reason: "schedule"');
     expect(action).toContain(
       '["scheduled", "hidden", "archived"].includes(submittedStatus)'
     );
@@ -92,11 +93,11 @@ describe("published article working-draft flow", () => {
       expect(source).toContain("parseArticleWorkingDraft");
     }
     expect(editPage).toContain("articleWithWorkingDraft");
-    expect(editPage).toContain('canPublish={staff.role === "owner" || staff.role === "admin"}');
+    expect(editPage).toContain('canPublish: staff.role === "owner" || staff.role === "admin"');
     expect(editPage).toContain(
-      'canOverridePublicationChecklist={staff.role === "owner"}'
+      'canOverridePublicationChecklist: staff.role === "owner"'
     );
-    expect(newPage).toContain('canPublish={staff.role === "owner" || staff.role === "admin"}');
+    expect(newPage).toContain('canPublish: staff.role === "owner" || staff.role === "admin"');
     expect(previewPage).toContain(
       "Сохранённый рабочий черновик · публичная версия не изменена"
     );

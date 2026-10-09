@@ -1,3 +1,5 @@
+import { unstable_rethrow } from "next/navigation";
+
 type ProviderError = { status?: number | string; statusCode?: number | string; code?: string; name?: string };
 
 /** Describe service failures without exposing provider replies or account existence. */
@@ -16,8 +18,13 @@ export function authServiceError(error: unknown): string | null {
 }
 
 export async function guardedAuthRequest<T extends { error: unknown }>(request: () => Promise<T>): Promise<T | { error: unknown }> {
-  try { return await request(); }
+  try {
+    const response = await request();
+    unstable_rethrow(response.error);
+    return response;
+  }
   catch (error) {
+    unstable_rethrow(error);
     return { error: error || Object.assign(new Error("auth_request_failed"), { name: "AuthRetryableFetchError" }) };
   }
 }

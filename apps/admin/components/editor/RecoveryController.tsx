@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { unstable_rethrow } from "next/navigation";
 
 import {
   deleteExactEditorAutosaveAction,
@@ -22,6 +23,7 @@ import {
   type EditorAutosaveRecovery,
   type EditorAutosaveUiState,
 } from "@/lib/editor-autosave";
+import { createEditorAutosaveMetadataStorage } from "@/lib/editor-autosave-storage";
 
 type AutosaveSession = {
   storageKey: string;
@@ -41,7 +43,7 @@ export default function RecoveryController({
   snapshot: Record<string, unknown>;
   isDirty: boolean;
   savedAfterSubmit?: boolean;
-  onRestore: (snapshot: Record<string, unknown>) => void;
+  onRestore: (snapshot: Record<string, unknown>) => boolean | void;
   onLocalFallback?: () => boolean | void;
 }) {
   const locator = useMemo<EditorAutosaveLocator>(
@@ -69,6 +71,10 @@ export default function RecoveryController({
   const lastSavedSnapshotRef = useRef("");
   const activeRequestRef = useRef(0);
   const requestPendingRef = useRef(false);
+  const metadataStorage = useMemo(
+    () => createEditorAutosaveMetadataStorage(() => window.sessionStorage),
+    []
+  );
 
   const pendingCleanupKey = useMemo(
     () => `${editorAutosaveSessionStorageKey(locator)}:pending-canonical-save`,
@@ -79,7 +85,7 @@ export default function RecoveryController({
     activeRequestRef.current += 1;
     requestPendingRef.current = false;
     const current = resolveEditorAutosaveSession(
-      window.sessionStorage,
+      metadataStorage,
       locator,
       () => window.crypto.randomUUID()
     );
@@ -99,7 +105,8 @@ export default function RecoveryController({
         setRecovery(result.recovery);
         setStatus(result.recovery.state === "conflict" ? "conflict" : "saved");
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        unstable_rethrow(error);
         if (!cancelled) setStatus("error");
       });
     return () => {
@@ -109,28 +116,35 @@ export default function RecoveryController({
 
   useEffect(() => {
     if (!savedAfterSubmit) return;
-    const rawReceipt = window.sessionStorage.getItem(pendingCleanupKey);
+    const rawReceipt = metadataStorage.getItem(pendingCleanupKey);
     if (!rawReceipt) return;
+    let pending: EditorAutosaveReceipt & { clientSessionId?: unknown };
     try {
-      const pending = JSON.parse(rawReceipt) as EditorAutosaveReceipt & {
-        clientSessionId?: unknown;
-      };
+      pending = JSON.parse(rawReceipt) as EditorAutosaveReceipt & { clientSessionId?: unknown };
       if (typeof pending.clientSessionId !== "string") return;
-      void deleteExactEditorAutosaveAction({
-        id: pending.id,
-        clientSessionId: pending.clientSessionId,
-        sequence: pending.sequence,
-        snapshotHash: pending.snapshotHash,
-      }).then((result) => {
-        if (!result.ok) return;
-        window.sessionStorage.removeItem(pendingCleanupKey);
-        setRecovery(null);
-        setStatus("idle");
-      });
     } catch {
-      window.sessionStorage.removeItem(pendingCleanupKey);
+      return;
     }
-  }, [pendingCleanupKey, savedAfterSubmit]);
+    let cancelled = false;
+    void deleteExactEditorAutosaveAction({
+      id: pending.id,
+      clientSessionId: pending.clientSessionId,
+      sequence: pending.sequence,
+      snapshotHash: pending.snapshotHash,
+    }).then((result) => {
+      if (cancelled || !result.ok) return;
+      metadataStorage.removeItem(pendingCleanupKey);
+      setRecovery(null);
+      setStatus("idle");
+    }).catch((error: unknown) => {
+      unstable_rethrow(error);
+      if (!cancelled) {
+        setStatus("error");
+        setStatusDetail("Не удалось подтвердить удаление серверной автокопии.");
+      }
+    });
+    return () => { cancelled = true; };
+  }, [metadataStorage, pendingCleanupKey, savedAfterSubmit]);
 
   useEffect(() => {
     if (
@@ -157,7 +171,7 @@ export default function RecoveryController({
       }
 
       const nextSession = advanceEditorAutosaveSequence(
-        window.sessionStorage,
+        metadataStorage,
         autosaveSession
       );
       requestPendingRef.current = true;
@@ -175,7 +189,7 @@ export default function RecoveryController({
         if (!result.ok) {
           try {
             const localResult = onLocalFallback?.();
-            setStatus(localResult === false ? "error" : "local");
+            setStatus(localResult === true ? "local" : "error");
           } catch {
             setStatus("error");
           }
@@ -185,20 +199,21 @@ export default function RecoveryController({
 
         lastSavedSnapshotRef.current = snapshotText;
         setStatus(result.receipt.state === "conflict" ? "conflict" : "saved");
-        window.sessionStorage.setItem(
+        metadataStorage.setItem(
           pendingCleanupKey,
           JSON.stringify({
             ...result.receipt,
             clientSessionId: nextSession.id,
           })
         );
-      }).catch(() => {
+      }).catch((error: unknown) => {
+        unstable_rethrow(error);
         if (activeRequestRef.current !== requestNumber) return;
         requestPendingRef.current = false;
         setAutosaveSession(nextSession);
         try {
           const localResult = onLocalFallback?.();
-          setStatus(localResult === false ? "error" : "local");
+          setStatus(localResult === true ? "local" : "error");
         } catch {
           setStatus("error");
         }
@@ -211,6 +226,7 @@ export default function RecoveryController({
     autosaveSession,
     isDirty,
     locator,
+    metadataStorage,
     onLocalFallback,
     pendingCleanupKey,
     snapshotText,
@@ -232,6 +248,10 @@ export default function RecoveryController({
       setRecovery(null);
       setStatus("idle");
       setStatusDetail("");
+    }).catch((error: unknown) => {
+      unstable_rethrow(error);
+      setStatus("error");
+      setStatusDetail("Не удалось подтвердить удаление серверной автокопии.");
     });
   }, [recovery]);
 
@@ -245,7 +265,11 @@ export default function RecoveryController({
         <EditorRecoveryPanel
           recovery={recovery}
           onRestore={() => {
-            onRestore(recovery.snapshot);
+            if (onRestore(recovery.snapshot) === false) {
+              setStatus("error");
+              setStatusDetail("Не удалось восстановить автокопию. Текущие данные сохранены; копия оставлена для проверки или удаления.");
+              return;
+            }
             setRecovery(null);
             setStatus("local");
             setStatusDetail("Автокопия загружена в редактор; проверьте и сохраните её.");

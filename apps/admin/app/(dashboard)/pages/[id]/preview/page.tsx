@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AdminStatusState from "@/components/AdminStatusState";
+import { AdminDependencyState } from "@/components/AdminStatusState";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { validPagePreviewRead, type PagePreviewRead } from "@/lib/page-load-validation";
 
 import { editorialPreviewFonts } from "@/components/EditorialPreviewFonts";
 import previewStyles from "@/components/EditorialPreview.module.css";
@@ -10,6 +15,7 @@ import {
   parsePageCatalogQuery,
 } from "@/lib/page-catalog-query";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { requireStaffRead } from "@/lib/admin-read-access";
 
 export const metadata = {
   title: "Предпросмотр страницы",
@@ -28,18 +34,31 @@ export default async function PagePreview({
     revision_page?: string;
   }>;
 }) {
+  const staff = await requireStaffRead();
+  if (!staff) return <AdminStatusState eyebrow="Доступ ограничен"
+    title="Редакционные данные недоступны"
+    description="Не удалось подтвердить редакционную роль. Обратитесь к владельцу сайта." />;
   const { id } = await params;
   const query = await searchParams;
   const catalog = parsePageCatalogQuery(query);
   const revisionPage = pageCatalogPageNumber(query.revision_page);
+  const editorHref = pageEditorHref(id, catalog, { revisionPage });
+  const editorUrl = new URL(editorHref, "https://admin.invalid");
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + editorUrl.pathname + "/preview" + editorUrl.search;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) notFound();
-  const { data: page } = await supabase
+  if (!supabase) return <AdminDependencyState />;
+  const [response] = await Promise.allSettled([supabase
     .from("pages")
-    .select("title,excerpt,content_html,updated_at,status")
+    .select("id,title,excerpt,content_html,updated_at,status")
     .eq("id", id)
-    .maybeSingle();
-  if (!page) notFound();
+    .maybeSingle()]);
+  const pageRead = readAdminResult<PagePreviewRead | null>(response,
+    value => value === null || validPagePreviewRead(value, id));
+  if (pageRead.status === "failed") return <AdminStatusState eyebrow="Предпросмотр страницы"
+    title="Не удалось загрузить предпросмотр" description={adminReadMessage(pageRead.issue)}
+    action={<a href={retryHref}>Повторить загрузку</a>} />;
+  if (pageRead.data === null) notFound();
+  const page = pageRead.data;
 
   return (
     <>
@@ -62,7 +81,7 @@ export default async function PagePreview({
         </header>
         <div
           className="preview-prose"
-          dangerouslySetInnerHTML={{ __html: page.content_html || "" }}
+          dangerouslySetInnerHTML={{ __html: page.content_html }}
         />
       </article>
     </>

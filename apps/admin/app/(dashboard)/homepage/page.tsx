@@ -8,6 +8,12 @@ import HomepageMediaField, {
 import HomepageVisualPreview from "@/components/HomepageVisualPreview";
 import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview";
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import {
+  homepageBlockActionIdentity, homepagePickerActionIdentity, homepageSettingsEditable, isHomepageLoadedList, isHomepageMediaList, pickerPublicUrl, readPickerBundle,
+  type HomepageLoadedBlock,
+} from "@/lib/homepage-banner-load-validation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
 import { coreSectionTitle } from "@/lib/core-section-title";
@@ -493,12 +499,13 @@ export default async function HomepagePage({
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
-  const { data: blocksResult } = await supabase
+  const [blocksResult] = await Promise.allSettled([supabase
     .from("homepage_blocks")
     .select("*")
     .order("display_order")
-    .order("id");
-  const blocks = blocksResult || [];
+    .order("id")]);
+  const blocksRead = readAdminResult(blocksResult, isHomepageLoadedList);
+  const blocks = blocksRead.status === "success" ? blocksRead.data as HomepageLoadedBlock[] : [];
   const mediaTerm = String(query.media_q || "").trim().slice(0, 120);
   const referencedMediaIds = Array.from(
     new Set(
@@ -546,14 +553,9 @@ export default async function HomepagePage({
         ]
       : []),
   ];
-  const mediaResults = await Promise.all(mediaRequests);
-  const mediaResult = Array.from(
-    new Map(
-      mediaResults
-        .flatMap((result) => result.data || [])
-        .map((asset) => [asset.id, asset] as const)
-    ).values()
-  );
+  const mediaResults = await Promise.allSettled(mediaRequests);
+  const mediaBundle = readPickerBundle(mediaResults, isHomepageMediaList, referencedMediaIds);
+  const mediaResult = mediaBundle.media;
   const coreBlockByKey = new Map(
     blocks
       .map((block) => {
@@ -569,12 +571,15 @@ export default async function HomepagePage({
       !settingText(settingsObject(block.settings), "coreSectionKey") &&
       !isSystemHomepageBlock(block)
   );
-  const media: HomepageMediaOption[] = (mediaResult || []).map((asset) => ({
-    id: asset.id,
-    label:
-      asset.alt_text || asset.collection_name || asset.object_path.split("/").pop() || "Изображение",
-    publicUrl: supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path).data.publicUrl,
-  }));
+  const media: HomepageMediaOption[] = [];
+  let urlsComplete = true;
+  for (const asset of mediaResult) {
+    try {
+      const publicUrl = pickerPublicUrl(supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path));
+      if (!publicUrl) { urlsComplete = false; continue; }
+      media.push({ id: asset.id, label: asset.alt_text || asset.collection_name || asset.object_path.split("/").pop() || "Изображение", publicUrl });
+    } catch { urlsComplete = false; }
+  }
   const mediaById = new Map(media.map((asset) => [asset.id, asset]));
   const bookArchiveMediaIds = new Set(
     mediaResult
@@ -582,6 +587,17 @@ export default async function HomepagePage({
       .map((asset) => asset.id)
   );
   const bookArchiveMedia = media.filter((asset) => bookArchiveMediaIds.has(asset.id));
+  const coreKeys = blocks.map((block) => settingText(settingsObject(block.settings), "coreSectionKey")).filter(Boolean);
+  const currentBookArchiveMedia = coreBlockByKey.get("book-archive")?.background_media_id;
+  const canManage = blocksRead.status === "success" && mediaBundle.dependency.status === "success" && urlsComplete
+    && blocks.every((item) => homepageBlockActionIdentity(item.id, item.updated_at) && homepageSettingsEditable(item.settings))
+    && mediaResult.every((item) => homepagePickerActionIdentity(item.id))
+    && new Set(coreKeys).size === coreKeys.length
+    && (!currentBookArchiveMedia || bookArchiveMediaIds.has(currentBookArchiveMedia));
+  const retrySearch = new URLSearchParams();
+  if (mediaTerm) retrySearch.set("media_q", mediaTerm);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/homepage"
+    + (retrySearch.size ? `?${retrySearch}` : "");
   const previewSections: HomepagePreviewSection[] = coreSectionDefaults.map(
     (section) => {
       const block = coreBlockByKey.get(section.key);
@@ -631,11 +647,11 @@ export default async function HomepagePage({
           <Link className="button-secondary" href="/media">
             Открыть медиатеку
           </Link>
-          <form action={republishHomepageAction}>
+          {canManage && <form action={republishHomepageAction}>
             <button className="button-secondary" type="submit">
               Повторно опубликовать главную
             </button>
-          </form>
+          </form>}
           <a
             className="button"
             href={safePublicSiteOrigin(adminEnv.publicSiteUrl)}
@@ -647,38 +663,18 @@ export default async function HomepagePage({
         </div>
       </header>
 
-      {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && (
-        <p className="form-message form-success">
-          Изменения сохранены в редакционной базе.
+      {(query.error || query.saved || query.deleted || query.published) && (
+        <p className="form-message" role="status">
+          Результат действия по параметрам страницы не подтверждён. Проверьте актуальные данные перед повторным изменением.
         </p>
       )}
-      {query.published === "started" && (
-        <p className="form-message form-success">
-          Публикация главной запущена. Новая версия появится после сборки сайта.
-        </p>
-      )}
-      {query.published === "queued" && (
-        <p className="form-message form-success">
-          Изменения поставлены в резервную очередь публикации. Обычно сайт
-          обновляется в течение 5-10 минут.
-        </p>
-      )}
-      {query.published === "queue-error" && (
+      {!canManage && (
         <p className="form-message form-error" role="alert">
-          Изменения сохранены, но очередь публикации недоступна. Повторите
-          публикацию после проверки подключения.
-        </p>
-      )}
-      {query.published === "disabled" && (
-        <p className="form-message form-error">
-          Публикация сейчас недоступна. Проверьте настройки запуска сборки.
-        </p>
-      )}
-
-      {query.deleted && (
-        <p className="form-message form-success">
-          Блок удалён и изменение поставлено в очередь публикации.
+          {blocksRead.status === "failed" ? adminReadMessage(blocksRead.issue)
+            : mediaBundle.dependency.status === "failed" ? adminReadMessage(mediaBundle.dependency.issue)
+              : !urlsComplete ? adminReadMessage("invalid") : "Загруженные данные несовместимы с текущей формой. Изменение недоступно до проверки."}
+          {" "}Редактирование главной недоступно до полной загрузки блоков и изображений.{" "}
+          <a href={retryHref}>Повторить загрузку</a>
         </p>
       )}
 
@@ -700,15 +696,15 @@ export default async function HomepagePage({
         </div>
       </form>
 
-      <HomepageVisualPreview
+      {canManage && <HomepageVisualPreview
         url={safePublicSiteOrigin(adminEnv.publicSiteUrl)}
         sections={previewSections}
         media={media}
         blockVisualSettings={blockVisualSettings}
         blockVisualUpdatedAt={blockVisualUpdatedAt}
-      />
+      />}
 
-      <section className="panel homepage-core-editor">
+      {blocksRead.status === "success" && <section className="panel homepage-core-editor">
         <header className="homepage-editor-heading">
           <div>
             <span className="eyebrow">Основная композиция</span>
@@ -752,7 +748,8 @@ export default async function HomepagePage({
                     alt={`Фон блока «${section.label}»`}
                   />
                 )}
-                <form
+                {!canManage && <p>{block ? blocks.find((item) => item.id === block.id)?.title ?? block.title : section.title}</p>}
+                {canManage && <form
                   className="settings-stack"
                   action={saveCoreHomepageSectionAction}
                 >
@@ -843,12 +840,12 @@ export default async function HomepagePage({
                   <button className="button" type="submit">
                     Сохранить и опубликовать
                   </button>
-                </form>
+                </form>}
               </article>
             );
           })}
         </div>
-      </section>
+      </section>}
 
       <header className="homepage-editor-heading homepage-custom-heading">
         <div>
@@ -876,7 +873,7 @@ export default async function HomepagePage({
                     </span>
                     <h2>{block.title || "Без заголовка"}</h2>
                   </div>
-                  <div className="editor-actions">
+                  {canManage && <div className="editor-actions">
                     <form action={moveHomepageBlockAction}>
                       <input type="hidden" name="id" value={block.id} />
                       <button
@@ -903,10 +900,11 @@ export default async function HomepagePage({
                         ↓
                       </button>
                     </form>
-                  </div>
+                  </div>}
                 </div>
 
-                <form
+                {!canManage && <p>{settingText(settings, "description") || settingText(settings, "copy")}</p>}
+                {canManage && <form
                   className="settings-stack"
                   action={updateHomepageBlockAction}
                 >
@@ -982,9 +980,9 @@ export default async function HomepagePage({
                   <button className="button" type="submit">
                     Сохранить блок
                   </button>
-                </form>
+                </form>}
 
-                <div className="editor-actions">
+                {canManage && <div className="editor-actions">
                   <form action={toggleHomepageBlockAction}>
                     <input type="hidden" name="id" value={block.id} />
                     <input type="hidden" name="expected_updated_at" value={block.updated_at} />
@@ -1004,12 +1002,12 @@ export default async function HomepagePage({
                       Удалить
                     </button>
                   </form>
-                </div>
+                </div>}
               </article>
             );
           })}
         </div>
-      ) : (
+      ) : blocksRead.status === "success" ? (
         <section className="panel empty-state">
           <div>
             <h2>Управляемых блоков пока нет</h2>
@@ -1019,9 +1017,9 @@ export default async function HomepagePage({
             </p>
           </div>
         </section>
-      )}
+      ) : null}
 
-      <form
+      {canManage && <form
         className="panel settings-stack"
         action={createHomepageBlockAction}
       >
@@ -1075,7 +1073,7 @@ export default async function HomepagePage({
         <button className="button" type="submit">
           Добавить в конец главной
         </button>
-      </form>
+      </form>}
     </>
   );
 }

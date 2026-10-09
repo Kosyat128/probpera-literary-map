@@ -12,7 +12,7 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Admin application rendering failed", error);
+    console.error("Admin application rendering failed");
   }, [error]);
 
   return (

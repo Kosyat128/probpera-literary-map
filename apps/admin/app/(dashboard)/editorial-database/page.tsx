@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PremiumTranslationReviewPanel from "@/components/PremiumTranslationReviewPanel";
 
 import {
   loadEditorialCatalog,
@@ -7,6 +8,14 @@ import {
 } from "@/lib/editorial-catalog";
 import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { AdminDependencyState } from "@/components/AdminStatusState";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { safeCount } from "@/lib/format";
+import { loadPremiumTranslationReview } from "@/lib/premium-translation-review";
+import {
+  validEditorialCatalogRead, validEditorialOverrideRead, type EditorialOverrideRead,
+} from "@/lib/editorial-database-load-validation";
 import {
   effectiveStoredWriterBiographyTranslations,
   parseStoredWriterBiographyTranslations,
@@ -48,20 +57,13 @@ const writerFieldGroups = [
 ] as const;
 
 const biographyTranslationMessages: Record<string, string> = {
-  translated:
-    "Автоматический перевод на английский создан, повторно проверен моделью и сохранён вместе со сведениями о происхождении текста.",
-  current: "Автоматический перевод на английский уже соответствует текущему русскому оригиналу.",
-  manual:
-    "Ручной английский перевод сохранён без изменений и не передан модели.",
-  skipped: adminEnv.openAiAutoTranslateProfiles
-    ? "Автоматический перевод на английский пропущен: проверьте статус русской версии и сведения о происхождении текста."
-    : "Автоматический перевод на английский приостановлен. Русская правка сохранена; модель не запускалась.",
-  "not-configured":
-    "Автоматический перевод на английский не настроен. Русская правка сохранена; устаревший машинный перевод не публикуется.",
-  conflict:
-    "Автоматический перевод на английский не записан: карточка изменилась параллельно. Обновите страницу и повторите сохранение.",
-  failed:
-    "Автоматический перевод на английский завершился ошибкой. Русская правка сохранена; устаревший машинный перевод не публикуется.",
+  translated: "Создание перевода",
+  current: "Проверка актуальности перевода",
+  manual: "Ручной перевод",
+  skipped: "Пропуск автоматического перевода",
+  "not-configured": "Настройка автоматического перевода",
+  conflict: "Конкурентное изменение перевода",
+  failed: "Ошибка автоматического перевода",
 };
 
 const labels: Record<string, string> = {
@@ -542,29 +544,57 @@ export default async function EditorialDatabasePage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
-  const [query, editorialCatalog] = await Promise.all([
-    searchParams,
-    loadEditorialCatalog(),
-  ]);
+  const query = await searchParams;
+  const retryParams = new URLSearchParams();
+  if (query.country_id) retryParams.set("country_id", query.country_id);
+  if (query.writer_id) retryParams.set("writer_id", query.writer_id);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/editorial-database"
+    + (retryParams.size ? "?" + retryParams.toString() : "");
+  const retryLink = <a href={retryHref}>Повторить загрузку</a>;
+  const [catalogResponse] = await Promise.allSettled([loadEditorialCatalog().then(data => ({ data, error: null }))]);
+  const catalogRead = readAdminResult(catalogResponse, validEditorialCatalogRead);
+  if (catalogRead.status === "failed") return <section className="panel" role="alert">
+    <h1>Не удалось загрузить каталог стран и авторов</h1>
+    <p>{adminReadMessage(catalogRead.issue)} {retryLink}</p>
+  </section>;
+  const editorialCatalog = catalogRead.data;
+  if (!editorialCatalog.countries.length) return <section className="panel" role="status">
+    <h1>Каталог стран пуст</h1><p>Редактирование недоступно до загрузки исходных записей. {retryLink}</p>
+  </section>;
   const defaultCountryId = editorialCountry(editorialCatalog, "russia")?.id || editorialCatalog.countries[0]?.id || "";
-  const countryId = editorialCountry(editorialCatalog, query.country_id || "")?.id || defaultCountryId;
+  const countryId = query.country_id || defaultCountryId;
   const selectedCountry = editorialCountry(editorialCatalog, countryId);
-  const writerId = editorialWriter(editorialCatalog, countryId, query.writer_id || "")?.id || "";
+  const writerId = query.writer_id || "";
   const selectedWriter = writerId ? editorialWriter(editorialCatalog, countryId, writerId) : null;
   const supabase = await createServerSupabaseClient();
-  if (!supabase || !selectedCountry) return null;
+  if (!supabase) return <><AdminDependencyState /><p>{retryLink}</p></>;
 
-  const [countryOverrideResult, writerOverrideResult, countryCountResult, writerCountResult] = await Promise.all([
-    supabase.from("country_profile_overrides").select("id,fields,updated_at").eq("country_id", countryId).maybeSingle(),
-    writerId
-      ? supabase.from("writer_profile_overrides").select("id,fields,updated_at").eq("country_id", countryId).eq("writer_id", writerId).maybeSingle()
+  const [countryOverrideResult, writerOverrideResult, countryCountResult, writerCountResult] = await Promise.allSettled([
+    selectedCountry
+      ? supabase.from("country_profile_overrides").select("id,country_id,fields,updated_at").eq("country_id", countryId).maybeSingle()
+      : Promise.resolve({ data: null, error: null }),
+    selectedWriter
+      ? supabase.from("writer_profile_overrides").select("id,country_id,writer_id,fields,updated_at").eq("country_id", countryId).eq("writer_id", writerId).maybeSingle()
       : Promise.resolve({ data: null, error: null }),
     supabase.from("country_profile_overrides").select("id", { count: "exact", head: true }),
     supabase.from("writer_profile_overrides").select("id", { count: "exact", head: true }),
   ]);
-  const countryOverrideFields = plainRecord(countryOverrideResult.data?.fields);
-  const writerOverrideFields = plainRecord(writerOverrideResult.data?.fields);
-  const schemaError = countryOverrideResult.error || writerOverrideResult.error || countryCountResult.error || writerCountResult.error;
+  const countryRead = readAdminResult<EditorialOverrideRead | null>(countryOverrideResult,
+    data => validEditorialOverrideRead(data, countryId));
+  const writerRead = readAdminResult<EditorialOverrideRead | null>(writerOverrideResult,
+    data => validEditorialOverrideRead(data, countryId, writerId));
+  const countryCount = safeCount(countryCountResult.status === "fulfilled" ? countryCountResult.value : null);
+  const writerCount = safeCount(writerCountResult.status === "fulfilled" ? writerCountResult.value : null);
+  const countryOverrideFields = countryRead.status === "success" ? countryRead.data?.fields || {} : {};
+  const writerOverrideFields = writerRead.status === "success" ? writerRead.data?.fields || {} : {};
+  const countryReady = Boolean(selectedCountry) && countryRead.status === "success";
+  const countryTranslationReview = countryReady && selectedCountry && supabase
+    ? await loadPremiumTranslationReview({
+        supabase, entityType: "country", entityId: countryId, sourceFields: selectedCountry.fields,
+      })
+    : { status: "none" } as const;
+  const writerReady = Boolean(selectedWriter) && writerRead.status === "success";
+  const canPublish = countryReady && (!writerId || writerReady) && countryCount !== null && writerCount !== null;
   const totalWriters = editorialCatalog.countries.reduce((total, country) => total + country.writers.length, 0);
 
   return (
@@ -578,53 +608,35 @@ export default async function EditorialDatabasePage({
             остаются резервом, а отмеченные поля сразу публикуются через CMS.
           </p>
         </div>
-        <form action={publishEditorialDatabaseAction}>
+        {canPublish && <form action={publishEditorialDatabaseAction}>
           <input name="country_id" type="hidden" value={countryId} />
           <input name="writer_id" type="hidden" value={writerId} />
           <button className="button-secondary" type="submit">Опубликовать все изменения</button>
-        </form>
+        </form>}
       </header>
 
-      {query.error && <p className="form-message">{query.error}</p>}
-      {query.result && (
-        <p className="form-message form-success">
-          {query.result === "removed"
-            ? "Переопределение удалено; сайт снова использует проверенную исходную запись."
-            : query.result === "published"
-              ? "Публикация всех сохранённых изменений запрошена."
-              : query.result === "biography-saved"
-                ? "Структурированные RU/EN-биографии сохранены и переданы в публикацию."
-              : "Профиль сохранён и передан в публикацию."}
-          {query.publication === "started" && " Сборка запущена."}
-          {query.publication === "queued" && " Запрос сохранён в резервной очереди."}
-          {query.publication === "queue-error" && " Не удалось записать резервную очередь - проверьте журнал."}
-        </p>
-      )}
-      {query.translation && biographyTranslationMessages[query.translation] && (
-        <p
-          className={`form-message ${
-            ["translated", "current", "manual"].includes(query.translation)
-              ? "form-success"
-              : ""
-          }`}
-        >
-          {biographyTranslationMessages[query.translation]}
-        </p>
-      )}
-      {query.warning === "audit" && <p className="form-message">Профиль и публикация сохранены, но запись журнала требует проверки.</p>}
-      {schemaError && (
-        <p className="form-message">
-          Для полного редактора нужно применить миграции 20260812_writer_and_work_revisions.sql
-          и 20260813_editorial_database_admin.sql. Исходный каталог доступен, но сохранение
-          стран пока не заработает.
-        </p>
-      )}
+      {(query.error || query.result || query.publication || query.translation || query.warning) && <p className="form-message" role="status">
+        Результат действия и публикации не подтверждён параметрами страницы. Проверьте актуальные записи и очередь публикаций.
+        {query.translation && Object.hasOwn(biographyTranslationMessages, query.translation)
+          ? ` Параметр перевода: ${biographyTranslationMessages[query.translation]}.` : ""}
+      </p>}
+      {!selectedCountry && <p className="form-message form-error" role="alert">Запрошенная страна не найдена. Выберите существующую карточку. {retryLink}</p>}
+      {selectedCountry && writerId && !selectedWriter && <p className="form-message form-error" role="alert">Запрошенный автор не найден в выбранной стране. Выберите существующую карточку. {retryLink}</p>}
+      {countryRead.status === "failed" && <p className="form-message form-error" role="alert">
+        Карточка страны: {adminReadMessage(countryRead.issue)} {retryLink}
+      </p>}
+      {writerRead.status === "failed" && <p className="form-message form-error" role="alert">
+        Карточка автора: {adminReadMessage(writerRead.issue)} {retryLink}
+      </p>}
+      {(countryCount === null || writerCount === null) && <p className="form-message form-error" role="alert">
+        Не удалось проверить счётчики редакционных правок. Общая публикация недоступна до их загрузки. {retryLink}
+      </p>}
 
       <section className="stats-grid">
         <article className="stat-card"><span>Страны</span><strong>{editorialCatalog.countries.length}</strong><small>в исходном каталоге</small></article>
         <article className="stat-card"><span>Авторы</span><strong>{totalWriters.toLocaleString("ru-RU")}</strong><small>доступны для выбора</small></article>
-        <article className="stat-card"><span>Правки стран</span><strong>{countryCountResult.count || 0}</strong><small>активных записей CMS</small></article>
-        <article className="stat-card"><span>Правки авторов</span><strong>{writerCountResult.count || 0}</strong><small>активных записей CMS</small></article>
+        <article className="stat-card"><span>Правки стран</span><strong>{countryCount === null ? "Недоступно" : countryCount.toLocaleString("ru-RU")}</strong><small>активных записей CMS</small></article>
+        <article className="stat-card"><span>Правки авторов</span><strong>{writerCount === null ? "Недоступно" : writerCount.toLocaleString("ru-RU")}</strong><small>активных записей CMS</small></article>
       </section>
 
       <section className="panel editorial-database-picker">
@@ -633,30 +645,34 @@ export default async function EditorialDatabasePage({
           <h2>Выберите карточку</h2>
         </div>
         <form method="get">
-          <label className="field"><span>Страна</span><select name="country_id" defaultValue={countryId}>
+          <label className="field"><span>Страна</span><select name="country_id" defaultValue={selectedCountry ? countryId : ""}>
+            {!selectedCountry && <option value="" disabled>Выберите страну</option>}
             {editorialCatalog.countries.map((country) => <option key={country.id} value={country.id}>{country.label}</option>)}
           </select></label>
           <button className="button-secondary" type="submit">Открыть страну</button>
         </form>
-        <form method="get">
+        {selectedCountry && <form method="get">
           <input name="country_id" type="hidden" value={countryId} />
           <label className="field"><span>Автор</span><select name="writer_id" defaultValue={writerId}>
             <option value="">Выберите автора</option>
             {selectedCountry.writers.map((writer) => <option key={writer.id} value={writer.id}>{writer.label}</option>)}
           </select></label>
           <button className="button-secondary" type="submit">Открыть автора</button>
-        </form>
+        </form>}
       </section>
 
-      <section className="panel editorial-profile-editor">
+      {countryReady && selectedCountry && <section className="panel editorial-profile-editor">
         <header>
           <div><span className="eyebrow">Карточка страны</span><h2>{selectedCountry.label}</h2><p>{countryId}</p></div>
           <span className="badge">{Object.keys(countryOverrideFields).length} полей CMS</span>
         </header>
-        <ProfileEditor entityType="country" countryId={countryId} sourceFields={selectedCountry.fields} overrideFields={countryOverrideFields} expectedUpdatedAt={countryOverrideResult.data?.updated_at} />
-      </section>
+        <ProfileEditor entityType="country" countryId={countryId} sourceFields={selectedCountry.fields} overrideFields={countryOverrideFields} expectedUpdatedAt={countryRead.status === "success" ? countryRead.data?.updated_at : undefined} />
+      </section>}
+      {countryReady && selectedCountry && (
+        <PremiumTranslationReviewPanel view={countryTranslationReview} returnTo="editorial-database" />
+      )}
 
-      {selectedWriter && (
+      {writerReady && selectedWriter && (
         <section className="panel editorial-profile-editor">
           <header>
             <div><span className="eyebrow">Карточка автора</span><h2>{selectedWriter.label}</h2><p>{countryId}:{writerId}</p></div>
@@ -665,13 +681,13 @@ export default async function EditorialDatabasePage({
               <Link className="button-secondary" href={`/library?country_id=${encodeURIComponent(countryId)}&writer_id=${encodeURIComponent(writerId)}`}>Произведения и книги</Link>
             </div>
           </header>
-          <ProfileEditor entityType="writer" countryId={countryId} writerId={writerId} sourceFields={selectedWriter.fields} overrideFields={writerOverrideFields} expectedUpdatedAt={writerOverrideResult.data?.updated_at} />
+          <ProfileEditor entityType="writer" countryId={countryId} writerId={writerId} sourceFields={selectedWriter.fields} overrideFields={writerOverrideFields} expectedUpdatedAt={writerRead.status === "success" ? writerRead.data?.updated_at : undefined} />
           <WriterBiographyEditor
             countryId={countryId}
             writerId={writerId}
             sourceFields={selectedWriter.fields}
             overrideFields={writerOverrideFields}
-            expectedUpdatedAt={writerOverrideResult.data?.updated_at}
+            expectedUpdatedAt={writerRead.status === "success" ? writerRead.data?.updated_at : undefined}
           />
         </section>
       )}

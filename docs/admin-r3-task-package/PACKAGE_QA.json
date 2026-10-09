@@ -1,0 +1,34 @@
+{
+  "scope": "PACKAGE_QA_ONLY",
+  "application_tests": "NOT_RUN",
+  "application_modified": false,
+  "production_touched": false,
+  "criteria": 230,
+  "modules": 26,
+  "inherited_criteria": 201,
+  "added_criteria": 29,
+  "isolated_logic": "5 source-fragment observations reproduced; no application imports, SQL or network",
+  "validator_negative_tests": [
+    {
+      "case": "duplicate-test",
+      "expected_check": "unique_test_ids",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "lost-inherited-definition",
+      "expected_check": "r2_201_definitions_retained",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "fake-pass",
+      "expected_check": "all_application_tests_not_run",
+      "rejected_as_expected": true
+    },
+    {
+      "case": "dependency-cycle",
+      "expected_check": "dependency_graph_acyclic",
+      "rejected_as_expected": true
+    }
+  ],
+  "note": "Final read-only package validation report is supplied next to the ZIP. Manifest checks file integrity only."
+}

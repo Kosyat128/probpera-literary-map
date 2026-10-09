@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { unstable_rethrow } from "next/navigation";
 import { z } from "zod";
 
 import { adminEnv } from "./env";
@@ -6,6 +7,11 @@ import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 import { translationErrorCode } from "./translation-errors";
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
+import {
+  PremiumTranslationDraftError, premiumTranslationCandidateOutcome,
+  readPremiumTranslationWorkingDraft, samePremiumTranslationJson, stagePremiumTranslationWorkingDraft,
+  type PremiumTranslationCandidateOutcome,
+} from "./premium-translation-working-draft";
 
 type SupabaseServerClient = SupabaseClient;
 
@@ -61,6 +67,9 @@ function translationMeta(value: unknown) {
 
 export type LiteraryWorkAutoTranslationState =
   | "translated"
+  | "review-pending"
+  | "stale"
+  | "not-ready"
   | "current"
   | "manual"
   | "skipped"
@@ -68,17 +77,21 @@ export type LiteraryWorkAutoTranslationState =
   | "conflict"
   | "failed";
 
+export type LiteraryWorkAutoTranslationResult = {
+  state: LiteraryWorkAutoTranslationState;
+  model?: string;
+  reviewerModel?: string | null;
+  error?: string;
+} & Partial<PremiumTranslationCandidateOutcome>;
+
+export { validateWorkTranslation as validateLiteraryWorkTranslationCandidate };
+
 export async function ensureLiteraryWorkEnglishTranslation(input: {
   supabase: SupabaseServerClient;
   actorId: string;
   workId: string;
   runtimeApproved?: boolean;
-}): Promise<{
-  state: LiteraryWorkAutoTranslationState;
-  model?: string;
-  reviewerModel?: string | null;
-  error?: string;
-}> {
+}): Promise<LiteraryWorkAutoTranslationResult> {
   if (!adminEnv.openAiAutoTranslateLibrary) return { state: "skipped" };
   if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
     return { state: "not-configured" };
@@ -135,11 +148,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
 
   // Never overwrite deliberate editorial English. Automatic regeneration is
   // limited to rows that were themselves created by this machine pipeline.
-  if (
-    existing &&
-    existing.translation_method !== "machine-translation" &&
-    new Set(["reviewed", "verified"]).has(existing.editorial_status)
-  ) {
+  if (existing && existing.translation_method !== "machine-translation") {
     return { state: "manual" };
   }
 
@@ -231,6 +240,28 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
     return { state: "current" };
   }
 
+  const sourceRevision = { workId: input.workId, workUpdatedAt: work.updated_at,
+    russianId: russian.id, russianUpdatedAt: russian.updated_at };
+  const targetRevision = { id: existing.id, updatedAt: existing.updated_at };
+  try {
+    const pending = await readPremiumTranslationWorkingDraft(input.supabase, {
+      entityType: "literary_work", entityId: input.workId,
+    });
+    if (pending) {
+      if (pending.sourceHash !== sourceHash || !samePremiumTranslationJson(pending.sourceRevision, sourceRevision)) {
+        return { state: "stale", error: "Russian source changed; the saved private candidate requires review or discard" };
+      }
+      if (!samePremiumTranslationJson(pending.targetRevision, targetRevision)) {
+        return { state: "conflict", error: "English translation changed after the private candidate was saved" };
+      }
+      return { state: "review-pending", ...premiumTranslationCandidateOutcome(pending),
+        model: pending.provenance.translatorModel, reviewerModel: pending.provenance.reviewerModel };
+    }
+  } catch (error) {
+    unstable_rethrow(error);
+    return { state: "not-ready", error: "Private translation drafts are unavailable" };
+  }
+
   const startedAt = Date.now();
   const runtime = premiumTranslationRuntimeMetadata();
   try {
@@ -265,55 +296,33 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       return { state: "conflict", error: "Russian work translation changed during translation" };
     }
 
-    const today = new Date().toISOString().slice(0, 10);
-    const metadata = {
-      ...existingMetadata,
-      premiumTranslation: {
-        sourceHash,
+    const saved = await stagePremiumTranslationWorkingDraft(input.supabase, {
+      entityType: "literary_work", entityId: input.workId,
+      sourceHash, sourceSnapshot: source, sourceRevision, targetRevision,
+      provenance: {
         provider: runtime.provider,
         translatorModel: translated.translatorModel,
         reviewerModel: translated.reviewerModel,
-        translatorRequestId: translated.translatorRequestId,
-        reviewerRequestId: translated.reviewerRequestId,
+        translatorRequestId: translated.translatorRequestId || null,
+        reviewerRequestId: translated.reviewerRequestId || null,
         generatedAt: new Date().toISOString(),
+      },
+      payload: {
+        description: translated.value.description,
+        sourceLanguage: "Russian",
+        sourceUrls: [...new Set([...englishTitleSourceUrls, ...russian.source_urls])] as string[],
         bibliographicTitle: {
           value: verifiedEnglishTitle,
           provider: titleSourceResponse.data.provider,
           sourceUrl: titleSourceResponse.data.source_url,
-          retrievedAt: titleSourceResponse.data.retrieved_at,
+          retrievedAt: titleSourceResponse.data.retrieved_at || null,
         },
       },
-    };
-    const payload = {
-      description: translated.value.description,
-      source_language: "Russian",
-      translation_method: "machine-translation",
-      editorial_status: "reviewed",
-      source_urls: [...new Set([...englishTitleSourceUrls, ...russian.source_urls])],
-      reviewed_at: today,
-      metadata,
-    };
-
-    const saved = await input.supabase
-      .from("literary_work_translations")
-      .update(payload)
-      .eq("id", existing.id)
-      .eq("work_id", input.workId)
-      .eq("locale", "en")
-      .eq("updated_at", existing.updated_at)
-      .select("id")
-      .maybeSingle();
-
-    if (saved.error || !saved.data) {
-      return {
-        state: !saved.error ? "conflict" : "failed",
-        error: saved.error?.message || "English work translation changed concurrently",
-      };
-    }
+    });
 
     await input.supabase.from("admin_audit_log").insert({
       actor_id: input.actorId,
-      action: "literary_work.auto_translation.succeeded",
+      action: "literary_work.auto_translation.staged",
       entity_type: "literary_work",
       entity_id: input.workId,
       metadata: {
@@ -329,15 +338,22 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
         review_input_tokens: translated.reviewInputTokens,
         review_output_tokens: translated.reviewOutputTokens,
         duration_ms: Date.now() - startedAt,
+        working_draft_id: saved.id,
+        human_review: "pending",
       },
     });
 
     return {
       state: "translated",
+      ...premiumTranslationCandidateOutcome(saved),
       model: translated.translatorModel,
       reviewerModel: translated.reviewerModel,
     };
   } catch (error) {
+    unstable_rethrow(error);
+    if (error instanceof PremiumTranslationDraftError && error.code === "conflict") {
+      return { state: "conflict", error: error.message };
+    }
     const message =
       error instanceof Error ? error.message : "automatic work translation failed";
     await input.supabase.from("admin_audit_log").insert({

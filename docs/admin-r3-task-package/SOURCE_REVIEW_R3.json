@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "package": "PROBPERA_ADMIN_R3_FINAL_20260923",
+  "checked_branch": "main",
+  "checked_sha": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "branch_commit_date": "2026-09-14",
+  "checked_on": "2026-09-23",
+  "source_files": [
+    {
+      "id": "S01",
+      "path": "apps/admin/app/auth/callback/route.ts",
+      "scope": "full",
+      "symbols": "safeNextPath; GET; adminUrl",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/auth/callback/route.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S02",
+      "path": "apps/admin/app/(auth)/reset-password/actions.ts",
+      "scope": "full",
+      "symbols": "updatePasswordAction",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(auth)/reset-password/actions.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S03",
+      "path": "apps/admin/app/api/media/assets/route.ts",
+      "scope": "full",
+      "symbols": "GET; assetColumns; limit(60)",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/api/media/assets/route.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S04",
+      "path": "apps/admin/components/EditorMediaDialog.tsx",
+      "scope": "lines 1–290 (complete returned component)",
+      "symbols": "useEffect; API response; result grid",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/components/EditorMediaDialog.tsx",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S05",
+      "path": "apps/admin/app/(dashboard)/articles/[id]/preview/page.tsx",
+      "scope": "full",
+      "symbols": "ArticlePreviewPage; cover_external_url",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/articles/[id]/preview/page.tsx",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S06",
+      "path": "apps/admin/app/(dashboard)/seo/actions.ts",
+      "scope": "lines 1–310 (complete returned file)",
+      "symbols": "createRedirectAction; requestRedirectBuild",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/seo/actions.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S07",
+      "path": "apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "scope": "full",
+      "symbols": "resumeTranslationJobAction",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S08",
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "scope": "lines 300–690",
+      "symbols": "get_translation_job_resume; grants; bounded-sync mode",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S09",
+      "path": "apps/admin/app/(dashboard)/publication/actions.ts",
+      "scope": "full",
+      "symbols": "retryPublicationAction; requestFullPublicBuildAction",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/publication/actions.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S10",
+      "path": "apps/admin/app/(dashboard)/pages/[id]/preview/page.tsx",
+      "scope": "full",
+      "symbols": "PagePreview",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/pages/[id]/preview/page.tsx",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S11",
+      "path": "apps/admin/app/(dashboard)/translations/article-actions.ts",
+      "scope": "lines 1–290 (complete returned file)",
+      "symbols": "MAX_ARTICLE_TRANSLATIONS; published prefilter; OFFSET; recordTranslationSyncRun",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/app/(dashboard)/translations/article-actions.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S12",
+      "path": "apps/admin/lib/auto-translate-published-article-premium.ts",
+      "scope": "lines 1–265; remainder not re-read",
+      "symbols": "sourceHash; ownership; CAS; translationPayload",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S13",
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "scope": "lines 1–305; remainder not re-read",
+      "symbols": "save_site_copy_block; assert_redirect_candidate; create/update/delete guarded RPC",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    },
+    {
+      "id": "S14",
+      "path": "apps/admin/lib/publication.ts",
+      "scope": "lines 1–290 (complete returned file)",
+      "symbols": "requestPublicBuild; legacy fallback; mark-dispatched",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/blob/63ce3112846e3e49f4b15d1cb64b3c29cb98af70/apps/admin/lib/publication.ts",
+      "git_ref": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "method": "GitHub connector read",
+      "execution": "NOT_RUN"
+    }
+  ],
+  "official_sources": [
+    {
+      "id": "DOC01",
+      "url": "https://nextjs.org/docs/app/guides/authentication",
+      "read": "2026-09-23",
+      "topic": "Data access layer, server actions and route handlers authorization"
+    },
+    {
+      "id": "DOC02",
+      "url": "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      "read": "2026-09-23",
+      "topic": "RLS, views, security definer and least privilege"
+    },
+    {
+      "id": "DOC03",
+      "url": "https://supabase.com/docs/guides/auth/auth-mfa",
+      "read": "2026-09-23",
+      "topic": "MFA enforcement depends on checked assurance and server/data boundaries"
+    }
+  ],
+  "observations": [
+    {
+      "id": "R3E01",
+      "title": "Опубликованный EN преждевременно считается current",
+      "sources": [
+        "S11",
+        "S12"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "Batch проверяет только status=published до helper, хотя helper сравнивает source_content_hash и ownership.",
+      "limitations": "Не установлено, сколько реальных переводов устарело; side-effects и production-схема не испытаны.",
+      "modules": [
+        "M07"
+      ]
+    },
+    {
+      "id": "R3E02",
+      "title": "Успехи и дорогие попытки имеют разный предел",
+      "sources": [
+        "S11"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "Лимит MAX_ARTICLE_TRANSLATIONS зависит от translated; conflict увеличивает failed, но не translated и не останавливает loop.",
+      "limitations": "Это условие управляющего потока, не измерение фактического числа внешних вызовов/расходов.",
+      "modules": [
+        "M07"
+      ]
+    },
+    {
+      "id": "R3E03",
+      "title": "Resume — staff bounded scan, не подтверждённый фоновый worker",
+      "sources": [
+        "S07",
+        "S08",
+        "S11"
+      ],
+      "classification": "EXISTING_CONTRACT",
+      "observed": "Resume читает cursor и вызывает batch; SQL сохраняет service-role-only claim/complete и обозначает staff sync. OFFSET сортирован по updated_at.",
+      "limitations": "Устойчивость обхода при конкуренции требует DB-испытания. Нет утверждения об отсутствии всех остальных workers.",
+      "modules": [
+        "M07"
+      ]
+    },
+    {
+      "id": "R3E04",
+      "title": "Retry не проверяет deployed в самом обработчике",
+      "sources": [
+        "S09"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "Обработчик получает status и создаёт новый requestPublicBuild без терминального guard.",
+      "limitations": "Внешние дополнительные ограничения не испытаны; это не утверждение об обходе авторизации.",
+      "modules": [
+        "M04"
+      ]
+    },
+    {
+      "id": "R3E05",
+      "title": "Publication имеет legacy fallback и проверку outbox ID",
+      "sources": [
+        "S14"
+      ],
+      "classification": "EXISTING_CONTRACT",
+      "observed": "PGRST202 и часть missing-function ошибок переводят вызов в compatibility queue; mark-dispatched/audit результат после dispatch не проверяется.",
+      "limitations": "Underlying row-trigger может защитить исходную запись. Проверить эффективную схему; не удалять fallback вслепую.",
+      "modules": [
+        "M04"
+      ]
+    },
+    {
+      "id": "R3E06",
+      "title": "Предпросмотр статьи ориентирован на внешнюю обложку",
+      "sources": [
+        "S05"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "Выборка/рендер используют cover_external_url, не загружают managed cover по cover_media_id; часть query errors не выделена.",
+      "limitations": "Не утверждается, что все обложки в текущих данных отсутствуют; нужен fixture с managed-only cover.",
+      "modules": [
+        "M05"
+      ]
+    },
+    {
+      "id": "R3E07",
+      "title": "Окно вставки ограничено первыми 60 и permissive DTO",
+      "sources": [
+        "S03",
+        "S04"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "API limit60+alt-only; client не передаёт page/cursor, не имеет навигации; не-массив assets превращается в [].",
+      "limitations": "Это ограничение окна вставки, не всей медиатеки и не потеря файлов.",
+      "modules": [
+        "M11",
+        "M23"
+      ]
+    },
+    {
+      "id": "R3E08",
+      "title": "Собственный callback continuation",
+      "sources": [
+        "S01"
+      ],
+      "classification": "REQUIRES_EXECUTION",
+      "observed": "Локальный safeNextPath + concatenation с adminSiteUrl; работа с code через exchangeCodeForSession.",
+      "limitations": "Open redirect не доказан. Нужны нормализация/basePath/token-leak и replay тесты, без выдуманного CVE.",
+      "modules": [
+        "M01",
+        "M23"
+      ]
+    },
+    {
+      "id": "R3E09",
+      "title": "Восстановление пароля использует текущего provider user",
+      "sources": [
+        "S02"
+      ],
+      "classification": "EXISTING_CONTRACT",
+      "observed": "getUser → updateUser(password) → signOut; generic errors.",
+      "limitations": "Фактические provider recency/MFA/recovery настройки и обновление токенов не проверены.",
+      "modules": [
+        "M01"
+      ]
+    },
+    {
+      "id": "R3E10",
+      "title": "Официальные security контракты",
+      "sources": [
+        "DOC01",
+        "DOC02",
+        "DOC03"
+      ],
+      "classification": "OFFICIAL_GUIDANCE",
+      "observed": "Проверки доступа нужны у выдачи данных и действий; RLS/привилегии/assurance должны соответствовать реальной конфигурации.",
+      "limitations": "Официальная latest документация не доказывает версию зависимостей проекта.",
+      "modules": [
+        "M01",
+        "M18",
+        "M23"
+      ]
+    },
+    {
+      "id": "R3E11",
+      "title": "create redirect: scalar UUID против data.id",
+      "sources": [
+        "S06",
+        "S13",
+        "S14"
+      ],
+      "classification": "CROSS_FILE_CONFIRMED",
+      "observed": "SQL create_seo_redirect_guarded returns uuid, action передаёт data.id в requestRedirectBuild.",
+      "limitations": "На соответствующем контракте data.id у строки undefined; runtime production не испытан. Trigger-event может сохранить underlying publication.",
+      "modules": [
+        "M13",
+        "M04"
+      ]
+    },
+    {
+      "id": "R3E12",
+      "title": "Page preview читает canonical row",
+      "sources": [
+        "S10"
+      ],
+      "classification": "SOURCE_CONFIRMED",
+      "observed": "Прямой read pages.content_html; notFound при отсутствии data без отдельной обработки query error.",
+      "limitations": "После реализации рабочего draft preview нужно связать с выбранной редакцией; это не доказательство потери нынешнего содержимого.",
+      "modules": [
+        "M19",
+        "M02"
+      ]
+    }
+  ],
+  "live_access": {
+    "public_homepage": "read-only text fetched; not an admin audit",
+    "admin_login": "web tool returned Internal Error",
+    "admin_root": "web tool returned Internal Error",
+    "authenticated_admin": "NOT_RUN",
+    "production_database": "NOT_RUN",
+    "reasoning_limit": "Browser/tool errors do not prove the site is down."
+  }
+}

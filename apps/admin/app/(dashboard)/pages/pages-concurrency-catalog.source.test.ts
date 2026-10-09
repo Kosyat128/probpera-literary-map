@@ -30,18 +30,23 @@ describe("scalable and concurrency-safe pages admin", () => {
     // Publishing first CAS-reads the exact content version it validates, then
     // CAS-writes that same version. The other three guards cover save/delete/restore.
     expect(actionsSource.match(/\.eq\("updated_at",/gu)?.length).toBe(5);
-    expect(actionsSource.match(/\.select\("id"\)\s*\.maybeSingle\(\)/gu)?.length).toBeGreaterThanOrEqual(4);
+    expect(actionsSource.match(/\.select\("id"\)\s*\.maybeSingle\(\)/gu)?.length).toBe(3);
+    const save = actionsSource.slice(actionsSource.indexOf("export async function savePageAction"),
+      actionsSource.indexOf("export async function changePageStatusAction"));
+    expect(save.match(/\.select\("id,updated_at"\)\s*\.maybeSingle\(\)/gu)?.length).toBe(1);
   });
 
   it("does not audit or publish stale mutations", () => {
     const firstCas = actionsSource.indexOf('.eq("updated_at", parsed.data.expectedUpdatedAt)');
     const firstPublication = actionsSource.indexOf("const publication = await auditPage", firstCas);
-    expect(actionsSource.slice(firstCas, firstPublication)).toContain("if (!updated)");
-    expect(actionsSource.slice(firstCas, firstPublication)).toContain("redirect(editorTarget");
+    expect(actionsSource.slice(firstCas, firstPublication)).toContain('if (mutation.data === null) return finish({ outcome: "conflict" })');
+    expect(actionsSource.slice(firstCas, firstPublication)).toContain('return finish({ outcome: "unknown-outcome" })');
+    expect(actionsSource.slice(firstCas, firstPublication)).toContain("if (!receipt)");
   });
 
   it("propagates publication state and preserves catalog context", () => {
-    expect(actionsSource.match(/published: publication\.state/gu)?.length).toBe(5);
+    expect(actionsSource.match(/published: publication\.state/gu)?.length).toBe(4);
+    expect(actionsSource).toContain('return finish({ outcome: "saved", receipt, auditState, publicationState, revalidationState })');
     expect(pageSource).toContain('query.published === "started"');
     expect(pageSource).toContain('query.published === "queued"');
     expect(pageSource).toContain('query.published === "queue-error"');

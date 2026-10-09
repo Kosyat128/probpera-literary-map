@@ -83,6 +83,16 @@ function redirectErrorMessage(message?: string) {
   return (message && redirectErrorMessages[message]) || "Не удалось сохранить переадресацию.";
 }
 
+function redirectResultId(value: unknown, expectedId?: string): string | null {
+  // These guarded RPCs return a scalar UUID. A row-like object is not an ACK.
+  const result = z.string().uuid().safeParse(value);
+  if (!result.success || expectedId && result.data.toLowerCase() !== expectedId.toLowerCase()) return null;
+  return expectedId ?? result.data;
+}
+
+const unconfirmedRedirectMessage =
+  "Не удалось подтвердить результат операции с переадресацией. Обновите список перед повтором.";
+
 async function requestRedirectBuild(
   supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>,
   actorId: string,
@@ -123,14 +133,16 @@ export async function createRedirectAction(formData: FormData) {
     p_status_code: parsed.data.statusCode,
     p_is_active: parsed.data.isActive,
   });
-  if (error || !data) {
+  if (error) {
     redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
+  const createdId = redirectResultId(data);
+  if (!createdId) redirect(catalogTarget(formData, { error: unconfirmedRedirectMessage }));
 
   const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
-    data.id,
+    createdId,
     "redirect.created",
     {
       sourcePath: parsed.data.sourcePath,
@@ -178,14 +190,16 @@ export async function updateRedirectAction(formData: FormData) {
     p_status_code: parsed.data.statusCode,
     p_is_active: parsed.data.isActive,
   });
-  if (error || !updated) {
+  if (error) {
     redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
+  const updatedId = redirectResultId(updated, identity.data.id);
+  if (!updatedId) redirect(catalogTarget(formData, { error: unconfirmedRedirectMessage }));
 
   const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
-    identity.data.id,
+    updatedId,
     "redirect.updated",
     {
       sourcePath: parsed.data.sourcePath,
@@ -218,14 +232,16 @@ export async function deleteRedirectAction(formData: FormData) {
     p_id: identity.data.id,
     p_expected_updated_at: identity.data.expectedUpdatedAt,
   });
-  if (error || !deleted) {
+  if (error) {
     redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
+  const deletedId = redirectResultId(deleted, identity.data.id);
+  if (!deletedId) redirect(catalogTarget(formData, { error: unconfirmedRedirectMessage }));
 
   const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
-    identity.data.id,
+    deletedId,
     "redirect.deleted"
   );
   revalidatePath("/seo");

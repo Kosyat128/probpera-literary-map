@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { z } from "zod";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
-import { formatDate } from "@/lib/format";
+import { formatDate, safeCount } from "@/lib/format";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, isReadRecord, readAdminList, readAdminResult, type AdminReadResult } from "@/lib/admin-read-result";
 import {
   HISTORY_EVENTS_PAGE_SIZE,
   HISTORY_PAGE_SIZE,
@@ -13,14 +16,13 @@ import {
 import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
 import { restoreRevisionAction } from "./actions";
 
 export const metadata = { title: "История изменений" };
 
 type RevisionRow = {
   revision_id: string | number;
-  entity_id: string;
+  entity_id: string | null;
   snapshot: unknown;
   actor_id: string | null;
   created_at: string;
@@ -30,12 +32,71 @@ type RevisionRow = {
   entity_updated_at: string | null;
 };
 
-function snapshotLabel(snapshot: unknown, fallback: string) {
-  if (!snapshot || typeof snapshot !== "object" || Array.isArray(snapshot)) return fallback;
+type AuditRow = {
+  id: number | string;
+  action: string;
+  entity_type: string;
+  entity_id: string | null;
+  actor_id: string | null;
+  created_at: string;
+};
+
+function isHistoryId(value: unknown): value is number | string {
+  if (typeof value === "number") return Number.isSafeInteger(value) && value > 0;
+  // Preserve the full SQL bigint identity without a lossy Number conversion.
+  return typeof value === "string" && /^[1-9]\d{0,18}$/u.test(value)
+    && (value.length < 19 || value <= "9223372036854775807");
+}
+
+function isNullableText(value: unknown): value is string | null {
+  return value === null || typeof value === "string";
+}
+
+function isTimestamp(value: unknown): value is string {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
+function isRevisionRow(value: unknown): value is RevisionRow {
+  return isReadRecord(value) && isHistoryId(value.revision_id)
+    && isNullableText(value.entity_id) && Object.hasOwn(value, "snapshot")
+    && value.snapshot !== undefined && isNullableText(value.actor_id)
+    && isTimestamp(value.created_at)
+    && (value.revision_number === null || (typeof value.revision_number === "number"
+      && Number.isInteger(value.revision_number) && value.revision_number >= -2147483648
+      && value.revision_number <= 2147483647))
+    && typeof value.kind === "string" && Object.hasOwn(historyRevisionKinds, value.kind)
+    && typeof value.restorable === "boolean"
+    && (value.entity_updated_at === null || isTimestamp(value.entity_updated_at));
+}
+
+function isAuditRow(value: unknown): value is AuditRow {
+  return isReadRecord(value) && isHistoryId(value.id)
+    && typeof value.action === "string" && typeof value.entity_type === "string"
+    && isNullableText(value.entity_id) && isNullableText(value.actor_id)
+    && isTimestamp(value.created_at);
+}
+
+function readHistoryCount(
+  result: PromiseSettledResult<{ data: unknown; count: number | null; error?: unknown }>,
+): AdminReadResult<number> {
+  const envelope = readAdminResult(result, (data) => data === null || Array.isArray(data));
+  if (envelope.status === "failed") return envelope;
+  const count = safeCount(result.status === "fulfilled" ? result.value : null);
+  return count === null ? { status: "failed", issue: "invalid" }
+    : { status: "success", data: count };
+}
+
+function displayCount(read: AdminReadResult<number>) {
+  return read.status === "success" ? read.data.toLocaleString("ru-RU") : "Недоступно";
+}
+
+function snapshotLabel(snapshot: unknown, fallback: string | null) {
+  const label = fallback ?? "Идентификатор не сохранён";
+  if (!snapshot || typeof snapshot !== "object" || Array.isArray(snapshot)) return label;
   const record = snapshot as Record<string, unknown>;
-  return String(
-    record.title || record.name || record.label || record.legacy_id || fallback
-  );
+  const value = record.title || record.name || record.label || record.legacy_id || label;
+  return typeof value === "string" || typeof value === "number" || typeof value === "boolean"
+    ? String(value) : label;
 }
 
 function revisionDetail(row: RevisionRow) {
@@ -114,33 +175,40 @@ export default async function HistoryPage({
     eventsRequest = eventsRequest.ilike("entity_id", catalog.entityPattern);
   }
 
-  const [revisionResult, restorableResult, eventsResult] = await Promise.all([
+  const reads = await Promise.allSettled([
     revisionsRequest.range(catalog.from, catalog.to),
     restorableRequest,
     eventsRequest.range(catalog.eventsFrom, catalog.eventsTo),
   ]);
-  const revisions = (revisionResult.data || []) as RevisionRow[];
-  const events = eventsResult.data || [];
-  const revisionCount = revisionResult.count || 0;
-  const eventsCount = eventsResult.count || 0;
-  const revisionPages = Math.max(1, Math.ceil(revisionCount / HISTORY_PAGE_SIZE));
-  const eventPages = Math.max(1, Math.ceil(eventsCount / HISTORY_EVENTS_PAGE_SIZE));
+  const revisionsRead = readAdminList<RevisionRow>(reads[0], isRevisionRow);
+  const eventsRead = readAdminList<AuditRow>(reads[2], isAuditRow);
+  const revisions = revisionsRead.status === "success" ? revisionsRead.data : [];
+  const events = eventsRead.status === "success" ? eventsRead.data : [];
+  const [revisionCount, restorableCount, eventsCount] = reads.map(readHistoryCount);
+  const revisionPages = revisionCount.status === "success"
+    ? Math.max(1, Math.ceil(revisionCount.data / HISTORY_PAGE_SIZE)) : null;
+  const eventPages = eventsCount.status === "success"
+    ? Math.max(1, Math.ceil(eventsCount.data / HISTORY_EVENTS_PAGE_SIZE)) : null;
+  const issues = [revisionsRead, eventsRead, revisionCount, restorableCount, eventsCount]
+    .filter((read) => read.status === "failed");
+  const canRestore = issues.length === 0;
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)
+    + historyCatalogHref(catalog);
+  const page = revisionsRead.status === "success" && revisionPages !== null
+    ? Math.min(catalog.page, revisionPages) : catalog.page;
+  const eventsPage = eventsRead.status === "success" && eventPages !== null
+    ? Math.min(catalog.eventsPage, eventPages) : catalog.eventsPage;
 
   if (
-    !revisionResult.error &&
-    !eventsResult.error &&
-    (catalog.page > revisionPages || catalog.eventsPage > eventPages)
+    page !== catalog.page || eventsPage !== catalog.eventsPage
   ) {
     redirect(
       historyCatalogHref(catalog, {
-        page: Math.min(catalog.page, revisionPages),
-        eventsPage: Math.min(catalog.eventsPage, eventPages),
+        page,
+        eventsPage,
       })
     );
   }
-  const schemaWarnings = [revisionResult.error, restorableResult.error, eventsResult.error]
-    .filter(Boolean)
-    .map((error) => error ? operatorDataError("history", "load") : undefined);
 
   return (
     <>
@@ -154,21 +222,16 @@ export default async function HistoryPage({
           </p>
         </div>
       </header>
-      {query.error && <p className="form-message">{query.error}</p>}
-      {query.restored && query.published !== "queue-error" && (
-        <p className="form-message form-success">
-          Версия восстановлена и передана в публикацию. {query.published === "started" ? "Сборка запущена." : "Запрос сохранён в очереди."}
+      {(query.error || query.restored || query.published) && (
+        <p className="form-message" role="status">
+          Результат действия по параметрам страницы не подтверждён. Проверьте актуальную историю и очередь публикации перед повторным изменением.
         </p>
       )}
-      {query.restored && query.published === "queue-error" && (
+      {issues.length > 0 && (
         <p className="form-message form-error" role="alert">
-          Версия восстановлена, но запрос публикации записать не удалось. Повторите публикацию позже.
-        </p>
-      )}
-      {schemaWarnings.length > 0 && (
-        <p className="form-message">
-          Единый каталог истории ещё недоступен. Примените миграцию
-          20260813_unified_revision_history.sql.
+          {adminReadMessage(issues[0].issue)}{" "}
+          Восстановление недоступно до полной загрузки истории и её счётчиков.{" "}
+          <a href={retryHref}>Повторить загрузку</a>
         </p>
       )}
 
@@ -195,12 +258,12 @@ export default async function HistoryPage({
       <section className="stats-grid">
         <article className="stat-card">
           <span>Версий по фильтру</span>
-          <strong>{revisionCount.toLocaleString("ru-RU")}</strong>
-          <small>{(restorableResult.count || 0).toLocaleString("ru-RU")} доступны для восстановления</small>
+          <strong>{displayCount(revisionCount)}</strong>
+          <small>{displayCount(restorableCount)} доступны для восстановления</small>
         </article>
         <article className="stat-card">
           <span>Событий по фильтру</span>
-          <strong>{eventsCount.toLocaleString("ru-RU")}</strong>
+          <strong>{displayCount(eventsCount)}</strong>
           <small>полный журнал без фиксированного ограничения</small>
         </article>
         <article className="stat-card">
@@ -212,8 +275,8 @@ export default async function HistoryPage({
 
       <section className="panel">
         <h2>Версии контента</h2>
-        {revisionResult.error ? (
-          <p className="form-message">{operatorDataError("history", "load")}</p>
+        {revisionsRead.status === "failed" ? (
+          <p className="form-message form-error" role="alert">{adminReadMessage(revisionsRead.issue)}</p>
         ) : revisions.length ? (
           <div className="data-table-wrap">
             <table className="data-table">
@@ -229,7 +292,9 @@ export default async function HistoryPage({
                     <td>{formatDate(revision.created_at, true)}</td>
                     <td>{revision.actor_id || "Система"}</td>
                     <td>
-                      {revision.restorable && revision.entity_updated_at ? (
+                      {revision.restorable && revision.entity_updated_at ? canRestore
+                        && isReadRecord(revision.snapshot)
+                        && z.string().datetime({ offset: true }).safeParse(revision.entity_updated_at).success ? (
                         <form action={restoreRevisionAction}>
                           <input name="kind" type="hidden" value={revision.kind} />
                           <input name="revision_id" type="hidden" value={revision.revision_id} />
@@ -242,7 +307,7 @@ export default async function HistoryPage({
                             Восстановить
                           </ConfirmSubmitButton>
                         </form>
-                      ) : (
+                      ) : <span className="badge">Восстановление недоступно</span> : (
                         <span className="badge">Объект удалён</span>
                       )}
                     </td>
@@ -254,18 +319,18 @@ export default async function HistoryPage({
         ) : (
           <div className="empty-state"><p>Версии по этим фильтрам не найдены.</p></div>
         )}
-        <HistoryPagination
+        {revisionsRead.status === "success" && revisionPages !== null && <HistoryPagination
           label="Страницы версий"
           page={catalog.page}
           totalPages={revisionPages}
           href={(page) => historyCatalogHref(catalog, { page })}
-        />
+        />}
       </section>
 
       <section className="panel">
         <h2>Журнал операций</h2>
-        {eventsResult.error ? (
-          <p className="form-message">{operatorDataError("history", "load")}</p>
+        {eventsRead.status === "failed" ? (
+          <p className="form-message form-error" role="alert">{adminReadMessage(eventsRead.issue)}</p>
         ) : events.length ? (
           <div className="data-table-wrap">
             <table className="data-table">
@@ -285,12 +350,12 @@ export default async function HistoryPage({
         ) : (
           <div className="empty-state"><p>Операции по этим фильтрам не найдены.</p></div>
         )}
-        <HistoryPagination
+        {eventsRead.status === "success" && eventPages !== null && <HistoryPagination
           label="Страницы журнала операций"
           page={catalog.eventsPage}
           totalPages={eventPages}
           href={(eventsPage) => historyCatalogHref(catalog, { eventsPage })}
-        />
+        />}
       </section>
     </>
   );

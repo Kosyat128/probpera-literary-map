@@ -3,6 +3,7 @@
 import type { JSONContent } from "@tiptap/core";
 import { useEditor } from "@tiptap/react";
 import NextLink from "next/link";
+import { unstable_rethrow } from "next/navigation";
 import type { FormEvent as ReactFormEvent } from "react";
 import {
   useCallback,
@@ -24,7 +25,20 @@ import {
   type ArticleMetadataDraft,
   type ArticleMetadataDraftField,
 } from "@/lib/article-composer";
-import { saveArticleAction } from "@/app/(dashboard)/articles/actions";
+import { checkArticleOperationAction, saveArticleAction } from "@/app/(dashboard)/articles/actions";
+import { articleEditPath } from "@/lib/admin-routes";
+import { compareArticleSaveRevisions, parseArticleSaveResult, type ArticleSaveContext, type ArticleWorkingDraftReceipt } from "@/lib/article-save-result";
+import {
+  articlePendingOperationFormData,
+  articlePendingOperationReference,
+  articlePendingOperationStorageKey,
+  createArticlePendingOperation,
+  parseArticlePendingOperation,
+  parseArticlePendingOperationReference,
+  updateArticlePendingOperationSnapshot,
+  type ArticlePendingOperation,
+  ARTICLE_PENDING_OPERATION_RETENTION_MS,
+} from "@/lib/article-pending-operation";
 import {
   deleteEditorTemplateAction,
   saveEditorTemplateAction,
@@ -35,13 +49,18 @@ import {
 } from "@/lib/article-route";
 import {
   articleDraftRecoveryKeyPrefix,
-  clearConfirmedArticleRecovery,
   pendingArticleSaveValue,
   PENDING_ARTICLE_SAVE_KEY,
   persistArticleRecoverySnapshot,
   recoveryContentFingerprint,
   resolveArticleDraftRecoverySource,
+  safeArticleDraftScope,
 } from "@/lib/article-recovery";
+import {
+  prepareArticleEditorDocumentContent,
+  prepareArticleRecoverySnapshot,
+  type ArticleRecoverySnapshot,
+} from "@/lib/article-recovery-snapshot";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
 import { formatImagePreparation } from "@/lib/client-image-upload";
 import {
@@ -77,10 +96,13 @@ import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
 import EditorImageDialog, {
   type EditorImageDialogValue,
 } from "@/components/rich-editor/EditorImageDialog";
-import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
+import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorClientExtensions";
 import RecoveryController from "@/components/editor/RecoveryController";
+import { canUseRecoveryCopy, readRecoveryCopy, recoveryCopyOwnerState,
+  withRecoveryCopyOwner } from "@/lib/editor-recovery-owner";
 import EditorCore from "@/components/article-editor/EditorCore";
 import ArticleEditorShell from "@/components/article-editor/ArticleEditorShell";
+import { canPreserveArticleEditorSourceList } from "@/components/article-editor/article-source-preservation";
 import TranslationPanel from "@/components/article-editor/TranslationPanel";
 import CoverEditor from "@/components/article-editor/CoverEditor";
 import GalleryEditor, {
@@ -91,6 +113,12 @@ import SeoPanel from "@/components/article-editor/SeoPanel";
 import SourceBibliographyEditor from "@/components/article-editor/SourceBibliographyEditor";
 import ValidationChecklist from "@/components/article-editor/ValidationChecklist";
 import { useArticleValidation } from "@/components/article-editor/useArticleValidation";
+import {
+  articleEnglishHumanConfirmationKey,
+  isPreviouslyHumanConfirmedArticleEnglish,
+  matchesArticleEnglishHumanConfirmation,
+  type ArticleEnglishHumanConfirmation,
+} from "@/lib/article-english-human-confirmation";
 import {
   useRegisterArticleEditorWorkspace,
   type ArticleEditorWorkspace,
@@ -119,6 +147,9 @@ type Article = {
   id?: string;
   updated_at?: string;
   working_draft_version?: number;
+  working_draft_scope?: "bundle" | "english-only";
+  working_draft_updated_at?: string;
+  working_draft_english_enabled?: boolean;
   title?: string;
   subtitle?: string;
   excerpt?: string;
@@ -174,65 +205,13 @@ export type ArticleTranslation = {
     | "archived";
   source_content_hash?: string | null;
   source_article_updated_at?: string | null;
+  reviewed_by?: string | null;
+  reviewed_at?: string | null;
+  approved_by?: string | null;
   approved_at?: string | null;
   published_at?: string | null;
 };
 
-type ArticleRecoverySnapshot = {
-  version?: 2;
-  activeLocale?: "ru" | "en";
-  title?: string;
-  subtitle?: string;
-  excerpt?: string;
-  slug?: string;
-  slugEdited?: boolean;
-  categoryId?: string;
-  contentHtml?: string;
-  contentJson?: string;
-  status?: string;
-  scheduledAt?: string;
-  featured?: boolean;
-  showOnHomepage?: boolean;
-  pinned?: boolean;
-  coverUrl?: string;
-  coverAlt?: string;
-  seoTitle?: string;
-  seoDescription?: string;
-  seoKeywords?: string;
-  canonicalUrl?: string;
-  canonicalEdited?: boolean;
-  ogTitle?: string;
-  ogDescription?: string;
-  sourceText?: string;
-  bibliographyText?: string;
-  legacyPath?: string;
-  allowIndexing?: boolean;
-  russianSourceChanged?: boolean;
-  english?: {
-    enabled?: boolean;
-    title?: string;
-    subtitle?: string;
-    excerpt?: string;
-    slug?: string;
-    slugEdited?: boolean;
-    contentHtml?: string;
-    contentJson?: string;
-    coverAlt?: string;
-    seoTitle?: string;
-    seoDescription?: string;
-    seoKeywords?: string;
-    canonicalUrl?: string;
-    canonicalEdited?: boolean;
-    ogTitle?: string;
-    ogDescription?: string;
-    sourceText?: string;
-    bibliographyText?: string;
-    status?: ArticleTranslation["status"];
-    confirmedCurrentSource?: boolean;
-  };
-  savedAt?: number;
-  reason?: string;
-};
 
 function mediaSlot(label: string, hint: string) {
   return `<section class="article-design-block is-media" data-editorial-block="media" data-reveal="fade-up"><h3>${label}</h3><p>${hint}</p></section>`;
@@ -305,29 +284,85 @@ function hasStructuredContent(value: unknown): value is JSONContent {
   return Array.isArray(value.content) && value.content.length > 0;
 }
 
+function canonicalEnglishRecoveryBaseline(
+  translation: ArticleTranslation | null,
+  publicSiteUrl: string,
+  categorySlug: string | undefined,
+  russianCanonical: string
+): ArticleRecoverySnapshot["english"] {
+  const canonical = initialEnglishCanonicalState({
+    persistedCanonical: translation?.canonical_url,
+    russianCanonical,
+    generatedEnglishCanonical: articleCanonicalUrl(
+      publicSiteUrl, translation?.slug || createSlug(translation?.title || "") || "english-article", categorySlug
+    ),
+  });
+  return {
+    enabled: Boolean(translation?.id || translation?.title),
+    title: translation?.title || "", subtitle: translation?.subtitle || "",
+    excerpt: translation?.excerpt || "", slug: translation?.slug || "",
+    slugEdited: Boolean(translation?.id), contentHtml: translation?.content_html || "",
+    contentJson: JSON.stringify(translation?.content_json || { type: "doc", content: [] }),
+    coverAlt: translation?.cover_alt || "", seoTitle: translation?.seo_title || "",
+    seoDescription: translation?.seo_description || "", seoKeywords: (translation?.seo_keywords || []).join(", "),
+    canonicalUrl: canonical.canonicalUrl, canonicalEdited: canonical.isEdited,
+    ogTitle: translation?.og_title || "", ogDescription: translation?.og_description || "",
+    sourceText: listValue(translation?.sources), bibliographyText: listValue(translation?.bibliography),
+    status: translation?.status || "draft", confirmedCurrentSource: false,
+  };
+}
+
 export type ArticleEditorProps = {
   article: Article;
   englishTranslation?: ArticleTranslation;
+  /** Canonical read stays separate from an editable private English draft. */
+  canonicalEnglishTranslation?: ArticleTranslation | null;
   categories: Category[];
   publicSiteUrl: string;
   templates?: CustomTemplate[];
   draftKey?: string;
+  /** Server-verified account scope for per-tab operation recovery. */
+  actorId?: string;
+  /** Legacy navigation hint; it is not a canonical save receipt. */
   saveConfirmed?: boolean;
   canPublish?: boolean;
   canOverridePublicationChecklist?: boolean;
+  readUnavailable?: boolean;
 };
 
 export default function ArticleEditor({
-  article,
-  englishTranslation,
-  categories,
+  article: loadedArticle,
+  englishTranslation: loadedEnglishTranslation,
+  canonicalEnglishTranslation: loadedCanonicalEnglishTranslation,
+  categories: loadedCategories,
   publicSiteUrl,
   templates = [],
-  draftKey,
-  saveConfirmed = false,
+  draftKey: loadedDraftKey,
+  actorId,
   canPublish = false,
   canOverridePublicationChecklist = false,
+  readUnavailable = false,
 }: ArticleEditorProps) {
+  // The mounted form and its CAS/recovery base belong to the same loaded revision.
+  // A refreshed bundle does not acknowledge this draft or rebase it onto other edits.
+  const [article] = useState(loadedArticle);
+  const [englishTranslation] = useState(loadedEnglishTranslation);
+  const [canonicalEnglishTranslation] = useState(loadedCanonicalEnglishTranslation);
+  const [draftKey] = useState(loadedDraftKey);
+  // Keep selected options and their canonical-path context with the open draft.
+  const [categories] = useState(loadedCategories);
+  // A successful action may advance our own write context. A reread never does.
+  const [savedIdentity, setSavedIdentity] = useState(() => ({
+    articleId: article.id || null,
+    articleUpdatedAt: article.updated_at || null,
+    englishUpdatedAt: englishTranslation?.updated_at || null,
+    workingDraftVersion: article.working_draft_version || 0,
+    canonicalStatus: article.status || "draft",
+  }));
+  const readUnavailableRef = useRef(readUnavailable);
+  readUnavailableRef.current = readUnavailable;
+  const contentPreservationBlockedRef = useRef(true);
+  const editorMediaBusyRef = useRef(false);
   const [activeLocale, setActiveLocale] = useState<"ru" | "en">("ru");
   const activeLocaleRef = useRef<"ru" | "en">("ru");
   const switchingLocaleRef = useRef(false);
@@ -365,7 +400,7 @@ export default function ArticleEditor({
     JSON.stringify(article.content_json || { type: "doc", content: [] })
   );
   const [englishEnabled, setEnglishEnabled] = useState(
-    Boolean(englishTranslation?.id || englishTranslation?.title)
+    article.working_draft_english_enabled ?? Boolean(englishTranslation?.id || englishTranslation?.title)
   );
   const [englishTitle, setEnglishTitle] = useState(
     englishTranslation?.title || ""
@@ -393,6 +428,21 @@ export default function ArticleEditor({
   const [savedLocallyAt, setSavedLocallyAt] = useState<string | null>(null);
   const [draftStorageError, setDraftStorageError] = useState("");
   const [isDirty, setIsDirty] = useState(false);
+  const recoveryDirtyRef = useRef(isDirty);
+  recoveryDirtyRef.current = isDirty;
+  const hasAuthoredRecoveryEditsRef = useRef(false);
+  const authorInteractionRef = useRef(false);
+  function markAuthoredRecoveryDirty() {
+    hasAuthoredRecoveryEditsRef.current = true;
+    recoveryDirtyRef.current = true;
+    setIsDirty(true);
+  }
+  const persistRecoveryOnUnmountRef = useRef<(() => void) | null>(null);
+  const [savePending, setSavePending] = useState(false);
+  const [saveBlocked, setSaveBlocked] = useState(Boolean(actorId));
+  const [hasPendingSaveOperation, setHasPendingSaveOperation] = useState(false);
+  const [saveNotice, setSaveNotice] = useState("");
+  const [savedDestination, setSavedDestination] = useState("");
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
   const [recoveryKey, setRecoveryKey] = useState(
@@ -405,7 +455,29 @@ export default function ArticleEditor({
     null
   );
   const initialRecoveryFingerprintRef = useRef<string | null>(null);
+  const initialRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
   const latestRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
+  const submittedRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
+  const canonicalEnglishSnapshotRef = useRef<ArticleRecoverySnapshot["english"] | null>(null);
+  const privateEnglishSnapshotRef = useRef<{
+    english: ArticleRecoverySnapshot["english"];
+    version: number;
+    updatedAt: string;
+  } | null>(null);
+  const initiallyAbsentEnglishRef = useRef(false);
+  const pendingSaveOperationRef = useRef<{
+    formData: FormData;
+    snapshot: ArticleRecoverySnapshot | null;
+    context: ArticleSaveContext;
+  } | null>(null);
+  const pendingRecoveryJournalRef = useRef<ArticlePendingOperation | null>(null);
+  const operationRecoveryReadyRef = useRef(!actorId);
+  const recoveryOriginRef = useRef<{ key: string; scope: string | null } | null>(null);
+  const hydratedOperationRef = useRef(false);
+  const pendingRecoveryNeedsApplyRef = useRef(false);
+  const [operationRecoveryAttempt, setOperationRecoveryAttempt] = useState(0);
+  const [operationRecoveryError, setOperationRecoveryError] = useState(false);
+  const operationRecoveryErrorRef = useRef(false);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
   const [templateMessage, setTemplateMessage] = useState("");
   const [metadataMessage, setMetadataMessage] = useState("");
@@ -452,6 +524,8 @@ export default function ArticleEditor({
   const previewSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const publishSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const submissionInFlightRef = useRef(false);
+  const actionRunningRef = useRef(false);
+  const saveBlockedRef = useRef(Boolean(actorId));
   const coverFileInputRef = useRef<HTMLInputElement>(null);
   const workspaceSectionRefs = useRef<
     Record<ArticleWorkspaceSection, HTMLElement | null>
@@ -598,8 +672,12 @@ export default function ArticleEditor({
       afterImage: [ArticleTextTone, ArticleTypographyScope],
     }),
     content: initialEditorContent,
-    onUpdate({ editor: currentEditor }) {
-      if (switchingLocaleRef.current) return;
+    onUpdate({ editor: currentEditor, transaction }) {
+      if (switchingLocaleRef.current || contentPreservationBlockedRef.current) return;
+      // Mounting/schema projections are not authored changes to the stored body.
+      // Async media attachment remains an explicit author operation after its DOM event.
+      if (!authorInteractionRef.current && !hasAuthoredRecoveryEditsRef.current && !editorMediaBusyRef.current) return;
+      if (authorInteractionRef.current && transaction.docChanged) hasAuthoredRecoveryEditsRef.current = true;
       if (activeLocaleRef.current === "en") {
         setEnglishContentHtml(currentEditor.getHTML());
         setEnglishContentJson(JSON.stringify(currentEditor.getJSON()));
@@ -612,6 +690,24 @@ export default function ArticleEditor({
       setIsDirty(true);
     },
   });
+
+  const contentPreservationBlocked = useMemo(() => {
+    if (!editor) return true;
+    try {
+      if ([
+        article.sources, article.bibliography,
+        englishTranslation?.sources, englishTranslation?.bibliography,
+        canonicalEnglishTranslation?.sources, canonicalEnglishTranslation?.bibliography,
+      ].some(list => !canPreserveArticleEditorSourceList(list))) return true;
+      return [
+        prepareArticleEditorDocumentContent(article.content_html || "", JSON.stringify(article.content_json || { type: "doc", content: [] }), editor.schema, "ru"),
+        prepareArticleEditorDocumentContent(englishTranslation?.content_html || "", JSON.stringify(englishTranslation?.content_json || { type: "doc", content: [] }), editor.schema, "en"),
+        prepareArticleEditorDocumentContent(contentHtml, contentJson, editor.schema, "ru"),
+        prepareArticleEditorDocumentContent(englishContentHtml, englishContentJson, editor.schema, "en"),
+      ].some(content => content === null);
+    } catch { return true; }
+  }, [article, canonicalEnglishTranslation, contentHtml, contentJson, editor, englishContentHtml, englishContentJson, englishTranslation]);
+  contentPreservationBlockedRef.current = contentPreservationBlocked;
 
   const suggestedArticleImageAlt = useCallback(
     (fileName: string, context: { position: number }) =>
@@ -646,10 +742,11 @@ export default function ArticleEditor({
     suggestedAltText: suggestedArticleImageAlt,
     suggestedCaptionText: suggestedArticleImageCaption,
     onChanged: () => {
+      hasAuthoredRecoveryEditsRef.current = true;
       setTemplateMessage(
         "Изображение готово. При необходимости выберите его и измените расположение."
       );
-      setIsDirty(true);
+      markAuthoredRecoveryDirty();
     },
     onMessage: (message) => {
       setImageUploadError("");
@@ -660,6 +757,7 @@ export default function ArticleEditor({
       setImageUploadError(message);
     },
   });
+  editorMediaBusyRef.current = editorMedia.busy;
 
   const appendMediaComposerItems = useCallback(
     (items: EditorialGalleryItemInput[]) => {
@@ -672,8 +770,8 @@ export default function ArticleEditor({
   );
 
   useEffect(() => {
-    editor?.setEditable(imageUploadTarget === null && !editorMedia.busy);
-  }, [editor, editorMedia.busy, imageUploadTarget]);
+    editor?.setEditable(!contentPreservationBlocked && imageUploadTarget === null && !editorMedia.busy);
+  }, [contentPreservationBlocked, editor, editorMedia.busy, imageUploadTarget]);
 
   const isImageUploadActive =
     imageUploadTarget !== null ||
@@ -715,6 +813,7 @@ export default function ArticleEditor({
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
+      if (contentPreservationBlockedRef.current) return;
       if (!title.trim() && !subtitle.trim() && !contentHtml.trim()) return;
       const next = buildArticleMetadataDraft({
         title,
@@ -755,6 +854,7 @@ export default function ArticleEditor({
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
+      if (contentPreservationBlockedRef.current) return;
       if (
         !englishTitle.trim() &&
         !englishSubtitle.trim() &&
@@ -902,6 +1002,7 @@ export default function ArticleEditor({
       return;
     }
 
+    hasAuthoredRecoveryEditsRef.current = true;
     if (activeLocale === "en") {
       setEnglishExcerpt(draft.excerpt);
       setEnglishSeoTitle(draft.seoTitle);
@@ -921,15 +1022,15 @@ export default function ArticleEditor({
       markRussianSourceChanged();
       automaticMetadata.ru = createArticleMetadataAutomationState(draft, true);
     }
-    setIsDirty(true);
+    markAuthoredRecoveryDirty();
     setMetadataMessage(
       "Описание карточки и SEO подготовлены. Проверьте формулировку перед публикацией."
     );
   };
 
   useEffect(() => {
-    if (article.id) {
-      const articleRecoveryKey = `probpera-editor-${article.id}`;
+    if (savedIdentity.articleId) {
+      const articleRecoveryKey = `probpera-editor-${savedIdentity.articleId}`;
       setRecoveryKey(articleRecoveryKey);
       setRecoverySourceKey(articleRecoveryKey);
       setRecoveryDraftScope(null);
@@ -980,7 +1081,8 @@ export default function ArticleEditor({
       nextRecoverySourceKey = resolveArticleDraftRecoverySource(
         window.localStorage,
         scope,
-        nextRecoveryKey
+        nextRecoveryKey,
+        actorId
       );
     } catch {
       setDraftStorageError(
@@ -990,39 +1092,21 @@ export default function ArticleEditor({
     setRecoveryKey(nextRecoveryKey);
     setRecoverySourceKey(nextRecoverySourceKey);
     setRecoveryDraftScope(scope);
-  }, [article.id, draftKey]);
+  }, [actorId, savedIdentity.articleId, draftKey]);
 
   useEffect(() => {
     if (!recoveryKey || !recoverySourceKey) return;
-    if (saveConfirmed) {
-      try {
-        const { clearedCurrent } = clearConfirmedArticleRecovery(
-          window.localStorage,
-          window.sessionStorage,
-          recoveryKey
-        );
-        if (clearedCurrent) {
-          setHasRecoveryCopy(false);
-          setSavedLocallyAt(null);
-        }
-        setDraftStorageError("");
-      } catch {
-        setDraftStorageError(
-          "Статья сохранена, но браузер не дал удалить старую локальную копию."
-        );
-      }
-    }
-
+    // A query flag and a client-side fingerprint do not prove a canonical save.
+    // Retain recovery copies until an actual save receipt can authorize cleanup.
     try {
-      setHasRecoveryCopy(
-        Boolean(window.localStorage.getItem(recoverySourceKey))
-      );
+      const stored = readRecoveryCopy(window.localStorage, recoverySourceKey, actorId);
+      setHasRecoveryCopy(Boolean(stored && canUseRecoveryCopy(JSON.parse(stored), actorId)));
     } catch {
       setDraftStorageError(
         "Браузер запретил доступ к локальным черновикам. Сохраняйте статью кнопкой чаще."
       );
     }
-  }, [recoveryKey, recoverySourceKey, saveConfirmed]);
+  }, [actorId, recoveryKey, recoverySourceKey]);
 
   const recoverySnapshot = useMemo<ArticleRecoverySnapshot>(
     () => ({
@@ -1135,12 +1219,155 @@ export default function ArticleEditor({
     const fingerprint = recoveryContentFingerprint(recoverySnapshot);
     if (initialRecoveryFingerprintRef.current === null) {
       initialRecoveryFingerprintRef.current = fingerprint;
+      initialRecoverySnapshotRef.current = recoverySnapshot;
+      // A missing EN on an ordinary initial form proves the empty baseline.
+      // Copies and working-draft overlays cannot provide that proof.
+      const ownCanonicalEnglish = article.id && englishTranslation?.updated_at;
+      const initiallyAbsentEnglish = !englishTranslation && !draftKey;
+      if (article.id && canonicalEnglishTranslation !== undefined) {
+        canonicalEnglishSnapshotRef.current = article.working_draft_version || !canonicalEnglishTranslation
+          ? canonicalEnglishRecoveryBaseline(canonicalEnglishTranslation, publicSiteUrl, initialCategorySlug, initialCanonical)
+          : recoverySnapshot.english;
+        initiallyAbsentEnglishRef.current = initiallyAbsentEnglish && !article.working_draft_version;
+      } else if (!article.working_draft_version && (ownCanonicalEnglish || initiallyAbsentEnglish)) {
+        canonicalEnglishSnapshotRef.current = recoverySnapshot.english;
+        initiallyAbsentEnglishRef.current = initiallyAbsentEnglish;
+      }
+      if (article.working_draft_version && article.working_draft_updated_at && englishTranslation?.title) {
+        privateEnglishSnapshotRef.current = {
+          english: recoverySnapshot.english,
+          version: article.working_draft_version,
+          updatedAt: article.working_draft_updated_at,
+        };
+      }
       return;
     }
     if (fingerprint !== initialRecoveryFingerprintRef.current) {
       setIsDirty(true);
     }
-  }, [recoverySnapshot]);
+  }, [article, canonicalEnglishTranslation, draftKey, englishTranslation, initialCanonical, initialCategorySlug, publicSiteUrl, recoverySnapshot]);
+
+  useEffect(() => {
+    if (!actorId || operationRecoveryReadyRef.current || !editor || !recoveryKey || !recoverySourceKey) return;
+    const scope = recoveryDraftScope === null ? null : safeArticleDraftScope(recoveryDraftScope);
+    // A latest-copy pointer may offer legacy text from another history entry.
+    // Only this entry's own key can automatically resume a new/copy operation.
+    const operationRecoveryKey = article.id ? recoverySourceKey : recoveryKey;
+    let originKey = operationRecoveryKey;
+    let originScope = scope;
+    try {
+      let localCopy: Record<string, unknown> | null = null;
+      let localReadable = true;
+      let localValue: string | null = null;
+      try { localValue = readRecoveryCopy(window.localStorage, operationRecoveryKey, actorId); }
+      catch { localReadable = false; }
+      if (localValue) {
+        try {
+          const value: unknown = JSON.parse(localValue);
+          if (value && typeof value === "object" && !Array.isArray(value)) localCopy = value as Record<string, unknown>;
+        } catch {
+          // A plain damaged legacy copy is still available for explicit recovery.
+        }
+      }
+      if (localCopy && !canUseRecoveryCopy(localCopy, actorId)) {
+        if (recoveryCopyOwnerState(localCopy, actorId) === "invalid") throw new Error("Invalid recovery owner");
+        localCopy = null;
+      }
+      const rawReference = localCopy?.pendingArticleOperation;
+      const reference = parseArticlePendingOperationReference(rawReference);
+      const foreignReference = rawReference && typeof rawReference === "object"
+        && "actorId" in rawReference && rawReference.actorId !== actorId;
+      if (localCopy && Object.hasOwn(localCopy, "pendingArticleOperation")
+        && !foreignReference && !reference) throw new Error("Invalid operation reference");
+      if (reference && reference.actorId === actorId) {
+        if (article.id ? reference.context.articleId !== null && reference.context.articleId !== article.id
+          : reference.draftScope !== scope || reference.originRecoveryKey !== operationRecoveryKey) {
+          throw new Error("Unbound operation reference");
+        }
+        originKey = reference.originRecoveryKey;
+        originScope = reference.draftScope;
+      }
+      let storageKey = articlePendingOperationStorageKey(actorId, originKey);
+      if (!storageKey) throw new Error("Unavailable operation scope");
+      let rawJournal = window.sessionStorage.getItem(storageKey);
+      let sessionAlias: ReturnType<typeof parseArticlePendingOperationReference> = null;
+      if (rawJournal) {
+        const alias = parseArticlePendingOperationReference(JSON.parse(rawJournal));
+        if (alias) {
+          sessionAlias = alias;
+          if (alias.actorId !== actorId || (article.id
+            ? alias.context.articleId !== null && alias.context.articleId !== article.id
+            : alias.draftScope !== scope || alias.originRecoveryKey !== operationRecoveryKey)) {
+            throw new Error("Unbound tab operation alias");
+          }
+          originKey = alias.originRecoveryKey;
+          originScope = alias.draftScope;
+          storageKey = articlePendingOperationStorageKey(actorId, originKey);
+          if (!storageKey) throw new Error("Unavailable original operation scope");
+          rawJournal = window.sessionStorage.getItem(storageKey);
+        }
+      }
+      recoveryOriginRef.current = { key: originKey, scope: originScope };
+      if (!rawJournal) {
+        if (!localReadable || reference?.actorId === actorId || sessionAlias) throw new Error("Missing original operation");
+        operationRecoveryReadyRef.current = true;
+        setOperationRecoveryError(false);
+        saveBlockedRef.current = false;
+        setSaveBlocked(false);
+        return;
+      }
+      let journal = parseArticlePendingOperation(JSON.parse(rawJournal), {
+        actorId, originRecoveryKey: originKey, draftScope: originScope,
+      }, recoverySnapshotWithoutOperation(recoverySnapshot), editor.schema);
+      if (!journal || reference?.actorId === actorId && !articleOperationReferenceMatches(reference, journal)
+        || sessionAlias && !articleOperationReferenceMatches(sessionAlias, journal)) {
+        throw new Error("Invalid original operation");
+      }
+      if (article.id && journal.context.articleId !== null && journal.context.articleId !== article.id) {
+        throw new Error("Different article operation");
+      }
+      if (reference?.actorId === actorId && localCopy) {
+        // Either storage can reject a later mirror. Validate local B against
+        // the same original operation before selecting the newer full copy.
+        // Backup time selects author input only; it never proves a DB revision.
+        const localJournal = updateArticlePendingOperationSnapshot(journal,
+          recoverySnapshotWithoutOperation(localCopy as ArticleRecoverySnapshot), editor.schema);
+        if (!localJournal) throw new Error("Invalid local operation document");
+        if (recoveryContentFingerprint(localJournal.latestSnapshotB)
+          !== recoveryContentFingerprint(journal.latestSnapshotB)) {
+          const localTime = localJournal.latestSnapshotB.savedAt;
+          const tabTime = journal.latestSnapshotB.savedAt;
+          if (typeof localTime !== "number" || typeof tabTime !== "number" || localTime === tabTime) {
+            throw new Error("Unresolved operation recovery copies");
+          }
+          if (localTime > tabTime) journal = localJournal;
+        }
+      }
+      pendingRecoveryJournalRef.current = journal;
+      pendingSaveOperationRef.current = {
+        formData: articlePendingOperationFormData(journal), snapshot: journal.snapshotA, context: journal.context,
+      };
+      hydratedOperationRef.current = true;
+      // A new/copy operation on an existing article alias needs its own server
+      // identity proof before its body can replace the freshly loaded article.
+      pendingRecoveryNeedsApplyRef.current = Boolean(article.id && journal.context.articleId === null);
+      if (!pendingRecoveryNeedsApplyRef.current
+        && isUnchangedInitialRecoverySnapshot(recoverySnapshot)) {
+        if (!applyRecoverySnapshot(journal.latestSnapshotB)) throw new Error("Unavailable recovery document");
+        latestRecoverySnapshotRef.current = journal.latestSnapshotB;
+      }
+      operationRecoveryReadyRef.current = true;
+      setOperationRecoveryError(false);
+      markUnknownSaveOutcome();
+    } catch {
+      operationRecoveryReadyRef.current = true;
+      operationRecoveryErrorRef.current = true;
+      saveBlockedRef.current = true;
+      setSaveBlocked(true);
+      setOperationRecoveryError(true);
+      setDraftStorageError("Не удалось проверить исходное сохранение. Новая запись заблокирована; текст и резервные копии сохранены. Повторите проверку хранилища или откройте сохранённую версию в новой вкладке.");
+    }
+  }, [actorId, article.id, editor, operationRecoveryAttempt, recoveryDraftScope, recoveryKey, recoverySnapshot, recoverySourceKey]);
 
   useEffect(() => {
     try {
@@ -1148,7 +1375,14 @@ export default function ArticleEditor({
         window.localStorage.getItem(LEGACY_TEMPLATES_KEY) || "[]"
       );
       if (Array.isArray(stored) && stored.length) {
-        const legacy = stored.slice(0, 12).map((template: CustomTemplate) => ({
+        const candidates = stored.slice(0, 12);
+        if (candidates.some((item: unknown) => !item || typeof item !== "object"
+          || !("id" in item) || typeof item.id !== "string"
+          || !("label" in item) || typeof item.label !== "string"
+          || !("html" in item) || typeof item.html !== "string")) {
+          throw new Error("Invalid local template shape");
+        }
+        const legacy = candidates.map((template: CustomTemplate) => ({
           ...template,
           id: `local-${template.id}`,
           localOnly: true,
@@ -1162,13 +1396,41 @@ export default function ArticleEditor({
         ]);
       }
     } catch {
-      window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
+      // Do not delete unreadable templates, or access a denied storage getter again.
+      setTemplateMessage("Не удалось прочитать локальные шаблоны. Существующие данные сохранены без изменений.");
     }
   }, []);
 
   useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+    const authorEvents = ["input", "change", "click", "keydown", "paste", "drop", "cut", "beforeinput"] as const;
+    const trackAuthorEvent = (event: Event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const selectsGallery = event.type === "click"
+        && target?.closest(".article-design-block.is-gallery, .article-design-block.is-slider")
+        && !target.closest("button, input, select, textarea");
+      const navigatesSelection = event instanceof KeyboardEvent
+        && (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End", "PageUp", "PageDown", "Escape", "Shift", "Control", "Alt", "Meta"].includes(event.key)
+          || (event.ctrlKey || event.metaKey) && ["a", "c"].includes(event.key.toLowerCase()));
+      if (selectsGallery || navigatesSelection) {
+        authorInteractionRef.current = false;
+        return;
+      }
+      authorInteractionRef.current = true;
+      // Trusted DOM events can run a microtask checkpoint before TipTap handles
+      // the same event. Keep its origin through dispatch and DOM observation.
+      window.setTimeout(() => { authorInteractionRef.current = false; }, 0);
+    };
+    for (const name of authorEvents) form.addEventListener(name, trackAuthorEvent, true);
+    return () => {
+      for (const name of authorEvents) form.removeEventListener(name, trackAuthorEvent, true);
+    };
+  }, []);
+
+  useEffect(() => {
     const protectDraft = (event: BeforeUnloadEvent) => {
-      if (!isDirty || submissionInFlightRef.current) return;
+      if (!isDirty && !submissionInFlightRef.current) return;
       event.preventDefault();
       event.returnValue = "";
     };
@@ -1177,17 +1439,17 @@ export default function ArticleEditor({
   }, [isDirty]);
 
   useEffect(() => {
-    if (!recoveryKey || !isDirty) return;
+    if (!recoveryKey || !isDirty
+      || !hasAuthoredRecoveryEditsRef.current && !pendingRecoveryJournalRef.current) return;
     const timer = window.setTimeout(() => {
       try {
-        persistArticleRecoverySnapshot(
-          window.localStorage,
+        persistCurrentArticleRecovery(
           recoveryKey,
-          JSON.stringify({
+          {
             ...recoverySnapshot,
             savedAt: Date.now(),
             reason: "autosave",
-          }),
+          },
           recoveryDraftScope
         );
         setRecoverySourceKey(recoveryKey);
@@ -1210,19 +1472,19 @@ export default function ArticleEditor({
   }, [isDirty, recoveryDraftScope, recoveryKey, recoverySnapshot]);
 
   useEffect(() => {
-    if (!recoveryKey || !isDirty) return;
+    if (!recoveryKey) return;
     const flushRecoveryCopy = () => {
       const snapshot = latestRecoverySnapshotRef.current;
-      if (!snapshot) return;
+      if (!snapshot || !recoveryDirtyRef.current
+        || !hasAuthoredRecoveryEditsRef.current && !pendingRecoveryJournalRef.current) return;
       try {
-        persistArticleRecoverySnapshot(
-          window.localStorage,
+        persistCurrentArticleRecovery(
           recoveryKey,
-          JSON.stringify({
+          {
             ...snapshot,
             savedAt: Date.now(),
             reason: "page-hidden",
-          }),
+          },
           recoveryDraftScope
         );
         setRecoverySourceKey(recoveryKey);
@@ -1240,7 +1502,38 @@ export default function ArticleEditor({
       window.removeEventListener("pagehide", flushRecoveryCopy);
       document.removeEventListener("visibilitychange", flushWhenHidden);
     };
-  }, [isDirty, recoveryDraftScope, recoveryKey]);
+  }, [actorId, editor, isDirty, recoveryDraftScope, recoveryKey]);
+
+  persistRecoveryOnUnmountRef.current = () => {
+    const snapshot = latestRecoverySnapshotRef.current;
+    if (!recoveryDirtyRef.current || !recoveryKey || !snapshot
+      || !hasAuthoredRecoveryEditsRef.current && !pendingRecoveryJournalRef.current) return;
+    try {
+      persistCurrentArticleRecovery(recoveryKey,
+        { ...snapshot, savedAt: Date.now(), reason: "editor-unmounted" }, recoveryDraftScope);
+    } catch {
+      // Keep the same fail-closed storage and original-operation guards on exit.
+    }
+  };
+  useEffect(() => () => persistRecoveryOnUnmountRef.current?.(), []);
+
+  const humanConfirmationInput = useMemo(() => ({
+    article,
+    englishTranslation,
+    canonicalEnglishTranslation: canonicalEnglishTranslation === undefined && !article.working_draft_version
+      ? englishTranslation : canonicalEnglishTranslation,
+    current: recoverySnapshot,
+  }), [article, canonicalEnglishTranslation, englishTranslation, recoverySnapshot]);
+  const humanConfirmationKey = articleEnglishHumanConfirmationKey(humanConfirmationInput);
+  const [previousHumanConfirmation, setPreviousHumanConfirmation] = useState<ArticleEnglishHumanConfirmation>({ key: null, confirmed: false });
+  useEffect(() => {
+    let current = true;
+    void isPreviouslyHumanConfirmedArticleEnglish(humanConfirmationInput).then(confirmed => {
+      if (current) setPreviousHumanConfirmation({ key: humanConfirmationKey, confirmed });
+    });
+    return () => { current = false; };
+  }, [humanConfirmationInput, humanConfirmationKey]);
+  const englishPreviouslyHumanConfirmed = matchesArticleEnglishHumanConfirmation(previousHumanConfirmation, humanConfirmationKey);
 
   const {
     checks: bilingualPublicationChecks,
@@ -1280,6 +1573,7 @@ export default function ArticleEditor({
     englishBibliographyText,
     englishConfirmedCurrentSource,
     englishSourceContentHash: englishTranslation?.source_content_hash,
+    englishPreviouslyHumanConfirmed,
     russianSourceChanged,
   });
   const wordCount =
@@ -1354,7 +1648,7 @@ export default function ArticleEditor({
     activeLocale === "en" ? "en-US" : "ru-RU"
   )} ${activeLocale === "en" ? "английских слов" : "слов"}${
     savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""
-  }${isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}`;
+  }${isDirty ? " · изменения в форме ещё не подтверждены" : ""}`;
   const workspaceSnapshot = useMemo<ArticleEditorWorkspace["snapshot"]>(() => {
     const ready = publicationChecks.filter((item) => item.ok).length;
     return {
@@ -1371,19 +1665,23 @@ export default function ArticleEditor({
       ready,
       total: publicationChecks.length,
       saveState: workspaceSaveState,
-      canSave: !isImageUploadActive,
-      canPreview: !isImageUploadActive,
-      canPublish: canPublish && publicationActionReady && !isImageUploadActive,
+      canSave: !isImageUploadActive && !savePending && !saveBlocked && !readUnavailable && !contentPreservationBlocked,
+      canPreview: !isImageUploadActive && !savePending && !saveBlocked && !readUnavailable && !contentPreservationBlocked,
+      canPublish: canPublish && publicationActionReady && !isImageUploadActive && !savePending && !saveBlocked && !readUnavailable && !contentPreservationBlocked,
     };
   }, [
     activeLocale,
     canPublish,
+    contentPreservationBlocked,
     isImageUploadActive,
     publicationChecks,
     publicationActionReady,
     publicationReady,
     workspaceDocument,
     workspaceSaveState,
+    savePending,
+    saveBlocked,
+    readUnavailable,
   ]);
   const submitWorkspaceSave = useCallback(() => {
     const submitter = saveSubmitButtonRef.current;
@@ -1646,7 +1944,7 @@ export default function ArticleEditor({
       setImageUploadMessage(
         `Обложка загружена и установлена.${result.preparation ? ` ${formatImagePreparation(result.preparation)}` : ""}`
       );
-      setIsDirty(true);
+      markAuthoredRecoveryDirty();
     } catch (error) {
       setImageUploadMessage("");
       setImageUploadError(
@@ -1740,22 +2038,29 @@ export default function ArticleEditor({
               ...recoverySnapshot,
               ...editorContent,
             };
-      persistArticleRecoverySnapshot(
-        window.localStorage,
-        recoveryKey,
-        JSON.stringify({
-          ...snapshotBeforeTemplate,
-          savedAt: Date.now(),
-          reason: `before-template:${label}`,
-        }),
-        recoveryDraftScope
-      );
+      try {
+        persistCurrentArticleRecovery(
+          recoveryKey,
+          {
+            ...snapshotBeforeTemplate,
+            savedAt: Date.now(),
+            reason: `before-template:${label}`,
+          },
+          recoveryDraftScope
+        );
+      } catch {
+        setTemplateMessage("Не удалось сохранить резервную копию перед вставкой шаблона. Текущий текст оставлен без изменений.");
+        return;
+      }
       setRecoverySourceKey(recoveryKey);
       setHasRecoveryCopy(true);
+    } else {
+      setTemplateMessage("Резервная копия ещё не готова. Повторите вставку шаблона после загрузки редактора.");
+      return;
     }
     editor.commands.setContent(html);
     editor.chain().focus("start").run();
-    setIsDirty(true);
+    markAuthoredRecoveryDirty();
     setTemplateMessage(
       `Шаблон «${label}» вставлен. Замените редакционные подсказки своим текстом и изображениями.`
     );
@@ -1771,12 +2076,23 @@ export default function ArticleEditor({
     const visibility = window.confirm("Сделать шаблон общим для всей редакции?") ? "shared" : "personal";
     setTemplateMessage("");
     startTemplateTransition(async () => {
-      const result = await saveEditorTemplateAction({
-        label: label.slice(0, 80),
-        html: editor.getHTML(),
-        json: editor.getJSON(),
-        visibility,
-      });
+      let result: Awaited<ReturnType<typeof saveEditorTemplateAction>>;
+      try {
+        result = await saveEditorTemplateAction({
+          label: label.slice(0, 80),
+          html: editor.getHTML(),
+          json: editor.getJSON(),
+          visibility,
+        });
+      } catch (error: unknown) {
+        unstable_rethrow(error);
+        setTemplateMessage("Не удалось подтвердить сохранение шаблона. Текст статьи оставлен в форме; перед повтором проверьте список шаблонов.");
+        return;
+      }
+      if (!result) {
+        setTemplateMessage("Не удалось подтвердить сохранение шаблона. Текст статьи оставлен в форме.");
+        return;
+      }
       if (result.error || !result.template) {
         setTemplateMessage(result.error || "Шаблон не сохранён.");
         return;
@@ -1786,8 +2102,12 @@ export default function ArticleEditor({
         result.template as CustomTemplate,
       ]);
       const legacy = customTemplates.filter((item) => item.localOnly && item.label !== result.template!.label);
-      window.localStorage.setItem(LEGACY_TEMPLATES_KEY, JSON.stringify(legacy));
-      setTemplateMessage("Шаблон сохранён в редакционной базе.");
+      try {
+        window.localStorage.setItem(LEGACY_TEMPLATES_KEY, JSON.stringify(legacy));
+        setTemplateMessage("Шаблон сохранён в редакционной базе.");
+      } catch {
+        setTemplateMessage("Шаблон сохранён в редакционной базе. Браузер не дал обновить список локальных шаблонов.");
+      }
     });
   };
 
@@ -1795,163 +2115,234 @@ export default function ArticleEditor({
     if (!customTemplates.length || !window.confirm("Удалить доступные собственные шаблоны? Общие шаблоны других редакторов сохранятся.")) return;
     startTemplateTransition(async () => {
       const deletable = customTemplates.filter((template) => template.canDelete && !template.localOnly);
-      const results = await Promise.all(deletable.map((template) => deleteEditorTemplateAction(template.id)));
-      const failedIds = new Set(deletable.filter((_, index) => results[index]?.error).map((item) => item.id));
-      setCustomTemplates((current) => current.filter((template) => !template.localOnly && (!template.canDelete || failedIds.has(template.id))));
-      window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
-      setTemplateMessage(failedIds.size ? "Часть шаблонов не удалось удалить." : "Собственные шаблоны удалены.");
+      const results = await Promise.allSettled(deletable.map((template) => deleteEditorTemplateAction(template.id)));
+      for (const result of results) {
+        if (result.status === "rejected") unstable_rethrow(result.reason);
+      }
+      const failedIds = new Set(deletable.filter((_, index) => {
+        const result = results[index];
+        return result.status === "rejected" || result.value?.ok !== true;
+      }).map((item) => item.id));
+      let localDeleted = false;
+      try {
+        window.localStorage.removeItem(LEGACY_TEMPLATES_KEY);
+        localDeleted = true;
+      } catch {
+        // Keep visible local templates when durable removal was not confirmed.
+      }
+      setCustomTemplates((current) => current.filter((template) => template.localOnly
+        ? !localDeleted
+        : !template.canDelete || failedIds.has(template.id)));
+      setTemplateMessage(failedIds.size || !localDeleted
+        ? "Удаление части шаблонов не подтверждено. Они оставлены в списке для проверки."
+        : "Собственные шаблоны удалены.");
     });
   };
 
-  const applyRecoverySnapshot = (recovery: ArticleRecoverySnapshot) => {
-    if (!editor) return;
-      if (recovery.version === 2) {
-        const english = recovery.english || {};
-        automaticMetadata.ru = createArticleMetadataAutomationState({
-          excerpt: recovery.excerpt ?? "",
-          seoTitle: recovery.seoTitle ?? "",
-          seoDescription: recovery.seoDescription ?? "",
-          seoKeywords: recovery.seoKeywords ?? "",
-          ogTitle: recovery.ogTitle ?? "",
-          ogDescription: recovery.ogDescription ?? "",
-        });
-        automaticMetadata.en = createArticleMetadataAutomationState({
-          excerpt: english.excerpt ?? "",
-          seoTitle: english.seoTitle ?? "",
-          seoDescription: english.seoDescription ?? "",
-          seoKeywords: english.seoKeywords ?? "",
-          ogTitle: english.ogTitle ?? "",
-          ogDescription: english.ogDescription ?? "",
-        });
-        setTitle(recovery.title ?? "");
-        setSubtitle(recovery.subtitle ?? "");
-        setExcerpt(recovery.excerpt ?? "");
-        setSlug(recovery.slug ?? "");
-        setSlugEdited(recovery.slugEdited ?? Boolean(recovery.slug));
-        setCategoryId(recovery.categoryId ?? "");
-        setContentHtml(recovery.contentHtml ?? "");
-        setContentJson(
-          recovery.contentJson || '{"type":"doc","content":[]}'
-        );
-        setStatus(recovery.status ?? "draft");
-        setScheduledAt(recovery.scheduledAt ?? "");
-        setFeatured(Boolean(recovery.featured));
-        setShowOnHomepage(Boolean(recovery.showOnHomepage));
-        setPinned(Boolean(recovery.pinned));
-        setCoverUrl(recovery.coverUrl ?? "");
-        setCoverAlt(recovery.coverAlt ?? "");
-        setSeoTitle(recovery.seoTitle ?? "");
-        setSeoDescription(recovery.seoDescription ?? "");
-        setSeoKeywords(recovery.seoKeywords ?? "");
-        setCanonicalUrl(recovery.canonicalUrl ?? "");
-        setCanonicalEdited(
-          recovery.canonicalEdited ?? Boolean(recovery.canonicalUrl)
-        );
-        setOgTitle(recovery.ogTitle ?? "");
-        setOgDescription(recovery.ogDescription ?? "");
-        setSourceText(recovery.sourceText ?? "");
-        setBibliographyText(recovery.bibliographyText ?? "");
-        setLegacyPath(recovery.legacyPath ?? "");
-        setAllowIndexing(recovery.allowIndexing !== false);
-        setRussianSourceChanged(Boolean(recovery.russianSourceChanged));
+  function recoverySnapshotWithoutOperation(snapshot: ArticleRecoverySnapshot): ArticleRecoverySnapshot {
+    const { pendingArticleOperation: _reference, recoveryActorId: _owner, ...content } = snapshot;
+    return content;
+  }
 
-        setEnglishEnabled(Boolean(english.enabled));
-        setEnglishTitle(english.title ?? "");
-        setEnglishSubtitle(english.subtitle ?? "");
-        setEnglishExcerpt(english.excerpt ?? "");
-        setEnglishSlug(english.slug ?? "");
-        setEnglishSlugEdited(english.slugEdited ?? Boolean(english.slug));
-        setEnglishContentHtml(english.contentHtml ?? "");
-        setEnglishContentJson(
-          english.contentJson || '{"type":"doc","content":[]}'
-        );
-        setEnglishCoverAlt(english.coverAlt ?? "");
-        setEnglishSeoTitle(english.seoTitle ?? "");
-        setEnglishSeoDescription(english.seoDescription ?? "");
-        setEnglishSeoKeywords(english.seoKeywords ?? "");
-        setEnglishCanonicalUrl(english.canonicalUrl ?? "");
-        setEnglishCanonicalEdited(
-          english.canonicalEdited ?? Boolean(english.canonicalUrl)
-        );
-        setEnglishOgTitle(english.ogTitle ?? "");
-        setEnglishOgDescription(english.ogDescription ?? "");
-        setEnglishSourceText(english.sourceText ?? "");
-        setEnglishBibliographyText(english.bibliographyText ?? "");
-        setEnglishStatus(english.status ?? "draft");
-        setEnglishConfirmedCurrentSource(
-          Boolean(english.confirmedCurrentSource)
-        );
-      } else {
-        // Backward-compatible restore for the smaller recovery format that was
-        // used before metadata snapshots were introduced.
-        if (recovery.title !== undefined) setTitle(recovery.title);
-        if (recovery.slug !== undefined) {
-          setSlugEdited(true);
-          setSlug(recovery.slug);
-        }
-        if (recovery.contentHtml !== undefined) {
-          setContentHtml(recovery.contentHtml);
-          setContentJson(
-            recovery.contentJson || '{"type":"doc","content":[]}'
-          );
-        }
-        if (recovery.title || recovery.slug || recovery.contentHtml) {
-          markRussianSourceChanged();
-        }
-        if (recovery.english) {
-          setEnglishEnabled(Boolean(recovery.english.enabled));
-          setEnglishTitle(recovery.english.title || "");
-          setEnglishSubtitle(recovery.english.subtitle || "");
-          setEnglishExcerpt(recovery.english.excerpt || "");
-          setEnglishSlug(recovery.english.slug || "");
-          setEnglishSlugEdited(Boolean(recovery.english.slug));
-          setEnglishContentHtml(recovery.english.contentHtml || "");
-          setEnglishContentJson(
-            recovery.english.contentJson || '{"type":"doc","content":[]}'
-          );
-        }
-      }
+  function isUnchangedInitialRecoverySnapshot(snapshot: ArticleRecoverySnapshot) {
+    const initial = initialRecoverySnapshotRef.current;
+    if (!initial) return false;
+    // Initial slug/canonical effects may finish before tab recovery. Ignore only
+    // these derived values while their manual-edit flags still prove automation.
+    const comparable = (value: ArticleRecoverySnapshot) => ({
+      ...value,
+      slug: !initial.slugEdited && !snapshot.slugEdited ? undefined : value.slug,
+      canonicalUrl: !initial.canonicalEdited && !snapshot.canonicalEdited ? undefined : value.canonicalUrl,
+      english: {
+        ...value.english,
+        slug: !initial.english.slugEdited && !snapshot.english.slugEdited ? undefined : value.english.slug,
+        canonicalUrl: !initial.english.canonicalEdited && !snapshot.english.canonicalEdited
+          ? undefined : value.english.canonicalUrl,
+      },
+    });
+    return recoveryContentFingerprint(comparable(snapshot)) === recoveryContentFingerprint(comparable(initial));
+  }
 
-      const restoredLocale =
-        recovery.version === 2 && recovery.activeLocale === "en"
-          ? "en"
-          : recovery.version === 2 && recovery.activeLocale === "ru"
-            ? "ru"
-            : activeLocale;
-      const restoredHtml =
-        restoredLocale === "en"
-          ? recovery.english?.contentHtml || ""
-          : recovery.contentHtml || "";
-      const restoredJson =
-        restoredLocale === "en"
-          ? recovery.english?.contentJson
-          : recovery.contentJson;
-      let restoredContent: JSONContent | string = restoredHtml;
-      if (restoredJson) {
-        try {
-          const parsedContent = JSON.parse(restoredJson) as JSONContent;
-          if (hasStructuredContent(parsedContent)) restoredContent = parsedContent;
-        } catch {
-          restoredContent = restoredHtml;
-        }
+  function articleOperationReferenceMatches(
+    reference: NonNullable<ReturnType<typeof parseArticlePendingOperationReference>>,
+    journal: ArticlePendingOperation,
+  ) {
+    return reference.actorId === journal.actorId && reference.originRecoveryKey === journal.originRecoveryKey
+      && reference.draftScope === journal.draftScope && reference.expiresAt === journal.expiresAt
+      && reference.operationId === journal.context.operationId
+      && reference.context.operationId === journal.context.operationId
+      && reference.context.articleId === journal.context.articleId
+      && reference.context.articleUpdatedAt === journal.context.articleUpdatedAt
+      && reference.context.englishUpdatedAt === journal.context.englishUpdatedAt
+      && reference.context.workingDraftVersion === journal.context.workingDraftVersion;
+  }
+
+  function persistSessionArticleOperation(journal: ArticlePendingOperation, targetKey = recoveryKey) {
+    const key = articlePendingOperationStorageKey(journal.actorId, journal.originRecoveryKey);
+    if (!key) throw new Error("Unavailable operation journal scope");
+    const value = JSON.stringify(journal);
+    window.sessionStorage.setItem(key, value);
+    if (window.sessionStorage.getItem(key) !== value) throw new Error("Unconfirmed operation journal");
+    if (targetKey !== journal.originRecoveryKey) {
+      const aliasKey = articlePendingOperationStorageKey(journal.actorId, targetKey);
+      if (!aliasKey) throw new Error("Unavailable operation alias scope");
+      window.sessionStorage.setItem(aliasKey, JSON.stringify(articlePendingOperationReference(journal)));
+    }
+  }
+
+  function persistCurrentArticleRecovery(key: string, snapshot: ArticleRecoverySnapshot, scope: string | null) {
+    // An unreadable original operation is not permission to overwrite its B or
+    // locator with a newly loaded canonical form during autosave/pagehide.
+    if (actorId && (!operationRecoveryReadyRef.current || operationRecoveryErrorRef.current)) {
+      throw new Error("Unverified original operation recovery");
+    }
+    const currentCopy = { ...snapshot, savedAt: Date.now() };
+    const journal = pendingRecoveryJournalRef.current;
+    let recovery = currentCopy;
+    let sessionError: unknown;
+    if (journal) {
+      if (!editor) throw new Error("Unavailable recovery schema");
+      const updated = updateArticlePendingOperationSnapshot(journal, recoverySnapshotWithoutOperation(currentCopy), editor.schema);
+      if (!updated) throw new Error("Invalid operation recovery document");
+      pendingRecoveryJournalRef.current = updated;
+      recovery = { ...currentCopy, pendingArticleOperation: articlePendingOperationReference(updated) };
+      try { persistSessionArticleOperation(updated, key); }
+      catch (error) { sessionError = error; }
+    }
+    const serialized = JSON.stringify(recovery);
+    persistArticleRecoverySnapshot(window.localStorage, key, serialized, scope, actorId);
+    if (journal && key !== journal.originRecoveryKey) {
+      persistArticleRecoverySnapshot(window.localStorage, journal.originRecoveryKey, serialized, journal.draftScope, actorId);
+    }
+    if (sessionError) throw sessionError;
+  }
+
+  const applyRecoverySnapshot = (value: unknown, fromOperationReconciliation = false) => {
+    if (!editor || isImageUploadActive || submissionInFlightRef.current && !fromOperationReconciliation) return false;
+    if (value && typeof value === "object" && Object.hasOwn(value, "recoveryActorId")
+      && !canUseRecoveryCopy(value, actorId)) {
+      setDraftStorageError("Эта локальная копия недоступна текущему пользователю. Текст в форме и копия сохранены без изменений.");
+      return false;
+    }
+    if (value && typeof value === "object" && "pendingArticleOperation" in value) {
+      const reference = parseArticlePendingOperationReference(value.pendingArticleOperation);
+      const journal = pendingRecoveryJournalRef.current;
+      if (!reference || reference.actorId !== actorId || !journal
+        || !articleOperationReferenceMatches(reference, journal)) {
+        setDraftStorageError("Исходное сохранение этой копии не проверено. Текущие данные и копия оставлены без изменений.");
+        return false;
       }
-      activeLocaleRef.current = restoredLocale;
-      setActiveLocale(restoredLocale);
-      switchingLocaleRef.current = true;
-      try {
-        editor.commands.setContent(restoredContent);
-      } finally {
-        switchingLocaleRef.current = false;
-      }
-      setIsDirty(true);
+    }
+    const prepared = prepareArticleRecoverySnapshot(value, recoverySnapshot, editor.schema);
+    if (!prepared) {
+      setDraftStorageError("Резервная копия неполная или повреждена. Текущий текст и связанные данные оставлены в форме; копия сохранена для проверки.");
+      return false;
+    }
+    const recovery = prepared.snapshot;
+    switchingLocaleRef.current = true;
+    try {
+      if (!editor.commands.setContent(prepared.content, { emitUpdate: false })) return false;
+    } catch {
+      setDraftStorageError("Не удалось восстановить резервную копию. Текущие данные и копия сохранены для проверки.");
+      return false;
+    } finally {
+      switchingLocaleRef.current = false;
+    }
+    const english = recovery.english;
+    hasAuthoredRecoveryEditsRef.current = true;
+    automaticMetadata.ru = createArticleMetadataAutomationState({
+      excerpt: recovery.excerpt,
+      seoTitle: recovery.seoTitle,
+      seoDescription: recovery.seoDescription,
+      seoKeywords: recovery.seoKeywords,
+      ogTitle: recovery.ogTitle,
+      ogDescription: recovery.ogDescription,
+    });
+    automaticMetadata.en = createArticleMetadataAutomationState({
+      excerpt: english.excerpt,
+      seoTitle: english.seoTitle,
+      seoDescription: english.seoDescription,
+      seoKeywords: english.seoKeywords,
+      ogTitle: english.ogTitle,
+      ogDescription: english.ogDescription,
+    });
+    setTitle(recovery.title);
+    setSubtitle(recovery.subtitle);
+    setExcerpt(recovery.excerpt);
+    setSlug(recovery.slug);
+    setSlugEdited(recovery.slugEdited);
+    setCategoryId(recovery.categoryId);
+    setContentHtml(recovery.contentHtml);
+    setContentJson(
+      recovery.contentJson || '{"type":"doc","content":[]}'
+    );
+    setStatus(recovery.status);
+    setScheduledAt(recovery.scheduledAt);
+    setFeatured(recovery.featured);
+    setShowOnHomepage(recovery.showOnHomepage);
+    setPinned(recovery.pinned);
+    setCoverUrl(recovery.coverUrl);
+    setCoverAlt(recovery.coverAlt);
+    setSeoTitle(recovery.seoTitle);
+    setSeoDescription(recovery.seoDescription);
+    setSeoKeywords(recovery.seoKeywords);
+    setCanonicalUrl(recovery.canonicalUrl);
+    setCanonicalEdited(
+      recovery.canonicalEdited
+    );
+    setOgTitle(recovery.ogTitle);
+    setOgDescription(recovery.ogDescription);
+    setSourceText(recovery.sourceText);
+    setBibliographyText(recovery.bibliographyText);
+    setLegacyPath(recovery.legacyPath);
+    setAllowIndexing(recovery.allowIndexing);
+    setRussianSourceChanged(recovery.russianSourceChanged);
+
+    setEnglishEnabled(english.enabled);
+    setEnglishTitle(english.title);
+    setEnglishSubtitle(english.subtitle);
+    setEnglishExcerpt(english.excerpt);
+    setEnglishSlug(english.slug);
+    setEnglishSlugEdited(english.slugEdited);
+    setEnglishContentHtml(english.contentHtml);
+    setEnglishContentJson(
+      english.contentJson || '{"type":"doc","content":[]}'
+    );
+    setEnglishCoverAlt(english.coverAlt);
+    setEnglishSeoTitle(english.seoTitle);
+    setEnglishSeoDescription(english.seoDescription);
+    setEnglishSeoKeywords(english.seoKeywords);
+    setEnglishCanonicalUrl(english.canonicalUrl);
+    setEnglishCanonicalEdited(
+      english.canonicalEdited
+    );
+    setEnglishOgTitle(english.ogTitle);
+    setEnglishOgDescription(english.ogDescription);
+    setEnglishSourceText(english.sourceText);
+    setEnglishBibliographyText(english.bibliographyText);
+    setEnglishStatus(english.status);
+    setEnglishConfirmedCurrentSource(
+      english.confirmedCurrentSource
+    );
+    activeLocaleRef.current = recovery.activeLocale;
+    setActiveLocale(recovery.activeLocale);
+    setDraftStorageError("");
+    markAuthoredRecoveryDirty();
+    return true;
   };
 
   const restoreLocalCopy = () => {
     if (!recoverySourceKey) return;
-    const stored = window.localStorage.getItem(recoverySourceKey);
+    let stored: string | null;
+    try {
+      stored = readRecoveryCopy(window.localStorage, recoverySourceKey, actorId);
+    } catch {
+      setDraftStorageError("Браузер не дал прочитать резервную копию. Текущий текст оставлен в форме.");
+      return;
+    }
     if (!stored || !editor) return;
     try {
-      const recovery = JSON.parse(stored) as ArticleRecoverySnapshot;
+      const recovery: unknown = JSON.parse(stored);
       if (
         !window.confirm(
           "Восстановить локальную резервную копию? Текущий текст в редакторе будет заменён."
@@ -1961,25 +2352,341 @@ export default function ArticleEditor({
       }
       applyRecoverySnapshot(recovery);
     } catch {
-      window.alert("Локальная копия повреждена и не может быть восстановлена.");
+      setDraftStorageError("Локальная копия повреждена. Текущие данные и копия сохранены для проверки.");
     }
   };
+
+  function markUnknownSaveOutcome() {
+    saveBlockedRef.current = true;
+    setSaveBlocked(true);
+    setHasPendingSaveOperation(pendingSaveOperationRef.current !== null);
+    recoveryDirtyRef.current = true;
+    markAuthoredRecoveryDirty();
+    setSaveNotice("Не удалось подтвердить результат сохранения. Введённый текст оставлен в форме. Нажмите «Проверить результат сохранения»; новая отправка заблокирована до подтверждения.");
+  }
+
+  function acceptArticleSaveResponse(response: unknown, fromLookup = false) {
+    const pending = pendingSaveOperationRef.current;
+    if (!pending) { markUnknownSaveOutcome(); return; }
+    const submittedSnapshot = pending.snapshot;
+    const submittedContext = pending.context;
+    const result = parseArticleSaveResult(response, submittedContext);
+    // A failed lookup cannot prove that the original write was refused.
+    if (!result || result.outcome === "unknown-outcome" || fromLookup && result.outcome !== "saved") {
+      markUnknownSaveOutcome();
+      return;
+    }
+    if (hydratedOperationRef.current) {
+      const latest = latestRecoverySnapshotRef.current;
+      if (!editor || !latest || !prepareArticleRecoverySnapshot(
+        recoverySnapshotWithoutOperation(latest), recoverySnapshotWithoutOperation(latest), editor.schema,
+      ) || result.outcome === "saved" && article.id && result.receipt.articleId !== article.id) {
+        markUnknownSaveOutcome();
+        return;
+      }
+      if (result.outcome === "saved" && pendingRecoveryNeedsApplyRef.current) {
+        const journal = pendingRecoveryJournalRef.current;
+        if (!journal) { markUnknownSaveOutcome(); return; }
+        if (isUnchangedInitialRecoverySnapshot(latest)) {
+          if (!applyRecoverySnapshot(journal.latestSnapshotB, true)) { markUnknownSaveOutcome(); return; }
+          latestRecoverySnapshotRef.current = journal.latestSnapshotB;
+        }
+        pendingRecoveryNeedsApplyRef.current = false;
+      }
+    }
+    pendingSaveOperationRef.current = null;
+    setHasPendingSaveOperation(false);
+    if (result.outcome === "saved") {
+      const latestSnapshot = latestRecoverySnapshotRef.current;
+      const hasNewerEdits = !submittedSnapshot || !latestSnapshot
+        || recoveryContentFingerprint(latestSnapshot) !== recoveryContentFingerprint(submittedSnapshot);
+      const englishSubmitted = pending.formData.get("english_enabled") === "on"
+        && pending.formData.get("intent") !== "publish-ru";
+      // A new EN revision may acknowledge only its status. Only the server's
+      // explicit text acknowledgement can clear manually authored EN fields.
+      const englishSaved = englishSubmitted && result.englishState === "saved";
+      const privateDraft: ArticleWorkingDraftReceipt | undefined = result.receipt.workingDraft;
+      const previousPrivateEnglish = privateEnglishSnapshotRef.current;
+      let acknowledgedPrivateEnglish: ArticleRecoverySnapshot["english"] | null = null;
+      if (privateDraft) {
+        if (privateDraft.englishWrite === "saved" && englishSubmitted && submittedSnapshot) {
+          acknowledgedPrivateEnglish = submittedSnapshot.english;
+        } else if (privateDraft.englishWrite === "preserved"
+          && previousPrivateEnglish?.version === submittedContext.workingDraftVersion) {
+          // Retaining the prior body and its separate EN choice does not write
+          // a changed submitted English body.
+          acknowledgedPrivateEnglish = {
+            ...previousPrivateEnglish.english, enabled: privateDraft.englishEnabled,
+          };
+        } else if (privateDraft.englishWrite === "preserved" && hydratedOperationRef.current
+          && previousPrivateEnglish?.version === privateDraft.version
+          && article.working_draft_scope === privateDraft.scope
+          && compareArticleSaveRevisions(previousPrivateEnglish.updatedAt, privateDraft.updatedAt) === 0
+          && article.updated_at && compareArticleSaveRevisions(article.updated_at, privateDraft.baseArticleUpdatedAt) === 0
+          && (englishTranslation?.updated_at === privateDraft.englishExpectedUpdatedAt
+            || englishTranslation?.updated_at && privateDraft.englishExpectedUpdatedAt
+              && compareArticleSaveRevisions(englishTranslation.updated_at, privateDraft.englishExpectedUpdatedAt) === 0)) {
+          // A fresh server-read private row may corroborate this original
+          // receipt. Local journal baselines never supply that proof.
+          acknowledgedPrivateEnglish = {
+            ...previousPrivateEnglish.english, enabled: privateDraft.englishEnabled,
+          };
+        }
+        privateEnglishSnapshotRef.current = acknowledgedPrivateEnglish ? {
+          english: acknowledgedPrivateEnglish, version: privateDraft.version, updatedAt: privateDraft.updatedAt,
+        } : null;
+      } else if (result.persistence === "working-draft" && englishSaved && submittedSnapshot
+        && result.receipt.workingDraftUpdatedAt) {
+        // Full pre-metadata working-draft receipts keep their prior contract.
+        privateEnglishSnapshotRef.current = {
+          english: submittedSnapshot.english, version: result.receipt.workingDraftVersion,
+          updatedAt: result.receipt.workingDraftUpdatedAt,
+        };
+      } else {
+        privateEnglishSnapshotRef.current = null;
+      }
+      const canonicalEnglish = canonicalEnglishSnapshotRef.current;
+      // The generated route of a proven initially absent EN can follow RU
+      // category changes. An explicit URL and every authored field still count.
+      const partialCanonicalEnglishBaseline = canonicalEnglish && initiallyAbsentEnglishRef.current
+        && submittedSnapshot && !submittedSnapshot.english.canonicalEdited
+        ? { ...canonicalEnglish, canonicalUrl: submittedSnapshot.english.canonicalUrl }
+        : canonicalEnglish;
+      const partialEnglishBaseline = acknowledgedPrivateEnglish ?? partialCanonicalEnglishBaseline;
+      const acknowledgedSnapshot = submittedSnapshot && (englishSaved ? submittedSnapshot
+        : partialEnglishBaseline ? {
+            ...submittedSnapshot, english: partialEnglishBaseline,
+          } : null);
+      const hasUnconfirmedEnglish = !englishSaved && (!submittedSnapshot || !acknowledgedSnapshot
+        || recoveryContentFingerprint(submittedSnapshot) !== recoveryContentFingerprint(acknowledgedSnapshot));
+      setSavedIdentity({
+        articleId: result.receipt.articleId,
+        articleUpdatedAt: result.persistence === "working-draft"
+          ? submittedContext.articleUpdatedAt : result.receipt.articleUpdatedAt,
+        englishUpdatedAt: privateDraft ? privateDraft.englishExpectedUpdatedAt
+          : result.receipt.englishUpdatedAt ?? submittedContext.englishUpdatedAt,
+        workingDraftVersion: result.receipt.workingDraftVersion,
+        canonicalStatus: result.receipt.canonicalStatus,
+      });
+      saveBlockedRef.current = false;
+      setSaveBlocked(false);
+      // The action acknowledges submitted A. Current B stays in this mounted
+      // form; navigating automatically would race subsequent edits too.
+      setSavedDestination(result.destination);
+      if (acknowledgedSnapshot) {
+        initialRecoveryFingerprintRef.current = recoveryContentFingerprint(acknowledgedSnapshot);
+        initialRecoverySnapshotRef.current = acknowledgedSnapshot;
+      }
+      // A private ACK never replaces the separately proven canonical English.
+      if (englishSaved && submittedSnapshot && result.persistence !== "working-draft") {
+        canonicalEnglishSnapshotRef.current = submittedSnapshot.english;
+        initiallyAbsentEnglishRef.current = false;
+      }
+      recoveryDirtyRef.current = hasNewerEdits || hasUnconfirmedEnglish;
+      setIsDirty(hasNewerEdits || hasUnconfirmedEnglish);
+      const publicationNotice = result.publicationState === "unknown" || result.publicationState === "queue-error"
+        ? " Запись подтверждена, но выпуск на сайт не подтверждён."
+        : result.publicationState === "started" || result.publicationState === "queued"
+          ? " Запрос на выпуск передан; публичный результат проверяется отдельно." : "";
+      const revalidationNotice = result.revalidationState === "unknown"
+        ? " Обновление списка статей не подтверждено." : "";
+      const privateEnglishNotice = privateDraft
+        ? privateDraft.englishWrite === "saved"
+          ? " Английский текст сохранён в рабочем черновике; он не выпущен."
+          : " Предыдущий английский текст сохранён в рабочем черновике; он не выпущен."
+        : "";
+      setSaveNotice((hasNewerEdits
+        ? "Отправленная версия сохранена. Более новые правки оставлены в форме и ещё не сохранены."
+        : hasUnconfirmedEnglish
+          ? "Русская версия сохранена. Ручные английские правки остаются в форме и ещё не подтверждены."
+          : "Статья сохранена.") + privateEnglishNotice + publicationNotice + revalidationNotice);
+      if (latestSnapshot) {
+        const confirmedRecoveryKey = `probpera-editor-${result.receipt.articleId}`;
+        try {
+          persistCurrentArticleRecovery(confirmedRecoveryKey,
+            { ...latestSnapshot, savedAt: Date.now(), reason: "after-save-response" }, null);
+          setRecoveryKey(confirmedRecoveryKey);
+          setRecoverySourceKey(confirmedRecoveryKey);
+          setRecoveryDraftScope(null);
+          setHasRecoveryCopy(true);
+          setDraftStorageError("");
+        } catch {
+          setDraftStorageError("Статья сохранена, но резервная копия в браузере не записана. Более новые правки остаются в открытой форме.");
+        }
+      }
+      return;
+    }
+    const refusedJournal = pendingRecoveryJournalRef.current;
+    if (refusedJournal) {
+      try {
+        const key = articlePendingOperationStorageKey(refusedJournal.actorId, refusedJournal.originRecoveryKey);
+        const latest = latestRecoverySnapshotRef.current;
+        if (!key || !latest) throw new Error("Unavailable refused operation recovery");
+        if (latest) {
+          const serialized = JSON.stringify(withRecoveryCopyOwner(recoverySnapshotWithoutOperation(latest), actorId));
+          persistArticleRecoverySnapshot(window.localStorage, recoveryKey, serialized, recoveryDraftScope, actorId);
+          if (readRecoveryCopy(window.localStorage, recoveryKey, actorId) !== serialized) throw new Error("Unconfirmed recovery copy");
+          if (recoveryKey !== refusedJournal.originRecoveryKey) {
+            persistArticleRecoverySnapshot(window.localStorage, refusedJournal.originRecoveryKey, serialized, refusedJournal.draftScope, actorId);
+            if (readRecoveryCopy(window.localStorage, refusedJournal.originRecoveryKey, actorId) !== serialized) {
+              throw new Error("Unconfirmed original recovery copy");
+            }
+          }
+        }
+        // Every local locator is removed durably before its full tab journal.
+        // On denied writes keep original A/B so reload cannot create an orphan.
+        if (recoveryKey !== refusedJournal.originRecoveryKey) {
+          const aliasKey = articlePendingOperationStorageKey(refusedJournal.actorId, recoveryKey);
+          if (aliasKey) window.sessionStorage.removeItem(aliasKey);
+        }
+        window.sessionStorage.removeItem(key);
+        pendingRecoveryJournalRef.current = null;
+      } catch {
+        setDraftStorageError("Сервер подтвердил отказ до записи, но состояние резервной копии в браузере не обновлено. Введённый текст сохранён в форме.");
+      }
+    }
+    markAuthoredRecoveryDirty();
+    if (result.outcome === "conflict") {
+      saveBlockedRef.current = true;
+      setSaveBlocked(true);
+      setSaveNotice("Версия статьи или перевода изменилась. Запись не начиналась, введённый текст оставлен в форме. Откройте сохранённую версию в новой вкладке для сравнения.");
+    } else if (result.outcome === "dependency-unavailable") {
+      setSaveNotice("Не удалось проверить данные перед сохранением. Запись не начиналась, введённый текст оставлен в форме. Можно повторить сохранение.");
+    } else {
+      const reasons = {
+        validation: "Проверьте обязательные поля статьи и длину текста.",
+        "english-validation": "Проверьте обязательные поля английской версии.",
+        content: "Проверьте содержимое русского оригинала.",
+        "english-content": "Проверьте содержимое английской версии.",
+        media: "Проверьте изображения, галереи и обязательные сведения о них.",
+        permission: "Для этого действия недостаточно прав.",
+        schedule: "Укажите дату и время запланированной публикации.",
+      };
+      setSaveNotice(`Сохранение не выполнено. ${reasons[result.reason]} Введённый текст оставлен в форме.`);
+    }
+  }
+
+  function cloneArticleFormData(source: FormData) {
+    const copy = new FormData();
+    source.forEach((value, key) => copy.append(key, value));
+    return copy;
+  }
+
+  async function saveArticle(formData: FormData) {
+    if (actionRunningRef.current || saveBlockedRef.current || !operationRecoveryReadyRef.current) return;
+    if (readUnavailableRef.current || contentPreservationBlockedRef.current) {
+      submissionInFlightRef.current = false;
+      return;
+    }
+    // Retain this request independently of the live form and later author edits.
+    let operationId: string;
+    try { operationId = window.crypto.randomUUID(); }
+    catch {
+      submissionInFlightRef.current = false;
+      submittedRecoverySnapshotRef.current = null;
+      setSaveNotice("Не удалось подготовить сохранение. Введённый текст оставлен в форме; запись не начиналась.");
+      return;
+    }
+    const frozenFormData = cloneArticleFormData(formData);
+    frozenFormData.set("article_operation_id", operationId);
+    frozenFormData.set("article_result_mode", "receipt");
+    if (actorId) {
+      const origin = recoveryOriginRef.current;
+      const submitted = submittedRecoverySnapshotRef.current;
+      const latest = latestRecoverySnapshotRef.current;
+      const journal = editor && origin && submitted && latest ? createArticlePendingOperation(
+        frozenFormData, recoverySnapshotWithoutOperation(submitted),
+        { ...recoverySnapshotWithoutOperation(latest), savedAt: Date.now(), reason: "before-operation" }, {
+          actorId, originRecoveryKey: origin.key, draftScope: origin.scope,
+          expiresAt: Date.now() + ARTICLE_PENDING_OPERATION_RETENTION_MS,
+        }, editor.schema,
+      ) : null;
+      if (!journal || !latest) {
+        submissionInFlightRef.current = false;
+        submittedRecoverySnapshotRef.current = null;
+        setSaveNotice("Не удалось подготовить полную копию исходного запроса. Введённый текст оставлен в форме; запись не начиналась.");
+        return;
+      }
+      try { persistSessionArticleOperation(journal); }
+      catch {
+        submissionInFlightRef.current = false;
+        submittedRecoverySnapshotRef.current = null;
+        setDraftStorageError("Браузер не подтвердил сохранение исходного запроса. Запись статьи не начиналась; текст оставлен в форме. Разрешите хранилище вкладки и повторите сохранение.");
+        return;
+      }
+      pendingRecoveryJournalRef.current = journal;
+      hydratedOperationRef.current = false;
+      pendingRecoveryNeedsApplyRef.current = false;
+      try { persistCurrentArticleRecovery(recoveryKey, latest, recoveryDraftScope); }
+      catch {
+        setDraftStorageError("Локальная копия недоступна. Полный исходный запрос и текущий текст сохранены в хранилище этой вкладки; результат записи проверяется отдельно.");
+      }
+    }
+    pendingSaveOperationRef.current = {
+      formData: frozenFormData,
+      snapshot: submittedRecoverySnapshotRef.current,
+      context: {
+        operationId,
+        articleId: String(formData.get("id") || "") || null,
+        articleUpdatedAt: String(formData.get("expected_updated_at") || "") || null,
+        englishUpdatedAt: String(formData.get("english_expected_updated_at") || "") || null,
+        workingDraftVersion: Number(formData.get("working_draft_version") || 0),
+      },
+    };
+    actionRunningRef.current = true;
+    submissionInFlightRef.current = true;
+    setSavePending(true);
+    setSaveNotice("Сохранение статьи...");
+    try {
+      const response: unknown = await saveArticleAction(cloneArticleFormData(frozenFormData));
+      acceptArticleSaveResponse(response);
+    } catch (error: unknown) {
+      unstable_rethrow(error);
+      markUnknownSaveOutcome();
+    } finally {
+      actionRunningRef.current = false;
+      submissionInFlightRef.current = false;
+      submittedRecoverySnapshotRef.current = null;
+      setSavePending(false);
+    }
+  }
+
+  async function checkPendingArticleSave() {
+    const pending = pendingSaveOperationRef.current;
+    if (!pending || actionRunningRef.current) return;
+    actionRunningRef.current = true;
+    submissionInFlightRef.current = true;
+    setSavePending(true);
+    setSaveNotice("Проверка результата сохранения...");
+    try {
+      const response: unknown = await checkArticleOperationAction(cloneArticleFormData(pending.formData));
+      acceptArticleSaveResponse(response, true);
+    } catch (error: unknown) {
+      unstable_rethrow(error);
+      markUnknownSaveOutcome();
+    } finally {
+      actionRunningRef.current = false;
+      submissionInFlightRef.current = false;
+      setSavePending(false);
+    }
+  }
 
   return (
     <ArticleEditorShell
       formRef={formRef}
-      action={saveArticleAction}
+      action={saveArticle}
+      onReset={(event) => event.preventDefault()}
       fullscreen={isFullscreen}
       hidden={{
         identity: {
-          id: article.id,
-          expectedUpdatedAt: article.updated_at || "",
-          englishExpectedUpdatedAt: englishTranslation?.updated_at || "",
-          workingDraftVersion: article.working_draft_version || 0,
+          id: savedIdentity.articleId || undefined,
+          expectedUpdatedAt: savedIdentity.articleUpdatedAt || "",
+          englishExpectedUpdatedAt: savedIdentity.englishUpdatedAt || "",
+          workingDraftVersion: savedIdentity.workingDraftVersion,
           previewLocale: activeLocale,
         },
         publication: {
-          previousStatus: article.status || "draft",
+          previousStatus: savedIdentity.canonicalStatus,
           status,
           scheduledAt,
           featured,
@@ -2026,6 +2733,10 @@ export default function ArticleEditor({
         },
       }}
       onSubmit={(event: ReactFormEvent<HTMLFormElement>) => {
+        if (submissionInFlightRef.current || saveBlockedRef.current || readUnavailableRef.current || contentPreservationBlockedRef.current || !operationRecoveryReadyRef.current) {
+          event.preventDefault();
+          return;
+        }
         if (isImageUploadActive) {
           event.preventDefault();
           setImageUploadError(
@@ -2033,24 +2744,24 @@ export default function ArticleEditor({
           );
           return;
         }
+        submittedRecoverySnapshotRef.current = latestRecoverySnapshotRef.current;
         if (recoveryKey) {
           const snapshot = latestRecoverySnapshotRef.current;
           try {
             if (snapshot) {
-              persistArticleRecoverySnapshot(
-                window.localStorage,
+              persistCurrentArticleRecovery(
                 recoveryKey,
-                JSON.stringify({
+                {
                   ...snapshot,
                   savedAt: Date.now(),
                   reason: "before-submit",
-                }),
+                },
                 recoveryDraftScope
               );
               setRecoverySourceKey(recoveryKey);
             }
           } catch {
-            // Server-side saving still proceeds when browser storage is unavailable.
+            setDraftStorageError("Локальная резервная копия не сохранена: браузер запретил запись. Результат отправки статьи проверяется отдельно.");
           }
           if (snapshot) {
             try {
@@ -2063,16 +2774,18 @@ export default function ArticleEditor({
                 )
               );
             } catch {
-              // The local draft itself remains available when session storage is blocked.
+              // This marker is not a receipt and never authorizes automatic cleanup.
             }
           }
         }
         submissionInFlightRef.current = true;
-        window.setTimeout(() => {
-          submissionInFlightRef.current = false;
-        }, 15_000);
       }}
     >
+      <input
+        type="hidden"
+        name="article_result_mode"
+        value="receipt"
+      />
       <input
         type="hidden"
         name="russian_publication_ready"
@@ -2081,19 +2794,28 @@ export default function ArticleEditor({
       <RecoveryController
         locator={{
           entityType: "article",
-          entityId: article.id || null,
+          entityId: savedIdentity.articleId,
           draftScope:
-            article.id || recoveryDraftScope || draftKey?.trim() || "new",
+            savedIdentity.articleId || recoveryDraftScope || draftKey?.trim() || "new",
           localeScope: "bilingual",
-          baseUpdatedAt: article.updated_at || null,
+          baseUpdatedAt: savedIdentity.articleUpdatedAt,
         }}
         snapshot={{ ...recoverySnapshot }}
-        isDirty={isDirty}
-        savedAfterSubmit={saveConfirmed}
-        onRestore={(snapshot) =>
-          applyRecoverySnapshot(snapshot as ArticleRecoverySnapshot)
-        }
+        isDirty={isDirty && (hasAuthoredRecoveryEditsRef.current || pendingRecoveryJournalRef.current !== null)}
+        savedAfterSubmit={false}
+        onRestore={applyRecoverySnapshot}
       />
+
+      {editor && contentPreservationBlocked && (
+        <aside className="editor-save-error" role="alert">
+          <p>Эта версия содержит данные, которые редактор не может сохранить без потерь. Исходные RU/EN оставлены без изменений; редактирование, сохранение, предпросмотр и публикация недоступны.</p>
+          <details>
+            <summary>Исходная копия статьи RU/EN</summary>
+            <textarea aria-label="Исходная копия статьи RU/EN" readOnly rows={12}
+              value={JSON.stringify({ article, englishTranslation: englishTranslation || null, canonicalEnglishTranslation: canonicalEnglishTranslation || null }, null, 2)} />
+          </details>
+        </aside>
+      )}
 
       <TranslationPanel
         model={{
@@ -2109,6 +2831,7 @@ export default function ArticleEditor({
         actions={{ switchLocale: switchEditorLocale }}
       />
 
+      <fieldset disabled={contentPreservationBlocked} style={{ border: 0, margin: 0, minWidth: 0, padding: 0 }}>
       <div className="article-editor">
         <div className="editor-main">
           {activeLocale === "ru" && (
@@ -2162,7 +2885,7 @@ export default function ArticleEditor({
                     setTitle(event.target.value);
                     markRussianSourceChanged();
                   }
-                  setIsDirty(true);
+                  markAuthoredRecoveryDirty();
                 }}
                 placeholder={
                   activeLocale === "en"
@@ -2186,7 +2909,7 @@ export default function ArticleEditor({
                     setSubtitle(event.target.value);
                     markRussianSourceChanged();
                   }
-                  setIsDirty(true);
+                  markAuthoredRecoveryDirty();
                 }}
                 maxLength={360}
                 placeholder={
@@ -2211,7 +2934,7 @@ export default function ArticleEditor({
                     setExcerpt(event.target.value);
                     markRussianSourceChanged();
                   }
-                  setIsDirty(true);
+                  markAuthoredRecoveryDirty();
                 }}
                 maxLength={700}
                 placeholder={
@@ -2293,42 +3016,42 @@ export default function ArticleEditor({
             status={status}
             onStatusChange={(value) => {
               setStatus(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             scheduledAt={scheduledAt}
             onScheduledAtChange={(value) => {
               setScheduledAt(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             featured={featured}
             onFeaturedChange={(value) => {
               setFeatured(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             showOnHomepage={showOnHomepage}
             onShowOnHomepageChange={(value) => {
               setShowOnHomepage(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             pinned={pinned}
             onPinnedChange={(value) => {
               setPinned(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             englishEnabled={englishEnabled}
             onEnglishEnabledChange={(value) => {
               setEnglishEnabled(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             englishStatus={englishStatus}
             onEnglishStatusChange={(value) => {
               setEnglishStatus(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             englishConfirmedCurrentSource={englishConfirmedCurrentSource}
             onEnglishConfirmedCurrentSourceChange={(value) => {
               setEnglishConfirmedCurrentSource(value);
-              setIsDirty(true);
+              markAuthoredRecoveryDirty();
             }}
             englishApprovedAt={englishTranslation?.approved_at}
             canPublish={canPublish}
@@ -2344,10 +3067,13 @@ export default function ArticleEditor({
                 value={categoryId}
                 onChange={(event) => {
                   setCategoryId(event.target.value);
-                  setIsDirty(true);
+                  markAuthoredRecoveryDirty();
                 }}
               >
                 <option value="">Без рубрики</option>
+                {categoryId && !categories.some((category) => category.id === categoryId) && (
+                  <option value={categoryId}>Выбранная рубрика недоступна в списке</option>
+                )}
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>{category.name}</option>
                 ))}
@@ -2372,7 +3098,7 @@ export default function ArticleEditor({
               activeLocale === "en" ? setEnglishCoverAlt : setCoverAlt
             }
             markRussianSourceChanged={markRussianSourceChanged}
-            markDirty={() => setIsDirty(true)}
+            markDirty={() => markAuthoredRecoveryDirty()}
           />
 
           <SeoPanel
@@ -2437,7 +3163,7 @@ export default function ArticleEditor({
               else setOgDescription(value);
             }}
             markRussianSourceChanged={markRussianSourceChanged}
-            markDirty={() => setIsDirty(true)}
+            markDirty={() => markAuthoredRecoveryDirty()}
           />
 
           <ValidationChecklist
@@ -2467,7 +3193,7 @@ export default function ArticleEditor({
                 : setBibliographyText
             }
             markRussianSourceChanged={markRussianSourceChanged}
-            markDirty={() => setIsDirty(true)}
+            markDirty={() => markAuthoredRecoveryDirty()}
           />
         </aside>
       </div>
@@ -2520,7 +3246,7 @@ export default function ArticleEditor({
               .setLink(attributes)
               .run();
           }
-          setIsDirty(true);
+          markAuthoredRecoveryDirty();
         }}
       />
 
@@ -2541,10 +3267,28 @@ export default function ArticleEditor({
         onCancelItem={editorMedia.cancelItem}
         onRetryItem={editorMedia.retryItem}
       />
+      </fieldset>
 
       <footer className="editor-footer">
         <div className="editor-save-state" aria-live="polite">
           <small>{workspaceSaveState}</small>
+          {readUnavailable && <small className="editor-save-error" role="alert">
+            Данные статьи временно недоступны. Текст оставлен в форме; перед сохранением повторите проверку данных.
+          </small>}
+          {saveNotice && <small role="status">{saveNotice}</small>}
+          {savedDestination && <NextLink href={savedDestination} target="_blank" rel="noopener noreferrer" prefetch={false}>
+            {savedDestination.includes("/preview?") ? "Открыть сохранённый предпросмотр в новой вкладке" : "Открыть сохранённую версию в новой вкладке"}
+          </NextLink>}
+          {saveBlocked && (
+            <NextLink
+              href={article.id ? articleEditPath(article.id) : "/articles"}
+              target="_blank"
+              rel="noopener noreferrer"
+              prefetch={false}
+            >
+              {article.id ? "Открыть сохранённую версию в новой вкладке" : "Проверить список статей в новой вкладке"}
+            </NextLink>
+          )}
           {draftStorageError && (
             <small className="editor-save-error" role="alert">
               {draftStorageError}
@@ -2552,6 +3296,26 @@ export default function ArticleEditor({
           )}
         </div>
         <div className="editor-actions">
+          {operationRecoveryError && (
+            <button className="button-secondary" type="button" disabled={savePending}
+              onClick={() => {
+                operationRecoveryErrorRef.current = false;
+                operationRecoveryReadyRef.current = false;
+                setOperationRecoveryAttempt(attempt => attempt + 1);
+              }}>
+              Повторить проверку хранилища
+            </button>
+          )}
+          {hasPendingSaveOperation && (
+            <button
+              className="button-secondary"
+              type="button"
+              onClick={checkPendingArticleSave}
+              disabled={savePending}
+            >
+              Проверить результат сохранения
+            </button>
+          )}
           {hasRecoveryCopy && (
             <button
               className="button-secondary"
@@ -2567,7 +3331,7 @@ export default function ArticleEditor({
             type="submit"
             name="intent"
             value="save"
-            disabled={isImageUploadActive}
+            disabled={isImageUploadActive || savePending || saveBlocked || readUnavailable || contentPreservationBlocked}
           >
             Сохранить черновик
           </button>
@@ -2577,7 +3341,7 @@ export default function ArticleEditor({
             type="submit"
             name="intent"
             value="preview"
-            disabled={isImageUploadActive}
+            disabled={isImageUploadActive || savePending || saveBlocked || readUnavailable || contentPreservationBlocked}
           >
             Сохранить и открыть предпросмотр
           </button>
@@ -2589,7 +3353,7 @@ export default function ArticleEditor({
                 type="submit"
                 name="intent"
                 value={russianOnlyPublication ? "publish-ru" : "publish"}
-                disabled={!publicationActionReady || isImageUploadActive}
+                disabled={!publicationActionReady || isImageUploadActive || savePending || saveBlocked || readUnavailable || contentPreservationBlocked}
                 title={
                   publicationActionReady
                     ? publicationActionLabel
@@ -2604,7 +3368,7 @@ export default function ArticleEditor({
                   type="submit"
                   name="intent"
                   value="publish"
-                  disabled={!publicationReady || isImageUploadActive}
+                  disabled={!publicationReady || isImageUploadActive || savePending || saveBlocked || readUnavailable || contentPreservationBlocked}
                   title="Обе версии должны пройти редакционный контроль"
                 >
                   {status === "scheduled"
@@ -2620,7 +3384,7 @@ export default function ArticleEditor({
                     type="submit"
                     name="intent"
                     value={russianOnlyPublication ? "publish-ru" : "publish"}
-                    disabled={isImageUploadActive}
+                    disabled={isImageUploadActive || savePending || saveBlocked || readUnavailable || contentPreservationBlocked}
                     onClick={(event) => {
                       const form = event.currentTarget.form;
                       const overrideInput = form?.querySelector(

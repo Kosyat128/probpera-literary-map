@@ -108,4 +108,37 @@ describe("article working-draft promotion RPC client", () => {
       operation: "save_article_bundle", code: "unknown",
     });
   });
+  const validReply = { article_id: articleId, article_updated_at: "2026-09-02T10:05:00.123456+00:00",
+    english_updated_at: "2026-09-02T10:04:00.654321+00:00", homepage_replaced: 2 };
+  it.each([validReply, [validReply]])("preserves the exact typed SQL receipt and microsecond bytes %#", async data => {
+    const rpc = vi.fn().mockResolvedValue({ data, error: null });
+    expect(await saveArticleBundleRpc({ rpc } as never, bundleInput)).toEqual({ articleId,
+      articleUpdatedAt: validReply.article_updated_at, englishUpdatedAt: validReply.english_updated_at,
+      homepageReplaced: 2 });
+    expect(rpc).toHaveBeenCalledTimes(1);
+  });
+  it.each([[], [validReply, validReply], { ...validReply, article_id: [articleId] },
+    { ...validReply, article_id: "PRIVATE_TOKEN=do_not_render" }, { ...validReply, article_updated_at: "invalid" },
+    { ...validReply, english_updated_at: false }, { ...validReply, english_updated_at: 0 },
+    { ...validReply, english_updated_at: undefined }, { ...validReply, homepage_replaced: "2" },
+    { ...validReply, homepage_replaced: null }, { ...validReply, homepage_replaced: -1 },
+    { ...validReply, homepage_replaced: 1.5 }, { ...validReply, homepage_replaced: 2_147_483_648 },
+    { ...validReply, undocumented: "PRIVATE_TOKEN=do_not_render" },
+  ])("refuses damaged SQL receipt without coercing it into acknowledgement %#", async data => {
+    const rpc = vi.fn().mockResolvedValue({ data, error: null });
+    await expect(saveArticleBundleRpc({ rpc } as never, bundleInput)).rejects.toThrow("неполный результат");
+    expect(rpc).toHaveBeenCalledTimes(1);
+  });
+  it.each(["save", "promote"])("refuses a receipt for another article on %s", async operation => {
+    const rpc = vi.fn().mockResolvedValue({ data: [{ ...validReply, article_id: "22222222-2222-4222-8222-222222222222" }], error: null });
+    const run = operation === "save" ? saveArticleBundleRpc({ rpc } as never, bundleInput)
+      : promoteArticleWorkingDraftRpc({ rpc } as never, { ...bundleInput, expectedWorkingDraftVersion: 4 });
+    await expect(run).rejects.toThrow("неверный идентификатор"); expect(rpc).toHaveBeenCalledTimes(1);
+  });
+  it("accepts new-article identity and case-equivalent existing identity without changing original receipt bytes", async () => {
+    const uuid = "abcdef00-1111-4111-8111-000000000001";
+    const rpc = vi.fn().mockResolvedValue({ data: [{ ...validReply, article_id: uuid.toUpperCase() }], error: null });
+    expect((await saveArticleBundleRpc({ rpc } as never, { ...bundleInput, articleId: null })).articleId).toBe(uuid.toUpperCase());
+    expect((await saveArticleBundleRpc({ rpc } as never, { ...bundleInput, articleId: uuid })).articleId).toBe(uuid.toUpperCase());
+  });
 });

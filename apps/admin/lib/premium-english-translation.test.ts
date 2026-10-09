@@ -408,10 +408,26 @@ describe("premium English translation", () => {
       testPassed: true,
       latencyMs: 47,
       requestId: "probe-request",
+      reviewerModel: "@cf/openai/gpt-oss-120b",
       errorCode: null,
     });
-    expect(run).toHaveBeenCalledTimes(1);
+    expect(run).toHaveBeenCalledTimes(2);
+    expect(run.mock.calls.map((call) => call[0])).toEqual([
+      "@cf/google/gemma-4-26b-a4b-it", "@cf/openai/gpt-oss-120b",
+    ]);
     expect(JSON.stringify(run.mock.calls[0]?.[1])).toContain('"const":"ok"');
+    expect(JSON.stringify(run.mock.calls[1]?.[1])).toContain('"const":"ok"');
+  });
+
+  it("does not pass the Workers self-test when the reviewer model fails", async () => {
+    const run = vi.fn()
+      .mockResolvedValueOnce({ id: "primary-ok", response: { probe: "ok" } })
+      .mockRejectedValueOnce(new Error("review request failed"));
+    const result = await premiumTranslationSelfTest({ provider: "cloudflare", aiBinding: { run } });
+    expect(run.mock.calls.map((call) => call[0])).toEqual([
+      "@cf/google/gemma-4-26b-a4b-it", "@cf/openai/gpt-oss-120b",
+    ]);
+    expect(result).toMatchObject({ testPassed: false, reviewerModel: null, errorCode: "provider_request_failed" });
   });
 
   it("fails closed without making a request when the binding is absent", async () => {

@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-import { formatDate } from "@/lib/format";
+import { formatDate, safeCount } from "@/lib/format";
+import { adminReadMessage, isReadRecord, readAdminList } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 import { redirect } from "@/lib/navigation";
 import {
   COMMENTS_CATALOG_PAGE_SIZE,
@@ -12,6 +14,22 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { bulkModerateCommentsAction, moderateCommentAction } from "./actions";
 
 export const metadata = { title: "Комментарии" };
+
+type CommentRead = {
+  id: string; article_slug: string; guest_name: string | null; body: string;
+  status: "published" | "hidden" | "pending"; created_at: string; updated_at: string;
+  profiles: { display_name: string } | { display_name: string }[] | null;
+};
+function validCommentRead(row: CommentRead) {
+  const profile = (value: unknown) => isReadRecord(value) && typeof value.display_name === "string";
+  return typeof row.id === "string" && /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/iu.test(row.id)
+    && typeof row.article_slug === "string" && typeof row.body === "string"
+    && (row.guest_name === null || typeof row.guest_name === "string")
+    && ["published", "hidden", "pending"].includes(row.status)
+    && [row.created_at, row.updated_at].every(value => typeof value === "string" && Number.isFinite(Date.parse(value)))
+    && (row.profiles === null || profile(row.profiles)
+      || Array.isArray(row.profiles) && row.profiles.length <= 1 && row.profiles.every(profile));
+}
 
 export default async function CommentsPage({
   searchParams,
@@ -29,11 +47,18 @@ export default async function CommentsPage({
     .order("id", { ascending: false });
   if (catalog.status) request = request.eq("status", catalog.status);
   if (catalog.orFilter) request = request.or(catalog.orFilter);
-  const { data: commentsResult, count, error } = await request.range(catalog.from, catalog.to);
-  const comments = commentsResult || [];
-  const totalCount = count || 0;
-  const totalPages = Math.max(1, Math.ceil(totalCount / COMMENTS_CATALOG_PAGE_SIZE));
-  if (!error && catalog.page > totalPages) {
+  const [response] = await Promise.allSettled([request.range(catalog.from, catalog.to)]);
+  const commentsRead = readAdminList<CommentRead>(response, validCommentRead);
+  const comments = commentsRead.status === "success" ? commentsRead.data : [];
+  const totalCount = safeCount(response.status === "fulfilled" ? response.value : null);
+  const totalPages = totalCount === null ? null : Math.max(1, Math.ceil(totalCount / COMMENTS_CATALOG_PAGE_SIZE));
+  // The existing moderation action accepts an ISO timestamp with a timezone.
+  // Keep other readable values out of mutation forms without rewriting them.
+  const versionPattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/u;
+  const versionsSupported = comments.every(comment => versionPattern.test(comment.updated_at));
+  const canModerate = commentsRead.status === "success" && totalCount !== null && versionsSupported;
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}${commentsCatalogHref(catalog, catalog.page)}`;
+  if (canModerate && totalPages !== null && catalog.page > totalPages) {
     redirect(commentsCatalogHref(catalog, totalPages));
   }
 
@@ -49,8 +74,8 @@ export default async function CommentsPage({
           </p>
         </div>
       </header>
-      {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
-      {query.saved && <p className="form-message form-success">Статус комментария сохранён.</p>}
+      {query.error && <p className="form-message form-error" role="alert">Не удалось подтвердить изменение комментария. Проверьте текущие данные перед повтором.</p>}
+      {query.saved && <p className="form-message">Результат изменения не подтверждён параметрами ссылки. Проверьте текущие данные.</p>}
       <section className="panel">
         <form className="toolbar">
           <input
@@ -71,9 +96,15 @@ export default async function CommentsPage({
           <button className="button-secondary" type="submit">Применить</button>
         </form>
         <p className="catalog-summary">
-          Найдено комментариев: <strong>{totalCount.toLocaleString("ru-RU")}</strong>
+          Найдено комментариев: <strong>{totalCount === null ? "Недоступно" : totalCount.toLocaleString("ru-RU")}</strong>
         </p>
-        {comments.length > 0 && (
+        {commentsRead.status === "success" && totalCount === null && <p className="form-message form-error" role="alert">
+          Не удалось проверить количество комментариев. <a href={retryHref}>Повторить загрузку</a>
+        </p>}
+        {commentsRead.status === "success" && !versionsSupported && <p className="form-message form-error" role="alert">
+          Версия комментария не позволяет безопасно изменить статус. <a href={retryHref}>Повторить загрузку</a>
+        </p>}
+        {canModerate && comments.length > 0 && (
           <form id="bulk-comment-form" action={bulkModerateCommentsAction} className="toolbar">
             <input type="hidden" name="catalog_q" value={catalog.term} />
             <input type="hidden" name="catalog_status" value={catalog.status} />
@@ -85,12 +116,14 @@ export default async function CommentsPage({
             <button className="button-secondary" type="submit">Применить к выбранным</button>
           </form>
         )}
-        {error ? (
+        {commentsRead.status === "failed" ? (
           <p className="form-message form-error" role="alert">
-            Не удалось загрузить комментарии. Обновите страницу или повторите позже.
+            {adminReadMessage(commentsRead.issue)} <a href={retryHref}>Повторить загрузку</a>
           </p>
         ) : comments.length === 0 ? (
-          <div className="empty-state"><p>В этом разделе пока нет комментариев.</p></div>
+          <div className={totalCount === null ? undefined : "empty-state"}><p>{totalCount === null
+            ? "На текущей странице комментариев нет. Общее количество комментариев неизвестно."
+            : "В этом разделе пока нет комментариев."}</p></div>
         ) : (
           <table className="data-table">
             <thead><tr><th scope="col">Выбор</th><th>Читатель и текст</th><th>Материал</th><th>Дата</th><th>Действие</th></tr></thead>
@@ -103,13 +136,13 @@ export default async function CommentsPage({
                 return (
                   <tr key={comment.id}>
                     <td>
-                      <input
+                      {canModerate && <input
                         form="bulk-comment-form"
                         type="checkbox"
                         name="selected_comment"
                         value={`${comment.id}|${comment.updated_at}`}
                         aria-label={`Выбрать комментарий ${profile?.display_name || comment.guest_name || "гостя"}`}
-                      />
+                      />}
                     </td>
                     <td className="data-title">
                       <strong>{profile?.display_name || comment.guest_name || "Гость"}</strong>
@@ -118,7 +151,7 @@ export default async function CommentsPage({
                     <td>{comment.article_slug}</td>
                     <td>{formatDate(comment.created_at, true)}</td>
                     <td>
-                      <form action={moderateCommentAction}>
+                      {canModerate ? <form action={moderateCommentAction}>
                         <input type="hidden" name="id" value={comment.id} />
                         <input type="hidden" name="expected_updated_at" value={comment.updated_at} />
                         <input type="hidden" name="catalog_q" value={catalog.term} />
@@ -128,7 +161,7 @@ export default async function CommentsPage({
                         <button className="button-secondary" type="submit">
                           {comment.status === "hidden" ? "Вернуть" : "Скрыть"}
                         </button>
-                      </form>
+                      </form> : <span>Изменение статуса недоступно до проверки данных.</span>}
                     </td>
                   </tr>
                 );
@@ -136,7 +169,7 @@ export default async function CommentsPage({
             </tbody>
           </table>
         )}
-        {!error && totalPages > 1 && (
+        {canModerate && totalPages !== null && totalPages > 1 && (
           <nav className="pagination" aria-label="Страницы комментариев">
             {catalog.page > 1 ? (
               <Link href={commentsCatalogHref(catalog, catalog.page - 1)}>← Назад</Link>

@@ -1,0 +1,378 @@
+diff --git a/scripts/lib/literary-news-media.test.mjs b/scripts/lib/literary-news-media.test.mjs
+index f686937a9494ffa4a798b990445b9814a339978b..bcd5fc5585900c8d04e29cb2e7171c6234227d61 100644
+--- a/scripts/lib/literary-news-media.test.mjs
++++ b/scripts/lib/literary-news-media.test.mjs
+@@ -87,7 +87,11 @@ describe("bounded media and destination rights",()=>{
+     f.asset.credit="Автор "+"длинная атрибуция ".repeat(65);
+     const overflow=await prepareNewsPost(item,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
+     expect(overflow.media).toBeNull();expect(overflow.fallbackReason).toBe("required_credit_or_caption_exceeds_limit");
+-    expect(overflow.payload.text).toContain(item.summary.ru);expect(overflow.payload.text).toContain(item.source.url);
++    expect(overflow.payload.text).toContain(item.summary.ru);
++    const links=overflow.payload.entities.filter(entity=>entity.type==="text_link");
++    expect(links.map(entity=>entity.url)).toEqual([item.source.url,"https://probpera.ru/#literary-news"]);
++    expect(overflow.payload.text.slice(links[0].offset,links[0].offset+links[0].length)).toBe(item.source.name);
++    expect(overflow.payload.text.slice(links[1].offset,links[1].offset+links[1].length)).toBe("Литературная повестка «Пробы пера»");
+   });
+   it("keeps full facts with native source/brand links when verbose URLs would overflow a photo caption",async()=>{
+     const f=await fixture();
+diff --git a/scripts/lib/literary-news-social.mjs b/scripts/lib/literary-news-social.mjs
+index 2eb4d9d8773c7ca5b86ea2e41a153a1933dd2e02..614c9f6c5db2de86120919bba9d5da2cf43aeae7 100644
+--- a/scripts/lib/literary-news-social.mjs
++++ b/scripts/lib/literary-news-social.mjs
+@@ -54,15 +54,21 @@ export async function newsSemanticRevision(item) {
+   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
+   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
+ }
+-function telegramPhotoCaption({ title, summary, dateLine, source, credit }) {
+-  let caption = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: `;
++function telegramNewsText({ title, summary, dateLine, source }) {
++  let text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: `;
++  // Telegram offsets use UTF-16 units, matching JS string.length/slice. Build
++  // entities against the exact final text, including emoji before the footer.
+   const entities = [{ type: "bold", offset: 0, length: title.length },
+-    { type: "text_link", offset: caption.length, length: source.name.length, url: source.url }];
+-  caption += `${source.name}\n\n`;
++    { type: "text_link", offset: text.length, length: source.name.length, url: source.url }];
++  text += `${source.name}\n\n`;
+   const brand = "Литературная повестка «Пробы пера»";
+-  entities.push({ type: "text_link", offset: caption.length, length: brand.length, url: NEWS_SECTION_URL });
+-  caption += `${brand}\n\nИзображение: ${credit}`;
+-  return { caption, caption_entities: entities };
++  entities.push({ type: "text_link", offset: text.length, length: brand.length, url: NEWS_SECTION_URL });
++  text += brand;
++  return { text, entities };
++}
++function telegramPhotoCaption({ credit, ...fields }) {
++  const { text, entities } = telegramNewsText(fields);
++  return { caption: `${text}\n\nИзображение: ${credit}`, caption_entities: entities };
+ }
+ /** Exact native payload shared by preview and dispatch. No source HTML or invented details. */
+ export async function prepareNewsPost(item, snapshot, platform, { destination, mediaOptions } = {}) {
+@@ -73,10 +79,11 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
+   const dateLine = dateLabel ? `${dateLabel}: ${new Intl.DateTimeFormat("ru-RU", { timeZone: "UTC", dateStyle: "long" })
+     .format(new Date(`${item.eventDate}T12:00:00Z`))}` : null;
+   const text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\n${NEWS_SECTION_URL}`;
++  const telegramText = platform === "telegram" ? telegramNewsText({ title, summary, dateLine, source: item.source }) : null;
+   // Never cut a title, negation, attribution or URL. An oversized record is isolated.
+-  if (text.length > (platform === "telegram" ? 4096 : 16000)) throw new Error("post_text_too_long");
++  if ((telegramText?.text ?? text).length > (platform === "telegram" ? 4096 : 16000)) throw new Error("post_text_too_long");
+   let payload = platform === "telegram"
+-    ? { text, entities: [{ type: "bold", offset: 0, length: title.length }], link_preview_options: { is_disabled: true } }
++    ? { ...telegramText, link_preview_options: { is_disabled: true } }
+     : { message: text, attachments: "", from_group: 1, close_comments: 0 };
+   let { media, reason: fallbackReason } = await selectNewsMedia(item.id, destination, mediaOptions);
+   const resolution = mediaOptions?.resolutions?.[item.id];
+@@ -93,7 +100,9 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
+   }
+   const textRevision = await newsSemanticRevision(item);
+   // A template edit must update an already sent post at its existing remote ID.
+-  const formatRevision = item.kind === "news" ? "news-without-event-date-v1" : undefined;
++  const formatRevision = platform === "telegram"
++    ? item.kind === "news" ? "news-without-event-date-v1+telegram-footer-links-v1" : "telegram-footer-links-v1"
++    : item.kind === "news" ? "news-without-event-date-v1" : undefined;
+   const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision, formatRevision }) : textRevision;
+   // The durable identity is unchanged. A new asset or credit creates an edit revision.
+   const revision = media ? await newsSocialPayloadDigest({ textRevision: messageRevision, media: {
+@@ -287,6 +296,21 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
+         // replace their own image/credit while keeping the same remote identity.
+         if (prior?.remoteId && prior.prepared?.profile === "literary-news-text-v1" && prepared.media)
+           prepared = await prepareNewsPost(item,feed.snapshot,destination.platform);
++        // A format-version bump is not a reason to edit an already acknowledged
++        // photo whose exact Telegram payload and full media descriptor match.
++        // Preserve its actual receipt; do not manufacture a new acknowledgement
++        // or provoke Telegram's unchanged-message rejection.
++        if (destination.platform === "telegram" && prior?.status === "sent_current"
++          && typeof prior.remoteId === "string" && /^[1-9]\d{0,15}$/.test(prior.remoteId) && Number.isSafeInteger(Number(prior.remoteId))
++          && prior.remoteMediaKind === "photo" && prior.prepared?.profile === "literary-news-photo-v1"
++          && prepared.profile === "literary-news-photo-v1" && prior.prepared.media && prepared.media
++          && prior.prepared.formatRevision !== prepared.formatRevision
++          && typeof prior.acknowledgedRevision === "string" && /^[a-f0-9]{64}$/.test(prior.acknowledgedRevision)
++          && prior.acknowledgedRevision === prior.desiredRevision && prior.prepared.revision === prior.desiredRevision
++          && prior.prepared.textRevision === prepared.textRevision
++          && prior.prepared.payloadSha256 === prepared.payloadSha256
++          && prior.prepared.payload && await newsSocialPayloadDigest(prior.prepared.payload) === prepared.payloadSha256
++          && sameWithdrawal(prior.prepared.media, prepared.media)) return null;
+         if (prior?.remoteId && prior.prepared?.media && prepared.media
+           && prior.prepared.textRevision === prepared.textRevision
+           && prior.prepared.formatRevision === prepared.formatRevision
+diff --git a/scripts/lib/literary-news-social.test.mjs b/scripts/lib/literary-news-social.test.mjs
+index 1175614a4bf8412e0037281c48b5b2063ecd1ded..0301a3dc39819f35d698f37912c64a49641f5536 100644
+--- a/scripts/lib/literary-news-social.test.mjs
++++ b/scripts/lib/literary-news-social.test.mjs
+@@ -356,7 +356,7 @@ describe("native prepared text and validated transport receipts", () => {
+   it("canonical payload checks ignore JSON object ordering but reject changed values", async () => {
+     const prepared=await prepareNewsPost(item,(await completeFeed()).snapshot,"telegram");
+     const reordered={link_preview_options:prepared.payload.link_preview_options,
+-      entities:prepared.payload.entities.map(({type,length,offset})=>({offset,length,type})),text:prepared.payload.text};
++      entities:prepared.payload.entities.map(entity=>Object.fromEntries(Object.entries(entity).reverse())),text:prepared.payload.text};
+     expect(await newsSocialPayloadDigest(reordered)).toBe(prepared.payloadSha256);
+     const fetchImpl=vi.fn();
+     const transport=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl});
+@@ -368,8 +368,10 @@ describe("native prepared text and validated transport receipts", () => {
+     const prepared = await prepareNewsPost({ ...item, title: { ru: "📚 A & B: «Часть 10»", en: "A & B" } }, (await completeFeed()).snapshot, "telegram");
+     expect(prepared.payload.entities[0].length).toBe("📚 A & B: «Часть 10»".length);
+     expect(prepared.payload.link_preview_options.is_disabled).toBe(true);
+-    expect(prepared.payload.text).toContain(item.source.url);
+-    expect(prepared.payload.text).toContain("https://probpera.ru/#literary-news");
++    const links=prepared.payload.entities.filter(entity=>entity.type==="text_link");
++    expect(links.map(entity=>entity.url)).toEqual([item.source.url,"https://probpera.ru/#literary-news"]);
++    expect(prepared.payload.text.slice(links[0].offset,links[0].offset+links[0].length)).toBe(item.source.name);
++    expect(prepared.payload.text.slice(links[1].offset,links[1].offset+links[1].length)).toBe("Литературная повестка «Пробы пера»");
+   });
+   it("shadow cannot call any external write method", async () => {
+     const fetchImpl = vi.fn();
+diff --git a/scripts/lib/literary-news-telegram-footer.test.mjs b/scripts/lib/literary-news-telegram-footer.test.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..ee6071767b7aec5ab1c26295a4f5e4237853612a
+--- /dev/null
++++ b/scripts/lib/literary-news-telegram-footer.test.mjs
+@@ -0,0 +1,215 @@
++import { describe, expect, it, vi } from 'vitest';
++import sharp from 'sharp';
++import { normalizeNewsMedia, mediaByteHash } from './literary-news-media.mjs';
++import { prepareNewsPost, reconcileNewsSnapshot, newsPostKey, newsSemanticRevision,
++  newsSocialPayloadDigest, NEWS_SECTION_URL } from './literary-news-social.mjs';
++import { createNewsSocialTransport } from './literary-news-social-transport.mjs';
++import { buildPublishedNewsFeed } from './literary-news-publication.mjs';
++import { pendingNewsSourceState } from './literary-news-state.mjs';
++
++const now = new Date('2026-09-30T10:00:00Z');
++const destination = { platform: 'telegram', id: '-100123', mode: 'on' };
++const snapshot = { id: 'footer-fixture', release: 'a'.repeat(40) };
++const brand = 'Литературная повестка «Пробы пера»';
++const item = { id: 'footer-fixture', eventKey: 'footer-fixture', category: 'releases', kind: 'news',
++  eventDate: '2026-09-30', publishedAt: '2026-09-30T09:00:00Z', verifiedAt: now.toISOString(),
++  verification: 'confirmed', title: { ru: '📚 Новая книга 😀', en: 'A new book' },
++  summary: { ru: 'Издатель сообщил о книге. 👩🏽‍💻 Читатели увидят её осенью.', en: 'The publisher announced a book.' },
++  source: { name: 'ActuaLitté', url: 'https://publisher.example/literary-news', language: 'fr' } };
++
++async function mediaFixture(news, credit = 'Synthetic image © Fixture') {
++  const source = await sharp({ create: { width: 480, height: 640, channels: 3, background: '#8f7788' } }).png().toBuffer();
++  const normalized = await normalizeNewsMedia(source, 'image/png');
++  const asset = { id: 'footer-image', status: 'approved', newsIds: [news.id],
++    sourceUrl: 'https://publisher.example/photo.png', sourceSha256: mediaByteHash(source), subject: 'book',
++    entityEvidence: 'Synthetic fixture only; never a real book cover.', author: 'Fixture', rightsholder: 'Fixture', credit,
++    license: 'owned', licenseEvidenceUrl: 'https://publisher.example/fixture-license', licenseEvidenceSha256: 'a'.repeat(64),
++    checkMethod: 'ownership-record', checkedAt: '2026-09-30T00:00:00Z', validUntil: '2026-10-20T00:00:00Z',
++    transformations: { resize: true, metadataRemoval: true, reencode: true, crop: false },
++    permissions: [{ platform: 'telegram', destinationId: destination.id, publish: true, providerProcessing: true,
++      evidenceUrl: 'https://publisher.example/fixture-license' }], derivative: normalized.descriptor };
++  return { registry: { assets: [asset], downloadHosts: ['publisher.example'] }, now, readBytes: async () => normalized.bytes };
++}
++
++function assertFooter(prepared, news) {
++  const body = prepared.payload.caption ?? prepared.payload.text;
++  const entities = prepared.payload.caption_entities ?? prepared.payload.entities;
++  const links = entities.filter(entity => entity.type === 'text_link');
++  expect(links).toHaveLength(2);
++  expect(links.map(entity => entity.url)).toEqual([news.source.url, NEWS_SECTION_URL]);
++  expect(body.slice(links[0].offset, links[0].offset + links[0].length)).toBe(news.source.name);
++  expect(body.slice(links[1].offset, links[1].offset + links[1].length)).toBe(brand);
++  expect(links[0].length).toBe(Buffer.from(news.source.name, 'utf16le').length / 2);
++  expect(links[1].length).toBe(Buffer.from(brand, 'utf16le').length / 2);
++  expect(body.slice(links[0].offset - 'Источник: '.length, links[0].offset)).toBe('Источник: ');
++  expect(body.slice(links[0].offset + links[0].length, links[1].offset)).toBe('\n\n');
++  expect(body).toContain(news.title.ru);
++  expect(body).toContain(news.summary.ru);
++  expect(body).not.toContain(news.source.url);
++  expect(body).not.toContain(NEWS_SECTION_URL);
++  const prefix = body.lastIndexOf('Источник: ');
++  expect(entities.every(entity => entity.offset + entity.length <= prefix || entity.offset >= prefix + 'Источник: '.length)).toBe(true);
++  expect(entities[0]).toMatchObject({ type: 'bold', offset: 0, length: Buffer.from(news.title.ru, 'utf16le').length / 2 });
++}
++
++function memoryStore() {
++  const rows = new Map(); let sequence = 0;
++  return { async read(key) { return structuredClone(rows.get(key) ?? { id: null, state: null }); },
++    async list(prefix) { return [...rows].filter(([key]) => key.startsWith(prefix)).map(([, row]) => structuredClone(row)); },
++    async compareAppend(key, expected, state) {
++      const previous = await this.read(key);
++      if (previous.id !== expected) return { applied: false, ...previous };
++      const next = { id: ++sequence, state: structuredClone(state) }; rows.set(key, next);
++      return { applied: true, ...structuredClone(next) };
++    }, async seed(key, state) { return this.compareAppend(key, (await this.read(key)).id, state); } };
++}
++
++async function legacyPhotoFixture(kind = 'news') {
++  const news = { ...item, kind }, store = memoryStore(), mediaOptions = await mediaFixture(news);
++  const feed = await buildPublishedNewsFeed({ records: [news], withdrawals: [], current: now,
++    release: snapshot.release, timeZone: 'Europe/Moscow', state: pendingNewsSourceState([]) });
++  await reconcileNewsSnapshot(store, feed, [destination], now, { mediaOptions });
++  const key = newsPostKey(news.id, destination), original = (await store.read(key)).state;
++  const formatRevision = kind === 'news' ? 'news-without-event-date-v1' : undefined;
++  const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision: original.prepared.textRevision, formatRevision })
++    : original.prepared.textRevision;
++  const media = original.prepared.media;
++  const revision = await newsSocialPayloadDigest({ textRevision: messageRevision, media: {
++    assetId: media.assetId, sha256: media.sha256, profile: media.profile, credit: media.credit,
++    licenseEvidenceSha256: media.licenseEvidenceSha256, destination: media.destination,
++  } });
++  const state = { ...original, status: 'sent_current', remoteId: '17', remoteMediaKind: 'photo',
++    remoteUrl: 'https://t.me/c/123/17', acknowledgedRevision: revision, desiredRevision: revision,
++    mediaCache: { platform: 'telegram', destinationId: destination.id, providerAccountId: '123',
++      sha256: media.sha256, fileId: 'fixture_file_id' },
++    prepared: { ...original.prepared, formatRevision, revision } };
++  await store.seed(key, state);
++  return { news, store, mediaOptions, feed, key, state };
++}
++
++describe('Telegram complete footer links from the same native template', () => {
++  it.each(['news', 'announcement', 'calendar'].flatMap(kind => [false, true].flatMap(photo =>
++    [false, true].map(emojiSource => [kind, photo, emojiSource]))))(
++    'keeps whole source/brand anchors (kind=%s, photo=%s, emojiSource=%s)', async (kind, photo, emojiSource) => {
++      const news = { ...item, kind, source: { ...item.source, name: emojiSource ? 'ActuaLitté 📖' : 'ActuaLitté' } };
++      const mediaOptions = photo ? await mediaFixture(news) : { registry: { assets: [], downloadHosts: [] }, now };
++      const prepared = await prepareNewsPost(news, snapshot, 'telegram', { destination, mediaOptions });
++      expect(Boolean(prepared.media)).toBe(photo);
++      assertFooter(prepared, news);
++      expect(prepared.textRevision).toBe(await newsSemanticRevision(news));
++      const reloaded = JSON.parse(JSON.stringify(prepared));
++      expect(await newsSocialPayloadDigest(reloaded.payload)).toBe(prepared.payloadSha256);
++    });
++
++  it('keeps the same complete footer when a photo credit requires text fallback', async () => {
++    const mediaOptions = await mediaFixture(item, 'Synthetic attribution '.repeat(50));
++    const prepared = await prepareNewsPost(item, snapshot, 'telegram', { destination, mediaOptions });
++    expect(prepared.media).toBeNull();
++    expect(prepared.fallbackReason).toBe('required_credit_or_caption_exceeds_limit');
++    assertFooter(prepared, item);
++  });
++
++  it.each([null, '17'])('preserves complete links in actual send/edit JSON (remote=%s)', async remoteId => {
++    const prepared = await prepareNewsPost(item, snapshot, 'telegram', { destination,
++      mediaOptions: { registry: { assets: [], downloadHosts: [] }, now } });
++    const fetchImpl = vi.fn(async (url, options) => {
++      expect(new URL(url).pathname.endsWith(remoteId ? '/editMessageText' : '/sendMessage')).toBe(true);
++      const wire = JSON.parse(options.body);
++      assertFooter({ payload: wire }, item);
++      expect(wire.chat_id).toBe(destination.id);
++      if (remoteId) expect(wire.message_id).toBe(17);
++      return Response.json({ ok: true, result: { message_id: remoteId ? 17 : 18, chat: { id: Number(destination.id) } } });
++    });
++    const transport = createNewsSocialTransport({ mode: 'live', telegramToken: '123:fixture_token', fetchImpl });
++    expect(await transport.send({ destination, prepared, remoteId })).toMatchObject({ kind: 'accepted' });
++    expect(fetchImpl).toHaveBeenCalledTimes(1);
++  });
++
++  it.each(['news', 'announcement', 'calendar'])('replaces a stored legacy %s footer through the same remote identity', async kind => {
++    const news = { ...item, kind };
++    const store = memoryStore();
++    const feed = await buildPublishedNewsFeed({ records: [news], withdrawals: [], current: now,
++      release: snapshot.release, timeZone: 'Europe/Moscow', state: pendingNewsSourceState([]) });
++    const mediaOptions = { registry: { assets: [], downloadHosts: [] }, now };
++    await reconcileNewsSnapshot(store, feed, [destination], now, { mediaOptions });
++    const key = newsPostKey(item.id, destination);
++    const original = (await store.read(key)).state;
++    const legacyFormat = kind === 'news' ? 'news-without-event-date-v1' : undefined;
++    const legacyRevision = legacyFormat
++      ? await newsSocialPayloadDigest({ textRevision: original.prepared.textRevision, formatRevision: legacyFormat })
++      : original.prepared.textRevision;
++    const legacyPayload = { text: `${item.title.ru}\n\n${item.summary.ru}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\n${brand}\n${NEWS_SECTION_URL}`,
++      entities: [{ type: 'bold', offset: 0, length: item.title.ru.length }], link_preview_options: { is_disabled: true } };
++    await store.seed(key, { ...original, status: 'sent_current', remoteId: '17', remoteMediaKind: 'text',
++      remoteUrl: 'https://t.me/c/123/17', lastSentRevision: legacyRevision, desiredRevision: legacyRevision,
++      prepared: { ...original.prepared, formatRevision: legacyFormat, revision: legacyRevision,
++        payload: legacyPayload, payloadSha256: await newsSocialPayloadDigest(legacyPayload) } });
++    await reconcileNewsSnapshot(store, feed, [destination], now, { mediaOptions });
++    const corrected = (await store.read(key)).state;
++    expect(corrected.status).toBe('correction_pending');
++    expect(corrected.remoteId).toBe('17');
++    expect(corrected.remoteUrl).toBe('https://t.me/c/123/17');
++    expect(corrected.originalAdmission).toBe(original.originalAdmission);
++    expect(await store.list('post:')).toHaveLength(1);
++    assertFooter(corrected.prepared, news);
++    const stable = await store.read(key);
++    await reconcileNewsSnapshot(store, feed, [destination], now, { mediaOptions });
++    expect(await store.read(key)).toEqual(stable);
++  });
++
++  it.each(['news', 'announcement', 'calendar'])('retains an acknowledged legacy %s photo whose exact payload/media already match', async kind => {
++    const f = await legacyPhotoFixture(kind);
++    assertFooter(f.state.prepared, f.news);
++    const receipt = await f.store.read(f.key);
++    await reconcileNewsSnapshot(f.store, f.feed, [destination], now, { mediaOptions: f.mediaOptions });
++    expect(await f.store.read(f.key)).toEqual(receipt);
++    const send = vi.fn(), transport = { send };
++    const { dispatchNewsJob } = await import('./literary-news-social.mjs');
++    expect(await dispatchNewsJob({ store: f.store, key: f.key, transport, now: () => now })).toEqual({ status: 'sent_current' });
++    expect(send).not.toHaveBeenCalled();
++    expect(await f.store.list('post:')).toHaveLength(1);
++  });
++
++  it.each(['missingReceipt', 'changedPayload', 'changedMedia', 'missingPhotoKind'])('does not infer a confirmed unchanged photo from %s', async fault => {
++    const f = await legacyPhotoFixture();
++    const state = structuredClone(f.state);
++    if (fault === 'missingReceipt') delete state.acknowledgedRevision;
++    if (fault === 'changedPayload') state.prepared.payload.caption += ' changed';
++    if (fault === 'changedMedia') state.prepared.media.sha256 = 'f'.repeat(64);
++    if (fault === 'missingPhotoKind') delete state.remoteMediaKind;
++    await f.store.seed(f.key, state);
++    await reconcileNewsSnapshot(f.store, f.feed, [destination], now, { mediaOptions: f.mediaOptions });
++    const updated = (await f.store.read(f.key)).state;
++    expect(updated.status).toBe('correction_pending');
++    expect(updated.remoteId).toBe('17');
++    assertFooter(updated.prepared, f.news);
++  });
++
++  it('renews source verification metadata for an acknowledged photo in the same format without sending', async () => {
++    const f = await legacyPhotoFixture();
++    const prepared = await prepareNewsPost(f.news, f.feed.snapshot, 'telegram', {
++      destination, mediaOptions: f.mediaOptions });
++    await f.store.seed(f.key, { ...f.state, prepared, desiredRevision: prepared.revision,
++      acknowledgedRevision: prepared.revision });
++    const receipt = await f.store.read(f.key);
++    const renewedAt = new Date(now.getTime() + 60_000);
++    const news = { ...f.news, verifiedAt: renewedAt.toISOString() };
++    const feed = await buildPublishedNewsFeed({ records: [news], withdrawals: [], current: renewedAt,
++      release: 'b'.repeat(40), timeZone: 'Europe/Moscow', state: pendingNewsSourceState([]) });
++    await reconcileNewsSnapshot(f.store, feed, [destination], renewedAt, {
++      mediaOptions: { ...f.mediaOptions, now: renewedAt } });
++    const renewed = await f.store.read(f.key);
++    expect(renewed.id).not.toBe(receipt.id);
++    expect(renewed.state.prepared.temporal.verifiedAt).toBe(news.verifiedAt);
++    expect(renewed.state.prepared.publication).toEqual({ snapshotId: feed.snapshot.id, release: feed.snapshot.release });
++    expect(renewed.state).toMatchObject({ status: 'sent_current', remoteId: '17',
++      acknowledgedRevision: prepared.revision, desiredRevision: prepared.revision });
++    expect(renewed.state.prepared.payload).toEqual(receipt.state.prepared.payload);
++    const send = vi.fn();
++    const { dispatchNewsJob } = await import('./literary-news-social.mjs');
++    expect(await dispatchNewsJob({ store: f.store, key: f.key, transport: { send }, now: () => renewedAt }))
++      .toEqual({ status: 'sent_current' });
++    expect(send).not.toHaveBeenCalled();
++    expect(await f.store.list('post:')).toHaveLength(1);
++  });
++});
+diff --git a/scripts/lib/literary-news-text-fallback.test.mjs b/scripts/lib/literary-news-text-fallback.test.mjs
+index 0c3ead3012fd73b2e0c2205d694ffca304503a32..6580b0f05be3ab2faa23eae4dd07905e549d89b8 100644
+--- a/scripts/lib/literary-news-text-fallback.test.mjs
++++ b/scripts/lib/literary-news-text-fallback.test.mjs
+@@ -25,8 +25,11 @@ describe('Verified text fallback after one bounded media preparation attempt',()
+     const expected=await prepareNewsPost(record,{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+     expect(result.applied).toBe(true);expect(result.state.prepared.payload).toEqual(expected.payload);
+     expect(result.state.prepared.media).toBeNull();expect(result.state.key).toBe(f.row.state.key);
+-    expect(result.state.prepared.payload.text).toContain(record.source.url);
+-    expect(result.state.prepared.payload.text).toContain('https://probpera.ru/#literary-news');
++    const {text,entities}=result.state.prepared.payload;
++    const links=entities.filter(entity=>entity.type==='text_link');
++    expect(links.map(entity=>entity.url)).toEqual([record.source.url,'https://probpera.ru/#literary-news']);
++    expect(text.slice(links[0].offset,links[0].offset+links[0].length)).toBe(record.source.name);
++    expect(text.slice(links[1].offset,links[1].offset+links[1].length)).toBe('Литературная повестка «Пробы пера»');
+     expect(f.store.read).toHaveBeenCalledExactlyOnceWith('admission:news:fixture-story');
+     expect(f.store.compareAppend).toHaveBeenCalledWith(f.row.state.key,3,result.state);
+   });
+diff --git a/scripts/workers/literary-news-delivery-worker.test.mjs b/scripts/workers/literary-news-delivery-worker.test.mjs
+index c704a89daef119640185a85d22ef5c98e57350c8..ec7917f2e09dd6f0329881df73fa0eac149260c6 100644
+--- a/scripts/workers/literary-news-delivery-worker.test.mjs
++++ b/scripts/workers/literary-news-delivery-worker.test.mjs
+@@ -95,7 +95,10 @@ describe('Private native delivery cron boundary',()=>{
+    const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+    const f=await fixture({rows:[row('fresh-text',{prepared})],status:{...day(),freshCreates:10,deficitToMinimum:0}});
+    const result=await f.run();expect(result.status).toBe('daily_minimum_reached');expect(result.selectedJobs).toBe(1);
+-   expect(f.dispatch.mock.calls[0][0].jobs[0].prepared.payload.text).toContain('https://probpera.ru/#literary-news');
++   const {text,entities}=f.dispatch.mock.calls[0][0].jobs[0].prepared.payload;
++   const brandLink=entities.find(entity=>entity.type==='text_link' && entity.url==='https://probpera.ru/#literary-news');
++   expect(brandLink).toBeDefined();
++   expect(text.slice(brandLink.offset,brandLink.offset+brandLink.length)).toBe('Литературная повестка «Пробы пера»');
+    expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
+  });
+  it('a missing photo index cannot block fresh text, while an unknown photo admission remains held',async()=>{

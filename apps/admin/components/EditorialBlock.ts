@@ -1,5 +1,4 @@
 import { mergeAttributes, Node, type Editor } from "@tiptap/core";
-import { ReactNodeViewRenderer } from "@tiptap/react";
 
 import {
   editorialGalleryHtmlAttributes,
@@ -11,7 +10,6 @@ import {
   type EditorialGallerySettings,
 } from "../lib/editorial-gallery";
 
-import EditorialBlockView from "./EditorialBlockView";
 
 const blockKinds = new Set([
   "fact",
@@ -137,9 +135,6 @@ export const EditorialBlock = Node.create({
     ];
   },
 
-  addNodeView() {
-    return ReactNodeViewRenderer(EditorialBlockView);
-  },
 });
 
 const blockCopy = {

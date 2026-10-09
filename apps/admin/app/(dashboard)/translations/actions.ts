@@ -127,6 +127,8 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
   }
 
   let translated = 0;
+  let reviewPending = 0;
+  let stale = 0;
   let current = 0;
   let manual = 0;
   let skipped = 0;
@@ -155,6 +157,8 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
       model: result.model,
     });
     if (runState === "translated") translated += 1;
+    else if (runState === "review-pending") reviewPending += 1;
+    else if (runState === "stale") stale += 1;
     else if (runState === "current") current += 1;
     else if (runState === "manual") manual += 1;
     else if (runState === "failed") {
@@ -180,27 +184,13 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
   }
 
-  let publication: string | null = null;
-  if (translated > 0) {
-    publication = (
-      await requestPublicBuild({
-        supabase,
-        actorId: session.user.id,
-        entityType: "premium_translation_batch",
-        entityId: "literary-works-en",
-        reason: "premium-translation.library",
-        metadata: publicBuildMetadata("library", translated),
-      })
-    ).state;
-  }
   revalidatePath("/translations");
   revalidatePath("/library");
   redirect(
     translationsUrl({
       ...cursorParams,
-      success: `Книги: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
+      success: `Книги: новых машинных черновиков ${translated}, ожидают проверки ${reviewPending}, устаревших черновиков ${stale}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}. Машинные черновики не опубликованы.`,
       errorCode: firstError ? translationErrorCode(firstError) : null,
-      publication,
       libraryCursor: nextLibraryCursor,
     })
   );

@@ -23,6 +23,13 @@ export function formatDate(value?: string | null, withTime = false) {
 
 export function safeCount(
   result: { count: number | null; error?: unknown } | null | undefined
-) {
-  return result?.count || 0;
+): number | null {
+  const count = result?.count;
+  if (
+    result?.error != null ||
+    typeof count !== "number" ||
+    !Number.isSafeInteger(count) ||
+    count < 0
+  ) return null;
+  return count;
 }

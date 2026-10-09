@@ -1,12 +1,17 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { saveCanonicalArticleAction } = vi.hoisted(() => ({
+const { saveCanonicalArticleAction, requireStaff, createServerSupabaseClient } = vi.hoisted(() => ({
   saveCanonicalArticleAction: vi.fn(),
+  requireStaff: vi.fn(),
+  createServerSupabaseClient: vi.fn(),
 }));
 
 vi.mock("./save-article-action", () => ({
   saveArticleAction: saveCanonicalArticleAction,
 }));
+vi.mock("@/lib/auth", () => ({ requireStaff }));
+vi.mock("@/lib/supabase/server", () => ({ createServerSupabaseClient }));
+vi.mock("@/lib/navigation", () => ({ redirect: vi.fn() }));
 
 import { saveArticleAction } from "./save-article-publication-action";
 
@@ -30,6 +35,8 @@ describe("article publication action adapter", () => {
     expect(formData.get("skip_automatic_translation")).toBe("1");
     expect(formData.get("expected_updated_at")).toBe("article-version");
     expect(formData.get("english_expected_updated_at")).toBe("translation-version");
+    expect(requireStaff).not.toHaveBeenCalled();
+    expect(createServerSupabaseClient).not.toHaveBeenCalled();
   });
 
   it("does not swallow a canonical access, validation or redirect failure", async () => {
@@ -40,5 +47,7 @@ describe("article publication action adapter", () => {
 
     await expect(saveArticleAction(formData)).rejects.toBe(failure);
     expect(formData.get("intent")).toBe("save");
+    expect(requireStaff).not.toHaveBeenCalled();
+    expect(createServerSupabaseClient).not.toHaveBeenCalled();
   });
 });

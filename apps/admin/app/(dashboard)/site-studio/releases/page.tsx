@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import SiteStudioLoadState from "@/components/SiteStudioLoadState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { isStudioChangeSet, isStudioItem, isStudioRelease, isStudioTokenIdentity, readStudioRows, studioActionUuid } from "@/lib/site-studio-load-validation";
 import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
-import { siteStudioErrorMessage } from "@/lib/site-studio-messages";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 import {
@@ -96,43 +98,57 @@ export default async function SiteStudioReleasesPage({
   if (!supabase) return <AdminDependencyState />;
   const canManage = session.role === "owner" || session.role === "admin";
 
-  const [setResult, itemResult, tokenResult, releaseResult] = await Promise.all([
+  const [setResult, itemResult, tokenResult, releaseResult] = await Promise.allSettled([
     supabase
       .from("site_design_change_sets")
       .select(
-        "id,name,description,status,scheduled_at,cas_version,updated_at,submitted_at,approved_at,published_at"
+        "id,name,description,status,scheduled_at,cas_version,updated_at,submitted_at,approved_at,published_at",
+        { count: "exact" }
       )
       .order("updated_at", { ascending: false })
       .limit(100),
     supabase
       .from("site_design_change_set_items")
       .select(
-        "id,change_set_id,token_id,expected_token_cas_version,proposed_value"
+        "id,change_set_id,token_id,expected_token_cas_version,proposed_value",
+        { count: "exact" }
       )
       .order("id", { ascending: true })
       .limit(500),
     supabase
       .from("site_design_tokens")
-      .select("id,token_key,layer,target_key")
+      .select("id,token_key,layer,target_key", { count: "exact" })
       .limit(1024),
     supabase
       .from("site_design_releases")
       .select(
-        "id,release_number,action,change_set_id,rollback_of_release_id,token_count,created_at"
+        "id,release_number,action,change_set_id,rollback_of_release_id,token_count,created_at",
+        { count: "exact" }
       )
       .order("release_number", { ascending: false })
       .limit(50),
   ]);
 
-  const changeSets = (setResult.data || []) as ChangeSetRow[];
-  const items = (itemResult.data || []) as ChangeSetItemRow[];
+  const setRead = readStudioRows(setResult, isStudioChangeSet, (row) => String(row.id));
+  const itemRead = readStudioRows(itemResult, isStudioItem, (row) => String(row.id));
+  const tokenRead = readStudioRows(tokenResult, isStudioTokenIdentity, (row) => String(row.id));
+  const releaseRead = readStudioRows(releaseResult, isStudioRelease, (row) => String(row.id), false);
+  const changeSets = setRead.rows as unknown as ChangeSetRow[];
+  const items = itemRead.rows as unknown as ChangeSetItemRow[];
   const tokens = new Map(
-    ((tokenResult.data || []) as TokenIdentityRow[]).map((token) => [token.id, token])
+    (tokenRead.rows as unknown as TokenIdentityRow[]).map((token) => [token.id, token])
   );
-  const releases = (releaseResult.data || []) as ReleaseRow[];
-  const schemaUnavailable = Boolean(
-    setResult.error || itemResult.error || tokenResult.error || releaseResult.error
-  );
+  const releases = releaseRead.rows as unknown as ReleaseRow[];
+  const compatible = changeSets.every((set) => studioActionUuid(set.id))
+    && items.every((item) => studioActionUuid(item.token_id) && tokens.has(item.token_id)
+      && changeSets.some((set) => set.id === item.change_set_id))
+    && releases.every((release) => studioActionUuid(release.id))
+    && (!query.set || changeSets.some((set) => set.id === query.set));
+  const issue = setRead.issue ?? itemRead.issue ?? tokenRead.issue ?? releaseRead.issue ?? (compatible ? null : "invalid");
+  const ready = issue === null;
+  const retrySearch = new URLSearchParams();
+  if (query.set) retrySearch.set("set", query.set);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/site-studio/releases" + (retrySearch.size ? `?${retrySearch}` : "");
 
   return (
     <div className={styles.page}>
@@ -151,23 +167,15 @@ export default async function SiteStudioReleasesPage({
         </div>
       </header>
 
-      {schemaUnavailable && <p className={styles.message} role="alert">Схема выпусков ещё не применена к этой среде.</p>}
-      {query.error && <p className={styles.message} role="alert">{siteStudioErrorMessage(query.error)}</p>}
-      {(query.saved || query.transitioned || query.published || query.rolled_back || query.removed) && (
-        <p className={`${styles.message} ${styles.success}`} role="status">
-          {query.published
-            ? "Выпуск опубликован атомарно."
-            : query.rolled_back
-              ? "Опубликованный выпуск откачен новой групповой ревизией."
-              : query.removed
-                ? "Настройка удалена из черновика выпуска."
-                : query.transitioned
-                  ? "Этап согласования обновлён."
-                  : "Набор изменений сохранён."}
+      {(query.error || query.saved || query.transitioned || query.published || query.rolled_back || query.removed) && (
+        <p className={styles.message} role="status">
+          Результат действия по параметрам страницы не подтверждён. Проверьте актуальные данные.
         </p>
       )}
 
-      <section className={styles.createPanel}>
+      {issue && <SiteStudioLoadState issue={issue} retryHref={retryHref} sections={[]}
+        message={!setRead.issue && !itemRead.issue && !tokenRead.issue && !releaseRead.issue ? "Загруженные данные несовместимы с текущим редактором. Изменение недоступно до проверки." : undefined} />}
+      {ready && <section className={styles.createPanel}>
         <div>
           <span className="eyebrow">Новый набор</span>
           <h2>Соберите логически связанный выпуск</h2>
@@ -184,12 +192,12 @@ export default async function SiteStudioReleasesPage({
           </label>
           <button className="button" type="submit" disabled={!canManage}>Создать черновик</button>
         </form>
-      </section>
+      </section>}
 
       <div className={styles.workspace}>
         <main className={styles.sets}>
           <header><span className="eyebrow">Change sets</span><h2>Согласование</h2></header>
-          {changeSets.length === 0 && <p className={styles.empty}>Наборов изменений пока нет.</p>}
+          {setRead.issue === null && changeSets.length === 0 && <p className={styles.empty}>Наборов изменений пока нет.</p>}
           {changeSets.map((changeSet) => {
             const setItems = items.filter((item) => item.change_set_id === changeSet.id);
             return (
@@ -213,7 +221,7 @@ export default async function SiteStudioReleasesPage({
                           <small>{token ? `${token.layer} · ${token.target_key}` : "Токен недоступен"}</small>
                           <code>{valueSummary(item.proposed_value)}</code>
                         </div>
-                        {changeSet.status === "draft" && (
+                        {ready && changeSet.status === "draft" && (
                           <form action={removeSiteDesignChangeSetItemAction}>
                             <input type="hidden" name="change_set_id" value={changeSet.id} />
                             <input type="hidden" name="token_id" value={item.token_id} />
@@ -224,10 +232,10 @@ export default async function SiteStudioReleasesPage({
                       </div>
                     );
                   })}
-                  {setItems.length === 0 && <p className={styles.empty}>Добавьте токены из раздела «Токены дизайна».</p>}
+                  {itemRead.issue === null && setItems.length === 0 && <p className={styles.empty}>Добавьте токены из раздела «Токены дизайна».</p>}
                 </div>
 
-                <footer className={styles.actions}>
+                {ready && <footer className={styles.actions}>
                   {changeSet.status === "draft" && (
                     <>
                       <details>
@@ -273,7 +281,7 @@ export default async function SiteStudioReleasesPage({
                       <button className="button-secondary" type="submit" disabled={!canManage}>Отменить</button>
                     </form>
                   )}
-                </footer>
+                </footer>}
               </article>
             );
           })}
@@ -287,7 +295,7 @@ export default async function SiteStudioReleasesPage({
                 <span>№ {release.release_number}</span>
                 <strong>{release.action === "publish" ? "Публикация" : "Откат"}</strong>
                 <small>{release.token_count} настроек · {formatDate(release.created_at, true)}</small>
-                {index === 0 && release.action === "publish" && (
+                {ready && index === 0 && release.action === "publish" && (
                   <form action={rollbackSiteDesignReleaseAction}>
                     <input type="hidden" name="release_id" value={release.id} />
                     <button type="submit" disabled={!canManage}>Откатить выпуск</button>
@@ -295,7 +303,7 @@ export default async function SiteStudioReleasesPage({
                 )}
               </article>
             ))}
-            {releases.length === 0 && <p className={styles.empty}>Публикаций ещё не было.</p>}
+            {releaseRead.issue === null && releases.length === 0 && <p className={styles.empty}>Публикаций ещё не было.</p>}
           </div>
         </aside>
       </div>

@@ -1,10 +1,18 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, unstable_rethrow } from "next/navigation";
+import type { ReactNode } from "react";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import PageEditorLoader from "@/components/PageEditorLoader";
+import AdminStatusState from "@/components/AdminStatusState";
+import { AdminDependencyState } from "@/components/AdminStatusState";
+import { adminReadMessage, readAdminList, readAdminResult, rethrowAdminReadControlFlow } from "@/lib/admin-read-result";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { canEditPageBundle, canRestorePageRevision, validPageEditorRead, validPageRevisionRead,
+  type PageEditorRead, type PageRevisionRead } from "@/lib/page-load-validation";
 import { adminEnv } from "@/lib/env";
-import { formatDate } from "@/lib/format";
+import { requireStaffRead } from "@/lib/admin-read-access";
+import { formatDate, safeCount } from "@/lib/format";
 import {
   pageCatalogHref,
   pageCatalogPageNumber,
@@ -13,7 +21,6 @@ import {
 } from "@/lib/page-catalog-query";
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
 import {
   restorePageRevisionAction,
   softDeletePageAction,
@@ -37,34 +44,72 @@ export default async function EditPage({
     revision_page?: string;
   }>;
 }) {
+  const staff = await requireStaffRead();
+  if (!staff) return <AdminStatusState eyebrow="Доступ ограничен"
+    title="Редакционные данные недоступны"
+    description="Не удалось подтвердить редакционную роль. Обратитесь к владельцу сайта." />;
   const { id } = await params;
   const query = await searchParams;
   const catalog = parsePageCatalogQuery(query);
   const revisionPage = pageCatalogPageNumber(query.revision_page);
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) notFound();
-  const [
-    { data: page },
-    { data: revisionsResult, error: revisionsError, count: revisionsCount },
-  ] = await Promise.all([
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}${pageEditorHref(id, catalog, { revisionPage })}`;
+  const unavailableEditor = (fallback: ReactNode) => <PageEditorLoader key={id}
+    pageId={id} actorId={staff.user?.id} current={null} fallback={fallback} retryHref={retryHref} />;
+  let supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>;
+  try { supabase = await createServerSupabaseClient(); }
+  catch (error) {
+    unstable_rethrow(error);
+    return unavailableEditor(<AdminStatusState eyebrow="Редактор страницы"
+      title="Не удалось загрузить страницу" description={adminReadMessage("unavailable")}
+      action={<a href={retryHref}>Повторить загрузку</a>} />);
+  }
+  if (!supabase) return unavailableEditor(<AdminDependencyState />);
+  const [pageResponse, revisionsResponse] = await Promise.allSettled([
     supabase.from("pages").select("*").eq("id", id).maybeSingle(),
     supabase
       .from("page_revisions")
-      .select("id,revision_number,created_at", { count: "exact" })
+      .select("id,page_id,revision_number,created_at", { count: "exact" })
       .eq("page_id", id)
       .order("revision_number", { ascending: false })
       .order("id", { ascending: false })
       .range((revisionPage - 1) * REVISION_PAGE_SIZE, revisionPage * REVISION_PAGE_SIZE - 1),
   ]);
-  if (!page) notFound();
-  const revisions = revisionsResult || [];
-  const revisionPages = Math.max(1, Math.ceil((revisionsCount || 0) / REVISION_PAGE_SIZE));
-  if (!revisionsError && revisionPage > revisionPages) {
+  rethrowAdminReadControlFlow(pageResponse, revisionsResponse);
+  const pageRead = readAdminResult<PageEditorRead | null>(pageResponse,
+    value => value === null || validPageEditorRead(value, id));
+  if (pageRead.status === "failed") return unavailableEditor(<AdminStatusState eyebrow="Редактор страницы"
+    title="Не удалось загрузить страницу" description={adminReadMessage(pageRead.issue)}
+    action={<a href={retryHref}>Повторить загрузку</a>} />);
+  if (pageRead.data === null) notFound();
+  const page = pageRead.data;
+  const canEdit = canEditPageBundle(page);
+  const revisionsRead = readAdminList<PageRevisionRead>(revisionsResponse, value => validPageRevisionRead(value, id));
+  const revisions = revisionsRead.status === "success" ? revisionsRead.data : [];
+  const revisionsCount = safeCount(revisionsResponse.status === "fulfilled" ? revisionsResponse.value : null);
+  const revisionPages = revisionsCount === null ? null : Math.max(1, Math.ceil(revisionsCount / REVISION_PAGE_SIZE));
+  const canRestore = canEdit && revisionsRead.status === "success" && revisionsCount !== null;
+  if (revisionsRead.status === "success" && revisionPages !== null && revisionPage > revisionPages) {
     redirect(pageEditorHref(id, catalog, { revisionPage: revisionPages }));
   }
 
   return (
-    <>
+    <PageEditorLoader
+      key={id}
+      pageId={id}
+      actorId={staff.user?.id}
+      current={canEdit ? {
+        page,
+        actorId: staff.user?.id,
+        publicSiteUrl: adminEnv.publicSiteUrl,
+        savedAfterSubmit: false,
+        catalogContext: { q: catalog.term, status: catalog.status, page: catalog.page, revisionPage },
+      } : null}
+      retryHref={retryHref}
+      fallback={<p className="form-message form-error" role="alert">
+        Формат документа или версия записи не позволяют безопасно открыть редактор. Содержание сохранено без замены.
+        {" "}<a href={retryHref}>Повторить загрузку</a>
+      </p>}
+      before={<>
       <header className="page-heading">
         <div>
           <span className="eyebrow">Постоянный материал</span>
@@ -76,30 +121,19 @@ export default async function EditPage({
         </div>
         <Link className="button-secondary" href={pageCatalogHref(catalog)}>← К списку страниц</Link>
       </header>
-      {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && (
-        <p className="form-message form-success">Изменения сохранены.</p>
+      {(query.error || query.saved || query.published === "started" || query.published === "queued" || query.published === "queue-error") && (
+        <p className="form-message">Результат изменения и публикации не подтверждён параметрами ссылки. Проверьте текущие данные и очередь публикаций.</p>
       )}
-      {query.published === "started" && <p className="form-message form-success">Публичная сборка со страницей запущена.</p>}
-      {query.published === "queued" && <p className="form-message form-success">Изменение страницы сохранено в резервной очереди публикации.</p>}
-      {query.published === "queue-error" && <p className="form-message form-error" role="alert">Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
-      <PageEditorLoader
-        page={page}
-        publicSiteUrl={adminEnv.publicSiteUrl}
-        savedAfterSubmit={Boolean(query.saved)}
-        catalogContext={{
-          q: catalog.term,
-          status: catalog.status,
-          page: catalog.page,
-          revisionPage,
-        }}
-      />
-      <div className="dashboard-grid article-maintenance">
+      </>}
+      after={<div className="dashboard-grid article-maintenance">
         <section className="panel">
           <h2>История версий</h2>
-          {revisionsError ? (
-            <p className="form-message">{operatorDataError("history", "load")}</p>
-          ) : revisions.length ? (
+          <p>Всего версий: {revisionsCount === null ? "Недоступно" : revisionsCount.toLocaleString("ru-RU")}</p>
+          {(revisionsRead.status === "failed" || revisionsCount === null) && <p className="form-message form-error" role="alert">
+            {adminReadMessage(revisionsRead.status === "failed" ? revisionsRead.issue : "invalid")}{" "}
+            <a href={retryHref}>Повторить загрузку</a>
+          </p>}
+          {revisionsRead.status === "failed" ? null : revisions.length ? (
             <table className="data-table">
               <thead>
                 <tr>
@@ -116,7 +150,7 @@ export default async function EditPage({
                     </td>
                     <td>{formatDate(revision.created_at, true)}</td>
                     <td>
-                      <form action={restorePageRevisionAction}>
+                      {canRestore && canRestorePageRevision(revision) ? <form action={restorePageRevisionAction}>
                         <input name="id" type="hidden" value={id} />
                         <input name="expected_updated_at" type="hidden" value={page.updated_at} />
                         <input name="catalog_q" type="hidden" value={catalog.term} />
@@ -133,16 +167,18 @@ export default async function EditPage({
                         >
                           Восстановить
                         </ConfirmSubmitButton>
-                      </form>
+                      </form> : <span>Восстановление недоступно до проверки данных и версии.</span>}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <p>История появится после первого изменения страницы.</p>
+            <p>{revisionsCount === null ? "На текущей странице версий нет. Общее количество версий неизвестно."
+              : revisionsCount === 0 ? "История появится после первого изменения страницы."
+                : "На текущей странице версий нет."}</p>
           )}
-          {revisionPages > 1 && (
+          {revisionsRead.status === "success" && revisionPages !== null && revisionPages > 1 && (
             <nav className="pagination catalog-pagination" aria-label="Страницы истории версии">
               {revisionPage > 1 ? (
                 <Link href={pageEditorHref(id, catalog, { revisionPage: revisionPage - 1 })}>Назад</Link>
@@ -160,7 +196,7 @@ export default async function EditPage({
             Удаление мягкое: страница исчезнет с сайта, но останется
             восстановимой в базе.
           </p>
-          <form action={softDeletePageAction}>
+          {canEdit && <form action={softDeletePageAction}>
             <input name="id" type="hidden" value={id} />
             <input name="expected_updated_at" type="hidden" value={page.updated_at} />
             <input name="catalog_q" type="hidden" value={catalog.term} />
@@ -169,9 +205,9 @@ export default async function EditPage({
             <ConfirmSubmitButton message="Переместить страницу в корзину?">
               Переместить в корзину
             </ConfirmSubmitButton>
-          </form>
+          </form>}
         </aside>
-      </div>
-    </>
+      </div>}
+    />
   );
 }

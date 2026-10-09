@@ -44,7 +44,10 @@ describe("article bundle RPC client", () => {
   });
 
   it("requires the RPC to return the canonical saved article identity", () => {
-    expect(source).toContain('"article_id" in row');
+    expect(source).toContain("article_id: z.string().uuid()");
+    expect(source).toContain(".strict().safeParse(row)");
+    expect(source).toContain("if (!parsed.success)");
+    expect(source).toContain("articleId: result.article_id");
     expect(source).toContain("article_updated_at");
     expect(source).toContain("homepage_replaced");
   });

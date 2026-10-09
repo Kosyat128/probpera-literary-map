@@ -1,36 +1,19 @@
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { formatDate } from "@/lib/format";
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
+import {
+  isBannerLoadedList, isBannerMediaList, pickerActionIdentity, pickerPublicUrl, readPickerBundle,
+  type BannerLoadedRecord, type PickerMediaRecord,
+} from "@/lib/homepage-banner-load-validation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { deleteBannerAction, saveBannerAction } from "./actions";
 
 export const metadata = { title: "Баннеры" };
 
-type Media = {
-  id: string;
-  alt_text: string;
-  original_name: string;
-  bucket: string;
-  object_path: string;
-};
-
-type Banner = {
-  id: string;
-  name: string;
-  title: string;
-  description: string;
-  target_url: string | null;
-  button_text: string;
-  desktop_media_id: string | null;
-  tablet_media_id: string | null;
-  mobile_media_id: string | null;
-  starts_at: string | null;
-  ends_at: string | null;
-  display_order: number;
-  is_active: boolean;
-  page_patterns: string[];
-  updated_at: string;
-};
+type Media = PickerMediaRecord;
+type Banner = BannerLoadedRecord;
 
 function escapedLikePattern(value: string) {
   return `%${value.replace(/[\\%_]/gu, "\\$&")}%`;
@@ -147,12 +130,13 @@ export default async function BannersPage({
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
-  const { data: bannersResult } = await supabase
+  const [bannersResult] = await Promise.allSettled([supabase
     .from("banners")
     .select("*")
     .order("display_order")
-    .order("id");
-  const banners = (bannersResult || []) as Banner[];
+    .order("id")]);
+  const bannersRead = readAdminResult(bannersResult, isBannerLoadedList);
+  const banners = bannersRead.status === "success" ? bannersRead.data as Banner[] : [];
   const mediaTerm = String(query.media_q || "").trim().slice(0, 120);
   const referencedMediaIds = Array.from(
     new Set(
@@ -202,20 +186,24 @@ export default async function BannersPage({
         ]
       : []),
   ];
-  const mediaResults = await Promise.all(mediaRequests);
-  const media = Array.from(
-    new Map(
-      mediaResults
-        .flatMap((result) => result.data || [])
-        .map((asset) => [asset.id, asset as Media] as const)
-    ).values()
-  );
-  const mediaUrls = new Map(
-    media.map((item) => [
-      item.id,
-      supabase.storage.from(item.bucket).getPublicUrl(item.object_path).data.publicUrl,
-    ])
-  );
+  const mediaResults = await Promise.allSettled(mediaRequests);
+  const mediaBundle = readPickerBundle(mediaResults, isBannerMediaList, referencedMediaIds);
+  const media = mediaBundle.media;
+  const mediaUrls = new Map<string, string>();
+  let urlsComplete = true;
+  for (const item of media) {
+    try {
+      const url = pickerPublicUrl(supabase.storage.from(item.bucket).getPublicUrl(item.object_path));
+      if (url) mediaUrls.set(item.id, url); else urlsComplete = false;
+    } catch { urlsComplete = false; }
+  }
+  const canManage = bannersRead.status === "success" && mediaBundle.dependency.status === "success" && urlsComplete
+    && banners.every((item) => pickerActionIdentity(item.id, item.updated_at))
+    && media.every((item) => pickerActionIdentity(item.id));
+  const retrySearch = new URLSearchParams();
+  if (mediaTerm) retrySearch.set("media_q", mediaTerm);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/banners"
+    + (retrySearch.size ? `?${retrySearch}` : "");
 
   return (
     <>
@@ -229,12 +217,18 @@ export default async function BannersPage({
           </p>
         </div>
       </header>
-      {query.error && <p className="form-message">{query.error}</p>}
-      {query.saved && <p className="form-message form-success">Баннер сохранён.</p>}
-      {query.deleted && <p className="form-message form-success">Баннер удалён.</p>}
-      {query.published === "started" && <p className="form-message form-success">Публичная сборка с изменениями баннера запущена.</p>}
-      {query.published === "queued" && <p className="form-message form-success">Изменение баннера сохранено в резервной очереди публикации.</p>}
-      {query.published === "queue-error" && <p className="form-message form-error" role="alert">Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
+      {(query.error || query.saved || query.deleted || query.published) && (
+        <p className="form-message" role="status">Результат действия по параметрам страницы не подтверждён. Проверьте актуальные данные перед повторным изменением.</p>
+      )}
+      {!canManage && (
+        <p className="form-message form-error" role="alert">
+          {bannersRead.status === "failed" ? adminReadMessage(bannersRead.issue)
+            : mediaBundle.dependency.status === "failed" ? adminReadMessage(mediaBundle.dependency.issue)
+              : !urlsComplete ? adminReadMessage("invalid") : "Загруженные данные несовместимы с текущей формой. Изменение недоступно до проверки."}
+          {" "}Изменение баннеров недоступно до полной загрузки данных и изображений.{" "}
+          <a href={retryHref}>Повторить загрузку</a>
+        </p>
+      )}
 
       <form className="panel media-catalog-search" method="get">
         <label className="field">
@@ -265,7 +259,7 @@ export default async function BannersPage({
               {banner.desktop_media_id && mediaUrls.get(banner.desktop_media_id) ? (
                 <img src={mediaUrls.get(banner.desktop_media_id)} alt="" />
               ) : (
-                <span>Изображение не выбрано</span>
+                <span>{banner.desktop_media_id ? "Изображение недоступно" : "Изображение не выбрано"}</span>
               )}
               <div>
                 <strong>{banner.title || banner.name}</strong>
@@ -277,6 +271,7 @@ export default async function BannersPage({
               <div><span>Период</span><strong>{formatDate(banner.starts_at)} - {formatDate(banner.ends_at)}</strong></div>
               <div><span>Страницы</span><strong>{banner.page_patterns.length}</strong></div>
             </div>
+            {canManage && <>
             <details className="admin-editor-details">
               <summary>Редактировать</summary>
               <form className="settings-stack" action={saveBannerAction}>
@@ -290,14 +285,15 @@ export default async function BannersPage({
                 Удалить баннер
               </ConfirmSubmitButton>
             </form>
+            </>}
           </article>
         ))}
       </div>
 
-      <form className="panel settings-stack" action={saveBannerAction}>
+      {canManage && <form className="panel settings-stack" action={saveBannerAction}>
         <h2>Новый баннер</h2>
         <BannerFields media={media} />
-      </form>
+      </form>}
     </>
   );
 }

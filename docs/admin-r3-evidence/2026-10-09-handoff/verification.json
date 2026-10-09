@@ -1,0 +1,662 @@
+{
+  "status": "PASS_PACKAGING_INTEGRITY_ONLY",
+  "archiveSha256": "dfa0caa687d63cfcec9391ccdc4950f568cfebce4e2541abc1a03ca047df3232",
+  "archiveBytes": 2870518,
+  "members": 761,
+  "verifiedRestoredFiles": 775,
+  "capturedBaselineVerifiedFiles": 382,
+  "reconstructedTrackedFonts": 14,
+  "zipCrcIntegrity": true,
+  "memberSha256AndLengths": true,
+  "safeRepositoryTmpDestinations": true,
+  "restoreScriptExecuted": true,
+  "idempotentRestoreExecuted": true,
+  "maintainedCodeEditedByPackaging": false,
+  "applicationTestsRunByPackaging": 0,
+  "globalTestAndGateStatus": "INTERRUPTED_NOT_VERIFIED",
+  "highConfidenceSecretPatterns": {
+    "scannedTextFiles": 761,
+    "candidates": [],
+    "credentialValuesPrinted": false,
+    "patterns": [
+      "private key",
+      "OpenAI key",
+      "GitHub token",
+      "Slack token",
+      "AWS access key",
+      "Supabase secret",
+      "JWT",
+      "database URL password"
+    ]
+  },
+  "keywordScan": {
+    "scope": "Path-only keyword inventory of code and synthetic fixtures; keyword occurrence is not a leaked credential. Pattern scan is not exhaustive personal-data validation.",
+    "paths": [
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/12-actual-role-rls-probe.stdout.log",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/12-actual-role-rls-probe.stdout.log",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/executed-fixture.sql",
+        "category": "credential-keyword",
+        "occurrences": 11
+      },
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+        "category": "credential-keyword",
+        "occurrences": 5
+      },
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/server.log",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t01-before-supplement-v1/raw/apps/admin/lib/book-edition-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t04-sql-native-runner-v1.mjs",
+        "category": "credential-keyword",
+        "occurrences": 5
+      },
+      {
+        "path": ".tmp/m07-t04-sql-native-runner-v1.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/actions.ts",
+        "category": "credential-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/actions.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 9
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/page.tsx",
+        "category": "credential-keyword",
+        "occurrences": 3
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/page.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/mfa/page.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-bundle-rpc.source.test.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-bundle-rpc.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-preview-load-errors.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/data-studio/data-studio-load-errors.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/editorial-database/page.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 2
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/health/health-load-errors.integration.test.ts",
+        "category": "credential-keyword",
+        "occurrences": 2
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/layout.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/dossiers/dossier-load-errors.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/settings/page.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 6
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/settings/settings-load-errors.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/editors.css",
+        "category": "personal-data-keyword",
+        "occurrences": 2
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/site-studio.css",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/components/AdminShell.tsx",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-control-flow.integration.test.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-control-flow.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-access.integration.test.ts",
+        "category": "credential-keyword",
+        "occurrences": 2
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-access.integration.test.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-item-retry-candidate.integration.test.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auth.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 5
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/book-edition-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-database-load-validation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/literary-work-workspace.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/public-link-boundary.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/trusted-server-url.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/lib/writer-biography-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/article-form-browser.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/article-operation-browser.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/page-form-browser.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/docs/CODEX_ADMIN_EXECUTION_STATE.md",
+        "category": "credential-keyword",
+        "occurrences": 3
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/admin-editor-operations-contract.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/build-production-migration-plan.mjs",
+        "category": "credential-keyword",
+        "occurrences": 6
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/admin-editor-operations-contract.sql",
+        "category": "credential-keyword",
+        "occurrences": 44
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/article-translation-sync-admission.sql",
+        "category": "credential-keyword",
+        "occurrences": 3
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/translation-active-stop.sql",
+        "category": "credential-keyword",
+        "occurrences": 9
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/translation-provider-self-test-binding.sql",
+        "category": "credential-keyword",
+        "occurrences": 13
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/export-premium-translations.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-media.test.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-media.test.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-social.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/src/data/countries/types.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 2
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260901_zz_translation_operations.sql",
+        "category": "credential-keyword",
+        "occurrences": 12
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+        "category": "credential-keyword",
+        "occurrences": 11
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261007235851_admin_article_translation_scan_completion.sql",
+        "category": "credential-keyword",
+        "occurrences": 3
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261007_admin_editor_operations.sql",
+        "category": "credential-keyword",
+        "occurrences": 9
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+        "category": "personal-data-keyword",
+        "occurrences": 5
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008021735_admin_article_translation_item_retry_journal.sql",
+        "category": "credential-keyword",
+        "occurrences": 9
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008031428_admin_article_translation_item_retry_candidate.sql",
+        "category": "credential-keyword",
+        "occurrences": 10
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008043647_admin_article_machine_english_draft.sql",
+        "category": "credential-keyword",
+        "occurrences": 6
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008082627_admin_article_translation_sync_admission.sql",
+        "category": "credential-keyword",
+        "occurrences": 15
+      },
+      {
+        "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008131138_admin_translation_provider_self_test_binding.sql",
+        "category": "credential-keyword",
+        "occurrences": 6
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/book-edition-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/scripts/export-premium-translations.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/book-edition-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/scripts/export-premium-translations.mjs",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editor-link.ts",
+        "category": "personal-data-keyword",
+        "occurrences": 4
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editorial-gallery.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-sql-native-runner-v1.mjs",
+        "category": "credential-keyword",
+        "occurrences": 5
+      },
+      {
+        "path": ".tmp/m07-t05-sql-native-runner-v1.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-sql-native-v5.sql",
+        "category": "credential-keyword",
+        "occurrences": 11
+      },
+      {
+        "path": ".tmp/m07-t05-sql-native-v6.sql",
+        "category": "credential-keyword",
+        "occurrences": 11
+      },
+      {
+        "path": ".tmp/m07-t05-sql-verify-v1.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-sql-verify-v2.mjs",
+        "category": "personal-data-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/book-edition-edit.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/premium-english-translation.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      },
+      {
+        "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/translation-errors.ts",
+        "category": "credential-keyword",
+        "occurrences": 1
+      }
+    ],
+    "credentialValuesPrinted": false
+  },
+  "omittedReferenceClassificationCounts": {
+    "directory-or-local-tool-root": 12,
+    "external-dependency-installation": 166,
+    "historical-only-reference": 422,
+    "machine-local-tool-or-binary": 19
+  },
+  "artifactHashes": [
+    {
+      "path": "README.md",
+      "bytes": 3831,
+      "sha256": "39d23e365bc0799996ccf9e358660658d19bc0249cddfa42f05967658da73539"
+    },
+    {
+      "path": "restore-evidence.ps1",
+      "bytes": 3539,
+      "sha256": "5d42a37c227dadfce5eacb39deec3b9823f7ca86173e664a58547fba736bae70"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 172970,
+      "sha256": "c7cfa4cf5d325dd865f4f4cb681a3e8d145c2cb59ec5c8a073dab021f8179d76"
+    },
+    {
+      "path": "omitted-references.json",
+      "bytes": 186970,
+      "sha256": "8b857e1eaaf3eb283171513b9ab29e3a82e5ed922a3dcc7c0e318a48089f4c9a"
+    }
+  ],
+  "mismatchingExistingArtifactPreservedTest": true
+}

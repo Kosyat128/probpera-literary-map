@@ -1,4 +1,8 @@
 import type { createServerSupabaseClient } from "@/lib/supabase/server";
+import type { ArticleOperationResult, ArticleOperationResultContext } from "@/lib/article-operation-result";
+import { z } from "zod";
+
+import { saveArticleOperationRpc } from "./article-operation-rpc";
 
 type ServerSupabaseClient = NonNullable<
   Awaited<ReturnType<typeof createServerSupabaseClient>>
@@ -27,6 +31,7 @@ export type ArticleBundleRpcResult = {
   articleUpdatedAt: string;
   englishUpdatedAt: string | null;
   homepageReplaced: number;
+  operationResult?: ArticleOperationResult;
 };
 
 type ArticleRpcError = { code?: string; message?: string };
@@ -113,42 +118,47 @@ function parseArticleBundleRpcResult(
     throw new Error(rpcErrorMessage(error));
   }
 
-  const row = Array.isArray(data) ? data[0] : data;
-  if (!row || typeof row !== "object" || !("article_id" in row)) {
-    throw new Error("Атомарное сохранение не вернуло идентификатор статьи.");
-  }
-
-  const result = row as Record<string, unknown>;
-  const articleId = String(result.article_id || "");
-  const articleUpdatedAt = String(result.article_updated_at || "");
-  if (!articleId || !articleUpdatedAt) {
+  const row = Array.isArray(data) && data.length === 1 ? data[0] : Array.isArray(data) ? null : data;
+  const parsed = z.object({
+    article_id: z.string().uuid(),
+    article_updated_at: z.string().datetime({ offset: true }),
+    english_updated_at: z.string().datetime({ offset: true }).nullable(),
+    homepage_replaced: z.number().int().min(0).max(2_147_483_647),
+  }).strict().safeParse(row);
+  if (!parsed.success) {
     throw new Error("Атомарное сохранение вернуло неполный результат.");
   }
-
+  const result = parsed.data;
   return {
-    articleId,
-    articleUpdatedAt,
-    englishUpdatedAt: result.english_updated_at
-      ? String(result.english_updated_at)
-      : null,
-    homepageReplaced: Number(result.homepage_replaced || 0),
+    articleId: result.article_id,
+    articleUpdatedAt: result.article_updated_at,
+    englishUpdatedAt: result.english_updated_at,
+    homepageReplaced: result.homepage_replaced,
   };
 }
 
 export async function saveArticleBundleRpc(
   supabase: ServerSupabaseClient,
-  input: ArticleBundleRpcInput
+  input: ArticleBundleRpcInput,
+  operationContext?: ArticleOperationResultContext
 ): Promise<ArticleBundleRpcResult> {
-  const { data, error } = await supabase.rpc(
-    "save_article_bundle",
-    articleBundleRpcArgs(input)
-  );
-  return parseArticleBundleRpcResult(data, error, "save_article_bundle");
+  const operationResult = operationContext
+    ? await saveArticleOperationRpc(supabase, "save_article_bundle", articleBundleRpcArgs(input), operationContext)
+    : null;
+  const { data, error } = operationContext
+    ? { data: operationResult?.result, error: null }
+    : await supabase.rpc("save_article_bundle", articleBundleRpcArgs(input));
+  const parsed = parseArticleBundleRpcResult(data, error, "save_article_bundle");
+  if (input.articleId && parsed.articleId.toLowerCase() !== input.articleId.toLowerCase()) {
+    throw new Error("Атомарное сохранение вернуло неверный идентификатор статьи.");
+  }
+  return operationResult ? { ...parsed, operationResult } : parsed;
 }
 
 export async function promoteArticleWorkingDraftRpc(
   supabase: ServerSupabaseClient,
-  input: ArticleBundleRpcInput & { expectedWorkingDraftVersion: number }
+  input: ArticleBundleRpcInput & { expectedWorkingDraftVersion: number },
+  operationContext?: ArticleOperationResultContext
 ): Promise<ArticleBundleRpcResult> {
   if (
     !input.articleId ||
@@ -160,12 +170,19 @@ export async function promoteArticleWorkingDraftRpc(
       "Не удалось безопасно подтвердить выпуск статьи. Обновите страницу и повторите действие."
     );
   }
-  const { data, error } = await supabase.rpc(
-    "promote_article_working_draft",
-    {
-      ...articleBundleRpcArgs(input),
-      p_expected_working_draft_version: input.expectedWorkingDraftVersion,
-    }
-  );
-  return parseArticleBundleRpcResult(data, error, "promote_article_working_draft");
+  const args = {
+    ...articleBundleRpcArgs(input),
+    p_expected_working_draft_version: input.expectedWorkingDraftVersion,
+  };
+  const operationResult = operationContext
+    ? await saveArticleOperationRpc(supabase, "promote_article_working_draft", args, operationContext)
+    : null;
+  const { data, error } = operationContext
+    ? { data: operationResult?.result, error: null }
+    : await supabase.rpc("promote_article_working_draft", args);
+  const parsed = parseArticleBundleRpcResult(data, error, "promote_article_working_draft");
+  if (parsed.articleId.toLowerCase() !== input.articleId.toLowerCase()) {
+    throw new Error("Атомарное сохранение вернуло неверный идентификатор статьи.");
+  }
+  return operationResult ? { ...parsed, operationResult } : parsed;
 }

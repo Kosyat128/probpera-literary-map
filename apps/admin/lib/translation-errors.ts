@@ -1,5 +1,14 @@
 export const translationErrorCodes = [
   "translation_not_configured",
+  "translation_operation_stopped",
+  "translation_save_unconfirmed",
+  "translation_resume_stale",
+  "translation_scan_complete",
+  "translation_scan_unconfirmed",
+  "translation_run_record_unconfirmed",
+  "translation_retry_unconfirmed",
+  "translation_retry_blocked",
+  "translation_retry_pending",
   "database_unavailable",
   "database_read_failed",
   "database_write_failed",
@@ -17,6 +26,24 @@ export const translationErrorCodes = [
 export type TranslationErrorCode = (typeof translationErrorCodes)[number];
 
 const messages: Record<TranslationErrorCode, string> = {
+  translation_retry_unconfirmed:
+    "Результат адресного повтора пока не подтверждён. Проверьте квитанцию этой попытки; повторный запрос переводчику автоматически не запускается.",
+  translation_retry_blocked:
+    "Адресный повтор сейчас недоступен. Проверьте причину в журнале выбранного элемента; существующие тексты сохранены.",
+  translation_retry_pending:
+    "Повтор выбранного элемента выполняется или его результат ещё не подтверждён. Проверьте журнал; новый перевод автоматически не запускается.",
+  translation_scan_unconfirmed:
+    "Завершение обхода не подтверждено. Обновите журнал задачи перед продолжением; новый обход автоматически не запускается.",
+  translation_run_record_unconfirmed:
+    "Запись журнала задачи не подтверждена. Часть EN могла уже сохраниться. Проверьте сохранённые версии перед повторным запуском; результат не считается полностью подтверждённым.",
+  translation_resume_stale:
+    "Сохранённую позицию этого обхода нельзя безопасно продолжить. Начните новый обход архива; ручные и актуальные EN будут пропущены.",
+  translation_scan_complete:
+    "Сохранённый набор кандидатов уже просмотрен. Для новых публикаций и изменений начните новый обход архива.",
+  translation_save_unconfirmed:
+    "Результат сохранения EN не подтверждён. Запись могла выполниться; проверьте сохранённую версию перед повторной попыткой.",
+  translation_operation_stopped:
+    "Обработка остановлена по лимиту или команде остановки. Новые запросы не запускаются; уже принятый провайдером запрос мог выполниться.",
   translation_not_configured:
     "Провайдер перевода не подключён на сервере. Проверьте серверную конфигурацию.",
   database_unavailable: "База данных временно недоступна.",
@@ -52,6 +79,16 @@ export function translationErrorCode(
     error instanceof Error ? error.message : typeof error === "string" ? error : "";
   const normalized = value.toLowerCase();
   if (!normalized) return fallback;
+  if (normalized === "english translation save result not confirmed" ||
+    normalized === "private english draft save result not confirmed") {
+    return "translation_save_unconfirmed";
+  }
+  if (normalized === "private english draft context not confirmed") {
+    return "database_read_failed";
+  }
+  if (normalized.startsWith("translation operation stopped before a new request:")) {
+    return "translation_operation_stopped";
+  }
   if (
     normalized.includes("binding is not configured") ||
     normalized.includes("api_key is not configured") ||

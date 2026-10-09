@@ -3,9 +3,19 @@ import Link from "next/link";
 import LiteraryWorkWorkspace, {
   type LiteraryWorkWorkspaceContext,
 } from "@/components/LiteraryWorkWorkspace";
+import PremiumTranslationReviewPanel from "@/components/PremiumTranslationReviewPanel";
 import { bookEditionRightsStatuses } from "@/lib/book-edition-edit";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, readAdminList, readAdminResult, type AdminReadIssue, type AdminReadResult } from "@/lib/admin-read-result";
 import { adminEnv } from "@/lib/env";
+import { safeCount } from "@/lib/format";
 import { lookupEditionByIsbn, normalizeIsbn } from "@/lib/isbn";
+import {
+  libraryActionIdSupported, matchesLibraryWork, sameLibraryId, validLibraryArtwork, validLibraryCatalogWork,
+  validLibraryEdition, validLibraryExternalId, validLibraryImportCandidate,
+  validLibraryIsbnCandidate, validLibrarySource, validLibraryTranslation,
+  validLibraryWork, validLibraryWriterOverride,
+} from "@/lib/library-load-validation";
 import {
   LIBRARY_CATALOG_PAGE_SIZE,
   LIBRARY_WORK_PICKER_PAGE_SIZE,
@@ -24,6 +34,7 @@ import {
   editorialArtworkSecondaryCount,
 } from "@/lib/literary-work-cover-artwork";
 import { redirect } from "@/lib/navigation";
+import { loadPremiumTranslationReview } from "@/lib/premium-translation-review";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { saveBookEditionAction, updateBookEditionAction } from "./actions";
@@ -52,7 +63,7 @@ type LibrarySearchParams = {
 };
 
 const UUID_PATTERN =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu;
 
 function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
@@ -68,6 +79,28 @@ function listValue(value: unknown) {
   return Array.isArray(value)
     ? value.filter((item): item is string => typeof item === "string").join("\n")
     : "";
+}
+
+function libraryCountRead(result: PromiseSettledResult<{ count: number | null; error?: unknown }>): AdminReadResult<number> {
+  const read = readAdminResult(result.status === "fulfilled"
+    ? { status: "fulfilled", value: { data: safeCount(result.value), error: result.value?.error } }
+    : result, (data) => data !== null);
+  return read.status === "failed" ? read : { status: "success", data: read.data as number };
+}
+
+function displayLibraryCount(value: number | null) {
+  return value === null ? "Недоступно" : value.toLocaleString("ru-RU");
+}
+
+function listView<T extends object>(read: AdminReadResult<T[]>) {
+  return read.status === "success" ? { data: read.data, error: null } : { data: [] as T[], error: read.issue };
+}
+
+function LibraryLoadNotice({ label, issue, retryHref }: { label: string; issue: AdminReadIssue; retryHref: string }) {
+  return <p className="form-message" role="status">
+    {label}: Недоступно. {adminReadMessage(issue)}{" "}
+    <a href={retryHref}>Повторить загрузку</a>
+  </p>;
 }
 
 type LibraryFormContext = {
@@ -115,10 +148,10 @@ function CatalogPagination({
 }: {
   label: string;
   page: number;
-  totalPages: number;
+  totalPages: number | null;
   href: (page: number) => string;
 }) {
-  if (totalPages <= 1) return null;
+  if (totalPages === null || totalPages <= 1) return null;
   return (
     <nav className="pagination library-pagination" aria-label={label}>
       {page > 1 ? <Link href={href(1)}>Первая</Link> : <span aria-disabled="true">Первая</span>}
@@ -204,11 +237,29 @@ export default async function LibraryPage({
     work_picker_q: query.work_picker_q,
     work_picker_page: query.work_picker_page,
   });
-  const candidate = requestedIsbn
-    ? await lookupEditionByIsbn(requestedIsbn).catch(() => null)
-    : null;
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}${libraryCatalogHref(catalog, {
+    isbn: requestedIsbn, workId: requestedWorkId, writerId: requestedWriterId,
+    countryId: requestedCountryId, editionId: requestedEditionId,
+  })}`;
+  const [isbnResult] = await Promise.allSettled([requestedIsbn
+    ? lookupEditionByIsbn(requestedIsbn) : Promise.resolve(null)]);
+  const isbnRead = readAdminResult(isbnResult.status === "fulfilled"
+    ? { status: "fulfilled", value: { data: isbnResult.value, error: null } }
+    : isbnResult, (data) => data === null || validLibraryIsbnCandidate(data, requestedIsbn));
+  const candidate = isbnRead.status === "success" ? isbnRead.data : null;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return <AdminDependencyState />;
+  if (!supabase) return <>
+    <AdminDependencyState />
+    <LibraryLoadNotice label="Библиотека" issue="unavailable" retryHref={retryHref} />
+    {isbnRead.status === "failed" && <LibraryLoadNotice label="Поиск ISBN" issue={isbnRead.issue} retryHref={retryHref} />}
+    {candidate && <section className="panel isbn-candidate">
+      <h2>{candidate.title}</h2>
+      <p>{candidate.authors.join(", ")}</p>
+      <p>ISBN: {candidate.isbn13 || candidate.isbn10}</p>
+      <a href={candidate.googleBooksUrl || candidate.openLibraryUrl} target="_blank" rel="noreferrer">Источник издания</a>
+      <p role="status">Для сохранения издания требуется загрузить библиотеку.</p>
+    </section>}
+  </>;
 
   let worksCatalogQuery = supabase
     .from("literary_works")
@@ -292,17 +343,17 @@ export default async function LibraryPage({
         .maybeSingle()
     : Promise.resolve({ data: null, error: null });
   const [
-    { data: worksResult, error: worksError, count: filteredWorksCount },
-    { data: editionsResult, error: editionsError, count: filteredEditionsCount },
-    { data: workPickerResult, error: workPickerError, count: workPickerCount },
-    totalWorksResult,
-    totalEditionsResult,
-    { count: verifiedEditionCoversCount, error: editionCoversError },
-    { count: editorialArtworksCount, error: editorialArtworksCountError },
-    { count: primaryEditorialArtworksCount, error: primaryEditorialArtworksCountError },
+    worksQueryResult,
+    editionsQueryResult,
+    pickerQueryResult,
+    totalWorksQueryResult,
+    totalEditionsQueryResult,
+    editionCoversQueryResult,
+    editorialArtworksQueryResult,
+    primaryEditorialArtworksQueryResult,
     selectedWorkResult,
     selectedEditionResult,
-  ] = await Promise.all([
+  ] = await Promise.allSettled([
     worksCatalogQuery.range(catalog.worksFrom, catalog.worksTo),
     editionsCatalogQuery.range(catalog.editionsFrom, catalog.editionsTo),
     workPickerQuery.range(catalog.workPickerFrom, catalog.workPickerTo),
@@ -328,22 +379,43 @@ export default async function LibraryPage({
     selectedWorkPromise,
     selectedEditionPromise,
   ]);
-  const works = worksResult || [];
-  const editions = editionsResult || [];
-  const workPickerWorks = workPickerResult || [];
-  const worksTotalPages = Math.max(
+  const worksRead = readAdminList(worksQueryResult, validLibraryCatalogWork);
+  const editionsRead = readAdminList(editionsQueryResult, (row) => validLibraryEdition(row, false));
+  const pickerRead = readAdminList(pickerQueryResult, validLibraryWork);
+  const worksCountRead = libraryCountRead(worksQueryResult);
+  const editionsCountRead = libraryCountRead(editionsQueryResult);
+  const pickerCountRead = libraryCountRead(pickerQueryResult);
+  const totalWorksRead = libraryCountRead(totalWorksQueryResult);
+  const totalEditionsRead = libraryCountRead(totalEditionsQueryResult);
+  const editionCoversRead = libraryCountRead(editionCoversQueryResult);
+  const editorialArtworksCountRead = libraryCountRead(editorialArtworksQueryResult);
+  const primaryArtworksCountRead = libraryCountRead(primaryEditorialArtworksQueryResult);
+  const works = worksRead.status === "success" ? worksRead.data : [];
+  const editions = editionsRead.status === "success" ? editionsRead.data : [];
+  const workPickerWorks = pickerRead.status === "success" ? pickerRead.data : [];
+  const worksError = worksRead.status === "failed" ? worksRead.issue : null;
+  const editionsError = editionsRead.status === "failed" ? editionsRead.issue : null;
+  const workPickerError = pickerRead.status === "failed" ? pickerRead.issue : null;
+  const filteredWorksCount = worksCountRead.status === "success" ? worksCountRead.data : null;
+  const filteredEditionsCount = editionsCountRead.status === "success" ? editionsCountRead.data : null;
+  const workPickerCount = pickerCountRead.status === "success" ? pickerCountRead.data : null;
+  const verifiedEditionCoversCount = editionCoversRead.status === "success" ? editionCoversRead.data : null;
+  const editorialArtworksCount = editorialArtworksCountRead.status === "success" ? editorialArtworksCountRead.data : null;
+  const primaryEditorialArtworksCount = primaryArtworksCountRead.status === "success" ? primaryArtworksCountRead.data : null;
+  const worksTotalPages = filteredWorksCount === null ? null : Math.max(
     1,
-    Math.ceil((filteredWorksCount || 0) / LIBRARY_CATALOG_PAGE_SIZE)
+    Math.ceil(filteredWorksCount / LIBRARY_CATALOG_PAGE_SIZE)
   );
-  const editionsTotalPages = Math.max(
+  const editionsTotalPages = filteredEditionsCount === null ? null : Math.max(
     1,
-    Math.ceil((filteredEditionsCount || 0) / LIBRARY_CATALOG_PAGE_SIZE)
+    Math.ceil(filteredEditionsCount / LIBRARY_CATALOG_PAGE_SIZE)
   );
-  const workPickerTotalPages = Math.max(
+  const workPickerTotalPages = workPickerCount === null ? null : Math.max(
     1,
-    Math.ceil((workPickerCount || 0) / LIBRARY_WORK_PICKER_PAGE_SIZE)
+    Math.ceil(workPickerCount / LIBRARY_WORK_PICKER_PAGE_SIZE)
   );
-  const secondaryEditorialArtworksCount = editorialArtworkSecondaryCount(
+  const secondaryEditorialArtworksCount = editorialArtworksCount === null || primaryEditorialArtworksCount === null ||
+    primaryEditorialArtworksCount > editorialArtworksCount ? null : editorialArtworkSecondaryCount(
     editorialArtworksCount,
     primaryEditorialArtworksCount
   );
@@ -351,6 +423,7 @@ export default async function LibraryPage({
     !worksError &&
     !editionsError &&
     !workPickerError &&
+    worksTotalPages !== null && editionsTotalPages !== null && workPickerTotalPages !== null &&
     (catalog.worksPage > worksTotalPages ||
       catalog.editionsPage > editionsTotalPages ||
       catalog.workPickerPage > workPickerTotalPages)
@@ -371,55 +444,63 @@ export default async function LibraryPage({
       })
     );
   }
-  const selectedWork = selectedWorkResult.data;
-  const selectedEdition = selectedEditionResult.data;
-  const currentEditionWorkResult = selectedEdition
-    ? await supabase
+  const selectedWorkRead = readAdminResult(selectedWorkResult, (data) => data === null || matchesLibraryWork(data, requestedWorkId));
+  const selectedEditionRead = readAdminResult(selectedEditionResult, (data) => data === null ||
+    (validLibraryEdition(data) && sameLibraryId(data.id, requestedEditionId)));
+  const selectedWork = selectedWorkRead.status === "success" ? selectedWorkRead.data : null;
+  const selectedEdition = selectedEditionRead.status === "success" ? selectedEditionRead.data : null;
+  const [currentEditionWorkResult, writerOverrideResult] = await Promise.allSettled([selectedEdition
+    ? supabase
         .from("literary_works")
         .select(
           "id,legacy_id,title,original_title,first_published,original_language,description,genres,tags,source_url,writer_id,country_id,editorial_status,metadata"
         )
         .eq("id", selectedEdition.work_id)
         .maybeSingle()
-    : { data: null, error: null };
-  const writerOverrideResult =
+    : Promise.resolve({ data: null, error: null }),
     requestedCountryId && requestedWriterId
-      ? await supabase
+      ? supabase
           .from("writer_profile_overrides")
-          .select("id,fields,is_enabled,updated_at")
+          .select("id,country_id,writer_id,fields,is_enabled,updated_at")
           .eq("country_id", requestedCountryId)
           .eq("writer_id", requestedWriterId)
           .maybeSingle()
-      : { data: null, error: null };
-  const writerOverrideFields = objectValue(writerOverrideResult.data?.fields);
+      : Promise.resolve({ data: null, error: null })]);
+  const currentWorkRead = readAdminResult(currentEditionWorkResult, (data) => data === null ||
+    (validLibraryWork(data, false) && sameLibraryId(data.id, selectedEdition?.work_id || "")));
+  const writerRead = readAdminResult(writerOverrideResult, (data) => data === null ||
+    validLibraryWriterOverride(data, requestedCountryId, requestedWriterId));
+  const currentEditionWork = currentWorkRead.status === "success" ? currentWorkRead.data : null;
+  const writerOverride = writerRead.status === "success" ? writerRead.data : null;
+  const writerOverrideFields = objectValue(writerOverride?.fields);
   const [
-    workTranslationsResult,
-    workSourcesResult,
-    workExternalIdsResult,
-    workImportCandidatesResult,
-    workEditorialArtworksResult,
+    translationsQueryResult,
+    sourcesQueryResult,
+    externalIdsQueryResult,
+    importCandidatesQueryResult,
+    artworksQueryResult,
   ] = selectedWork
-    ? await Promise.all([
+    ? await Promise.allSettled([
         supabase
           .from("literary_work_translations")
-          .select("id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,updated_at")
+          .select("id,work_id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,updated_at")
           .eq("work_id", selectedWork.id)
           .order("locale"),
         supabase
           .from("literary_work_sources")
-          .select("id,provider,source_url,field_names,license_name,usage,retrieved_at,updated_at")
+          .select("id,work_id,provider,source_url,field_names,license_name,usage,retrieved_at,updated_at")
           .eq("work_id", selectedWork.id)
           .order("provider")
           .order("id"),
         supabase
           .from("literary_work_external_ids")
-          .select("id,scheme,external_id,source_url")
+          .select("id,work_id,scheme,external_id,source_url")
           .eq("work_id", selectedWork.id)
           .order("scheme")
           .order("external_id"),
         supabase
           .from("book_import_candidates")
-          .select("id,provider,external_id,title,source_url,quality_score,status,rejection_reasons,promoted_work_id,updated_at")
+          .select("id,country_id,writer_id,provider,external_id,title,source_url,quality_score,status,rejection_reasons,promoted_work_id,updated_at")
           .eq("country_id", selectedWork.country_id)
           .eq("writer_id", selectedWork.writer_id)
           .order("quality_score", { ascending: false })
@@ -428,7 +509,7 @@ export default async function LibraryPage({
         supabase
           .from("literary_work_cover_artworks")
           .select(
-            "id,cover_url,thumbnail_url,cover_width,cover_height,thumbnail_width,thumbnail_height,rights_status,cover_source_url,rights_checked_at,source_archive_sha256,source_image_sha256,source_filename,source_relative_path,source_index,is_primary,provenance,created_at,updated_at"
+            "id,work_id,cover_url,thumbnail_url,cover_width,cover_height,thumbnail_width,thumbnail_height,rights_status,cover_source_url,rights_checked_at,source_archive_sha256,source_image_sha256,source_filename,source_relative_path,source_index,is_primary,provenance,created_at,updated_at"
           )
           .eq("work_id", selectedWork.id)
           .order("is_primary", { ascending: false })
@@ -436,39 +517,58 @@ export default async function LibraryPage({
           .order("id"),
       ])
     : [
-        { data: [], error: null },
-        { data: [], error: null },
-        { data: [], error: null },
-        { data: [], error: null },
-        { data: [], error: null },
+        { status: "fulfilled" as const, value: { data: [], error: null } },
+        { status: "fulfilled" as const, value: { data: [], error: null } },
+        { status: "fulfilled" as const, value: { data: [], error: null } },
+        { status: "fulfilled" as const, value: { data: [], error: null } },
+        { status: "fulfilled" as const, value: { data: [], error: null } },
       ];
+  const rawTranslationsRead = readAdminList(translationsQueryResult, (row) => validLibraryTranslation(row, selectedWork?.id || ""));
+  const translationsRead = rawTranslationsRead.status === "success" &&
+    new Set(rawTranslationsRead.data.map((row) => row.locale)).size !== rawTranslationsRead.data.length
+    ? { status: "failed", issue: "invalid" } as const : rawTranslationsRead;
+  const sourcesRead = readAdminList(sourcesQueryResult, (row) => validLibrarySource(row, selectedWork?.id || ""));
+  const externalIdsRead = readAdminList(externalIdsQueryResult, (row) => validLibraryExternalId(row, selectedWork?.id || ""));
+  const candidatesRead = readAdminList(importCandidatesQueryResult, (row) => validLibraryImportCandidate(row, selectedWork?.country_id || "", selectedWork?.writer_id || ""));
+  const artworksRead = readAdminList(artworksQueryResult, (row) => validLibraryArtwork(row, selectedWork?.id || ""));
+  const workTranslationsResult = listView(translationsRead);
+  const workSourcesResult = listView(sourcesRead);
+  const workExternalIdsResult = listView(externalIdsRead);
+  const workImportCandidatesResult = listView(candidatesRead);
+  const workEditorialArtworksResult = listView(artworksRead);
+  const workMutationIdsReady = libraryActionIdSupported(selectedWork?.id) &&
+    [workTranslationsResult.data, workSourcesResult.data, workExternalIdsResult.data, workImportCandidatesResult.data]
+      .every((rows) => rows.every((row) => libraryActionIdSupported(row.id)));
+  const workBundleReady = selectedWorkRead.status === "success" && Boolean(selectedWork) && workMutationIdsReady &&
+    [translationsRead, sourcesRead, externalIdsRead, candidatesRead, artworksRead].every((read) => read.status === "success");
+  const workTranslationReview = workBundleReady && selectedWork && supabase
+    ? await loadPremiumTranslationReview({ supabase, entityType: "literary_work", entityId: selectedWork.id })
+    : { status: "none" } as const;
+  const editionBundleReady = selectedEditionRead.status === "success" && Boolean(selectedEdition) &&
+    libraryActionIdSupported(selectedEdition?.id) && libraryActionIdSupported(selectedEdition?.work_id) &&
+    currentWorkRead.status === "success" && Boolean(currentEditionWork) && pickerRead.status === "success" && pickerCountRead.status === "success";
+  const candidateSaveReady = isbnRead.status === "success" && pickerRead.status === "success" && pickerCountRead.status === "success" &&
+    selectedWorkRead.status === "success" && selectedEditionRead.status === "success" && currentWorkRead.status === "success" &&
+    (!selectedEdition || Boolean(currentEditionWork));
   const workOptions = mergeLibraryWorkOptions(
-    currentEditionWorkResult.data,
+    currentEditionWork,
     selectedWork,
     workPickerWorks
   );
+  const actionableWorkOptions = workOptions.filter((work) => libraryActionIdSupported(work.id));
   const selectedWriterEntityId =
     requestedCountryId && requestedWriterId
       ? `${requestedCountryId}:${requestedWriterId}`
       : "";
-  const schemaError =
-    worksError ||
-    editionsError ||
-    workPickerError ||
-    totalWorksResult.error ||
-    totalEditionsResult.error ||
-    editionCoversError ||
-    editorialArtworksCountError ||
-    primaryEditorialArtworksCountError ||
-    selectedWorkResult.error ||
-    selectedEditionResult.error ||
-    currentEditionWorkResult.error ||
-    writerOverrideResult.error ||
-    workTranslationsResult.error ||
-    workSourcesResult.error ||
-    workExternalIdsResult.error ||
-    workImportCandidatesResult.error ||
-    workEditorialArtworksResult.error;
+  const notices = [
+    ["Каталог произведений", worksRead], ["Каталог изданий", editionsRead], ["Список произведений для привязки", pickerRead],
+    ["Число произведений в фильтре", worksCountRead], ["Число изданий в фильтре", editionsCountRead], ["Число произведений для привязки", pickerCountRead],
+    ["Общее число произведений", totalWorksRead], ["Общее число изданий", totalEditionsRead], ["Число обложек изданий", editionCoversRead],
+    ["Число редакционных иллюстраций", editorialArtworksCountRead], ["Число основных иллюстраций", primaryArtworksCountRead],
+    ["Выбранное произведение", selectedWorkRead], ["Выбранное издание", selectedEditionRead], ["Текущее произведение издания", currentWorkRead],
+    ["Редакционные данные писателя", writerRead], ["Переводы произведения", translationsRead], ["Источники произведения", sourcesRead],
+    ["Внешние идентификаторы", externalIdsRead], ["Импорт-кандидаты", candidatesRead], ["Иллюстрации произведения", artworksRead], ["Поиск ISBN", isbnRead],
+  ] as const;
   const formContext: LibraryFormContext = {
     catalog,
     isbn: requestedIsbn,
@@ -477,7 +577,7 @@ export default async function LibraryPage({
     countryId: requestedCountryId,
     editionId: requestedEditionId,
     entityExpectedUpdatedAt:
-      selectedWork?.updated_at || writerOverrideResult.data?.updated_at || "",
+      selectedWork?.updated_at || writerOverride?.updated_at || "",
   };
   const workspaceContext: LiteraryWorkWorkspaceContext = {
     catalogQ: catalog.term,
@@ -519,10 +619,10 @@ export default async function LibraryPage({
         </div>
       </header>
 
-      {query.error && <p className="form-message">{query.error}</p>}
+      {query.error && <p className="form-message" role="status">Предыдущее действие требует проверки. Сверьте актуальные данные и историю изменений.</p>}
       {query.notice === "edition-exists" && (
         <p className="form-message" role="status">
-          Издание с этим ISBN уже есть в архиве. Открыта существующая запись; её ручные данные не изменены.
+          Проверьте запись выбранного издания и его ISBN ниже.
         </p>
       )}
       {editionIdDraft && !requestedEditionId && (
@@ -530,37 +630,20 @@ export default async function LibraryPage({
           Некорректный идентификатор издания.
         </p>
       )}
-      {query.saved && (
-        <p className="form-message form-success">
-          {query.saved === "entity"
-            ? "Изменение сохранено и передано в публикацию."
-            : query.saved === "workspace"
-              ? "Редакционная запись произведения сохранена."
-              : "Издание сохранено."}
-        </p>
+      {(query.saved || query.published) && <p className="form-message" role="status">Проверьте результат предыдущего действия в актуальных данных, истории и статусе публикации.</p>}
+      {notices.map(([label, read]) => read.status === "failed"
+        ? <LibraryLoadNotice key={label} label={label} issue={read.issue} retryHref={retryHref} /> : null)}
+      {requestedWorkId && selectedWorkRead.status === "success" && !selectedWork && (
+        <p className="form-message" role="status">Произведение не найдено или недоступно.</p>
       )}
-      {schemaError && (
-        <p className="form-message">
-          Книжные таблицы ещё не применены в Supabase. Выполните миграции
-          20260730_literary_archive.sql, 20260808_book_translations_and_import_staging.sql
-          и 20260820_literary_work_cover_artworks.sql,
-          затем синхронизируйте countries.
-        </p>
+      {selectedEdition && currentWorkRead.status === "success" && !currentEditionWork && (
+        <p className="form-message" role="status">Текущее произведение издания не найдено или недоступно. Редактирование издания недоступно.</p>
       )}
-      {query.published === "started" && (
-        <p className="form-message form-success">
-          Публичная сборка с обновлённым изданием запущена.
-        </p>
+      {selectedWork && !workMutationIdsReady && (
+        <p className="form-message" role="status">Данные произведения доступны для просмотра; идентификатор не поддерживается формами редактирования.</p>
       )}
-      {query.published === "queued" && (
-        <p className="form-message form-success">
-          Обновление издания поставлено в очередь публикации.
-        </p>
-      )}
-      {query.published === "queue-error" && (
-        <p className="form-message form-error" role="alert">
-          Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.
-        </p>
+      {selectedEdition && (!libraryActionIdSupported(selectedEdition.id) || !libraryActionIdSupported(selectedEdition.work_id)) && (
+        <p className="form-message" role="status">Данные издания доступны для просмотра; идентификатор не поддерживается формами редактирования.</p>
       )}
 
       {(requestedWorkId || requestedWriterId || requestedCountryId) && (
@@ -573,7 +656,7 @@ export default async function LibraryPage({
                 : "Произведения выбранного писателя"}
             </h2>
             <p>
-              Найдено записей: {(filteredWorksCount || 0).toLocaleString("ru-RU")}. Фильтр
+              Найдено записей: {displayLibraryCount(filteredWorksCount)}. Фильтр
               использует постоянные идентификаторы страны, автора и произведения.
             </p>
           </div>
@@ -583,7 +666,7 @@ export default async function LibraryPage({
         </section>
       )}
 
-      {selectedWork && (
+      {selectedWork && workBundleReady && (
         <section className="panel visual-entity-editor">
           <header>
             <div>
@@ -696,14 +779,12 @@ export default async function LibraryPage({
               </p>
             </div>
             <span className="badge">
-              {(workEditorialArtworksResult.data || []).length.toLocaleString("ru-RU")} шт.
+              {workEditorialArtworksResult.error ? "Недоступно" : `${workEditorialArtworksResult.data.length.toLocaleString("ru-RU")} шт.`}
             </span>
           </div>
 
           {workEditorialArtworksResult.error ? (
-            <p className="form-message form-error" role="alert">
-              Не удалось загрузить редакционные иллюстрации: {workEditorialArtworksResult.error.message}
-            </p>
+            <LibraryLoadNotice label="Редакционные иллюстрации" issue={workEditorialArtworksResult.error} retryHref={retryHref} />
           ) : (workEditorialArtworksResult.data || []).length ? (
             <div className="editorial-artwork-grid">
               {(workEditorialArtworksResult.data || []).map((artwork) => {
@@ -820,7 +901,7 @@ export default async function LibraryPage({
         </section>
       )}
 
-      {selectedWork && !workTranslationsResult.error && !workSourcesResult.error && !workExternalIdsResult.error && !workImportCandidatesResult.error && (
+      {selectedWork && workBundleReady && (
         <LiteraryWorkWorkspace
           work={{ id: selectedWork.id, title: selectedWork.title }}
           translations={workTranslationsResult.data || []}
@@ -830,8 +911,11 @@ export default async function LibraryPage({
           context={workspaceContext}
         />
       )}
+      {selectedWork && workBundleReady && (
+        <PremiumTranslationReviewPanel view={workTranslationReview} returnTo="library" />
+      )}
 
-      {selectedWriterEntityId && !selectedWork && (
+      {selectedWriterEntityId && !requestedWorkId && writerRead.status === "success" && (
         <section className="panel visual-entity-editor">
           <header>
             <div>
@@ -894,25 +978,25 @@ export default async function LibraryPage({
       <section className="stats-grid library-stats-grid">
         <article className="stat-card">
           <span>Произведения</span>
-          <strong>{(totalWorksResult.count || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{displayLibraryCount(totalWorksRead.status === "success" ? totalWorksRead.data : null)}</strong>
           <small>из единой структуры countries</small>
         </article>
         <article className="stat-card">
           <span>Точные издания</span>
-          <strong>{(totalEditionsResult.count || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{displayLibraryCount(totalEditionsRead.status === "success" ? totalEditionsRead.data : null)}</strong>
           <small>с отдельными ISBN</small>
         </article>
         <article className="stat-card">
           <span>Обложки точных изданий</span>
-          <strong>{(verifiedEditionCoversCount || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{displayLibraryCount(verifiedEditionCoversCount)}</strong>
           <small>источник и права подтверждены; отдельно от иллюстраций</small>
         </article>
         <article className="stat-card">
           <span>Редакционные иллюстрации</span>
-          <strong>{(editorialArtworksCount || 0).toLocaleString("ru-RU")}</strong>
+          <strong>{displayLibraryCount(editorialArtworksCount)}</strong>
           <small>
-            {(primaryEditorialArtworksCount || 0).toLocaleString("ru-RU")} основных ·{" "}
-            {secondaryEditorialArtworksCount.toLocaleString("ru-RU")} дополнительных
+            {displayLibraryCount(primaryEditorialArtworksCount)} основных ·{" "}
+            {displayLibraryCount(secondaryEditorialArtworksCount)} дополнительных
           </small>
         </article>
         <article className="stat-card">
@@ -972,11 +1056,11 @@ export default async function LibraryPage({
           <div>
             <span className="eyebrow">Каталог произведений</span>
             <h2>Все произведения</h2>
-            <p>Найдено: {(filteredWorksCount || 0).toLocaleString("ru-RU")}</p>
+            <p>Найдено: {displayLibraryCount(filteredWorksCount)}</p>
           </div>
         </div>
         {worksError ? (
-          <p className="form-message">Не удалось загрузить произведения: {worksError.message}</p>
+          <LibraryLoadNotice label="Произведения" issue={worksError} retryHref={retryHref} />
         ) : works.length ? (
           <div className="data-table-wrap">
             <table className="data-table">
@@ -1110,7 +1194,7 @@ export default async function LibraryPage({
         </section>
       </div>
 
-      {requestedIsbn && !candidate && (
+      {requestedIsbn && isbnRead.status === "success" && !candidate && (
         <section className="panel" style={{ marginTop: 18 }}>
           <div className="empty-state">
             <p>
@@ -1129,7 +1213,7 @@ export default async function LibraryPage({
               <h2>Найти произведение для привязки</h2>
               <p>
                 Поиск не зависит от фильтров таблицы и охватывает весь архив.
-                Найдено: {(workPickerCount || 0).toLocaleString("ru-RU")}.
+                Найдено: {displayLibraryCount(workPickerCount)}.
               </p>
             </div>
             {catalog.workPickerTerm && (
@@ -1167,9 +1251,7 @@ export default async function LibraryPage({
             <button className="button" type="submit">Найти во всём архиве</button>
           </form>
           {workPickerError && (
-            <p className="form-message form-error" role="alert">
-              Поиск произведений недоступен: {workPickerError.message}
-            </p>
+            <LibraryLoadNotice label="Поиск произведений" issue={workPickerError} retryHref={retryHref} />
           )}
           <CatalogPagination
             label="Страницы поиска произведения для привязки"
@@ -1214,7 +1296,7 @@ export default async function LibraryPage({
                 <dd>{candidate.isbn13 || candidate.isbn10}</dd>
               </div>
             </dl>
-            <form
+            {candidateSaveReady ? <form
               className="settings-stack edition-save-form"
               action={saveBookEditionAction}
             >
@@ -1225,14 +1307,11 @@ export default async function LibraryPage({
                   <option value="" disabled>
                     Выберите произведение
                   </option>
-                  {workOptions.map((work) => {
-                    const metadata =
-                      work.metadata && typeof work.metadata === "object"
-                        ? (work.metadata as Record<string, string>)
-                        : {};
+                  {actionableWorkOptions.map((work) => {
+                    const metadata = objectValue(work.metadata);
                     return (
                       <option key={work.id} value={work.id}>
-                        {work.title} - {metadata.writerName || work.writer_id} · {work.legacy_id}
+                        {work.title} - {textValue(metadata.writerName) || work.writer_id} · {work.legacy_id}
                       </option>
                     );
                   })}
@@ -1288,18 +1367,18 @@ export default async function LibraryPage({
                 <input type="checkbox" name="is_primary" />
                 <span>Сделать основным изданием произведения</span>
               </label>
-              <button className="button" type="submit" disabled={!workOptions.length}>
+              <button className="button" type="submit" disabled={!candidateSaveReady || !actionableWorkOptions.length}>
                 Сохранить точное издание
               </button>
-            </form>
+            </form> : <p className="form-message" role="status">Сохранение издания недоступно до загрузки данных произведений.</p>}
           </div>
         </section>
       )}
 
-      {requestedEditionId && !selectedEdition && !selectedEditionResult.error && (
+      {requestedEditionId && selectedEditionRead.status === "success" && !selectedEdition && (
         <section className="panel" style={{ marginTop: 18 }}>
           <div className="empty-state">
-            <p>Издание не найдено или было удалено.</p>
+            <p role="status">Издание не найдено или недоступно.</p>
             <Link className="button-secondary" href={pageHref({ editionId: "" })}>
               Вернуться к списку
             </Link>
@@ -1307,7 +1386,7 @@ export default async function LibraryPage({
         </section>
       )}
 
-      {selectedEdition && (
+      {selectedEdition && editionBundleReady && (
         <section id="edition-editor" className="panel edition-editor" style={{ marginTop: 18 }}>
           <header>
             <div>
@@ -1341,7 +1420,7 @@ export default async function LibraryPage({
                         Текущее произведение · {selectedEdition.work_id}
                       </option>
                     )}
-                    {workOptions.map((work) => {
+                    {actionableWorkOptions.map((work) => {
                       const metadata = objectValue(work.metadata);
                       return (
                         <option key={work.id} value={work.id}>
@@ -1471,11 +1550,11 @@ export default async function LibraryPage({
           <div>
             <span className="eyebrow">Каталог точных изданий</span>
             <h2>Все издания</h2>
-            <p>Найдено: {(filteredEditionsCount || 0).toLocaleString("ru-RU")}</p>
+            <p>Найдено: {displayLibraryCount(filteredEditionsCount)}</p>
           </div>
         </div>
         {editionsError ? (
-          <p className="form-message">Не удалось загрузить издания: {editionsError.message}</p>
+          <LibraryLoadNotice label="Издания" issue={editionsError} retryHref={retryHref} />
         ) : editions.length ? (
           <div className="data-table-wrap">
           <table className="data-table">

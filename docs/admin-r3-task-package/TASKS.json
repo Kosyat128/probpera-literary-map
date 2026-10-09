@@ -1,0 +1,3029 @@
+{
+  "package": "PROBPERA_ADMIN_R3_FINAL_20260923",
+  "schema_version": 3,
+  "prepared_at": "2026-09-23",
+  "repository": "Kosyat128/probpera-literary-map",
+  "reviewed_main_sha": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "reviewed_main_commit_date": "2026-09-14",
+  "supersedes": "PROBPERA_ADMIN_R2_FINAL_20260923",
+  "implementation_started": false,
+  "notice": "Накопительное задание R3. 201 ID R2 сохранён; application tests NOT_RUN. Package QA/logic reproductions не являются проверкой приложения.",
+  "exclusions": [
+    "hyphen/dash changes",
+    "automatic content rewriting",
+    "production mutations",
+    "DNS/hosting changes",
+    "paid API calls",
+    "duplicate canonical stores"
+  ],
+  "module_count": 26,
+  "acceptance_count": 230,
+  "inherited_acceptance_count": 201,
+  "added_acceptance_count": 29,
+  "clarified_inherited_tests": [
+    "M04-T01",
+    "M06-T02"
+  ],
+  "test_foundation_starts_in": "M00",
+  "tests_required_with_each_module": true,
+  "modules": [
+    {
+      "id": "M00",
+      "title": "Baseline и безопасная карта изменений",
+      "priority": "P0",
+      "depends_on": [],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M00.md",
+      "test_ids": [
+        "M00-T01",
+        "M00-T02",
+        "M00-T03",
+        "M00-T04",
+        "M00-T05"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M01",
+      "title": "Доступ и MFA",
+      "priority": "P0",
+      "depends_on": [
+        "M00"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M01.md",
+      "test_ids": [
+        "M01-T01",
+        "M01-T02",
+        "M01-T03",
+        "M01-T04",
+        "M01-T05",
+        "M01-T06",
+        "M01-T07",
+        "M01-T08",
+        "M01-T09",
+        "M01-T10",
+        "M01-T11",
+        "M01-T12",
+        "M01-T13",
+        "M01-T14",
+        "M01-T15"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M02",
+      "title": "Ошибки и сохранность неполных форм",
+      "priority": "P0",
+      "depends_on": [
+        "M00"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M02.md",
+      "test_ids": [
+        "M02-T01",
+        "M02-T02",
+        "M02-T03",
+        "M02-T04",
+        "M02-T05",
+        "M02-T06",
+        "M02-T07",
+        "M02-T08",
+        "M02-T09",
+        "M02-T10"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M03",
+      "title": "Health и KPI",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M03.md",
+      "test_ids": [
+        "M03-T01",
+        "M03-T02",
+        "M03-T03",
+        "M03-T04",
+        "M03-T05",
+        "M03-T06",
+        "M03-T07",
+        "M03-T08"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M04",
+      "title": "Публикация, версии, время",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M04.md",
+      "test_ids": [
+        "M04-T01",
+        "M04-T02",
+        "M04-T03",
+        "M04-T04",
+        "M04-T05",
+        "M04-T06",
+        "M04-T07",
+        "M04-T08",
+        "M04-T09",
+        "M04-T10",
+        "M04-T11",
+        "M04-T12",
+        "M04-T13",
+        "M04-T14",
+        "M04-T15",
+        "M04-T16",
+        "M04-T17"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M05",
+      "title": "Редактор и рабочие черновики",
+      "priority": "P0/P1",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M05.md",
+      "test_ids": [
+        "M05-T01",
+        "M05-T02",
+        "M05-T03",
+        "M05-T04",
+        "M05-T05",
+        "M05-T06",
+        "M05-T07",
+        "M05-T08",
+        "M05-T09",
+        "M05-T10",
+        "M05-T11",
+        "M05-T12",
+        "M05-T13"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M06",
+      "title": "История и восстановление",
+      "priority": "P1",
+      "depends_on": [
+        "M04",
+        "M05"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M06.md",
+      "test_ids": [
+        "M06-T01",
+        "M06-T02",
+        "M06-T03",
+        "M06-T04",
+        "M06-T05",
+        "M06-T06",
+        "M06-T07"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M07",
+      "title": "Переводы",
+      "priority": "P1",
+      "depends_on": [
+        "M03",
+        "M04",
+        "M05"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M07.md",
+      "test_ids": [
+        "M07-T01",
+        "M07-T02",
+        "M07-T03",
+        "M07-T04",
+        "M07-T05",
+        "M07-T06",
+        "M07-T07",
+        "M07-T08",
+        "M07-T09",
+        "M07-T10",
+        "M07-T11",
+        "M07-T12",
+        "M07-T13"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M08",
+      "title": "Каталог и импорт книг",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M08.md",
+      "test_ids": [
+        "M08-T01",
+        "M08-T02",
+        "M08-T03",
+        "M08-T04",
+        "M08-T05",
+        "M08-T06",
+        "M08-T07",
+        "M08-T08",
+        "M08-T09"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M09",
+      "title": "Досье",
+      "priority": "P1",
+      "depends_on": [
+        "M04",
+        "M05",
+        "M08"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M09.md",
+      "test_ids": [
+        "M09-T01",
+        "M09-T02",
+        "M09-T03",
+        "M09-T04",
+        "M09-T05",
+        "M09-T06",
+        "M09-T07",
+        "M09-T08",
+        "M09-T09"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M10",
+      "title": "Редактор новостей",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M04"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M10.md",
+      "test_ids": [
+        "M10-T01",
+        "M10-T02",
+        "M10-T03",
+        "M10-T04",
+        "M10-T05",
+        "M10-T06"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M11",
+      "title": "Медиа и обложки",
+      "priority": "P1",
+      "depends_on": [
+        "M02",
+        "M04",
+        "M05"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M11.md",
+      "test_ids": [
+        "M11-T01",
+        "M11-T02",
+        "M11-T03",
+        "M11-T04",
+        "M11-T05",
+        "M11-T06",
+        "M11-T07",
+        "M11-T08",
+        "M11-T09",
+        "M11-T10",
+        "M11-T11",
+        "M11-T12"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M12",
+      "title": "Навигация и доступность",
+      "priority": "P2",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M05"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M12.md",
+      "test_ids": [
+        "M12-T01",
+        "M12-T02",
+        "M12-T03",
+        "M12-T04",
+        "M12-T05",
+        "M12-T06",
+        "M12-T07"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M13",
+      "title": "SEO",
+      "priority": "P2",
+      "depends_on": [
+        "M02",
+        "M04"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M13.md",
+      "test_ids": [
+        "M13-T01",
+        "M13-T02",
+        "M13-T03",
+        "M13-T04",
+        "M13-T05",
+        "M13-T06",
+        "M13-T07",
+        "M13-T08",
+        "M13-T09"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M14",
+      "title": "Аналитика",
+      "priority": "P2",
+      "depends_on": [
+        "M02",
+        "M03"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M14.md",
+      "test_ids": [
+        "M14-T01",
+        "M14-T02",
+        "M14-T03",
+        "M14-T04",
+        "M14-T05"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M15",
+      "title": "Комментарии и команда",
+      "priority": "P2",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M15.md",
+      "test_ids": [
+        "M15-T01",
+        "M15-T02",
+        "M15-T03",
+        "M15-T04",
+        "M15-T05"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M16",
+      "title": "Согласованность оформления",
+      "priority": "P2",
+      "depends_on": [
+        "M04",
+        "M06"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M16.md",
+      "test_ids": [
+        "M16-T01",
+        "M16-T02",
+        "M16-T03",
+        "M16-T04"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M17",
+      "title": "Эксплуатация и производительность",
+      "priority": "P1/P2",
+      "depends_on": [
+        "M03",
+        "M04"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M17.md",
+      "test_ids": [
+        "M17-T01",
+        "M17-T02",
+        "M17-T03",
+        "M17-T04",
+        "M17-T05"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M18",
+      "title": "Приёмка и подготовка выпуска",
+      "priority": "P0/P1",
+      "depends_on": [
+        "M00",
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M08",
+        "M09",
+        "M10",
+        "M11",
+        "M12",
+        "M13",
+        "M14",
+        "M15",
+        "M16",
+        "M17",
+        "M19",
+        "M20",
+        "M21",
+        "M22",
+        "M23",
+        "M24",
+        "M25"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M18.md",
+      "test_ids": [
+        "M18-T01",
+        "M18-T02",
+        "M18-T03",
+        "M18-T04",
+        "M18-T05",
+        "M18-T06"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M19",
+      "title": "Страницы: согласованность HTML/JSON и рабочая редакция",
+      "priority": "P0/P1",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M05"
+      ],
+      "evidence": [
+        "R2E01",
+        "R2E02"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M19.md",
+      "test_ids": [
+        "M19-T01",
+        "M19-T02",
+        "M19-T03",
+        "M19-T04",
+        "M19-T05",
+        "M19-T06",
+        "M19-T07",
+        "M19-T08",
+        "M19-T09",
+        "M19-T10"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M20",
+      "title": "Автокопии: подтверждение commit, ошибки браузерного хранилища и приватность",
+      "priority": "P0",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "evidence": [
+        "R2E02",
+        "R2E03",
+        "R2E04"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M20.md",
+      "test_ids": [
+        "M20-T01",
+        "M20-T02",
+        "M20-T03",
+        "M20-T04",
+        "M20-T05",
+        "M20-T06",
+        "M20-T07",
+        "M20-T08",
+        "M20-T09",
+        "M20-T10"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M21",
+      "title": "Рубрики и теги: зависимости, адреса, объединение и удаление",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M04",
+        "M08"
+      ],
+      "evidence": [
+        "R2E05",
+        "R2E06"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M21.md",
+      "test_ids": [
+        "M21-T01",
+        "M21-T02",
+        "M21-T03",
+        "M21-T04",
+        "M21-T05",
+        "M21-T06",
+        "M21-T07"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M22",
+      "title": "Меню и баннеры: структура, область показа и расписания",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M04"
+      ],
+      "evidence": [
+        "R2E07",
+        "R2E08",
+        "R2E09"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M22.md",
+      "test_ids": [
+        "M22-T01",
+        "M22-T02",
+        "M22-T03",
+        "M22-T04",
+        "M22-T05",
+        "M22-T06",
+        "M22-T07",
+        "M22-T08",
+        "M22-T09"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M23",
+      "title": "Загрузка файлов: граница HTTP, восстановление Storage и регистрация",
+      "priority": "P0/P1",
+      "depends_on": [
+        "M01",
+        "M02"
+      ],
+      "evidence": [
+        "R2E10",
+        "R2E11"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M23.md",
+      "test_ids": [
+        "M23-T01",
+        "M23-T02",
+        "M23-T03",
+        "M23-T04",
+        "M23-T05",
+        "M23-T06",
+        "M23-T07",
+        "M23-T08",
+        "M23-T09",
+        "M23-T10",
+        "M23-T11"
+      ],
+      "r3_amended": true
+    },
+    {
+      "id": "M24",
+      "title": "Тексты сайта и шаблоны: версии, переменные и отказ перевода",
+      "priority": "P1",
+      "depends_on": [
+        "M01",
+        "M02",
+        "M04",
+        "M07"
+      ],
+      "evidence": [
+        "R2E12",
+        "R2E13"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M24.md",
+      "test_ids": [
+        "M24-T01",
+        "M24-T02",
+        "M24-T03",
+        "M24-T04",
+        "M24-T05",
+        "M24-T06",
+        "M24-T07",
+        "M24-T08"
+      ],
+      "r3_amended": false
+    },
+    {
+      "id": "M25",
+      "title": "Литературная повестка: интеграция с календарём и социальной доставкой",
+      "priority": "P1",
+      "depends_on": [
+        "M04",
+        "M10"
+      ],
+      "evidence": [
+        "R2E14",
+        "R2E15"
+      ],
+      "status": "PLANNED",
+      "code_findings_need_revalidation": true,
+      "specification": "modules/M25.md",
+      "test_ids": [
+        "M25-T01",
+        "M25-T02",
+        "M25-T03",
+        "M25-T04",
+        "M25-T05",
+        "M25-T06",
+        "M25-T07",
+        "M25-T08",
+        "M25-T09",
+        "M25-T10"
+      ],
+      "r3_amended": false
+    }
+  ],
+  "tests": [
+    {
+      "id": "M00-T01",
+      "module": "M00",
+      "conditions": "**Сохранить локальные правки**. Рабочее дерево содержит изменения пользователя; начать задачу.",
+      "expected": "Чужие изменения и текущая ветка не потеряны; baseline указывает реальный SHA.",
+      "required_level": "git/manual",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M00-T02",
+      "module": "M00",
+      "conditions": "**Зафиксировать границы**. Снять хеши выбранных защищённых файлов и inventories без чтения секретов.",
+      "expected": "Есть перечень защищённых областей и согласованные fixtures; нет экспорта персонального контента.",
+      "required_level": "git/static",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M00-T03",
+      "module": "M00",
+      "conditions": "**Изолировать испытания**. Передать E2E production origin или production database ref.",
+      "expected": "Тестовый раннер прекращает любые изменяющие действия с понятной причиной.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M00-T04",
+      "module": "M00",
+      "conditions": "**Отделить исходные ошибки**. Baseline содержит существующий сбой или исключённую проблему.",
+      "expected": "Она записана отдельно, не «исправлена» обходом gate и не скрыта как успех.",
+      "required_level": "report",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T01",
+      "module": "M01",
+      "conditions": "**Гость**. Без cookies обратиться к странице, защищённому API и action.",
+      "expected": "Нет закрытого содержимого и записи; корректный auth flow/отказ.",
+      "required_level": "e2e+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T02",
+      "module": "M01",
+      "conditions": "**Обычный читатель**. Reader напрямую вызывает административное действие.",
+      "expected": "Отказ; его разрешённые публичные операции по-прежнему доступны.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T03",
+      "module": "M01",
+      "conditions": "**Opt-in без фактора**. Staff без verified-фактора входит по действующей политике.",
+      "expected": "Разрешённый доступ сохранён; принудительное enrollment не включено.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T04",
+      "module": "M01",
+      "conditions": "**Незавершённый MFA**. Staff с verified-фактором и AAL1 запрашивает действие.",
+      "expected": "Требуется подтверждение; записи и закрытая выдача заблокированы.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T05",
+      "module": "M01",
+      "conditions": "**Подтверждённый MFA**. Та же роль на AAL2 выполняет разрешённое действие.",
+      "expected": "Успешная операция в пределах роли, без циклического redirect.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T06",
+      "module": "M01",
+      "conditions": "**Ошибка assurance**. getAuthenticatorAssuranceLevel возвращает ошибку или неверную структуру.",
+      "expected": "Доступ не разрешён; объяснение и безопасный повтор вместо required=false.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T07",
+      "module": "M01",
+      "conditions": "**Ошибка membership**. Чтение роли падает при действительном пользователе.",
+      "expected": "Это не «нет сотрудников» и не доступ по старой роли.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T08",
+      "module": "M01",
+      "conditions": "**Отзыв роли**. В изолированной среде снять роль, затем отправить действие старой вкладкой.",
+      "expected": "Новая операция отклонена по фактической модели проверки/токена.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T09",
+      "module": "M01",
+      "conditions": "**Прямой маршрут**. Обойти UI и вызвать RPC/Storage/Server Action разрешённым тестовым токеном низкой роли.",
+      "expected": "Проверка действует без layout; нет обхода через сервисный клиент.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M01-T10",
+      "module": "M01",
+      "conditions": "**Восстановление и секреты**. Проверить challenge/logout/reset flow, logs и cache под двумя аккаунтами.",
+      "expected": "Нет lockout/утечки/email enumeration/cross-user cache; секретов в артефактах нет.",
+      "required_level": "e2e+static",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T01",
+      "module": "M02",
+      "conditions": "**Сбой счётчика**. Один count-запрос возвращает error и null.",
+      "expected": "Показано «Недоступно», не 0; остальные независимые метрики доступны.",
+      "required_level": "unit+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T02",
+      "module": "M02",
+      "conditions": "**Реальный ноль**. Count успешно возвращает 0.",
+      "expected": "Показан настоящий 0 без ошибочного состояния.",
+      "required_level": "unit+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T03",
+      "module": "M02",
+      "conditions": "**Сбой статьи**. Разрешённый запрос статьи завершается timeout.",
+      "expected": "Ошибка зависимости, не ложная удалённая статья; ввод не теряется.",
+      "required_level": "integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T04",
+      "module": "M02",
+      "conditions": "**Не получен EN**. RU загружен, запрос существующего EN падает.",
+      "expected": "Bundle-save не уничтожает EN; недочитанный язык не трактуется как пустой.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T05",
+      "module": "M02",
+      "conditions": "**Не получен справочник**. Категории/tags/media временно недоступны.",
+      "expected": "Старые связи не обнуляются при отправке; опасное действие закрыто.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T06",
+      "module": "M02",
+      "conditions": "**Ошибка схемы и сети**. Сравнить missing-RPC, timeout и permission-denied.",
+      "expected": "Разные корректные сообщения; не любой сбой требует миграцию.",
+      "required_level": "unit",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T07",
+      "module": "M02",
+      "conditions": "**Повтор в форме**. Ввести длинный текст, получить action error, повторить.",
+      "expected": "Сохранены текст, язык и контекст; нет скрытой успешной публикации.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M02-T08",
+      "module": "M02",
+      "conditions": "**Приватность ошибок**. Запросить чужую/недоступную запись и вызвать ошибку с секретом в raw message.",
+      "expected": "Нет раскрытия существования чужого объекта и сырого секретного сообщения.",
+      "required_level": "integration+static",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T01",
+      "module": "M03",
+      "conditions": "**Единое состояние**. Один self-test прочитан на overview/health/translations.",
+      "expected": "Статусы совпадают по смыслу, модели, времени и fingerprint.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T02",
+      "module": "M03",
+      "conditions": "**Только configured**. Env заполнены, успешного self-test нет.",
+      "expected": "Нет «Работает»/«Готово» без подтверждения.",
+      "required_level": "unit+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T03",
+      "module": "M03",
+      "conditions": "**Просроченное подтверждение**. Успешный результат старше своего TTL.",
+      "expected": "Явный stale/unknown, не новый success и не выдуманная ошибка запуска.",
+      "required_level": "unit",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T04",
+      "module": "M03",
+      "conditions": "**Разные регламенты**. Backup и restore имеют разные расписания.",
+      "expected": "Свежесть рассчитывается для каждого, интервалы видны.",
+      "required_level": "unit",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T05",
+      "module": "M03",
+      "conditions": "**Семантика KPI**. Есть издания без ISBN и картинки только с URL.",
+      "expected": "Счётчики не называют их все точными ISBN/проверенными обложками.",
+      "required_level": "DB+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M03-T06",
+      "module": "M03",
+      "conditions": "**Действующая проблема**. В сводке есть failed-задача/неполная статья.",
+      "expected": "Переход ведёт к правильному объекту и фильтру без потери прав.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T01",
+      "module": "M04",
+      "conditions": "**Только черновик**. Сохранить правки опубликованной статьи как draft.",
+      "expected": "Публичная редакция не меняется и черновик не становится публичным. Допустимое внутреннее invalidation-событие не считается выпуском; действующие durable triggers не отключены.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_CLARIFIED_R2"
+    },
+    {
+      "id": "M04-T02",
+      "module": "M04",
+      "conditions": "**Транзакция выпуска**. Сымитировать ошибку записи outbox/audit до commit.",
+      "expected": "Нет частично принятой к выпуску редакции без обязательной записи.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T03",
+      "module": "M04",
+      "conditions": "**Commit, затем обрыв**. Commit успешен, HTTP-ответ потерян; повторить operationId.",
+      "expected": "Нет второй редакции/дублирующего выпуска; результат можно восстановить.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T04",
+      "module": "M04",
+      "conditions": "**Дубликат callback**. Дважды доставить одно подтверждение deployment.",
+      "expected": "Идемпотентный результат и корректная история.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T05",
+      "module": "M04",
+      "conditions": "**Старый build**. Завершить старую сборку после принятия более новой редакции.",
+      "expected": "Новая редакция не отмечается публичной старым подтверждением.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T06",
+      "module": "M04",
+      "conditions": "**Объединённая сборка**. Один release содержит несколько разных материалов.",
+      "expected": "Подтверждены только включённые версии; ни один запрос не потерян.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T07",
+      "module": "M04",
+      "conditions": "**Активная и зависшая задача**. Повторить active-job и отдельно expired-lease-job.",
+      "expected": "Первый не дублируется, второй восстанавливается безопасно.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T08",
+      "module": "M04",
+      "conditions": "**Live-досье**. Опубликовать разрешённое тестовое досье через действующий live RPC.",
+      "expected": "Нет ненужного Pages build; видна правильная опубликованная редакция.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T09",
+      "module": "M04",
+      "conditions": "**Время и точность**. Ввести время в явной зоне, затем открыть из другой зоны.",
+      "expected": "UTC instant сохранён; зона отображена; существующее расписание не сдвинулось.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M04-T10",
+      "module": "M04",
+      "conditions": "**DST/date-only**. Проверить неоднозначное время, пропущенный час и дату без времени.",
+      "expected": "Нужна явная обработка неоднозначности; неизвестное время не выдумано.",
+      "required_level": "unit",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T01",
+      "module": "M05",
+      "conditions": "**No-op без новых преобразований**. Открыть и сохранить безопасный fixture без ручной правки.",
+      "expected": "Нет новых изменений содержимого/связей относительно baseline; точечное исключение не расширено.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T02",
+      "module": "M05",
+      "conditions": "**Текст после отказа**. Написать длинную статью и отключить сеть до отправки.",
+      "expected": "Текст остаётся; явно указано отсутствие подтверждённого сохранения.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T03",
+      "module": "M05",
+      "conditions": "**Две вкладки**. Обе открыли одну версию; первая сохранила, вторая отправила старую.",
+      "expected": "CAS conflict; нет last-write-wins; своя копия доступна.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T04",
+      "module": "M05",
+      "conditions": "**Поздний autosave**. Ответ на версию A приходит после локальной правки B.",
+      "expected": "B не заменяется A и не помечается сохранённой ошибочно.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T05",
+      "module": "M05",
+      "conditions": "**Внутренняя навигация**. С dirty-текстом перейти через sidebar/Ctrl+K/back.",
+      "expected": "Сработала согласованная защита; нет неожиданного ухода.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T06",
+      "module": "M05",
+      "conditions": "**Сессия истекла**. Истечь auth во время редактирования.",
+      "expected": "Нет несанкционированной записи, безопасное возвращение не раскрывает draft в URL.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T07",
+      "module": "M05",
+      "conditions": "**Предпросмотр**. Открыть RU/EN draft в узком и широком режиме.",
+      "expected": "Показан выбранный draft; он не опубликован и не доступен без роли.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M05-T08",
+      "module": "M05",
+      "conditions": "**Длинный материал**. Списки, таблица, библиография, изображения и большой текст.",
+      "expected": "Существующая безопасная структура сохранена, валидация привязана к полям.",
+      "required_level": "e2e+snapshot",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M06-T01",
+      "module": "M06",
+      "conditions": "**Read-only diff**. Сравнить текущую и старую редакцию.",
+      "expected": "Нет записи/публикации от просмотра; различия корректны и безопасны.",
+      "required_level": "integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M06-T02",
+      "module": "M06",
+      "conditions": "**Восстановить в draft**. Восстановить старую опубликованную статью.",
+      "expected": "Восстановлена рабочая редакция; публичный текст не изменён до отдельного выпуска. Не требовать отсутствия всех внутренних invalidation-событий.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_CLARIFIED_R2"
+    },
+    {
+      "id": "M06-T03",
+      "module": "M06",
+      "conditions": "**Уже есть draft**. Восстановление при существующем рабочем тексте.",
+      "expected": "Он не уничтожен без явного решения; есть сравнение/сохранение копии.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M06-T04",
+      "module": "M06",
+      "conditions": "**Недостаточная роль**. Вызвать немедленный публичный rollback низкой ролью.",
+      "expected": "Серверный отказ независимо от кнопки.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M06-T05",
+      "module": "M06",
+      "conditions": "**Основное издание**. Восстановить primary edition при конкурентной правке/сбое.",
+      "expected": "Нет двух primary/потери primary из-за частичной операции; audit согласован.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M06-T06",
+      "module": "M06",
+      "conditions": "**Поля snapshot**. Подать старые privileged/server fields и опасный HTML.",
+      "expected": "Привилегии/служебные поля не восстанавливаются; санитизация не отключена.",
+      "required_level": "unit+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T01",
+      "module": "M07",
+      "conditions": "**Защищённый ручной EN**. Backfill/retry/restore встречает ручной перевод.",
+      "expected": "Он не перезаписан; причина пропуска отражена.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T02",
+      "module": "M07",
+      "conditions": "**Изменённый RU**. Исходник изменился, пока перевод выполнялся.",
+      "expected": "Поздний результат помечен устаревшим и не перетёр новую версию.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T03",
+      "module": "M07",
+      "conditions": "**Повтор части пакета**. Из 10 элементов 2 упали.",
+      "expected": "Повторяются только нужные элементы; успешные не переводятся заново.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T04",
+      "module": "M07",
+      "conditions": "**Kill switch**. Отключить разрешение новых задач при активном worker.",
+      "expected": "Новые не выдаются; текущие завершаются/фиксируются безопасно.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T05",
+      "module": "M07",
+      "conditions": "**Качество не равно completion**. Mock провайдера вернул корректный текст.",
+      "expected": "Технический success не выдаёт человеческое review/publish.",
+      "required_level": "unit+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M07-T06",
+      "module": "M07",
+      "conditions": "**Смена модели в probe**. Self-test относится к прошлой конфигурации.",
+      "expected": "Новая конфигурация не отмечена проверенной; платных вызовов в тесте нет.",
+      "required_level": "unit+static",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T01",
+      "module": "M08",
+      "conditions": "**Оригинальное название**. Найти книгу по original_title/альтернативному названию.",
+      "expected": "Правильное произведение и причина совпадения.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T02",
+      "module": "M08",
+      "conditions": "**ISBN и автор**. Искать ISBN издания и автора/псевдоним.",
+      "expected": "Правильные связи; произведение и издание не смешаны.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T03",
+      "module": "M08",
+      "conditions": "**Спецсимволы**. Ввести %, _, кавычки, длинную строку и пустой запрос.",
+      "expected": "Ограниченное безопасное поведение, без инъекции и неявной массовой выборки.",
+      "required_level": "unit+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T04",
+      "module": "M08",
+      "conditions": "**Контекст каталога**. Фильтровать, перейти на дальнюю страницу, изменить запись, вернуться.",
+      "expected": "Фильтры/позиция восстановлены; сортировка стабильна.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T05",
+      "module": "M08",
+      "conditions": "**Повтор импорта**. Дважды применить одну подтверждённую тестовую пачку.",
+      "expected": "Нет новых дублей; ручные поля и provenance сохранены.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M08-T06",
+      "module": "M08",
+      "conditions": "**Разные книги с одинаковым названием**. Два автора/произведения и несколько изданий совпадают названием.",
+      "expected": "Нет автоматического слияния; picker способен найти любой разрешённый объект.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T01",
+      "module": "M09",
+      "conditions": "**За пределами 50**. В fixtures 120 досье; найти старую запись.",
+      "expected": "Она доступна поиском/пагинацией без знания ключа.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T02",
+      "module": "M09",
+      "conditions": "**Форма без JSON**. Создать разделы, источники и основания прав обычными полями.",
+      "expected": "Получен валидный V2 draft с настоящими связями; auto-review отсутствует.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T03",
+      "module": "M09",
+      "conditions": "**Новая dirty-форма**. Изменить новое досье при record=null и уйти.",
+      "expected": "Dirty распознан; несохранённый ввод защищён.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T04",
+      "module": "M09",
+      "conditions": "**Raw и форма**. Ввести неприменённый/невалидный JSON, затем изменить форму.",
+      "expected": "Raw не теряется молча, ошибка не создаёт пустой document.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T05",
+      "module": "M09",
+      "conditions": "**Редакция и proof**. После design proof изменить контент/сырой JSON.",
+      "expected": "Proof/подтверждения инвалидированы по версии; подделанная галочка не одобряет.",
+      "required_level": "DB+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M09-T06",
+      "module": "M09",
+      "conditions": "**Сбой и старый ответ**. Action/измеритель падает либо ответ приходит после новой правки.",
+      "expected": "Ввод сохранён; нет ложного успеха и затёртой новой редакции.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T01",
+      "module": "M10",
+      "conditions": "**Полный цикл**. Held → draft → review → разрешённый выпуск тестовой новости.",
+      "expected": "Весь путь из UI; public содержит только одобренную редакцию.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T02",
+      "module": "M10",
+      "conditions": "**Повтор discovery**. Отклонить/изменить карточку, снова собрать тот же источник.",
+      "expected": "Решение и ручной текст не потеряны; дубликат не опубликован.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T03",
+      "module": "M10",
+      "conditions": "**Разные даты**. Указать discovery, source publication и event-date с разной точностью.",
+      "expected": "Они не подменяются друг другом; неизвестное время не выдумано.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T04",
+      "module": "M10",
+      "conditions": "**Исправление и отзыв**. Исправить published-news, затем отозвать с причиной.",
+      "expected": "Версионность, аудит и публичный результат согласованы.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T05",
+      "module": "M10",
+      "conditions": "**Один master**. Dry-run миграции legacy reviewed snapshot.",
+      "expected": "Сходятся ID/контент/provenance; нет двух независимых writable masters.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M10-T06",
+      "module": "M10",
+      "conditions": "**Недоверенный источник**. Фид содержит script/инструкцию, внутренний URL и redirect на private endpoint.",
+      "expected": "Ничего не исполняется, SSRF закрыт, источник не получает credentials.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T01",
+      "module": "M11",
+      "conditions": "**Историческая ссылка**. Изображение используется только старой редакцией.",
+      "expected": "Не удаляется как orphan; восстановление версии работает.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T02",
+      "module": "M11",
+      "conditions": "**Неполный граф**. Один адаптер usage недоступен.",
+      "expected": "Purge/опасная очистка закрыты; нет ложного «не используется».",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T03",
+      "module": "M11",
+      "conditions": "**Замена и конфликт**. Показать preview replacement, затем изменить один usage конкурентно.",
+      "expected": "Операция не применяет устаревшие refs; актуальная история цела.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T04",
+      "module": "M11",
+      "conditions": "**Частичная загрузка**. Из 5 файлов один превышает лимит/падает.",
+      "expected": "Результат каждого виден; успешные не теряются и не загружаются повторно.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T05",
+      "module": "M11",
+      "conditions": "**Права и одинаковые байты**. Два одинаковых файла имеют разный provenance.",
+      "expected": "Hash не сливает права автоматически и не подтверждает лицензию.",
+      "required_level": "unit+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M11-T06",
+      "module": "M11",
+      "conditions": "**Качество обложки**. Есть URL, неуспешная последняя проверка, нет подтверждения издания.",
+      "expected": "Не показано «Реальная проверенная обложка» по одному URL.",
+      "required_level": "integration+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T01",
+      "module": "M12",
+      "conditions": "**Role-aware menu**. Открыть sidebar/command search разными ролями.",
+      "expected": "UI соответствует permissions, закрытые результаты не раскрываются.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T02",
+      "module": "M12",
+      "conditions": "**Фокус modal**. Tab/Shift+Tab/Escape/закрытие/повторное открытие Ctrl+K.",
+      "expected": "Фокус удержан и возвращён; фон не взаимодействует.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T03",
+      "module": "M12",
+      "conditions": "**Контентный поиск**. Быстро сменить запрос и получить ответы в обратном порядке.",
+      "expected": "Старый ответ не заменяет актуальный; есть контекст результатов.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T04",
+      "module": "M12",
+      "conditions": "**Base path**. Пройти новые links/forms/redirect при пустом и /admin prefix.",
+      "expected": "Нет двойного префикса, потери фильтров и выхода из правильного origin.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T05",
+      "module": "M12",
+      "conditions": "**Узкие экраны**. Проверить 320–1920 px и основные формы.",
+      "expected": "Навигация/кнопки доступны; широкая таблица не ломает всю страницу.",
+      "required_level": "e2e+visual",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M12-T06",
+      "module": "M12",
+      "conditions": "**Zoom и доступность**. 200%/400%, keyboard, reduced motion, labels/ошибки.",
+      "expected": "Нет потери операций, невидимого фокуса и неверных aria-состояний.",
+      "required_level": "e2e+manual",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M13-T01",
+      "module": "M13",
+      "conditions": "**Computed canonical**. Raw canonical пуст, публичный resolver возвращает корректное значение.",
+      "expected": "Нет ложного замечания об отсутствующем публичном canonical.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M13-T02",
+      "module": "M13",
+      "conditions": "**Полный список SEO**. Создать больше 12 проблем разных языков.",
+      "expected": "Все доступны фильтрами/страницами, есть переход к нужному объекту.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M13-T03",
+      "module": "M13",
+      "conditions": "**Устаревший отчёт**. Изменить выпуск после зелёной проверки.",
+      "expected": "Старый отчёт явно привязан к старой версии и не закрывает новые проблемы.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M13-T04",
+      "module": "M13",
+      "conditions": "**Редиректы**. Цикл, self-redirect, старый Tilda route и конфликт destination.",
+      "expected": "Опасное изменение блокируется/объясняется; авторский текст не переписан.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M14-T01",
+      "module": "M14",
+      "conditions": "**Один период**. Сверить KPI/график/CSV на границе дня/зоны.",
+      "expected": "Суммы и диапазоны совпадают; внешняя ссылка не обещает другой период скрыто.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M14-T02",
+      "module": "M14",
+      "conditions": "**Нет данных/нет доступа**. Пустой успешный отчёт и ошибка доступа.",
+      "expected": "Разные состояния; нет выдуманных просмотров/конверсий.",
+      "required_level": "component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M14-T03",
+      "module": "M14",
+      "conditions": "**Минимальные события**. Записать разрешённое действие и запрос с чувствительными параметрами.",
+      "expected": "Нужное измерение доступно, приватные поля не попадают в telemetry.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M14-T04",
+      "module": "M14",
+      "conditions": "**CSV-права**. Guest запрашивает CSV; fixture содержит строку, похожую на формулу.",
+      "expected": "Доступ закрыт; разрешённый экспорт не исполняет формулы.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M15-T01",
+      "module": "M15",
+      "conditions": "**Прямое одобрение**. Открыть один pending-комментарий и одобрить.",
+      "expected": "Видимая кнопка и корректное серверное действие; статус понятен.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M15-T02",
+      "module": "M15",
+      "conditions": "**Bulk-конфликт**. Между выбором и bulk изменён один комментарий.",
+      "expected": "Нет скрытой перезаписи; итог показывает успехи/конфликты.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M15-T03",
+      "module": "M15",
+      "conditions": "**Последний владелец**. Две конкурирующие операции удаления/понижения владельцев.",
+      "expected": "Инвариант последнего владельца сохранён в БД.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M15-T04",
+      "module": "M15",
+      "conditions": "**Приватность команды**. Reader/guest и допустимый admin читают team DTO.",
+      "expected": "Выдача минимальна и разрешена; auth.users/секреты не раскрыты.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M16-T01",
+      "module": "M16",
+      "conditions": "**Единое поле**. Изменить одно и то же настройочное поле через доступные редакторы.",
+      "expected": "Один master/версия, конфликт обнаружен, нет независимых значений.",
+      "required_level": "integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M16-T02",
+      "module": "M16",
+      "conditions": "**Выпуск и откат**. Preview, atomic release, частичный fault и rollback набора.",
+      "expected": "Публичный вариант согласован; нет смеси старого/нового.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M16-T03",
+      "module": "M16",
+      "conditions": "**Защищённые сцены**. Настройки studio на fixtures публичной полки/глобуса.",
+      "expected": "Геометрия, поведение и авторские тексты не изменены.",
+      "required_level": "snapshot+public-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M17-T01",
+      "module": "M17",
+      "conditions": "**Версии каталогов**. Сымитировать stale KV manifest/missing blob/checksum mismatch.",
+      "expected": "Нет выдачи непроверенного каталога как актуального; опасное действие закрыто.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M17-T02",
+      "module": "M17",
+      "conditions": "**Backup не равен restore**. Есть backup marker, но нет успешного restore drill.",
+      "expected": "Отдельные истинные состояния; не выдано «восстановление проверено».",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M17-T03",
+      "module": "M17",
+      "conditions": "**Воспроизводимое сравнение**. Сравнить baseline/final на 10k fixtures и длинной статье.",
+      "expected": "Есть среды/число прогонов/метрики, соблюдены прежние строгие budgets.",
+      "required_level": "benchmark",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M18-T01",
+      "module": "M18",
+      "conditions": "**Обновление схемы**. Применить новые migrations к чистой и прежней схеме fixtures.",
+      "expected": "Совместимость/ledger/инварианты проверены; старые migrations не переписаны.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M18-T02",
+      "module": "M18",
+      "conditions": "**Старая схема**. Запустить новый UI с отсутствующей нужной capability.",
+      "expected": "Безопасный read-only/отказ, не обход защиты и не потеря данных.",
+      "required_level": "integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M18-T03",
+      "module": "M18",
+      "conditions": "**Публичный regression**. Собрать безопасный snapshot и пройти public routes/полку/глобус.",
+      "expected": "Нет утечек drafts, поломки URL и контентных изменений вне scope.",
+      "required_level": "build+public-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M18-T04",
+      "module": "M18",
+      "conditions": "**Честный выпускной отчёт**. Проверить команды, exit codes, SHA, evidence и доступы.",
+      "expected": "NOT_RUN/BLOCKED не считаются PASS; production не заявлен развёрнутым.",
+      "required_level": "report+static",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R1_RETAINED"
+    },
+    {
+      "id": "M00-T05",
+      "module": "M00",
+      "conditions": "**Полнота поверхности**. Сопоставить реальные route tree, registry, формы, API и RPC актуального HEAD с картой пакета.",
+      "expected": "Каждая поверхность сопоставлена с модулем/правом/тестом или имеет конкретный пробел; число пунктов меню не выдаётся за весь аудит.",
+      "required_level": "static+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M01-T11",
+      "module": "M01",
+      "conditions": "**RSC и поиск**. Запросить private preview, search snippets, export и prefetch без допустимой роли и после отзыва роли.",
+      "expected": "Нет закрытых полей и количеств; выдача защищена независимо от layout.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M01-T12",
+      "module": "M01",
+      "conditions": "**Невалидная роль**. Сессия содержит неизвестный role/assurance, истёкший токен или конфликтующий пользовательский metadata-role.",
+      "expected": "Решение принимается по подтверждённой membership/assurance; неизвестное не разрешает действие.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M02-T09",
+      "module": "M02",
+      "conditions": "**Неизвестный исход**. База приняла запись, а клиент получил обрыв до receipt; затем повторить с тем же operationId.",
+      "expected": "Нет ложного известного отказа и второй редакции; можно получить исход прежней операции.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M02-T10",
+      "module": "M02",
+      "conditions": "**Разный payload с тем же ID**. Повторить operationId для другой сущности либо изменённого содержимого.",
+      "expected": "Сервер не подменяет прежнее намерение: отказ/конфликт; чужие результаты не раскрыты.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M03-T07",
+      "module": "M03",
+      "conditions": "**Отключённый trigger**. В изолированной БД отключить обязательный outbox trigger, сохранив таблицу и ledger.",
+      "expected": "Health не показывает полную готовность только по существованию таблиц/миграции.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M03-T08",
+      "module": "M03",
+      "conditions": "**Read-only health**. Открыть health и обновить его несколько раз без явного запуска проверки провайдера.",
+      "expected": "Нет миграций, роли не меняются, реальный перевод и платный self-test не запускаются.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M04-T11",
+      "module": "M04",
+      "conditions": "**Trigger плюс explicit event**. Выполнить одну мутацию с действующим row-trigger, затем explicit requestPublicBuild.",
+      "expected": "Оба предусмотренных события сохраняются; UI связывает их, не перезаписывает старый ID и не объявляет это автоматически дефектом.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M04-T12",
+      "module": "M04",
+      "conditions": "**Поздний commit**. Задержать транзакцию изменения относительно чтения export high-water mark и завершить её после формирования снимка.",
+      "expected": "Невключённая редакция не получает deployed от старого снимка, остаётся подхваченной следующим допустимым проходом.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M04-T13",
+      "module": "M04",
+      "conditions": "**Сбой отметки dispatch**. Внешний deploy-прослойка приняла запуск, запись mark_public_build_dispatched вернула ошибку.",
+      "expected": "Показан известный внешний запуск и неопределённая/отложенная фиксация; нет слепого нового запуска без reconciliation.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M04-T14",
+      "module": "M04",
+      "conditions": "**Совместный export**. RU export успешен, Premium видит изменение базы и возвращает retry; затем исчерпать ограничение попыток.",
+      "expected": "Промежуточный hash не подтверждён, старая опубликованная версия не заменена частичным снимком.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M05-T09",
+      "module": "M05",
+      "conditions": "**Удалённый шаблон**. Создать статью из шаблона, затем удалить сам шаблон тестовым допустимым аккаунтом.",
+      "expected": "Содержимое и история созданной статьи не изменились.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M06-T07",
+      "module": "M06",
+      "conditions": "**Будущий snapshot**. Открыть историческую запись с неизвестной версией формата либо повреждённым содержимым.",
+      "expected": "Unsupported/corrupt объяснены; нет пустого restore и побочного publish.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M08-T07",
+      "module": "M08",
+      "conditions": "**Повтор импорт-пакета**. Повторно применить тот же тестовый пакет после частичного завершения, сохранив operation/row IDs.",
+      "expected": "Уже принятые строки не дублируются; видны unchanged/conflict/failed по фактическому состоянию.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M08-T08",
+      "module": "M08",
+      "conditions": "**Ручная правка после preview**. После dry-run изменить одну книгу вручную и применить прежний import-plan.",
+      "expected": "Новая ручная редакция не затёрта; конфликт связан с конкретной строкой и исходной версией.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M08-T09",
+      "module": "M08",
+      "conditions": "**Большой каталог**. На изолированных синтетических данных превысить 1000 и 10000 записей, проверить поиск и последние страницы.",
+      "expected": "Нет скрытого ограничения первой выборкой API; число/страницы/фильтры согласованы без загрузки всего корпуса в клиент.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M09-T07",
+      "module": "M09",
+      "conditions": "**Запрещённый тип досье**. Попытаться сохранить и выпустить quote/full-text/media/articleReuse в соответствии с действующими gates.",
+      "expected": "Запрет публичного выпуска сохранён; UI объясняет неподдерживаемый путь, human approvals не подделываются.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M09-T08",
+      "module": "M09",
+      "conditions": "**Истёкшие права**. После допустимого выпуска fixture наступает validUntil/expiry либо выполняется разрешённый отзыв.",
+      "expected": "Public RPC не продолжает выдавать неподходящую проекцию; draft и все spoiler-варианты не раскрываются.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M09-T09",
+      "module": "M09",
+      "conditions": "**Чужой design proof**. Передать proof от другой редакции либо неправильный набор вариантов при публикации.",
+      "expected": "Проверки checksum/layout/вариантов и последовательность одобрений не обходятся.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M11-T07",
+      "module": "M11",
+      "conditions": "**Недоступен граф ссылок**. Проверка usages возвращает ошибку при запросе purge либо замены.",
+      "expected": "Нельзя выдать неизвестные связи за отсутствие использования; опасная операция закрыта без удаления.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M12-T07",
+      "module": "M12",
+      "conditions": "**Переход с игнорируемым query**. Пройти quick-actions и скрытые registry routes с фильтрами и возвращением назад.",
+      "expected": "Каждая обещанная рабочая область действительно открывается; неработающий query исправлен либо ссылка честно перенаправлена.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M13-T05",
+      "module": "M13",
+      "conditions": "**Безопасный аудит адресов**. В тестовом URL checker проверить redirect loop, неподходящий протокол и переход к недоверенному внутреннему адресу.",
+      "expected": "Нет SSRF/неограниченной цепочки; результат имеет ограниченный timeout и не раскрывает внутренние ответы.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M14-T05",
+      "module": "M14",
+      "conditions": "**CSV сложные значения**. Экспортировать синтетические значения с формульными префиксами, кавычками, переносами и RU/EN символами.",
+      "expected": "Выгрузка безопасно экранирована, сохраняет выбранный диапазон и не раскрывает private поля.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M15-T05",
+      "module": "M15",
+      "conditions": "**Последние владельцы конкурентно**. Два последних owner одновременно удаляют/понижают другого в тестовой БД.",
+      "expected": "Инвариант наличия владельца не нарушается; результат конкурентного отказа понятен.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M16-T04",
+      "module": "M16",
+      "conditions": "**Старый rollback дизайна**. После release A опубликовать B и запросить rollback A из старой формы.",
+      "expected": "Действует реальная проверка актуальной версии; более новая несвязанная работа не потеряна молча.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M17-T04",
+      "module": "M17",
+      "conditions": "**Неполное восстановление**. Тестовый backup metadata успешен, но в restore отсутствует ожидаемый объект Storage.",
+      "expected": "Restore drill не получает полный PASS; представлены проверенный объём и конкретная недостающая связь.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M17-T05",
+      "module": "M17",
+      "conditions": "**Retention активных операций**. Запустить cleanup fixtures с expired завершёнными и одновременно pending/unknown-outcome операциями.",
+      "expected": "Активные квитанции и восстановимые операции не удалены по общему возрасту; политика видна в отчёте.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M18-T05",
+      "module": "M18",
+      "conditions": "**Матрица совместимости**. Проверить новую добавочную схему со старым кодом и новый код с отсутствующей capability.",
+      "expected": "Нет silent fail-open или потери публичных данных; предусмотрен безопасный read-only/feature-off.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M18-T06",
+      "module": "M18",
+      "conditions": "**Запрет внешних записей**. В test-run попробовать production host, real auth-state path и provider без mock/разрешения.",
+      "expected": "Test harness останавливает опасный запуск до сетевой записи; отсутствие зависимости не выдаётся за PASS.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T01",
+      "module": "M19",
+      "conditions": "**Новая непустая страница**. Создать страницу с несколькими абзацами через простую форму, затем открыть rich-editor.",
+      "expected": "Редактор содержит исходные абзацы, безопасные HTML и JSON согласованы; пустой JSON не скрывает текст.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T02",
+      "module": "M19",
+      "conditions": "**Legacy HTML и пустой JSON**. Открыть fixture с непустым content_html и валидным пустым content_json.",
+      "expected": "Есть безопасный совместимый просмотр/явное предложение конвертации, нет тихой записи при открытии.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T03",
+      "module": "M19",
+      "conditions": "**Два разных представления**. Загрузить непустые, но различающиеся HTML/JSON одного fixture.",
+      "expected": "Не выбран произвольно более длинный вариант; конфликт показан, оба исходника сохранены до решения.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T04",
+      "module": "M19",
+      "conditions": "**Повреждённый JSON**. Передать недоступный/неподдерживаемый документ при известном HTML.",
+      "expected": "Форма не сохраняет пустой doc поверх страницы; ошибка привязана к загрузке.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T05",
+      "module": "M19",
+      "conditions": "**Plain text не HTML**. Создать страницу из текста с угловыми скобками и буквальным примером тега.",
+      "expected": "Обычный текст остаётся текстом; скрипт не выполняется, содержимое не теряется из-за непредусмотренной интерпретации.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T06",
+      "module": "M19",
+      "conditions": "**Черновик опубликованной страницы**. Открыть published страницу, сохранить рабочие правки и выполнить preview без выпуска.",
+      "expected": "Публичная редакция остаётся прежней и доступной, draft не входит в публичную проекцию.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T07",
+      "module": "M19",
+      "conditions": "**Правка страницы в двух вкладках**. Отправить разные правки из одной исходной версии, затем восстановить старую revision.",
+      "expected": "Конфликт сохранён, восстановление использует тот же безопасный контракт, чужая правка не затёрта.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M19-T08",
+      "module": "M19",
+      "conditions": "**Специальный canonical**. Изменить заголовок fixture со специально установленным canonical, не меняя URL вручную.",
+      "expected": "Canonical и slug не переписаны без отдельного намерения; существующие адреса сохранены.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T01",
+      "module": "M20",
+      "conditions": "**Dirty до ответа**. Отправить форму, задержать сервер, а затем вернуть отказ.",
+      "expected": "Dirty не сброшен раньше receipt; текст и несохранённые изменения остаются видны.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T02",
+      "module": "M20",
+      "conditions": "**Позднее подтверждение A**. Во время отправки A ввести B, после чего получить успешный receipt A.",
+      "expected": "B остаётся dirty, серверное подтверждение относится только к A.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T03",
+      "module": "M20",
+      "conditions": "**Старый saved URL**. После прошлого сохранения создать новую автокопию и снова открыть старый URL с saved=1 либо saved=0.",
+      "expected": "Query-параметр не разрешает очистить новую копию без соответствующего canonical receipt.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T04",
+      "module": "M20",
+      "conditions": "**Явный discard**. Удалить осознанно выбранную автокопию без canonical-save, затем повторить с другой sequence/hash.",
+      "expected": "Первое удаление точное и авторизованное, второе не удаляет более новую/чужую копию.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T05",
+      "module": "M20",
+      "conditions": "**Отсутствующий fallback**. Сервер autosave вернул отказ, onLocalFallback не задан либо не подтвердил результат.",
+      "expected": "Нет ложной метки «сохранено локально»; доступен честный error/unknown и сохранён текущий ввод.",
+      "required_level": "component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T06",
+      "module": "M20",
+      "conditions": "**Quota и SecurityError**. Заблокировать localStorage/sessionStorage и отдельно исчерпать квоту во время работы.",
+      "expected": "Редактор не падает; неудача локальной квитанции не отменяет известный серверный commit.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T07",
+      "module": "M20",
+      "conditions": "**Ошибочный поиск recovery**. loadLatestEditorAutosave возвращает ok:false без exception.",
+      "expected": "Показано, что проверка копии недоступна, а не что копий нет.",
+      "required_level": "component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T08",
+      "module": "M20",
+      "conditions": "**Смена locator**. Открыть другой материал/локаль во время старого запроса и получить запоздалый ответ.",
+      "expected": "Старый ответ не меняет новую форму и не подавляет её autosave из-за общего lastSavedSnapshot.",
+      "required_level": "component+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T09",
+      "module": "M20",
+      "conditions": "**Другой аккаунт на устройстве**. Сохранить тестовый локальный draft аккаунтом A, выйти, войти B и открыть тот же материал.",
+      "expected": "Текст A не показан B, namespace/политика legacy ключей не присваивает его новому пользователю.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M20-T10",
+      "module": "M20",
+      "conditions": "**Отказ очистки**. После подтверждённого canonical-save удалить exact receipt с возвращённым deleted=false либо сетевой ошибкой.",
+      "expected": "Нет утверждения об удалённой копии; повтор безопасен и не очищает другой snapshot.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T01",
+      "module": "M21",
+      "conditions": "**Переименование без URL**. Изменить только название существующей рубрики.",
+      "expected": "ID, slug, назначения и старые ссылки не меняются.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T02",
+      "module": "M21",
+      "conditions": "**Смена используемого slug**. Подготовить смену slug рубрики со статьями RU/EN и маршрутом в существующей карте.",
+      "expected": "Показан полный план влияния; после подтверждённого тестового выпуска согласованы новые и старые адреса.",
+      "required_level": "DB+integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T03",
+      "module": "M21",
+      "conditions": "**Удаление используемой рубрики**. Попытаться удалить рубрику с зависимыми материалами без целевой рубрики.",
+      "expected": "Опасный вариант не применяется молча через SET NULL; видны зависимости и безопасные варианты.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T04",
+      "module": "M21",
+      "conditions": "**Объединение тегов**. Два тега уже назначены одной статье и нескольким другим; выполнить подтверждённое объединение.",
+      "expected": "Связи сохранены без дублей, тела статей и исторические снимки не переписаны.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T05",
+      "module": "M21",
+      "conditions": "**Устаревший impact-plan**. После preview добавить новую зависимость и применить старый план.",
+      "expected": "Повторная серверная проверка обнаруживает изменение, нет скрытого неполного переноса.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T06",
+      "module": "M21",
+      "conditions": "**Сбой обязательного аудита**. В fixture-транзакции отказать записи обязательного audit и проверить outbox/revisions.",
+      "expected": "Если аудит обязателен по контракту этой операции, его отказ откатывает всю DB-мутацию. Outbox/revision-триггеры сохранены; нет принятой частичной операции с ложным успехом.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M21-T07",
+      "module": "M21",
+      "conditions": "**Коллизия системного адреса**. Предложить slug, занятый рубрикой, alias либо зарезервированным маршрутом.",
+      "expected": "Конфликт объяснён до выпуска; существующая страница не перекрыта.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T01",
+      "module": "M22",
+      "conditions": "**Цикл меню**. Создать A→B→C→A, а также родителя из другого меню.",
+      "expected": "Запись отклонена на серверной/DB границе, не только скрыта UI.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T02",
+      "module": "M22",
+      "conditions": "**Конкурентный цикл**. Одновременно изменить A→B и B→A из одного начального дерева.",
+      "expected": "Оба изменения не могут совместно зафиксировать цикл; конфликт восстановим.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T03",
+      "module": "M22",
+      "conditions": "**Удаление ветки**. Удалить родителя с потомками и затем повторить запрос с устаревшей версией дерева.",
+      "expected": "Точное влияние подтверждено, неожиданного cascade нет, повтор не удаляет изменённую ветку.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T04",
+      "module": "M22",
+      "conditions": "**Перестановка меню**. Переставить поддерево мышью и клавиатурой при одинаковых displayOrder, затем обновить страницу.",
+      "expected": "Стабильный порядок и связи сохранены; клавиатурный путь эквивалентен.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T05",
+      "module": "M22",
+      "conditions": "**Невалидная область баннера**. Передать непустые строки без допустимого пути и смешанные valid/invalid строки.",
+      "expected": "Ошибка каждой строки видна, прежняя область не заменена главной или частичным списком.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T06",
+      "module": "M22",
+      "conditions": "**Лимит шаблонов**. Ввести 51 допустимый шаблон при лимите 50.",
+      "expected": "Превышение не маскируется обрезкой; данные формы сохраняются для исправления.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T07",
+      "module": "M22",
+      "conditions": "**Граница wildcard и локаль**. Сравнить preview/renderer для /stati/*, похожего префикса, /en, trailing slash и percent encoding.",
+      "expected": "Одинаковая трактовка пути без лишнего охвата соседних сегментов.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T08",
+      "module": "M22",
+      "conditions": "**Расписание баннера**. Проверить невалидную дату, endsAt≤startsAt, start==now, end==now и DST.",
+      "expected": "Невалидный ввод не принят; границы совпадают с renderer и зона явно задана.",
+      "required_level": "unit+DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M22-T09",
+      "module": "M22",
+      "conditions": "**Три размера баннера**. Предпросмотреть fixture с desktop/tablet/mobile файлами и отсутствующим вариантом.",
+      "expected": "Применяется документированный fallback/focus, не теряются существующие изображения и art direction.",
+      "required_level": "e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T01",
+      "module": "M23",
+      "conditions": "**Origin граница**. Отправить cookie-auth upload с разрешённого origin, стороннего сайта и недоверенного sibling subdomain.",
+      "expected": "Разрешённый путь работает, остальные не выполняют запись; политика origin/CSRF подтверждена на Route Handler.",
+      "required_level": "integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T02",
+      "module": "M23",
+      "conditions": "**Прокси и отсутствующий Origin**. Проверить null/missing Origin, поддельный X-Forwarded-Host и валидный deployment host.",
+      "expected": "Нет обхода через недоверенный заголовок и нет неописанного разрешения; legitimate поток не сломан.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T03",
+      "module": "M23",
+      "conditions": "**Multipart до File.size**. Отправить oversized/malformed multipart и поток без Content-Length в проверенном runtime.",
+      "expected": "Срабатывает доказанный общий лимит/безопасный parser, нет неконтролируемого буфера и падения обработчика.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T04",
+      "module": "M23",
+      "conditions": "**Формат и пиксели**. Подделать MIME, client dimensions и метаданные размера изображения; проверить действующие запрещённые форматы.",
+      "expected": "Серверная проверка контейнера/пикселей сохранена, чужие данные не записаны.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T05",
+      "module": "M23",
+      "conditions": "**Storage записан, DB отказала**. Прервать регистрацию после upload, затем запустить контролируемое восстановление операции.",
+      "expected": "Свой неиспользуемый объект обнаружен, результат cleanup отслежен, retry не плодит ненужные файлы.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T06",
+      "module": "M23",
+      "conditions": "**DB записана, ответ потерян**. После успешной регистрации потерять HTTP-ответ и повторить идентичную операцию.",
+      "expected": "Возвращён прежний результат, зарегистрированное вложение не удалено и не дублировано.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T07",
+      "module": "M23",
+      "conditions": "**Общий файл шрифта**. Два запроса с одинаковыми байтами: один зарегистрировал файл, другой получил DB conflict/error.",
+      "expected": "Неудавшийся запрос не удаляет общий объект; действующая ссылка остаётся рабочей.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T08",
+      "module": "M23",
+      "conditions": "**Cleanup против новой ссылки**. Между preview orphan и purge привязать объект к разрешённому материалу.",
+      "expected": "Повторная проверка предотвращает удаление; результат не выдан как очищенный.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T09",
+      "module": "M23",
+      "conditions": "**Публичность вложений**. Проверить фактический доступ к URL публичного файла и к отдельно поддерживаемому private preview.",
+      "expected": "Публичный URL не объявлен секретным из-за draft, private ресурс не отдаётся без права, старый bucket не сломан.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M23-T10",
+      "module": "M23",
+      "conditions": "**Пакет с частичным успехом**. Из 20 synthetic uploads часть принята, часть отклонена; повторить только неуспешные.",
+      "expected": "Для каждого файла собственный результат/receipt, успешные не загружаются заново автоматически.",
+      "required_level": "e2e+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T01",
+      "module": "M24",
+      "conditions": "**Переводчик недоступен**. Сохранить изменённые RU strings при выключенном/недоступном runtime переводчика и существующем EN.",
+      "expected": "Исходные правки восстановимы в рабочем состоянии; старый EN и опубликованная согласованная версия не потеряны.",
+      "required_level": "DB+integration+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T02",
+      "module": "M24",
+      "conditions": "**Изменение RU во время перевода**. Начать тестовый перевод и затем вручную изменить RU или EN до ответа.",
+      "expected": "Устаревший результат не перезаписывает новую ручную редакцию; виден конфликт/sourceHash.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T03",
+      "module": "M24",
+      "conditions": "**Параметры строки**. Для реально параметризованного ключа убрать обязательную переменную или нарушить поддерживаемый plural/rich-text token.",
+      "expected": "Проверка показывает несовместимость до публичного применения, простой текст не получает фиктивных ICU требований.",
+      "required_level": "unit+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T04",
+      "module": "M24",
+      "conditions": "**Наследовать или пусто**. Для разрешённого ключа проверить reset override, намеренно пустое значение и неотправленный соседний ключ.",
+      "expected": "Три намерения различаются, чужие/неотправленные значения не очищены.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T05",
+      "module": "M24",
+      "conditions": "**Конкурентные формы site-copy**. Две формы редактируют один systemKey; отправить устаревшую и проверить повторное создание блока.",
+      "expected": "Нет потерянных обновлений и двух независимых master-блоков; CAS/уникальный контракт действуют.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T06",
+      "module": "M24",
+      "conditions": "**Personal/shared шаблон**. Другой пользователь читает/правит/удаляет personal template, затем применяет доступный shared.",
+      "expected": "Чужой private закрыт, shared применяется только в разрешённом режиме, текущая статья не заменяется без выбора.",
+      "required_level": "DB+e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T07",
+      "module": "M24",
+      "conditions": "**Динамический ключ**. Передать неизвестный/зарезервированный ключ и допустимый существующий кастомный interface ключ.",
+      "expected": "Запрещённое не изменяет структуру словаря, легитимные пользовательские ключи сохранены.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M24-T08",
+      "module": "M24",
+      "conditions": "**Применение шаблона**. Вставить шаблон с небезопасным HTML поверх непустой статьи через preview.",
+      "expected": "Санитизация сохранена, исходная статья не очищается по умолчанию, одобрения не переносятся на новый текст.",
+      "required_level": "e2e+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T01",
+      "module": "M25",
+      "conditions": "**Только существующая повестка**. Опубликовать разрешённую тестовую новостную карточку и проверить проекции.",
+      "expected": "Карточка обновляет существующий блок, не создаёт articles или отдельные публичные новостные страницы.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T02",
+      "module": "M25",
+      "conditions": "**Дата события отдельно**. Подготовить карточки с publishedAt источника, date-only события и неизвестной датой.",
+      "expected": "Дата публикации не подставляется за событие, неизвестное не ставится в календарь, день не превращён в фиктивный instant.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T03",
+      "module": "M25",
+      "conditions": "**Исправление календарного события**. Обновить дату/название уже привязанной карточки, затем отозвать публикацию.",
+      "expected": "Сохраняется стабильная связь, не появляется дубль, повестка и календарная проекция согласованно обновлены.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T04",
+      "module": "M25",
+      "conditions": "**Недоверенный источник**. Импортировать fixture с embedded instructions, опасной ссылкой и полем «reviewed=true» от провайдера.",
+      "expected": "Источник не меняет права, конфигурацию или editorial approval; опасные значения отклонены/экранированы.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T05",
+      "module": "M25",
+      "conditions": "**Социальная отправка held**. Запросить mock-доставку черновика, held и карточки с неудавшимся публичным выпуском.",
+      "expected": "Отправка не выполнена; очередь привязана к подтверждённой публичной редакции.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T06",
+      "module": "M25",
+      "conditions": "**Точный канал**. Показать social preview для опубликованной повестки и существующей статьи на разных тестовых destination.",
+      "expected": "Источник, локаль, канал и намерение входят в операцию; выключенный VK/неподключённый провайдер не включён автоматически.",
+      "required_level": "e2e+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T07",
+      "module": "M25",
+      "conditions": "**Timeout после принятия провайдером**. Mock-провайдер принимает сообщение, но ответ теряется; затем выполнить retry.",
+      "expected": "Unknown outcome не превращается в безусловную повторную отправку; используется reconciliation/idempotency либо явное ручное решение.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T08",
+      "module": "M25",
+      "conditions": "**Исправление и отзыв снаружи**. Обновить карточку после mock-публикации; проверить supported и unsupported remote update/delete.",
+      "expected": "Работа с известным remote ID согласована, неподдерживаемый отзыв честно обозначен; нет обещания удалённого сообщения без подтверждения.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T09",
+      "module": "M25",
+      "conditions": "**RSS не remote success**. Подготовить RSS/mock-артефакт, не получая подтверждения платформы.",
+      "expected": "Статус сообщает готовность RSS, а не публикацию на внешней площадке.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M25-T10",
+      "module": "M25",
+      "conditions": "**Сохранность решений при refresh**. Обновить held KV snapshot после отклонения/подтверждения кандидата редактором.",
+      "expected": "Редакционное решение не исчезает и не сбрасывается новым снимком обнаружения.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R2_NEW"
+    },
+    {
+      "id": "M01-T13",
+      "module": "M01",
+      "conditions": "**Переход после callback**. Проверить допустимые next для standalone и /admin, dot-segments, двойные разделители, обратные слеши, служебный/неизвестный маршрут и повторную ссылку.",
+      "expected": "Цель остаётся в разрешённом origin/basePath и auth workflow. Неподходящая цель заменяется безопасной; код обмена/токены не попадают в итоговый адрес или отчёт. Не утверждать доказанный open redirect без воспроизведения.",
+      "required_level": "unit+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M01-T14",
+      "module": "M01",
+      "conditions": "**Восстановление собственного аккаунта**. В изолированном Auth пройти валидную/истёкшую/повторную recovery-ссылку, несовпадающие пароли, ошибку updateUser и выход после успеха.",
+      "expected": "Меняется только подтверждённый собственный аккаунт по поддерживаемой политике провайдера. Ошибка не выдаётся за успех; MFA не отключён, recovery не закрыт общим staff guard и не зациклен.",
+      "required_level": "auth-integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M01-T15",
+      "module": "M01",
+      "conditions": "**Возврат из истории браузера после выхода**. Открыть private editor, выйти, войти другим тестовым аккаунтом и вернуться Back/Forward; повторить с восстановлением вкладки.",
+      "expected": "Закрытые данные первого аккаунта не становятся доступными второму; действие повторно авторизуется. Истёкшая вкладка не теряет собственный безопасно сохранённый ввод из-за автоматической перезаписи.",
+      "required_level": "admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M04-T15",
+      "module": "M04",
+      "conditions": "**Прямой повтор уже завершённой публикации**. Вызвать retryPublicationAction напрямую для deployed-события, хотя кнопка скрыта; затем отдельную разрешённую команду нового полного выпуска.",
+      "expected": "Повтор завершённой операции возвращает её существующий результат либо объяснённый отказ; новый выпуск требует отдельного намерения и не маскируется под retry. Старое событие не изменяется.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M04-T16",
+      "module": "M04",
+      "conditions": "**Состояние сменилось во время повтора**. После чтения requested/failed-события завершить его другим обработчиком и отправить прежний retry; дважды отправить один operationId.",
+      "expected": "Состояние/намерение проверяется в атомарной границе; один и тот же retry не создаёт неограниченные dispatch. Существующие отдельные outbox-события не склеены по entityId.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M04-T17",
+      "module": "M04",
+      "conditions": "**Неверный ID и ложный legacy fallback**. Передать в адаптер publication undefined/объект вместо UUID либо несовпадающую сигнатуру RPC на современной схеме.",
+      "expected": "Невалидный результат выявлен до вызова enqueue/dispatch; проблема DTO/сигнатуры не трактуется как подтверждённая старая схема. Уже принятая запись и её trigger-event не потеряны.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M05-T10",
+      "module": "M05",
+      "conditions": "**Обложка из медиатеки в preview**. Открыть статью с cover_media_id без cover_external_url; затем fixture с разрешённой внешней обложкой и конфликтующими значениями.",
+      "expected": "Используется тот же приоритет и resolver обложки, что в публичной проекции. Тест проверяет URL, alt, фокус и отсутствие ложного пропуска; существующие файлы не заменены.",
+      "required_level": "integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M05-T11",
+      "module": "M05",
+      "conditions": "**Точная редакция предпросмотра**. Иметь публичную редакцию A, рабочий черновик B и несохранённый ввод C; открыть доступные варианты preview.",
+      "expected": "Каждый preview явно обозначает A/B/C, локаль и версию; B не выдаётся за C. Проверенный B не подтверждает выпуск C. В URL нет текста; публичная A не меняется.",
+      "required_level": "admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M05-T12",
+      "module": "M05",
+      "conditions": "**Реальная ширина preview**. Сравнить выбранный mobile/tablet/desktop режим на одном разрешённом fixture с публичным renderer при тех же размерах viewport.",
+      "expected": "Срабатывают соответствующие responsive правила, а не только внешняя ширина карточки. Измеренные различия устранены в адаптере preview без редизайна публичного сайта.",
+      "required_level": "browser+visual-regression",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M05-T13",
+      "module": "M05",
+      "conditions": "**Ошибка EN не равна отсутствию EN**. На preview успешного RU отдельно вернуть ошибку запроса EN, затем успешное отсутствие строки EN и ошибку рабочего черновика.",
+      "expected": "Показаны разные состояния. Ошибка не объявляется отсутствующим переводом, RU не подставляется вместо EN, повреждённый draft не подтверждён как публичный результат.",
+      "required_level": "integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T07",
+      "module": "M07",
+      "conditions": "**Опубликованный машинный EN устарел**. Создать published machine-owned EN с hash старого RU и запустить штатный batch с mock-провайдером.",
+      "expected": "Пакетный prefilter не объявляет запись актуальной по одному status=published. Устаревание обнаружено, дальнейшая обработка следует существующим ownership/review/kill-switch правилам.",
+      "required_level": "integration+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T08",
+      "module": "M07",
+      "conditions": "**Опубликованный EN уже соответствует источнику**. Для machine-owned EN задать совпадающий source hash и действительную исходную редакцию.",
+      "expected": "Нет ненужного внешнего перевода; счётчик актуальных подтверждён содержимым/версией, не только статусом публикации.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T09",
+      "module": "M07",
+      "conditions": "**Ручная опубликованная версия в сводке**. Смешать актуальный machine EN, устаревший machine EN, ручной EN и отсутствующий EN в одном пакете.",
+      "expected": "Ownership, freshness и publication не смешаны. Ручной EN не переписан; его несовпадение с RU не скрывается меткой current, причины пропуска/счётчики достоверны.",
+      "required_level": "integration+component",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T10",
+      "module": "M07",
+      "conditions": "**Лимит при серии конфликтов**. Mock результата перевода возвращает conflict для большого числа кандидатов, успешных переводов нет.",
+      "expected": "Ограничение считает реально начатые дорогие попытки, не только translated. На настроенной границе прекращаются новые внешние вызовы, сохраняются результаты и курсор.",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T11",
+      "module": "M07",
+      "conditions": "**Общий бюджет двух проходов**. Дать медленный translator, затем reviewer/timeout/429; тестовым clock исчерпать бюджет операции.",
+      "expected": "Учтены оба прохода, повторы и общее время. Новые вызовы после stop/deadline не запускаются, частичная работа не называется полной. Тесты не обращаются к реальному платному провайдеру.",
+      "required_level": "integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T12",
+      "module": "M07",
+      "conditions": "**Изменяемая выборка и равные даты**. Во время scan/resume вставить/удалить/изменить кандидата; несколько updated_at совпадают.",
+      "expected": "Есть документированная стабильная стратегия обхода с tie-breaker/зафиксированным набором или проверенным эквивалентом. Нет вечных пропусков, бесконечного повторения и ложного 100% завершения из-за OFFSET.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M07-T13",
+      "module": "M07",
+      "conditions": "**Продолжение сканирования и повтор ошибки различаются**. Иметь завершённый bounded-sync run с resumeCursor и отдельный неуспешный item; выполнить соответствующие команды через UI.",
+      "expected": "Продолжить обходит оставшихся кандидатов, повторить ошибку адресует неуспешный item/версию. Не заявляется service-role lease-runner там, где работает staff sync; полномочия claim/complete не расширены.",
+      "required_level": "integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M11-T08",
+      "module": "M11",
+      "conditions": "**Изображение за первой шестидесяткой**. Создать 137 synthetic assets, открыть именно окно вставки EditorMediaDialog, найти и вставить запись 61/137.",
+      "expected": "Все разрешённые результаты достижимы пагинацией/загрузкой следующей страницы с устойчивым порядком; успешная работа основной медиатеки не заменяет этот тест.",
+      "required_level": "admin-e2e+DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M11-T09",
+      "module": "M11",
+      "conditions": "**Поиск известного файла**. Искать через окно вставки по исходному имени, описанию, подписи и коллекции; проверить литеральные %, _ и обратный слеш.",
+      "expected": "Поиск находит разрешённые совпадения по заявленным полям, экранирует шаблонные символы и не открывает удалённые/недоступные assets.",
+      "required_level": "integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M11-T10",
+      "module": "M11",
+      "conditions": "**Повреждённый успешный ответ API**. Вернуть HTTP 200 с отсутствующим assets/неверной формой элемента; отдельно вернуть корректный пустой список.",
+      "expected": "Ошибочный DTO не отображается как «Изображения не найдены». Корректная пустота и ошибка различаются; UI не теряет ранее введённый текст.",
+      "required_level": "component+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M11-T11",
+      "module": "M11",
+      "conditions": "**Новая загрузка при открытом окне**. При открытом dialog загрузить новый файл и дождаться серверной квитанции; изменить поисковый запрос во время задержанного ответа.",
+      "expected": "Новый asset доступен без выхода из статьи; поздний ответ старого запроса не заменяет актуальный список. Используется существующий focus hook, фокус не прыгает без причины.",
+      "required_level": "admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M11-T12",
+      "module": "M11",
+      "conditions": "**Выбранный файл изменился до сохранения**. Выбрать asset, затем в другой транзакции отправить его в корзину/заменить/отозвать нужную доступность перед записью ссылки.",
+      "expected": "Сервер проверяет актуальное состояние ссылки. Ошибка не приводит к пустой перезаписи статьи; пользователю предложено безопасно выбрать действующий файл.",
+      "required_level": "DB+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M13-T06",
+      "module": "M13",
+      "conditions": "**Реальный UUID-ответ create redirect**. На тестовой схеме вызвать create_seo_redirect_guarded, затем штатный createRedirectAction; перехватить enqueue/dispatch без внешнего выпуска.",
+      "expected": "Адаптер принимает фактический scalar UUID. Этот же ID передан publication/audit; data.id от строки не используется. Редирект создан один раз.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M13-T07",
+      "module": "M13",
+      "conditions": "**Неподдерживаемая форма RPC-ответа**. Вместо ожидаемого UUID вернуть null, пустую строку, случайный объект и ошибку; затем законный UUID.",
+      "expected": "Неизвестная форма не превращается в успешную связанную операцию. Действительные scalar/row/json контракты валидируются по функции, без небезопасного универсального «data.id || data».",
+      "required_level": "unit+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M13-T08",
+      "module": "M13",
+      "conditions": "**Эквивалентный внутренний redirect**. Проверить один адрес в root-relative и same-origin absolute форме, завершающие слеши и реальный публичный route resolver; отдельно допустимое внешнее назначение.",
+      "expected": "Самопереходы/внутренние циклы не проходят из-за различного написания. Законная внешняя переадресация не переписана как внутренняя, существующие URL сохранены.",
+      "required_level": "DB+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M13-T09",
+      "module": "M13",
+      "conditions": "**Два конкурентных редиректа**. Создать конкурирующие назначения и ошибку audit в изолированных транзакциях через существующие guarded RPC.",
+      "expected": "Сохранены advisory lock, CAS и транзакционный audit; недопустимая цепочка/коллизия не возникает. Проверяется effective schema, а не только текст миграции.",
+      "required_level": "DB",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M19-T09",
+      "module": "M19",
+      "conditions": "**Рабочий preview страницы**. После реализации page draft открыть preview сохранённого B при публичной A; независимо сломать чтение draft или основной строки.",
+      "expected": "Preview выбирает требуемую редакцию явно; ошибки не подменяют B на A и не становятся ложной 404. Уже опубликованная A остаётся доступной.",
+      "required_level": "integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M19-T10",
+      "module": "M19",
+      "conditions": "**Безопасная проекция preview**. Использовать synthetic legacy HTML с обычными абзацами/ссылками и небезопасным активным фрагментом, открыть page/article preview.",
+      "expected": "Небезопасное поведение не исполняется; сохранены поддерживаемые безопасные структуры. Не отключена CSP/санитизация, не выполнена массовая перезапись исходников и исключённой пунктуации.",
+      "required_level": "security-browser+integration",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    },
+    {
+      "id": "M23-T11",
+      "module": "M23",
+      "conditions": "**Приватные заголовки всех ответов**. Проверить JSON/HTML/RSC/redirect успешного и неуспешного запроса, 401/403/503 и невалидного DTO, с обычными и prefetch-заголовками.",
+      "expected": "Приватные ответы не попадают в общий CDN/браузерный кеш другого пользователя; no-store/security headers подтверждены в фактическом middleware/runtime. Успешная ветка API не заменяет проверку ошибок.",
+      "required_level": "runtime-integration+admin-e2e",
+      "status": "NOT_RUN",
+      "evidence": null,
+      "origin": "R3_ADDED"
+    }
+  ],
+  "execution_state": {
+    "application_implementation": "NOT_STARTED_IN_THIS_PREPARATION",
+    "application_tests": "NOT_RUN",
+    "production": "NOT_TOUCHED",
+    "read_only_source_review": true
+  },
+  "source_review": "SOURCE_REVIEW_R3.json",
+  "overlapping_coverage": [
+    {
+      "ids": [
+        "M11-T02",
+        "M11-T07"
+      ],
+      "relationship": "shared_failure_family",
+      "reason": "Unknown/incomplete usage graph blocks destructive cleanup; one substantive test may cover both IDs."
+    }
+  ]
+}

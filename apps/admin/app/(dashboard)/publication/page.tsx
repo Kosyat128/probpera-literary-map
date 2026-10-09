@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-import { formatDate } from "@/lib/format";
+import { formatDate, safeCount } from "@/lib/format";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, isReadRecord, readAdminList } from "@/lib/admin-read-result";
 import { redirect } from "@/lib/navigation";
 import {
   PUBLICATION_CATALOG_PAGE_SIZE,
@@ -35,6 +37,42 @@ const statusLabels: Record<OutboxEvent["status"], string> = {
   deployed: "Опубликовано",
   failed: "Требует повтора",
 };
+
+function isOutboxId(value: unknown): value is number | string {
+  if (typeof value === "number") return Number.isSafeInteger(value) && value > 0;
+  // Preserve decimal strings exactly; the SQL identity is a positive signed bigint.
+  return typeof value === "string" && /^[1-9]\d{0,18}$/u.test(value)
+    && (value.length < 19 || value <= "9223372036854775807");
+}
+
+function isSqlText(value: unknown, max: number): value is string {
+  if (typeof value !== "string") return false;
+  const length = Array.from(value).length;
+  return length >= 1 && length <= max;
+}
+
+function isTimestamp(value: unknown): value is string {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
+function isOutboxEvent(value: unknown): value is OutboxEvent {
+  return isReadRecord(value) && isOutboxId(value.id)
+    && isSqlText(value.entity_type, 120) && isSqlText(value.entity_id, 240)
+    && isSqlText(value.reason, 240) && typeof value.status === "string"
+    && Object.hasOwn(statusLabels, value.status)
+    && typeof value.attempt_count === "number" && Number.isSafeInteger(value.attempt_count)
+    && value.attempt_count >= 0 && value.attempt_count <= 2147483647
+    && (value.last_error === null || typeof value.last_error === "string")
+    && (value.provider === null || typeof value.provider === "string")
+    && isTimestamp(value.requested_at)
+    && (value.dispatched_at === null || isTimestamp(value.dispatched_at))
+    && (value.deployed_at === null || isTimestamp(value.deployed_at))
+    && (value.deployment_run_id === null || typeof value.deployment_run_id === "string");
+}
+
+function displayCount(count: number | null) {
+  return count === null ? "Недоступно" : count.toLocaleString("ru-RU");
+}
 
 function CatalogContext({ catalog }: { catalog: ReturnType<typeof parsePublicationCatalogQuery> }) {
   return (
@@ -71,7 +109,7 @@ export default async function PublicationPage({
   if (catalog.status) eventsRequest = eventsRequest.eq("status", catalog.status);
   if (catalog.orFilter) eventsRequest = eventsRequest.or(catalog.orFilter);
 
-  const [eventsResponse, pendingResponse, failedResponse] = await Promise.all([
+  const reads = await Promise.allSettled([
     eventsRequest.range(catalog.from, catalog.to),
     supabase
       .from("public_build_outbox")
@@ -82,10 +120,17 @@ export default async function PublicationPage({
       .select("id", { count: "exact", head: true })
       .eq("status", "failed"),
   ]);
-  const events = (eventsResponse.data || []) as OutboxEvent[];
-  const totalCount = eventsResponse.count || 0;
-  const totalPages = Math.max(1, Math.ceil(totalCount / PUBLICATION_CATALOG_PAGE_SIZE));
-  if (!eventsResponse.error && catalog.page > totalPages) {
+  const eventsRead = readAdminList<OutboxEvent>(reads[0], isOutboxEvent);
+  const events = eventsRead.status === "success" ? eventsRead.data : [];
+  const [totalCount, pendingCount, failedCount] = reads.map((read) =>
+    safeCount(read.status === "fulfilled" ? read.value : null));
+  const totalPages = totalCount === null
+    ? null : Math.max(1, Math.ceil(totalCount / PUBLICATION_CATALOG_PAGE_SIZE));
+  const canChangePublication = eventsRead.status === "success"
+    && totalCount !== null && pendingCount !== null && failedCount !== null;
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)
+    + publicationCatalogHref(catalog);
+  if (eventsRead.status === "success" && totalPages !== null && catalog.page > totalPages) {
     redirect(publicationCatalogHref(catalog, { page: totalPages }));
   }
 
@@ -100,41 +145,42 @@ export default async function PublicationPage({
             число попыток и подтверждённое развёртывание.
           </p>
         </div>
-        <form action={requestFullPublicBuildAction}>
-          <CatalogContext catalog={catalog} />
-          <button className="button" type="submit">Пересобрать весь сайт</button>
-        </form>
+        {canChangePublication && (
+          <form action={requestFullPublicBuildAction}>
+            <CatalogContext catalog={catalog} />
+            <button className="button" type="submit">Пересобрать весь сайт</button>
+          </form>
+        )}
       </header>
 
-      {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
-      {query.published === "started" && (
-        <p className="form-message form-success">Запрос надёжно записан, сборка запущена.</p>
-      )}
-      {query.published === "queued" && (
-        <p className="form-message form-success">
-          Запрос надёжно записан в очередь. Плановый обработчик повторит запуск.
+      {(query.error || query.published) && (
+        <p className="form-message" role="status">
+          Результат действия по параметрам страницы не подтверждён. Проверьте актуальную очередь перед повторным изменением.
         </p>
       )}
-      {query.published === "queue-error" && (
+      {!canChangePublication && (
         <p className="form-message form-error" role="alert">
-          Запрос не удалось надёжно записать в очередь. Повторите действие после проверки базы.
+          {eventsRead.status === "failed" ? adminReadMessage(eventsRead.issue)
+            : "Не удалось загрузить все счётчики публикации."}
+          {" "}Действия публикации недоступны до полной загрузки очереди и её счётчиков.{" "}
+          <a href={retryHref}>Повторить загрузку</a>
         </p>
       )}
 
       <section className="stat-grid">
         <article className="stat-card">
           <span>В работе</span>
-          <strong>{pendingResponse.count ?? "-"}</strong>
+          <strong>{displayCount(pendingCount)}</strong>
           <small>очередь и запущенные сборки</small>
         </article>
         <article className="stat-card">
           <span>С ошибкой</span>
-          <strong>{failedResponse.count ?? "-"}</strong>
+          <strong>{displayCount(failedCount)}</strong>
           <small>можно повторить вручную</small>
         </article>
         <article className="stat-card">
           <span>В выборке</span>
-          <strong>{totalCount.toLocaleString("ru-RU")}</strong>
+          <strong>{displayCount(totalCount)}</strong>
           <small>с учётом активных фильтров</small>
         </article>
       </section>
@@ -159,10 +205,9 @@ export default async function PublicationPage({
           <button className="button-secondary" type="submit">Применить</button>
         </form>
 
-        {eventsResponse.error ? (
+        {eventsRead.status === "failed" ? (
           <p className="form-message form-error" role="alert">
-            {operatorDataError("publication", "load")} Проверьте применённые миграции.
-            20260814 и проверьте состояние схемы.
+            {operatorDataError("publication", "load")}
           </p>
         ) : events.length === 0 ? (
           <div className="empty-state"><p>Запросов с такими условиями пока нет.</p></div>
@@ -186,7 +231,7 @@ export default async function PublicationPage({
                     <td className="data-title">
                       <strong>{event.entity_type} · {event.entity_id}</strong>
                       <small>{event.reason}</small>
-                      {event.last_error && <small className="form-error">{event.last_error}</small>}
+                      {event.last_error && <small className="form-error">Не удалось подтвердить выполнение запроса. Проверьте состояние очереди перед повтором.</small>}
                     </td>
                     <td>
                       <span className={`badge publication-status-${event.status}`}>
@@ -200,12 +245,14 @@ export default async function PublicationPage({
                       {runUrl && <a href={runUrl} target="_blank" rel="noreferrer">Открыть сборку ↗</a>}
                     </td>
                     <td>
-                      {event.status !== "deployed" ? (
+                      {event.status !== "deployed" ? canChangePublication ? (
                         <form action={retryPublicationAction}>
                           <CatalogContext catalog={catalog} />
                           <input type="hidden" name="outbox_id" value={String(event.id)} />
                           <button className="button-secondary" type="submit">Повторить</button>
                         </form>
+                      ) : (
+                        <span>Действие недоступно</span>
                       ) : (
                         <span aria-label="Публикация подтверждена">Готово</span>
                       )}
@@ -217,7 +264,7 @@ export default async function PublicationPage({
           </table>
         )}
 
-        {!eventsResponse.error && totalPages > 1 && (
+        {eventsRead.status === "success" && totalPages !== null && totalPages > 1 && (
           <nav className="pagination" aria-label="Страницы публикационной очереди">
             {catalog.page > 1 ? (
               <Link href={publicationCatalogHref(catalog, { page: catalog.page - 1 })}>← Назад</Link>

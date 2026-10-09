@@ -1,0 +1,3935 @@
+{
+  "schemaVersion": 1,
+  "scope": "Portable local evidence for unfinished M07-T05; not a checkpoint or acceptance claim.",
+  "archive": {
+    "file": "m07-t05-portable-evidence.zip",
+    "sha256": "dfa0caa687d63cfcec9391ccdc4950f568cfebce4e2541abc1a03ca047df3232",
+    "bytes": 2870518,
+    "members": 761,
+    "uncompressedBytes": 14215782,
+    "format": "ZIP_DEFLATE",
+    "deterministicTimestamp": "1980-01-01T00:00:00"
+  },
+  "members": [
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/01-drive-P.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/01-drive-P.stdout.log",
+      "bytes": 70,
+      "sha256": "40ea1b38233fd67f6ad4dae724b658eefa98a931d7c18b6d89a9a979c709f9ab"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/02-create-owned-alias.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/02-create-owned-alias.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/03-drive-P.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/03-drive-P.stdout.log",
+      "bytes": 202,
+      "sha256": "03ac834051eebf710766e0c205f799976ee7474a2f4ad4e07e3d366fe2e12941"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/04-postgres-version.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/04-postgres-version.stdout.log",
+      "bytes": 29,
+      "sha256": "236e29990561bee501e02f4e5d1f8cb1220a59091800020301a0f2e35e6fb3d5"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/05-git-head.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/05-git-head.stdout.log",
+      "bytes": 41,
+      "sha256": "dee595e554f82804542680cb06e039a75939312530744b6c97baa87c798c4b50"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/06-git-branch.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/06-git-branch.stdout.log",
+      "bytes": 27,
+      "sha256": "56ec42a09cdec17fccb795415e736d0f4e15662afb3acc054a12a585b15995ea"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/07-initdb.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/07-initdb.stdout.log",
+      "bytes": 891,
+      "sha256": "2329cb7e53835e1413f647a139ecea894f2e8c9ee671e39ce4cfb3b1da8d23fb"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/08-pg-start.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/08-pg-start.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/09-pg-owned-status.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/09-pg-owned-status.stdout.log",
+      "bytes": 212,
+      "sha256": "a7b0eb95de88f79788131b0672f8e77967ba2dc02abd14c57c660ba777b02cc1"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/10-create-fixture-db.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/10-create-fixture-db.stdout.log",
+      "bytes": 17,
+      "sha256": "c4f0e6a1d4c0f5670985351933a6e3b37f82d0e083b70cd21e88d7d6258dd588"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/11-fixture-contract.stderr.log",
+      "bytes": 2339,
+      "sha256": "3bbce0a565c654e57634ac4bb46faedd143906d5b76ce017b9d4dea8f38f58e9"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/11-fixture-contract.stdout.log",
+      "bytes": 11555,
+      "sha256": "d824e6ab6b5f44aa8c6ce377c4be5e1788574573e4e8109af5e7990a3f7cbafd"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/12-actual-role-rls-probe.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/12-actual-role-rls-probe.stdout.log",
+      "bytes": 1440,
+      "sha256": "0aec92564b15c44379aafd546bc6ba99bc08f8e1bd0a021254b32b9741a4f36b"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/13-drive-P.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/13-drive-P.stdout.log",
+      "bytes": 202,
+      "sha256": "03ac834051eebf710766e0c205f799976ee7474a2f4ad4e07e3d366fe2e12941"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/14-pg-stop-owned.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/14-pg-stop-owned.stdout.log",
+      "bytes": 58,
+      "sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/15-drive-P.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/15-drive-P.stdout.log",
+      "bytes": 202,
+      "sha256": "03ac834051eebf710766e0c205f799976ee7474a2f4ad4e07e3d366fe2e12941"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/16-remove-owned-alias.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/16-remove-owned-alias.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/17-drive-P.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/17-drive-P.stdout.log",
+      "bytes": 70,
+      "sha256": "40ea1b38233fd67f6ad4dae724b658eefa98a931d7c18b6d89a9a979c709f9ab"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/executed-fixture.sql",
+      "bytes": 164077,
+      "sha256": "685bec9aa35630f904783224aad1b7f2d60f06317fbb8a47b2cdc7d511a6cd04"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "bytes": 17579,
+      "sha256": "1a1ddceed5d7d1a59931e5477ab571df199a45c31f53f95eb9e21fb6e413f952"
+    },
+    {
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/server.log",
+      "bytes": 1188,
+      "sha256": "2e039be8f158266df8214e17d53588a9af34471eee28ed7698a2e5333e4576c0"
+    },
+    {
+      "path": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "bytes": 566136,
+      "sha256": "67b12211ce8722c57a5e6eb6337001e2ac8de1b69935f4e9ace8b01e9543a33d"
+    },
+    {
+      "path": ".tmp/m07-t01-before-supplement-v1/manifest.json",
+      "bytes": 848,
+      "sha256": "91dcbe145a151fb0391524ddfcc5f78a57d44f7505cb29a540d77883daf00a11"
+    },
+    {
+      "path": ".tmp/m07-t01-before-supplement-v1/raw/apps/admin/lib/book-edition-edit.ts",
+      "bytes": 6973,
+      "sha256": "af6043a1c68359df1bcdbad56bc9a8dd9a707af76ce392d649d3885981e3a21a"
+    },
+    {
+      "path": ".tmp/m07-t01-before-supplement-v1/raw/apps/admin/lib/isbn.ts",
+      "bytes": 4169,
+      "sha256": "2c3ba18c1244ecdb3490d4c5a62115ef9701c5cb7cd92fd42ae51dca557ffadc"
+    },
+    {
+      "path": ".tmp/m07-t01-final-v2-source-fingerprint.json",
+      "bytes": 39748,
+      "sha256": "e7e49f73aa13a3d263da6e050dba9c7fef58c1845f827378ef611d6cc680d2f5"
+    },
+    {
+      "path": ".tmp/m07-t01-final-v2-tests.txt",
+      "bytes": 11888,
+      "sha256": "27e50f2ad64120ee54a120911339b5e6ffaccc437d2c2d01bc573aea53f2c2ad"
+    },
+    {
+      "path": ".tmp/m07-t04-sql-native-runner-v1.mjs",
+      "bytes": 18937,
+      "sha256": "ee0909cc6ed18ecfe67d3b6aaaaf32168eea6cb70468a369ade66c715b1113f1"
+    },
+    {
+      "path": ".tmp/m07-t05-app-final-three-pairs-v1-proof.json",
+      "bytes": 4139,
+      "sha256": "832a31dbd781c1734b72cf3cce9abac271f893752303452b78487ec35d5f0c29"
+    },
+    {
+      "path": ".tmp/m07-t05-authorized-delta-v1.json",
+      "bytes": 1808,
+      "sha256": "77aed8c5344d2aa8901310d7646f3b15f4297493da28c0cd30fcd88f81cfb634"
+    },
+    {
+      "path": ".tmp/m07-t05-before/manifest.json",
+      "bytes": 109459,
+      "sha256": "4329a58bf91d2cd402bfe329b65fb9a3464514a760f72b89678370d8f41dab7f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/actions.ts",
+      "bytes": 2802,
+      "sha256": "7aa12416b07aeae64bc8b39a8edc9657c6942bd3efa0920eb5a8e00c8470fa26"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/login/page.tsx",
+      "bytes": 4508,
+      "sha256": "4e2a85f64dfe291ea3431584b7a7fd0cb43413962d03eccec409c3420781cdb5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/mfa/actions.ts",
+      "bytes": 2887,
+      "sha256": "27b03849149e13a7b3de5b3a93bea1b62b1366e1f8489d15a560de9431b12224"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(auth)/mfa/page.tsx",
+      "bytes": 4740,
+      "sha256": "542824e5be21b682111ef3d902d6f732d3b49aa3c77886ac4b7a6b6b0cb433e1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/analytics/analytics-load-errors.integration.test.ts",
+      "bytes": 11840,
+      "sha256": "d33dc8e9d4f1fc8ab5793f69ad6c328cf129489804721a726af75dc17110d463"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/analytics/export/route.ts",
+      "bytes": 1688,
+      "sha256": "5afc6ce7f61afbe2133988192d65ffdbeda74d3cd60e2d2770c7a5e70bd4ed42"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/analytics/page.tsx",
+      "bytes": 9163,
+      "sha256": "a6927c771b5778858decb4da5d697503ca7d8a1f22cc5f362a579bef4c448dd4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/[id]/page.tsx",
+      "bytes": 21390,
+      "sha256": "18a7b7f00c04ef3f577720c76784b499f21f4a37a44d2d722c528664088585ee"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/[id]/preview/page.tsx",
+      "bytes": 12338,
+      "sha256": "5f355cfe6271f0fd450b3af6fc0db4706ff06cf541ed5da4de577ab6434df6d0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/actions.ts",
+      "bytes": 544,
+      "sha256": "2d53b9c0271c03d51002cf19acc8ce393aa74be3775d871609ee7369e67d433f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-bundle-rpc.source.test.ts",
+      "bytes": 2420,
+      "sha256": "9f7cf82d3bfb3502017f6173b1be808d24186f0b42b22131a53b194c9dd312b9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-bundle-rpc.test.ts",
+      "bytes": 6864,
+      "sha256": "fdf3f5062e15e341893e5612b54adfae85fdf3210aaa7d47f6e310749fd4d0a1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-bundle-rpc.ts",
+      "bytes": 8895,
+      "sha256": "d04b2ba79e6fff7977a7a2279c69db8bc60d32e44b59b1d7993ef1ad3562a965"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-copy-search-action.ts",
+      "bytes": 1773,
+      "sha256": "e0b47f2daba1c409b749c8daff5c14498fa9bc6b54d0a5d9cc789cd4ab24dea9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-list-load-errors.integration.test.ts",
+      "bytes": 15325,
+      "sha256": "6c2d1efb4c9fa73ad5a0043956ec4c095685f9e0144e87f8ca29685c4020919d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-load-errors.integration.test.ts",
+      "bytes": 35257,
+      "sha256": "0b534d54a4ffda9ceaf5b4b2645cde4f12818f32d88674de4cf1b0dfbe6b4c4a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-management-actions.ts",
+      "bytes": 14353,
+      "sha256": "0c9ef6f8f9b780e77157250d29ddf7d995d4633d0663f7ab31d1ec4759591548"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-operation-action.integration.test.ts",
+      "bytes": 19227,
+      "sha256": "c51b5d85e77654514cce37b83778bd1e55c162d7924dd274188afecf376cc213"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-operation-rpc.test.ts",
+      "bytes": 13726,
+      "sha256": "eee94f3d28f0c67d628c2158a2c58b34af283f37e63d6870551cadef197534a9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-operation-rpc.ts",
+      "bytes": 6047,
+      "sha256": "eeda5120b9c70498d811c0f1b347bf8d98641da264bc3fc41f1a0e2e74798e05"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-operation-server.integration.test.ts",
+      "bytes": 30982,
+      "sha256": "efa144224fd79b44818c4d37fa20a57fed189d561400f5ed032da803e31eaa3c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-pending-operation-load.integration.test.ts",
+      "bytes": 15409,
+      "sha256": "2e2ba7f5db48120d9d1935f88994df1fa01321113e7d69bb63db0dcdf5829353"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-preview-load-errors.integration.test.ts",
+      "bytes": 16427,
+      "sha256": "20f3b6964dc5ec61b34c81fbf3aa8da24de04e53d4f20f1c1cd057b7c9a37e78"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-private-english-load.integration.test.ts",
+      "bytes": 17692,
+      "sha256": "8ffa2316de3afac3fbca1c804df631d4896f6ae9f87f052cf4dffea1a886cbf5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-private-english-server.integration.test.ts",
+      "bytes": 19269,
+      "sha256": "b796157fd191d69e8dc8aa54e9778dbc73dadc25b3aee893f44391e8b8397d59"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-review-identity.integration.test.ts",
+      "bytes": 18727,
+      "sha256": "8e130fc9a84be4b7c3b1489bef74b700169e60b7893a76564c3fbdf797dd3c41"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-save-result.integration.test.ts",
+      "bytes": 39306,
+      "sha256": "b9e3b890b7e5dbc35a081fc66363c6c0d68a634da2885d731b5798c8257eb9f4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-source-preservation.integration.test.ts",
+      "bytes": 17350,
+      "sha256": "6d22223d1ede575e9eb693dab4e729c0e93f3567f54644050eb00944fb96adde"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-working-draft-action.ts",
+      "bytes": 2037,
+      "sha256": "dbb6b35893feb6a64d27f9b81e7ec8f9c448cfbf1c9882f2da2d02b120c1bea8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-working-draft-flow.source.test.ts",
+      "bytes": 5394,
+      "sha256": "46095fd4f11a3fe822e53944d74bfff408f990bff1764b540e68611abd1fcdc9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-working-draft.test.ts",
+      "bytes": 6538,
+      "sha256": "45ae4400bf980e17baa96a7dd684a11911f7a699b8281c1525f2555ec71ada16"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/article-working-draft.ts",
+      "bytes": 12276,
+      "sha256": "e77329bff064e94162b8e365b2acfe14bceb59986c7a80083de9eaec866c19bf"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+      "bytes": 48047,
+      "sha256": "146b5a1eb260a3fad790d315e6c940e785f9bcee1f9c17a05aac301f506f6256"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/legacy-import-action.ts",
+      "bytes": 7858,
+      "sha256": "713391c831f15a2ba7329d6b62ce5fcd45c10d1d5f2b15bff647165243e4d226"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/new/page.tsx",
+      "bytes": 10875,
+      "sha256": "401ec3782f2f0d4f82e79abd836e837d99be6cd40e9e96afdf66d061a0527654"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/page.tsx",
+      "bytes": 17887,
+      "sha256": "edd4d4d237c3afff47d852c2b56c9ccd2c1e6830ec34104f7ebe3e21e5afc997"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/save-article-action.ts",
+      "bytes": 20362,
+      "sha256": "6ff23898eddbf2da71bf6d40e7f1fa20e0f460826c0e3235a90925d23e9e5738"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/save-article-publication-action.test.ts",
+      "bytes": 2292,
+      "sha256": "67d91e1f53808f961821867296604f13d080514bbc08b6f49c9ec6aed45857d6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/save-article-publication-action.ts",
+      "bytes": 5717,
+      "sha256": "4161fa683d7b19bc51eecf28024650c80eae9091f52062389b12122675885642"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/social-publication-action.ts",
+      "bytes": 3639,
+      "sha256": "f145a8c799dcc0a57c45c4dcdc992e109894ed42ce4e59a6c1bb2c8e0de560db"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/articles/template-actions.ts",
+      "bytes": 2886,
+      "sha256": "58549a956ca07c2d1906b358fc8ffad3cbf0982d61bb35f032d6c49d5ccd79f9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/banners/page.tsx",
+      "bytes": 12432,
+      "sha256": "345f3dc2029e4e8ed0f894fcc15a930c907d6585d92c14666b051f3090180ebe"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/categories/page.tsx",
+      "bytes": 16022,
+      "sha256": "38587b3608d455243f8129576c937b65e85352fcb51fc1c83ed4c34192d57edb"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/categories/taxonomy-comments-load-errors.integration.test.ts",
+      "bytes": 15186,
+      "sha256": "535e38fac236819e81047a8631272ead7e05b3d26d8c1916d889b66d12adac93"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/comments/page.tsx",
+      "bytes": 11079,
+      "sha256": "b9a8f8383e2a3f7e906d7331a3acac61202b5985c47f999308f15db9c64b9fb7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/dashboard/dashboard-counts.integration.test.ts",
+      "bytes": 7614,
+      "sha256": "0a0d8fb9d391b690b39d594720dac9a2dbf0e87a989a39030f369e6b2c480a53"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/dashboard/page.tsx",
+      "bytes": 6460,
+      "sha256": "14f96143ea4a7990acd5a62936908d792d172698b7f2849424e0b716b8cd50f3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/data-studio/data-studio-load-errors.integration.test.ts",
+      "bytes": 15537,
+      "sha256": "0111bd95bd9f354aecd750173aaa30c070e4698386fcaa36eb59a14351dd9931"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/data-studio/page.tsx",
+      "bytes": 9321,
+      "sha256": "276e6b505b91d807de99d9ddffca3ab42dc3c0d0415c8fe900be31bc9f7499cf"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/editorial-database/editorial-database-load-errors.integration.test.ts",
+      "bytes": 23385,
+      "sha256": "a6e2fc8bc04fcf296257b979869859202da10774ee0a26f0e572b9842a5d6a40"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/editorial-database/page.tsx",
+      "bytes": 32905,
+      "sha256": "789457b3117549b79ab809198964eb6c2059d2c4396247123f7a3503faa2f998"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/health/health-load-errors.integration.test.ts",
+      "bytes": 15789,
+      "sha256": "7847c9e83c6cf1a55a515114671f10cd4839c28c623855ea931892a27f8a42ae"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/health/page.tsx",
+      "bytes": 15754,
+      "sha256": "e83ed91a0195b384f8074a5414adb7989a229c540094fc67fb34645efda69e38"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/history/history-load-errors.integration.test.ts",
+      "bytes": 21205,
+      "sha256": "afb3aaedfc5d1ea5276f189b9c2fd987ce5e3bcf20812b95c363a597d04995bd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/history/page.tsx",
+      "bytes": 16361,
+      "sha256": "37c92a05ce1e8e83a77a7bfec86ee9b50fc8c77ef3f8d7f72b98079d75a05576"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/homepage/page.tsx",
+      "bytes": 43316,
+      "sha256": "70be01a0131744370e52685b5d4c132a9ee43429180a9cf8be4100ddf58b7423"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/layout.tsx",
+      "bytes": 2496,
+      "sha256": "2a3b85900d302c12c2c4822ef6276844cfd1a366cf4a59072fbb5c566dd0de34"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/actions.ts",
+      "bytes": 29386,
+      "sha256": "160a94bf53e18eacabe1c0c227a15a3f7407a2b897db3b60d32fc584dee1cb3d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/dossiers/dossier-load-errors.integration.test.ts",
+      "bytes": 21641,
+      "sha256": "a4f4cb11eaf224886796e64cb71c46a76320d866eae54080fe2e732faff1464f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/dossiers/page.tsx",
+      "bytes": 8861,
+      "sha256": "9026d3e93f61f5ab0b93027acfe7daf04e56fa4c8e87c76bc0475adf7c28ea56"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/library-load-errors.integration.test.ts",
+      "bytes": 32910,
+      "sha256": "39c5771582bbc3744e2b5c9bb704f511acb708d77f9bdd0f56311b0483180514"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/page.tsx",
+      "bytes": 76601,
+      "sha256": "5d1efbbd2b1fd56449868e6fd1f475d5ab435f322a2f74992f90d6bda84b3b1e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+      "bytes": 5153,
+      "sha256": "d16966452c9de754761170a06974508bbe3e3fe2f2435751b3374fa4abc0f4eb"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/literary-news/literary-news-load-errors.integration.test.ts",
+      "bytes": 10139,
+      "sha256": "3e82015cc43e6a6394d57502bcd60e6f63aafb37ae07e0a4f2b8a82e1a290fa6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/media/media-load-errors.integration.test.ts",
+      "bytes": 23468,
+      "sha256": "d60e1fb73c637cc6b6a784601a92338fbd987cc223f19f2b0f131353343f184a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/media/page.tsx",
+      "bytes": 48307,
+      "sha256": "5e4d2b725acaad34788b2588377787dca3441f23cc541d9115792d75922bf0bb"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/menus/menus-load-errors.integration.test.ts",
+      "bytes": 15544,
+      "sha256": "d1c811876be11bc34a084e848326e7f18dfd6afe5c1bbd9ee00a18f784570d36"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/menus/page.tsx",
+      "bytes": 13183,
+      "sha256": "2da489ba1363e439121d4dcc578af21dbb0a8b5a9bda5168a862b8dddb8d1a19"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/[id]/page.tsx",
+      "bytes": 11465,
+      "sha256": "6ab26b7cfb2babdf36e884df41e8f59b2447ebf800ff1a5218c3c2606ccb02de"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/[id]/preview/page.tsx",
+      "bytes": 3942,
+      "sha256": "acf198b9a68cff674b6b09112d990dd3f70009396ddb620df8e78f168a6ea22c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/actions.ts",
+      "bytes": 24639,
+      "sha256": "15c3af6b306d85d12cb29d87b844d0eef60f35bdbaf5d0247e5125d242a1fad1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-load-errors.integration.test.ts",
+      "bytes": 20756,
+      "sha256": "60243678775b69dab82ba5af7f6d367f994b6983657ca988493dae53889c43cf"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-operation-rpc.test.ts",
+      "bytes": 7670,
+      "sha256": "1263d62636add94261cba3261e29b288644f33e3a492ef37c535e65aa866089b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-operation-rpc.ts",
+      "bytes": 5967,
+      "sha256": "d695d2dd1ada763703c9da7a85fcc701de894833226bc59a02cf028a6138f518"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-operation-server.integration.test.ts",
+      "bytes": 17872,
+      "sha256": "258d92e4770f4dbcf9a63ca41632f8f67d88a2171f4b2baa2d52ac9b9a6f1593"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-pending-operation-load.integration.test.ts",
+      "bytes": 12145,
+      "sha256": "dc4289cef79a873c6df05effa26c8939756e2239310152a75612b4c82d9a8dea"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page-save-result.integration.test.ts",
+      "bytes": 18963,
+      "sha256": "ac7bd89772a4802d42cefde6a285665e538b383133739582d0e79b0a4cd18925"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/page.tsx",
+      "bytes": 9957,
+      "sha256": "8e97e5dc115a3ad763c4e91a7a13d1a474314d508d2fd582423dc0c60c3c94f3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/pages/pages-concurrency-catalog.source.test.ts",
+      "bytes": 3547,
+      "sha256": "86c7ecf3785f9d11a64b32d3b10f673e1a88074bc375c79aa53c716182ead94d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/publication/page.tsx",
+      "bytes": 12633,
+      "sha256": "4da69f95eb8a1e4f0afc8aeafad4017cbe44bf4dce0ded7c8a0882a3fd2a416e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/publication/publication-load-errors.integration.test.ts",
+      "bytes": 20183,
+      "sha256": "200f39fe310b9bfd33cee1247a09e7c883c73cd307107c6f982fc2a2ddd2f2e0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/seo/actions.ts",
+      "bytes": 9460,
+      "sha256": "6ce1fe2ff6067f76d992e42c818c7d2c7a743ffca51e25c35e31f0a41245582c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/seo/page.tsx",
+      "bytes": 18307,
+      "sha256": "9af082ab17cf05bb21a1a02a1de82d65ef13e5bdf0d8ad0cefac7f6db5f4c715"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/seo/seo-load-errors.integration.test.ts",
+      "bytes": 19965,
+      "sha256": "12d21081eb697b614d8db705aa5910092ed30a8e9871dba81cfce2f32e05850b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/seo/seo-redirect-actions.integration.test.ts",
+      "bytes": 20404,
+      "sha256": "90368c8525e37074570fe584be932068770d642ecec7404f1fef154bc04c6181"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/settings/page.tsx",
+      "bytes": 8120,
+      "sha256": "755b2a621eee3e56e39c15b729c63e919bcbd3822caed65b25a5e1dfcff0718e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/settings/settings-load-errors.integration.test.ts",
+      "bytes": 13759,
+      "sha256": "f9140563b6f4a0af54de67e4a7bf42b757d30b77ff84c335a8d8967f7096ba71"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/site-copy/page.tsx",
+      "bytes": 7227,
+      "sha256": "390879c2fd376494bb13bec1502e4b6bae6c857eec01999ba389bb5f32f91cac"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/site-copy/site-copy-load-errors.integration.test.ts",
+      "bytes": 12491,
+      "sha256": "9c947516325249d1c06da02cb6dd9f058e7a7bdbec7ae4551a794b115fc55b9c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/site-studio/fonts/page.tsx",
+      "bytes": 8080,
+      "sha256": "8379a9b169458a31c37792f16b3e3cc69cf596c9c8025107c7a002da1a900068"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/site-studio/releases/page.tsx",
+      "bytes": 15436,
+      "sha256": "ba79eb454a1cc9f9881ded5d4d412863b721ea596680d5fcda600fc6269aa4e7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/site-studio/tokens/page.tsx",
+      "bytes": 7755,
+      "sha256": "580c1cdfaaa84a98f09e374b86163b7e81f72bb32e119d34be404f284126c679"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 16862,
+      "sha256": "1cbffb7074af656c66045b6cd9fa664470e34003348c8573650d298cec7e0489"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-actions.ts",
+      "bytes": 19012,
+      "sha256": "4575020d1d6b8268177a7121855597b04d07422a5ceb9fa497920988da9c43de"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-batch.integration.test.ts",
+      "bytes": 59839,
+      "sha256": "e8cc2cda2df9360680bac9e305c074bd1ab4913ebb54548e62d9247fb9c4be6b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-candidate-receipt-binding.integration.test.ts",
+      "bytes": 10126,
+      "sha256": "07cecb035b4290e9aabf5dc8408345b1d36d7b9f398899305b69a47077e8fb7c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-item-retry-action.ts",
+      "bytes": 22286,
+      "sha256": "47248dba7bda89c56880263483ece1b9fe1b6aa7fef49491d36504602c1ea052"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-item-retry-admission.integration.test.ts",
+      "bytes": 41652,
+      "sha256": "23dc75afc1b6b02d3d9a33dbf46a4ad3386c2f5f339aa8219f7498d582628b28"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-item-retry.integration.test.ts",
+      "bytes": 60604,
+      "sha256": "8c26a9e0fee08ce9d7ad5dea7d46becd7a25b3f049cbefa8d523ebd319b3ee61"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-machine-draft-callers.integration.test.ts",
+      "bytes": 19410,
+      "sha256": "f7d5311b95dbedfc1e03da37442b1fdc56f7ff46ee215cd1d02c05d747d7e6b4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-scan.integration.test.ts",
+      "bytes": 66578,
+      "sha256": "d6a6c341250e8244ccebc0cfb9a8cb2cd20f2dea166d5e071778a48bed1e1792"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/article-terminal.integration.test.ts",
+      "bytes": 57622,
+      "sha256": "39b9339bdb4eb232033595013980dfbd662a66b848789ed65ddcb07901848ef4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/backfill-cursor.source.test.ts",
+      "bytes": 734,
+      "sha256": "e1d6bc9a3d0707f207d8e192c9bfe67a87f85fc5eeaf515d8b2b1ccee7c5c9be"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 4828,
+      "sha256": "aa910faef08d20b919fe9644d749c1409ffe269a8997783d816d40e29b5cdcf0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/page.tsx",
+      "bytes": 58767,
+      "sha256": "4552b7d8aae9a1c8a51adddb8c40e3eba22a2750c082720802fc63201b5802ac"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "bytes": 3076,
+      "sha256": "f42a96aee92691cde194904833ce5fc16100a4bf31db51d98dc3beafb3a30798"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/self-test-action.ts",
+      "bytes": 3362,
+      "sha256": "cedee9f49bb018574453d38c1a87d901b9cb371b4111f22fbf7eaf1a3620eb44"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/self-test-binding-action.integration.test.ts",
+      "bytes": 31571,
+      "sha256": "20e36da448eb994a781826ee55b89961ab20af85f1401a3cc91acc9ee67b8df5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/translation-operations.source.test.ts",
+      "bytes": 4740,
+      "sha256": "931e74f33dfb1bc7bfa35d64e0513a09abd6ab6102852c171e8961966249140a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/(dashboard)/translations/translations-load-errors.integration.test.ts",
+      "bytes": 24577,
+      "sha256": "69ad3f6873d85718c78a16b56ad85b5a3305e865e75081e785dc1fd5bc8af88a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/error.tsx",
+      "bytes": 843,
+      "sha256": "3ffa5209bb608902319391c54dd1fdf7edf677a67e487afd6d16566e8c2c3d01"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/global-error.tsx",
+      "bytes": 1001,
+      "sha256": "703c2a937f949b41b9d78d53b09d8a190a8cfe3cc8f3a10b8dda791631d05f6b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/globals.css",
+      "bytes": 289,
+      "sha256": "f2fd617df1fe295bce392ef416944f9336109ea093fb34690de435f90266b406"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/layout.tsx",
+      "bytes": 1199,
+      "sha256": "8bb33f188a13ffbfd8495416b86f5f40ac467c89f4b69e716ac3553da1ef39e9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/not-found.tsx",
+      "bytes": 664,
+      "sha256": "c6cba494e79796a112da48c69b59cf73d6091bd4ff79af24111377d61773f384"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/base.css",
+      "bytes": 2628,
+      "sha256": "65775989dbc77d612bc6aa67607ccc5def868ab3cd4b3f3c70cb3dbd7ab5a0e8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/editors.css",
+      "bytes": 78012,
+      "sha256": "d80c71c05aa201ac6e3ab06b2595fc4db64dcff7cbebbf703486c1e058b5f5fc"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/forms.css",
+      "bytes": 459,
+      "sha256": "b57cf4fc5ef95fa79fe6c39982bedfb487f5883b61e59fedd47895ff7c7e5cc0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/layout.css",
+      "bytes": 14853,
+      "sha256": "d31bc9dc590506d370f151a09b385f4f52737c7119653c0240144167e1229e0b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/responsive.css",
+      "bytes": 3807,
+      "sha256": "672aa3974eeebdd541cb87ffc2d93641138c768edee506857567ba700e098a4b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/site-studio.css",
+      "bytes": 11626,
+      "sha256": "2fbfd6d29af22f69e3ee853a5d6211e17a662985cbf4d9aff20de33728b39616"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/tables.css",
+      "bytes": 2966,
+      "sha256": "2f13c91fb535c9719bd39263f21d986e3c03cfa152d3d44feed369baad4d25b2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/tokens.css",
+      "bytes": 392,
+      "sha256": "dba7182ba23f1c1b49bb06aa06503ccfd7edfd5eb57670ff3441b57a3cef52cf"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/app/styles/utilities.css",
+      "bytes": 5897,
+      "sha256": "18eea75a8172cd4a08633f69085848e1062a84d2af734fb9194886bce2cf541c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/AdminCommandPalette.tsx",
+      "bytes": 5840,
+      "sha256": "2f0d0798b464fa5c4d4ceb73c731a19696b5728b8077ea9ed288b07986273e16"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/AdminShell.tsx",
+      "bytes": 4154,
+      "sha256": "352c97a9d0a924bab491acb23abf54d323d38531124d01795e8bdaef358a5c52"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/AdminStatusState.tsx",
+      "bytes": 1177,
+      "sha256": "7bc9985ea63a2b2e98eff5e5bb7fc8640873178d0a78c8af2d6571ae0a13799f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleCopyPicker.tsx",
+      "bytes": 6447,
+      "sha256": "f3c1c0edac6e4ff6ebebe1a77eca0b4b8f017bbb74c3f3900424a58cdfa3d874"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleEditor.tsx",
+      "bytes": 153438,
+      "sha256": "509bbfc128885e5392d34bac40622b3e18990aba4f559714b1a9d1c7667f9f21"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleEditorContext.tsx",
+      "bytes": 2668,
+      "sha256": "82eac1facd7cda0a6b3263bd5489c82a17fc69aecde504c4626a20ecbece70a8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleEditorLoader.tsx",
+      "bytes": 3825,
+      "sha256": "926b0b63c4280d5e71cb189a2cc0b274dc687414160f99cb8cd689d729da895a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleLoadState.tsx",
+      "bytes": 580,
+      "sha256": "157b1d7322baa4a9aeccbc7fe3361fc2733e3f5f29f9d50f76db5a723b074cb6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleTextTone.ts",
+      "bytes": 1696,
+      "sha256": "8c3764a6eabfdcf2fce6f7c78b0af4098770d2c9910f52ec9ed12cc5321b83d1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleTypographyScope.ts",
+      "bytes": 1809,
+      "sha256": "a618148ae99788a562c9fbf11463d0dc1ae98e07e87bc32c8bd16da7bf20e748"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ArticleWorkspaceTools.tsx",
+      "bytes": 7465,
+      "sha256": "99b0cd65ebe94861da16c2f79765b707230e5087630269c04a5eb5eb9de45556"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/ConfirmSubmitButton.tsx",
+      "bytes": 468,
+      "sha256": "1b6e83d8c1a2892fa64b42310059288a3659b1d8a421c770ec885b4d2bb45f01"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorLinkDialog.tsx",
+      "bytes": 9106,
+      "sha256": "4b026495899bf2e09dbdf4b0b66237cf8eb8d661fafba37040d1e00070727db8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorMediaDialog.tsx",
+      "bytes": 8522,
+      "sha256": "1110daa0be53e7b577f82abc00e7f10f40d5199942190befe866cf3033b9bb31"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorialBlock.ts",
+      "bytes": 10387,
+      "sha256": "f3625be8f305942c097659289ece3d5fe49e7b057179d7ad31b984e30f5d41fa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorialBlockView.tsx",
+      "bytes": 18117,
+      "sha256": "d1cb02bab5e1fe91173bd188d4be21ba2cd2eb11d3518238cbfbc8f29d3b9222"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorialImage.ts",
+      "bytes": 5765,
+      "sha256": "0c425706e4938520e9d464a6ac67ac980fadfade060a79076e575c58939bc205"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorialImageView.tsx",
+      "bytes": 18633,
+      "sha256": "9eb014c8b2fb5d008d7440abb902cd330a30f15651e866fa6b3257ad2486ba02"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/EditorialPreview.module.css",
+      "bytes": 1057,
+      "sha256": "1e2c27ba2c18a3b3b53bdc653a395a0b0a2d2c10a6866cd23f7e4c0cfd408f50"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/LiteraryNewsDeliveryOverview.tsx",
+      "bytes": 13884,
+      "sha256": "cfa436539ee818056fc28640f768d0234e5649bd36430e080d2cecb1fdf0a25f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/LiteraryWorkWorkspace.tsx",
+      "bytes": 19536,
+      "sha256": "2758610ec7ba26fb20501d0821ca85b3eec32d93c3c481ee0c1f4c7b9cc3e019"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/PageEditor.tsx",
+      "bytes": 58676,
+      "sha256": "3ac8d1d4fbde7a16c05e30ded5a29ed2b7136e404756895e8832578ee354ad43"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/PageEditorLoader.tsx",
+      "bytes": 3478,
+      "sha256": "e475546c2dd6da71c02c21e46f21cc4803119098b0d3836d975f3b86af3faae1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/SafeBrowserStorageBootstrap.tsx",
+      "bytes": 449,
+      "sha256": "fc5882a34099607dbf26a29898e365bee048421170dd442bf0cc958ae03c78c5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/SiteStudioLoadState.tsx",
+      "bytes": 836,
+      "sha256": "2db36d202a494bde79bee678c33a21ffa4e245eef450e8f4fbb223c588797352"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/TranslationSubmitButton.tsx",
+      "bytes": 541,
+      "sha256": "9600e83c54d92962244cc2fb5bfd2e8ed7772ae47d97c05b0cc154e5a229d454"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/ArticleEditorShell.source.test.ts",
+      "bytes": 2465,
+      "sha256": "6d81e782630915c8b93cf7dae0ec56a2b9206d69097f144102854ae2ec913b2d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/ArticleEditorShell.tsx",
+      "bytes": 7187,
+      "sha256": "7d2a0c789df9f96743774da19ebc59dd2cda250b5c5573ed934937d249b3cb95"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/ArticleEditorToolbar.tsx",
+      "bytes": 7378,
+      "sha256": "e3cd5adcfb702bf0e7158cf25c4e3b6a7f4e13d8348ec1da789ca6a17f5d5472"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/CoverEditor.tsx",
+      "bytes": 4308,
+      "sha256": "e01dfbf50d6e8a5b871ca8c344abba10d99fbdd70aabea113641d5440977e106"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/EditorCore.tsx",
+      "bytes": 9039,
+      "sha256": "9d83905a5f58cbd81f99422ef34220272ee98a23e7aaee3045810549c00d1954"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/GalleryEditor.tsx",
+      "bytes": 15610,
+      "sha256": "b7ef4fe4c3ad67d40d0a00dc5b2c5327667fae663692416d49eb656722b45f48"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/PublishPanel.tsx",
+      "bytes": 12830,
+      "sha256": "a76e61f2fde06b04fba1179a54dbdd91cc18bbba006bfc258aa544c1dcae947f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/SeoPanel.tsx",
+      "bytes": 7950,
+      "sha256": "6d1b8e1da2e7fe33fec163cfff003622ff26ea3704af7c16494ee245f9c9f698"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/SourceBibliographyEditor.tsx",
+      "bytes": 2844,
+      "sha256": "f08c9b79dbe28d626ab70aa79da4fc5a6788a091723f12ba260c648317439965"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/TranslationPanel.tsx",
+      "bytes": 2693,
+      "sha256": "b2d2a638ed6715ad7cf57117750c295be9289876e74b4f25469e7777e0508700"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/ValidationChecklist.tsx",
+      "bytes": 1645,
+      "sha256": "2c8454f0c39bf21a19dbc138010e029a58c089b0f5ec0d330ddd739c5215d1d5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/article-authored-json-preservation.integration.test.ts",
+      "bytes": 13774,
+      "sha256": "04e3cb2f71a2f7d94ad48cfb97b5f2d09e0c4b6d6835e8c0887e74ccb07c8094"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/article-english-human-confirmation.integration.test.ts",
+      "bytes": 15371,
+      "sha256": "8459b6febe6885f71436042e7e37febaf77757382f43a9cdc2cbfc6bf976d519"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/article-source-preservation.ts",
+      "bytes": 832,
+      "sha256": "fb9cc78d94225e4ef12dc569d2ebc1faa31b5adcab176f17053ccb17262282fa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/article-source-provenance-preservation.integration.test.ts",
+      "bytes": 19954,
+      "sha256": "a75df26e87095a9f2012736054c32ec8554c0728f4976d58c02eaa45214b3a9b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/article-editor/useArticleValidation.ts",
+      "bytes": 7960,
+      "sha256": "fe4fdb37ae7aee3e85bd25257cf5fb7c6a9077aa875ee3faf5d100335d7a3ddc"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/editor-media-parity.source.test.ts",
+      "bytes": 7678,
+      "sha256": "394d61b1c3693afbd0fe285cbf0b0d6d186515c1fefb66335bcc6a5f37806a46"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/editor/EditorRecoveryPanel.tsx",
+      "bytes": 1425,
+      "sha256": "547dc64c695add7f15b0ae30ba93d89225d5f231b477f1790aa7310cc73e639c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/editor/RecoveryController.tsx",
+      "bytes": 9169,
+      "sha256": "8201abb0ae3341c43a23be78363853cd330a6300c94db3200c3f7db6b6a0cf46"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/editorMediaEvents.ts",
+      "bytes": 865,
+      "sha256": "c0b87f8ac8c2ce870a883200ff3c65c60e621190c148fc773c2d2e6368c9f0cd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/error-boundary-privacy.integration.test.ts",
+      "bytes": 8261,
+      "sha256": "f7c9b34ba3890424c683b235a2cc323ed7f84d4517e71b5011b90b7c5cb81526"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/rich-editor/EditorImageDialog.tsx",
+      "bytes": 4567,
+      "sha256": "8b6705e629ad3aa96d09ea7d897b08b46b366ed0b62cbae6d65f34eefc365e5b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/rich-editor/RichEditorClientExtensions.ts",
+      "bytes": 929,
+      "sha256": "451fad4f93876fce9a695f6330aaef86b760c8e8171a538be66b9151aa203bb3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/rich-editor/RichEditorExtensions.ts",
+      "bytes": 1380,
+      "sha256": "564a5ccbf8b571086d8e9b2ea8f0eeb8c1a930c20211188b511c54ec817b14fa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/rich-editor/RichEditorToolbar.tsx",
+      "bytes": 3420,
+      "sha256": "8de8223cbe02a98e03521759932a075b0606174a71df7bb99f764a654d287725"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/rich-editor/rich-editor-schema-parity.integration.test.ts",
+      "bytes": 14964,
+      "sha256": "9222fb0ba2c181c3596255b3f0b2b69f8834131f7a0a08cc8a86954f31b8800d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/useEditorDialogFocus.ts",
+      "bytes": 2875,
+      "sha256": "aa55e0064d046b513de11eceb931d62847a35959e3c13851ed6ce1128d79ac9c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/components/useEditorMediaWorkflow.ts",
+      "bytes": 23998,
+      "sha256": "c5c66adc17d69d21b2f97f937329d3ab82202618999d9cddfee2d08832c0d504"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-control-flow.integration.test.ts",
+      "bytes": 26323,
+      "sha256": "c40783c9c46f14e6b1c125be5b40d006bc775c2a535420560d2cdddc639d6184"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-mfa-policy.ts",
+      "bytes": 688,
+      "sha256": "7d2d0a4b994eb65f8abf15029c4331405093cebf97308b1333d9b20411df208a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-module-registry.ts",
+      "bytes": 2914,
+      "sha256": "c4198366794465c8a28ebcb22cd27dcfb769748b1e4d2ff1320c1c02d64ab0d5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-access.integration.test.ts",
+      "bytes": 21176,
+      "sha256": "bd40eabc27c5f05e9b126e26b6192d478d4caf8eb870a4c14991b5a149007b36"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-access.ts",
+      "bytes": 746,
+      "sha256": "e253864335fbfc8e8ae66410b31a91ece7b13b9ccc487cae64cd586ea96a4009"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-result.test.ts",
+      "bytes": 7991,
+      "sha256": "f51521d7798210a3756878fa10542cd578e966971b73a217c49aca67e50b7e61"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-result.ts",
+      "bytes": 4001,
+      "sha256": "8884ba3a4d38b2a123088b975ad852ce99779daa587a1b9736800ba72a7adffe"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-routes.ts",
+      "bytes": 393,
+      "sha256": "8b6214659fc1281c3cf5b48eae7d0b5e8dd13d6a539028d91068f52e9e2e0181"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/analytics-load-validation.ts",
+      "bytes": 2282,
+      "sha256": "306606af63eaab8192b96fecc798d40cff4a7f60355322c70bd7a2e82c6680ae"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-composer.ts",
+      "bytes": 7930,
+      "sha256": "454fa76d188c7769bb9ec86ad4d74b4be52d601b0d51897a8545872def037365"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-copy-search.ts",
+      "bytes": 593,
+      "sha256": "8cfa7d0220363c40b5094fe4efd480ef379207f8c4c041a1e0c99fc6a2c36565"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-english-human-confirmation.ts",
+      "bytes": 7725,
+      "sha256": "f98f83e01be0fd8c7cf0ca8f7b399c1d28aa84ee2344502737e04957d07226be"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-item-retry-candidate.integration.test.ts",
+      "bytes": 21357,
+      "sha256": "b6018c12760dfbbfc794e40d39bf1b0b54457e08b10860b1df69733ef4ac9795"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-item-retry-journal.integration.test.ts",
+      "bytes": 16229,
+      "sha256": "ad72b49f0378c70f535c20548ba138eb3ed8811b25341e12a5524fff8831d388"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-leading-illustration.ts",
+      "bytes": 2422,
+      "sha256": "05eab0d67e2eb06ea10613778eea90d235352472841b26eb342dc46d8fc6e437"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-load-validation.ts",
+      "bytes": 5530,
+      "sha256": "b9244e50d840916d2264a2972acbe409f39e6426b974d6df97aab696debd4491"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-machine-english-draft.ts",
+      "bytes": 6200,
+      "sha256": "894a7e4c3dd2569bfd60d757463214808fadd2920007da80bb7a0d824bdc406e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-operation-intent.test.ts",
+      "bytes": 15577,
+      "sha256": "eb0fa4199a7f5a85b5b3e3a4f5381b2b500d333051f1291d33fe69a8e9b60c8c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-operation-intent.ts",
+      "bytes": 3440,
+      "sha256": "ba404a9143ccfc4852a59f9846d61f5837e81af42f95358747c827828027fffa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-operation-result.test.ts",
+      "bytes": 15221,
+      "sha256": "68c9b84c963389a3268c843ba94641ac337c330247c3145bca00a689b9d74717"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-operation-result.ts",
+      "bytes": 5498,
+      "sha256": "d4e1134b1dced145646e7a50a4045bf57953db3d02db7a943ef2fd0409694980"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-ordinary-admission.integration.test.ts",
+      "bytes": 74113,
+      "sha256": "e49a37bb7dccebe2cc78c9df529103b462734ac6a2551db297b1444fcd50746d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-ordinary-private-draft.integration.test.ts",
+      "bytes": 37027,
+      "sha256": "aef583e8ccc14667fa7d64626294dff58e064b2e7f98eb6a3906914802c293d6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-pending-operation.test.ts",
+      "bytes": 26202,
+      "sha256": "9768e86b1c9c671d0c69057b0eb52749c97ca1c91c3d6a43b897fb164ea6d739"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-pending-operation.ts",
+      "bytes": 12440,
+      "sha256": "626a7411d6fe7f991d88643168fcf9c60e81a9d814227e234c9b509b46dfbbb9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-private-candidate-recovery.integration.test.ts",
+      "bytes": 21017,
+      "sha256": "39e1d632dd50c5e6c0af2ccc5a48fbac9913464b52b930b95bdfee442cabad4d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-private-english-receipt.test.ts",
+      "bytes": 9378,
+      "sha256": "e6d9d7383243a5745aecc3cd9f66311063220d22ccaa62ee2ba6a5bc592e0cff"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-private-retry-draft.ts",
+      "bytes": 1971,
+      "sha256": "bc01d0d4140f05a9770fdaeb0f3d7b62a5fc8df5141754dfc0a0d1a8e3e30e2e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-private-retry.integration.test.ts",
+      "bytes": 31503,
+      "sha256": "0ca80d92a0021aff8a933929c460c6fb4cc3b900c4f914408a76091d74cd401a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-producer-recovery.integration.test.ts",
+      "bytes": 20950,
+      "sha256": "2eb20b33415bfc6826a347aa348f7d24d72e7e429149f7298a491781315bae6c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-publication-intent.ts",
+      "bytes": 454,
+      "sha256": "4108a1a1412ffe4929bd3f1490f8e54e2568a7e6d86933f7547374994f55f4ef"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-recovery-snapshot.test.ts",
+      "bytes": 21695,
+      "sha256": "edeba41bf833699b7ba24341f0e9c2517c435296cf8fc6ed8e582ee14754c384"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-recovery-snapshot.ts",
+      "bytes": 11288,
+      "sha256": "13085993a0820a821da4a6880b41304dd6d804791a4a9df6e1ab2d4eb054f4e5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-recovery.test.ts",
+      "bytes": 9009,
+      "sha256": "d466915f85963b8030f3fda3063a140a30785d4ce622f344b2943006a14af3e9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-recovery.ts",
+      "bytes": 6917,
+      "sha256": "57be661c7b2880c9c0ab1f303b79901719393428f1dcd4077786e029d49c3b45"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-retry-source.integration.test.ts",
+      "bytes": 43290,
+      "sha256": "b6242fee0124f3cf86734bf4d21b6a1098d9c644655d205ad29bb1302997c4f7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-save-result.test.ts",
+      "bytes": 19690,
+      "sha256": "4797f242af89baee09b0bbac5e9691f024b1acaa669492f1f04a1b399c27d4fd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-save-result.ts",
+      "bytes": 9095,
+      "sha256": "5108966e9acde1673c4c31ce8d5c57640d4c3c212df39a81db00743768a918e4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-item-retry.ts",
+      "bytes": 30540,
+      "sha256": "856a7b8a3275c2b5c072e7d49271176a0f567bb894e798afa7f57520b024689e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-ordinary-coordinator.ts",
+      "bytes": 12943,
+      "sha256": "1528aafe53feed626b05866be56c1ee037da2d052f987fd843b9326be452b656"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-ordinary-rpc.ts",
+      "bytes": 26039,
+      "sha256": "9a47e9db94a34e3c57df6d6e95346a87b67183156cb48abcee2ad16f7429c955"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-scan-completion.ts",
+      "bytes": 3110,
+      "sha256": "3fcf5c8ec5ff0b8ab7c48a244e3318aa3431adcbc4ca0a9ef0d0f0b3ef9eb284"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-scan.test.ts",
+      "bytes": 9867,
+      "sha256": "f0d304cab3653f2cc2bd28a12d15f8157c96c62b541930aed85bfee87d112d3e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translation-scan.ts",
+      "bytes": 3077,
+      "sha256": "4b1bbe5288fcc5598f568e36802b799d90118edb2b43fc59893702db3d1c0ea7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/article-workspace-utils.ts",
+      "bytes": 3608,
+      "sha256": "ab45a8541c958b516d1807245a825331a98344f4bad8d1837dd78ae3aa8437ae"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auth-service-error.ts",
+      "bytes": 2186,
+      "sha256": "79554f4a8cd0d922a5a0840a352437ad6591f8d432d06ddcff6c11d019233a5d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auth.ts",
+      "bytes": 4914,
+      "sha256": "655c732c6ed6a157d6c453b0e4398175f0fb24c721f39ccf788cd49c470af737"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 14112,
+      "sha256": "49dd5239c354944dc9e7a03327ccd47c7998cce1301d83c49b4881ba63d8b696"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 935,
+      "sha256": "bf6f9a982339320355bde4d2f08a31f2b37e3f160f13994db3c51875201d4126"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 12432,
+      "sha256": "0337817a639538ad3e3e643c881dc0f2882eff1f969858c4c35bea4a7cd221ff"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3406,
+      "sha256": "7342967d637a1362081ea9f50790ada9da0a869804046e778afb86be77abe8b2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 12807,
+      "sha256": "3658feb32f730b89f730103a783adb60dae95c5f9df5ce062e940b9846a284c8"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/book-edition-edit.ts",
+      "bytes": 6973,
+      "sha256": "af6043a1c68359df1bcdbad56bc9a8dd9a707af76ce392d649d3885981e3a21a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/client-image-upload.ts",
+      "bytes": 1613,
+      "sha256": "6bd07e362176e058046dc1446e3f1620a41dcdae62a0635eb0d9c13d8e3f9c5f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/country-profile-manual-english.integration.test.ts",
+      "bytes": 24616,
+      "sha256": "3c1a03b1f2c48d85198ef973bce1eb2c1dc34f2166b6ad9026fc22ae7b2e20f2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-autosave-storage.test.ts",
+      "bytes": 5909,
+      "sha256": "2100c9de272adfa272de2c15d779b4160522fe47716ac16f3b62614cb1d8969c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-autosave-storage.ts",
+      "bytes": 1163,
+      "sha256": "b58a3e9acd06cca13cf463216ac4cad03f9b2ea2b7b75d9a0fd55d20adc935e9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-autosave.ts",
+      "bytes": 4572,
+      "sha256": "db3a01b407ab960b3fd1fd597f16b75b93d4bce2f966ff8d5f1d97fa0275605f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-image-naming.ts",
+      "bytes": 5744,
+      "sha256": "e4ffbb6490800ae0cb4dfa6c3e323ed18a25e3876357bfee3ef74d44b6ad63ec"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-image-upload.ts",
+      "bytes": 3593,
+      "sha256": "a1bf8e87c0c73fcc1c9101a0e0b1426f687c021c8788147fd84ff60b2cf673d6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-recovery-owner.test.ts",
+      "bytes": 13500,
+      "sha256": "9fca566e0bce005b477e82e9345ef2f88410cda1a83cb2a88ed69dce2ccaa81d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-recovery-owner.ts",
+      "bytes": 4555,
+      "sha256": "0856b3fba4aa837be888df84d6e1ee2e37f197603b492638d5c9d8d19e32805c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editor-template-html.ts",
+      "bytes": 1663,
+      "sha256": "dec633d0eeae76722a76656c73b7d1538cfba4907d134acccf2324a9bdba8391"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-catalog.ts",
+      "bytes": 5798,
+      "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-database-load-validation.ts",
+      "bytes": 7638,
+      "sha256": "dd24b404c2345eb5f460addbab106d64eac64b8be41775a6265744366e6dafcb"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/format-count.test.ts",
+      "bytes": 1410,
+      "sha256": "dbde0789556cba66a6012050db4cf558fc8a7cf1bc634ad29a960cf03d1fc85c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/format.ts",
+      "bytes": 976,
+      "sha256": "22fe54c3240f73c6907b74dd8750e09e6da7205dcfa3c921814e169c7e658794"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/homepage-banner-load-errors.integration.test.ts",
+      "bytes": 20973,
+      "sha256": "6292c4facb7da71fd7efa6c466a454ed9127ad69027d003b85ebfb70ecba760e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/homepage-banner-load-validation.ts",
+      "bytes": 10943,
+      "sha256": "e05e87fe01d819d56b8398ee288b7df698c4e8f00d07421d03931122b0c97ebd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/isbn.ts",
+      "bytes": 4169,
+      "sha256": "2c3ba18c1244ecdb3490d4c5a62115ef9701c5cb7cd92fd42ae51dca557ffadc"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/library-catalog-query.ts",
+      "bytes": 6737,
+      "sha256": "404f497d41e0ca35fc9b6a325d823733f2023c860fcbe067e5e5ceeec68443da"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/library-load-validation.ts",
+      "bytes": 8256,
+      "sha256": "998bb9eb93a970b365d6eee26c0a70a5120e99e590df2234561d7b4c4ff44f45"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/literary-work-manual-english.integration.test.ts",
+      "bytes": 23946,
+      "sha256": "849cdd36234fd7fbbc7ede2ddd154e3e12d7b127d5a96f1057baf7a38451019b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/literary-work-workspace.test.ts",
+      "bytes": 3934,
+      "sha256": "51d0f7a2ef072f82132e04061d9d6976218c1123b44081674fb2932e8af5f51f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/literary-work-workspace.ts",
+      "bytes": 10923,
+      "sha256": "437b408c55ce0a99d51e93bb387719f64451000c156e08ef7a2570ec9a5449c0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/media-load-validation.ts",
+      "bytes": 6549,
+      "sha256": "c365b96471ecc8f0343272baa6dae674f6b0919a5bac936e7baa8f44dded36b0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/operator-data-error.test.ts",
+      "bytes": 3053,
+      "sha256": "4d885a82e3b49f8826a663ee4a94b2098b1afcf8f3fb70d677bb903963adc288"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/operator-data-error.ts",
+      "bytes": 1394,
+      "sha256": "97ec4bc6bd0962bb23d4988cde056e193a0cd6bc0e648cb078747a6bf00c9e3d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-catalog-query.ts",
+      "bytes": 3199,
+      "sha256": "3e4f92c5bcbfd925fb78b90e4bb5636322e5ef0ab314b7094d2057ec7f08316a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-load-validation.ts",
+      "bytes": 6881,
+      "sha256": "55618116dc5ed215c2a62b5936e1d265be79adbfb9c39e9819f7bd7f8d335803"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-operation-intent.test.ts",
+      "bytes": 5402,
+      "sha256": "9d8a1909a36ffbfa4e15e398aea38a4abafaa7d19c3d278d7e092e34222736ab"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-operation-intent.ts",
+      "bytes": 2382,
+      "sha256": "23a34f652ee9d3367bacc0b4ca64b7a165185cd5474c17d6874d0b59c5d12663"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-operation-result.test.ts",
+      "bytes": 4082,
+      "sha256": "4c68bb05c566e77cd2973b466e8089713339ba1f6d2c6a2135af8e5a871f6f48"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-operation-result.ts",
+      "bytes": 3090,
+      "sha256": "4cf3a008dd7602e0feea1da940ab345859cc90903ef1ab579b49601b0a9098f0"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-operation.test-fixture.ts",
+      "bytes": 6087,
+      "sha256": "a17e18568ba54516a9b95acdb13e3ba721a1045ede8610a4fbeb7c9161049ddb"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-pending-operation.test.ts",
+      "bytes": 7561,
+      "sha256": "0f35df137c474fc6e671a158fc5fac4b04b6cdca0401cad99c6c0da4bb6fd5a7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-pending-operation.ts",
+      "bytes": 6451,
+      "sha256": "771b8c75ea106a3c9b16eed9670b6d5a48357d84cc9a6baf4075ab1a3fe99740"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-recovery-snapshot.test.ts",
+      "bytes": 4722,
+      "sha256": "ad38c2446987569985ad5f4d3485dd62514b6ada8361c4b6498839e8156860a5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-recovery-snapshot.ts",
+      "bytes": 4938,
+      "sha256": "15dbd7fb5616c943d710285b49dd4c0b428d4788fff7ad0a6ae6a4a5bc25b9d1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/page-save-result.ts",
+      "bytes": 3679,
+      "sha256": "dc10f973d86cbc338291b54cf8dc8d91f0e9c9fff7afa66a353996f7bf12870f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-english-translation.test.ts",
+      "bytes": 17424,
+      "sha256": "104300a0ac99a3b70a3ec476e2f22e148ed8e6544a9541c366ef5225205ac04c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-translation-budget.integration.test.ts",
+      "bytes": 15886,
+      "sha256": "dcf7b6d730629e7715d83a25f806526c6373b63f6d05fca5ec5a9625e4ff4a56"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-translation-runtime.test.ts",
+      "bytes": 2206,
+      "sha256": "00a4cdecf47c5a6f17f8f5e1dce12a0788e3026400080a295ed8f45587cde17d"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/public-link-boundary.ts",
+      "bytes": 1339,
+      "sha256": "458adcab9a684e9be3ec6b6a6609729d648249fc3c5cc02b628bf0041ab81733"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/publication-request.integration.test.ts",
+      "bytes": 29620,
+      "sha256": "aba14339b3a6fdbde1ec8471971b009a1c298458fc236dc522ada5eac2950fd7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/seo-load-validation.ts",
+      "bytes": 2485,
+      "sha256": "1c660310086e0120f967db980fc34d97b72cd65eb6fc567878b9176cfa86f9db"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/short-hyphens.test.ts",
+      "bytes": 1471,
+      "sha256": "2d1350d68ef405221a02f4f536fc82f34edae558a7005cab2456b8b71dcea7cd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1168,
+      "sha256": "0ed958b80dbe02ba836a886496b0be6f9c6196f9767d1ae79f3552b225fb44d5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3084,
+      "sha256": "8b8a7f50e597f6177f30ebdf76593caa332e53ede4338ab1e30b487b407deb25"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/site-studio-load-errors.integration.test.ts",
+      "bytes": 25185,
+      "sha256": "8585cf9c0dcb9da8f1be0f8214f31a8b43b9229c95f66c6fec8dec5f7294a480"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/site-studio-load-validation.ts",
+      "bytes": 14031,
+      "sha256": "53373ed11730aad824ecb827b66013011ed0c57bcc21bb223adab95d1588b77c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/supabase/server.ts",
+      "bytes": 801,
+      "sha256": "6481f5f3dc0a8e12c0abed13b2d921573cd40f1cfab50ff2d96a4dca91d1c33e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1551,
+      "sha256": "2b03651e7c3bcc1e01047500fd7afb60620530bff9543afafe709d21cb8109c1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-operation-budget.test.ts",
+      "bytes": 4328,
+      "sha256": "360d0c94583cf6be0f600932cc357e62197d0bd7c45a6f50192ec8b63d7c8328"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-provider-call-journal.integration.test.ts",
+      "bytes": 25707,
+      "sha256": "3eda9f59e0d5d9ef6fe0dd1847a956d595453bce8f35984a308183e3ee866fb1"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-provider-self-test-binding.integration.test.ts",
+      "bytes": 24240,
+      "sha256": "312b2c47c27ae4c9c033db3385804c58d4b99967614cce57ca42d0223019bdc6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2233,
+      "sha256": "18ec587fa9f99190f8deb6482a5a0c23e864cd40eccddb4d26f8656417e6e2e3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-runtime-gate.test.ts",
+      "bytes": 2542,
+      "sha256": "117e14dfb46d71bf160725b20e70956447d643d4d57453c01532f8a5a0c2bb95"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/trusted-server-url.ts",
+      "bytes": 446,
+      "sha256": "a4909d0416d60c5d642437eb453ab8bc62ba60ab114513673131b250e17e3ffa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/writer-biography-edit.test.ts",
+      "bytes": 22949,
+      "sha256": "2f43ab18206800b56d544e20faac940b3c83879f2afdaf83255b23d599c5f64c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 32835,
+      "sha256": "d63dad323b2e1263400868305ef27d01402645945a1ceef9195a097d99bfe0f6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/package.json",
+      "bytes": 3188,
+      "sha256": "782d32ba20266076c2fd0ba7b4cab62220520ed23bfbcf1544d6c90648843280"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/article-form-browser.mjs",
+      "bytes": 44814,
+      "sha256": "30a5d3764d5da5b17dc0a3f98bae039010089b2fe67ee41d59fa150196354bf7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/article-operation-browser.mjs",
+      "bytes": 27989,
+      "sha256": "84e10d3f29dcccb2a8dad6e96d1f2db183177136b5e39f6827511f565f259fab"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/fixtures/article-form-entry.jsx",
+      "bytes": 14169,
+      "sha256": "12a9e27fb88212d7ddc361bb74ccbc1412b1ffe0aa503a8143440b8597a9521e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/fixtures/article-operation-entry.jsx",
+      "bytes": 4840,
+      "sha256": "08019516d033779b7b1b1da113b6f37f3fed76eab8554f224cac92dbecf87df3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/fixtures/page-form-entry.jsx",
+      "bytes": 3497,
+      "sha256": "7dfe94a9d1d208b961ad5be54a3311e41ea957c9ea0df2fd9f44fa1036980d68"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/apps/admin/tests/browser/page-form-browser.mjs",
+      "bytes": 38435,
+      "sha256": "ac1e75cde18ef478a818bad3f35bc9933b7ef030f8df3c339ab1399b27251961"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "bytes": 367764,
+      "sha256": "94fb1c915277c579275276872aad15246629be280392d11d3a1e2e2f2c6fa88f"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/package-lock.json",
+      "bytes": 405360,
+      "sha256": "d39f63abece7398e39ac982bc946db227bb1c6c5085014b65208dc66a4ab71d5"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/package.json",
+      "bytes": 16532,
+      "sha256": "3a9c90308c7ae354730b1dcbb678e0445ce6e76f4d014ddd07b1326dc6550fd2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/admin-editor-operations-contract.mjs",
+      "bytes": 5704,
+      "sha256": "b417e8369b30e36902a6169db6c24cabadfbe85da55a9a4cbfec4b0fcd109195"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/admin-editor-operations-migration.test.mjs",
+      "bytes": 14983,
+      "sha256": "7129a69c1747f04b2376c7247afc0d9beb131d8318b6939efae674097a01a698"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/build-production-migration-plan.mjs",
+      "bytes": 37172,
+      "sha256": "b29f96a29bfe167aab01150b206eefeab54c2419f4fec7821b51cd895b85a863"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/admin-editor-operations-contract.sql",
+      "bytes": 108861,
+      "sha256": "9d3d1374eea9cb598b7b2af1e3ead752f87931909384a31730a16116df0b1fa9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/article-translation-sync-admission.sql",
+      "bytes": 60764,
+      "sha256": "27ce85e2c93f0414e94eae74b561ffbc04034c83faa6b096bc900aa08ecc1c29"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/build-literary-translation-draft-storage-fixture.mjs",
+      "bytes": 3686,
+      "sha256": "baaa53b5031abdc448356a0a4eec9b7eed1929a7cfd45379c5d278e54be499b3"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/seo-redirect-scalar-contract.sql",
+      "bytes": 5324,
+      "sha256": "b09fe9c2a5a04e3b6c0797d340ef11a82f068d966f9ca32fa8ebc208bc43772e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/translation-active-stop.sql",
+      "bytes": 19752,
+      "sha256": "10738168b1abec094942d2fc104650905aa89a8b5651afc90be29d5cba11af61"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/database/fixtures/translation-provider-self-test-binding.sql",
+      "bytes": 28249,
+      "sha256": "07c9abd6f09043301506bef6c76e6a0ed74b1d291cbbe8ce24fa68a3c49bc888"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/export-premium-translations.mjs",
+      "bytes": 32935,
+      "sha256": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-media.test.mjs",
+      "bytes": 35335,
+      "sha256": "159e6eec0e1e8c712e083fa6e60f603278c4936bdc4ccfe18a0a8079160f348c"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-social.mjs",
+      "bytes": 40000,
+      "sha256": "e5e7c31acd359e63d105409e4b1e4f1c672abb7f80ddc77de7cc4d7a8bc5c72e"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-social.test.mjs",
+      "bytes": 30961,
+      "sha256": "d9ad90b7d7a27e64b9b65b373cad436e986f590f3b08be3e05452d978e5ae524"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-telegram-footer.test.mjs",
+      "bytes": 14753,
+      "sha256": "bce5ce12dda24dbefed7c5393e9f3d656070eaa36e21a215addb321716742709"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/literary-news-text-fallback.test.mjs",
+      "bytes": 5455,
+      "sha256": "be1841c6205aadab843e3d3a1d06df9833c69e2c8d37e59e735713441a8e7cdd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/lib/short-hyphens.mjs",
+      "bytes": 1214,
+      "sha256": "4c920a45f72e1d5dfd52cf7625282575b74ab35e3cd7be69ad34ff32b733e519"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/normalize-short-hyphens.mjs",
+      "bytes": 3276,
+      "sha256": "636e13ad77788d7f7c5e114c61bb93c681d639c5c7e6d0508085f2e22f5edcce"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/sync-literary-archive.mjs",
+      "bytes": 46952,
+      "sha256": "ff8302e15554c346acb49b00a049c50815b2eebfaeb9010eeb65bc86c0d067be"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/scripts/workers/literary-news-delivery-worker.test.mjs",
+      "bytes": 16716,
+      "sha256": "cb7a73647121752b887d38440bd45fb75b7f0c661da1fd57964a53378679b3a2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/components/LiteraryCountryCard.tsx",
+      "bytes": 265,
+      "sha256": "bfa705a468949d6b11ca206b81826339b725ad3b8078e34c5ca983d0dd221627"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/data/bookQuality.test.ts",
+      "bytes": 9274,
+      "sha256": "84ef6d8361573330e3a9f73c005be78278944c5c7b6aca63d75332ba47095810"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/data/bookQuality.ts",
+      "bytes": 11217,
+      "sha256": "525a3dab1fb99753431c5bd6c293a718f56f73a6517ed13dc421bc59a55b8f3a"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/data/countries/types.ts",
+      "bytes": 12639,
+      "sha256": "a370341df9ca674163b87bdb98964379df2e75310e9859b8f65d08cd9b3362bd"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/data/countryLocalization.test.ts",
+      "bytes": 3300,
+      "sha256": "4f93a64b7bc15cda512a60f039449ee3456c70051abd756e1581dea29bc467fa"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/data/countryLocalization.ts",
+      "bytes": 4902,
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/src/utils/safeWebStorage.ts",
+      "bytes": 7446,
+      "sha256": "2bdf130ba4259e947ce8e9b967e87c4f5acc5d6a83a5c69e8244de6b4b22df07"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260730_literary_archive.sql",
+      "bytes": 6206,
+      "sha256": "f4ef6b5a5b490a1cfe84e765533cf682b52d0a84178aa85e0b880cf781d32632"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "bytes": 12279,
+      "sha256": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260813_editorial_database_admin.sql",
+      "bytes": 9760,
+      "sha256": "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "bytes": 4737,
+      "sha256": "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260823_premium_machine_translation.sql",
+      "bytes": 1496,
+      "sha256": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260901_zz_translation_operations.sql",
+      "bytes": 22557,
+      "sha256": "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "bytes": 21529,
+      "sha256": "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20260914_literary_translation_draft_storage.sql",
+      "bytes": 2372,
+      "sha256": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261007235851_admin_article_translation_scan_completion.sql",
+      "bytes": 5953,
+      "sha256": "2b3c22c4519431accb42054c844999278bdca02ba3d783151aa8f40eed42d810"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261007_admin_editor_operations.sql",
+      "bytes": 95022,
+      "sha256": "e6e6b2f3efa3e427b606fa9d7525930bfaacb19d9836ad9f899f4de475778771"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+      "bytes": 39815,
+      "sha256": "f14313167ff2ec5f0e01d14639fe8d4501e5bb525becb69f95c7ca7936aa67a4"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008021735_admin_article_translation_item_retry_journal.sql",
+      "bytes": 37300,
+      "sha256": "4427c8f38a995791a717eb3af8d7abef1abf6a3882ebf4b8d594b9575de9c790"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008031428_admin_article_translation_item_retry_candidate.sql",
+      "bytes": 46728,
+      "sha256": "2e139648d8bdddc98bacc7faf68be899bc80a41e271f168dbf41f7ec37bcf206"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008043647_admin_article_machine_english_draft.sql",
+      "bytes": 12146,
+      "sha256": "f7207a358f3b7c3bdeae1f5d088d80f50110bb0bd9732fb59021488c842b14ed"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008082627_admin_article_translation_sync_admission.sql",
+      "bytes": 77364,
+      "sha256": "a07b75b0ce2498ae631ee430614bd5705ebe1c71aa51d81f0ae8a5d641fb016b"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/supabase/migrations/20261008131138_admin_translation_provider_self_test_binding.sql",
+      "bytes": 26404,
+      "sha256": "da73a9df3a14e3d59c110da6d38b009360a05828f96027a08c9457ebd2124c4a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/app/(dashboard)/library/actions.ts",
+      "bytes": 29386,
+      "sha256": "160a94bf53e18eacabe1c0c227a15a3f7407a2b897db3b60d32fc584dee1cb3d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+      "bytes": 5153,
+      "sha256": "d16966452c9de754761170a06974508bbe3e3fe2f2435751b3374fa4abc0f4eb"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 16862,
+      "sha256": "1cbffb7074af656c66045b6cd9fa664470e34003348c8573650d298cec7e0489"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/components/ConfirmSubmitButton.tsx",
+      "bytes": 468,
+      "sha256": "1b6e83d8c1a2892fa64b42310059288a3659b1d8a421c770ec885b4d2bb45f01"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/components/LiteraryWorkWorkspace.tsx",
+      "bytes": 19536,
+      "sha256": "2758610ec7ba26fb20501d0821ca85b3eec32d93c3c481ee0c1f4c7b9cc3e019"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 935,
+      "sha256": "bf6f9a982339320355bde4d2f08a31f2b37e3f160f13994db3c51875201d4126"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 12432,
+      "sha256": "0337817a639538ad3e3e643c881dc0f2882eff1f969858c4c35bea4a7cd221ff"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3406,
+      "sha256": "7342967d637a1362081ea9f50790ada9da0a869804046e778afb86be77abe8b2"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 12807,
+      "sha256": "3658feb32f730b89f730103a783adb60dae95c5f9df5ce062e940b9846a284c8"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/book-edition-edit.ts",
+      "bytes": 6973,
+      "sha256": "af6043a1c68359df1bcdbad56bc9a8dd9a707af76ce392d649d3885981e3a21a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editorial-catalog.ts",
+      "bytes": 5798,
+      "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/isbn.ts",
+      "bytes": 4169,
+      "sha256": "2c3ba18c1244ecdb3490d4c5a62115ef9701c5cb7cd92fd42ae51dca557ffadc"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/library-catalog-query.ts",
+      "bytes": 6737,
+      "sha256": "404f497d41e0ca35fc9b6a325d823733f2023c860fcbe067e5e5ceeec68443da"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+      "bytes": 10923,
+      "sha256": "437b408c55ce0a99d51e93bb387719f64451000c156e08ef7a2570ec9a5449c0"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1168,
+      "sha256": "0ed958b80dbe02ba836a886496b0be6f9c6196f9767d1ae79f3552b225fb44d5"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3084,
+      "sha256": "8b8a7f50e597f6177f30ebdf76593caa332e53ede4338ab1e30b487b407deb25"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1551,
+      "sha256": "2b03651e7c3bcc1e01047500fd7afb60620530bff9543afafe709d21cb8109c1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2233,
+      "sha256": "18ec587fa9f99190f8deb6482a5a0c23e864cd40eccddb4d26f8656417e6e2e3"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 32835,
+      "sha256": "d63dad323b2e1263400868305ef27d01402645945a1ceef9195a097d99bfe0f6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/scripts/export-premium-translations.mjs",
+      "bytes": 32935,
+      "sha256": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-actual-sources/src/data/bookQuality.ts",
+      "bytes": 11217,
+      "sha256": "525a3dab1fb99753431c5bd6c293a718f56f73a6517ed13dc421bc59a55b8f3a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-command.json",
+      "bytes": 40202,
+      "sha256": "13ac888c69a495d10d2176df8a78bad8a85711a286c79f16d529903fe6b470d3"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-command.log",
+      "bytes": 134,
+      "sha256": "695c0f551d8c48fb7c3bf1f37d320ef234a20f5076433911177052e0f7302f8a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-evidence.json",
+      "bytes": 225732,
+      "sha256": "a32e4faffacdcc31a50e7cc14416b87f6e31086c63127ec7ac2c8835e76a18c5"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-fixture.ts",
+      "bytes": 31364,
+      "sha256": "8450e30439ce6d2dc02f93177dca6b8bcaa180020d4eb0892500061908eb4e86"
+    },
+    {
+      "path": ".tmp/m07-t05-book-before-07ed-v4-results.json",
+      "bytes": 13660,
+      "sha256": "7aec15a7ab383700319d482122e1249e69b1e6e9ba8a59f877ce46c3b1efa003"
+    },
+    {
+      "path": ".tmp/m07-t05-book-dependency-plan-v1.json",
+      "bytes": 11564,
+      "sha256": "7146fb1eafd635e5a91ef7c012b327b2cd730cb6cfc284ade3727d37ad5a39fd"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/app/(dashboard)/library/actions.ts",
+      "bytes": 29386,
+      "sha256": "160a94bf53e18eacabe1c0c227a15a3f7407a2b897db3b60d32fc584dee1cb3d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+      "bytes": 5153,
+      "sha256": "d16966452c9de754761170a06974508bbe3e3fe2f2435751b3374fa4abc0f4eb"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 16807,
+      "sha256": "31b9607baf5c0981803dd9221de10944499cb7951a79b629623a44bfe3c18520"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/components/ConfirmSubmitButton.tsx",
+      "bytes": 468,
+      "sha256": "1b6e83d8c1a2892fa64b42310059288a3659b1d8a421c770ec885b4d2bb45f01"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/components/LiteraryWorkWorkspace.tsx",
+      "bytes": 19536,
+      "sha256": "2758610ec7ba26fb20501d0821ca85b3eec32d93c3c481ee0c1f4c7b9cc3e019"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 891,
+      "sha256": "9f331e07fe1b7b70b92244ca23e006416b757da872978bd2819c37fd813ade06"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 13995,
+      "sha256": "fa1a3dbcb6d0b04bea389c4f3b236d44470bb0a2790cbe60a5487e134c00ed71"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3406,
+      "sha256": "7342967d637a1362081ea9f50790ada9da0a869804046e778afb86be77abe8b2"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 12807,
+      "sha256": "3658feb32f730b89f730103a783adb60dae95c5f9df5ce062e940b9846a284c8"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/book-edition-edit.ts",
+      "bytes": 6973,
+      "sha256": "af6043a1c68359df1bcdbad56bc9a8dd9a707af76ce392d649d3885981e3a21a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editorial-catalog.ts",
+      "bytes": 5798,
+      "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/isbn.ts",
+      "bytes": 4169,
+      "sha256": "2c3ba18c1244ecdb3490d4c5a62115ef9701c5cb7cd92fd42ae51dca557ffadc"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/library-catalog-query.ts",
+      "bytes": 6737,
+      "sha256": "404f497d41e0ca35fc9b6a325d823733f2023c860fcbe067e5e5ceeec68443da"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+      "bytes": 10923,
+      "sha256": "437b408c55ce0a99d51e93bb387719f64451000c156e08ef7a2570ec9a5449c0"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1168,
+      "sha256": "0ed958b80dbe02ba836a886496b0be6f9c6196f9767d1ae79f3552b225fb44d5"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3084,
+      "sha256": "8b8a7f50e597f6177f30ebdf76593caa332e53ede4338ab1e30b487b407deb25"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1551,
+      "sha256": "2b03651e7c3bcc1e01047500fd7afb60620530bff9543afafe709d21cb8109c1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2254,
+      "sha256": "0d71105fe9d517b4e73117c13c3c7b92e4d717ad91a9b85ba87ae68116d9cba7"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 32835,
+      "sha256": "d63dad323b2e1263400868305ef27d01402645945a1ceef9195a097d99bfe0f6"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/scripts/export-premium-translations.mjs",
+      "bytes": 32935,
+      "sha256": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-actual-sources/src/data/bookQuality.ts",
+      "bytes": 11217,
+      "sha256": "525a3dab1fb99753431c5bd6c293a718f56f73a6517ed13dc421bc59a55b8f3a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "bytes": 33725,
+      "sha256": "5df3d76604c02d5ccfd334832285359cccceeaa882dd9690c29efac1f925847d"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-command.log",
+      "bytes": 139,
+      "sha256": "b76cbeff4a9dc8b620b3990a9d9bd7f412eac1744f2bf1082ffce5ddb85af6cc"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-evidence.json",
+      "bytes": 271280,
+      "sha256": "a8b9d75654df8f6dc61acb0b42bd0e8c2d2c9bcdcc55aa8c09714485581ff2e9"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-fixture.ts",
+      "bytes": 31364,
+      "sha256": "8450e30439ce6d2dc02f93177dca6b8bcaa180020d4eb0892500061908eb4e86"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-fs-guard/1136.json",
+      "bytes": 938,
+      "sha256": "167fc0e58ce88fa7da43ad90d9e6e37ed7eebcefe7e57f03724f4968690c69c3"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-fs-guard/3504.json",
+      "bytes": 938,
+      "sha256": "7bcb75f7a0054587a3fae94ff1ce7c6fd887bcb7218db0c76b224ffb86f7a24a"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-current-v6-results.json",
+      "bytes": 7036,
+      "sha256": "3521122f1a86689854beaeb483b819b86e4d00d10db267fd81d8f8e876b42c8e"
+    },
+    {
+      "path": ".tmp/m07-t05-book-portable-run-v1.mjs",
+      "bytes": 6580,
+      "sha256": "dc5aaf09ada8c42724009b3a60395eb3bba04147b2e0cdc8f877ec10511250cf"
+    },
+    {
+      "path": ".tmp/m07-t05-book-run-v2.mjs",
+      "bytes": 5807,
+      "sha256": "cd00348a762d3b26c977986b387bf15fa8d9f184f92a97bdbdbaa5affffbf037"
+    },
+    {
+      "path": ".tmp/m07-t05-book-same16-final-v1-proof.json",
+      "bytes": 72463,
+      "sha256": "db96eef724acded45548729d42229cc39320c7d4e921f767e34d43ae85f524cf"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 4828,
+      "sha256": "aa910faef08d20b919fe9644d749c1409ffe269a8997783d816d40e29b5cdcf0"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 14112,
+      "sha256": "49dd5239c354944dc9e7a03327ccd47c7998cce1301d83c49b4881ba63d8b696"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1551,
+      "sha256": "2b03651e7c3bcc1e01047500fd7afb60620530bff9543afafe709d21cb8109c1"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2233,
+      "sha256": "18ec587fa9f99190f8deb6482a5a0c23e864cd40eccddb4d26f8656417e6e2e3"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/src/components/LiteraryCountryCard.tsx",
+      "bytes": 265,
+      "sha256": "bfa705a468949d6b11ca206b81826339b725ad3b8078e34c5ca983d0dd221627"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-actual-sources/src/data/countryLocalization.ts",
+      "bytes": 4902,
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-command.json",
+      "bytes": 28311,
+      "sha256": "038518046d23463ecc6e66bb359a1497dc58908ed18111658e84f5a1200ad429"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-command.log",
+      "bytes": 137,
+      "sha256": "4bac0a6a7ba25518effc8079dacfce5cd2626def7c774fd0f5bd1af57ab7ff69"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-evidence.json",
+      "bytes": 580759,
+      "sha256": "a40e5eb6fed2eb44493bdfa5ab50cb82934b6800d1a0fbdda768cb7ba75ee644"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-fixture.ts",
+      "bytes": 29699,
+      "sha256": "4a5c3660b934d4a9f5972f358230270d36bfaa1503bdde7c68c7b983f3c09968"
+    },
+    {
+      "path": ".tmp/m07-t05-country-before-07ed-v3-results.json",
+      "bytes": 13433,
+      "sha256": "e346e438474d06ac77d3634240d37eae5762161b982987b134eebb96c352d77d"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-before-v2-actions.ts",
+      "bytes": 21891,
+      "sha256": "74fa587dfb9f70665feb102243d3380ffcc52cc0a7ee78a62ed7c283a6241614"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-before-v3-command.json",
+      "bytes": 941,
+      "sha256": "ce30c7e9f08563dbcbb525cfb6ec099ddafb9b9e9d098a2e4e4107bbedb793aa"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-before-v3-metadata.json",
+      "bytes": 44057,
+      "sha256": "09bef3ff3c6745ce22aad6bb61431a4304c9677f1670920a1dc18d63aaff3342"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-before-v3-results.json",
+      "bytes": 3036,
+      "sha256": "0af1a1b8bf9fab2be69c29a5ff607c1020d16df379935e4827438fed7f2a3261"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-current-v3-command.json",
+      "bytes": 898,
+      "sha256": "ef2c9863483b9568acda6913f08f1406c065c6fdcf3ae1bbc4f9d2dc8c09f804"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-current-v3-metadata.json",
+      "bytes": 43696,
+      "sha256": "25e7fbc8577c4d3a633e93df8cd3c91e38d744434455d43a6f6e5850e9231a65"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-current-v3-results.json",
+      "bytes": 1663,
+      "sha256": "91bd7ac990a63ba42fe832bbbd8294e77f2a3ac3d1514e34a8d5cc5180ed8fad"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-proof-v1.mjs",
+      "bytes": 4006,
+      "sha256": "56fb869e40d56a70c8d8367d7d914af6a29804ce96e41d420022454e5aa8c769"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-same-v1-proof.json",
+      "bytes": 3058,
+      "sha256": "6fc9f026cd296f77979e87b793917c087963d30c174113a94b58ca75fb393f8b"
+    },
+    {
+      "path": ".tmp/m07-t05-country-caller-supplement-v1.json",
+      "bytes": 493,
+      "sha256": "2e942af6ab960e7c3a2e301636154034c698441b1f9ba30d1c0fdc65997a97ab"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 4412,
+      "sha256": "109cc6f58b585419d584f5a1bb138b3d0e730521fca9665a34d532dbee205ec9"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 15612,
+      "sha256": "e17ad345ba098a89d8ffd77f1755cc523a49a0434d63378c47c44408110f4520"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1551,
+      "sha256": "2b03651e7c3bcc1e01047500fd7afb60620530bff9543afafe709d21cb8109c1"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2254,
+      "sha256": "0d71105fe9d517b4e73117c13c3c7b92e4d717ad91a9b85ba87ae68116d9cba7"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/src/components/LiteraryCountryCard.tsx",
+      "bytes": 265,
+      "sha256": "bfa705a468949d6b11ca206b81826339b725ad3b8078e34c5ca983d0dd221627"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-actual-sources/src/data/countryLocalization.ts",
+      "bytes": 4902,
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "bytes": 14186,
+      "sha256": "1636fb4374101c0123e6ce1cf7c9c0761efb7e1c5d66fcb5231545c1c58a150f"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-command.log",
+      "bytes": 142,
+      "sha256": "16cba46c2a5385a74c6e2fbfe7a511779d015a7473ba3dbd9fcf45c3e7e1db88"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-evidence.json",
+      "bytes": 553651,
+      "sha256": "b14523050a11d7236fc38a18e2d9f2bfb2c1f2c39ac8fa9e561b4577537117c8"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-fixture.ts",
+      "bytes": 29699,
+      "sha256": "4a5c3660b934d4a9f5972f358230270d36bfaa1503bdde7c68c7b983f3c09968"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-fs-guard/18156.json",
+      "bytes": 939,
+      "sha256": "146981f57ed53062a2eb59ef99871767fc050323a04702b577082e43a0fb4492"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-fs-guard/20708.json",
+      "bytes": 939,
+      "sha256": "9d660c05a21dab72d3505e37808ad4f3ffbf366951a55b17c6b202999677d665"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-current-v5-results.json",
+      "bytes": 8215,
+      "sha256": "01b9c4cfc1367164e89750a17d44cacf36e2fa299ee45807a20aa351b4ba2143"
+    },
+    {
+      "path": ".tmp/m07-t05-country-portable-run-v1.mjs",
+      "bytes": 6544,
+      "sha256": "b7b328fe06435c1de7a204278b42ae6193c3d22d27700c91af55018f90b934d0"
+    },
+    {
+      "path": ".tmp/m07-t05-country-run-v4.mjs",
+      "bytes": 5771,
+      "sha256": "da2d43e8ff8c9734789da69ead7021250bd262e947ee14a2b16a319c77927a5e"
+    },
+    {
+      "path": ".tmp/m07-t05-country-same17-final-v1-proof.json",
+      "bytes": 39943,
+      "sha256": "7343410ed6860f8402462eb98b762f4be516c01e71f1edf4a57d88a958f78678"
+    },
+    {
+      "path": ".tmp/m07-t05-country-source-plan.json",
+      "bytes": 7344,
+      "sha256": "02a58f40d9cafe42917ef8cf8780c1c5de96396e90c35f5d9fe939811fb6d158"
+    },
+    {
+      "path": ".tmp/m07-t05-final-aggregate.mjs",
+      "bytes": 8499,
+      "sha256": "b171696acd3ee6cda37c9b1374e2fa879320b176d6cb92862d14098dea511d29"
+    },
+    {
+      "path": ".tmp/m07-t05-final-checks.mjs",
+      "bytes": 7202,
+      "sha256": "513bce814c92a3e77edd3a2ec6869d0033966065734caf6e307efa2a6b047134"
+    },
+    {
+      "path": ".tmp/m07-t05-final-freeze.mjs",
+      "bytes": 4197,
+      "sha256": "3c9797c22ea74c5e572e48a9d5aa5529c0ea66b46de1601a105e48c434772e72"
+    },
+    {
+      "path": ".tmp/m07-t05-final-pairs-v1.mjs",
+      "bytes": 5524,
+      "sha256": "1897a3a4a27690b9ea19b31b237ae899d20bb670f66ca64d563d4b31dc05a5d7"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-build.log",
+      "bytes": 947,
+      "sha256": "90251d46f4435e8b4e87455c7af9cd3fac34b0526260da3cda21881838705d3c"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-freeze-proof.json",
+      "bytes": 6943,
+      "sha256": "60dea49c9057efc875bbaecaebccb8594422b9717b718a47b730887210459e82"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-protected-proof.json",
+      "bytes": 183022,
+      "sha256": "79710c9d2cd9d3082abeb52b70b88919ffc2f254b6d847c4d25d7f96d4427fe1"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-source-fingerprint.json",
+      "bytes": 42169,
+      "sha256": "9e08d8e0d89b965ebef7eca3275b515c1ab5a8ebfc8395593b9d3da069dcf855"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-tests.log",
+      "bytes": 1936,
+      "sha256": "f3322be735838aa54f18db967f77a6b472d12eb2192016ab9b9a03ecb79ed467"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-tests.txt",
+      "bytes": 12150,
+      "sha256": "292feba9523601ba70f01c75110ac739d66fa0e6ba20a34da0cca76e7adec91b"
+    },
+    {
+      "path": ".tmp/m07-t05-next-readonly-v1.json",
+      "bytes": 38747,
+      "sha256": "263290c429b999425e7b2ed583ee83c583fbdc0063a3eaa78e53df462e318746"
+    },
+    {
+      "path": ".tmp/m07-t05-next-writer-readonly-v1.json",
+      "bytes": 3043,
+      "sha256": "c20d5a76adb60f50a8eeb9706255d7db78d26acecb11c707b84a11a90c9d7bce"
+    },
+    {
+      "path": ".tmp/m07-t05-next-writer-readonly.mjs",
+      "bytes": 3168,
+      "sha256": "fe73aed4af34d4c0d4aad9b78c7ee71f01f83b8a369b1f2f4c1f4b94ed1cfd6e"
+    },
+    {
+      "path": ".tmp/m07-t05-page-harness-current-v3-command.json",
+      "bytes": 1237,
+      "sha256": "249686f2477d21489f2ae08e3d5f4ae1fc13ca42325302274e8ced6f11083b76"
+    },
+    {
+      "path": ".tmp/m07-t05-page-harness-current-v3-results.json",
+      "bytes": 101232,
+      "sha256": "826d0fe2f11879ad8c7856e95546fb705215c63bdab1095fc58ef58a1744f4b5"
+    },
+    {
+      "path": ".tmp/m07-t05-portable-before-guard-v1.cjs",
+      "bytes": 2269,
+      "sha256": "100bb5a00ee23a8862819342182f96efd8a20e4239cae220086ea72288230c6a"
+    },
+    {
+      "path": ".tmp/m07-t05-private-draft-contract-v1.md",
+      "bytes": 13377,
+      "sha256": "825f57a3ab3fb3e38ca00c4f64872eb0c1817981962f71b5262e65d85491e862"
+    },
+    {
+      "path": ".tmp/m07-t05-private-draft-contract-v2.md",
+      "bytes": 1902,
+      "sha256": "890cf83f0d320c38d642be6cb99644d0d86b47c648bed2cb735d7eedca3b5dc9"
+    },
+    {
+      "path": ".tmp/m07-t05-protected-check-v1.mjs",
+      "bytes": 9476,
+      "sha256": "a97559fff6150fdcef476c5d6c76d6d3d0d2f971a16a10f8a644393779be23e6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/app/(dashboard)/translations/premium-review-actions.ts",
+      "bytes": 5449,
+      "sha256": "e31085b1d360b1eda05e6257e15724e3769eab2699f8d7915b21707d764c687d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/components/ConfirmSubmitButton.tsx",
+      "bytes": 468,
+      "sha256": "1b6e83d8c1a2892fa64b42310059288a3659b1d8a421c770ec885b4d2bb45f01"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/components/PremiumTranslationReviewPanel.tsx",
+      "bytes": 7021,
+      "sha256": "4006f1c7a005271a411a24261d4333c806126ff6400abd55dde623c8e29aaf8d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 15612,
+      "sha256": "e17ad345ba098a89d8ffd77f1755cc523a49a0434d63378c47c44408110f4520"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 891,
+      "sha256": "9f331e07fe1b7b70b92244ca23e006416b757da872978bd2819c37fd813ade06"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 13995,
+      "sha256": "fa1a3dbcb6d0b04bea389c4f3b236d44470bb0a2790cbe60a5487e134c00ed71"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editorial-catalog.ts",
+      "bytes": 5798,
+      "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/format.ts",
+      "bytes": 976,
+      "sha256": "22fe54c3240f73c6907b74dd8750e09e6da7205dcfa3c921814e169c7e658794"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-translation-review.ts",
+      "bytes": 12714,
+      "sha256": "0d89b849c5b4645d74e20dae477cab2a16ec26adbf6a3ae4e18cb027e017deb4"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 32835,
+      "sha256": "d63dad323b2e1263400868305ef27d01402645945a1ceef9195a097d99bfe0f6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-command.json",
+      "bytes": 27752,
+      "sha256": "4dfb37fcd021577f90b375eb4206363762eb6a371abc4ea76625127e1051d365"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-command.log",
+      "bytes": 149,
+      "sha256": "2df9ff7db7db4cad840e85fa78415e9f58b64d9642da751ffedde02f7e34ae32"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-evidence.json",
+      "bytes": 591004,
+      "sha256": "c9368b42b74c6ce898f61a235804d0c93c2676e85af4b477b3017f10b1a4b6e0"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-fixture.ts",
+      "bytes": 54724,
+      "sha256": "81f04b2064acef512b82d5ddc522f16e69df590a7371e25be089e5ea3054260b"
+    },
+    {
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-results.json",
+      "bytes": 18603,
+      "sha256": "1a40f4e5f74421d99c03cff891d0a5095464576ef92ce21629cd1a85997ac1d0"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/app/(dashboard)/translations/premium-review-actions.ts",
+      "bytes": 5451,
+      "sha256": "12086f269a3836f0ea93d5c49d95e2f787ec63d5df7a8a2af5f4f863a2feebff"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/components/ConfirmSubmitButton.tsx",
+      "bytes": 468,
+      "sha256": "1b6e83d8c1a2892fa64b42310059288a3659b1d8a421c770ec885b4d2bb45f01"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/components/PremiumTranslationReviewPanel.tsx",
+      "bytes": 7115,
+      "sha256": "86c2d8634866729970e82a44b0b310952c74b9919dd08fb51c9a8681833500c2"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3019,
+      "sha256": "a8fbcc030d7d5838127a672ab481c878175d3aa8cc04e9c8ba3bf514d446143c"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/article-content-presentation.ts",
+      "bytes": 7343,
+      "sha256": "a1c2622dc34f126e279f33ec4a17fbdc2a9bae9ae7ac21cdd5121a23c0313be8"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/article-retry-revision.ts",
+      "bytes": 801,
+      "sha256": "10e8cebeb41a225fb373d770d350d301ddfcb0ce67657c6220c6a3f8d05ccf2d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/article-route.ts",
+      "bytes": 1689,
+      "sha256": "26c9213342f7d670279eba9fcdefa623ba169fcd6d51613f3d76d6997d381e41"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/article-translation-machine-ownership.ts",
+      "bytes": 3740,
+      "sha256": "b15fb18534affc0c74f4eb2defae50672e641ecb1db38ac695a278026a1e448d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 22166,
+      "sha256": "e938de15ef21ee9babbe41898c7ea7e856e68c4d00c282405318cd4c5bd13ada"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 13674,
+      "sha256": "0b0b58a31a77fa3f73a0d5d4f65d86580aafecae714aad208e7c345a909e0fe3"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 15612,
+      "sha256": "e17ad345ba098a89d8ffd77f1755cc523a49a0434d63378c47c44408110f4520"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 891,
+      "sha256": "9f331e07fe1b7b70b92244ca23e006416b757da872978bd2819c37fd813ade06"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 13995,
+      "sha256": "fa1a3dbcb6d0b04bea389c4f3b236d44470bb0a2790cbe60a5487e134c00ed71"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 22500,
+      "sha256": "53213156b89f41c9d55d1cac2b39abf79aead823435998912ed58b4e19dc1d47"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editor-link.ts",
+      "bytes": 3999,
+      "sha256": "f498eec261abdbc206a71af43a74eb0d08aa3710d3dc40dbe8e1bc523cf586d1"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editorial-catalog.ts",
+      "bytes": 5798,
+      "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editorial-gallery.ts",
+      "bytes": 14920,
+      "sha256": "746303380a2a1111994127928a8c71d0f1d26aa0e5f41a089698e001bcc0808d"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editorial-media-content.ts",
+      "bytes": 8868,
+      "sha256": "8e783005364a367063d879b305f26a5d56ed039f402c760df826574ff1e4c4f6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/editorial-media-identity.ts",
+      "bytes": 9337,
+      "sha256": "07b835adb93784fabc982ab2c77144889ea866aea44d19263932141ef3bf7b55"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/format.ts",
+      "bytes": 976,
+      "sha256": "22fe54c3240f73c6907b74dd8750e09e6da7205dcfa3c921814e169c7e658794"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/navigation.ts",
+      "bytes": 670,
+      "sha256": "e0e77ef1b3102bca9c5a1b5470b20b86a964cf5c36a8dfcb3cd82fced9aa347a"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-review.ts",
+      "bytes": 15407,
+      "sha256": "c0c83e6d5ec0c6b856bfcce69ef264f38a7b49bde1cbd141e853023542df62ff"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/public-href.ts",
+      "bytes": 768,
+      "sha256": "c93816d00110058af7b859ea52c5d774c7f8625d1abe39595dfe5e7259ae2504"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/publication.ts",
+      "bytes": 10269,
+      "sha256": "35daf15b78c759aa1ea653fcd2955e7966dde45c8f2ac8344a22ab60875ed401"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/published-article-english-state.ts",
+      "bytes": 1789,
+      "sha256": "6e9e7011e1ae47886010abee2f16cee2aef2d5d6d9016744f8bf9766b8de9052"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/slug.ts",
+      "bytes": 680,
+      "sha256": "c265a85127bf993ba8b3bebaa8ae72e6ed9cc4aa50a0ae37cbbadc79b1dcdbc6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-actual-sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 32835,
+      "sha256": "d63dad323b2e1263400868305ef27d01402645945a1ceef9195a097d99bfe0f6"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "bytes": 26768,
+      "sha256": "30e77d9330da04af2fee88924c4f88f9498f296869bddde39274fa64f18bcef8"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-command.log",
+      "bytes": 141,
+      "sha256": "72d72166e52846bd3a5920eb06c94b65de9c53a822e536eed7c26039db3d67cc"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-evidence.json",
+      "bytes": 596199,
+      "sha256": "5541037d840b87a95ae684d81c01a0009356e9f599a46fab22c497080b71df52"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-fixture.ts",
+      "bytes": 54724,
+      "sha256": "81f04b2064acef512b82d5ddc522f16e69df590a7371e25be089e5ea3054260b"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-fs-guard/21020.json",
+      "bytes": 939,
+      "sha256": "a0fab3e623be151a66d88ea795b8da51058a36efb3fc56927028eae88c73aa91"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-fs-guard/6884.json",
+      "bytes": 938,
+      "sha256": "a5fb7da2fdfb58bcb5272b0467d3bc99cee4a317c4e80197e3502a214fddb47c"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-current-v6-results.json",
+      "bytes": 16358,
+      "sha256": "73efde5f71abd3ab94255e452e2870a613a447eb5c20c8c06d7fe2a6355ee6b2"
+    },
+    {
+      "path": ".tmp/m07-t05-review-portable-run-v1.mjs",
+      "bytes": 6756,
+      "sha256": "8c81d0999920a8b1f1cac69a0ccfd7041fb4152923cc56c8fb96e1757aee6c70"
+    },
+    {
+      "path": ".tmp/m07-t05-review-run-v1.mjs",
+      "bytes": 5973,
+      "sha256": "ae5946b11d7295c9b707dc211cab2f2d463282f8b94c713ea677ba9b2c84eac7"
+    },
+    {
+      "path": ".tmp/m07-t05-review-same34-final-v1-proof.json",
+      "bytes": 56479,
+      "sha256": "7033ef8c227fdc6c98217b1bed75b071f31c8f756dd67adc6e9038fb2ec4a3aa"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-build-v1.mjs",
+      "bytes": 4684,
+      "sha256": "977858bac555d439ddf1cf86706467473c643ba61791d778bdd5dac2a5714ac9"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-runner-v1-provenance.json",
+      "bytes": 428,
+      "sha256": "ad282f0907d8ac4b2c59e0b5b9061426894238d0be427db4cb5dc9e10bedc025"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-runner-v1.mjs",
+      "bytes": 18937,
+      "sha256": "38bd89f18fe099e25711fae47df95ab71c3d89423adf8701f9b8669aacf59dc6"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v5-manifest.json",
+      "bytes": 5577,
+      "sha256": "4e8e25a730afce0783d8ad971354e4f0a526464646641047d021404fcb84d302"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "bytes": 21368,
+      "sha256": "b5271f4a4aae02eb19b937f0fcd483719a797b3ccbd6f4f90a6788aa693a5315"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v5.sql",
+      "bytes": 163100,
+      "sha256": "a42c30bb8efbb15dc6f09a3423ac02e59866876da4832b06c153cb2519869efe"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v6-manifest.json",
+      "bytes": 5577,
+      "sha256": "d88aae9ed6c8c2d9f092469dba0d2b7a2c3d635c0a9010897fe754e5ee313396"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "bytes": 21531,
+      "sha256": "ab2c90a77d5ff2ea9bd728b23d487e00f536ccff8c6928a4848e969c9406f61b"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-native-v6.sql",
+      "bytes": 164077,
+      "sha256": "685bec9aa35630f904783224aad1b7f2d60f06317fbb8a47b2cdc7d511a6cd04"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-verify-v1.mjs",
+      "bytes": 9386,
+      "sha256": "a3dff5f6feaef08d01bb6d19d2d80350cc4126d144ef0d5eb1d393faeef9f998"
+    },
+    {
+      "path": ".tmp/m07-t05-sql-verify-v2.mjs",
+      "bytes": 9686,
+      "sha256": "50550d2a9be627147b5ac34b8b22d0dd95b11b72711e86e6ddc8c6802ad211a0"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/admin-read-result.ts",
+      "bytes": 4001,
+      "sha256": "8884ba3a4d38b2a123088b975ad852ce99779daa587a1b9736800ba72a7adffe"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 891,
+      "sha256": "9f331e07fe1b7b70b92244ca23e006416b757da872978bd2819c37fd813ade06"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 13995,
+      "sha256": "fa1a3dbcb6d0b04bea389c4f3b236d44470bb0a2790cbe60a5487e134c00ed71"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/book-edition-edit.ts",
+      "bytes": 6973,
+      "sha256": "af6043a1c68359df1bcdbad56bc9a8dd9a707af76ce392d649d3885981e3a21a"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/isbn.ts",
+      "bytes": 4169,
+      "sha256": "2c3ba18c1244ecdb3490d4c5a62115ef9701c5cb7cd92fd42ae51dca557ffadc"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/library-load-validation.ts",
+      "bytes": 8256,
+      "sha256": "998bb9eb93a970b365d6eee26c0a70a5120e99e590df2234561d7b4c4ff44f45"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/literary-work-workspace.ts",
+      "bytes": 10923,
+      "sha256": "437b408c55ce0a99d51e93bb387719f64451000c156e08ef7a2570ec9a5449c0"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-command.json",
+      "bytes": 11085,
+      "sha256": "55bddac199d2351b60db1b894214037525cfa51c253762cd3b44846862387bd6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-command.log",
+      "bytes": 142,
+      "sha256": "8ac123ced9d2e9c44c84336f85481ecfd3efdb41a918e0e7bac70b53dcd3af90"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-evidence.json",
+      "bytes": 115667,
+      "sha256": "cec41371c70360f231f045722a75ec12a770ce66c0d41117702a5bae9c581cd0"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-fixture.ts",
+      "bytes": 28578,
+      "sha256": "a1897b444b371254afd12b05671a4c04094c006016fe711454eb17bf24196656"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-results.json",
+      "bytes": 8096,
+      "sha256": "830d9cfaf27e8062772da7da958db3656ae7ad4150975cb0bf6dd1174a09f146"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-book-run-v1.mjs",
+      "bytes": 5801,
+      "sha256": "85e5f80a9fdd1d9f98cbf9d183a7fcbcde933b8b6e52d133d920b202da7dfc0d"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 15612,
+      "sha256": "e17ad345ba098a89d8ffd77f1755cc523a49a0434d63378c47c44408110f4520"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/env.ts",
+      "bytes": 6091,
+      "sha256": "0b0dc8a4f286bc63b3ca2687267711f3b109715d2b1b049a8095ff6f7955c2c6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 33774,
+      "sha256": "545590f2cbf1439c68ab290acf918e248491b87bc2c2ac2ea39fc623dd62c4d6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10128,
+      "sha256": "dfcfaa28728211f862d85ed1df73fdf35d7b1ee676d5011cc8cea8a083ec6bf6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1393,
+      "sha256": "94802067d28ccbfdf382700cf9b2bd5536153014588f39cefcd40474e27424b6"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 12859,
+      "sha256": "fbb40b6fc43b854d28dfb92be5ce18fdd80a59521c8ea21ff6816ca8e0f8bfc0"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7764,
+      "sha256": "767365bbcfa1de474bde7f8e3e4df95b7a844d471ddf9b669f11dcac3864fac1"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3438,
+      "sha256": "6111494b48264bb36f0a09228f0c2b815ec1d10d0775e0c2e31043f4627a6ad7"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-actual-sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1375,
+      "sha256": "280892e695b0776c2a7c95ceea3b8a6aeacbc6360348a53d743d8434d16d24df"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-command.json",
+      "bytes": 7413,
+      "sha256": "27f5eb266fe3734f9fa77a6eb36609aa17ea7ca93e5f51ef64c50ee7d1755110"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-command.log",
+      "bytes": 145,
+      "sha256": "ecc5d0265020c20826f200d838c365e10760a6b4c68eb63a210f00c153ae828c"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-evidence.json",
+      "bytes": 454932,
+      "sha256": "ac94251d794b0123857c37c553cbcd6f2a77c6dee1627c04afb34ef1b59bc082"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-fixture.ts",
+      "bytes": 27404,
+      "sha256": "7a79c90a6c03e17edaaad340514078e4ca8d7d499077a8f19030827856cb51a1"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-results.json",
+      "bytes": 17844,
+      "sha256": "961ed605a4dfb38b06a9666a9184f3b6a830d75a115bde468a5aa73e598810b4"
+    },
+    {
+      "path": ".tmp/m07-t05-t01-country-run-v1.mjs",
+      "bytes": 5765,
+      "sha256": "57416a42c77c3a77834872414eae52b8daa1456c96cae528f4bc10e8b600b9bc"
+    },
+    {
+      "path": ".tmp/m07-t06-final-v2-protected-v3-proof.json",
+      "bytes": 178991,
+      "sha256": "03ecf91ddb3a786112b9330e310a7fdd49f39cb40f5ac65ca45c1698cd84a68f"
+    },
+    {
+      "path": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "bytes": 7061,
+      "sha256": "df54df9885095b6a36e4dc95eef5020b348eb0312a6cce3095fed3547abb0687"
+    }
+  ],
+  "checkoutAssets": [
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "bytes": 9604,
+      "sha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "bytes": 9644,
+      "sha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "bytes": 9604,
+      "sha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "bytes": 15696,
+      "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
+      "source": "public/fonts/editorial/source-sans-3-latin-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "bytes": 15668,
+      "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+      "source": "public/fonts/editorial/source-sans-3-latin-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "bytes": 15596,
+      "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+      "source": "public/fonts/editorial/source-sans-3-latin-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "bytes": 13748,
+      "sha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "bytes": 14172,
+      "sha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "bytes": 14776,
+      "sha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "bytes": 14864,
+      "sha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "bytes": 20092,
+      "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-italic.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "bytes": 20088,
+      "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "bytes": 21532,
+      "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+      "source": "public/fonts/editorial/source-serif-4-latin-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "bytes": 21716,
+      "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+      "source": "public/fonts/editorial/source-serif-4-latin-700-normal.woff2"
+    }
+  ],
+  "baseline": {
+    "path": ".tmp/m07-t05-before/manifest.json",
+    "sha256": "4329a58bf91d2cd402bfe329b65fb9a3464514a760f72b89678370d8f41dab7f",
+    "files": 382,
+    "rawArchived": 368,
+    "rawReconstructedFromTrackedFonts": 14
+  },
+  "frozenSource": {
+    "path": ".tmp/m07-t05-final-v1-source-fingerprint.json",
+    "sha256": "9e08d8e0d89b965ebef7eca3275b515c1ab5a8ebfc8395593b9d3da069dcf855",
+    "fingerprint": "62b00fe41d04d4dbc11f1e911ec91bfa926235fc6e487bbeadce9968f6c008a4",
+    "files": 246
+  },
+  "independentTelegramPatch": {
+    "path": "independent-telegram.patch",
+    "sha256": "fba9551c2a131fd04dbf6ed04127c907bf3bbcf520ed3ed0241475877ff64122",
+    "files": 6,
+    "includedInArchive": false,
+    "application": "Optional explicit git apply in disposable worktree to reproduce old 197-file selection."
+  },
+  "status": {
+    "focusedEvidence": "RECORDED_LOCAL_FOCUSED_PROOFS",
+    "global197FileRun": "INTERRUPTED_NOT_VERIFIED",
+    "buildAndStaticGates": "INTERRUPTED_NOT_VERIFIED",
+    "globalAggregate": "NOT_CREATED",
+    "writerFollowup": "READONLY_SOURCE_FINDING_ZERO_RUNTIME_TESTS",
+    "managedAuthDbRlsProviderProduction": "NOT_VERIFIED"
+  },
+  "omittedReferenceInventory": "omitted-references.json"
+}

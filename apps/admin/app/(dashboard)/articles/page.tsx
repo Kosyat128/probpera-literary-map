@@ -3,10 +3,13 @@
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
-import { articleStatusLabels, formatDate } from "@/lib/format";
+import { articleStatusLabels, formatDate, safeCount } from "@/lib/format";
+import AdminStatusState from "@/components/AdminStatusState";
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, readAdminList, readAdminResult, type AdminReadIssue } from "@/lib/admin-read-result";
+import { validArticleListRead } from "@/lib/article-load-validation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { operatorDataError } from "@/lib/operator-data-error";
 import { viewPathVariants } from "@/lib/view-path";
 import {
   changeArticleStatusAction,
@@ -32,6 +35,15 @@ function pageLink(
 
 function relationValue<T>(value: unknown) {
   return (Array.isArray(value) ? value[0] : value) as T | null | undefined;
+}
+
+function ArticlesLoadState({ issue, retryHref }: { issue: AdminReadIssue; retryHref: string }) {
+  return <AdminStatusState
+    eyebrow="Редакционный архив"
+    title="Не удалось загрузить список статей"
+    description={adminReadMessage(issue)}
+    action={<a className="button-secondary" href={retryHref}>Повторить загрузку</a>}
+  />;
 }
 
 export default async function ArticlesPage({
@@ -62,8 +74,10 @@ export default async function ArticlesPage({
     ? values.sort || "updated"
     : "updated";
   const currentPage = Math.max(1, Number.parseInt(values.page || "1", 10) || 1);
+  const linkValues = { q, status, category, from, to, sort };
+  const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}${pageLink(linkValues, currentPage)}`;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return <AdminDependencyState />;
+  if (!supabase) return <><AdminDependencyState /><div className="state-actions"><a className="button-secondary" href={retryHref}>Повторить загрузку</a></div></>;
 
   let request = supabase
     .from("articles")
@@ -107,49 +121,61 @@ export default async function ArticlesPage({
   );
 
   const [
-    { data: articlesResult, error, count },
-    { data: categoriesResult },
-  ] = await Promise.all([
+    articlesResult,
+    categoriesResult,
+  ] = await Promise.allSettled([
     request,
     supabase
       .from("categories")
       .select("id,name")
       .order("display_order"),
   ]);
-  const articles = articlesResult || [];
-  const categories = categoriesResult || [];
-  const articleViewCounts = new Map<string, number>();
-  await Promise.all(
-    articles.map(async (article) => {
+  const articlesRead = readAdminList(articlesResult, validArticleListRead);
+  if (articlesRead.status === "failed") {
+    return <ArticlesLoadState issue={articlesRead.issue} retryHref={retryHref} />;
+  }
+  const articles = articlesRead.data;
+  const categoriesRead = readAdminList(categoriesResult, (item) =>
+    typeof item.id === "string" && typeof item.name === "string");
+  const categories = categoriesRead.status === "success" ? categoriesRead.data : [];
+  const articleViewCounts = new Map<string, number | null>();
+  const viewResults = await Promise.allSettled(
+    articles.map((article) => {
       const articleCategory = relationValue<{ slug?: string }>(article.categories);
       const currentPath = articlePublicPath(
         article.slug,
         articleCategory?.slug
       );
-      const { data: articleViews } = await supabase.rpc(
+      return supabase.rpc(
         "get_content_view_count",
         {
           p_paths: viewPathVariants(currentPath, article.legacy_path),
         }
       );
-      articleViewCounts.set(article.id, Number(articleViews || 0));
     })
   );
+  viewResults.forEach((result, index) => {
+    const views = readAdminResult(result, (data) =>
+      typeof data === "number" && Number.isSafeInteger(data) && data >= 0);
+    articleViewCounts.set(articles[index].id, views.status === "success" ? views.data : null);
+  });
   const authorIds = [
     ...new Set(articles.map((article) => article.author_id).filter(Boolean)),
   ];
-  const { data: profilesResult } = authorIds.length
-    ? await supabase
+  const [profilesResult] = await Promise.allSettled([authorIds.length
+    ? supabase
         .from("profiles")
         .select("id,display_name")
         .in("id", authorIds)
-    : { data: [] };
+    : Promise.resolve({ data: [], error: null })]);
+  const profilesRead = readAdminList(profilesResult, (profile) =>
+    typeof profile.id === "string" && (profile.display_name === null || typeof profile.display_name === "string"));
   const profileNames = new Map(
-    (profilesResult || []).map((profile) => [profile.id, profile.display_name])
+    (profilesRead.status === "success" ? profilesRead.data : []).map((profile) => [profile.id, profile.display_name])
   );
-  const total = count || 0;
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-  const linkValues = { q, status, category, from, to, sort };
+  const total = safeCount(articlesResult.status === "fulfilled" ? articlesResult.value : null);
+  const totalPages = total === null ? null : Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const hasNextPage = totalPages === null ? articles.length === PAGE_SIZE : currentPage < totalPages;
 
   return (
     <>
@@ -199,6 +225,12 @@ export default async function ArticlesPage({
       )}
 
       <section className="panel">
+        {categoriesRead.status === "failed" && (
+          <p className="notice" role="status">Рубрики временно недоступны. <a href={retryHref}>Повторить загрузку</a></p>
+        )}
+        {profilesRead.status === "failed" && (
+          <p className="notice" role="status">Авторы временно недоступны. <a href={retryHref}>Повторить загрузку</a></p>
+        )}
         <form className="toolbar article-filter-toolbar">
           <input
             className="search-input"
@@ -214,12 +246,14 @@ export default async function ArticlesPage({
               <option key={value} value={value}>{label}</option>
             ))}
           </select>
-          <select name="category" defaultValue={category} aria-label="Рубрика">
+          {categoriesRead.status === "failed" ? (
+            <input type="hidden" name="category" value={category} />
+          ) : <select name="category" defaultValue={category} aria-label="Рубрика">
             <option value="">Все рубрики</option>
             {categories.map((item) => (
               <option key={item.id} value={item.id}>{item.name}</option>
             ))}
-          </select>
+          </select>}
           <input type="date" name="from" defaultValue={from} aria-label="Дата от" />
           <input type="date" name="to" defaultValue={to} aria-label="Дата до" />
           <select name="sort" defaultValue={sort} aria-label="Сортировка">
@@ -232,11 +266,10 @@ export default async function ArticlesPage({
         </form>
 
         <div className="table-summary">
-          <span>Найдено: {total.toLocaleString("ru-RU")}</span>
-          <span>Страница {currentPage} из {totalPages}</span>
+          <span>Найдено: {total === null ? "Недоступно" : total.toLocaleString("ru-RU")}</span>
+          <span>Страница {currentPage}{totalPages === null ? " (общее число недоступно)" : ` из ${totalPages}`}</span>
         </div>
-        {error && <p className="form-message">{operatorDataError("articles", "load")}</p>}
-        {!error && articles.length === 0 ? (
+        {articles.length === 0 ? (
           <div className="empty-state">
             <div>
               <p>Материалы с такими условиями не найдены.</p>
@@ -261,7 +294,7 @@ export default async function ArticlesPage({
                   name?: string;
                   slug?: string;
                 }>(article.categories);
-                const views = articleViewCounts.get(article.id) || 0;
+                const views = articleViewCounts.get(article.id) ?? null;
                 return (
                   <tr key={article.id}>
                     <td>
@@ -285,7 +318,9 @@ export default async function ArticlesPage({
                       <span className="data-title">
                         <strong>{articleCategory?.name || "Без рубрики"}</strong>
                         <small>
-                          {profileNames.get(article.author_id) || "Редакция «Пробы Пера»"}
+                          {profilesRead.status === "failed" && article.author_id
+                            ? "Недоступно"
+                            : profileNames.get(article.author_id) || "Редакция «Пробы Пера»"}
                         </small>
                       </span>
                     </td>
@@ -304,7 +339,7 @@ export default async function ArticlesPage({
                         </small>
                       </span>
                     </td>
-                    <td>{views.toLocaleString("ru-RU")}</td>
+                    <td>{views === null ? "Недоступно" : views.toLocaleString("ru-RU")}</td>
                     <td>
                       <div className="row-actions">
                         <Link className="button article-edit-action" href={articleEditPath(article.id)}>
@@ -347,13 +382,13 @@ export default async function ArticlesPage({
             </tbody>
           </table>
         )}
-        {totalPages > 1 && (
+        {(currentPage > 1 || hasNextPage) && (
           <nav className="pagination" aria-label="Страницы списка">
             {currentPage > 1 && (
               <Link href={pageLink(linkValues, currentPage - 1)}>← Назад</Link>
             )}
-            <span>{currentPage} / {totalPages}</span>
-            {currentPage < totalPages && (
+            <span>{currentPage} / {totalPages === null ? "Недоступно" : totalPages}</span>
+            {hasNextPage && (
               <Link href={pageLink(linkValues, currentPage + 1)}>Вперёд →</Link>
             )}
           </nav>

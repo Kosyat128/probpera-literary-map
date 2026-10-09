@@ -3,6 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import {
   ensureLiteraryWorkEnglishTranslation as translateReadyWork,
   type LiteraryWorkAutoTranslationState,
+  type LiteraryWorkAutoTranslationResult,
 } from "./auto-translate-literary-work";
 
 export type SafeLiteraryWorkAutoTranslationState =
@@ -14,12 +15,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   actorId: string;
   workId: string;
   runtimeApproved?: boolean;
-}): Promise<{
-  state: SafeLiteraryWorkAutoTranslationState;
-  model?: string;
-  reviewerModel?: string | null;
-  error?: string;
-}> {
+}): Promise<LiteraryWorkAutoTranslationResult> {
   const readiness = await input.supabase.rpc("premium_machine_translation_ready");
   if (readiness.error || readiness.data !== true) {
     return {

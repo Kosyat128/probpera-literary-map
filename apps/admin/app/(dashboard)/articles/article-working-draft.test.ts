@@ -158,4 +158,20 @@ describe("published article working drafts", () => {
       p_expected_version: 2,
     });
   });
+  it.each([Number.MAX_SAFE_INTEGER + 1, "9007199254740993", 1.5, 0, -1, true, false, null, {}, [], "1e0", "01", " 1 "])(
+    "refuses an unsafe or invalid saved draft version %s instead of allowing a fabricated next CAS", async version => {
+      const rpc = vi.fn().mockResolvedValue({ data: { articleId: row.article_id, version, updatedAt: row.updated_at }, error: null });
+      await expect(saveArticleWorkingDraftRpc({ rpc } as never, {
+        articleId: row.article_id, baseArticleUpdatedAt: row.base_article_updated_at, articlePayload,
+        englishEnvelope: { mode: "disabled" }, expectedEnglishUpdatedAt: row.expected_english_updated_at, expectedVersion: 0,
+      })).rejects.toThrow("некорректным ответом сервера");
+      expect(rpc).toHaveBeenCalledTimes(1);
+  });
+  it("preserves an exact positive bigint string receipt without accepting coercible non-versions", async () => {
+    const rpc = vi.fn().mockResolvedValue({ data: { articleId: row.article_id, version: "2", updatedAt: row.updated_at }, error: null });
+    await expect(saveArticleWorkingDraftRpc({ rpc } as never, {
+      articleId: row.article_id, baseArticleUpdatedAt: row.base_article_updated_at, articlePayload,
+      englishEnvelope: { mode: "disabled" }, expectedEnglishUpdatedAt: row.expected_english_updated_at, expectedVersion: 1,
+    })).resolves.toEqual({ articleId: row.article_id, version: 2, updatedAt: row.updated_at });
+  });
 });

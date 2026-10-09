@@ -21,7 +21,8 @@ import type {
   OpenAiReasoningEffort,
   OpenAiReasoningMode,
 } from "./env";
-import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslateToEnglish, type TranslationProviderCallJournal } from "./premium-english-translation";
+import type { TranslationOperationBudget } from "./translation-operation-budget";
 import { createSlug } from "./slug";
 
 const translatedArticleSchema = z.object({
@@ -245,6 +246,8 @@ export async function translateArticleSourceToEnglish(
     reviewerReasoningMode?: OpenAiReasoningMode;
     review?: boolean;
     fetchImpl?: typeof fetch;
+    operationBudget?: TranslationOperationBudget;
+    providerJournal?: TranslationProviderCallJournal;
   } = {}
 ): Promise<PremiumArticleTranslationResult> {
   const sourceHtml = sanitizeHtml(source.contentHtml, allowedArticleHtml);
@@ -280,6 +283,8 @@ export async function translateArticleSourceToEnglish(
     reviewerReasoningMode: options.reviewerReasoningMode,
     review: options.review,
     fetchImpl: options.fetchImpl,
+    operationBudget: options.operationBudget,
+    ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
     domainInstructions: [
       "This material is a literary magazine article. Preserve every paragraph, heading, list item, quotation, caption and editorial qualification in the original order.",
       "For content_html preserve complete HTML element order and nesting.",

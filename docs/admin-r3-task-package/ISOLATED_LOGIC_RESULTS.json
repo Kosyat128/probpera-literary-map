@@ -1,0 +1,59 @@
+{
+  "scope": "ISOLATED_SOURCE_EXPRESSIONS_ONLY",
+  "sourceRef": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "applicationTestsRun": false,
+  "sqlExecuted": false,
+  "networkCalls": 0,
+  "observations": [
+    {
+      "id": "R3-L01",
+      "source": "R3E11",
+      "result": "SOURCE_BEHAVIOR_REPRODUCED",
+      "actual": {
+        "rpcValueType": "string",
+        "accessedIdIsUndefined": true
+      },
+      "limitation": "Demonstrates JS property access only; does not call the database or prove a deployment failure."
+    },
+    {
+      "id": "R3-L02",
+      "source": "R3E01",
+      "result": "SOURCE_BEHAVIOR_REPRODUCED",
+      "actual": {
+        "current": 1,
+        "helperReached": false,
+        "sourceHashActuallyCompared": false
+      },
+      "limitation": "Isolated branch; no real translation has been classified or changed."
+    },
+    {
+      "id": "R3-L03",
+      "source": "R3E02",
+      "result": "SOURCE_BEHAVIOR_REPRODUCED",
+      "actual": {
+        "syntheticIterations": 500,
+        "successes": 0,
+        "conflicts": 500
+      },
+      "limitation": "Shows that success-count alone is not an attempt limit. No external calls, timing or costs measured."
+    },
+    {
+      "id": "R3-L04",
+      "source": "R3E07",
+      "result": "SOURCE_BEHAVIOR_REPRODUCED",
+      "actual": {
+        "malformedAndEmptyHaveSameProjection": true
+      },
+      "limitation": "Only the fallback expression; not a mounted React component or API execution."
+    },
+    {
+      "id": "R3-L05",
+      "source": "R3E08",
+      "result": "SOURCE_BEHAVIOR_REPRODUCED",
+      "actual": {
+        "testedOriginStayedAdmin": true
+      },
+      "limitation": "One local URL case. Does not prove complete redirect safety; prevents claiming a demonstrated open redirect from this case."
+    }
+  ]
+}

@@ -1,4 +1,7 @@
 import { AdminDependencyState } from "@/components/AdminStatusState";
+import SiteStudioLoadState from "@/components/SiteStudioLoadState";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { isStudioComponent, isStudioDraftSet, isStudioToken, readStudioRows, studioActionUuid } from "@/lib/site-studio-load-validation";
 import { getStaffSession } from "@/lib/auth";
 import {
   siteStudioBreakpoints,
@@ -116,11 +119,12 @@ export default async function SiteStudioTokensPage({
   ]);
   if (!supabase) return <AdminDependencyState />;
 
-  const [tokenResult, componentResult, changeSetResult] = await Promise.all([
+  const [tokenResult, componentResult, changeSetResult] = await Promise.allSettled([
     supabase
       .from("site_design_tokens")
       .select(
-        "id,layer,target_key,token_key,category,value_type,breakpoint,state,description,draft_value,published_value,cas_version,updated_at"
+        "id,layer,target_key,token_key,category,value_type,breakpoint,state,description,draft_value,published_value,cas_version,updated_at",
+        { count: "exact" }
       )
       .order("layer")
       .order("target_key")
@@ -128,30 +132,31 @@ export default async function SiteStudioTokensPage({
       .limit(1024),
     supabase
       .from("site_component_registry")
-      .select("component_key,display_name,owner_lock")
+      .select("component_key,display_name,owner_lock", { count: "exact" })
       .eq("is_active", true)
       .order("display_name")
       .limit(256),
     supabase
       .from("site_design_change_sets")
-      .select("id,name,cas_version")
+      .select("id,name,cas_version", { count: "exact" })
       .eq("status", "draft")
       .order("updated_at", { ascending: false })
       .limit(50),
   ]);
 
-  const tokens = (tokenResult.data || []).flatMap((value) => {
-    const normalized = tokenView(value);
-    return normalized ? [normalized] : [];
-  });
-  const components = (componentResult.data || []).flatMap((value) => {
-    const normalized = componentOption(value);
-    return normalized ? [normalized] : [];
-  });
-  const changeSets = (changeSetResult.data || []).flatMap((value) => {
-    const normalized = changeSetOption(value);
-    return normalized ? [normalized] : [];
-  });
+  const tokenRead = readStudioRows(tokenResult, isStudioToken, (row) => String(row.id));
+  const componentRead = readStudioRows(componentResult, isStudioComponent, (row) => String(row.component_key));
+  const changeSetRead = readStudioRows(changeSetResult, isStudioDraftSet, (row) => String(row.id));
+  const tokens = tokenRead.rows.map((value) => tokenView(value)!);
+  const components = componentRead.rows.map((value) => componentOption(value)!);
+  const changeSets = changeSetRead.rows.map((value) => changeSetOption(value)!);
+  const selectedToken = query.token ? tokens.find((token) => token.id.toLowerCase() === query.token!.toLowerCase()) : null;
+  const validIdentity = tokens.every((token) => studioActionUuid(token.id)
+    && /^[a-z][a-z0-9]*(?:\.[a-z][a-z0-9-]*){1,5}$/u.test(token.tokenKey)
+    && (token.layer !== "component" || components.some((component) => component.key === token.targetKey)))
+    && changeSets.every((set) => studioActionUuid(set.id))
+    && (!query.token || Boolean(selectedToken));
+  const issue = tokenRead.issue ?? componentRead.issue ?? changeSetRead.issue ?? (validIdentity ? null : "invalid");
   const defaultLayer = safeEnum(query.layer, siteStudioLayers, "site");
   const defaultTarget =
     typeof query.target === "string" && /^[a-z][a-z0-9_-]{0,119}$/u.test(query.target)
@@ -160,24 +165,32 @@ export default async function SiteStudioTokensPage({
         ? "site"
         : "magazine";
 
+  const retrySearch = new URLSearchParams();
+  for (const key of ["token", "layer", "target"] as const) if (query[key]) retrySearch.set(key, query[key]!);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/site-studio/tokens" + (retrySearch.size ? `?${retrySearch}` : "");
+  const notice = query.error || query.saved || query.staged;
+
   return (
-    <TokenStudio
+    <>
+    {notice && <p className="form-message" role="status">Результат действия по параметрам страницы не подтверждён. Проверьте актуальные данные.</p>}
+    {issue ? <SiteStudioLoadState issue={issue} retryHref={retryHref}
+      message={!tokenRead.issue && !componentRead.issue && !changeSetRead.issue ? "Загруженные данные несовместимы с текущим редактором. Изменение недоступно до проверки." : undefined}
+      sections={[
+      { label: "Токены", rows: tokenRead.rows.map((row) => `${row.token_key}: ${JSON.stringify(row.draft_value)}`) },
+      { label: "Компоненты", rows: components.map((row) => row.displayName) },
+      { label: "Наборы изменений", rows: changeSets.map((row) => row.name) },
+    ]} /> : <TokenStudio
       tokens={tokens}
       components={components}
       changeSets={changeSets}
-      selectedId={query.token || null}
+      selectedId={selectedToken?.id || null}
       defaultLayer={defaultLayer}
       defaultTarget={defaultTarget}
       canManage={session.role === "owner" || session.role === "admin"}
       isOwner={session.role === "owner"}
-      schemaUnavailable={Boolean(
-        tokenResult.error || componentResult.error || changeSetResult.error
-      )}
-      messages={{
-        error: query.error,
-        saved: query.saved,
-        staged: query.staged,
-      }}
-    />
+      schemaUnavailable={false}
+      messages={{}}
+    />}
+    </>
   );
 }

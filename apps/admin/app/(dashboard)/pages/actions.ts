@@ -1,6 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { unstable_rethrow } from "next/navigation";
+import { after } from "next/server";
 import { redirect } from "@/lib/navigation";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
@@ -41,6 +43,11 @@ import {
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { operatorDataError } from "@/lib/operator-data-error";
+import { isReadRecord } from "@/lib/admin-read-result";
+import { parsePageSaveReceipt, type PageSaveAuditState, type PageSavePublicationState, type PageSaveResult } from "@/lib/page-save-result";
+import { capturePageOperationIntent } from "@/lib/page-operation-intent";
+import { pageOperationSaveResult } from "@/lib/page-operation-result";
+import { lookupPageOperationRpc, PageOperationRpcError, savePageOperationRpc } from "./page-operation-rpc";
 
 const pageSchema = z.object({
   id: z.string().uuid().optional(),
@@ -165,9 +172,10 @@ async function auditPage(
   actorId: string,
   pageId: string,
   action: string,
-  metadata: Record<string, unknown> = {}
+  metadata: Record<string, unknown> = {},
+  reportAuditState?: (state: PageSaveAuditState) => void
 ) {
-  await supabase.from("admin_audit_log").insert({
+  const audit = await supabase.from("admin_audit_log").insert({
     actor_id: actorId,
     action,
     entity_type: "page",
@@ -176,6 +184,10 @@ async function auditPage(
       ...metadata,
     },
   });
+  const auditState: PageSaveAuditState = isReadRecord(audit) && Object.hasOwn(audit, "error")
+    ? audit.error === null ? "recorded" : audit.error !== undefined ? "unavailable" : "unknown"
+    : "unknown";
+  reportAuditState?.(auditState);
   return requestPublicBuild({
     supabase,
     actorId,
@@ -249,16 +261,20 @@ export async function createPageAction(formData: FormData) {
   redirect(editorTarget(data.id, { saved: "1", published: publication.state }));
 }
 
-export async function savePageAction(formData: FormData) {
+export async function savePageAction(formData: FormData): Promise<PageSaveResult> {
+  const submittedIntent = capturePageOperationIntent(formData);
+  const suppliedOperation = formData.has("page_operation_id") || formData.has("page_result_mode");
+  const operationRead = z.string().uuid().safeParse(formData.get("page_operation_id"));
+  const operationId = operationRead.success ? operationRead.data : undefined;
+  const operationContext = operationId && submittedIntent ? { operationId, submittedIntent } : null;
+  const finish = (result: PageSaveResult): PageSaveResult => operationId ? { ...result, operationId } : result;
   normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
-  const catalog = pageCatalogFromForm(formData);
-  const revisionPage = pageCatalogPageNumber(formData.get("editor_revision_page"));
-  const editorTarget = (
-    pageId: string,
-    options: Parameters<typeof pageEditorHref>[2] = {}
-  ) => pageEditorHref(pageId, catalog, { revisionPage, ...options });
+  if (suppliedOperation && (!operationContext || formData.getAll("page_operation_id").length !== 1
+    || formData.has("page_result_mode") && (formData.getAll("page_result_mode").length !== 1 || formData.get("page_result_mode") !== "receipt"))) {
+    return finish({ outcome: "rejected", reason: "validation" });
+  }
   const id = optionalText(formData.get("id"));
   const title = String(formData.get("title") || "");
   const slug =
@@ -284,11 +300,7 @@ export async function savePageAction(formData: FormData) {
     expectedUpdatedAt: formData.get("expected_updated_at"),
   });
   if (!parsed.success || !id) {
-    redirect(editorTarget(id || "", {
-      error: parsed.success
-        ? "Некорректная страница"
-        : parsed.error.issues[0]?.message || "Проверьте поля страницы",
-    }));
+    return finish({ outcome: "rejected", reason: "validation" });
   }
 
   let contentJson: unknown;
@@ -301,41 +313,41 @@ export async function savePageAction(formData: FormData) {
       )
     );
   } catch (error) {
-    redirect(editorTarget(id, {
-      error:
-        error instanceof Error
-          ? error.message
-          : "Страница: JSON редактора повреждён. Обновите страницу и повторите сохранение.",
-    }));
+    unstable_rethrow(error);
+    return finish({ outcome: "rejected", reason: "content" });
   }
 
   const contentHtml = sanitizeHtml(parsed.data.contentHtml, allowedPageHtml);
   try {
     assertEditorialMediaIdentityParity(contentJson, contentHtml, "Страница");
   } catch (error) {
-    redirect(editorTarget(id, {
-      error:
-        error instanceof Error
-          ? error.message
-          : "Сохранение остановлено: данные изображений в редакторе расходятся.",
-    }));
+    unstable_rethrow(error);
+    return finish({ outcome: "rejected", reason: "media" });
   }
 
   if (parsed.data.status === "published") {
     try {
       assertPagePublicationMedia(contentHtml);
     } catch (error) {
-      redirect(editorTarget(id, {
-        error: error instanceof Error ? error.message : "Проверьте alt-тексты изображений.",
-      }));
+      unstable_rethrow(error);
+      return finish({ outcome: "rejected", reason: "publication-media" });
     }
   }
 
-  const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(editorTarget(id, { error: "База данных не подключена" }));
-  const { data: updated, error } = await supabase
-    .from("pages")
-    .update(normalizeShortHyphensDeep({
+  let supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>;
+  try { supabase = await createServerSupabaseClient(); }
+  catch (error) { unstable_rethrow(error); return finish({ outcome: "dependency-unavailable" }); }
+  if (!supabase) return finish({ outcome: "dependency-unavailable" });
+  let mutation: unknown;
+  try {
+  const write = operationContext
+    ? (payload: Record<string, unknown>) => savePageOperationRpc(supabase, { payload, expectedUpdatedAt: parsed.data.expectedUpdatedAt }, operationContext)
+    : (payload: Record<string, unknown>) => supabase.from("pages").update(payload)
+      .eq("id", id)
+      .eq("updated_at", parsed.data.expectedUpdatedAt)
+      .select("id,updated_at")
+      .maybeSingle();
+  mutation = await write(normalizeShortHyphensDeep({
       title: parsed.data.title,
       slug: parsed.data.slug,
       excerpt: parsed.data.excerpt,
@@ -349,26 +361,71 @@ export async function savePageAction(formData: FormData) {
         `${adminEnv.publicSiteUrl}/stranitsy/${parsed.data.slug}/`,
       allow_indexing: parsed.data.allowIndexing,
       updated_by: session.user.id,
-    }))
-    .eq("id", id)
-    .eq("updated_at", parsed.data.expectedUpdatedAt)
-    .select("id")
-    .maybeSingle();
-  if (error) {
-    redirect(editorTarget(id, { error: operatorDataError("pages", "save") }));
-  }
-  if (!updated) {
-    redirect(editorTarget(id, {
-      error: "Страницу уже изменили в другой вкладке. Обновите страницу и повторите правку.",
     }));
+  } catch (error) {
+    unstable_rethrow(error);
+    if (operationContext && error instanceof PageOperationRpcError) {
+      if (error.category === "capability-unavailable") return finish({ outcome: "dependency-unavailable" });
+      if (error.category === "conflict" || error.category === "intent-conflict") return finish({ outcome: "conflict" });
+      if (error.category === "permission") return finish({ outcome: "rejected", reason: "validation" });
+    }
+    return finish({ outcome: "unknown-outcome" });
   }
-  const publication = await auditPage(supabase, session.user.id, id, "page.updated", {
-    status: parsed.data.status,
-    slug: parsed.data.slug,
-  });
-  revalidatePath("/pages");
-  revalidatePath(`/pages/${id}`);
-  redirect(editorTarget(id, { saved: "1", published: publication.state }));
+  let receipt;
+  if (operationContext) {
+    const confirmed = pageOperationSaveResult(mutation, operationContext);
+    if (!confirmed) return finish({ outcome: "unknown-outcome" });
+    if (isReadRecord(mutation) && mutation.replayed === true) return confirmed;
+    receipt = confirmed.receipt;
+  } else {
+    if (!isReadRecord(mutation) || !Object.hasOwn(mutation, "data") || !Object.hasOwn(mutation, "error") || mutation.error !== null) {
+      return finish({ outcome: "unknown-outcome" });
+    }
+    if (mutation.data === null) return finish({ outcome: "conflict" });
+    const updated = mutation.data;
+    receipt = isReadRecord(updated) ? parsePageSaveReceipt(
+      { pageId: updated.id, updatedAt: updated.updated_at }, id, parsed.data.expectedUpdatedAt
+    ) : null;
+    if (!receipt) return finish({ outcome: "unknown-outcome" });
+  }
+  let auditState: PageSaveAuditState = "unknown";
+  let publicationState: PageSavePublicationState = "unknown";
+  let revalidationState: "scheduled" | "unknown" = "unknown";
+  try {
+    const publication = await auditPage(supabase, session.user.id, id, "page.updated", {
+      status: parsed.data.status,
+      slug: parsed.data.slug,
+    }, state => { auditState = state; });
+    if (["started", "queued", "queue-error"].includes(publication?.state)) publicationState = publication.state;
+    after(() => {
+      revalidatePath("/pages");
+      revalidatePath(`/pages/${id}`);
+    });
+    revalidationState = "scheduled";
+  } catch (error) { unstable_rethrow(error); }
+  return finish({ outcome: "saved", receipt, auditState, publicationState, revalidationState });
+}
+
+/** Read the original operation only; lookup never performs page/audit/outbox writes. */
+export async function checkPageOperationAction(formData: FormData): Promise<PageSaveResult> {
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
+  const submittedIntent = capturePageOperationIntent(formData);
+  const operation = z.string().uuid().safeParse(formData.get("page_operation_id"));
+  if (!operation.success) return { outcome: "unknown-outcome" };
+  const operationId = operation.data;
+  if (!submittedIntent || formData.getAll("page_operation_id").length !== 1) return { outcome: "unknown-outcome", operationId };
+  const context = { operationId, submittedIntent };
+  try {
+    const supabase = await createServerSupabaseClient();
+    if (!supabase) return { outcome: "unknown-outcome", operationId };
+    const read = await lookupPageOperationRpc(supabase, context);
+    return read.outcome === "found" ? pageOperationSaveResult(read.result, context) ?? { outcome: "unknown-outcome", operationId }
+      : { outcome: "unknown-outcome", operationId };
+  } catch (error) {
+    unstable_rethrow(error);
+    return { outcome: "unknown-outcome", operationId };
+  }
 }
 
 export async function changePageStatusAction(formData: FormData) {

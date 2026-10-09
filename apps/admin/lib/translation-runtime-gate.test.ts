@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
+import { premiumTranslationConfigurationIdentity } from "./premium-translation-probe";
 
 function supabaseProbe(data: unknown, error: unknown = null) {
   const maybeSingle = vi.fn().mockResolvedValue({ data, error });
@@ -13,9 +14,12 @@ function supabaseProbe(data: unknown, error: unknown = null) {
 describe("premium translation runtime gate", () => {
   it("requires the persisted successful probe for the current model", async () => {
     const probe = supabaseProbe({
+      provider: "cloudflare", configured: true, binding_found: true, test_in_progress: false,
       test_passed: true,
       model: "@cf/google/gemma-4-26b-a4b-it",
       last_test_at: "2026-09-01T10:00:00.000Z",
+      latency_ms: 0, last_error_code: null, cooldown_until: null,
+      configuration_identity: await premiumTranslationConfigurationIdentity({ provider: "cloudflare" }),
     });
     await expect(
       premiumTranslationRuntimeGate(probe.client as never, {
@@ -30,9 +34,12 @@ describe("premium translation runtime gate", () => {
 
   it("fails closed when the successful probe is stale", async () => {
     const probe = supabaseProbe({
+      provider: "openai", configured: true, binding_found: true, test_in_progress: false,
       test_passed: true,
       model: "gpt-test",
       last_test_at: "2026-08-30T10:00:00.000Z",
+      latency_ms: 0, last_error_code: null, cooldown_until: null,
+      configuration_identity: await premiumTranslationConfigurationIdentity({ provider: "openai", model: "gpt-test" }),
     });
     await expect(
       premiumTranslationRuntimeGate(probe.client as never, {

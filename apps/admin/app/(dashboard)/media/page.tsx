@@ -3,6 +3,13 @@ import Link from "next/link";
 import MediaFocalEditor from "@/components/MediaFocalEditor";
 import MediaUploader from "@/components/MediaUploader";
 import { articleEditPath } from "@/lib/admin-routes";
+import { getAdminBasePathFromEnv } from "@/lib/admin-path";
+import { adminReadMessage, readAdminList } from "@/lib/admin-read-result";
+import {
+  isMediaStudioAsset, isMediaUsage, isReplacementPreview, mediaCatalogTotal,
+  mediaListIdentityValid, mediaReadCount, readMediaPublicUrl,
+  type MediaStudioAsset, type MediaUsage, type ReplacementPreview,
+} from "@/lib/media-load-validation";
 import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import {
@@ -32,62 +39,6 @@ import {
 } from "./actions";
 
 export const metadata = { title: "Медиатека" };
-
-type MediaUsage = {
-  media_id: string;
-  entity_type: string;
-  entity_id: string;
-  field_name: string;
-  is_revision?: boolean;
-};
-
-type MediaStudioAsset = {
-  id: string;
-  bucket: string;
-  object_path: string;
-  original_name: string;
-  mime_type: string;
-  byte_size: number | string | null;
-  width: number | null;
-  height: number | null;
-  alt_text: string;
-  caption: string;
-  creator: string;
-  source_url: string | null;
-  license_name: string;
-  license_url: string | null;
-  focus_x: number;
-  focus_y: number;
-  collection_name: string;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string | null;
-  rights_status: string;
-  sha256_hex: string | null;
-  replacement_of_media_id: string | null;
-  replaced_by_media_id: string | null;
-  usage_count: number | string | null;
-  duplicate_count: number | string | null;
-  total_count: number | string | null;
-};
-
-type ReplacementUsageRef = {
-  entity_type: "article" | "page" | "homepage" | "banner";
-  entity_id: string;
-  field_name: string;
-};
-
-type ReplacementPreview = {
-  old_media_id: string;
-  new_media_id: string;
-  old_updated_at: string;
-  new_updated_at: string;
-  new_original_name: string;
-  new_alt_text: string;
-  new_sha256_hex: string;
-  current_usage_refs: ReplacementUsageRef[];
-  history_usage_count: number | string;
-};
 
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu;
 
@@ -149,20 +100,6 @@ function formatFileSize(value: number | string | null | undefined) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} МБ`;
 }
 
-function replacementPreviewMessage(error: { code?: string; message?: string }) {
-  if (error.code === "P0002") return "Исходный или новый файл не найден.";
-  if (error.code === "23514") return "Новый файл не прошёл проверку SHA-256.";
-  if (error.code === "23505") return "Для файла уже зарегистрирована другая цепочка замены.";
-  if (error.code === "55000") return "Для замены можно выбрать только активные файлы.";
-  if (error.code === "42501") return "Предпросмотр доступен только владельцу или администратору.";
-  return error.message || "Не удалось подготовить предпросмотр.";
-}
-
-function replacementResultCount(value: unknown) {
-  const count = Number(value);
-  return Number.isSafeInteger(count) && count >= 0 ? count : 0;
-}
-
 function mediaUsageHref(usage: MediaUsage) {
   if (usage.entity_type === "article") return articleEditPath(usage.entity_id);
   if (usage.entity_type === "page") return `/pages/${encodeURIComponent(usage.entity_id)}`;
@@ -205,69 +142,86 @@ export default async function MediaPage({
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
 
-  const {
-    data: assetsResult,
-    error: assetsError,
-  } = await supabase.rpc("list_media_studio_assets", {
+  const [assetsResult] = await Promise.allSettled([supabase.rpc("list_media_studio_assets", {
     p_state: catalog.state,
     p_search_column: catalog.column,
     p_search_pattern: catalog.pattern || null,
     p_offset: catalog.from,
     p_limit: MEDIA_CATALOG_PAGE_SIZE,
-  });
-  const assets = (assetsResult || []) as MediaStudioAsset[];
-  const { data: usagesResult, error: usagesError } = assets.length
-    ? await supabase.rpc("list_media_asset_usages", {
+  })]);
+  const parsedAssets = readAdminList<MediaStudioAsset>(assetsResult, isMediaStudioAsset);
+  const assetsRead = parsedAssets.status === "success" && (!mediaListIdentityValid(parsedAssets.data)
+    || parsedAssets.data.length > MEDIA_CATALOG_PAGE_SIZE
+    || parsedAssets.data.some((asset) => catalog.state === "trash" ? asset.deleted_at === null : asset.deleted_at !== null))
+    ? { status: "failed" as const, issue: "invalid" as const } : parsedAssets;
+  const assets = assetsRead.status === "success" ? assetsRead.data : [];
+  const [usagesResult] = await Promise.allSettled([assets.length
+    ? supabase.rpc("list_media_asset_usages", {
         p_media_ids: assets.map((asset) => asset.id),
       })
-    : { data: [], error: null };
+    : Promise.resolve({ data: [], error: null })]);
+  const mediaIds = new Set(assets.map((asset) => asset.id.toLowerCase()));
+  const usagesRead = readAdminList<MediaUsage>(usagesResult, (usage) => isMediaUsage(usage, mediaIds));
   const usagesByMedia = new Map<string, MediaUsage[]>();
   const addUsage = (usage: MediaUsage) => {
-    const current = usagesByMedia.get(usage.media_id) || [];
+    const key = usage.media_id.toLowerCase();
+    const current = usagesByMedia.get(key) || [];
     if (current.some((item) =>
       item.entity_type === usage.entity_type &&
       item.entity_id === usage.entity_id &&
       item.field_name === usage.field_name
     )) return;
     current.push(usage);
-    usagesByMedia.set(usage.media_id, current);
+    usagesByMedia.set(key, current);
   };
-  for (const usage of usagesResult || []) addUsage(usage);
-  const totalAssets = Number(assets[0]?.total_count || 0);
-  const totalPages = Math.max(1, Math.ceil(totalAssets / MEDIA_CATALOG_PAGE_SIZE));
+  if (usagesRead.status === "success") for (const usage of usagesRead.data) addUsage(usage);
+  const reportedTotal = mediaReadCount(assets[0]?.total_count);
+  const totalAssets = assetsRead.status === "success" ? mediaCatalogTotal(assets, catalog.page, reportedTotal) : null;
+  const totalPages = totalAssets === null ? null : Math.max(1, Math.ceil(totalAssets / MEDIA_CATALOG_PAGE_SIZE));
+  const catalogReady = assetsRead.status === "success" && usagesRead.status === "success"
+    && totalAssets !== null && assets.every((asset) => mediaReadCount(asset.usage_count) !== null);
+  const retryParams = new URLSearchParams(mediaCatalogPageHref(catalog, catalog.page).split("?")[1] || "");
+  if (query.orphan_cleanup === "preview") retryParams.set("orphan_cleanup", "preview");
+  if (query.replacement_for) retryParams.set("replacement_for", query.replacement_for);
+  if (query.replacement_with) retryParams.set("replacement_with", query.replacement_with);
+  const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/media"
+    + (retryParams.size ? "?" + retryParams.toString() : "");
+  const retryLink = <a href={retryHref}>Повторить загрузку</a>;
   const showOrphanPreview = canManageLifecycle && query.orphan_cleanup === "preview";
   let orphanCandidates: MediaStudioAsset[] = [];
-  let orphanTotal = 0;
+  let orphanTotal: number | null = null;
   let orphanPreviewError = "";
   if (showOrphanPreview) {
-    const { data, error } = await supabase.rpc("list_media_studio_assets", {
+    const [candidateResult] = await Promise.allSettled([supabase.rpc("list_media_studio_assets", {
       p_state: "unused",
       p_search_column: "alt_text",
       p_search_pattern: null,
       p_offset: 0,
       p_limit: MAX_ORPHAN_CLEANUP_ASSETS,
-    });
-    if (error) {
-      orphanPreviewError = error.message;
+    })]);
+    const candidateRead = readAdminList<MediaStudioAsset>(candidateResult, isMediaStudioAsset);
+    if (candidateRead.status === "failed") {
+      orphanPreviewError = adminReadMessage(candidateRead.issue);
     } else {
-      const candidateRows = (data || []) as MediaStudioAsset[];
-      orphanTotal = Number(candidateRows[0]?.total_count || 0);
-      const { data: orphanUsages, error: orphanUsagesError } = candidateRows.length
-        ? await supabase.rpc("list_media_asset_usages", {
+      const candidateRows = candidateRead.data;
+      orphanTotal = mediaCatalogTotal(candidateRows, 1);
+      const candidateIds = new Set(candidateRows.map((asset) => asset.id.toLowerCase()));
+      const [orphanUsagesResult] = await Promise.allSettled([candidateRows.length
+        ? supabase.rpc("list_media_asset_usages", {
             p_media_ids: candidateRows.map((asset) => asset.id),
           })
-        : { data: [], error: null };
-      if (orphanUsagesError) {
-        orphanPreviewError = orphanUsagesError.message;
+        : Promise.resolve({ data: [], error: null })]);
+      const orphanUsagesRead = readAdminList<MediaUsage>(orphanUsagesResult, (usage) => isMediaUsage(usage, candidateIds));
+      if (orphanUsagesRead.status === "failed") {
+        orphanPreviewError = adminReadMessage(orphanUsagesRead.issue);
+      } else if (!mediaListIdentityValid(candidateRows) || candidateRows.length > MAX_ORPHAN_CLEANUP_ASSETS || orphanTotal === null
+        || candidateRows.some((asset) => asset.deleted_at !== null || mediaReadCount(asset.usage_count) !== 0)) {
+        orphanPreviewError = adminReadMessage("invalid");
       } else {
         const referencedIds = new Set(
-          ((orphanUsages || []) as MediaUsage[]).map((usage) => String(usage.media_id))
+          orphanUsagesRead.data.map((usage) => usage.media_id.toLowerCase())
         );
-        orphanCandidates = candidateRows.filter((asset) =>
-          !asset.deleted_at
-          && Number(asset.usage_count || 0) === 0
-          && !referencedIds.has(asset.id)
-        );
+        orphanCandidates = candidateRows.filter((asset) => !referencedIds.has(asset.id.toLowerCase()));
       }
     }
   }
@@ -280,26 +234,22 @@ export default async function MediaPage({
   } else if (canManageLifecycle && query.replacement_with && !replacementWith) {
     replacementPreviewError = "Введите корректный UUID нового файла из медиатеки.";
   } else if (canManageLifecycle && replacementFor && replacementWith) {
-    const { data, error } = await supabase.rpc("preview_media_asset_replacement", {
+    const [previewResult] = await Promise.allSettled([supabase.rpc("preview_media_asset_replacement", {
       p_old_media_id: replacementFor,
       p_new_media_id: replacementWith,
-    });
-    if (error) {
-      replacementPreviewError = replacementPreviewMessage(error);
+    })]);
+    const previewRead = readAdminList<ReplacementPreview>(previewResult,
+      (preview) => isReplacementPreview(preview, replacementFor, replacementWith));
+    if (previewRead.status === "failed") {
+      replacementPreviewError = adminReadMessage(previewRead.issue);
+    } else if (previewRead.data.length !== 1) {
+      replacementPreviewError = adminReadMessage("invalid");
     } else {
-      const candidate = data?.[0];
-      if (candidate) {
-        replacementPreview = {
-          ...candidate,
-          current_usage_refs: Array.isArray(candidate.current_usage_refs)
-            ? candidate.current_usage_refs
-            : [],
-        } as ReplacementPreview;
-      }
+      replacementPreview = previewRead.data[0];
     }
   }
 
-  if (!assetsError && catalog.page > totalPages) {
+  if (assetsRead.status === "success" && totalPages !== null && catalog.page > totalPages) {
     redirect(mediaCatalogPageHref(catalog, totalPages));
   }
 
@@ -315,37 +265,27 @@ export default async function MediaPage({
           </p>
         </div>
       </header>
-      {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
-      {query.saved === "1" && <p className="form-message form-success">Метаданные изображения сохранены.</p>}
-      {query.saved === "trash" && <p className="form-message form-success">Файл перемещён в корзину без удаления исходного объекта.</p>}
-      {query.saved === "restore" && <p className="form-message form-success">Файл восстановлен из корзины.</p>}
-      {query.saved === "replacement" && (
-        <p className="form-message form-success">
-          Безопасная замена завершена: обновлено {replacementResultCount(query.replacement_count)} текущих связей. Старый файл и история версий сохранены.
+      {(query.error || query.saved || query.published) && (
+        <p className="form-message" role="status">
+          Результат действия по параметрам страницы не подтверждён. Проверьте актуальные сведения о файлах перед повторным изменением.
         </p>
       )}
-      {query.saved === "bulk" && (
-        <p className="form-message form-success">
-          Массовые метаданные сохранены для {replacementResultCount(query.bulk_count)} файлов.
+      {!catalogReady && (
+        <p className="form-message form-error" role="alert">
+          {assetsRead.status === "failed" ? adminReadMessage(assetsRead.issue)
+            : usagesRead.status === "failed" ? adminReadMessage(usagesRead.issue)
+              : "Не удалось проверить все счётчики медиатеки."}
+          {" "}Изменение файлов недоступно до полной загрузки данных.{" "}{retryLink}
         </p>
       )}
-      {query.saved === "orphan-cleanup" && (
-        <p className="form-message form-success">
-          В корзину перемещено {replacementResultCount(query.orphan_count)} неиспользуемых файлов. Объекты Storage не удалены.
+      {replacementPreviewError && (
+        <p className="form-message form-error" role="alert">
+          Предпросмотр замены не выполнен: {replacementPreviewError}{" "}{retryLink}
         </p>
       )}
-      {query.saved === "purge" && (
-        <p className="form-message form-success">
-          Файл и его точный Storage-объект удалены безвозвратно после полной проверки зависимостей.
-        </p>
-      )}
-      {query.published === "started" && <p className="form-message form-success">Публичная сборка с обновлённым изображением запущена.</p>}
-      {query.published === "queued" && <p className="form-message form-success">Обновление изображения поставлено в резервную очередь публикации.</p>}
-      {query.published === "queue-error" && <p className="form-message form-error" role="alert">Метаданные сохранены, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
-      {usagesError && <p className="form-message form-error" role="alert">Не удалось загрузить места использования изображений: {usagesError.message}</p>}
 
       <div className="dashboard-grid">
-        <MediaUploader />
+        {catalogReady && <MediaUploader />}
         <aside className="panel">
           <h2>Редакционный стандарт</h2>
           <div className="status-list">
@@ -364,7 +304,9 @@ export default async function MediaPage({
           <div>
             <h2>Все файлы</h2>
             <p>
-              {totalAssets > 0
+              {totalAssets === null
+                ? "Недоступно: общее число файлов не подтверждено"
+                : totalAssets > 0
                 ? `${totalAssets} ${totalAssets === 1 ? "файл" : "файлов"}`
                 : catalog.term
                   ? "Совпадений не найдено"
@@ -420,7 +362,7 @@ export default async function MediaPage({
           </form>
         </div>
 
-        {assets.length > 0 && (
+        {catalogReady && assets.length > 0 && (
           <details className="media-bulk-editor">
             <summary>Массово изменить метаданные выбранных файлов</summary>
             <form
@@ -494,7 +436,7 @@ export default async function MediaPage({
               </div>
             ) : orphanPreviewError ? (
               <div className="settings-stack">
-                <p className="form-message form-error" role="alert">{orphanPreviewError}</p>
+                <p className="form-message form-error" role="alert">{orphanPreviewError}{" "}{retryLink}</p>
                 <Link className="button-secondary" href={mediaCatalogPageHref(catalog, catalog.page)}>
                   Закрыть предпросмотр
                 </Link>
@@ -513,7 +455,7 @@ export default async function MediaPage({
                 <input name="catalog_state" type="hidden" value={catalog.state} />
                 <input name="catalog_view" type="hidden" value={catalog.view} />
                 <input name="catalog_page" type="hidden" value={catalog.page} />
-                <input name="orphan_preview_total" type="hidden" value={orphanTotal} />
+                <input name="orphan_preview_total" type="hidden" value={orphanTotal ?? ""} />
                 {orphanCandidates.map((asset) => (
                   <input
                     key={`snapshot:${asset.id}`}
@@ -525,7 +467,7 @@ export default async function MediaPage({
                 <p>
                   После проверки текущих и исторических связей в этом пакете найдено
                   {` ${orphanCandidates.length}`} безопасных сирот.
-                  {orphanTotal > MAX_ORPHAN_CLEANUP_ASSETS
+                  {orphanTotal !== null && orphanTotal > MAX_ORPHAN_CLEANUP_ASSETS
                     ? ` Всего без текущих связей: ${orphanTotal}; за раз проверяются первые ${MAX_ORPHAN_CLEANUP_ASSETS}.`
                     : ""}
                 </p>
@@ -569,14 +511,12 @@ export default async function MediaPage({
           </details>
         )}
 
-        {assetsError ? (
-          <p className="form-message">
-            Не удалось загрузить медиатеку: {assetsError.message}
-          </p>
-        ) : assets.length === 0 ? (
+        {assetsRead.status === "failed" ? null : assets.length === 0 ? (
           <div className="empty-state">
             <p>
-              {catalog.term
+              {totalAssets === null
+                ? "На этой странице файлов нет. Общее число файлов не подтверждено."
+                : catalog.term
                 ? "Измените запрос или выберите другое поле поиска."
                 : "Медиатека пока пуста."}
             </p>
@@ -584,14 +524,13 @@ export default async function MediaPage({
         ) : (
           <div className={`media-grid${catalog.view === "list" ? " is-list" : ""}`}>
             {assets.map((asset) => {
-              const { data } = supabase.storage
-                .from(asset.bucket)
-                .getPublicUrl(asset.object_path);
-              const usages = usagesByMedia.get(asset.id) || [];
-              const usageCount = Math.max(
-                Number(asset.usage_count || 0),
-                usages.length
-              );
+              const publicUrl = readMediaPublicUrl(() => supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path));
+              const usages = usagesByMedia.get(asset.id.toLowerCase()) || [];
+              const storedUsageCount = mediaReadCount(asset.usage_count);
+              const usageCount = usagesRead.status === "failed" || storedUsageCount === null
+                ? null : Math.max(storedUsageCount, usages.length);
+              const canChangeAsset = catalogReady && publicUrl !== null;
+              const duplicateCount = mediaReadCount(asset.duplicate_count);
               const rightsStatus = asset.rights_status as keyof typeof mediaRightsLabels;
               const purgeAvailableAt = asset.deleted_at
                 ? new Date(new Date(asset.deleted_at).getTime() + 30 * 24 * 60 * 60 * 1_000)
@@ -603,9 +542,9 @@ export default async function MediaPage({
               );
               return (
                 <article className="media-card" key={asset.id}>
-                  <img src={data.publicUrl} alt={asset.alt_text} />
+                  {publicUrl ? <img src={publicUrl} alt={asset.alt_text} /> : <p>Изображение недоступно.</p>}
                   <div>
-                    <label className="media-card-selection">
+                    {canChangeAsset && <label className="media-card-selection">
                       <input
                         form="media-bulk-metadata"
                         name="media_selection"
@@ -613,7 +552,7 @@ export default async function MediaPage({
                         value={JSON.stringify({ id: asset.id, updatedAt: asset.updated_at })}
                       />
                       <span>Выбрать для массовой правки</span>
-                    </label>
+                    </label>}
                     <strong>{asset.alt_text}</strong>
                     <small>{mediaRightsLabels[rightsStatus] || mediaRightsLabels.unknown}</small>
                     <small>
@@ -627,9 +566,8 @@ export default async function MediaPage({
                     {asset.sha256_hex && (
                       <small title={asset.sha256_hex}>
                         SHA-256: {asset.sha256_hex.slice(0, 12)}…
-                        {Number(asset.duplicate_count || 0) > 1
-                          ? ` · совпадений: ${asset.duplicate_count}`
-                          : ""}
+                        {duplicateCount === null ? " · число совпадений недоступно"
+                          : duplicateCount > 1 ? ` · совпадений: ${duplicateCount}` : ""}
                       </small>
                     )}
                     {asset.replacement_of_media_id && (
@@ -641,7 +579,7 @@ export default async function MediaPage({
                     {asset.deleted_at && <small>В корзине с {formatDate(asset.deleted_at)}</small>}
                     <small>{asset.license_name || "Лицензия не указана"}</small>
                     <small>{formatDate(asset.created_at)}</small>
-                    <details className="media-metadata-editor">
+                    {canChangeAsset && <details className="media-metadata-editor">
                       <summary>Проверить сведения</summary>
                       <form className="settings-stack" action={updateMediaMetadataAction}>
                         <input name="id" type="hidden" value={asset.id} />
@@ -667,7 +605,7 @@ export default async function MediaPage({
                         </label>
                         <label className="field"><span>Коллекция</span><input name="collection_name" required defaultValue={asset.collection_name} /></label>
                         <MediaFocalEditor
-                          src={data.publicUrl}
+                          src={publicUrl!}
                           alt={asset.alt_text}
                           initialX={asset.focus_x}
                           initialY={asset.focus_y}
@@ -695,11 +633,11 @@ export default async function MediaPage({
                         </section>
                         <button className="button-secondary" type="submit">Сохранить сведения</button>
                       </form>
-                    </details>
-                    {canManageLifecycle && !asset.deleted_at && (
+                    </details>}
+                    {canChangeAsset && canManageLifecycle && !asset.deleted_at && normalizedUuid(asset.id) && (
                       <details className="media-replacement-editor">
                         <summary>Безопасно заменить файл</summary>
-                        {replacementFor === asset.id ? (
+                        {replacementFor.toLowerCase() === asset.id.toLowerCase() ? (
                           <div className="settings-stack">
                             {replacementPreviewError && (
                               <p className="form-message form-error" role="alert">
@@ -798,7 +736,7 @@ export default async function MediaPage({
                         )}
                       </details>
                     )}
-                    {canManageLifecycle && (
+                    {canChangeAsset && canManageLifecycle && (
                       <form action={asset.deleted_at ? restoreMediaAction : trashMediaAction}>
                         <input name="id" type="hidden" value={asset.id} />
                         <input name="expected_updated_at" type="hidden" value={asset.updated_at} />
@@ -810,8 +748,8 @@ export default async function MediaPage({
                         <button
                           className="button-secondary"
                           type="submit"
-                          disabled={!asset.deleted_at && usageCount > 0}
-                          title={!asset.deleted_at && usageCount > 0
+                          disabled={!asset.deleted_at && (usageCount === null || usageCount > 0)}
+                          title={!asset.deleted_at && (usageCount === null || usageCount > 0)
                             ? "Сначала удалите все активные и исторические связи"
                             : undefined}
                         >
@@ -819,7 +757,7 @@ export default async function MediaPage({
                         </button>
                       </form>
                     )}
-                    {canPermanentlyPurge && asset.deleted_at && (
+                    {canChangeAsset && canPermanentlyPurge && asset.deleted_at && (
                       <details className="media-purge-editor">
                         <summary>Удалить навсегда</summary>
                         <div className="settings-stack">
@@ -834,7 +772,7 @@ export default async function MediaPage({
                               Срок хранения завершится не ранее {formatDate(purgeAvailableAt.toISOString())}.
                             </p>
                           )}
-                          {usageCount > 0 && (
+                          {usageCount !== null && usageCount > 0 && (
                             <p>Сначала устраните все {usageCount} текущих или исторических связей.</p>
                           )}
                           <p>
@@ -856,14 +794,14 @@ export default async function MediaPage({
                                 type="text"
                                 required
                                 autoComplete="off"
-                                disabled={!retentionElapsed || usageCount > 0}
+                                disabled={!retentionElapsed || usageCount === null || usageCount > 0}
                                 pattern={MEDIA_PURGE_CONFIRMATION}
                               />
                             </label>
                             <button
                               className="button-secondary media-purge-button"
                               type="submit"
-                              disabled={!retentionElapsed || usageCount > 0}
+                              disabled={!retentionElapsed || usageCount === null || usageCount > 0}
                             >
                               Безвозвратно удалить файл
                             </button>
@@ -877,7 +815,7 @@ export default async function MediaPage({
             })}
           </div>
         )}
-        {!assetsError && totalPages > 1 && (
+        {assetsRead.status === "success" && totalPages !== null && totalPages > 1 && (
           <nav className="pagination" aria-label="Страницы медиатеки">
             {catalog.page > 1 ? (
               <Link href={mediaCatalogPageHref(catalog, 1)}>Первая</Link>

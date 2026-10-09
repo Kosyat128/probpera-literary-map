@@ -124,6 +124,50 @@ describe("new article recovery across browser sessions", () => {
     ).toBe(currentKey);
   });
 
+  it("retains the locator and draft when its pointed snapshot cannot be read", () => {
+    const scope = "new";
+    const prefix = articleDraftRecoveryKeyPrefix(scope);
+    const previousKey = `${prefix}draft-a`;
+    const currentKey = `${prefix}draft-b`;
+    const pointerKey = latestArticleDraftPointerKey(scope);
+    const snapshot = JSON.stringify({ title: "Unsaved article", contentHtml: "<p>Keep this body</p>" });
+    const pointer = JSON.stringify({ version: 1, scope, recoveryKey: previousKey });
+    const local = memoryStorage({ [previousKey]: snapshot, [pointerKey]: pointer });
+    const deniedRead = new Error("Storage read unavailable");
+    let unavailable = true;
+    const storage = {
+      ...local,
+      getItem(key: string) {
+        if (key === previousKey && unavailable) throw deniedRead;
+        return local.getItem(key);
+      },
+    };
+
+    expect(() => resolveArticleDraftRecoverySource(storage, scope, currentKey)).toThrow(deniedRead);
+    expect(local.value(pointerKey)).toBe(pointer);
+    expect(local.value(previousKey)).toBe(snapshot);
+
+    unavailable = false;
+    expect(resolveArticleDraftRecoverySource(storage, scope, currentKey)).toBe(previousKey);
+  });
+
+  it("still removes a malformed locator without deleting an unrelated draft", () => {
+    const scope = "new";
+    const prefix = articleDraftRecoveryKeyPrefix(scope);
+    const previousKey = `${prefix}draft-a`;
+    const currentKey = `${prefix}draft-b`;
+    const pointerKey = latestArticleDraftPointerKey(scope);
+    const snapshot = JSON.stringify({ title: "Keep malformed locator's draft" });
+    const local = memoryStorage({
+      [previousKey]: snapshot,
+      [pointerKey]: "{not valid JSON",
+    });
+
+    expect(resolveArticleDraftRecoverySource(local, scope, currentKey)).toBe(currentKey);
+    expect(local.value(pointerKey)).toBeNull();
+    expect(local.value(previousKey)).toBe(snapshot);
+  });
+
   it("drops a stale pointer after its saved draft has been cleared", () => {
     const scope = "new";
     const prefix = articleDraftRecoveryKeyPrefix(scope);

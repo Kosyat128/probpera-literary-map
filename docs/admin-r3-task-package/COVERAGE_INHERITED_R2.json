@@ -1,0 +1,439 @@
+{
+  "registered_routes": 28,
+  "additional_surface_groups": 12,
+  "rows": [
+    {
+      "label": "Обзор",
+      "path": "/dashboard",
+      "modules": [
+        "M02",
+        "M03",
+        "M04",
+        "M17"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Статьи",
+      "path": "/articles",
+      "modules": [
+        "M02",
+        "M05",
+        "M06",
+        "M07",
+        "M12"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Литературная сводка / существующая повестка",
+      "path": "/literary-news",
+      "modules": [
+        "M10",
+        "M25",
+        "M01"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Новая статья",
+      "path": "/articles/new",
+      "modules": [
+        "M05",
+        "M20",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Студия данных",
+      "path": "/data-studio",
+      "modules": [
+        "M03",
+        "M08",
+        "M21"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Произведения и издания",
+      "path": "/library",
+      "modules": [
+        "M08",
+        "M11",
+        "M21"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Редакционные досье",
+      "path": "/library/dossiers",
+      "modules": [
+        "M09",
+        "M20"
+      ],
+      "source_scope": "BASELINE_R1_PLUS_DEEP_SQL_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Страны и авторы",
+      "path": "/editorial-database",
+      "modules": [
+        "M08",
+        "M06",
+        "M12"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Premium English",
+      "path": "/translations",
+      "modules": [
+        "M07",
+        "M03",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Рубрики и теги",
+      "path": "/categories",
+      "modules": [
+        "M21",
+        "M02",
+        "M13"
+      ],
+      "source_scope": "DEEP_ACTION_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Медиатека",
+      "path": "/media",
+      "modules": [
+        "M11",
+        "M23"
+      ],
+      "source_scope": "BASELINE_R1_PLUS_DEEP_API_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Страницы",
+      "path": "/pages",
+      "modules": [
+        "M19",
+        "M20",
+        "M06"
+      ],
+      "source_scope": "DEEP_ACTION_EDITOR_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Главная страница",
+      "path": "/homepage",
+      "modules": [
+        "M16",
+        "M22",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Тексты сайта",
+      "path": "/site-copy",
+      "modules": [
+        "M24",
+        "M07",
+        "M20"
+      ],
+      "source_scope": "DEEP_ACTION_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Студия сайта",
+      "path": "/site-studio",
+      "modules": [
+        "M16",
+        "M22",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Компоненты сайта",
+      "path": "/site-studio/components",
+      "modules": [
+        "M16",
+        "M12"
+      ],
+      "source_scope": "BASELINE_R1_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Токены дизайна",
+      "path": "/site-studio/tokens",
+      "modules": [
+        "M16",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Шрифты сайта",
+      "path": "/site-studio/fonts",
+      "modules": [
+        "M16",
+        "M23"
+      ],
+      "source_scope": "BASELINE_R1_PLUS_DEEP_API_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Выпуски дизайна",
+      "path": "/site-studio/releases",
+      "modules": [
+        "M16",
+        "M22",
+        "M04"
+      ],
+      "source_scope": "DEEP_ACTION_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Баннеры",
+      "path": "/banners",
+      "modules": [
+        "M22",
+        "M11",
+        "M04"
+      ],
+      "source_scope": "DEEP_ACTION_RUNTIME_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Меню",
+      "path": "/menus",
+      "modules": [
+        "M22",
+        "M21",
+        "M12"
+      ],
+      "source_scope": "DEEP_ACTION_RUNTIME_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Комментарии",
+      "path": "/comments",
+      "modules": [
+        "M15",
+        "M02"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Статистика",
+      "path": "/analytics",
+      "modules": [
+        "M14",
+        "M02"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Состояние сайта",
+      "path": "/health",
+      "modules": [
+        "M03",
+        "M17"
+      ],
+      "source_scope": "BASELINE_R1_PLUS_DEEP_SQL_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Публикация",
+      "path": "/publication",
+      "modules": [
+        "M04",
+        "M17"
+      ],
+      "source_scope": "BASELINE_R1_PLUS_DEEP_OUTBOX_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "SEO и адреса",
+      "path": "/seo",
+      "modules": [
+        "M13",
+        "M21"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Настройки",
+      "path": "/settings",
+      "modules": [
+        "M01",
+        "M15",
+        "M03"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "История изменений",
+      "path": "/history",
+      "modules": [
+        "M06",
+        "M21",
+        "M22"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Вход, второй фактор, восстановление",
+      "path": "/login; /mfa; /reset-password",
+      "modules": [
+        "M01",
+        "M20"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Обмен auth callback",
+      "path": "/auth/callback (наличие и контракт сверить)",
+      "modules": [
+        "M01",
+        "M20"
+      ],
+      "source_scope": "CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Редактор статьи и alias перехода",
+      "path": "/articles/[id]; /articles/edit",
+      "modules": [
+        "M05",
+        "M20",
+        "M24"
+      ],
+      "source_scope": "BASELINE_R1",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Предпросмотр статьи",
+      "path": "/articles/[id]/preview",
+      "modules": [
+        "M05",
+        "M01",
+        "M11"
+      ],
+      "source_scope": "BASELINE_R1_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Редактор страницы",
+      "path": "/pages/[id]",
+      "modules": [
+        "M19",
+        "M20",
+        "M02"
+      ],
+      "source_scope": "DEEP_ACTION_EDITOR_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Предпросмотр страницы",
+      "path": "/pages/[id]/preview",
+      "modules": [
+        "M19",
+        "M01"
+      ],
+      "source_scope": "CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Серверное восстановление ввода",
+      "path": "/editor-autosave; server actions",
+      "modules": [
+        "M20",
+        "M01",
+        "M17"
+      ],
+      "source_scope": "DEEP_ACTION_CONTROLLER_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Экспорт аналитики",
+      "path": "/analytics/export",
+      "modules": [
+        "M14",
+        "M01"
+      ],
+      "source_scope": "BASELINE_R1_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Поиск медиа API",
+      "path": "/api/media/assets",
+      "modules": [
+        "M11",
+        "M01",
+        "M12"
+      ],
+      "source_scope": "TREE_CONFIRMED_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Загрузка изображений",
+      "path": "/api/media/upload",
+      "modules": [
+        "M23",
+        "M11",
+        "M01"
+      ],
+      "source_scope": "DEEP_ROUTE_HANDLER_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Загрузка шрифтов",
+      "path": "/api/site-fonts/upload",
+      "modules": [
+        "M23",
+        "M16",
+        "M01"
+      ],
+      "source_scope": "DEEP_ROUTE_HANDLER_R2",
+      "execution": "NOT_RUN"
+    },
+    {
+      "label": "Серверные помощники и фоновые границы",
+      "path": "visual-entity actions; templates; export; translations; social; cleanup",
+      "modules": [
+        "M00",
+        "M04",
+        "M07",
+        "M08",
+        "M17",
+        "M24",
+        "M25"
+      ],
+      "source_scope": "MIXED_SOURCE_AND_CONTRACT_RECHECK",
+      "execution": "NOT_RUN"
+    }
+  ]
+}

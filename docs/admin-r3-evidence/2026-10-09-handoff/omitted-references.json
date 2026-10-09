@@ -1,0 +1,3831 @@
+{
+  "scope": "Path inventory only; earlier proof chains are intentionally partial.",
+  "references": [
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[78].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[78].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[69].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/checks.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[69].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/checks.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[76].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/coerce.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[76].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/coerce.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[74].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/compat.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[74].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/compat.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[71].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/errors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[71].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/errors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[77].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/external.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[77].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/external.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[75].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/from-json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[75].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/from-json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[70].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/iso.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[70].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/iso.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[72].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/parse.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[72].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/parse.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[73].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/schemas.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[73].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/classic/schemas.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[63].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/api.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[63].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/api.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[5].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/checks.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[5].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/checks.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[0].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/core.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[0].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/core.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[6].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/doc.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[6].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/doc.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[2].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/errors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[2].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/errors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[68].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[68].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[66].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema-generator.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[66].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema-generator.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[65].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema-processors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[65].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema-processors.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[67].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[67].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[3].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/parse.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[3].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/parse.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[4].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/regexes.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[4].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/regexes.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[62].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/registries.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[62].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/registries.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[8].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/schemas.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[8].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/schemas.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[64].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/to-json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[64].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/to-json-schema.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[1].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/util.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[1].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/util.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[7].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/versions.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[7].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/core/versions.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[9].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ar.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[9].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ar.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[10].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/az.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[10].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/az.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[11].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/be.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[11].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/be.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[12].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/bg.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[12].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/bg.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[13].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ca.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[13].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ca.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[14].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/cs.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[14].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/cs.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[15].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/da.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[15].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/da.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[16].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/de.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[16].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/de.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[17].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/el.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[17].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/el.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[18].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/en.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[18].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/en.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[19].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/eo.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[19].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/eo.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[20].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/es.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[20].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/es.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[21].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fa.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[21].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fa.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[22].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fi.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[22].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fi.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[24].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fr-CA.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[24].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fr-CA.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[23].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[23].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/fr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[25].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/he.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[25].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/he.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[26].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[26].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[27].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hu.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[27].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hu.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[28].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hy.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[28].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/hy.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[29].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/id.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[29].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/id.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[61].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[61].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/index.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[30].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/is.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[30].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/is.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[31].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/it.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[31].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/it.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[32].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ja.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[32].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ja.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[33].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ka.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[33].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ka.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[35].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/kh.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[35].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/kh.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[34].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/km.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[34].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/km.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[36].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ko.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[36].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ko.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[37].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/lt.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[37].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/lt.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[38].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/mk.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[38].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/mk.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[39].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ms.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[39].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ms.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[40].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/nl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[40].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/nl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[41].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/no.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[41].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/no.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[42].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ota.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[42].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ota.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[44].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/pl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[44].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/pl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[43].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ps.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[43].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ps.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[45].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/pt.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[45].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/pt.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[46].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ro.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[46].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ro.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[47].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ru.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[47].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ru.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[48].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/sl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[48].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/sl.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[49].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/sv.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[49].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/sv.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[50].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ta.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[50].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ta.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[51].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/th.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[51].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/th.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[52].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/tr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[52].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/tr.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[54].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ua.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[54].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ua.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[53].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/uk.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[53].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/uk.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[55].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ur.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[55].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/ur.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[56].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/uz.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[56].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/uz.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[57].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/vi.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[57].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/vi.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[60].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/yo.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[60].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/yo.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[58].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/zh-CN.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[58].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/zh-CN.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.runtimeDto.inputs[59].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/zh-TW.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v6-proof.json",
+      "field": "$.runtimeDto.inputs[59].file",
+      "path": "../../../../2026-09-26/new-chat/work/r10-runtime/node_modules/zod/v4/locales/zh-TW.js",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-control-flow.integration.test.ts",
+      "field": "literal-line-19",
+      "path": ".tmp/m02-code-fingerprint-before-auth-boundary.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-before/raw/apps/admin/lib/admin-read-access.integration.test.ts",
+      "field": "literal-line-20",
+      "path": ".tmp/m02-code-fingerprint-before-read-access.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.alias.source",
+      "path": ".tmp/m02-postgres-tools",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[1].args[1]",
+      "path": ".tmp/m02-postgres-tools",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.toolsRoot",
+      "path": ".tmp/m02-postgres-tools",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[2].file",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-ordinary-compat-current-v2-20261008123720400-26152-5ad846d4/result.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.nativeReport.file",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-ordinary-compat-current-v2-20261008123720400-26152-5ad846d4/result.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.stderr.file",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v5-20261008161337767-20608-a8a144e8/11-fixture-contract.stderr.log",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.stdout.file",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v5-20261008161337767-20608-a8a144e8/11-fixture-contract.stdout.log",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-sql-native-v5-proof.json",
+      "field": "$.report.file",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v5-20261008161337767-20608-a8a144e8/result.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.caseRoot",
+      "path": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[10].file",
+      "path": ".tmp/m07-batch-compat-v1-source-preservation.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.batchPreservation.file",
+      "path": ".tmp/m07-batch-compat-v1-source-preservation.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[19].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(auth)/login/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[20].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(auth)/login/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[21].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(auth)/mfa/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[22].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(auth)/mfa/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[23].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/analytics/analytics-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[24].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/analytics/export/route.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[25].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/analytics/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[26].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/[id]/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[27].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/[id]/preview/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[28].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[29].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-bundle-rpc.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[30].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-bundle-rpc.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[31].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-bundle-rpc.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[32].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-copy-search-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[33].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-list-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[34].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[35].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-management-actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[36].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-operation-action.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[37].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-operation-rpc.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[38].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-operation-rpc.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[39].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-operation-server.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[40].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-pending-operation-load.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[41].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-preview-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[42].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-private-english-load.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[43].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-private-english-server.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[44].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-review-identity.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[45].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-save-result.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[46].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-source-preservation.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[47].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-working-draft-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[48].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-working-draft-flow.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[49].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-working-draft.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[50].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/article-working-draft.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[51].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[52].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/legacy-import-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[53].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/new/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[54].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[55].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/save-article-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[56].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/save-article-publication-action.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[57].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/save-article-publication-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[58].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/social-publication-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[59].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/articles/template-actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[60].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/banners/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[61].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/categories/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[62].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/categories/taxonomy-comments-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[63].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/comments/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[64].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/dashboard/dashboard-counts.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[65].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/dashboard/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[66].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/data-studio/data-studio-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[67].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/data-studio/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[68].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/editorial-database/editorial-database-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[69].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/editorial-database/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[70].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/health/health-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[71].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/health/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[72].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/history/history-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[73].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/history/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[74].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/homepage/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[75].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/layout.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[76].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/library/dossiers/dossier-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[77].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/library/dossiers/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[78].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/library/library-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[79].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/library/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[80].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/literary-news/literary-news-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[81].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/media/media-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[82].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/media/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[83].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/menus/menus-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[84].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/menus/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[85].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/[id]/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[86].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/[id]/preview/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[87].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[88].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[89].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-operation-rpc.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[90].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-operation-rpc.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[91].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-operation-server.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[92].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-pending-operation-load.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[93].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page-save-result.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[94].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[95].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/pages/pages-concurrency-catalog.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[96].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/publication/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[97].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/publication/publication-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[98].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/seo/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[99].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/seo/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[100].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/seo/seo-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[101].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/seo/seo-redirect-actions.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[102].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/settings/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[103].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/settings/settings-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[104].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/site-copy/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[105].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/site-copy/site-copy-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[106].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/site-studio/fonts/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[107].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/site-studio/releases/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[108].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/site-studio/tokens/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[109].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[110].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[111].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-batch.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[112].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-candidate-receipt-binding.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[113].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-item-retry-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[114].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-item-retry-admission.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[115].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-item-retry.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[116].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-machine-draft-callers.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[117].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-scan.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[118].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/article-terminal.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[119].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/backfill-cursor.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[120].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[121].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/page.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[122].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[123].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/self-test-action.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[124].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/(dashboard)/translations/translations-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[125].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/error.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[126].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/global-error.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[127].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/globals.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[128].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/layout.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[129].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/not-found.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[130].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/base.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[131].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/editors.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[132].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/forms.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[133].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/layout.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[134].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/responsive.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[135].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/site-studio.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[136].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/tables.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[137].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/tokens.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[138].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/app/styles/utilities.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[139].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/AdminCommandPalette.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[140].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/AdminShell.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[141].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/AdminStatusState.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[142].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleCopyPicker.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[143].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleEditor.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[144].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleEditorContext.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[145].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleEditorLoader.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[146].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleLoadState.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[147].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleTextTone.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[148].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleTypographyScope.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[149].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ArticleWorkspaceTools.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[150].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/ConfirmSubmitButton.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[151].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorLinkDialog.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[152].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorMediaDialog.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[153].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorialBlock.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[154].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorialBlockView.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[155].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorialImage.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[156].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorialImageView.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[157].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/EditorialPreview.module.css",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[158].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/LiteraryNewsDeliveryOverview.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[159].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/PageEditor.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[160].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/PageEditorLoader.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[161].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/SafeBrowserStorageBootstrap.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[162].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/SiteStudioLoadState.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[163].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/TranslationSubmitButton.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[164].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/ArticleEditorShell.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[165].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/ArticleEditorShell.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[166].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/ArticleEditorToolbar.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[167].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/CoverEditor.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[168].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/EditorCore.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[169].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/GalleryEditor.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[170].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/PublishPanel.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[171].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/SeoPanel.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[172].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/SourceBibliographyEditor.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[173].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/TranslationPanel.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[174].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/ValidationChecklist.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[175].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/article-authored-json-preservation.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[176].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/article-english-human-confirmation.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[177].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/article-source-preservation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[178].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/article-source-provenance-preservation.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[179].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/article-editor/useArticleValidation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[180].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/editor-media-parity.source.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[181].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/editor/EditorRecoveryPanel.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[182].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/editor/RecoveryController.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[183].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/editorMediaEvents.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[184].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/error-boundary-privacy.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[185].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/rich-editor/EditorImageDialog.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[186].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/rich-editor/RichEditorClientExtensions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[187].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/rich-editor/RichEditorExtensions.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[188].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/rich-editor/RichEditorToolbar.tsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[189].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/rich-editor/rich-editor-schema-parity.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[190].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/useEditorDialogFocus.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[191].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/components/useEditorMediaWorkflow.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[192].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-control-flow.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[193].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-mfa-policy.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[194].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-module-registry.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[195].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-path.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[196].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-read-access.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[197].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-read-access.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[198].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-read-result.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[199].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-read-result.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[200].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/admin-routes.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[201].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/analytics-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[202].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-composer.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[203].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-content-presentation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[204].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-copy-search.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[205].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-english-human-confirmation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[206].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-item-retry-candidate.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[207].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-item-retry-journal.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[208].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-leading-illustration.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[209].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[210].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-machine-english-draft.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[211].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-operation-intent.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[212].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-operation-intent.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[213].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-operation-result.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[214].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-operation-result.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[215].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-ordinary-private-draft.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[216].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-pending-operation.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[217].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-pending-operation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[218].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-private-candidate-recovery.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[219].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-private-english-receipt.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[220].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-private-retry-draft.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[221].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-private-retry.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[222].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-producer-recovery.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[223].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-publication-intent.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[224].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-recovery-snapshot.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[225].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-recovery-snapshot.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[226].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-recovery.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[227].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-recovery.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[228].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-retry-revision.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[229].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-retry-source.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[230].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-route.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[231].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-save-result.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[232].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-save-result.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[233].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translation-item-retry.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[234].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translation-machine-ownership.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[235].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translation-scan-completion.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[236].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translation-scan.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[237].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translation-scan.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[238].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-translations.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[239].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/article-workspace-utils.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[240].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auth-service-error.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[241].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auth.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[242].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-article-core.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[243].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-article-premium.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[244].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-article.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[245].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-country-profile.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[246].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[247].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-literary-work.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[248].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-published-article-premium.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[249].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-site-copy.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[250].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/auto-translate-writer-biography.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[251].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/client-image-upload.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[252].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-autosave-storage.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[253].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-autosave-storage.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[254].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-autosave.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[255].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-image-naming.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[256].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-image-upload.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[257].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-link.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[258].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-recovery-owner.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[259].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-recovery-owner.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[260].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editor-template-html.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[261].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editorial-database-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[262].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editorial-gallery.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[263].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editorial-media-content.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[264].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/editorial-media-identity.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[265].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/env.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[266].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/format-count.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[267].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/format.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[268].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/homepage-banner-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[269].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/homepage-banner-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[270].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/library-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[271].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/media-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[272].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/navigation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[273].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/operator-data-error.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[274].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/operator-data-error.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[275].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-catalog-query.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[276].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[277].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-operation-intent.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[278].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-operation-intent.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[279].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-operation-result.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[280].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-operation-result.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[281].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-operation.test-fixture.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[282].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-pending-operation.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[283].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-pending-operation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[284].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-recovery-snapshot.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[285].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-recovery-snapshot.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[286].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/page-save-result.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[287].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/premium-english-translation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[288].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/premium-translation-budget.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[289].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/premium-translation-runtime.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[290].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/public-href.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[291].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/public-link-boundary.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[292].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/publication-request.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[293].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/publication.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[294].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/published-article-english-state.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[295].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/seo-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[296].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/short-hyphens.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[297].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/short-hyphens.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[298].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/site-copy-storage.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[299].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/site-studio-load-errors.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[300].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/site-studio-load-validation.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[301].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/slug.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[302].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/supabase/server.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[303].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-backfill-cursor.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[304].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-errors.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[305].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-operation-budget.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[306].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-operation-budget.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[307].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-provider-call-journal.integration.test.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[308].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-run-record.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[309].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/translation-runtime-gate.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[310].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/trusted-server-url.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[311].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/lib/writer-biography-edit.ts",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[312].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/article-form-browser.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[313].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/article-operation-browser.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[314].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/fixtures/article-form-entry.jsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[315].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/fixtures/article-operation-entry.jsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[316].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/fixtures/page-form-entry.jsx",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[317].file",
+      "path": ".tmp/m07-ordinary-admission-before/apps/admin/tests/browser/page-form-browser.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[12].file",
+      "path": ".tmp/m07-ordinary-admission-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.capture.file",
+      "path": ".tmp/m07-ordinary-admission-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[318].file",
+      "path": ".tmp/m07-ordinary-admission-before/package-lock.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[319].file",
+      "path": ".tmp/m07-ordinary-admission-before/package.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[320].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[321].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[322].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[323].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[324].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[325].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[326].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[327].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[328].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[329].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[330].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[331].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[332].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[333].file",
+      "path": ".tmp/m07-ordinary-admission-before/public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[334].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/database/admin-editor-operations-contract.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[335].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/database/admin-editor-operations-migration.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[336].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/database/build-production-migration-plan.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[337].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/database/fixtures/admin-editor-operations-contract.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[338].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/database/fixtures/seo-redirect-scalar-contract.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[339].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/literary-news-media.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[340].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/literary-news-social.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[341].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/literary-news-social.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[342].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/literary-news-telegram-footer.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[343].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/literary-news-text-fallback.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[344].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/lib/short-hyphens.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[345].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/normalize-short-hyphens.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[346].file",
+      "path": ".tmp/m07-ordinary-admission-before/scripts/workers/literary-news-delivery-worker.test.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[347].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261007235851_admin_article_translation_scan_completion.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[348].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261007_admin_editor_operations.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[349].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[350].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261008021735_admin_article_translation_item_retry_journal.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[351].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261008031428_admin_article_translation_item_retry_candidate.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[352].file",
+      "path": ".tmp/m07-ordinary-admission-before/supabase/migrations/20261008043647_admin_article_machine_english_draft.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[5].file",
+      "path": ".tmp/m07-ordinary-admission-compat-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.compatibility.capture.file",
+      "path": ".tmp/m07-ordinary-admission-compat-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.compatCapture.file",
+      "path": ".tmp/m07-ordinary-admission-compat-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sourceBaseline.file",
+      "path": ".tmp/m07-ordinary-admission-compat-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[0].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/scripts/database/admin-editor-operations-contract.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[9].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/scripts/database/fixtures/admin-editor-operations-contract.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[12].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261007235851_admin_article_translation_scan_completion.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[8].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261007_admin_editor_operations.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[13].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[14].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261008021735_admin_article_translation_item_retry_journal.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[15].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261008031428_admin_article_translation_item_retry_candidate.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[16].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261008043647_admin_article_machine_english_draft.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sources[17].proof",
+      "path": ".tmp/m07-ordinary-admission-compat-before/raw/supabase/migrations/20261008082627_admin_article_translation_sync_admission.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[1].file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.compatibilityDiagnosticChecker.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[0].file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.compatibilityGraphDiagnostic.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.compatibilityDiagnostic.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[11].file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.currentSourceBinding.manifest.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.final.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v1-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[18].file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.command.args[0]",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.script.file",
+      "path": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[7].file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-corrected-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.priorCorrectedChecker.file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-corrected-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[6].file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-corrected-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.priorCorrectedProtection.file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-corrected-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[17].file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.priorChecker.file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[16].file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.priorDiagnostic.file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.preservedDiagnostic.file",
+      "path": ".tmp/m07-ordinary-admission-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[3].file",
+      "path": ".tmp/m07-ordinary-admission-sql-compat-v2-current-manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.nativeManifest.file",
+      "path": ".tmp/m07-ordinary-admission-sql-compat-v2-current-manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[4].file",
+      "path": ".tmp/m07-ordinary-admission-sql-compat-v2-current.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.nativeSql.file",
+      "path": ".tmp/m07-ordinary-admission-sql-compat-v2-current.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[8].file",
+      "path": ".tmp/m07-private-compat-pair-v2-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.privatePair.file",
+      "path": ".tmp/m07-private-compat-pair-v2-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[9].file",
+      "path": ".tmp/m07-scan-terminal-same117-proof-v1.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.scanTerminalPair.file",
+      "path": ".tmp/m07-scan-terminal-same117-proof-v1.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[13].file",
+      "path": ".tmp/m07-source-provenance-final-v1-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.before.file",
+      "path": ".tmp/m07-source-provenance-final-v1-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[15].file",
+      "path": ".tmp/m07-source-provenance-final-v2-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.historicalChecker.file",
+      "path": ".tmp/m07-source-provenance-final-v2-protected-check.mjs",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.artifacts[14].file",
+      "path": ".tmp/m07-source-provenance-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.historicalProtection.file",
+      "path": ".tmp/m07-source-provenance-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.inputs.historicalProtection.file",
+      "path": ".tmp/m07-source-provenance-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t01-before-supplement-v1/manifest.json",
+      "field": "$.parent.file",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-before/raw/apps/admin/lib/country-profile-manual-english.integration.test.ts",
+      "field": "literal-line-11",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "field": "$.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "field": "$.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-fs-guard/1136.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-fs-guard/3504.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-same16-final-v1-proof.json",
+      "field": "$.current.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-same16-final-v1-proof.json",
+      "field": "$.current.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "field": "$.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "field": "$.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-fs-guard/18156.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-fs-guard/20708.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-same17-final-v1-proof.json",
+      "field": "$.current.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-country-same17-final-v1-proof.json",
+      "field": "$.current.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-portable-before-guard-v1.cjs",
+      "field": "literal-line-27",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "field": "$.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "field": "$.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-fs-guard/21020.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-fs-guard/6884.json",
+      "field": "$.events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-same34-final-v1-proof.json",
+      "field": "$.current.portability.reports[0].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-review-same34-final-v1-proof.json",
+      "field": "$.current.portability.reports[1].events[1].path",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-country-current-private-v1-fixture.ts",
+      "field": "literal-line-11",
+      "path": ".tmp/m07-t01-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-protected-check-v1.mjs",
+      "field": "literal-line-91",
+      "path": ".tmp/m07-t04-final-v2-protected-proof.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-book-before-07ed-v4-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-book-before-07ed-v4-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-book-portable-current-v6-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-country-before-07ed-v3-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-country-before-07ed-v3-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-country-portable-current-v5-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-review-current-review-beforefix-v4-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-review-current-review-beforefix-v4-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-review-portable-current-v6-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-book-current-private-v1-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-t01-book-current-private-v1-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-country-current-private-v1-command.json",
+      "field": "$.ownedChildTemp",
+      "path": ".tmp/m07-t05-t01-country-current-private-v1-child-temp",
+      "classification": "directory-or-local-tool-root"
+    },
+    {
+      "from": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-provider-self-test-binding.integration.test.ts",
+      "field": "literal-line-20",
+      "path": ".tmp/m07-t06-app-before-shared/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t05-before/raw/apps/admin/lib/translation-provider-self-test-binding.integration.test.ts",
+      "field": "literal-line-15",
+      "path": ".tmp/m07-t06-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-final-v2-protected-v3-proof.json",
+      "field": "$.baseline.file",
+      "path": ".tmp/m07-t06-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.currentSourceBaseline.file",
+      "path": ".tmp/m07-t06-before/manifest.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-final-v2-protected-v3-proof.json",
+      "field": "$.sourceManifest.file",
+      "path": ".tmp/m07-t06-final-v2-source-fingerprint.json",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-t06-sql-binding-pair-v4-current-manifest.json",
+      "field": "$.sql.file",
+      "path": ".tmp/m07-t06-sql-binding-pair-v4-current.sql",
+      "classification": "historical-only-reference"
+    },
+    {
+      "from": ".tmp/m07-ordinary-admission-compat-final-v2-corrected-protected-proof.json",
+      "field": "$.command.executable",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-book-before-07ed-v4-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-country-before-07ed-v3-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-review-current-review-beforefix-v4-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-book-current-private-v1-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-country-current-private-v1-command.json",
+      "field": "$.command[0]",
+      "path": "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[15].command",
+      "path": "C:/WINDOWS/System32/subst.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[1].command",
+      "path": "C:/WINDOWS/System32/subst.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[6].command",
+      "path": "P:/pgsql/bin/initdb.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[13].command",
+      "path": "P:/pgsql/bin/pg_ctl.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[7].command",
+      "path": "P:/pgsql/bin/pg_ctl.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[8].command",
+      "path": "P:/pgsql/bin/pg_ctl.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[3].command",
+      "path": "P:/pgsql/bin/postgres.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[10].command",
+      "path": "P:/pgsql/bin/psql.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[11].command",
+      "path": "P:/pgsql/bin/psql.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m02-postgres-tools/native-cases/m07-t05-sql-native-v6-20261008162156617-21308-4d16d715/result.json",
+      "field": "$.commands[9].command",
+      "path": "P:/pgsql/bin/psql.exe",
+      "classification": "machine-local-tool-or-binary"
+    },
+    {
+      "from": ".tmp/m07-t05-book-before-07ed-v4-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-book-portable-current-v6-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-country-before-07ed-v3-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-country-portable-current-v5-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-review-current-review-beforefix-v4-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-review-portable-current-v6-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-book-current-private-v1-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    },
+    {
+      "from": ".tmp/m07-t05-t01-country-current-private-v1-command.json",
+      "field": "$.command[1]",
+      "path": "node_modules/vitest/vitest.mjs",
+      "classification": "external-dependency-installation"
+    }
+  ],
+  "classificationCounts": {
+    "directory-or-local-tool-root": 12,
+    "external-dependency-installation": 166,
+    "historical-only-reference": 422,
+    "machine-local-tool-or-binary": 19
+  },
+  "missingTerminalArtifacts": [
+    {
+      "path": ".tmp/m07-t05-final-v1-tests-command.json",
+      "status": "INTERRUPTED_NOT_VERIFIED_NO_TERMINAL_RECEIPT"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-gates-command.json",
+      "status": "INTERRUPTED_NOT_VERIFIED_NO_TERMINAL_RECEIPT"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-tests.json",
+      "status": "INTERRUPTED_NOT_VERIFIED_NO_TERMINAL_RECEIPT"
+    },
+    {
+      "path": ".tmp/m07-t05-final-v1-aggregate-proof.json",
+      "status": "INTERRUPTED_NOT_VERIFIED_NO_TERMINAL_RECEIPT"
+    }
+  ],
+  "optionalAbsentArtifact": ".tmp/m07-t05-fixture-preservation-v1-proof.json",
+  "checkoutProvidedSources": "Current maintained apps/scripts/migrations are supplied by the saved Git checkout; captured/executed copies remain in .tmp.",
+  "checkoutAssetsReconstructed": [
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "bytes": 9604,
+      "sha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "bytes": 9644,
+      "sha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "bytes": 9604,
+      "sha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "bytes": 15696,
+      "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
+      "source": "public/fonts/editorial/source-sans-3-latin-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "bytes": 15668,
+      "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+      "source": "public/fonts/editorial/source-sans-3-latin-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "bytes": 15596,
+      "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+      "source": "public/fonts/editorial/source-sans-3-latin-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "bytes": 13748,
+      "sha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "bytes": 14172,
+      "sha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "bytes": 14776,
+      "sha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "bytes": 14864,
+      "sha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "bytes": 20092,
+      "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-italic.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "bytes": 20088,
+      "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "bytes": 21532,
+      "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+      "source": "public/fonts/editorial/source-serif-4-latin-600-normal.woff2"
+    },
+    {
+      "path": ".tmp/m07-t05-before/raw/public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "bytes": 21716,
+      "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+      "source": "public/fonts/editorial/source-serif-4-latin-700-normal.woff2"
+    }
+  ]
+}

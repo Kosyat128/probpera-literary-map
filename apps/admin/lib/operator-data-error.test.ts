@@ -59,8 +59,11 @@ describe("Phase 10 safe operator database errors", () => {
     const homepage = readFileSync(
       path.join(dashboard, "homepage/actions.ts"), "utf8"
     );
+    const pageEditor = readFileSync(path.join(root, "apps/admin/components/PageEditor.tsx"), "utf8");
     expect(pages).toContain("Страницу уже изменили в другой вкладке");
-    expect(pages).toContain("JSON редактора повреждён");
+    // Inline saves return a safe category; guidance now stays in the mounted form.
+    expect(pages).toContain('return finish({ outcome: "rejected", reason: "content" })');
+    expect(pageEditor).toContain('content: "Проверьте содержимое страницы перед сохранением."');
     expect(homepage).toContain("Блок уже изменён в другой вкладке");
     expect(homepage).toContain("bookArchiveBackgroundMediaIssue");
   });

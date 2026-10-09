@@ -71,6 +71,7 @@ export default function ArticleEditorShell({
   action,
   fullscreen,
   onSubmit,
+  onReset,
   children,
 }: {
   hidden: ArticleEditorShellHiddenModel;
@@ -78,6 +79,7 @@ export default function ArticleEditorShell({
   action: ComponentProps<"form">["action"];
   fullscreen: boolean;
   onSubmit: FormEventHandler<HTMLFormElement>;
+  onReset?: FormEventHandler<HTMLFormElement>;
   children: ReactNode;
 }) {
   return (
@@ -85,6 +87,7 @@ export default function ArticleEditorShell({
       ref={formRef}
       action={action}
       onSubmit={onSubmit}
+      onReset={onReset}
       className={
         fullscreen
           ? "article-form article-workspace-enabled is-fullscreen"
