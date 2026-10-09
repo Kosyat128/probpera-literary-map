@@ -41,7 +41,7 @@ jobs:
       - run: npm ci
       - name: Test recovery, grounding, fairness and publication boundaries
         run: |
-          npx vitest run scripts/lib/literary-news-social.test.mjs scripts/lib/literary-news-social-transport-core.test.mjs scripts/lib/literary-news-pacing-integration.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/verify-native-news-workers.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-day-status-policy.test.mjs scripts/workers/literary-news-delivery-budget.test.mjs scripts/check-literary-news-operations.test.mjs
+          npx vitest run scripts/lib/literary-news-social.test.mjs scripts/lib/literary-news-social-transport-core.test.mjs scripts/lib/literary-news-pacing-integration.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/lib/literary-news-json.test.mjs scripts/workers/literary-news-public-reader.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/verify-native-news-workers.test.mjs scripts/lib/literary-news-preparation-slots.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-recovery.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-day-status-policy.test.mjs scripts/workers/literary-news-delivery-budget.test.mjs scripts/check-literary-news-operations.test.mjs
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/news-preparation-upgrade
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/news-delivery-upgrade
       - name: Upgrade only already enabled workers and preserve credentials and state
@@ -58,7 +58,7 @@ jobs:
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
           node --input-type=module <<'NODE'
           import {verifyNativeNewsWorkers} from './scripts/verify-native-news-workers.mjs';
-          await verifyNativeNewsWorkers({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN,expected:'enabled',allowPreviousPreparationSchedule:true});
+          await verifyNativeNewsWorkers({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN,expected:'enabled',allowPreviousPreparationSchedule:true,allowMissingPreparationRecoveryBinding:true});
           NODE
           node node_modules/wrangler/bin/wrangler.js deploy --keep-vars --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
           node node_modules/wrangler/bin/wrangler.js deploy --keep-vars --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true --var NEWS_AUTOMATION_WRITER:native

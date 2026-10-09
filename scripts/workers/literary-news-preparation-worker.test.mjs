@@ -1,8 +1,9 @@
 import {describe,expect,it,vi} from 'vitest';
 import worker,{checkedPreparationSourceUrl,createPreparationSourceFetch,createPreparationBindingAi,
   boundedNativeNewsCandidates,reusableNativeNewsRecord,runNativeNewsPreparation,PREPARATION_REPORT_KEY,
-  observeNativeNewsPreparation,PREPARATION_ATTEMPT_KEY} from './literary-news-preparation-worker.mjs';
+  observeNativeNewsPreparation,observeSlottedNativeNewsPreparation,DailyNewsPreparationCoordinator,PREPARATION_ATTEMPT_KEY} from './literary-news-preparation-worker.mjs';
 import {NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
+import {NEWS_PREPARATION_SLOT_KEY} from '../lib/literary-news-preparation-slots.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
 import {emptyDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
 import {DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_OWNER_KEY,
@@ -35,6 +36,109 @@ function quotaProbeExecution(){return vi.fn(async({previous,ai,current:at})=>{
 });}
 
 describe('Private native daily preparation and bounded public source adapter',()=>{
+  it('shares a slot across primary and recovery without rewriting the completed attempt',async()=>{
+    const f=fixture(),run=vi.fn(async()=>({status:'supply_degraded',publicationConfirmed:true}));
+    const first=await observeSlottedNativeNewsPreparation(f.env,f.storage,{now:()=>new Date('2026-09-30T12:17:00Z'),run});
+    expect(first.report.publicationConfirmed).toBe(true);const attempt=f.values.get(PREPARATION_ATTEMPT_KEY);
+    const second=await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:25:00Z'),run});
+    expect(second).toEqual({httpStatus:200,report:{status:'skipped',reason:'daily_preparation_slot_already_claimed',publicationConfirmed:false,deliveryConfirmed:false}});
+    expect(run).toHaveBeenCalledTimes(1);expect(f.values.get(PREPARATION_ATTEMPT_KEY)).toBe(attempt);expect(f.env.NEWS_STATE.put).toHaveBeenCalledTimes(1);
+  });
+  it('parallel primary and recovery requests run preparation and record health only once',async()=>{
+    const f=fixture(),run=vi.fn(async()=>({status:'target_met',publicationConfirmed:true}));
+    const results=await Promise.all(['primary','recovery','primary','recovery'].map(trigger=>observeSlottedNativeNewsPreparation(f.env,f.storage,
+      {trigger,now:()=>new Date('2026-09-30T12:25:00Z'),run})));
+    expect(results.filter(result=>result.report.status==='skipped')).toHaveLength(3);
+    expect(run).toHaveBeenCalledTimes(1);expect(f.env.NEWS_STATE.put).toHaveBeenCalledTimes(1);
+  });
+  it('a failed actual attempt consumes only its slot and allows preparation in the next slot',async()=>{
+    const f=fixture(),run=vi.fn().mockRejectedValueOnce(Error('ai_http_429')).mockResolvedValue({status:'supply_degraded',publicationConfirmed:true});
+    const first=await observeSlottedNativeNewsPreparation(f.env,f.storage,{now:()=>new Date('2026-09-30T12:17:00Z'),run});
+    expect(first).toMatchObject({httpStatus:503,report:{reason:'ai_http_429'}});const attempt=f.values.get(PREPARATION_ATTEMPT_KEY);
+    const backup=await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:25:00Z'),run});
+    expect(backup.report.status).toBe('skipped');expect(f.values.get(PREPARATION_ATTEMPT_KEY)).toBe(attempt);
+    expect((await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:55:00Z'),run})).report.publicationConfirmed).toBe(true);
+    expect(run).toHaveBeenCalledTimes(2);expect(f.env.NEWS_STATE.put).toHaveBeenCalledTimes(2);
+  });
+  it('early recovery does not consume a slot, invoke preparation or manufacture an attempt',async()=>{
+    const f=fixture(),run=vi.fn(),transaction=vi.spyOn(f.storage,'transaction');
+    const result=await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:24:59.999Z'),run});
+    expect(result.report).toMatchObject({status:'skipped',reason:'daily_preparation_recovery_not_due',publicationConfirmed:false});
+    expect(transaction).not.toHaveBeenCalled();expect(run).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it.each(['primary','recovery'])('disabled %s requests do not consume slots or touch storage',async(trigger)=>{
+    const f=fixture(),run=vi.fn();f.env.NEWS_AUTOMATION_ENABLED='false';const transaction=vi.spyOn(f.storage,'transaction');
+    expect((await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger,now:()=>current,run})).report.status).toBe('disabled');
+    expect(transaction).not.toHaveBeenCalled();expect(run).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it('outside the Moscow admission window consumes no slot and writes no attempt',async()=>{
+    const f=fixture(),run=vi.fn(),transaction=vi.spyOn(f.storage,'transaction');
+    expect((await observeSlottedNativeNewsPreparation(f.env,f.storage,{now:()=>new Date('2027-09-30T21:17:00Z'),run})).report.status).toBe('outside_admission_window');
+    expect(transaction).not.toHaveBeenCalled();expect(run).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it('a slot storage failure remains a safe failure without recording a fictitious attempt',async()=>{
+    const f=fixture(),run=vi.fn();vi.spyOn(f.storage,'transaction').mockRejectedValue(Error('https://secret.example/token'));
+    expect(await observeSlottedNativeNewsPreparation(f.env,f.storage,{now:()=>current,run})).toEqual({httpStatus:503,
+      report:{status:'degraded',reason:'daily_preparation_unavailable',publicationConfirmed:false,deliveryConfirmed:false}});
+    expect(run).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it('corrupt durable slot state fails closed without preparation, a new claim or a heartbeat',async()=>{
+    const f=fixture(),run=vi.fn();await f.storage.transaction(tx=>tx.put(NEWS_PREPARATION_SLOT_KEY,{schemaVersion:99}));
+    expect(await observeSlottedNativeNewsPreparation(f.env,f.storage,{now:()=>current,run})).toEqual({httpStatus:503,
+      report:{status:'degraded',reason:'daily_preparation_slot_invalid',publicationConfirmed:false,deliveryConfirmed:false}});
+    expect(await f.storage.get(NEWS_PREPARATION_SLOT_KEY)).toEqual({schemaVersion:99});
+    expect(run).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it('the private coordinator accepts both routes and keeps public requests and other routes closed',async()=>{
+    const f=fixture();f.env.NEWS_AUTOMATION_ENABLED='false';const coordinator=new DailyNewsPreparationCoordinator({storage:f.storage},f.env);
+    for(const path of ['/run','/recover']){
+      const request=new Request('https://coordinator.internal'+path,{method:'POST'});
+      expect(await (await coordinator.fetch(request)).json()).toMatchObject({status:'disabled'});
+      expect((await worker.fetch(request)).status).toBe(404);
+      expect((await coordinator.fetch(new Request('https://coordinator.internal'+path))).status).toBe(404);
+    }
+    expect((await coordinator.fetch(new Request('https://coordinator.internal/other',{method:'POST'}))).status).toBe(404);
+    expect(await f.storage.get(NEWS_PREPARATION_SLOT_KEY)).toBeUndefined();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
+  it('the private routes use actual UTC time and ignore supplied timestamps before sharing a failed slot',async()=>{
+    const f=fixture();f.env.NEWS_AUTOMATION_BOOTSTRAP='false';
+    const coordinator=new DailyNewsPreparationCoordinator({storage:f.storage},f.env);
+    const request=path=>new Request('https://coordinator.internal'+path+'?current=2026-09-30T12:25:00Z',
+      {method:'POST',body:JSON.stringify({current:'2026-09-30T12:25:00Z',scheduledTime:Date.parse('2026-09-30T12:25:00Z')})});
+    vi.useFakeTimers();
+    try{
+      vi.setSystemTime(new Date('2026-09-30T12:24:59.999Z'));
+      expect(await (await coordinator.fetch(request('/recover'))).json()).toMatchObject({status:'skipped',reason:'daily_preparation_recovery_not_due'});
+      expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+      vi.setSystemTime(new Date('2026-09-30T12:25:00Z'));
+      const failed=await coordinator.fetch(request('/recover'));expect(failed.status).toBe(503);
+      expect(await failed.json()).toMatchObject({reason:'daily_native_owner_not_authorized'});
+      const attempt=f.values.get(PREPARATION_ATTEMPT_KEY);
+      vi.setSystemTime(new Date('2026-09-30T12:26:00Z'));
+      expect(await (await coordinator.fetch(request('/run'))).json()).toMatchObject({status:'skipped',reason:'daily_preparation_slot_already_claimed'});
+      expect(f.values.get(PREPARATION_ATTEMPT_KEY)).toBe(attempt);expect(f.env.NEWS_STATE.put).toHaveBeenCalledTimes(1);
+    }finally{vi.useRealTimers();}
+  });
+  it('recovery preserves a current quota stop and its shared inference budget without sources or AI',async()=>{
+    const f=fixture();await f.run();
+    const saved=JSON.stringify({checkedAt:'2026-09-30T08:00:00Z',stoppedReason:'ai_quota_exceeded'});
+    f.values.set(PREPARATION_REPORT_KEY,saved);const ledger=f.values.get(DAILY_NEWS_LEDGER_KEY),fence=await f.storage.get(NEWS_PREPARATION_FENCE_KEY);
+    f.collect.mockClear();f.env.NEWS_STATE.put.mockClear();
+    const run=(env,storage,{now})=>runNativeNewsPreparation(env,storage,{now,collect:f.collect,waitImpl:async()=>{}});
+    const result=await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:25:00Z'),run});
+    expect(result.report.status).toBe('provider_quota_cooldown');expect(result.report.publicationConfirmed).toBe(false);
+    expect(f.values.get(PREPARATION_REPORT_KEY)).toBe(saved);expect(f.values.get(DAILY_NEWS_LEDGER_KEY)).toBe(ledger);
+    expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toEqual(fence);
+    expect(f.collect).not.toHaveBeenCalled();expect(f.env.AI.run).not.toHaveBeenCalled();
+    expect(f.env.NEWS_STATE.put.mock.calls.map(([key])=>key)).toEqual([PREPARATION_ATTEMPT_KEY]);
+  });
+  it('a recovered attempt retains native owner checks and does not call sources or AI for another owner',async()=>{
+    const f=fixture();f.values.set(DAILY_NEWS_OWNER_KEY,JSON.stringify({schemaVersion:1,owner:'github',nativeEnabled:false,drained:false}));
+    const run=vi.fn((env,storage,{now})=>runNativeNewsPreparation(env,storage,{now,collect:f.collect,waitImpl:async()=>{}}));
+    const result=await observeSlottedNativeNewsPreparation(f.env,f.storage,{trigger:'recovery',now:()=>new Date('2026-09-30T12:25:00Z'),run});
+    expect(result.httpStatus).toBe(503);expect(result.report.publicationConfirmed).toBe(false);expect(f.collect).not.toHaveBeenCalled();expect(f.env.AI.run).not.toHaveBeenCalled();
+    expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toBeUndefined();expect(await f.storage.get(NEWS_PREPARATION_SLOT_KEY)).toBeDefined();
+  });
   it('records successful and cooldown attempts without replacing the publication checkpoint',async()=>{
     const f=fixture(),old=JSON.stringify({checkedAt:'2026-09-29T00:17:00Z',stoppedReason:'ai_quota_exceeded'});
     f.values.set(PREPARATION_REPORT_KEY,old);

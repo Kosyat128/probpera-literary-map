@@ -1,5 +1,8 @@
 import {describe,expect,it,vi} from 'vitest';
-import worker,{LiteraryNewsPublicReader,handlePublicNewsRequest,handleNewsRequest} from './literary-news-worker.mjs';
+import {build} from 'esbuild';
+import {fileURLToPath} from 'node:url';
+import {Miniflare,convertV4MiniflareOptions,Log,LogLevel} from 'miniflare';
+import worker,{LiteraryNewsPublicReader,handlePublicNewsRequest,handleNewsRequest,PUBLIC_NEWS_STREAM_LEASE_MS} from './literary-news-worker.mjs';
 import {NEWS_SOURCE_STATE_KEY,NEWS_HELD_QUEUE_KEY,pendingNewsSourceState} from '../lib/literary-news-state.mjs';
 import {NOBEL_PROFILE_KEY} from '../lib/literary-news-nobel-profile.mjs';
 import {DAILY_NEWS_PROFILE_KEY} from '../lib/literary-news-daily-profile.mjs';
@@ -81,6 +84,78 @@ describe('Public read-only news projection Durable Object boundary',()=>{
     await responses[0].body.cancel();await Promise.all(responses.slice(1).map(response=>response.json()));
     expect(f.reader.pending).toBe(0);expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(3);
   });
+  it('releases an aborted request even when its response body reader remains locked',async()=>{
+    let now=new Date('2026-09-30T12:00:00Z');const f=fixture({now:()=>now}),abort=new AbortController();
+    const response=await f.reader.fetch(new Request(url+'?contract=2&timeZone=UTC',{signal:abort.signal}));
+    const body=response.body.getReader();expect((await body.read()).done).toBe(false);expect(f.reader.pending).toBe(1);
+    abort.abort();expect(f.reader.pending).toBe(0);
+    await expect(body.read()).rejects.toThrow();body.releaseLock();
+    now=new Date(now.getTime()+30000);
+    const next=await f.reader.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'));
+    expect(next.status).toBe(200);await verifyPublishedNewsSnapshot(await next.json());
+  });
+  it('reclaims an abandoned response after a bounded lease without waiting for client cancellation',async()=>{
+    let now=new Date('2026-09-30T12:00:00Z');const f=fixture({now:()=>now});
+    const abandoned=await f.reader.fetch(new Request(url+'?contract=2&timeZone=UTC'));
+    const body=abandoned.body.getReader();await body.read();expect(f.reader.pending).toBe(1);
+    now=new Date(now.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS);
+    const next=await f.reader.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'));
+    expect(next.status).toBe(200);await verifyPublishedNewsSnapshot(await next.json());
+    await expect(body.read()).rejects.toThrow();body.releaseLock();expect(f.reader.pending).toBe(0);
+    expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(6);
+  });
+  it('expires stalled bodies by timer and clears the timer and request listener exactly once',async()=>{
+    vi.useFakeTimers();
+    try{
+      const abort=new AbortController(),request=new Request(url+'?contract=2',{signal:abort.signal});
+      const remove=vi.spyOn(request.signal,'removeEventListener'),f=fixture({now:()=>new Date('2026-09-30T12:00:00Z')});
+      const response=await f.reader.fetch(request),body=response.body.getReader();await body.read();
+      expect(vi.getTimerCount()).toBe(1);expect(f.reader.pending).toBe(1);
+      await vi.advanceTimersByTimeAsync(PUBLIC_NEWS_STREAM_LEASE_MS);
+      expect(f.reader.pending).toBe(0);expect(f.reader.readers.size).toBe(0);expect(vi.getTimerCount()).toBe(0);
+      expect(remove).toHaveBeenCalledExactlyOnceWith('abort',expect.any(Function));
+      await expect(body.read()).rejects.toThrow();body.releaseLock();
+      abort.abort();expect(f.reader.pending).toBe(0);expect(remove).toHaveBeenCalledOnce();
+    }finally{vi.useRealTimers();}
+  });
+  it.each(['abort','expiry'])('releases all eight abandoned readers on %s before replacing their shared graph',async mode=>{
+    let now=new Date('2026-09-30T12:00:00Z');const f=fixture({now:()=>now});
+    const aborts=Array.from({length:8},()=>new AbortController());
+    const responses=await Promise.all(aborts.map(abort=>f.reader.fetch(new Request(url+'?contract=2&timeZone=UTC',{signal:abort.signal}))));
+    const bodies=responses.map(response=>response.body.getReader());await Promise.all(bodies.map(body=>body.read()));
+    expect(f.reader.pending).toBe(8);expect(f.reader.readers.size).toBe(8);expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(3);
+    if(mode==='abort')for(const abort of aborts)abort.abort();
+    now=new Date(now.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS);
+    const next=await f.reader.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'));
+    expect(next.status).toBe(200);await verifyPublishedNewsSnapshot(await next.json());
+    for(const body of bodies){await expect(body.read()).rejects.toThrow();body.releaseLock();}
+    for(const abort of aborts)abort.abort();
+    expect(f.reader.pending).toBe(0);expect(f.reader.readers.size).toBe(0);expect(f.reader.activeKey).toBeNull();
+    expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(6);
+  });
+  it('rejects a request already aborted without any load or retained lease',async()=>{
+    const f=fixture(),abort=new AbortController();abort.abort();
+    const response=await f.reader.fetch(new Request(url+'?contract=2',{signal:abort.signal}));
+    expect(response.status).toBe(503);expect(f.reader.pending).toBe(0);expect(f.reader.readers.size).toBe(0);
+    expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
+  });
+  it.each(['abort','expiry'])('retains the single-load memory fence while a %s releases its waiting request',async mode=>{
+    let now=new Date('2026-09-30T12:00:00Z'),open;
+    const gate=new Promise(resolve=>{open=resolve;});
+    const handler=vi.fn(async(request,env,current)=>{await gate;return handleNewsRequest(request,env,current);});
+    const f=fixture({handler,now:()=>now}),abort=new AbortController();
+    const first=f.reader.fetch(new Request(url+'?contract=2&timeZone=UTC',{signal:abort.signal}));
+    await Promise.resolve();expect(handler).toHaveBeenCalledOnce();
+    if(mode==='abort')abort.abort();
+    now=new Date(now.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS);
+    const rejected=await f.reader.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'));
+    expect(rejected.status).toBe(503);expect(handler).toHaveBeenCalledOnce();expect(f.reader.loading).not.toBeNull();
+    expect(f.reader.pending).toBe(0);expect(f.reader.readers.size).toBe(0);
+    open();expect((await first).status).toBe(503);expect(f.reader.loading).toBeNull();
+    const next=await f.reader.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'));
+    expect(next.status).toBe(200);await verifyPublishedNewsSnapshot(await next.json());
+    expect(handler).toHaveBeenCalledTimes(2);expect(f.reader.pending).toBe(0);
+  });
   it('holds one shared snapshot for eight unfinished streams and rejects every different variant until they release',async()=>{
     let now=new Date('2026-09-30T12:00:00Z');const f=fixture({now:()=>now});
     const same=url+'?contract=2&timeZone=UTC';
@@ -154,4 +229,51 @@ describe('Public read-only news projection Durable Object boundary',()=>{
     expect(cancel).toHaveBeenCalledTimes(1);expect(offset).toBeLessThan(bytes.length/100);
     expect(feed.items.some(item=>Object.hasOwn(item,'junk'))).toBe(false);expect(f.reader.pending).toBe(0);
   });
+  it('recovers abandoned and aborted locked bodies inside a real Workers Durable Object',async()=>{
+    const bundled=await build({stdin:{contents:`
+      import {LiteraryNewsPublicReader,PUBLIC_NEWS_STREAM_LEASE_MS} from './literary-news-worker.mjs';
+      import {verifyPublishedNewsSnapshot} from '../lib/literary-news-publication.mjs';
+      const feedUrl='https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=';
+      export class ReaderHarness {
+        constructor(state){
+          this.current=new Date('2026-09-30T12:00:00Z');this.reads=0;
+          this.reader=new LiteraryNewsPublicReader(state,{NEWS_RELEASE_SHA:'a'.repeat(40),NEWS_STATE:{get:async()=>{this.reads++;return null;}}},
+            {now:()=>this.current});
+        }
+        async stoppedBody(){
+          let rejected=false;try{await this.body.read();}catch{rejected=true;}
+          this.body.releaseLock();this.body=null;return rejected;
+        }
+        async fetch(request){
+          const path=new URL(request.url).pathname;
+          if(path==='/start'){
+            this.abort=new AbortController();
+            const response=await this.reader.fetch(new Request(feedUrl+'UTC',{signal:this.abort.signal}));
+            this.body=response.body.getReader();const first=await this.body.read();
+            return Response.json({status:response.status,pending:this.reader.pending,chunkBytes:first.value.length});
+          }
+          if(path==='/abort'){
+            this.abort.abort();return Response.json({rejected:await this.stoppedBody(),pending:this.reader.pending,leases:this.reader.readers.size});
+          }
+          this.current=new Date(this.current.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS);
+          const response=await this.reader.fetch(new Request(feedUrl+'Europe%2FMoscow'));
+          const feed=await response.json();await verifyPublishedNewsSnapshot(feed);
+          return Response.json({status:response.status,rejected:await this.stoppedBody(),pending:this.reader.pending,
+            leases:this.reader.readers.size,complete:feed.snapshot.complete,timeZone:feed.timeZone,reads:this.reads});
+        }
+      }
+      export default {fetch(request,env){return env.READER.get(env.READER.idFromName('public-reader-fixture')).fetch(request);}};
+    `,resolveDir:fileURLToPath(new URL('.',import.meta.url))},bundle:true,write:false,format:'esm',platform:'browser',
+      target:'es2022',external:['node:*'],logLevel:'silent'});
+    const runtime=new Miniflare(convertV4MiniflareOptions({name:'public-reader-fixture',modules:true,script:bundled.outputFiles[0].text,
+      compatibilityDate:'2026-08-18',compatibilityFlags:['nodejs_compat'],cf:false,log:new Log(LogLevel.NONE),logRequests:false,
+      durableObjects:{READER:{className:'ReaderHarness',useSQLite:true}},outboundService:async()=>{throw Error('unexpected_network_request');}}));
+    try{
+      const call=async path=>(await runtime.dispatchFetch('https://fixture.internal'+path)).json();
+      const first=await call('/start');expect(first).toMatchObject({status:200,pending:1});expect(first.chunkBytes).toBeGreaterThan(0);
+      expect(await call('/abort')).toEqual({rejected:true,pending:0,leases:0});
+      expect(await call('/start')).toMatchObject({status:200,pending:1});
+      expect(await call('/expire')).toEqual({status:200,rejected:true,pending:0,leases:0,complete:true,timeZone:'Europe/Moscow',reads:6});
+    }finally{await runtime.dispose();}
+  },15000);
 });

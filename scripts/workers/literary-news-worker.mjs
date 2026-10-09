@@ -9,6 +9,10 @@ import {newsJsonStream} from '../lib/literary-news-json.mjs';
 import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
 
 const FEED_PATH = "/api/literary-news/feed";
+// The delivery feed client times out after 20 seconds. Bound each retained
+// waiter/body to three such windows even if disconnect never calls cancel;
+// an in-flight load keeps its separate memory fence until it settles.
+export const PUBLIC_NEWS_STREAM_LEASE_MS = 60000;
 // The canonical site reads this public feed from news.probpera.ru without
 // credentials. A fixed origin also covers diagnostics with no Origin header;
 // it never reflects an arbitrary caller or requires a Vary: Origin cache key.
@@ -122,7 +126,7 @@ export async function handleNewsRequest(request, env, current = new Date()) {
 export class LiteraryNewsPublicReader {
   constructor(_state, env, {now=()=>new Date(),handler=handleNewsRequest}={}) {
     this.env=env;this.now=now;this.handler=handler;this.pending=0;this.activeKey=null;
-    this.cached=null;this.loading=null;
+    this.cached=null;this.loading=null;this.readers=new Set();
   }
   async load(key,request,current){
     if(this.cached?.key===key)return this.cached.value;
@@ -156,14 +160,24 @@ export class LiteraryNewsPublicReader {
     if(url.pathname!==FEED_PATH)return Response.json({error:'not_found'},{status:404,headers});
     if(request.method!=='GET')return Response.json({error:'method_not_allowed'},{status:405,headers:{...headers,Allow:'GET'}});
     const current=this.now(),zone=resolveNewsTimeZone(url.searchParams.get('timeZone'));
+    // Timers are best-effort across request lifecycles. Reap before admission as
+    // well, so an abandoned body cannot permanently pin the previous bucket.
+    for(const lease of this.readers)if(lease.expiresAt<=current.getTime())lease.cancel();
+    if(request.signal.aborted)return Response.json({error:'snapshot_unavailable'},{status:503,headers});
     const key=[headers['X-Probpera-News-Release'],zone,url.searchParams.get('contract')==='2'?2:1,Math.floor(current.getTime()/30000)].join('|');
     if(this.pending>=8||this.pending>0&&this.activeKey!==key)return Response.json({error:'snapshot_unavailable'},
       {status:503,headers:{...headers,'Retry-After':'1'}});
     this.pending++;this.activeKey=key;
-    let released=false;const release=()=>{if(!released){released=true;this.pending--;if(this.pending===0)this.activeKey=null;}};
+    const abort=new AbortController();let released=false,timer;
+    const release=()=>{if(!released){released=true;clearTimeout(timer);request.signal.removeEventListener('abort',lease.cancel);
+      this.readers.delete(lease);this.pending--;if(this.pending===0)this.activeKey=null;}};
+    const lease={expiresAt:current.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS,cancel:()=>{abort.abort();release();}};
+    this.readers.add(lease);request.signal.addEventListener('abort',lease.cancel,{once:true});
+    timer=setTimeout(lease.cancel,PUBLIC_NEWS_STREAM_LEASE_MS);timer?.unref?.();
     try{
       const value=await this.load(key,request,current);
-      return new Response(newsJsonStream(value,{onComplete:release}),{headers});
+      if(abort.signal.aborted)throw Error('public_snapshot_aborted');
+      return new Response(newsJsonStream(value,{onComplete:release,signal:abort.signal}),{headers});
     }catch{release();return Response.json({error:'snapshot_unavailable'},{status:503,headers});}
   }
 }

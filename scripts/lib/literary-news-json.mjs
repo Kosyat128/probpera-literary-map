@@ -84,13 +84,25 @@ export function* newsJsonChunks(value){
 }
 export function newsJsonByteSize(value){let bytes=0;for(const chunk of newsJsonChunks(value))bytes+=Buffer.byteLength(chunk,'utf8');return bytes;}
 export async function newsJsonDigest(value){const hash=createHash('sha256');for(const chunk of newsJsonChunks(value))hash.update(chunk,'utf8');return hash.digest('hex');}
-export function newsJsonStream(value,{onComplete=()=>{}}={}){
-  const chunks=newsJsonChunks(value),encoder=new TextEncoder();let finished=false;
-  let completed=false;const complete=()=>{if(!completed){completed=true;onComplete();}};
-  return new ReadableStream({pull(controller){
+export function newsJsonStream(value,{onComplete=()=>{},signal}={}){
+  let chunks=newsJsonChunks(value),activeController=null;const encoder=new TextEncoder();
+  // The generator alone owns the graph while streaming. Its return() releases
+  // traversal frames; completion also drops this iterator and controller.
+  value=null;
+  let completed=false;
+  const complete=()=>{if(!completed){completed=true;signal?.removeEventListener('abort',abort);
+    chunks=null;activeController=null;onComplete();}};
+  const stop=error=>{if(completed)return;try{chunks.return();}
+    finally{try{activeController.error(error);}finally{complete();}}};
+  const abort=()=>stop(Error('news_json_stream_aborted'));
+  return new ReadableStream({start(controller){
+    activeController=controller;
+    if(signal?.aborted)abort();else signal?.addEventListener('abort',abort,{once:true});
+  },pull(controller){
+    if(completed)return;
     // Coalesce small tokens while never retaining the full response string.
-    let text='';try{while(text.length<16384){const next=chunks.next();if(next.done){finished=true;break;}text+=next.value;}
+    let text='',finished=false;try{while(text.length<16384){const next=chunks.next();if(next.done){finished=true;break;}text+=next.value;}
       if(text)controller.enqueue(encoder.encode(text));if(finished){controller.close();complete();}}
-    catch(error){chunks.return();controller.error(error);complete();}
-  },cancel(){chunks.return();complete();}});
+    catch(error){stop(error);}
+  },cancel(){if(completed)return;try{chunks.return();}finally{complete();}}});
 }

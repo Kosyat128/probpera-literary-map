@@ -34,8 +34,8 @@ Only exact source publication metadata within seven days is eligible. Up to five
 eligible candidates can enter the shared two-pass grounded RU/EN engine per run.
 Both provider calls use the existing Cloudflare AI binding and a 45-second abort
 signal. Durable budgets reserve calls before inference: 40 draft requests and 80
-provider calls per Moscow day. Admission stops at 15 distinct accepted stories per
-day. The shared admission window is 2026-09-29 inclusive to 2027-09-30 exclusive.
+provider calls per Moscow day. Admission stops at 10 distinct accepted stories per
+day from October 9; earlier ledger days retain their original limit of 15. The shared admission window is 2026-09-29 inclusive to 2027-09-30 exclusive.
 Provider quota/rate errors stop further inference and retain prior checkpoints.
 
 Source OG/Twitter thumbnails remain display-only. They do not authorize social
@@ -46,8 +46,8 @@ private KV bytes; this preparer does not write Supabase Storage or send Telegram
 
 ## Storage recovery
 
-The Durable Object stores only a seven-minute lease, the expected ledger SHA, a
-pending ledger SHA, and a pending public-profile SHA. The annual content stays in
+The Durable Object stores a seven-minute lease, the expected ledger SHA, a
+pending ledger SHA, a pending public-profile SHA, and the latest claimed half-hour slot. The annual content stays in
 the fixed private KV keys. Each ledger write stages its exact digest transactionally,
 writes KV, then confirms the digest. Publication stages the validated public profile
 digest before KV PUT as well, so a late PUT remains fenced after lease expiry.
@@ -150,9 +150,13 @@ Official references: [Durable Objects limits](https://developers.cloudflare.com/
 
 Preparation checks sources at minutes 17 and 47 each hour. The owner's October 9 setting is 8-10 accepted stories daily; existing inference ceilings remain 40 draft requests and 80 total provider calls. Historical days with up to 15 accepted stories remain readable without rewriting their hashes. A bounded persistent least-recently-fetched history rotates article details even when sources repeatedly expose undated or rejected links; a rejected URL rests for six hours. Exact source publication dates and two independent grounded RU/EN passes remain mandatory.
 
+During the delivery window, the separate five-minute delivery scheduler also checks for a missed preparation run after completing capture and dispatch. At actual UTC minutes 25-29 and 55-59 it calls `/recover` through a private cross-worker binding to the existing `daily-news-preparation` Durable Object. Both the primary `/run` and recovery route atomically claim the same persistent half-hour slot before preparation. A duplicate, early recovery, disabled worker or out-of-window request does not start inference or refresh the attempt checkpoint. Failed attempts retain their slot and can retry in the next half-hour; the existing lease and digest fences still protect every write. Recovery failures are isolated from delivery, both public Worker handlers still return 404, and no AI credential is added to the delivery worker. Deploying delivery first remains compatible with an older preparation worker, which returns 404 for the optional recovery request.
+
 Telegram uses a fixed minimum interval of 105 minutes during 08:00-23:00 Moscow, with an 8-10 daily target and at most 10 reserved slots. The five-minute scheduler may add a few minutes; starting at 08:00 normally allows nine posts before closing. Existing reservations and acknowledgements are retained and cannot shorten the new interval. Temporary read failures while checking Telegram permissions defer the same job and retry fresh checks instead of permanently pausing the channel. Confirmed permission loss still pauses. An uncertain write is never automatically resent.
 
-The separate native-attempt checkpoint records completed preparation attempts, including quota cooldown and failures, without changing the accepted-content checkpoint. The read-only monitor runs every two hours, retries only known transient reads and distinguishes unreadable state from an intentionally disabled destination. After noon it also flags an observed delivery shortfall against the 105-minute cadence, allowing one interval of grace and requiring fresh successful reads; an empty due page alone is never treated as proof that the future queue is empty.
+The public feed reader releases its response slot when a request is aborted, its body completes or is cancelled, or its 60-second response lease expires. Expiry closes the old JSON iterator before another snapshot can replace it; an in-progress profile load still keeps its separate memory fence until it finishes. This prevents an abandoned client response from indefinitely blocking the next time-zone or cache-period request while retaining complete profile and snapshot validation.
+
+The separate native-attempt checkpoint records completed preparation attempts, including quota cooldown and failures, without changing the accepted-content checkpoint. The read-only monitor runs at minutes 27 and 57 each hour and flags an enabled preparation worker whose latest attempt is over 90 minutes old. It retries only known transient reads and distinguishes unreadable state from an intentionally disabled destination. The separate six-hour publication freshness checks remain unchanged. After noon it also flags an observed delivery shortfall against the 105-minute cadence, allowing one interval of grace and requiring fresh successful reads; an empty due page alone is never treated as proof that the future queue is empty.
 
 For compatible code fixes on active workers, first deploy the public news API on the exact reviewed main SHA, then use **Upgrade active literary news workers without disabling delivery** on that same SHA. The upgrade requires the public reader to report the new release before preparation can publish additional publication-date provenance. It preserves enabled flags, credentials, source state, accepted content, locks and Telegram receipts; tests and bundle checks happen before deployment. A failed precheck leaves current workers running. Use the original activation workflow only for initial activation or an explicit mode change.
 

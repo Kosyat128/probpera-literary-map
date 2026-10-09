@@ -164,4 +164,81 @@ describe('native delivery under the actual Workers fetch implementation',()=>{
       expect(await poll('2026-10-04T08:05:00Z')).toMatchObject({status:'admissions_captured',captures:2});
     }finally{await runtime.dispose();}
   },15000);
+  it('shares one durable preparation slot between primary and private cross-worker recovery calls',async()=>{
+    const result=await build({stdin:{contents:`
+      import worker, { scheduleNativeNewsDelivery } from './literary-news-delivery-worker.mjs';
+      export class DeliveryFixture {
+        async fetch(request){return Response.json({status:new URL(request.url).pathname==='/capture'?'capture_not_due':'daily_target_deficit',deliveredThisRun:0});}
+      }
+      export default { async fetch(request,env){
+        if(new URL(request.url).pathname!=='/fixture')return worker.fetch(request,env);
+        const logs=[];
+        const current=new Date(new URL(request.url).searchParams.get('now'));
+        const report=await scheduleNativeNewsDelivery({noRetry(){}},env,{now:()=>current,log:value=>logs.push(JSON.parse(value))});
+        return Response.json({report,logs});
+      }};
+    `,resolveDir:fileURLToPath(new URL('.',import.meta.url))},bundle:true,write:false,format:'esm',platform:'browser',target:'es2022',external:['node:*'],logLevel:'silent'});
+    const preparation=await build({stdin:{contents:`
+      import { observeSlottedNativeNewsPreparation } from './literary-news-preparation-worker.mjs';
+      export class PreparationFixture {
+        constructor(state,env){this.storage=state.storage;this.env=env;}
+        async fetch(request){
+          const url=new URL(request.url);
+          if(url.pathname==='/fixture-clock'){
+            await this.storage.put('fixture-now',url.searchParams.get('now'));return new Response(null,{status:204});
+          }
+          if(['/run','/recover'].includes(url.pathname)&&request.method==='POST'){
+            const current=new Date(await this.storage.get('fixture-now'));
+            const env={...this.env,NEWS_STATE:{put:async()=>{
+              await this.storage.put('attempts',(await this.storage.get('attempts')||0)+1);
+            }}};
+            const result=await observeSlottedNativeNewsPreparation(env,this.storage,{
+              trigger:url.pathname==='/recover'?'recovery':'primary',now:()=>current,
+              run:async()=>{
+                await this.storage.put('runs',(await this.storage.get('runs')||0)+1);
+                return {status:'supply_degraded',publicationConfirmed:true,deliveryConfirmed:false};
+              },
+            });
+            return Response.json(result.report,{status:result.httpStatus});
+          }
+          return Response.json({runs:await this.storage.get('runs')||0,attempts:await this.storage.get('attempts')||0});
+        }
+      }
+      export default {fetch(){return new Response(null,{status:404});}};
+    `,resolveDir:fileURLToPath(new URL('.',import.meta.url))},bundle:true,write:false,format:'esm',platform:'browser',target:'es2022',external:['node:*'],logLevel:'silent'});
+    const options={modules:true,compatibilityDate:'2026-08-18',compatibilityFlags:['nodejs_compat'],
+      outboundService:async()=>{throw Error('unexpected_external_request');}};
+    const runtime=new Miniflare(convertV4MiniflareOptions({cf:false,log:new Log(LogLevel.NONE),logRequests:false,workers:[
+      {...options,name:'delivery-fixture',script:result.outputFiles[0].text,bindings:{NEWS_DELIVERY_ENABLED:'true'},durableObjects:{
+        DELIVERY_COORDINATOR:{className:'DeliveryFixture',useSQLite:true},
+        NEWS_PREPARATION_RECOVERY:{className:'PreparationFixture',scriptName:'preparation-fixture',useSQLite:true},
+      }},
+      {...options,name:'preparation-fixture',script:preparation.outputFiles[0].text,bindings:{NEWS_AUTOMATION_ENABLED:'true'},
+        durableObjects:{PREPARATION_COORDINATOR:{className:'PreparationFixture',useSQLite:true}}},
+    ]}));
+    try{
+      const namespace=await runtime.getDurableObjectNamespace('PREPARATION_COORDINATOR','preparation-fixture');
+      const stub=namespace.get(namespace.idFromName('daily-news-preparation'));
+      const clock=async time=>stub.fetch('https://coordinator.internal/fixture-clock?now='+encodeURIComponent(time),{method:'POST'});
+      const primary=async()=>(await stub.fetch('https://coordinator.internal/run',{method:'POST'})).json();
+      const count=async()=>(await stub.fetch('https://coordinator.internal/count')).json();
+      const recovery=async time=>(await runtime.dispatchFetch('https://fixture.internal/fixture?now='+encodeURIComponent(time))).json();
+      await clock('2026-10-09T13:25:00Z');
+      const [first,backup]=await Promise.all([primary(),recovery('2026-10-09T13:25:00Z')]);
+      expect(backup.report.status).toBe('daily_target_deficit');
+      expect(backup.logs.slice(0,2).map(row=>row.status)).toEqual(['capture_not_due','daily_target_deficit']);
+      expect([first.status,backup.logs[2].status].sort()).toEqual(['skipped','supply_degraded']);
+      expect(await count()).toEqual({runs:1,attempts:1});
+      await clock('2026-10-09T13:55:00Z');
+      const next=await recovery('2026-10-09T13:55:00Z');
+      expect(next.logs[2]).toMatchObject({component:'literary-news-preparation-recovery',status:'supply_degraded',publicationConfirmed:true});
+      expect((await primary()).status).toBe('skipped');expect(await count()).toEqual({runs:2,attempts:2});
+      await clock('2026-10-09T14:17:00Z');
+      expect((await primary()).status).toBe('supply_degraded');
+      await clock('2026-10-09T14:25:00Z');
+      expect((await recovery('2026-10-09T14:25:00Z')).logs[2].status).toBe('skipped');
+      expect(await count()).toEqual({runs:3,attempts:3});
+      expect((await runtime.dispatchFetch('https://fixture.internal/recover',{method:'POST'})).status).toBe(404);
+    }finally{await runtime.dispose();}
+  },15000);
 });

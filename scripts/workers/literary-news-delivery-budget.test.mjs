@@ -2,7 +2,7 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 import { mkdir, writeFile } from 'node:fs/promises';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
 import { runDeliveryTick, runDeliveryCaptureTick, rotatingNativeNewsCaptureIds,
-  createDeliveryRequestBudget } from './literary-news-delivery-worker.mjs';
+  createDeliveryRequestBudget, scheduleNativeNewsDelivery } from './literary-news-delivery-worker.mjs';
 import { NATIVE_NEWS_ADMISSION_FEED_URL, fetchNativeNewsAdmissionFeed } from '../lib/literary-news-native-admissions.mjs';
 import { buildPublishedNewsFeed } from '../lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from '../lib/literary-news-state.mjs';
@@ -141,6 +141,25 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
 }
 
 describe('native capture and dispatch under the real SDK external-request budget',()=>{
+  it('finishes a 50-request SDK dispatch before a separate private preparation recovery',async()=>{
+    const f=await sdkFixture({creates:1,photo:true,priorPacing:true,extraFeedReads:4,claimConflicts:4,receiptConflicts:4});
+    const phases=[],reports=[],noRetry=vi.fn();
+    const delivery={idFromName:name=>name,get:()=>({fetch:async url=>{
+      const phase=new URL(url).pathname.slice(1);phases.push(phase);
+      const report=await f.run(phase);reports.push(report);return Response.json(report);
+    }})};
+    const recovery={idFromName:name=>name,get:()=>({fetch:async()=>{
+      phases.push('recover');expect(reports).toHaveLength(2);
+      expect(reports[1]).toMatchObject({externalRequests:50,deliveredThisRun:1,heartbeatRecorded:true});
+      expect(f.writes).toEqual(['sendPhoto']);return Response.json({status:'skipped',publicationConfirmed:false});
+    }})};
+    const report=await scheduleNativeNewsDelivery({noRetry},{NEWS_DELIVERY_ENABLED:'true',
+      DELIVERY_COORDINATOR:delivery,NEWS_PREPARATION_RECOVERY:recovery},{now:()=>new Date('2026-10-09T13:25:00Z'),log:vi.fn()});
+    expect(phases).toEqual(['capture','dispatch','recover']);expect(report).toEqual(reports[1]);
+    for(const phase of ['capture','dispatch'])expect(f.requests.filter(row=>row.invocation===phase).length).toBeLessThanOrEqual(50);
+    expect(f.requests).toHaveLength(reports[0].externalRequests+reports[1].externalRequests);
+    expect(f.writes).toEqual(['sendPhoto']);expect(noRetry).not.toHaveBeenCalled();
+  });
   it.each(['capture','dispatch'])('persists the paused %s heartbeat with three real SDK requests and zero provider requests',async phase=>{
     const control={mode:'on',paused:true,pauseReason:'release_operator_pause',historyReconciled:true};
     const f=await sdkFixture({control,creates:1}),before=structuredClone(f.rows.get(controlKey)),report=await f.run(phase);
