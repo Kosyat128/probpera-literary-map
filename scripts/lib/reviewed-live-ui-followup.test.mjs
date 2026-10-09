@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { liveUiFollowupAttestation as packet, liveUiFollowupSha256 as sha,
   projectReviewedLiveUiFollowup as project } from './reviewed-live-ui-followup.mjs';
 
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedPostgresTestImage(path, readFileSync(path, 'utf8'));
 const historical = path => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, 'show',
   `${packet.baselineCommitSha}:${path}`], {encoding: 'utf8', maxBuffer: 20 * 1024 * 1024}).replace(/\r\n?/gu, '\n');
 
