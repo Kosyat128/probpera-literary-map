@@ -259,6 +259,10 @@ export async function checkedDailyCandidate(detail, current, sources = LITERARY_
   const source = approvedDailySource(detail?.sourceId, url, sources);
   if (!source || !approvedDailySource(detail.sourceId, e?.url, sources)
     || !approvedDailySource(detail.sourceId, detail?.source?.url, sources)) fail("daily_source_not_approved");
+  // Legacy discovery-only profiles may lack a reviewed topic policy. No draft
+  // can satisfy admission for them, so reject before reserving an AI request.
+  if (!Array.isArray(source.topics) || !source.topics.length || source.topics.some(topic => !CATEGORIES.has(topic)))
+    fail("daily_source_topic_policy_invalid");
   if (!e || e.httpStatus !== 200 || !hash(e.responseSha256) || !validTimestamp(e.accessedAt)
     || Date.parse(e.accessedAt) > current.getTime() || current.getTime() - Date.parse(e.accessedAt) > DAY
     || typeof e.text !== "string" || e.text.trim().length < 120 || e.text.length > 14000

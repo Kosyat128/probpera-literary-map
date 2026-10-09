@@ -3,6 +3,7 @@ import { checkedDailyCandidate, createDailyNewsStorageClient, createDailyWorkers
   mergeDailyLedgers, runDailyNewsAutomation, syncDailyNewsAutomation, validateDailyNodeOwner } from "./literary-news-daily-automation.mjs";
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_WINDOW, DAILY_NEWS_MODELS,
   dailyNewsDigest, dailyRecordHashPayload, makeDailyApprovedPayload, validateDailyApprovedPayload } from "./literary-news-daily-profile.mjs";
+import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 
 const current = new Date("2026-09-29T12:00:00Z"), accountId = "a".repeat(32), apiToken = "isolated-token";
 const sources = [{ id: "fixture", name: "Literary Fixture", url: "https://source.example/news/", language: "en",
@@ -39,6 +40,28 @@ function options(details, ai = aiFixture(), extra = {}) {
 }
 
 describe("bounded annual grounded daily news automation (no live provider or publication)", () => {
+  it('holds the real discovery-only Hay Festival profile before spending AI quota without changing its frozen policy', async () => {
+    const source = LITERARY_NEWS_SOURCES.find(row => row.id === 'hay-festival-queretaro'), article = detail(0);
+    expect(source).toBeDefined(); expect(Object.isFrozen(source)).toBe(true); expect(source.topics).toBeUndefined();
+    const before = JSON.stringify(source), url = source.exampleArticleUrls[0], request = vi.fn();
+    article.sourceId = source.id; article.source = { name: source.name, language: source.language, url };
+    article.evidence = { ...article.evidence, url, canonical: url };
+    // Dates and literal article evidence are valid; the missing topic policy is
+    // the sole deterministic hold, independent of this programme's live HTML.
+    const result = await runDailyNewsAutomation({ intake: { details: [article] }, current, ai: { request } });
+    expect(request).not.toHaveBeenCalled(); expect(result.profile.records).toEqual([]);
+    expect(result.report.held).toEqual([{ sourceId: source.id, reason: 'daily_source_topic_policy_invalid' }]);
+    expect(result.report).toMatchObject({ aiCalls: 0, reservedAiCallsToday: 0, draftRequestsToday: 0, stoppedReason: null });
+    expect(result.state.reviewCache).toEqual([]); expect(JSON.stringify(source)).toBe(before);
+  });
+  it.each([undefined, null, [], 'releases', ['not-a-literary-category'], ['releases', 'unknown']])(
+    'rejects a missing or malformed source topic policy %j before inference', async topics => {
+      const ai = aiFixture(), result = await runDailyNewsAutomation(options([detail(0)], ai,
+        { sources: [{ ...sources[0], topics }] }));
+      expect(ai.request).not.toHaveBeenCalled();
+      expect(result.report.held).toEqual([{ sourceId: 'fixture', reason: 'daily_source_topic_policy_invalid' }]);
+      expect(result.report).toMatchObject({ aiCalls: 0, reservedAiCallsToday: 0, draftRequestsToday: 0 });
+    });
   it("admits at most 10 distinct records per Moscow day, replays with no inference, and preserves the entire prior day", async () => {
     const ai = aiFixture(), result = await runDailyNewsAutomation(options(Array.from({ length: 20 }, (_, n) => detail(n)), ai));
     expect(result.profile.records).toHaveLength(10); expect(ai.requests).toHaveLength(20);
