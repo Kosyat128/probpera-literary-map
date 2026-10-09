@@ -52,7 +52,7 @@ describe("durable browser withdrawal history", () => {
     const target=storage(JSON.stringify(rows(1)));target.setItem.mockImplementation(()=>{throw new Error("SecurityError");});
     expect(beginNewsWithdrawalUpdate(target)).toBe(false);
     const panel=readFileSync("src/components/LiteraryNewsPanel.tsx","utf8");
-    expect(panel.indexOf("if (!beginNewsWithdrawalUpdate())")).toBeLessThan(panel.indexOf("const response = await fetch(url"));
+    expect(panel.indexOf("if (!beginNewsWithdrawalUpdate())")).toBeLessThan(panel.indexOf("const response = await fetchNewsFeedWithTransientRetry(url"));
     expect(panel).toContain('if (!withdrawalHistory.current.reliable) throw new Error("Withdrawal history is incomplete")');
   });
   it("fails closed after row or byte capacity rather than silently forgetting part of the history", () => {

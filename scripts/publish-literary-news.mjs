@@ -14,6 +14,7 @@ import { resolveNewsMediaBatch } from "./lib/literary-news-media-discovery.mjs";
 import { newsDeliveryPacingKey } from "./lib/literary-news-pacing.mjs";
 import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 import { fallbackUnsentNewsPhoto,newsNewCreateIsFresh } from './lib/literary-news-text-fallback.mjs';
+import { fetchNewsFeedWithTransientRetry } from './lib/literary-news-feed-request.mjs';
 
 const endpoint = "https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=Europe%2FMoscow";
 export function selectDueNewsMediaJobs(rows,controls,now=new Date(),pacing=new Map()) {
@@ -55,10 +56,15 @@ export async function deferUnreadyNewsPhotos({store,rows,due,photoNewsIds,readyA
   }
   return outcomes;
 }
-export async function fetchPublishedAgenda(fetchImpl = fetch) {
-  const response = await fetchImpl(endpoint, { redirect: "error", cache: "no-store", signal: AbortSignal.timeout(20000),
-    headers: { Accept: "application/json" } });
-  if (!response.ok || !response.body) throw new Error("public_snapshot_unavailable");
+export async function fetchPublishedAgenda(fetchImpl = fetch, { waitImpl } = {}) {
+  const response = await fetchNewsFeedWithTransientRetry(endpoint, { method: "GET", redirect: "error", cache: "no-store", signal: AbortSignal.timeout(20000),
+    headers: { Accept: "application/json" } }, { fetchImpl, waitImpl });
+  if (response.url !== endpoint || response.redirected) {
+    await response.body?.cancel().catch(() => {}); throw new Error("public_snapshot_origin_invalid");
+  }
+  if (!response.ok || !response.body) {
+    await response.body?.cancel().catch(() => {}); throw new Error("public_snapshot_unavailable");
+  }
   const reader = response.body.getReader(); let bytes = 0; const chunks = [];
   try {
     while (true) {

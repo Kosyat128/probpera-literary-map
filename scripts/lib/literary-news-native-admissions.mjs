@@ -4,18 +4,22 @@ import { verifyPublishedNewsSnapshot } from './literary-news-publication.mjs';
 import { dailyNewsDay, dailyPublicationEpoch } from './literary-news-daily-profile.mjs';
 import { newsAnnouncementEligible } from './literary-news-reviewed.mjs';
 import { newsSemanticRevision } from './literary-news-social.mjs';
+import { fetchNewsFeedWithTransientRetry } from './literary-news-feed-request.mjs';
 
 export const NATIVE_NEWS_ADMISSION_FEED_URL = 'https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=Europe%2FMoscow';
 export const NATIVE_NEWS_ADMISSION_MAX_ITEMS = 24;
 const fail = code => { throw Error(code); };
 
 /** One fixed, complete public representation; its original proof is never replaced by a subset proof. */
-export async function fetchNativeNewsAdmissionFeed({ fetchImpl = fetch, current = new Date() } = {}) {
+export async function fetchNativeNewsAdmissionFeed({ fetchImpl = fetch, waitImpl, current = new Date() } = {}) {
   if (!Number.isFinite(current.getTime())) fail('delivery_public_feed_invalid');
   let response;
-  try { response = await fetchImpl(NATIVE_NEWS_ADMISSION_FEED_URL, { method: 'GET', redirect: 'error', cache: 'no-store',
-    signal: AbortSignal.timeout(20000), headers: { Accept: 'application/json' } }); }
-  catch { fail('delivery_public_feed_unavailable'); }
+  try { response = await fetchNewsFeedWithTransientRetry(NATIVE_NEWS_ADMISSION_FEED_URL, { method: 'GET', redirect: 'error', cache: 'no-store',
+    signal: AbortSignal.timeout(20000), headers: { Accept: 'application/json' } }, { fetchImpl, waitImpl }); }
+  catch (error) {
+    if (['delivery_request_budget_exhausted', 'runtime_quota_exceeded'].includes(error?.message)) throw error;
+    fail('delivery_public_feed_unavailable');
+  }
   if (response.url !== NATIVE_NEWS_ADMISSION_FEED_URL || response.redirected) {
     await response.body?.cancel().catch(() => {}); fail('delivery_public_feed_origin_invalid');
   }

@@ -44,7 +44,7 @@ describe("public literary news Worker", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("access-control-allow-origin")).toBe("https://probpera.ru");
     expect(response.headers.get("access-control-allow-credentials")).toBeNull();
-    expect(response.headers.get("access-control-expose-headers")).toBe("X-Probpera-News-Release");
+    expect(response.headers.get("access-control-expose-headers")).toBe("X-Probpera-News-Release, Retry-After");
     expect(response.headers.get("x-probpera-news-release")).toBe(SHA);
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(parseNewsFeed(await response.json()).mode).toBe("reviewed");
