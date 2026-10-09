@@ -36,4 +36,41 @@ describe('publication and operations reads recover only from explicit public rea
     await expect(fetchPublishedAgenda(fetchImpl, { waitImpl })).rejects.toThrow('public_snapshot_unavailable');
     expect(fetchImpl).toHaveBeenCalledTimes(3); expect(cancel).toHaveBeenCalledTimes(3); expect(waitImpl).toHaveBeenCalledTimes(2);
   });
+  it.each(['busy', 'queue_full', 'wait_expired', 'load_failed', 'aborted'])(
+    'keeps the unavailable error and only the fixed reader reason %s', async readerStatus => {
+    const privateMarker = 'PRIVATE_BODY_TOKEN_AND_URL_DO_NOT_OUTPUT', cancel = vi.fn();
+    const response = responseAt(new ReadableStream({ cancel }), { status: 503,
+      headers: { 'x-probpera-news-reader-status': readerStatus, 'x-private-detail': privateMarker } });
+    const error = await fetchPublishedAgenda(vi.fn(async () => response)).catch(error => error);
+    expect(error).toBeInstanceOf(Error); expect(error.message).toBe('public_snapshot_unavailable');
+    expect(error.publicHttpStatus).toBe(503); expect(error.publicReaderStatus).toBe(readerStatus);
+    expect(Object.keys(error).sort()).toEqual(['publicHttpStatus', 'publicReaderStatus']);
+    expect(JSON.stringify(error)).not.toContain(privateMarker); expect(cancel).toHaveBeenCalledOnce();
+  });
+  it('drops an injected private reader reason and never reads the error body', async () => {
+    const privateMarker = 'PRIVATE_BODY_TOKEN_AND_URL_DO_NOT_OUTPUT', cancel = vi.fn(), pull = vi.fn();
+    const response = responseAt(new ReadableStream({ cancel, pull }, { highWaterMark: 0 }), { status: 503,
+      headers: { 'x-probpera-news-reader-status': privateMarker } });
+    const error = await fetchPublishedAgenda(vi.fn(async () => response)).catch(error => error);
+    expect(error).toMatchObject({ message: 'public_snapshot_unavailable', publicHttpStatus: 503, publicReaderStatus: null });
+    expect(JSON.stringify(error)).not.toContain(privateMarker); expect(cancel).toHaveBeenCalledOnce();
+    expect(pull).not.toHaveBeenCalled();
+  });
+  it('reports the final failure after a retry without retaining the earlier busy response', async () => {
+    const fetchImpl = vi.fn()
+      .mockResolvedValueOnce(responseAt('private earlier response', { status: 503,
+        headers: { 'retry-after': '1', 'x-probpera-news-reader-status': 'busy' } }))
+      .mockResolvedValueOnce(responseAt('private final response', { status: 503,
+        headers: { 'x-probpera-news-reader-status': 'queue_full' } }));
+    const waitImpl = vi.fn(), error = await fetchPublishedAgenda(fetchImpl, { waitImpl }).catch(error => error);
+    expect(error).toMatchObject({ message: 'public_snapshot_unavailable', publicHttpStatus: 503, publicReaderStatus: 'queue_full' });
+    expect(fetchImpl).toHaveBeenCalledTimes(2); expect(waitImpl).toHaveBeenCalledOnce();
+    expect(JSON.stringify(error)).not.toContain('private');
+  });
+  it.each([400, 401, 403, 404, 408, 429, 500, 502, 504])('preserves safe HTTP %s failures', async status => {
+    const response = responseAt('private body', { status });
+    const error = await fetchPublishedAgenda(vi.fn(async () => response)).catch(error => error);
+    expect(error).toMatchObject({ message: 'public_snapshot_unavailable', publicHttpStatus: status, publicReaderStatus: null });
+    expect(JSON.stringify(error)).not.toContain('private body');
+  });
 });

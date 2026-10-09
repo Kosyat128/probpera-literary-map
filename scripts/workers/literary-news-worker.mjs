@@ -9,10 +9,16 @@ import {newsJsonStream} from '../lib/literary-news-json.mjs';
 import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
 
 const FEED_PATH = "/api/literary-news/feed";
-// The delivery feed client times out after 20 seconds. Bound each retained
-// waiter/body to three such windows even if disconnect never calls cancel;
-// an in-flight load keeps its separate memory fence until it settles.
-export const PUBLIC_NEWS_STREAM_LEASE_MS = 60000;
+// The total budget starts at arrival. Queueing leaves at least five seconds of
+// the delivery client's 20-second budget. Each active lease includes loading
+// and streaming, so slow loading cannot extend a stalled body's ownership.
+// Leave one second of timer headroom for readers queued behind an active cohort.
+// An in-flight private load keeps its separate memory fence until it settles.
+export const PUBLIC_NEWS_REQUEST_DEADLINE_MS = 20000;
+export const PUBLIC_NEWS_ADMISSION_WAIT_MS = 15000;
+export const PUBLIC_NEWS_STREAM_LEASE_MS = 14000;
+export const PUBLIC_NEWS_MAX_READERS = 8;
+export const PUBLIC_NEWS_MAX_WAITERS = 16;
 // The canonical site reads this public feed from news.probpera.ru without
 // credentials. A fixed origin also covers diagnostics with no Origin header;
 // it never reflects an arbitrary caller or requires a Vary: Origin cache key.
@@ -127,24 +133,116 @@ export async function handleNewsRequest(request, env, current = new Date()) {
 export class LiteraryNewsPublicReader {
   constructor(_state, env, {now=()=>new Date(),handler=handleNewsRequest}={}) {
     this.env=env;this.now=now;this.handler=handler;this.pending=0;this.activeKey=null;
-    this.cached=null;this.loading=null;this.readers=new Set();
+    this.cached=null;this.loading=null;this.readers=new Set();this.waiters=[];
+    this.drainScheduled=false;this.draining=false;
   }
-  async load(key,request,current){
-    if(this.cached?.key===key)return this.cached.value;
-    if(this.loading){
-      if(this.loading.key!==key)throw Error('public_snapshot_busy');
-      return this.loading.promise;
+  keyFor(request,current){
+    const url=new URL(request.url);
+    return [headersFor(this.env.NEWS_RELEASE_SHA)['X-Probpera-News-Release'],
+      resolveNewsTimeZone(url.searchParams.get('timeZone')),url.searchParams.get('contract')==='2'?2:1,
+      url.searchParams.get('view')==='archive'?'archive':'current',Math.floor(current.getTime()/30000)].join('|');
+  }
+  unavailable(code){
+    return Response.json({error:'snapshot_unavailable'},{status:503,headers:{...headersFor(this.env.NEWS_RELEASE_SHA),
+      'X-Probpera-News-Reader-Status':code,...(['busy','queue_full'].includes(code)?{'Retry-After':'1'}:{})}});
+  }
+  scheduleDrain(){
+    if(this.drainScheduled)return;
+    this.drainScheduled=true;
+    queueMicrotask(()=>{this.drainScheduled=false;this.drain();});
+  }
+  arm(lease,expiresAt){
+    clearTimeout(lease.timer);lease.expiresAt=expiresAt;
+    lease.timer=setTimeout(()=>lease.cancel('wait_expired'),Math.max(0,expiresAt-this.now().getTime()));
+    lease.timer?.unref?.();
+  }
+  armWaiter(lease){
+    clearTimeout(lease.timer);
+    const wakeAt=Math.min(lease.expiresAt,...Array.from(this.readers,reader=>reader.expiresAt));
+    lease.timer=setTimeout(()=>{
+      // A disconnected response can lose its request-context timer in Workers.
+      // This live waiter's own timer must reap expired active leases without
+      // requiring another HTTP request, before expiring its admission budget.
+      this.drain(new Date(Math.max(this.now().getTime(),wakeAt)));
+      if(!lease.released&&this.waiters.includes(lease))this.armWaiter(lease);
+    },Math.max(0,wakeAt-this.now().getTime()));
+    lease.timer?.unref?.();
+  }
+  release(lease,code){
+    if(lease.released)return;
+    lease.released=true;clearTimeout(lease.timer);
+    lease.request.signal.removeEventListener('abort',lease.onAbort);
+    if(this.readers.delete(lease)){
+      this.pending--;if(this.pending===0)this.activeKey=null;
+    }else{
+      const index=this.waiters.indexOf(lease);if(index!==-1)this.waiters.splice(index,1);
     }
+    // Aborting the stream also invokes onComplete. Mark released first so that
+    // both paths clean up exactly once, including when a body reader is locked.
+    if(code)lease.abort.abort();
+    if(lease.resolve){lease.resolve(this.unavailable(code||'aborted'));lease.resolve=null;}
+    this.scheduleDrain();
+  }
+  reap(current){
+    for(const lease of this.readers){
+      if(lease.expiresAt<=current.getTime())lease.cancel('wait_expired');
+    }
+    for(const lease of [...this.waiters])if(lease.expiresAt<current.getTime())lease.cancel('wait_expired');
+  }
+  canAdmit(key){
+    return this.pending<PUBLIC_NEWS_MAX_READERS&&(!this.pending||this.activeKey===key)
+      &&(!this.loading||this.loading.key===key);
+  }
+  drain(current=this.now()){
+    if(this.draining)return;
+    this.draining=true;
+    try{
+      this.reap(current);
+      while(this.waiters.length){
+        current=new Date(Math.max(current.getTime(),this.now().getTime()));
+        const lease=this.waiters[0],key=this.keyFor(lease.request,current);
+        if(lease.expiresAt<current.getTime()){lease.cancel('wait_expired');continue;}
+        // Only the head may join the active cohort. New arrivals of that same
+        // variant cannot keep it alive ahead of an older different-mode reader.
+        if(!this.canAdmit(key)){
+          if(lease.expiresAt<=current.getTime()){lease.cancel('wait_expired');continue;}
+          break;
+        }
+        this.waiters.shift();this.admit(lease,key,current);
+      }
+    }finally{this.draining=false;}
+  }
+  respond(lease,value){
+    if(lease.released||!lease.resolve)return;
+    const current=this.now();
+    if(lease.expiresAt<=current.getTime()){lease.cancel('wait_expired');return;}
+    try{
+      const response=new Response(newsJsonStream(value,{onComplete:()=>this.release(lease),signal:lease.abort.signal}),
+        {headers:lease.headers});
+      const resolve=lease.resolve;lease.resolve=null;resolve(response);
+    }catch{lease.cancel('load_failed');}
+  }
+  admit(lease,key,current){
+    lease.key=key;lease.headers=headersFor(this.env.NEWS_RELEASE_SHA);
+    this.readers.add(lease);this.pending++;this.activeKey=key;
+    this.arm(lease,Math.min(lease.deadline,current.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS));
+    if(this.cached?.key===key){this.respond(lease,this.cached.value);return;}
+    if(!this.loading)this.load(key,lease.request,current);
+  }
+  load(key,request,current){
     // Other variants are admitted only after all streams release the old graph.
     // Drop the cache before loading its replacement, including on a failed load.
     this.cached=null;
-    const loading=Promise.resolve().then(async()=>{
+    const loading={key,promise:null};this.loading=loading;
+    loading.promise=Promise.resolve().then(async()=>{
       let value;
       if(this.handler===handleNewsRequest)value=await buildNewsProjection(request,this.env,current);
       else {
         const response=await this.handler(request,this.env,current);
-        if(response.status!==200)throw Error('public_snapshot_unavailable');
-        value=await response.json();
+        try{
+          if(response.status!==200)throw Error('public_snapshot_unavailable');
+          value=await response.json();
+        }finally{await response.body?.cancel().catch(()=>{});}
       }
       const zone=resolveNewsTimeZone(new URL(request.url).searchParams.get('timeZone'));
       if(value?.mode!=='reviewed'||value.timeZone!==zone||!Array.isArray(value.items)||!Array.isArray(value.sources)
@@ -152,36 +250,42 @@ export class LiteraryNewsPublicReader {
       if(new URL(request.url).searchParams.get('contract')==='2')await verifyPublishedNewsSnapshot(value,
         {requireRelease:false,archive:new URL(request.url).searchParams.get('view')==='archive'});
       const freeze=object=>{if(object&&typeof object==='object'){for(const child of Object.values(object))freeze(child);Object.freeze(object);}return object;};
-      this.cached={key,value:freeze(value)};return this.cached.value;
+      return freeze(value);
     });
-    this.loading={key,promise:loading};
-    try{return await loading;}finally{if(this.loading?.promise===loading)this.loading=null;}
+    // One completion observer per load, not one await per cancelled request.
+    // A hung KV read therefore retains one bounded load and no departed waiters.
+    void loading.promise.then(value=>{
+      this.cached={key,value};this.loading=null;
+      for(const lease of this.readers)if(lease.key===key)this.respond(lease,value);
+      this.scheduleDrain();
+    },()=>{
+      this.loading=null;
+      for(const lease of this.readers)if(lease.key===key)lease.cancel('load_failed');
+      this.scheduleDrain();
+    });
   }
   async fetch(request) {
     const headers=headersFor(this.env.NEWS_RELEASE_SHA),url=new URL(request.url);
     if(url.pathname!==FEED_PATH)return Response.json({error:'not_found'},{status:404,headers});
     if(request.method!=='GET')return Response.json({error:'method_not_allowed'},{status:405,headers:{...headers,Allow:'GET'}});
-    const current=this.now(),zone=resolveNewsTimeZone(url.searchParams.get('timeZone'));
+    const current=this.now();
     // Timers are best-effort across request lifecycles. Reap before admission as
     // well, so an abandoned body cannot permanently pin the previous bucket.
-    for(const lease of this.readers)if(lease.expiresAt<=current.getTime())lease.cancel();
-    if(request.signal.aborted)return Response.json({error:'snapshot_unavailable'},{status:503,headers});
-    const key=[headers['X-Probpera-News-Release'],zone,url.searchParams.get('contract')==='2'?2:1,
-      url.searchParams.get('view')==='archive'?'archive':'current',Math.floor(current.getTime()/30000)].join('|');
-    if(this.pending>=8||this.pending>0&&this.activeKey!==key)return Response.json({error:'snapshot_unavailable'},
-      {status:503,headers:{...headers,'Retry-After':'1'}});
-    this.pending++;this.activeKey=key;
-    const abort=new AbortController();let released=false,timer;
-    const release=()=>{if(!released){released=true;clearTimeout(timer);request.signal.removeEventListener('abort',lease.cancel);
-      this.readers.delete(lease);this.pending--;if(this.pending===0)this.activeKey=null;}};
-    const lease={expiresAt:current.getTime()+PUBLIC_NEWS_STREAM_LEASE_MS,cancel:()=>{abort.abort();release();}};
-    this.readers.add(lease);request.signal.addEventListener('abort',lease.cancel,{once:true});
-    timer=setTimeout(lease.cancel,PUBLIC_NEWS_STREAM_LEASE_MS);timer?.unref?.();
-    try{
-      const value=await this.load(key,request,current);
-      if(abort.signal.aborted)throw Error('public_snapshot_aborted');
-      return new Response(newsJsonStream(value,{onComplete:release,signal:abort.signal}),{headers});
-    }catch{release();return Response.json({error:'snapshot_unavailable'},{status:503,headers});}
+    this.reap(current);this.drain();
+    if(request.signal.aborted)return this.unavailable('aborted');
+    const key=this.keyFor(request,current),immediate=!this.waiters.length&&this.canAdmit(key);
+    if(!immediate&&this.waiters.length>=PUBLIC_NEWS_MAX_WAITERS)return this.unavailable('queue_full');
+    return new Promise(resolve=>{
+      const lease={request,resolve,abort:new AbortController(),released:false,
+        deadline:current.getTime()+PUBLIC_NEWS_REQUEST_DEADLINE_MS};
+      lease.cancel=code=>this.release(lease,code||'aborted');lease.onAbort=()=>lease.cancel('aborted');
+      request.signal.addEventListener('abort',lease.onAbort,{once:true});
+      if(immediate)this.admit(lease,key,current);
+      else{
+        lease.expiresAt=current.getTime()+PUBLIC_NEWS_ADMISSION_WAIT_MS;
+        this.waiters.push(lease);this.armWaiter(lease);
+      }
+    });
   }
 }
 
