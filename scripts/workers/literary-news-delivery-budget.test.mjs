@@ -2,13 +2,14 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 import { mkdir, writeFile } from 'node:fs/promises';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
 import { runDeliveryTick, runDeliveryCaptureTick, rotatingNativeNewsCaptureIds,
-  createDeliveryRequestBudget, scheduleNativeNewsDelivery } from './literary-news-delivery-worker.mjs';
+  createDeliveryRequestBudget, scheduleNativeNewsDelivery,LiteraryNewsDeliveryCoordinator } from './literary-news-delivery-worker.mjs';
 import { NATIVE_NEWS_ADMISSION_FEED_URL, fetchNativeNewsAdmissionFeed } from '../lib/literary-news-native-admissions.mjs';
 import { buildPublishedNewsFeed } from '../lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from '../lib/literary-news-state.mjs';
 import { newsPostKey, prepareNewsPost } from '../lib/literary-news-social.mjs';
 import { makeDeliveryMediaIndex, DELIVERY_MEDIA_INDEX_KEY, DELIVERY_MEDIA_BYTES_PREFIX } from '../lib/literary-news-delivery-media-profile.mjs';
 import { mediaByteHash } from '../lib/literary-news-media-policy.mjs';
+import { captureChangedNativeNews } from '../lib/literary-news-capture-progress.mjs';
 
 const current=new Date('2026-10-02T12:00:00Z'),destination=configuration.destinations.find(row=>row.platform==='telegram');
 const controlKey=`destination:telegram:${destination.id}`,release='a'.repeat(40);
@@ -126,11 +127,11 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
   const env={NEWS_DELIVERY_ENABLED:'true',SUPABASE_URL:'https://worker-fixture.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'isolated-key',
     TELEGRAM_BOT_TOKEN:'123:isolated-token',NEWS_STATE:{get:async(key)=>key===DELIVERY_MEDIA_INDEX_KEY?JSON.stringify(index)
       :key===DELIVERY_MEDIA_BYTES_PREFIX+descriptor.sha256?bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength):null}};
-  const run=async phase=>{
+  const run=async (phase,captureOptions={})=>{
     const count=(invocations.get(phase)||0)+1;invocations.set(phase,count);invocation=count===1?phase:`${phase}-${count}`;
     const fetchFeedImpl=async args=>{const value=await fetchNativeNewsAdmissionFeed(args);
       for(let i=0;i<extraFeedReads;i++)await args.fetchImpl('https://worker-fixture.supabase.co/budget-read');return value;};
-    const report=await (phase==='capture'?runDeliveryCaptureTick({env,now:()=>current,fetchImpl}):runDeliveryTick({env,now:()=>current,fetchImpl,fetchFeedImpl}));
+    const report=await (phase==='capture'?runDeliveryCaptureTick({env,now:()=>current,fetchImpl,...captureOptions}):runDeliveryTick({env,now:()=>current,fetchImpl,fetchFeedImpl}));
     evidence.push({phase,corrections,creates,receiptConflicts,claimConflicts,captureConflicts,quotaAt,providerFailure,priorPacing,extraFeedReads,cachedPhoto,
       externalRequests:report.externalRequests,providerWriteAttempts:report.providerWriteAttempts||0,
       status:report.status,code:report.code||null,heartbeatRecorded:report.heartbeatRecorded,
@@ -141,6 +142,42 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
 }
 
 describe('native capture and dispatch under the real SDK external-request budget',()=>{
+  it('does not duplicate an acknowledged create after timer persistence fails and alarm/Cron retry concurrently',async()=>{
+    const f=await sdkFixture({creates:1,photo:false}),storage={setAlarm:vi.fn()
+      .mockRejectedValueOnce(Error('PRIVATE storage failure')).mockResolvedValue(undefined),deleteAlarm:vi.fn()};
+    const runTick=vi.fn(()=>f.run('dispatch'));
+    const coordinator=new LiteraryNewsDeliveryCoordinator({storage},{NEWS_DELIVERY_ENABLED:'true'},{runTick,now:()=>current});
+    await expect(coordinator.alarm()).rejects.toThrow('delivery_alarm_retry_required');
+    expect(f.writes).toEqual(['sendMessage']);
+    const prior=structuredClone(f.rows.get(f.pacingKey));
+    const [alarm,response]=await Promise.all([coordinator.alarm(),coordinator.fetch(new Request('https://internal/dispatch',{method:'POST'}))]);
+    expect(alarm).toBeUndefined();expect(response.status).toBe(200);
+    expect((await response.json()).deliveredThisRun).toBe(0);
+    expect(runTick).toHaveBeenCalledTimes(2);expect(storage.setAlarm).toHaveBeenCalledTimes(2);
+    expect(f.writes).toEqual(['sendMessage']);expect(f.rows.get(f.pacingKey)).toEqual(prior);
+    expect(prior.state.intervalSeconds).toBe(6300);
+    expect(f.rows.get(newsPostKey('news-00',destination)).state).toMatchObject({status:'sent_current',remoteId:'901',firstAcknowledgedAt:current.toISOString()});
+    for(const invocation of ['dispatch','dispatch-2'])
+      expect(f.requests.filter(row=>row.invocation===invocation).length).toBeLessThanOrEqual(50);
+  });
+  it('captures all current IDs immediately in bounded SDK batches, skips unchanged records and admits fresh arrivals',async()=>{
+    const f=await sdkFixture(),state=new Map(),storage={get:async key=>structuredClone(state.get(key)),
+      put:async(key,value)=>state.set(key,structuredClone(value))};
+    const capture=()=>captureChangedNativeNews({storage,capture:options=>f.run('capture',options)});
+    for(let i=0;i<6;i++){
+      const report=await capture();expect(report).toMatchObject({status:'admissions_captured',capturedCandidates:4});
+      expect(report.externalRequests).toBeLessThanOrEqual(22);
+    }
+    expect([...f.rows.keys()].filter(key=>key.startsWith('admission:'))).toHaveLength(24);
+    expect(await capture()).toMatchObject({status:'capture_not_due',capturedCandidates:0,newAdmissions:0});
+    const record=item('fresh-after-preparation');
+    const fresh=await buildPublishedNewsFeed({records:[record,...f.feed.items],withdrawals:[],state:pendingNewsSourceState(),current,release});
+    Object.assign(f.feed,fresh);
+    expect(await capture()).toMatchObject({status:'admissions_captured',capturedCandidates:1,newAdmissions:1});
+    expect(f.rows.get(newsPostKey(record.id,destination)).state).toMatchObject({status:'pending',newsId:record.id});
+    expect(f.rows.get(newsPostKey(record.id,destination)).state.remoteId).toBeUndefined();
+    expect(f.writes).toEqual([]);
+  });
   it('finishes a 50-request SDK dispatch before a separate private preparation recovery',async()=>{
     const f=await sdkFixture({creates:1,photo:true,priorPacing:true,extraFeedReads:4,claimConflicts:4,receiptConflicts:4});
     const phases=[],reports=[],noRetry=vi.fn();

@@ -7,6 +7,8 @@ on:
       - "scripts/lib/literary-news-*.mjs"
       - "scripts/wrangler.literary-news*.jsonc"
       - "scripts/sync-literary-news-delivery-media.mjs"
+      - "scripts/check-literary-news-operations*.mjs"
+      - "scripts/database/literary-news-operations-supply.sql"
       - "data/news/**"
       - ".github/workflows/*literary-news*.yml"
   workflow_dispatch:
@@ -56,9 +58,13 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Verify preparation, delivery and licensed media boundaries
-        run: npx vitest run scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-preparation-slots.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-recovery.test.mjs scripts/lib/literary-news-json.test.mjs scripts/workers/literary-news-public-reader.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-day-status-policy.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+        run: npx vitest run scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-preparation-slots.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-preparation-recovery.test.mjs scripts/workers/literary-news-delivery-continuity.test.mjs scripts/workers/literary-news-continuity-workerd.test.mjs scripts/lib/literary-news-archive.test.mjs scripts/workers/literary-news-delivery-recovery.test.mjs scripts/lib/literary-news-json.test.mjs scripts/workers/literary-news-public-reader.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-day-status-policy.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
       - name: Verify public and native Worker bundles
         run: |
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news.jsonc --outdir .tmp/literary-news-worker
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/literary-news-preparation
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/literary-news-delivery
+      - name: Check the bounded service-only reserve query in isolated Postgres
+        run: |
+          npm install --prefix .tmp/news-operations-sql --ignore-scripts --no-save --package-lock=false --no-audit --no-fund @electric-sql/pglite@0.5.8
+          node scripts/check-literary-news-operations-supply-sql.mjs --pglite=.tmp/news-operations-sql/node_modules/@electric-sql/pglite/dist/index.js

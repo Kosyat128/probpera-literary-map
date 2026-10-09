@@ -48,7 +48,7 @@ export type NewsFeed = {
     count: number;
     evaluatedAt: string;
     timeZone: string;
-    policy: string;
+    policy: "reviewed-v2-explicit-withdrawals" | "reviewed-v2-archive-explicit-withdrawals";
   };
   withdrawals?: { id: string; withdrawnAt: string; reason: string }[];
   fallbackCapturedAt?: string;

@@ -70,6 +70,35 @@ function blockedSlot(row, key, destination, current) {
   return null;
 }
 
+/** Read-only counterpart of the reservation guard. A wake-up or monitor may
+ * inspect a slot, but only reserveNewsDeliverySlot may consume one. Receipt
+ * latency extends the same slot; nightly hours and daily caps still apply. */
+export function inspectNewsDeliveryPacing({ row, destination, current = new Date(), receipt = null, control = null } = {}) {
+  if (!Number.isFinite(current?.getTime?.())) return { valid: false, reason: 'pacing_clock_invalid', nextDueAt: null };
+  let key; try { key = newsDeliveryPacingKey(destination); }
+  catch { return { valid: false, reason: 'pacing_destination_invalid', nextDueAt: null }; }
+  const blocked = blockedSlot(row, key, destination, current), state = row?.state;
+  if (blocked?.reason === 'pacing_state_invalid') return { valid: false, reason: blocked.reason, nextDueAt: null };
+  if (receipt !== null && (!state || receipt.key !== state.jobKey))
+    return { valid: false, reason: 'pacing_receipt_invalid', nextDueAt: null };
+  if (control?.nextDueAt != null && (typeof control.nextDueAt !== 'string' || !Number.isFinite(Date.parse(control.nextDueAt))))
+    return { valid: false, reason: 'pacing_control_invalid', nextDueAt: null };
+  const now = current.getTime(), reserved = Date.parse(state?.reservedAt), acknowledged = Date.parse(receipt?.firstAcknowledgedAt);
+  let eligible = Math.max(Date.parse(editorialDay(current) + 'T08:00:00+03:00'),
+    Date.parse(blocked?.nextDueAt) || 0, Date.parse(state?.nextDueAt) || 0,
+    Number.isFinite(reserved) ? reserved + intervalMs : 0, Date.parse(control?.nextDueAt) || 0);
+  if (receipt?.remoteId && Number.isFinite(acknowledged) && acknowledged >= reserved) eligible = Math.max(eligible, acknowledged + intervalMs);
+  const eligibilityWindow = newsDeliveryPublicationWindow(new Date(eligible));
+  if (!eligibilityWindow.open) eligible = Date.parse(eligibilityWindow.nextDueAt);
+  let due = Math.max(now, eligible);
+  const window = newsDeliveryPublicationWindow(new Date(due));
+  if (!window.open) due = Date.parse(window.nextDueAt);
+  const reservations = state && editorialDay(new Date(reserved)) === editorialDay(current) ? state.schemaVersion >= 2 ? state.reservations : 1 : 0;
+  const reason = blocked?.reason === 'pacing_daily_limit' ? blocked.reason : !newsDeliveryPublicationWindow(current).open
+    ? 'pacing_outside_publication_hours' : due > now ? 'pacing_not_due' : 'pacing_due';
+  return { valid: true, reason, nextDueAt: new Date(due).toISOString(), eligibleAt: new Date(eligible).toISOString(), reservations };
+}
+
 /** Call once per new-create attempt immediately before the guarded dispatch
  * marker. A repeated attempt never receives a second grant from the same slot.
  * `now` is the current trusted runner clock, not an earlier captured feed time.

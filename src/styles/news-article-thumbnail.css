@@ -46,3 +46,13 @@
   .literary-news__article-thumbnail { width: 58px; height: 58px; }
   .literary-news__story-heading { gap: 8px; }
 }
+
+.literary-news--reader .literary-news__story-heading { gap: 12px; }
+.literary-news--reader .literary-news__article-thumbnail { width: 72px; height: 84px; border-radius: 7px; }
+.literary-news--reader .literary-news__item--lead .literary-news__story-heading { display: flex; flex-direction: column; align-items: stretch; gap: 14px; }
+.literary-news--reader .literary-news__item--lead .literary-news__article-thumbnail { order: -1; width: 100%; height: 164px; border: 0; border-radius: 6px; background: #f5eee7; }
+.literary-news--reader .literary-news__item--lead .literary-news__article-thumbnail img { object-fit: contain; }
+@media (max-width: 680px) {
+  .literary-news--reader .literary-news__article-thumbnail { width: 62px; height: 76px; }
+  .literary-news--reader .literary-news__item--lead .literary-news__article-thumbnail { height: 148px; }
+}

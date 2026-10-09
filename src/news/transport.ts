@@ -2,7 +2,7 @@ import limits from "../../data/news/contract.json";
 import { parseNewsFeed } from "./feed";
 
 /** Read all bytes before publishing a generation to the existing reducer. */
-export async function readNewsFeedResponse(response: Response) {
+export async function readNewsFeedResponse(response: Response, { archive = false } = {}) {
   if (!response.ok || !response.body) throw new Error("News response unavailable");
   const reader = response.body.getReader();
   const decoder = new TextDecoder("utf-8", { fatal: true });
@@ -21,7 +21,7 @@ export async function readNewsFeedResponse(response: Response) {
     await reader.cancel().catch(() => {});
     throw error;
   } finally { reader.releaseLock(); }
-  const feed = parseNewsFeed(JSON.parse(text));
+  const feed = parseNewsFeed(JSON.parse(text), { archive });
   if (feed.contractVersion === 2 && feed.snapshot) {
     const payload = { release: feed.snapshot.release, policy: feed.snapshot.policy,
       timeZone: feed.timeZone, items: feed.items, withdrawals: feed.withdrawals };

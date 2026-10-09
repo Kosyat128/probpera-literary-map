@@ -52,7 +52,7 @@ export function isNewsTimeZone(value: unknown): value is string {
 }
 
 /** Reject malformed or untranslated responses instead of rendering source HTML. */
-export function parseNewsFeed(value: unknown): NewsFeed {
+export function parseNewsFeed(value: unknown, { archive = false } = {}): NewsFeed {
   if (!record(value) || (value.mode !== "local-prototype" && value.mode !== "reviewed")
     || !timestamp(value.generatedAt)
     || !(value.lastCheckedAt === null || timestamp(value.lastCheckedAt))
@@ -62,13 +62,14 @@ export function parseNewsFeed(value: unknown): NewsFeed {
     || !Array.isArray(value.items) || value.items.length > limits.maxItems) {
     throw new Error("Invalid literary news feed");
   }
+  if (archive && value.contractVersion !== 2) throw new Error("Missing literary news archive proof");
   if (value.contractVersion !== undefined && (value.contractVersion !== limits.version
     || !record(value.snapshot) || value.snapshot.complete !== true
     || value.snapshot.count !== value.items.length
     || !text(value.snapshot.id, 64) || !/^[a-f0-9]{64}$/.test(String(value.snapshot.id))
     || !text(value.snapshot.release, 40)
     || !timestamp(value.snapshot.evaluatedAt)
-    || !text(value.snapshot.policy, 120)
+    || value.snapshot.policy !== (archive ? "reviewed-v2-archive-explicit-withdrawals" : "reviewed-v2-explicit-withdrawals")
     || value.snapshot.timeZone !== value.timeZone)) throw new Error("Incomplete literary news snapshot");
   const ids = new Set<string>();
   if (value.withdrawals !== undefined && (!Array.isArray(value.withdrawals)

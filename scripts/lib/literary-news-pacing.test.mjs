@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { NEWS_DAILY_TARGET, newsDeliveryPacingKey, reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
+import { NEWS_DAILY_TARGET, inspectNewsDeliveryPacing, newsDeliveryPacingKey, reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
 
 const destination = { platform: "telegram", id: "-1002791579809" };
 const start = new Date("2026-09-27T05:00:00Z");
@@ -21,6 +21,37 @@ function client(journal = { rows: [], sequence: 0 }) {
 }
 
 describe("durable per-destination create pacing", () => {
+  it('inspects the same durable reservation and delayed receipt without consuming a slot', async () => {
+    const store = client(); await reserveNewsDeliverySlot(options(store));
+    const row = await store.read(newsDeliveryPacingKey(destination)), count = store.journal.rows.length;
+    const receipt = { key: row.state.jobKey, remoteId: '1', firstAcknowledgedAt: '2026-09-27T05:03:00Z' };
+    expect(inspectNewsDeliveryPacing({ row, destination, current: new Date('2026-09-27T06:45:00Z'), receipt })).toEqual({
+      valid: true, reason: 'pacing_not_due', nextDueAt: '2026-09-27T06:48:00.000Z', eligibleAt: '2026-09-27T06:48:00.000Z', reservations: 1 });
+    expect(inspectNewsDeliveryPacing({ row, destination, current: new Date('2026-09-27T07:10:00Z'), receipt })).toMatchObject({
+      valid: true, reason: 'pacing_due', nextDueAt: '2026-09-27T07:10:00.000Z', eligibleAt: '2026-09-27T06:48:00.000Z' });
+    expect(store.journal.rows).toHaveLength(count);
+  });
+  it('normalizes read-only wake-ups to publication hours, daily cap, and destination cooldown', async () => {
+    const store = client(); await reserveNewsDeliverySlot(options(store));
+    const row = await store.read(newsDeliveryPacingKey(destination));
+    expect(inspectNewsDeliveryPacing({ row, destination, current: new Date('2026-09-27T04:00:00Z') })).toMatchObject({
+      valid: true, reason: 'pacing_outside_publication_hours', nextDueAt: '2026-09-27T06:45:00.000Z' });
+    expect(inspectNewsDeliveryPacing({ row, destination, current: new Date('2026-09-27T19:00:00Z'),
+      control: { nextDueAt: '2026-09-27T20:30:00Z' } })).toMatchObject({ valid: true, nextDueAt: '2026-09-28T05:00:00.000Z' });
+    row.state.reservations = 10;
+    expect(inspectNewsDeliveryPacing({ row, destination, current: new Date('2026-09-27T09:00:00Z') })).toMatchObject({
+      valid: true, reason: 'pacing_daily_limit', nextDueAt: '2026-09-28T05:00:00.000Z', reservations: 10 });
+  });
+  it('does not turn invalid persisted data or a different post receipt into a wake-up', async () => {
+    const store = client(); await reserveNewsDeliverySlot(options(store));
+    const row = await store.read(newsDeliveryPacingKey(destination));
+    for (const patch of [{ schemaVersion: 99 }, { destinationId: '-42' }, { reservations: 11 }, { nextDueAt: 'bad' }])
+      expect(inspectNewsDeliveryPacing({ row: { ...row, state: { ...row.state, ...patch } }, destination, current: start }))
+        .toMatchObject({ valid: false, reason: 'pacing_state_invalid', nextDueAt: null });
+    expect(inspectNewsDeliveryPacing({ row, destination, current: start, receipt: { key: 'different' } })).toMatchObject({
+      valid: false, reason: 'pacing_receipt_invalid', nextDueAt: null });
+    expect(inspectNewsDeliveryPacing({ row, destination, current: start, control: { nextDueAt: 'bad' } })).toMatchObject({ valid: false });
+  });
   it("lets exactly one simultaneous runner reserve the channel", async () => {
     const store = client(), second = client(store.journal);
     const results = await Promise.all([reserveNewsDeliverySlot(options(store)),

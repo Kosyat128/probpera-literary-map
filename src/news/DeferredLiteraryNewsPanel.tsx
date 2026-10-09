@@ -2,7 +2,7 @@ import { useEffect, useState, type ComponentType } from "react";
 
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 
-type NewsPanel = ComponentType<{ endpoint?: string; variant?: "wide" | "sidebar" }>;
+type NewsPanel = ComponentType<{ endpoint?: string; variant?: "wide" | "sidebar"; archive?: boolean }>;
 let panelPromise: Promise<NewsPanel> | null = null;
 
 function loadNewsPanel() {
@@ -41,7 +41,7 @@ export default function DeferredLiteraryNewsPanel({ active, endpoint }: {
   const status = Panel ? "ready" : failed ? "error" : active ? "loading" : "idle";
   return (
     <div id={Panel ? undefined : "literary-news"} className="literary-news-slot" data-loading-status={status}>
-      {Panel ? <Panel endpoint={endpoint} variant="sidebar" /> : (
+      {Panel ? <Panel endpoint={endpoint} variant="sidebar" archive={!endpoint} /> : (
         <section className="literary-news-placeholder" aria-busy={status === "loading"}>
           <p className="literary-news-placeholder__eyebrow">{language === "ru" ? "Проба Пера · Новости" : "Proba Pera · News"}</p>
           <h2>{language === "ru" ? "Литературная повестка" : "The literary briefing"}</h2>
