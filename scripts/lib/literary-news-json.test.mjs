@@ -1,4 +1,4 @@
-import {describe,expect,it} from 'vitest';
+import {describe,expect,it,vi} from 'vitest';
 import {createHash} from 'node:crypto';
 import {newsJsonChunks,newsJsonByteSize,newsJsonDigest,newsJsonStream} from './literary-news-json.mjs';
 const oldHash=value=>createHash('sha256').update(JSON.stringify(value),'utf8').digest('hex');
@@ -32,4 +32,25 @@ describe('Exact bounded canonical news JSON',()=>{
     expect(()=>newsJsonByteSize(value)).toThrow('news_json_accessor');
     await expect(newsJsonDigest(value)).rejects.toThrow('news_json_accessor');expect(executed).toBe(0);
   });
+  it.each(['complete','cancel','abort','already-aborted','serialization-error'])(
+    'releases the stream once and removes abort listeners after %s',async mode=>{
+      const abort=new AbortController(),complete=vi.fn(),remove=vi.spyOn(abort.signal,'removeEventListener');
+      const iterator=Object.getPrototypeOf(newsJsonChunks(null)),returned=vi.spyOn(iterator,'return');
+      try{
+        if(mode==='already-aborted')abort.abort();
+        const value=mode==='serialization-error'?new Date():{text:'Я'.repeat(60000)};
+        const stream=newsJsonStream(value,{signal:abort.signal,onComplete:complete});
+        if(mode==='complete')expect(await new Response(stream).json()).toEqual(value);
+        else if(mode==='cancel')await stream.cancel();
+        else{
+          const body=stream.getReader();
+          if(mode==='abort'){expect((await body.read()).done).toBe(false);abort.abort();}
+          await expect(body.read()).rejects.toThrow();body.releaseLock();
+        }
+        expect(complete).toHaveBeenCalledOnce();
+        expect(remove).toHaveBeenCalledExactlyOnceWith('abort',expect.any(Function));
+        expect(returned).toHaveBeenCalledTimes(mode==='complete'?0:1);
+        abort.abort();expect(complete).toHaveBeenCalledOnce();
+      }finally{returned.mockRestore();remove.mockRestore();}
+    });
 });
