@@ -125,6 +125,40 @@ describe("native heartbeat actual admin projection and rendering", () => {
       nativeDelivery: { minimum: 10, maximum, freshCreates: 6, deficitToMinimum: 4 } });
     expect(render(snapshot)).toContain(`Цель: 10-${maximum} в день`);
   });
+  it("renders the observed budget-deferred heartbeat without counting inspected jobs as delivered news", () => {
+    const at = new Date("2026-10-09T12:30:30Z");
+    const value = { runner: "native-cron", invocation: "dispatch", finishedAt: at.toISOString(),
+      status: "request_budget_deferred", phase: "heartbeat", eligibleJobs: 6, selectedJobs: 2, attemptedJobs: 1,
+      providerWriteAttempts: 0, budgetStopped: true, ambiguousThisRun: 0, deliveredThisRun: 0,
+      dayStatus: { editorialDay: "2026-10-09", timeZone: "Europe/Moscow", minimum: 8, maximum: 10,
+        acknowledgedCreates: 2, acknowledgedPhotoCreates: 1, freshCreates: 2, freshPhotoCreates: 1,
+        legacyReceiptsWithUnknownFirstDate: 12, deficitToMinimum: 6 } };
+    const snapshot = summarize(value, [], at);
+    expect(snapshot).toMatchObject({ complete: true, nativeDeliveryInvalid: false,
+      nativeDelivery: { status: "request_budget_deferred", minimum: 8, maximum: 10, freshCreates: 2,
+        freshPhotoCreates: 1, freshTextCreates: 1, deficitToMinimum: 6, isCurrentDay: true } });
+    const html = render(snapshot);
+    expect(html).toContain("новостей: <strong>2</strong>");
+    expect(html).toContain("Цель: 8-10 в день");
+    expect(html).toContain("осталось: <strong>6</strong>");
+    expect(html).toContain("105 минут");
+    expect(html).not.toContain("Дневная сводка планировщика не прошла проверку");
+    for (const patch of [{ freshCreates: 3 }, { minimum: 8, maximum: 15 }, { deficitToMinimum: 0 }]) {
+      expect(summarize({ ...value, dayStatus: { ...value.dayStatus, ...patch } }, [], at))
+        .toMatchObject({ complete: false, nativeDelivery: null, nativeDeliveryInvalid: true });
+    }
+    expect(summarize({ ...value, status: "unrecognized_dispatch_status" }, [], at).nativeDelivery).toBeNull();
+  });
+  it("does not invent daily counts for an early paused heartbeat without dayStatus", () => {
+    const at = new Date("2026-10-09T12:30:30Z");
+    const snapshot = summarize({ runner: "native-cron", invocation: "dispatch", finishedAt: at.toISOString(),
+      status: "destination_not_enabled_or_history_gap", phase: "destination", reason: "destination_paused",
+      paused: true, providerWriteAttempts: 0, deliveredThisRun: 0 }, [], at);
+    expect(snapshot.nativeDelivery).toBeNull();
+    const html = render(snapshot);
+    expect(html).toContain("Количество отправок за сегодня неизвестно");
+    expect(html).not.toContain("новостей: <strong>0</strong>");
+  });
   it.each([
     { minimum: 8, maximum: 15 }, { minimum: 8, maximum: 20 }, { minimum: 10, maximum: 10 },
     { minimum: 9, maximum: 10 }, { minimum: "8", maximum: 10 }, { minimum: 8, maximum: "10" },

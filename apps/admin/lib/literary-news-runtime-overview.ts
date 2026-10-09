@@ -83,7 +83,10 @@ function nativeDeliveryHeartbeat(value: unknown, current: Date) {
   const state = object(value), day = object(state.dayStatus), finishedAt = timestamp(state.finishedAt);
   const knownTarget = day.minimum === 8 && day.maximum === 10
     || day.minimum === 10 && (day.maximum === 15 || day.maximum === 20);
-  const status = ["dispatch_reconciliation_required", "daily_target_deficit", "daily_minimum_reached"].includes(String(state.status)) ? String(state.status) : null;
+  // These are the four completed dispatch summaries carrying validated dayStatus.
+  // Early exits and blocked/capture reports do not establish daily counts.
+  const status = ["dispatch_reconciliation_required", "request_budget_deferred", "daily_target_deficit", "daily_minimum_reached"]
+    .includes(String(state.status)) ? String(state.status) : null;
   const fields = ["acknowledgedCreates", "acknowledgedPhotoCreates", "freshCreates", "freshPhotoCreates", "legacyReceiptsWithUnknownFirstDate", "deficitToMinimum"] as const;
   if (state.runner !== "native-cron" || !finishedAt || Date.parse(finishedAt) > current.getTime() || !status
     || typeof day.editorialDay !== "string" || !/^\d{4}-\d{2}-\d{2}$/u.test(day.editorialDay)
