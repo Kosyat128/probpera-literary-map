@@ -40,7 +40,7 @@ export default function LiteraryNewsDeliveryOverview({ snapshot, page: requested
                 : !snapshot.nativeDelivery.isCurrentDay ? <p>Сводка за сегодня ещё не получена. Последние подтверждённые данные относятся к <time dateTime={snapshot.nativeDelivery.editorialDay}>{snapshot.nativeDelivery.editorialDay}</time>.</p>
                   : <>
                     <p>За <time dateTime={snapshot.nativeDelivery.editorialDay}>{snapshot.nativeDelivery.editorialDay}</time> по московскому времени подтверждено свежих новостей: <strong>{snapshot.nativeDelivery.freshCreates}</strong>. Из них с фото: <strong>{snapshot.nativeDelivery.freshPhotoCreates}</strong>, без фото: <strong>{snapshot.nativeDelivery.freshTextCreates}</strong>. Цель: {snapshot.nativeDelivery.minimum}-{snapshot.nativeDelivery.maximum} в день. До минимума осталось: <strong>{snapshot.nativeDelivery.deficitToMinimum}</strong>.</p>
-                    <p>Новые посты выходят примерно раз в час с 08:00 до 22:00 по московскому времени. Новости с фото получают приоритет.</p>
+                    <p>Новые посты выходят с интервалом не менее 1 часа 45 минут (105 минут) с 08:00 до 23:00 по московскому времени.</p>
                     <p>Других первых отправок за день: <strong>{snapshot.nativeDelivery.acknowledgedCreates - snapshot.nativeDelivery.freshCreates}</strong>. Подтверждений без известной даты первой отправки в истории: <strong>{snapshot.nativeDelivery.legacyReceiptsWithUnknownFirstDate}</strong>; они не включены в дневной результат.</p>
                     <p className="catalog-summary">Сводка проверена: {showTime(snapshot.nativeDelivery.finishedAt)}. Правки ранее опубликованных сообщений не считаются новыми отправками.</p>
                   </>}

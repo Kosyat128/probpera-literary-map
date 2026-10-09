@@ -81,20 +81,22 @@ export async function readLatestNewsRuntime(fetchPage: FetchPage, options: { pag
 const nativeDayFormatter = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Moscow", year: "numeric", month: "2-digit", day: "2-digit" });
 function nativeDeliveryHeartbeat(value: unknown, current: Date) {
   const state = object(value), day = object(state.dayStatus), finishedAt = timestamp(state.finishedAt);
+  const knownTarget = day.minimum === 8 && day.maximum === 10
+    || day.minimum === 10 && (day.maximum === 15 || day.maximum === 20);
   const status = ["dispatch_reconciliation_required", "daily_target_deficit", "daily_minimum_reached"].includes(String(state.status)) ? String(state.status) : null;
   const fields = ["acknowledgedCreates", "acknowledgedPhotoCreates", "freshCreates", "freshPhotoCreates", "legacyReceiptsWithUnknownFirstDate", "deficitToMinimum"] as const;
   if (state.runner !== "native-cron" || !finishedAt || Date.parse(finishedAt) > current.getTime() || !status
     || typeof day.editorialDay !== "string" || !/^\d{4}-\d{2}-\d{2}$/u.test(day.editorialDay)
     || day.editorialDay !== nativeDayFormatter.format(new Date(finishedAt)) || day.timeZone !== "Europe/Moscow"
-    || day.minimum !== 10 || day.maximum !== 15
+    || !knownTarget
     || fields.some(key => !Number.isSafeInteger(day[key]) || Number(day[key]) < 0 || Number(day[key]) > 10_000_000)
     || Number(day.freshPhotoCreates) > Number(day.acknowledgedPhotoCreates) || Number(day.acknowledgedPhotoCreates) > Number(day.acknowledgedCreates)
     || Number(day.freshPhotoCreates) > Number(day.freshCreates) || Number(day.freshCreates) > Number(day.acknowledgedCreates)
-    || day.deficitToMinimum !== Math.max(0, 10 - Number(day.freshCreates))
+    || day.deficitToMinimum !== Math.max(0, Number(day.minimum) - Number(day.freshCreates))
     || status === "daily_minimum_reached" && day.deficitToMinimum !== 0
     || status === "daily_target_deficit" && day.deficitToMinimum === 0) return null;
   return { finishedAt, status, editorialDay: day.editorialDay, timeZone: "Europe/Moscow",
-    isCurrentDay: day.editorialDay === nativeDayFormatter.format(current), minimum: 10, maximum: 15,
+    isCurrentDay: day.editorialDay === nativeDayFormatter.format(current), minimum: Number(day.minimum), maximum: Number(day.maximum),
     acknowledgedCreates: Number(day.acknowledgedCreates), acknowledgedPhotoCreates: Number(day.acknowledgedPhotoCreates),
     freshCreates: Number(day.freshCreates), freshPhotoCreates: Number(day.freshPhotoCreates), deficitToMinimum: Number(day.deficitToMinimum),
     freshTextCreates: Number(day.freshCreates) - Number(day.freshPhotoCreates),

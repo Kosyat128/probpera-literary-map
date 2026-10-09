@@ -15,10 +15,10 @@ function native(change: Record<string, unknown> = {}) {
       legacyReceiptsWithUnknownFirstDate: 2, deficitToMinimum: 4 }, ...change };
 }
 type Entry = { id: string; key: string; state: Record<string, unknown> };
-const summarize = (state: Record<string, unknown> | null, extra: Entry[] = []) => summarizeNewsRuntime({
+const summarize = (state: Record<string, unknown> | null, extra: Entry[] = [], at = current) => summarizeNewsRuntime({
   rows: [...extra, ...(state ? [{ id: "2", key: "heartbeat:native-delivery", state }] : [])],
   complete: true, readError: false, invalidRows: 0, rowsRead: extra.length + (state ? 1 : 0)
-}, true, current);
+}, true, at);
 
 // Execute the actual server component without admin alias resolution or real controls.
 const filename = path.resolve(import.meta.dirname, "../components/LiteraryNewsDeliveryOverview.tsx");
@@ -67,7 +67,9 @@ describe("native heartbeat actual admin projection and rendering", () => {
     const html = render(snapshot);
     expect(html).toContain("новостей: <strong>10</strong>");
     expect(html).toContain("без фото: <strong>4</strong>");
-    expect(html).toContain("08:00 до 22:00");
+    expect(html).toContain("08:00 до 23:00");
+    expect(html).toContain("1 часа 45 минут (105 минут)");
+    expect(html).not.toMatch(/примерно раз в час|фото получают приоритет/);
   });
   it("past-day heartbeat remains explicitly historical instead of a current-day zero or success", () => {
     const state = native(), snapshot = summarize(native({ finishedAt: "2026-09-29T20:59:59Z",
@@ -98,5 +100,48 @@ describe("native heartbeat actual admin projection and rendering", () => {
     const snapshot = summarize(null, [{ id: "1", key: "heartbeat:native-delivery:extra", state: native() }]);
     expect(snapshot.nativeDelivery).toBeNull();
     expect(render(snapshot)).toContain("Подтверждённая дневная сводка нативного планировщика ещё не получена");
+  });
+  it.each([2, 8, 9])("renders the current 8-10 heartbeat with %s actual fresh creates and its validated deficit", freshCreates => {
+    const at = new Date("2026-10-09T12:20:00Z");
+    const snapshot = summarize(native({ finishedAt: at.toISOString(),
+      status: freshCreates < 8 ? "daily_target_deficit" : "daily_minimum_reached",
+      dayStatus: { editorialDay: "2026-10-09", timeZone: "Europe/Moscow", minimum: 8, maximum: 10,
+        acknowledgedCreates: freshCreates, acknowledgedPhotoCreates: 1, freshCreates, freshPhotoCreates: 1,
+        legacyReceiptsWithUnknownFirstDate: 2, deficitToMinimum: Math.max(0, 8 - freshCreates) } }), [], at);
+    expect(snapshot).toMatchObject({ complete: true, nativeDeliveryInvalid: false,
+      nativeDelivery: { minimum: 8, maximum: 10, freshCreates, freshTextCreates: freshCreates - 1,
+        deficitToMinimum: Math.max(0, 8 - freshCreates), isCurrentDay: true } });
+    const html = render(snapshot);
+    expect(html).toContain("Цель: 8-10 в день");
+    expect(html).toContain(`новостей: <strong>${freshCreates}</strong>`);
+    expect(html).toContain(`осталось: <strong>${Math.max(0, 8 - freshCreates)}</strong>`);
+    expect(html).toContain("1 часа 45 минут (105 минут)");
+    expect(html).toContain("08:00 до 23:00");
+    expect(html).not.toMatch(/сводка планировщика не прошла|примерно раз в час|фото получают приоритет|PRIVATE_TOKEN/);
+  });
+  it.each([15, 20])("retains the known historical 10/%s policy without rewriting counts", maximum => {
+    const state = native(), snapshot = summarize(native({ dayStatus: { ...state.dayStatus, maximum } }));
+    expect(snapshot).toMatchObject({ complete: true, nativeDeliveryInvalid: false,
+      nativeDelivery: { minimum: 10, maximum, freshCreates: 6, deficitToMinimum: 4 } });
+    expect(render(snapshot)).toContain(`Цель: 10-${maximum} в день`);
+  });
+  it.each([
+    { minimum: 8, maximum: 15 }, { minimum: 8, maximum: 20 }, { minimum: 10, maximum: 10 },
+    { minimum: 9, maximum: 10 }, { minimum: "8", maximum: 10 }, { minimum: 8, maximum: "10" },
+    { minimum: 0, maximum: 10 }, { minimum: 8, maximum: 100 },
+  ])("rejects unknown or mistyped policy pairs %j", policy => {
+    const state = native(), snapshot = summarize(native({ dayStatus: { ...state.dayStatus, ...policy,
+      deficitToMinimum: Math.max(0, Number(policy.minimum) - state.dayStatus.freshCreates) } }));
+    expect(snapshot).toMatchObject({ complete: false, nativeDelivery: null, nativeDeliveryInvalid: true });
+    expect(render(snapshot)).toContain("Дневная сводка планировщика не прошла проверку");
+  });
+  it.each([
+    { freshCreates: 21 }, { freshPhotoCreates: 7 }, { acknowledgedPhotoCreates: 21 },
+    { freshCreates: -1 }, { freshCreates: 6.5 }, { freshCreates: "6" },
+    { legacyReceiptsWithUnknownFirstDate: 10_000_001 }, { deficitToMinimum: 4 },
+  ])("keeps count and deficit validation strict for the new policy: %j", patch => {
+    const state = native(), snapshot = summarize(native({ dayStatus: { ...state.dayStatus,
+      minimum: 8, maximum: 10, deficitToMinimum: 2, ...patch } }));
+    expect(snapshot).toMatchObject({ complete: false, nativeDelivery: null, nativeDeliveryInvalid: true });
   });
 });
