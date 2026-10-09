@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "kind": "support-intake-local-checkpoint",
+  "status": "LOCAL_EVIDENCE_RETAINED_NOT_FORMAL_ACCEPTANCE",
+  "generatedAt": "2026-10-09T05:15:42.602Z",
+  "sourceCommit": "b2f7018e6c0a695864d381b7c0b4cdd4908bc3e4",
+  "sourceRows": 1950,
+  "sourceFingerprint": "c4a615ef5d6094cc29a33a053e9be016bfc48bb2a1e4080ba530618fd797e098",
+  "qa": {
+    "actualRootPid": 12684,
+    "typescript": {
+      "actualPid": 13388,
+      "status": "PASS"
+    },
+    "rawAst": {
+      "actualPid": 10224,
+      "status": "PASS"
+    },
+    "formatterUnits": {
+      "actualPid": 19688,
+      "passedCases": 5,
+      "retained": true,
+      "originalParentStatus": "FAIL_SUPPORT_INTAKE_LOCAL_QA",
+      "qualification": "FIVE_ACTUAL_PASSED_FORMATTER_CASES_RETAINED_ONLY"
+    },
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-local-qa-root-a1\\run-root-a3\\result.json",
+      "bytes": 11988,
+      "sha256": "47c0c18854c8b98d5676c71ef38d053906bcff19d203551785b281e877eb5467"
+    },
+    "originalFailure": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-local-qa-root-a1\\run-root-a2\\result.json",
+      "bytes": 13986,
+      "sha256": "f8282601689e6d3e3ad34279b4506d57f35f6010f53092ed5a339c3507e692bc"
+    },
+    "retainedReport": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-local-qa-root-a1\\run-root-a2\\vitest-results.json",
+      "bytes": 6366,
+      "sha256": "499d9673fcf4be175da2daea95ae213811075592eee9ffab8b004c9e0d9b6206"
+    }
+  },
+  "ui": {
+    "actualRootPid": 5472,
+    "status": "PASS_FOCUSED_BROWSER_NOT_ACCEPTANCE",
+    "choices": 44,
+    "screenshots": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-ui-proposal-a1\\browser-run-root-a1\\keyboard-ru-320-pwa.png",
+        "bytes": 100525,
+        "sha256": "b4e141c3ac4f5132fee60f720014a7ef47186aa7b5ef93b79a9c8600f7df0585"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-ui-proposal-a1\\browser-run-root-a1\\keyboard-ru-320-account.png",
+        "bytes": 64309,
+        "sha256": "c993c89bd8e0bdf51e5b5f39733605480f57333de18c6ce258bbaebc1da7b838"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-ui-proposal-a1\\browser-run-root-a1\\touch-en-320-pwa.png",
+        "bytes": 86650,
+        "sha256": "fb10146f91e2063abe5755842d4ebd7b22a798291936be6805e61be5e635abb1"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-ui-proposal-a1\\browser-run-root-a1\\touch-en-320-account.png",
+        "bytes": 57092,
+        "sha256": "5779c65b3cb8eb40a11caf80470f121678d5df2516885221a35bad48d26c7f62"
+      }
+    ],
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-ui-proposal-a1\\browser-run-root-a1\\result.json",
+      "bytes": 13829,
+      "sha256": "33b0c2be7bf906226377cb0c8822d6630ceb423f3626ba404a22eb635eaa5346"
+    },
+    "humanScreenshotReview": false,
+    "installedOs": "NOT_VERIFIED",
+    "auth": "UNCONFIGURED_DEFAULT_CONTEXT_FIXTURE",
+    "mailSent": false
+  },
+  "builds": {
+    "pwa": {
+      "actualPid": 7012,
+      "naturalRecoveryExitCode": 0,
+      "naturalRecoveryTermination": true,
+      "qualification": "RECOVERED_PWA_FINALIZATION_AUDIT_PASS_ORIGINAL_COMPILE_EXIT_NOT_OBSERVED",
+      "originalPid": 16900,
+      "originalCompileExitCode": null,
+      "originalCompileNaturalTermination": null,
+      "applicationCompilationRepeated": false,
+      "artifactSource": {
+        "rows": 1192,
+        "fingerprint": "9565ecd2e38ca97b2a1e4ae6b0532c10ae9cc0f2279f70a8250f64a11acfc8ad",
+        "exactMembership": true,
+        "everyRowMatchesCapsulePlusOverlay": true,
+        "independentDigest": true
+      },
+      "buildId": "39859107a7de351db3c8f34090d211379b4b634c2216ddefcb8c533bd54703df",
+      "preparation": {
+        "root": "R",
+        "path": ".tmp/mobile-release-pwa-recovery-67cd8ec3-d721-4ce9-a8f4-817f1979f7a0/preparation.json",
+        "bytes": 5248,
+        "sha256": "619d529a28742af91f4c6f61fead020013b3eaf33b32b408a602678cf2671ddb",
+        "entry": "builds/pwa/preparation.json"
+      },
+      "audit": {
+        "root": "W",
+        "path": "support-intake-pwa-recovery-execution-a1/audit.json",
+        "bytes": 797,
+        "sha256": "a1cc2adad8500cdd5b7622d9823c8c321793e159a4a782d48ef7e1d98001fbef",
+        "entry": "evidence/pwa-recovery/audit.json"
+      },
+      "terminal": {
+        "root": "W",
+        "path": "support-intake-pwa-recovery-owned-root-a1/terminal.json",
+        "bytes": 291,
+        "sha256": "5db5bb34ceb8a8307c39f860dbedaea6f7e29b3ef69e389ac9888243dd29adb6",
+        "entry": "evidence/pwa-owned/terminal.json"
+      },
+      "reference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-pwa-recovery-execution-a1\\result.json",
+        "bytes": 5248,
+        "sha256": "619d529a28742af91f4c6f61fead020013b3eaf33b32b408a602678cf2671ddb"
+      },
+      "auditReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-pwa-recovery-execution-a1\\audit.json",
+        "bytes": 797,
+        "sha256": "a1cc2adad8500cdd5b7622d9823c8c321793e159a4a782d48ef7e1d98001fbef"
+      }
+    },
+    "android": {
+      "actualPid": 13344,
+      "naturalExitCode": 0,
+      "naturalTermination": true,
+      "releaseSource": {
+        "rows": 1950,
+        "fingerprint": "c4a615ef5d6094cc29a33a053e9be016bfc48bb2a1e4080ba530618fd797e098",
+        "exactMembership": true,
+        "everyRowMatchesCapsulePlusOverlay": true,
+        "independentDigest": true
+      },
+      "artifactSource": {
+        "rows": 1196,
+        "fingerprint": "17e524335667b07cba8047b3e8d5c790b4d0209a9163d1f00b7ba36a95ffdc7f",
+        "exactMembership": true,
+        "everyRowMatchesCapsulePlusOverlay": true,
+        "independentDigest": true
+      },
+      "binarySource": {
+        "rows": 1331,
+        "fingerprint": "f11f0c6c2afc5c39a3d0905e2f1082578be3f1fc549189cddaef7f72ffdc96b5",
+        "exactMembership": true,
+        "everyRowMatchesCapsulePlusOverlay": true,
+        "independentDigest": true
+      },
+      "buildId": "19373a5c6b8696e82bc61a879acec883a5f3ac5b12bbe85d5d2d42c2d0b63ccc",
+      "javaCompile": "MAIN_AND_INSTRUMENTATION_UP_TO_DATE_NOT_FRESH_COMPILE",
+      "receipt": {
+        "root": "R",
+        "path": ".tmp/mobile-release-android-c3bac443-4e07-4418-a897-2065744df41d/binary.json",
+        "bytes": 215829,
+        "sha256": "bdf66910465422e1ce61f551ea04179f67c7a0d02696a00b7c3b784c46811f83",
+        "entry": "builds/android/binary.json"
+      },
+      "audit": {
+        "root": "R",
+        "path": ".tmp/mobile-release-android-c3bac443-4e07-4418-a897-2065744df41d/native-audit.stdout.txt",
+        "bytes": 1045,
+        "sha256": "16e86ffddfe42aa307b19a6a4409316140bf5276c58f18085391ac6bbe63d514",
+        "entry": "builds/android/native-audit.stdout.txt"
+      },
+      "terminalReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-build-owned-android-a1\\terminal.json",
+        "bytes": 292,
+        "sha256": "0a6cb114490df9d9b7847b2ae3adf6e3dae9b7b91b9bbd96a649b0b3d6c44508"
+      }
+    }
+  },
+  "packet": {
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-packet-run-a0adaf2b-0faa-4ba6-a4a8-10d7f5e5cb4f\\result.json",
+      "bytes": 5140,
+      "sha256": "b0bc7dcd7fb1dfd814ed7a4c024516fa18b95dcecb18b475e002e0565b07bbf3"
+    },
+    "ownedRootReference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-packet-root-a1\\result.json",
+      "bytes": 9824,
+      "sha256": "aa2929b91fe4f4d8254eaeb3742cc6e1a4f83c5c0d4e30c74c1e2adeaa6eea19"
+    },
+    "actualRootPid": 22464,
+    "actualWriterPid": 7788,
+    "output": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-packet-run-a0adaf2b-0faa-4ba6-a4a8-10d7f5e5cb4f\\current-support-intake-b2.zip",
+    "bytes": 137377494,
+    "sha256": "68f8974d7a010e5fd8b1cf7f43ea0ba50f84292b7a17f4a307c2fcf6a49a1acb",
+    "entries": 1477,
+    "rawBytes": 152543204,
+    "exactNamesSizesSha256": true,
+    "composite": {
+      "overlayFiles": 17,
+      "replacements": 8,
+      "additions": 9,
+      "sourceFiles": 3947,
+      "restore": "NOT_RUN",
+      "crc": "NOT_RUN"
+    },
+    "qualification": "PASS_CURRENT_SUPPORT_INTAKE_INTERNAL_PACKET_NOT_ACCEPTANCE"
+  },
+  "priorRestore": {
+    "sourceCommit": "97293e8202176a9494a0c94df18b8a269ea1a649",
+    "sourceFiles": 3943,
+    "actualPid": 18004,
+    "status": "PASS_CURRENT_COMPOSITE_SOURCE_RESTORE_SHA_SIZE",
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\current-composite-restore-root-a1\\result.json",
+      "bytes": 7981,
+      "sha256": "6124f92cfe2fefcb2ad00f22f5d62a9148ab78a235144844ca050af200b2e0b6"
+    },
+    "appliesToB2": false
+  },
+  "newB2Restore": {
+    "status": "PASS_B2_INCREMENTAL_SOURCE_RESTORE_SHA_SIZE",
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-source-restore-root-a1\\result.json",
+      "bytes": 5933,
+      "sha256": "43503d8d301e3d8ed44a24b29442881d15761ae8609755418540a24aae3199f0"
+    },
+    "ownedRootReference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-source-restore-orchestration-root-a1\\result.json",
+      "bytes": 3791,
+      "sha256": "081e463434e8f0988e664732c52cefc97fc161cd25e5e041bccee8ae8fe202ea"
+    },
+    "childTerminalReference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-source-restore-orchestration-root-a1\\source-restore\\terminal.json",
+      "bytes": 2583,
+      "sha256": "6cbedf9d8d4767ed21c35aa3498e4b812ebf13407c9c345b5af60adcff129b17"
+    },
+    "rootTerminalReference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-source-restore-owned-root-a1\\terminal.json",
+      "bytes": 292,
+      "sha256": "cdf7b4f01a1a0fa21a0113cbb2a81ceb8e7cce0e0c92153a368a1e32ea93bdf6"
+    },
+    "actualRootPid": 11036,
+    "actualPid": 15968,
+    "naturalExitCode": 0,
+    "naturalTermination": true,
+    "sourceCommit": "b2f7018e6c0a695864d381b7c0b4cdd4908bc3e4",
+    "sourceFiles": 3947,
+    "sourceBytes": 127712662,
+    "sourceRows": 1950,
+    "sourceFingerprint": "c4a615ef5d6094cc29a33a053e9be016bfc48bb2a1e4080ba530618fd797e098",
+    "allSourceNamesSizesSha256Verified": true,
+    "previousRestoredTreeWrites": 0,
+    "buildExecuted": false,
+    "testsExecuted": false,
+    "qualification": "SEPARATE_ACTUAL_B2_RESTORE_PACKET_RECEIPT_UNCHANGED"
+  },
+  "nextAction": "Реализовать локальный RU/EN redacted diagnostic export по требованию 26 §3 с явным согласием взрослого, предварительным просмотром и локальной выгрузкой; проверить только затронутые пути. Локальная таксономия S27 уже реализована. Операционные очереди, SLA и доставка по требованию 155 остаются зависимы от фактических территорий, RU/EN операторов, политики и настроенного Auth/транспорта. Сохранить открытые installed OS, PSP, human/editorial, Auth/deletion и remote gates; не повторять неизменённые проверки.",
+  "ownerFourConditions": "HISTORICAL_NOT_RECHECKED_UNVERIFIED",
+  "ownerConditions": {
+    "installedNativeOS": {
+      "status": "NOT_RUN",
+      "reason": "NO_DEVICE_VM_OR_IOS_TEST_STAND"
+    },
+    "payments": {
+      "psp": "UNSELECTED",
+      "realTransactions": "NOT_RUN"
+    },
+    "ruEnEditorialLegalVoice": {
+      "status": "PENDING_HUMAN_APPROVAL"
+    },
+    "authDeletionAuthorizedRemote": {
+      "status": "NOT_RUN"
+    }
+  },
+  "ownerConditionsQualification": "NO_NEW_EXTERNAL_VERIFICATION_NOT_PASS",
+  "operationalQueuesSlaDelivery": "GATED_BY_FACTUAL_OWNER_INPUTS_AUTH_TRANSPORT",
+  "localTaxonomy": "IMPLEMENTED",
+  "analytics": "NO_OP_UNTIL_APPROVED",
+  "installedOs": "NOT_VERIFIED",
+  "humanEditorialVoice": "UNVERIFIED",
+  "psp": "UNSELECTED",
+  "authDeletionRemote": "UNVERIFIED",
+  "releaseReady": false,
+  "criteriaClosed": 0,
+  "formalTransitions": 0,
+  "productChecksRepeated": false
+}
