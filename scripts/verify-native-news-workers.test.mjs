@@ -21,7 +21,7 @@ function providerFixture(expected = "enabled", override = () => null) {
   const calls = [];
   const replies = [
     { bindings: preparationBindings(expected) },
-    { schedules: [{ cron: "17 */2 * * *" }] },
+    { schedules: [{ cron: "17,47 * * * *" }] },
     { bindings: [{ name: "NEWS_DELIVERY_ENABLED", type: "plain_text", text: ["enabled", "delivery-only"].includes(expected) ? "true" : "false" }] },
     { schedules: [{ cron: "*/5 5-19 * * *" }] },
   ];
@@ -36,6 +36,20 @@ function providerFixture(expected = "enabled", override = () => null) {
 const run = (fixture, expected = "enabled") => verifyNativeNewsWorkers({ ...credentials, expected, fetchImpl: fixture.fetchImpl });
 
 describe("native worker activation read-only postflight", () => {
+  it('allows the previous preparation cron only for an explicit compatible upgrade precheck', async () => {
+    const fixture = providerFixture('enabled', (index, value) => index === 1
+      ? json({ schedules: [{ cron: '17 */2 * * *' }] }) : null);
+    await expect(run(fixture)).rejects.toThrow('native_check_schedule_mismatch');
+    const upgrade = providerFixture('enabled', (index, value) => index === 1
+      ? json({ schedules: [{ cron: '17 */2 * * *' }] }) : null);
+    const result = await verifyNativeNewsWorkers({ ...credentials, expected: 'enabled', fetchImpl: upgrade.fetchImpl,
+      allowPreviousPreparationSchedule: true });
+    expect(result.workers[0].cronUtc).toBe('17 */2 * * *');
+    const invalid = providerFixture('enabled', (index, value) => index === 3
+      ? json({ schedules: [{ cron: '17 */2 * * *' }] }) : null);
+    await expect(verifyNativeNewsWorkers({ ...credentials, expected: 'enabled', fetchImpl: invalid.fetchImpl,
+      allowPreviousPreparationSchedule: true })).rejects.toThrow('native_check_schedule_mismatch');
+  });
   it.each(["enabled", "disabled", "delivery-only"])("verifies %s with exactly four fixed HTTPS GETs and no secret output", async expected => {
     const fixture = providerFixture(expected), result = await run(fixture, expected);
     expect(fixture.calls.map(({ url }) => url.href)).toEqual([
@@ -54,7 +68,7 @@ describe("native worker activation read-only postflight", () => {
     }
     expect(result).toMatchObject({ readonly: true, externalWrites: 0, providerRequests: 4, expected, deliveryConfirmed: false });
     expect(result.workers).toEqual([
-      { worker: "probpera-literary-news-preparation", flags: { NEWS_AUTOMATION_ENABLED: String(expected === "enabled"), NEWS_AUTOMATION_BOOTSTRAP: String(expected === "enabled"), NEWS_AUTOMATION_WRITER: "native" }, cronUtc: "17 */2 * * *" },
+      { worker: "probpera-literary-news-preparation", flags: { NEWS_AUTOMATION_ENABLED: String(expected === "enabled"), NEWS_AUTOMATION_BOOTSTRAP: String(expected === "enabled"), NEWS_AUTOMATION_WRITER: "native" }, cronUtc: "17,47 * * * *" },
       { worker: "probpera-literary-news-delivery", flags: { NEWS_DELIVERY_ENABLED: String(["enabled", "delivery-only"].includes(expected)) }, cronUtc: "*/5 5-19 * * *" },
     ]);
     expect(Number.isFinite(Date.parse(result.checkedAt))).toBe(true);
@@ -107,7 +121,7 @@ describe("native worker activation read-only postflight", () => {
   });
 
   it("rejects missing, duplicate, malformed and changed Cron schedules", async () => {
-    for (const schedules of [null, {}, [], [{ cron: "17 */2 * * *" }, { cron: "17 */2 * * *" }], [{ cron: "*/10 * * * *" }], [{ cron: true }]]) {
+    for (const schedules of [null, {}, [], [{ cron: "17,47 * * * *" }, { cron: "17,47 * * * *" }], [{ cron: "*/10 * * * *" }], [{ cron: true }]]) {
       const fixture = providerFixture("enabled", index => index === 1 ? json({ schedules }) : null);
       await expect(run(fixture)).rejects.toThrow("native_check_schedule_mismatch");
       expect(fixture.fetchImpl).toHaveBeenCalledTimes(2);
@@ -158,7 +172,7 @@ describe("native worker activation read-only postflight", () => {
     expect(result.workers[0].flags).toEqual({ NEWS_AUTOMATION_ENABLED: String(actual === "enabled"),
       NEWS_AUTOMATION_BOOTSTRAP: String(actual === "enabled"), NEWS_AUTOMATION_WRITER: "native" });
     expect(result.workers[1].flags).toEqual({ NEWS_DELIVERY_ENABLED: "true" });
-    expect(result.workers.map(row => row.cronUtc)).toEqual(["17 */2 * * *", "*/5 5-19 * * *"]);
+    expect(result.workers.map(row => row.cronUtc)).toEqual(["17,47 * * * *", "*/5 5-19 * * *"]);
     for (const { url, options } of fixture.calls) {
       expect(options.method).toBe("GET"); expect(options.redirect).toBe("error"); expect(options.body).toBeUndefined();
       expect(url.origin).toBe("https://api.cloudflare.com");

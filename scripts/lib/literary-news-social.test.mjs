@@ -209,6 +209,48 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     expect(result.reason).toBe("destination_rights_unverified");expect(send).not.toHaveBeenCalled();
     expect((await store.read("destination:telegram:-100123")).state.paused).toBe(true);
   });
+  it.each(["timeout", "rate-limit", "malformed-read"])("automatically retries a pre-dispatch %s without pausing or consuming a slot", async scenario => {
+    const {store,key}=await setup(),send=vi.fn(async()=>accepted),controlKey="destination:telegram:-100123";
+    const reason=scenario==="rate-limit"?"provider_rate_limited":scenario==="malformed-read"?"preflight_response_invalid":"preflight_unavailable";
+    const seconds=scenario==="rate-limit"?120:60;
+    const preflight=vi.fn(async()=>{if(scenario==="timeout")throw Error("network timeout");
+      return {ok:false,retryable:true,reason,retryAfterSeconds:seconds};});
+    const first=await dispatchNewsJob({store,key,transport:{send,preflight},now:()=>now});
+    expect(first).toMatchObject({status:"pending",reason:"destination_rate_limit",preflightReason:reason});
+    expect((await store.read(controlKey)).state).toMatchObject({mode:"on",paused:false,historyReconciled:true,nextDueAt:first.nextDueAt});
+    expect((await store.read(key)).state).toMatchObject({status:"pending",runnerId:null,leaseUntil:null,lastError:reason});
+    expect((await store.read(key)).state.dispatchStartedAt).toBeFalsy();
+    expect(await store.list("history:pacing:")).toHaveLength(0);expect(send).not.toHaveBeenCalled();
+    preflight.mockResolvedValue({ok:true});
+    await dispatchNewsJob({store,key,transport:{send,preflight},now:()=>new Date(now.getTime()+seconds*1000-1)});
+    expect(preflight).toHaveBeenCalledTimes(1);expect(send).not.toHaveBeenCalled();
+    expect((await dispatchNewsJob({store,key,transport:{send,preflight},now:()=>new Date(now.getTime()+seconds*1000)})).status).toBe("sent_current");
+    expect(preflight).toHaveBeenCalledTimes(2);expect(send).toHaveBeenCalledTimes(1);
+    expect((await store.read(key)).state.remoteId).toBe("17");expect(await store.list("history:pacing:")).toHaveLength(1);
+  });
+  it("a temporary rights read preserves a concurrent operator pause and a longer cooldown",async()=>{
+    const {store,key}=await setup(),controlKey="destination:telegram:-100123",send=vi.fn();
+    const nextDueAt=new Date(now.getTime()+3600000).toISOString();
+    const preflight=async()=>{await store.seed(controlKey,{mode:"on",paused:true,pauseReason:"release_operator_pause",historyReconciled:true,nextDueAt});
+      return {ok:false,retryable:true,reason:"preflight_unavailable",retryAfterSeconds:60};};
+    await dispatchNewsJob({store,key,transport:{send,preflight},now:()=>now});
+    expect((await store.read(controlKey)).state).toMatchObject({paused:true,pauseReason:"release_operator_pause",nextDueAt});
+    expect(send).not.toHaveBeenCalled();expect(await store.list("history:pacing:")).toHaveLength(0);
+  });
+  it.each(["retry", "revoked", "changed-account"])("handles the second media preflight %s before any post or pacing reservation",async scenario=>{
+    const {store,key}=await setup(),controlKey="destination:telegram:-100123",send=vi.fn();
+    const old=(await store.read(key)).state;await store.seed(key,{...old,prepared:{...old.prepared,media:{assetId:"fixture"}}});
+    const preflight=vi.fn().mockResolvedValueOnce({ok:true,providerAccountId:"42"}).mockResolvedValueOnce(scenario==="retry"
+      ?{ok:false,retryable:true,reason:"preflight_unavailable",retryAfterSeconds:60}
+      :scenario==="revoked"?{ok:false,reason:"telegram_permission_denied"}:{ok:true,providerAccountId:"77"});
+    const prepareDelivery=vi.fn(async()=>({kind:"ready",delivery:{providerAccountId:"42"}}));
+    const result=await dispatchNewsJob({store,key,transport:{send,preflight,prepareDelivery},now:()=>now});
+    expect(result.reason).toBe(scenario==="retry"?"destination_rate_limit":"destination_rights_unverified");
+    expect((await store.read(controlKey)).state.paused).toBe(scenario!=="retry");
+    expect(preflight).toHaveBeenCalledTimes(2);expect(prepareDelivery).toHaveBeenCalledTimes(1);expect(send).not.toHaveBeenCalled();
+    expect((await store.read(key)).state).toMatchObject({status:"pending",runnerId:null,leaseUntil:null});
+    expect((await store.read(key)).state.dispatchStartedAt).toBeFalsy();expect(await store.list("history:pacing:")).toHaveLength(0);
+  });
   it("repairs a missing job from durable admission after it leaves the current projection", async () => {
     const store=memoryStore();
     await reconcileNewsSnapshot(store,await completeFeed(),[],now);

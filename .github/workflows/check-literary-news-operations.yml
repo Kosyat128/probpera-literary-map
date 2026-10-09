@@ -3,7 +3,7 @@ name: Check literary news operations without publishing
 on:
   workflow_dispatch:
   schedule:
-    - cron: "47 7,19 * * *"
+    - cron: "37 */2 * * *"
 
 permissions:
   contents: read

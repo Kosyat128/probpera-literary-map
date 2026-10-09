@@ -14,7 +14,7 @@ export const DAILY_NEWS_LIMITS = Object.freeze({ minimum: 10, maximum: 15, recor
 export const DAILY_NEWS_MODELS = Object.freeze({ draft: "@cf/openai/gpt-oss-120b", review: "@cf/meta/llama-3.3-70b-instruct-fp8-fast" });
 export const DAILY_NEWS_POLICY = "source-grounded-bilingual-double-machine-review-v1";
 export const PUBLICATION_DATE_METHODS = new Set(['meta[property="article:published_time"]', 'meta[name="date"]',
-  'meta[name="DC.date.issued"]', "jsonld.datePublished"]);
+  'meta[name="DC.date.issued"]', 'meta[itemprop~="datePublished"]', 'time[itemprop~="datePublished"]', "jsonld.datePublished"]);
 const DAY = 86400000;
 const hash = value => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
 const size = newsJsonByteSize;

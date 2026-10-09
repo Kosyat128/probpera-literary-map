@@ -24,7 +24,8 @@ const item=id=>({id,eventKey:id,verification:'confirmed',kind:'news',category:'r
   summary:{ru:`Издатель объявил о книге ${id}. Проверенное описание полностью сохраняется.`,en:`Publisher announced book ${id}. The reviewed description is retained.`},
   source:{name:'Isolated publisher fixture',url:`https://publisher.example/books/${id}`,language:'en'}});
 
-async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0,captureConflicts=0,quotaAt=null,providerFailure=false}={}){
+async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0,captureConflicts=0,quotaAt=null,providerFailure=false,
+  control={mode:'on',paused:false,historyReconciled:true}}={}){
   const records=Array.from({length:30},(_,i)=>item(`news-${String(i).padStart(2,'0')}`));
   const correctionRecords=Array.from({length:corrections},(_,i)=>item(`correction-${String(i).padStart(2,'0')}`));
   const feed=await buildPublishedNewsFeed({records:[...records,...correctionRecords],withdrawals:[],state:pendingNewsSourceState(),current,release});
@@ -38,7 +39,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
   const assets=photo?[asset]:[],index=await makeDeliveryMediaIndex({assets,downloadHosts:[],uploads:photo?[{sha256:descriptor.sha256,uploadedAt:current.toISOString()}]:[],generatedAt:current.toISOString()});
   const rows=new Map(),requests=[],writes=[],conflicts=new Map();let sequence=0,acknowledgedCreates=0,invocation='none';
   const seed=(key,state)=>rows.set(key,{id:++sequence,state:structuredClone(state)});
-  seed(controlKey,{mode:'on',paused:false,historyReconciled:true});
+  seed(controlKey,control);
   const prepare=record=>prepareNewsPost(record,feed.snapshot,'telegram',{destination,mediaOptions:{registry:{assets},now:current,deferBytes:true}});
   for(const [index,record] of correctionRecords.entries()){
     const prepared=await prepare(record),key=newsPostKey(record.id,destination);
@@ -80,7 +81,8 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
       }
       if(url.pathname.endsWith('/compare_append_literary_news_runtime')){
         const key=body.p_key,prior=rows.get(key)||{id:null,state:null};
-        if(quotaAt==='capture'&&invocation==='capture'&&!key.startsWith('heartbeat:')
+        if(quotaAt==='heartbeat'&&key.startsWith('heartbeat:')
+          ||quotaAt==='capture'&&invocation==='capture'&&!key.startsWith('heartbeat:')
           ||quotaAt==='receipt'&&body.p_state.status==='sent_current')return Response.json({code:'402',message:'PRIVATE_QUOTA_RESPONSE'},{status:402});
         const required=body.p_state.status==='sent_current'?receiptConflicts:key.startsWith('admission:')||key.startsWith('post:')?captureConflicts:0;
         const marker=key+':'+(body.p_state.status||'admission');
@@ -122,6 +124,21 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
 }
 
 describe('native capture and dispatch under the real SDK external-request budget',()=>{
+  it.each(['capture','dispatch'])('persists the paused %s heartbeat with three real SDK requests and zero provider requests',async phase=>{
+    const control={mode:'on',paused:true,pauseReason:'release_operator_pause',historyReconciled:true};
+    const f=await sdkFixture({control,creates:1}),before=structuredClone(f.rows.get(controlKey)),report=await f.run(phase);
+    expect(report).toMatchObject({status:'destination_not_enabled_or_history_gap',reason:'destination_paused',
+      pauseReason:'release_operator_pause',finishedAt:current.toISOString(),externalRequests:3,heartbeatRecorded:true,providerWriteAttempts:0,deliveredThisRun:0});
+    expect(f.requests).toHaveLength(3);expect(f.requests.every(row=>row.origin==='https://worker-fixture.supabase.co')).toBe(true);
+    expect(f.writes).toEqual([]);expect(f.rows.get(controlKey)).toEqual(before);
+    expect(f.rows.get(phase==='capture'?'heartbeat:native-delivery-capture':'heartbeat:native-delivery').state)
+      .toMatchObject({status:report.status,externalRequests:3,heartbeatRecorded:true});
+  });
+  it('stops immediately if persisting a paused heartbeat hits the runtime quota',async()=>{
+    const f=await sdkFixture({control:{mode:'on',paused:true,historyReconciled:true},quotaAt:'heartbeat'}),report=await f.run('dispatch');
+    expect(report).toMatchObject({status:'blocked',code:'runtime_quota_exceeded',externalRequests:3,heartbeatRecorded:false});
+    expect(f.requests).toHaveLength(3);expect(f.writes).toEqual([]);expect(f.rows.has('heartbeat:native-delivery')).toBe(false);
+  });
   it('captures four of a full 30-record proof in 22 requests, then creates one photo and edits one old text with separate budgets',async()=>{
     const f=await sdkFixture({corrections:14,creates:6});
     const original=JSON.stringify(f.feed),capture=await f.run('capture'),delivery=await f.run('dispatch');

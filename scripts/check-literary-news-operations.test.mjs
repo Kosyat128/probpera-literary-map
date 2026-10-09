@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
-import { checkNewsOperations, createNewsOperationsReportReader, newsDeliveryCheckpointAge, summarizeNewsOperations } from './check-literary-news-operations.mjs';
+import { checkNewsOperations, createNewsOperationsReportReader, createNewsOperationsRuntimeReadFetch,
+  newsDeliveryCheckpointAge, summarizeNewsOperations } from './check-literary-news-operations.mjs';
 import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
   DAILY_NEWS_OWNER_KEY } from './lib/literary-news-daily-profile.mjs';
 import { emptyDailyLedger } from './lib/literary-news-daily-automation.mjs';
@@ -53,6 +54,73 @@ describe('bounded read-only news operations projection', () => {
     expect(report.status).toBe('failed');
     expect(report.failures).toEqual(expect.arrayContaining(['operations_preparation_stale', 'operations_profile_stale', 'operations_ledger_stale']));
   });
+  it('uses a fresh quota attempt to distinguish an active cooldown from a stopped preparation schedule', async () => {
+    const value = await input(), older = new Date(current.getTime() - 8 * 3600000);
+    value.preparationReport.checkedAt = older.toISOString(); value.preparationReport.stoppedReason = 'ai_quota_exceeded';
+    value.profile = await makeDailyApprovedPayload([], older); value.ledger = emptyDailyLedger(older);
+    value.preparationAttempt = { schemaVersion: 1, startedAt: current.toISOString(), finishedAt: current.toISOString(),
+      status: 'provider_quota_cooldown', reason: 'ai_quota_exceeded', publicationConfirmed: false, retryAfterAt: '2026-10-02T00:00:00.000Z' };
+    const report = await summarizeNewsOperations(value);
+    expect(report.status).toBe('failed'); expect(report.failures).toEqual(['operations_preparation_degraded']);
+    expect(report.preparation.quotaCooldown).toBe(true); expect(report.preparation.providerStop).toBe('ai_quota_exceeded');
+    expect(report.preparation.retryAfterAt).toBe('2026-10-02T00:00:00.000Z');
+    // The first completed run can record quota exhaustion before the later cooldown-only run.
+    value.preparationAttempt.status = 'provider_degraded'; value.preparationAttempt.retryAfterAt = null;
+    expect((await summarizeNewsOperations(value)).preparation.quotaCooldown).toBe(true);
+  });
+  it.each(['old', 'expired', 'extended', 'unrelated', 'invalid'])(
+    'does not hide stale checkpoints behind a %s preparation attempt', async boundary => {
+      const value = await input(), older = new Date(current.getTime() - 8 * 3600000);
+      value.preparationReport.checkedAt = older.toISOString(); value.profile = await makeDailyApprovedPayload([], older);
+      value.ledger = emptyDailyLedger(older);
+      value.preparationAttempt = { schemaVersion: 1, startedAt: current.toISOString(), finishedAt: current.toISOString(),
+        status: 'provider_quota_cooldown', reason: 'ai_quota_exceeded', publicationConfirmed: false, retryAfterAt: '2026-10-02T00:00:00.000Z' };
+      if (boundary === 'old') value.preparationAttempt.startedAt = value.preparationAttempt.finishedAt = older.toISOString();
+      if (boundary === 'expired') value.preparationAttempt.retryAfterAt = '2026-10-01T00:00:00.000Z';
+      if (boundary === 'extended') value.preparationAttempt.retryAfterAt = '2026-10-03T00:00:00.000Z';
+      if (boundary === 'unrelated') value.preparationAttempt.reason = 'daily_' + privateMarker.toLowerCase();
+      if (boundary === 'invalid') value.preparationAttempt.finishedAt = privateMarker;
+      const report = await summarizeNewsOperations(value);
+      expect(report.preparation.quotaCooldown).toBe(false);
+      expect(report.failures).toEqual(expect.arrayContaining(['operations_preparation_stale', 'operations_profile_stale', 'operations_ledger_stale']));
+      if (boundary === 'expired') expect(report.failures).toContain('operations_preparation_retry_overdue');
+      if (boundary === 'old') expect(report.failures).toContain('operations_preparation_attempt_stale');
+      if (boundary === 'invalid') expect(report.failures).toContain('operations_preparation_attempt_invalid');
+      expect(JSON.stringify(report).toLowerCase()).not.toContain(privateMarker.toLowerCase());
+    });
+  it('projects bounded candidate and AI counts with fixed held reason labels only', async () => {
+    const value = await input();
+    Object.assign(value.preparationReport, { newlyAccepted: 2, totalSourceDetails: 9, aiCalls: 8,
+      reservedAiCallsToday: 40, draftRequestsToday: 25, heldCount: 4,
+      held: [{ reason: 'daily_model_held', prompt: privateMarker }, { reason: 'daily_model_held' },
+        { reason: 'daily_' + privateMarker.toLowerCase() }, { reason: privateMarker } ] });
+    Object.assign(value.preparationReport.native, { maximumCandidateAttempts: 12, maximumAiCalls: 24,
+      deterministicHeld: [{ reason: 'daily_existing_or_withdrawn', sourceId: privateMarker }] });
+    const report = await summarizeNewsOperations(value);
+    expect(report.preparation.lastRunCounts).toEqual({ newlyAccepted: 2, totalSourceDetails: 9, aiCalls: 8,
+      reservedAiCallsToday: 40, draftRequestsToday: 25, heldCount: 4, maximumCandidateAttempts: 12,
+      maximumAiCalls: 24, deterministicHeldCount: 1 });
+    expect(report.preparation.heldReasons).toEqual({ daily_model_held: 2, other: 2 });
+    expect(report.preparation.deterministicHeldReasons).toEqual({ daily_existing_or_withdrawn: 1 });
+    expect(JSON.stringify(report).toLowerCase()).not.toContain(privateMarker.toLowerCase());
+    value.preparationReport.aiCalls = 5000001; value.preparationReport.native.maximumAiCalls = privateMarker;
+    value.preparationReport.held = Array(5001).fill({ reason: privateMarker });
+    const invalid = await summarizeNewsOperations(value);
+    expect(invalid.preparation.lastRunCounts.aiCalls).toBeNull();
+    expect(invalid.preparation.lastRunCounts.maximumAiCalls).toBeNull(); expect(invalid.preparation.heldReasons).toBeNull();
+  });
+  it('distinguishes a failed runtime read from a successfully read invalid queue or disabled destination', async () => {
+    const value = await input(); value.dueRows = null; value.control = null;
+    value.readFailures = ['operations_due_queue_read_failed', 'operations_destination_read_failed', privateMarker];
+    const unavailable = await summarizeNewsOperations(value);
+    expect(unavailable.failures).toEqual(['operations_destination_read_failed', 'operations_due_queue_read_failed']);
+    expect(unavailable.status).toBe('failed'); expect(unavailable.telegram.dueJobs).toBeNull();
+    expect(JSON.stringify(unavailable)).not.toContain(privateMarker);
+    value.readFailures = [];
+    const invalid = await summarizeNewsOperations(value);
+    expect(invalid.failures).toEqual(expect.arrayContaining(['operations_due_queue_invalid', 'operations_destination_not_enabled']));
+    expect(invalid.telegram.dueJobs).toBeNull();
+  });
   it('fails absent checkpoints, a disabled worker and paused or unowned publication', async () => {
     const value = await input(); value.profile = null; value.ledger = null; value.preparationReport = null;
     value.workers.workers[0].flags.NEWS_AUTOMATION_ENABLED = 'false'; value.owner.nativeEnabled = false; value.control.paused = true;
@@ -93,6 +161,13 @@ describe('bounded read-only news operations projection', () => {
     expect(JSON.stringify(report)).not.toContain(privateMarker);
     value.recentDayStatuses.push(value.recentDayStatuses[0]);
     expect((await summarizeNewsOperations(value)).failures).toContain('operations_day_history_invalid');
+  });
+  it('retains a malformed historical metric even when a different historical read fails', async () => {
+    const value = await input(); value.readFailures = ['operations_day_history_read_failed'];
+    value.recentDayStatuses = [{ at: '2026-09-30T10:00:00Z', status: null, readFailed: true }];
+    expect((await summarizeNewsOperations(value)).failures).toEqual(['operations_day_history_read_failed']);
+    value.recentDayStatuses.push({ at: '2026-09-29T10:00:00Z', status: { invalid: privateMarker } });
+    expect((await summarizeNewsOperations(value)).failures).toEqual(['operations_day_history_read_failed', 'operations_day_history_invalid']);
   });
   it('reports explicitly disabled preparation without fabricated checkpoints or zero admission counts', async () => {
     const value = disablePreparation(await input());
@@ -143,6 +218,48 @@ describe('bounded read-only news operations projection', () => {
 });
 
 describe('read-only operations report network boundaries', () => {
+  const runtimeOrigin = 'https://isolated-test.supabase.co';
+  it('retries transient runtime GET/RPC reads with bounded backoff and preserves the final empty queue', async () => {
+    for (const [path, method, first] of [
+      ['/rest/v1/admin_audit_log', 'GET', async () => { throw new TypeError('fetch failed ' + privateMarker); }],
+      ['/rest/v1/rpc/read_due_literary_news_runtime_posts', 'POST', async () => Response.json({ message: privateMarker }, { status: 503 })],
+      ['/rest/v1/rpc/literary_news_delivery_day_status', 'POST', async () => Response.json({ message: privateMarker }, { status: 429, headers: { 'retry-after': '1' } })],
+    ]) {
+      const fetchImpl = vi.fn().mockImplementationOnce(first).mockResolvedValueOnce(Response.json([])), sleep = vi.fn();
+      const response = await createNewsOperationsRuntimeReadFetch(runtimeOrigin, fetchImpl, { sleep })(runtimeOrigin + path, { method });
+      expect(await response.json()).toEqual([]); expect(fetchImpl).toHaveBeenCalledTimes(2);
+      expect(sleep).toHaveBeenCalledExactlyOnceWith(path.endsWith('day_status') ? 1000 : 250);
+      expect(fetchImpl.mock.calls.every(([url, options]) => url === runtimeOrigin + path && options.method === method
+        && options.redirect === 'error')).toBe(true);
+    }
+  });
+  it('stops after three transient attempts and does not retry longer server cooldowns', async () => {
+    const sleep = vi.fn(), fetchImpl = vi.fn(async () => Response.json({ message: privateMarker }, { status: 503 }));
+    const response = await createNewsOperationsRuntimeReadFetch(runtimeOrigin, fetchImpl, { sleep })(runtimeOrigin + '/rest/v1/admin_audit_log');
+    expect(response.status).toBe(503); expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(sleep.mock.calls).toEqual([[250], [500]]);
+    const cooldown = vi.fn(async () => Response.json({}, { status: 429, headers: { 'retry-after': '60' } }));
+    await createNewsOperationsRuntimeReadFetch(runtimeOrigin, cooldown, { sleep })(runtimeOrigin + '/rest/v1/admin_audit_log');
+    expect(cooldown).toHaveBeenCalledTimes(1);
+  });
+  it.each([200, 400, 401, 403, 404, 402])('does not retry invalid shapes or permanent HTTP %s failures', async status => {
+    const fetchImpl = vi.fn(async () => Response.json({ invalid: privateMarker }, { status })), sleep = vi.fn();
+    await createNewsOperationsRuntimeReadFetch(runtimeOrigin, fetchImpl, { sleep })(runtimeOrigin + '/rest/v1/rpc/read_due_literary_news_runtime_posts', { method: 'POST' });
+    expect(fetchImpl).toHaveBeenCalledTimes(1); expect(sleep).not.toHaveBeenCalled();
+  });
+  it('preserves quota and endpoint fences and never retries a mutation', async () => {
+    const fetchImpl = vi.fn(async () => Response.json({}, { status: 503 })), sleep = vi.fn();
+    const read = createNewsOperationsRuntimeReadFetch(runtimeOrigin, fetchImpl, { sleep });
+    await read(runtimeOrigin + '/rest/v1/rpc/compare_append_literary_news_runtime', { method: 'POST' });
+    expect(fetchImpl).toHaveBeenCalledTimes(1); expect(sleep).not.toHaveBeenCalled();
+    await expect(read('https://untrusted.example/rest/v1/admin_audit_log')).rejects.toThrow('delivery_network_rejected');
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    const quotaFetch = vi.fn(async () => Response.json({}, { status: 402 }));
+    const quotaRead = createNewsOperationsRuntimeReadFetch(runtimeOrigin, quotaFetch, { sleep });
+    await quotaRead(runtimeOrigin + '/rest/v1/admin_audit_log');
+    await expect(quotaRead(runtimeOrigin + '/rest/v1/admin_audit_log')).rejects.toThrow('runtime_quota_exceeded');
+    expect(quotaFetch).toHaveBeenCalledTimes(1);
+  });
   it('reads only the fixed KV checkpoint with GET and rejects body overflow', async () => {
     const fetchImpl = vi.fn(async () => Response.json({ checkedAt: current.toISOString() }));
     const read = createNewsOperationsReportReader({ accountId: 'a'.repeat(32), apiToken: 'isolated-token', fetchImpl });
@@ -151,6 +268,10 @@ describe('read-only operations report network boundaries', () => {
     expect(new URL(url).origin).toBe('https://api.cloudflare.com');
     expect(new URL(url).pathname.endsWith('/values/literary-news%3Av1%3Adaily-automation%3Anative-report')).toBe(true);
     expect(options.method).toBe('GET'); expect(options.redirect).toBe('error');
+    await createNewsOperationsReportReader({ accountId: 'a'.repeat(32), apiToken: 'isolated-token', fetchImpl, kind: 'attempt' })();
+    expect(new URL(fetchImpl.mock.calls[1][0]).pathname.endsWith('/values/literary-news%3Av1%3Adaily-automation%3Anative-attempt')).toBe(true);
+    expect(() => createNewsOperationsReportReader({ accountId: 'a'.repeat(32), apiToken: 'isolated-token', fetchImpl, kind: privateMarker }))
+      .toThrow('operations_endpoint_rejected');
     await expect(createNewsOperationsReportReader({ accountId: 'a'.repeat(32), apiToken: 'isolated-token',
       fetchImpl: async () => new Response('x'.repeat(65537)) })()).rejects.toThrow('operations_report_too_large');
   });
@@ -183,8 +304,13 @@ describe('read-only operations report network boundaries', () => {
     { label: 'auto-resume after preparation starts despite the original false repository flag', autoResume: true, actualPreparation: true },
     { label: 'auto-resume with missing actual preparation checkpoints', autoResume: true, actualPreparation: true, missingPreparation: true },
     { label: 'auto-resume with an actual preparation quota failure', autoResume: true, actualPreparation: true, providerStop: 'ai_quota_exceeded' },
+    { label: 'transient queue read recovers', actualPreparation: false, dueFailures: 1 },
+    { label: 'queue read remains unavailable', actualPreparation: false, dueFailures: 3, readFailure: 'operations_due_queue_read_failed' },
+    { label: 'invalid queue is not a transport failure', actualPreparation: false, invalidQueue: true },
+    { label: 'destination read is unauthorized', actualPreparation: false, unauthorizedDestination: true, readFailure: 'operations_destination_read_failed' },
   ])('checks $label through four real Worker GETs and keeps actual read-only metrics', async scenario => {
     const value = await input(), calls = [], origin = 'https://isolated-test.supabase.co';
+    let dueAttempts = 0;
     if (scenario.providerStop) value.preparationReport.stoppedReason = scenario.providerStop;
     const fetchImpl = vi.fn(async (request, options = {}) => {
       const url = new URL(request instanceof URL ? request.href : typeof request === 'string' ? request : request.url);
@@ -199,11 +325,12 @@ describe('read-only operations report network boundaries', () => {
             : [{ name: 'NEWS_DELIVERY_ENABLED', type: 'plain_text', text: 'true' }] } });
         }
         if (url.pathname.endsWith('/schedules')) return Response.json({ success: true, result: { schedules: [{
-          cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17 */2 * * *' : '*/5 5-19 * * *' }] } });
+          cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17,47 * * * *' : '*/5 5-19 * * *' }] } });
         if (scenario.actualPreparation && url.pathname.includes('/storage/kv/')) {
           const documents = new Map([[DAILY_NEWS_PROFILE_KEY, value.profile], [DAILY_NEWS_LEDGER_KEY, value.ledger],
             [DAILY_NEWS_OWNER_KEY, value.owner], ['literary-news:v1:daily-automation:native-report', value.preparationReport]]);
           const key = decodeURIComponent(url.pathname.split('/').at(-1));
+          if (key === 'literary-news:v1:daily-automation:native-attempt') return Response.json({ errors: [{ code: 10009 }] }, { status: 404 });
           if (documents.has(key)) return scenario.missingPreparation
             ? Response.json({ errors: [{ code: 10009 }] }, { status: 404 }) : Response.json(documents.get(key));
         }
@@ -212,26 +339,33 @@ describe('read-only operations report network boundaries', () => {
       if (url.origin === 'https://news.probpera.ru') return Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
       if (url.origin === origin && url.pathname === '/rest/v1/admin_audit_log' && method === 'GET') {
         const key = url.searchParams.get('entity_id');
-        if (key?.startsWith('eq.destination:telegram:')) return Response.json([{ id: 1, metadata: value.control }]);
+        if (key?.startsWith('eq.destination:telegram:')) return scenario.unauthorizedDestination
+          ? Response.json({ message: privateMarker }, { status: 401 }) : Response.json([{ id: 1, metadata: value.control }]);
         if (key === 'eq.heartbeat:native-delivery') return Response.json([{ id: 2, metadata: value.deliveryHeartbeat }]);
       }
       if (url.origin === origin && url.pathname === '/rest/v1/rpc/literary_news_delivery_day_status' && method === 'POST') {
         const args = JSON.parse(options.body);
         return Response.json({ ...value.dayStatus, editorialDay: args.p_now.slice(0, 10) });
       }
-      if (url.origin === origin && url.pathname === '/rest/v1/rpc/read_due_literary_news_runtime_posts' && method === 'POST') return Response.json([]);
+      if (url.origin === origin && url.pathname === '/rest/v1/rpc/read_due_literary_news_runtime_posts' && method === 'POST') {
+        if (++dueAttempts <= (scenario.dueFailures || 0)) return Response.json({ message: privateMarker }, { status: 503 });
+        return Response.json(scenario.invalidQueue ? { invalid: privateMarker } : []);
+      }
       throw Error('Unexpected network request');
     });
     const report = await checkNewsOperations({ fetchImpl, now: () => current, expectedHead: release,
       env: { CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32), CLOUDFLARE_API_TOKEN: 'isolated-token',
         SUPABASE_URL: origin, SUPABASE_SERVICE_ROLE_KEY: 'isolated-service-key',
         LITERARY_NEWS_NATIVE_PREPARATION_ENABLED: 'false', LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON: 'ai_quota_exceeded',
-        LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: String(scenario.autoResume),
+        LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: String(Boolean(scenario.autoResume)),
         LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER: '2026-10-03T00:00:00.000Z' } });
     expect(report.mode).toBe(scenario.actualPreparation ? 'enabled' : 'delivery-only');
     expect(report.requestedMode).toBe(scenario.autoResume ? 'auto-resume' : 'delivery-only');
     expect(report.resumeScheduledAt).toBe(scenario.autoResume ? '2026-10-03T00:00:00.000Z' : null);
-    if (scenario.missingPreparation || scenario.providerStop) {
+    if (scenario.readFailure || scenario.invalidQueue) {
+      expect(report.status).toBe('failed'); expect(report.failures).toEqual([scenario.readFailure || 'operations_due_queue_invalid']);
+      if (scenario.readFailure === 'operations_due_queue_read_failed' || scenario.invalidQueue) expect(report.telegram.dueJobs).toBeNull();
+    } else if (scenario.missingPreparation || scenario.providerStop) {
       expect(report.status).toBe('failed'); expect(report.preparation.enabled).toBe(true); expect(report.preparation.reason).toBeNull();
       expect(report.failures).toContain(scenario.providerStop ? 'operations_preparation_degraded' : 'operations_preparation_checkpoint_missing');
     } else {
@@ -241,9 +375,9 @@ describe('read-only operations report network boundaries', () => {
     expect(cloudflare).toHaveLength(4); expect(cloudflare.every(row => row.method === 'GET')).toBe(true);
     expect(cloudflare.map(row => row.url.pathname.split('/').at(-1))).toEqual(['settings', 'schedules', 'settings', 'schedules']);
     const privateKv = calls.filter(row => row.url.pathname.includes('/storage/kv/'));
-    expect(privateKv).toHaveLength(scenario.actualPreparation ? 4 : 0); expect(privateKv.every(row => row.method === 'GET')).toBe(true);
+    expect(privateKv).toHaveLength(scenario.actualPreparation ? 5 : 0); expect(privateKv.every(row => row.method === 'GET')).toBe(true);
     const rpcs = calls.filter(row => row.method === 'POST');
-    expect(rpcs).toHaveLength(8); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
+    expect(rpcs).toHaveLength(8 + Math.min(scenario.dueFailures || 0, 2)); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
     expect(rpcs.every(row => ['/rest/v1/rpc/literary_news_delivery_day_status', '/rest/v1/rpc/read_due_literary_news_runtime_posts'].includes(row.url.pathname))).toBe(true);
     expect(report.public.release).toBe(release); expect(report.telegram.lastRunAt).toBe(current.toISOString());
     expect(report.telegram.acknowledgedPerDay).toHaveLength(7); expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3);

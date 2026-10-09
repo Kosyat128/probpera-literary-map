@@ -1,0 +1,62 @@
+name: Upgrade active literary news workers without disabling delivery
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: Exact reviewed main commit for the compatible worker upgrade
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-native-literary-news
+  cancel-in-progress: false
+
+jobs:
+  upgrade:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Verify the exact reviewed code
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" && "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+      - run: npm ci
+      - name: Test recovery, grounding, fairness and publication boundaries
+        run: |
+          npx vitest run scripts/lib/literary-news-social.test.mjs scripts/lib/literary-news-social-transport-core.test.mjs scripts/lib/literary-news-pacing-integration.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/verify-native-news-workers.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-delivery-budget.test.mjs scripts/check-literary-news-operations.test.mjs
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/news-preparation-upgrade
+          node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/news-delivery-upgrade
+      - name: Upgrade only already enabled workers and preserve credentials and state
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          node --input-type=module <<'NODE'
+          import {verifyNativeNewsWorkers} from './scripts/verify-native-news-workers.mjs';
+          await verifyNativeNewsWorkers({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN,expected:'enabled',allowPreviousPreparationSchedule:true});
+          NODE
+          node node_modules/wrangler/bin/wrangler.js deploy --keep-vars --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
+          node node_modules/wrangler/bin/wrangler.js deploy --keep-vars --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true --var NEWS_AUTOMATION_WRITER:native
+          node scripts/verify-native-news-workers.mjs --expect-enabled

@@ -15,6 +15,7 @@ import reviewed from '../../data/news/reviewed.json' with{type:'json'};
 import withdrawals from '../../data/news/withdrawals.json' with{type:'json'};
 
 export const PREPARATION_REPORT_KEY='literary-news:v1:daily-automation:native-report';
+export const PREPARATION_ATTEMPT_KEY='literary-news:v1:daily-automation:native-attempt';
 const fail=code=>{throw Error(code);};
 const safeError=error=>/^(?:daily_|ai_|provider_)[a-z0-9_]+$/.test(error?.message||'')?error.message:'daily_preparation_unavailable';
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
@@ -171,7 +172,8 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     const cooling=state.providerStop&&Date.parse(state.providerStop.retryAfterAt)>started.getTime();
     const admittedToday=state.accepted.filter(r=>dailyNewsDay(new Date(r.provenance.firstAcceptedAt))===day).length;
     const intake=cooling||admittedToday>=DAILY_NEWS_LIMITS.maximum?{details:[],counts:{checkedSources:0}}:await collect({
-      current:started,sourceLimit:32,detailLimit:10,rotationMinutes:120,reviewed:[...reviewed,...state.accepted],
+      current:started,sourceLimit:32,detailLimit:10,rotationMinutes:30,reviewed:[...reviewed,...state.accepted],
+      reviewCache:state.reviewCache,intakeHistory:state.intakeHistory,
       fetchImpl:createPreparationSourceFetch({fetchImpl,current:now,deadline})});
     const bounded=await boundedNativeNewsCandidates(intake,state,now());
     const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:bounded.maximum*2,
@@ -191,12 +193,29 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     return result.report;
   }finally{await releaseNewsPreparationLease(storage,lease.leaseId);}
 }
+// Keep last-attempt health separate from the accepted-content checkpoint. A
+// quota cooldown or failed source request must not masquerade as a stopped Cron.
+export async function observeNativeNewsPreparation(env,storage,{now=()=>new Date(),run=runNativeNewsPreparation}={}){
+  const startedAt=now().toISOString();let report,httpStatus=200;
+  try{report=await run(env,storage,{now});}
+  catch(error){httpStatus=503;report={status:'degraded',reason:safeError(error),publicationConfirmed:false,deliveryConfirmed:false};}
+  if(env.NEWS_AUTOMATION_ENABLED==='true'&&report.status!=='outside_admission_window'&&typeof env.NEWS_STATE?.put==='function'){
+    const status=/^[a-z_]{1,80}$/.test(report.status||'')?report.status:'degraded';
+    const reason=report.reason||report.stoppedReason;
+    const attempt={schemaVersion:1,startedAt,finishedAt:now().toISOString(),status,
+      reason:reason?safeError({message:reason}):null,publicationConfirmed:report.publicationConfirmed===true,
+      retryAfterAt:validTimestamp(report.retryAfterAt)?report.retryAfterAt:null};
+    try{await env.NEWS_STATE.put(PREPARATION_ATTEMPT_KEY,JSON.stringify(attempt));}
+    catch{report={...report,diagnosticRecorded:false};}
+  }
+  return{report,httpStatus};
+}
 export class DailyNewsPreparationCoordinator{
   constructor(state,env){this.storage=state.storage;this.env=env;}
   async fetch(request){
     if(request.method!=='POST'||new URL(request.url).pathname!=='/run')return new Response(null,{status:404});
-    try{return Response.json(await runNativeNewsPreparation(this.env,this.storage));}
-    catch(error){return Response.json({status:'degraded',reason:safeError(error),publicationConfirmed:false,deliveryConfirmed:false},{status:503});}
+    const {report,httpStatus}=await observeNativeNewsPreparation(this.env,this.storage);
+    return Response.json(report,{status:httpStatus});
   }
 }
 export default{

@@ -26,6 +26,8 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 safeCodes.add('delivery_request_budget_exhausted');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
+const safePauseReasons = new Set(['destination_rights_unverified','release_operator_pause',
+  'telegram_permission_denied','vk_permission_denied','provider_token_missing','provider_endpoint_invalid']);
 
 export const DELIVERY_EXTERNAL_REQUEST_LIMIT = 50;
 export const DELIVERY_CAPTURE_LIMIT = 4;
@@ -210,7 +212,13 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     const control=(await store.read(`destination:telegram:${destination.id}`)).state;
     storeValid=true;
     if(control?.mode!=='on'||control.paused||control.historyReconciled!==true)
-      return {...base,phase,externalRequests:budget.requests,status:'destination_not_enabled_or_history_gap',deliveredThisRun:0};
+      return await heartbeat({...base,phase,finishedAt:now().toISOString(),status:'destination_not_enabled_or_history_gap',
+        reason:!control?'destination_control_missing':control.mode!=='on'?'destination_mode_not_on'
+          :control.paused?'destination_paused':'destination_history_unreconciled',
+        destinationMode:['on','off','canary'].includes(control?.mode)?control.mode:null,
+        paused:control?.paused===true,historyReconciled:control?.historyReconciled===true,
+        pauseReason:control?.paused?safePauseReasons.has(control.pauseReason)?control.pauseReason:'destination_pause_reason_unknown':null,
+        providerWriteAttempts:0,deliveredThisRun:0});
     // Prove that the metrics prerequisite exists before any external provider write.
     phase='day_status';
     let dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',

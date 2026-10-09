@@ -1,6 +1,7 @@
 import {describe,expect,it,vi} from 'vitest';
 import worker,{checkedPreparationSourceUrl,createPreparationSourceFetch,createPreparationBindingAi,
-  boundedNativeNewsCandidates,reusableNativeNewsRecord,runNativeNewsPreparation,PREPARATION_REPORT_KEY} from './literary-news-preparation-worker.mjs';
+  boundedNativeNewsCandidates,reusableNativeNewsRecord,runNativeNewsPreparation,PREPARATION_REPORT_KEY,
+  observeNativeNewsPreparation,PREPARATION_ATTEMPT_KEY} from './literary-news-preparation-worker.mjs';
 import {NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
 import {emptyDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
@@ -34,6 +35,36 @@ function quotaProbeExecution(){return vi.fn(async({previous,ai,current:at})=>{
 });}
 
 describe('Private native daily preparation and bounded public source adapter',()=>{
+  it('records successful and cooldown attempts without replacing the publication checkpoint',async()=>{
+    const f=fixture(),old=JSON.stringify({checkedAt:'2026-09-29T00:17:00Z',stoppedReason:'ai_quota_exceeded'});
+    f.values.set(PREPARATION_REPORT_KEY,old);
+    const report={status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',checkedAt:'2026-09-30T00:17:00Z',
+      retryAfterAt:'2026-10-01T00:00:00.000Z',publicationConfirmed:false,privateText:'must not escape'};
+    expect(await observeNativeNewsPreparation(f.env,f.storage,{now:()=>current,run:async()=>report})).toEqual({report,httpStatus:200});
+    const attempt=JSON.parse(f.values.get(PREPARATION_ATTEMPT_KEY));
+    expect(attempt).toEqual({schemaVersion:1,startedAt:current.toISOString(),finishedAt:current.toISOString(),
+      status:'provider_quota_cooldown',reason:'ai_quota_exceeded',publicationConfirmed:false,retryAfterAt:'2026-10-01T00:00:00.000Z'});
+    expect(f.values.get(PREPARATION_REPORT_KEY)).toBe(old);expect(JSON.stringify(attempt)).not.toContain('must not escape');
+  });
+  it('records a safe failure reason while retaining content and never leaking remote exception text',async()=>{
+    const f=fixture();
+    const result=await observeNativeNewsPreparation(f.env,f.storage,{now:()=>current,run:async()=>{throw Error('https://secret.invalid/token');}});
+    expect(result).toMatchObject({httpStatus:503,report:{status:'degraded',reason:'daily_preparation_unavailable'}});
+    const attempt=JSON.parse(f.values.get(PREPARATION_ATTEMPT_KEY));
+    expect(attempt.reason).toBe('daily_preparation_unavailable');expect(attempt.publicationConfirmed).toBe(false);
+    expect(f.values.size).toBe(1);expect(JSON.stringify(attempt)).not.toContain('secret');
+  });
+  it('does not undo a publication or infer failure when only the attempt diagnostic write fails',async()=>{
+    const f=fixture();f.env.NEWS_STATE.put.mockRejectedValue(Error('network failure'));
+    const result=await observeNativeNewsPreparation(f.env,f.storage,{now:()=>current,
+      run:async()=>({status:'target_met',publicationConfirmed:true})});
+    expect(result).toEqual({httpStatus:200,report:{status:'target_met',publicationConfirmed:true,diagnosticRecorded:false}});
+  });
+  it('does not write diagnostic state when preparation is disabled',async()=>{
+    const f=fixture();f.env.NEWS_AUTOMATION_ENABLED='false';
+    await observeNativeNewsPreparation(f.env,f.storage,{now:()=>current,run:async()=>({status:'disabled'})});
+    expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();
+  });
   it('disabled scheduling/public requests do no storage, inference or network work',async()=>{
     const f=fixture();f.env.NEWS_AUTOMATION_ENABLED='false';
     expect((await f.run()).status).toBe('disabled');expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.collect).not.toHaveBeenCalled();

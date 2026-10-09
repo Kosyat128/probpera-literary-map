@@ -14,7 +14,7 @@ for an absent owner/fence. Bootstrap validates any existing ledger and public pr
 before establishing the first fence. It never resets an existing fence or accepts a
 corrupt profile. Once initialized, leaving bootstrap enabled does not bypass hashes.
 
-Each two-hour run checks up to 32 rotating registered sources and 10 article pages,
+Each half-hour run checks up to 32 rotating registered sources and 10 article pages,
 using at most 48 external source requests including redirects. Source requests use
 the fixed HTTPS registry, reject credentials/IP literals/unregistered ports and
 cross-origin redirects, and bound response streams to 1 MiB for listings or 512 KiB
@@ -145,3 +145,13 @@ degraded state, not a successful publication/delivery guarantee.
 Official references: [Durable Objects limits](https://developers.cloudflare.com/durable-objects/platform/limits/),
 [Workers limits](https://developers.cloudflare.com/workers/platform/limits/),
 [Workers AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
+
+## October 2026 recovery improvements
+
+Preparation checks sources at minutes 17 and 47 each hour. Existing daily limits remain 40 draft requests, 80 total provider calls and 15 accepted stories. A bounded persistent least-recently-fetched history rotates article details even when sources repeatedly expose undated or rejected links; a rejected URL rests for six hours. Exact source publication dates and two independent grounded RU/EN passes remain mandatory.
+
+Telegram remains at 45-60 minute intervals during 08:00-23:00 Moscow with at most 20 reserved slots. Temporary read failures while checking Telegram permissions defer the same job and retry fresh checks instead of permanently pausing the channel. Confirmed permission loss still pauses. An uncertain write is never automatically resent.
+
+The separate native-attempt checkpoint records completed preparation attempts, including quota cooldown and failures, without changing the accepted-content checkpoint. The read-only monitor retries only known transient reads and distinguishes unreadable state from an intentionally disabled destination.
+
+For compatible code fixes on active workers, use **Upgrade active literary news workers without disabling delivery** on the exact reviewed main SHA. It preserves enabled flags, credentials, source state, accepted content, locks and Telegram receipts; tests and bundle checks happen before deployment. A failed precheck leaves current workers running. Use the original activation workflow only for initial activation or an explicit mode change.

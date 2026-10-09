@@ -146,8 +146,16 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     expect(f.fetchImpl).not.toHaveBeenCalled();
     expect(f.store.compareAppend.mock.calls.every(([key])=>key==='heartbeat:native-delivery-capture')).toBe(true);
     f.store.seed(controlKey, { mode: 'on', paused: true, historyReconciled: true });
-    expect(await f.run()).toMatchObject({ status: 'destination_not_enabled_or_history_gap' });
-    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.store.compareAppend).toHaveBeenCalledOnce();
+    const pausedControl = structuredClone(f.store.rows.get(controlKey));
+    expect(await f.run()).toMatchObject({ status: 'destination_not_enabled_or_history_gap', reason: 'destination_paused',
+      heartbeatRecorded: true, providerWriteAttempts: 0, deliveredThisRun: 0 });
+    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.client.rpc).toHaveBeenCalledTimes(2);
+    expect(f.store.compareAppend.mock.calls.map(([key])=>key))
+      .toEqual(['heartbeat:native-delivery-capture', 'heartbeat:native-delivery-capture']);
+    expect(f.store.rows.get('heartbeat:native-delivery-capture').state)
+      .toMatchObject({ status: 'destination_not_enabled_or_history_gap', reason: 'destination_paused', finishedAt: current.toISOString() });
+    expect(f.store.rows.get(controlKey)).toEqual(pausedControl);
+    expect([...f.store.rows.keys()].some(key=>key.startsWith('admission:')||key.startsWith('post:'))).toBe(false);
   });
   it('selects stable newest explicit dates with a strict 24 item bound and Moscow date-only semantics', () => {
     const rows = [item('calendar', '2026-10-02', { kind: 'calendar' }), item('unknown', null),

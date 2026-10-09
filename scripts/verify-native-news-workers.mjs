@@ -1,7 +1,7 @@
 import { pathToFileURL } from 'node:url';
 
 const workers = Object.freeze([
-  Object.freeze({ name: 'probpera-literary-news-preparation', cron: '17 */2 * * *',
+  Object.freeze({ name: 'probpera-literary-news-preparation', cron: '17,47 * * * *',
     flags: Object.freeze({ NEWS_AUTOMATION_ENABLED: 'enabled', NEWS_AUTOMATION_BOOTSTRAP: 'enabled', NEWS_AUTOMATION_WRITER: 'native' }) }),
   Object.freeze({ name: 'probpera-literary-news-delivery', cron: '*/5 5-19 * * *',
     flags: Object.freeze({ NEWS_DELIVERY_ENABLED: 'enabled' }) }),
@@ -38,10 +38,11 @@ async function boundedJson(response) {
 }
 
 /** Exactly four read-only Cloudflare GETs; output includes only approved nonsecret flags and schedules. */
-export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, fetchImpl = fetch } = {}) {
+export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, fetchImpl = fetch, allowPreviousPreparationSchedule = false } = {}) {
   if (typeof accountId !== 'string' || !/^[a-f0-9]{32}$/i.test(accountId)
     || typeof apiToken !== 'string' || !/^[A-Za-z0-9_-]{1,512}$/.test(apiToken)
-    || !['enabled', 'disabled', 'delivery-only', 'auto-resume'].includes(expected)) fail('native_check_configuration_invalid');
+    || !['enabled', 'disabled', 'delivery-only', 'auto-resume'].includes(expected)
+    || typeof allowPreviousPreparationSchedule !== 'boolean') fail('native_check_configuration_invalid');
   const read = async (worker, suffix) => {
     const url = new URL('https://api.cloudflare.com');
     url.pathname = `/client/v4/accounts/${accountId}/workers/scripts/${worker.name}/${suffix}`;
@@ -76,9 +77,12 @@ export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, f
       Object.defineProperty(flags, name, { value, enumerable: true });
     }
     const schedules = await read(worker, 'schedules');
+    const actualCron = schedules.schedules?.[0]?.cron;
+    const previousPreparation = allowPreviousPreparationSchedule && worker.name === 'probpera-literary-news-preparation'
+      && actualCron === '17 */2 * * *';
     if (!Array.isArray(schedules.schedules) || schedules.schedules.length !== 1
-      || schedules.schedules[0]?.cron !== worker.cron) fail('native_check_schedule_mismatch');
-    results.push({ worker: worker.name, flags, cronUtc: worker.cron });
+      || actualCron !== worker.cron && !previousPreparation) fail('native_check_schedule_mismatch');
+    results.push({ worker: worker.name, flags, cronUtc: actualCron });
   }
   return { readonly: true, externalWrites: 0, providerRequests: 4, expected: actualExpected,
     ...(expected === 'auto-resume' ? { requestedExpected: 'auto-resume' } : {}), workers: results,
