@@ -79,7 +79,7 @@ export function newsAnnouncementEligible(record, today, timeZone) {
   );
 }
 
-export function selectReviewed(records, current, timeZone) {
+export function selectReviewed(records, current, timeZone, { includeExpiredAnnouncements = false } = {}) {
   if (!Array.isArray(records)) throw new TypeError("reviewed_data_invalid");
   const today = todayAt(current, timeZone);
   const ids = new Set();
@@ -100,7 +100,7 @@ export function selectReviewed(records, current, timeZone) {
       ))
       || !record.source || typeof record.source.name !== "string" || !record.source.name.trim() || record.source.name.length > 160
       || !validLanguage(record.source.language)) return [];
-    if (!newsAnnouncementEligible(record, today, timeZone)) return [];
+    if (!includeExpiredAnnouncements && !newsAnnouncementEligible(record, today, timeZone)) return [];
     const source = canonicalUrl(record.source.url);
     if (!source || source.href.length > 2048) return [];
     // A reviewed semantic identity distinguishes real stages on one source page.

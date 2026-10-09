@@ -1,12 +1,13 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import newsLimits from "../../data/news/contract.json";
 
 import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { readNewsFeedResponse } from "../news/transport";
-import { NEWS_CATEGORIES, NEWS_REGIONS, type NewsItem, type NewsRegion } from "../news/types";
+import { NEWS_CATEGORIES, NEWS_REGIONS, type NewsFeed, type NewsItem, type NewsRegion } from "../news/types";
 import { applyPendingNews, initialNewsUpdatesState, receiveNewsFeed } from "../news/updates";
 import { beginNewsWithdrawalUpdate, readKnownNewsWithdrawals, saveKnownNewsWithdrawals } from "../news/withdrawals";
 import { calendarDay, eventDateHint, formatNewsDate, getVisitorTimeZone, timeZoneLabel } from "../news/dates";
+import { browseNewsItems, newsAnnouncementIsCurrent, newsSourceOrigin, paginateNewsItems, newsPageNumbers, newsPageForAnchor, type NewsSort } from "../news/browse";
 import BrandExternalLinkIcon from "./BrandExternalLinkIcon";
 import NewsArticleThumbnail from "./NewsArticleThumbnail";
 import "../styles/literary-news.css";
@@ -30,6 +31,7 @@ function readStoredNewsIds(key: string): string[] {
 type Props = {
   endpoint?: string;
   variant?: "wide" | "sidebar";
+  archive?: boolean;
 };
 
 const copy = {
@@ -86,6 +88,7 @@ const copy = {
     sourcePending: "Доступность не проверена",
     sourceError: "Временно недоступен",
     announcement: "Анонс",
+    endedAnnouncement: "Завершённый анонс",
     calendar: "Памятная дата",
     publication: "Публикация",
     reviewed: "Проверено",
@@ -93,7 +96,7 @@ const copy = {
     feedDetails: "Источники и проверка",
     publicationUnknown: "Дата публикации не указана",
     editorialNote: "Проверенная подборка. Новые материалы проходят проверку.",
-    showAll: "Все события",
+    showAll: "Все новости",
     collapse: "Свернуть",
     stale: "Поиск новых публикаций задерживается. Обратите внимание на даты событий.",
     partial: "Часть источников сейчас недоступна. Лента может быть неполной.",
@@ -109,6 +112,38 @@ const copy = {
     coverage: "Подборка из доступных источников",
     countries: "Страны источников",
     more: "Показать ещё",
+    telegram: "Telegram-канал",
+    sort: "Порядок новостей",
+    newest: "Новые сначала",
+    oldest: "Старые сначала",
+    briefing: "По повестке",
+    newestOption: "Новые",
+    oldestOption: "Старые",
+    briefingOption: "По повестке",
+    sourceFilter: "Издание",
+    allSources: "Все издания",
+    publishedFrom: "Публикация с",
+    publishedTo: "Публикация по",
+    dateRangeInvalid: "Начальная дата должна быть не позже конечной.",
+    unknownDates: "Фильтр по датам показывает материалы с известной датой публикации.",
+    refine: "Издание, даты и порядок",
+    reset: "Сбросить фильтры",
+    pagination: "Страницы новостей",
+    previousPage: "Назад",
+    nextPage: "Далее",
+    page: "Страница",
+    of: "из",
+    shown: "Показаны",
+    publishedUnknownShort: "Дата публикации не указана",
+    event: "Событие",
+    retry: "Попробовать снова",
+    archiveFallback: "Архив временно недоступен. Показана сохранённая подборка актуальных новостей; полный архив загрузится после обновления.",
+    read: "Прочитано",
+    focus: "В фокусе",
+    readerDescription: "Книги, люди и события литературного мира.",
+    refineShort: "Фильтры",
+    scrollHint: "Листайте новости внутри блока",
+    closeStory: "Свернуть текст",
   },
   en: {
     eyebrow: "Proba Pera · News",
@@ -163,6 +198,7 @@ const copy = {
     sourcePending: "Availability not checked",
     sourceError: "Temporarily unavailable",
     announcement: "Announcement",
+    endedAnnouncement: "Past announcement",
     calendar: "Anniversary",
     publication: "Published",
     reviewed: "Reviewed",
@@ -170,7 +206,7 @@ const copy = {
     feedDetails: "Sources and review",
     publicationUnknown: "Publication date not provided",
     editorialNote: "A reviewed selection. New material is checked before publication.",
-    showAll: "All events",
+    showAll: "All news",
     collapse: "Show less",
     stale: "The new-publication check is delayed. Please check the event dates.",
     partial: "Some sources are unavailable. The selection may be incomplete.",
@@ -186,6 +222,38 @@ const copy = {
     coverage: "A selection from available sources",
     countries: "Source countries",
     more: "Show more",
+    telegram: "Telegram channel",
+    sort: "News order",
+    newest: "Newest first",
+    oldest: "Oldest first",
+    briefing: "Briefing order",
+    newestOption: "Newest",
+    oldestOption: "Oldest",
+    briefingOption: "Briefing",
+    sourceFilter: "Publication",
+    allSources: "All publications",
+    publishedFrom: "Published from",
+    publishedTo: "Published through",
+    dateRangeInvalid: "The start date must not be after the end date.",
+    unknownDates: "Date filters show stories with a known publication date.",
+    refine: "Publication, dates and order",
+    reset: "Reset filters",
+    pagination: "News pages",
+    previousPage: "Previous",
+    nextPage: "Next",
+    page: "Page",
+    of: "of",
+    shown: "Showing",
+    publishedUnknownShort: "Publication date not provided",
+    event: "Event",
+    retry: "Try again",
+    archiveFallback: "The archive is temporarily unavailable. Showing a saved selection of current news; the complete archive will return after an update.",
+    read: "Read",
+    focus: "In focus",
+    readerDescription: "Books, people and events from the literary world.",
+    refineShort: "Filters",
+    scrollHint: "Scroll inside to read more",
+    closeStory: "Show less",
   },
 } satisfies Record<InterfaceLanguage, Record<string, string>>;
 
@@ -210,10 +278,6 @@ const regionCopy: Record<NewsRegion, Record<InterfaceLanguage, string>> = {
   africa: { ru: "Африка", en: "Africa" },
   oceania: { ru: "Океания", en: "Oceania" },
 };
-
-function searchable(value: string) {
-  return value.normalize("NFKD").toLocaleLowerCase().replace(/[\u0300-\u036f]/g, "").replace(/ё/g, "е");
-}
 
 function RefreshIcon() {
   return (
@@ -240,7 +304,17 @@ function ReadIcon() {
   );
 }
 
-export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru/api/literary-news/feed", variant = "wide" }: Props) {
+function SearchIcon() {
+  return <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>;
+}
+
+function newsExcerpt(value: string, limit: number) {
+  if (value.length <= limit) return value;
+  const boundary = value.lastIndexOf(" ", limit);
+  return `${value.slice(0, boundary > limit / 2 ? boundary : limit).replace(/[.,;:!?]+$/u, "")}…`;
+}
+
+export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru/api/literary-news/feed", variant = "wide", archive = false }: Props) {
   const { language } = useInterfaceLanguage();
   const text = copy[language];
   const sidebar = variant === "sidebar";
@@ -259,6 +333,11 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   const [region, setRegion] = useState<NewsRegion | "all">("all");
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
+  const [source, setSource] = useState("");
+  const [publishedFrom, setPublishedFrom] = useState("");
+  const [publishedTo, setPublishedTo] = useState("");
+  const [sort, setSort] = useState<NewsSort>(archive ? "newest" : "briefing");
   const [savedOnly, setSavedOnly] = useState(false);
   const [unreadOnly, setUnreadOnly] = useState(false);
   const [savedIds, setSavedIds] = useState(() => readStoredNewsIds(SAVED_NEWS_STORAGE_KEY));
@@ -267,7 +346,8 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   const [persistentRead, setPersistentRead] = useState(true);
   const [openStoryIds, setOpenStoryIds] = useState<string[]>([]);
   const [expanded, setExpanded] = useState(false);
-  const [visibleLimit, setVisibleLimit] = useState(25);
+  const [page, setPage] = useState(1);
+  const updateScrollAnchor = useRef<{ id: string; top: number } | null>(null);
   const [now, setNow] = useState(Date.now);
 
   function displayDate(value: string, locale: InterfaceLanguage, withTime = false) {
@@ -275,9 +355,32 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   }
 
   function showPendingNews() {
+    const list = document.getElementById(listId);
+    const bounds = list?.getBoundingClientRect();
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(`[id="${listId}"] [data-news-id]`));
+    const anchor = bounds ? cards.find((card) => card.getBoundingClientRect().bottom > Math.max(0, bounds.top) && card.getBoundingClientRect().top < Math.min(window.innerHeight, bounds.bottom)) : undefined;
+    if (anchor) {
+      updateScrollAnchor.current = { id: anchor.dataset.newsId!, top: anchor.getBoundingClientRect().top };
+      const nextItems = selectFilteredItems(updates.latestFeed);
+      if (nextItems.findIndex((item) => item.id === anchor.dataset.newsId) >= (archive ? 8 : 3)) setExpanded(true);
+      setPage(newsPageForAnchor(nextItems, anchor.dataset.newsId!, page));
+    }
     setUpdates(applyPendingNews);
     document.getElementById(listId)?.focus({ preventScroll: true });
   }
+
+  useLayoutEffect(() => {
+    const anchor = updateScrollAnchor.current;
+    if (!anchor) return;
+    updateScrollAnchor.current = null;
+    const card = document.getElementById(`${listId}-item-${encodeURIComponent(anchor.id)}`)?.querySelector("article");
+    if (card) {
+      const list = document.getElementById(listId);
+      const delta = card.getBoundingClientRect().top - anchor.top;
+      if (list && list.scrollHeight > list.clientHeight) list.scrollTop += delta;
+      else window.scrollBy({ top: delta, behavior: "instant" });
+    }
+  }, [feed, listId]);
 
   useEffect(() => {
     try {
@@ -337,6 +440,9 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
     setTopic("all");
     setRegion("all");
     setQuery("");
+    setSource("");
+    setPublishedFrom("");
+    setPublishedTo("");
     setSavedOnly(false);
     setUnreadOnly(false);
     setExpanded(false);
@@ -347,7 +453,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   useEffect(() => {
     setUpdates((current) => initialNewsUpdatesState(current.knownWithdrawals));
     setFailed(false);
-  }, [endpoint]);
+  }, [endpoint, archive]);
 
   useEffect(() => {
     let disposed = false;
@@ -369,13 +475,14 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
         const url = new URL(endpoint, window.location.href);
         url.searchParams.set("timeZone", timeZone);
         url.searchParams.set("contract", "2");
+        if (archive) url.searchParams.set("view", "archive");
         const response = await fetch(url, {
           cache: "no-store",
           headers: { Accept: "application/json" },
           signal: activeController.signal,
         });
         if (!response.ok) throw new Error(`News feed returned ${response.status}`);
-        const nextFeed = await readNewsFeedResponse(response);
+        const nextFeed = await readNewsFeedResponse(response, { archive });
         if (!disposed) {
           withdrawalHistory.current = saveKnownNewsWithdrawals(nextFeed.withdrawals ?? [], withdrawalHistory.current);
           setUpdates((current) => receiveNewsFeed(current, nextFeed));
@@ -432,40 +539,54 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
       window.clearInterval(interval);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [endpoint, refreshVersion, timeZone]);
+  }, [endpoint, refreshVersion, timeZone, archive]);
 
   const today = calendarDay(now, timeZone);
-  useEffect(() => { setVisibleLimit(25); }, [query, filter, topic, region, savedOnly, unreadOnly]);
-  const filteredItems = useMemo(() => {
-    const terms = searchable(query).trim().split(/\s+/).filter(Boolean);
-    return (feed?.items ?? []).filter((item) =>
-      (item.kind !== "announcement" || item.eventDate > today
-        || item.eventDate === today && calendarDay(Date.parse(item.verifiedAt),timeZone) >= today)
-      && (filter !== "today" || item.eventDate === today)
-      && (filter !== "upcoming" || item.eventDate > today)
-      && (topic === "all" || item.category === topic)
-      && (region === "all" || (item.region ?? "global") === region)
-      && (!terms.length || terms.every((term) => searchable(`${item.title.ru} ${item.title.en} ${item.summary.ru} ${item.summary.en} ${item.source.name}`).includes(term)))
-      && (!savedOnly || savedIds.includes(item.id))
+  useEffect(() => { setPage(1); document.getElementById(listId)?.scrollTo({ top: 0, behavior: "instant" }); }, [query, filter, topic, region, source, publishedFrom, publishedTo, sort, savedOnly, unreadOnly, listId]);
+  function selectFilteredItems(candidate: NewsFeed | null) {
+    return browseNewsItems(candidate?.items ?? [], { period: filter, topic, region, query, source, publishedFrom, publishedTo, sort }, today, timeZone,
+      { archive: archive && candidate?.snapshot?.policy === "reviewed-v2-archive-explicit-withdrawals" }).filter((item) =>
+      (!savedOnly || savedIds.includes(item.id))
       && (!unreadOnly || !readIds.includes(item.id) || openStoryIds.includes(item.id))
     );
-  }, [feed, filter, today, topic, region, query, savedOnly, savedIds, unreadOnly, readIds, openStoryIds]);
-  const visibleItems = filteredItems.slice(0, expanded ? visibleLimit : 3);
+  }
+  const filteredItems = useMemo(() => selectFilteredItems(feed), [feed, filter, today, timeZone, topic, region, query, source, publishedFrom, publishedTo, sort, savedOnly, savedIds, unreadOnly, readIds, openStoryIds, archive]);
+  const pagination = paginateNewsItems(filteredItems, page);
+  const initialLimit = archive ? 8 : 3;
+  const visibleItems = expanded ? pagination.items : filteredItems.slice(0, initialLimit);
+  function changePage(nextPage: number) {
+    setPage(nextPage);
+    window.requestAnimationFrame(() => {
+      const list = document.getElementById(listId);
+      list?.focus({ preventScroll: true });
+      list?.scrollTo({ top: 0, behavior: "instant" });
+      if (list && list.getBoundingClientRect().bottom < 0) list.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+  }
+  const publicationSources = useMemo(() => {
+    const byOrigin = new Map<string, string>();
+    for (const item of feed?.items ?? []) {
+      const origin = newsSourceOrigin(item);
+      if (!byOrigin.has(origin)) byOrigin.set(origin, item.source.name);
+    }
+    return [...byOrigin].sort((left, right) => left[1].localeCompare(right[1], language));
+  }, [feed, language]);
+  const dateRangeInvalid = Boolean(publishedFrom && publishedTo && publishedFrom > publishedTo);
   const sourceCountries = new Set(feed?.sources.flatMap((source) => source.countryCodes ?? []) ?? []);
   const countryNames = new Intl.DisplayNames([language], { type: "region" });
   const sourceErrors = feed?.sources.some((source) => source.status === "error") ?? false;
   const stale = Boolean(feed?.lastCheckedAt && now - Date.parse(feed.lastCheckedAt) > feed.refreshIntervalSeconds * 2_000);
-  const warning = failed && feed ? `${text.failed}${feed.fallbackCapturedAt
+  const warning = failed && feed ? `${archive && feed.fallbackCapturedAt ? text.archiveFallback : text.failed}${feed.fallbackCapturedAt
     ? ` ${language === "ru" ? "Снимок от" : "Snapshot from"} ${displayDate(feed.fallbackCapturedAt, language, true)}.` : ""}`
     : sourceErrors ? text.partial : stale ? text.stale : null;
   const loading = !feed && refreshing && !failed;
   const unavailable = !feed && failed;
   const emptyTitle = unavailable ? text.unavailableTitle : savedOnly && !savedIds.length ? text.savedEmptyTitle : query.trim() || region !== "all" ? text.noMatches : unreadOnly ? savedOnly || topic !== "all" || filter !== "all" ? text.unreadFilteredEmptyTitle : text.unreadEmptyTitle : savedOnly ? text.savedFilteredEmptyTitle : topic !== "all" ? text.topicEmptyTitle : filter === "today" ? text.todayEmptyTitle : filter === "upcoming" ? text.upcomingEmptyTitle : text.emptyTitle;
   const emptyDescription = unavailable ? text.unavailableDescription : savedOnly && !savedIds.length ? text.savedEmptyDescription : query.trim() || region !== "all" ? text.filteredEmptyDescription : unreadOnly ? text.unreadEmptyDescription : savedOnly || topic !== "all" ? text.filteredEmptyDescription : filter === "today" ? text.todayEmptyDescription : filter === "upcoming" ? text.upcomingEmptyDescription : text.emptyDescription;
-  const hasActiveFilters = savedOnly || unreadOnly || topic !== "all" || region !== "all" || query.trim().length > 0 || filter !== "all";
+  const hasActiveFilters = savedOnly || unreadOnly || topic !== "all" || region !== "all" || query.trim().length > 0 || filter !== "all" || Boolean(source || publishedFrom || publishedTo);
   const regionCount = new Set((feed?.items ?? []).map((item) => item.region).filter((value) => value && value !== "global")).size;
-  const expandButton = expanded || filteredItems.length > 3 ? (
-    <button type="button" className="literary-news__expand" aria-expanded={expanded} aria-controls={listId} onClick={() => { if (expanded) setOpenStoryIds([]); setVisibleLimit(25); setExpanded((value) => !value); }}>
+  const expandButton = expanded || filteredItems.length > initialLimit ? (
+    <button type="button" className="literary-news__expand" aria-expanded={expanded} aria-controls={listId} onClick={() => { if (expanded) setOpenStoryIds([]); setPage(1); setExpanded((value) => !value); document.getElementById(listId)?.scrollTo({ top: 0, behavior: "instant" }); }}>
       {expanded ? text.collapse : `${text.showAll} (${filteredItems.length})`}<span aria-hidden="true">{expanded ? "↑" : "↓"}</span>
     </button>
   ) : null;
@@ -496,19 +617,25 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   ) : null;
 
   return (
-    <section id="literary-news" className={`literary-news${sidebar ? " literary-news--sidebar" : ""}${expanded ? " is-expanded" : ""}`} aria-labelledby={titleId} data-news-mode={feed?.mode} data-time-zone={timeZone}>
+    <section id="literary-news" className={`literary-news${sidebar ? " literary-news--sidebar" : ""}${archive ? " literary-news--reader" : ""}${expanded ? " is-expanded" : ""}`} aria-labelledby={titleId} data-news-mode={feed?.mode} data-time-zone={timeZone}>
       <header className="literary-news__header">
         <div>
           <p className="literary-news__eyebrow"><span aria-hidden="true" />{text.eyebrow}</p>
           <h2 id={titleId}>{text.title}</h2>
-          <p className="literary-news__description">{text.description}</p>
+          <p className="literary-news__description">{archive ? text.readerDescription : text.description}</p>
         </div>
         <div className="literary-news__header-meta">
           {feed?.mode === "local-prototype" && <span className="literary-news__prototype">{text.prototype}</span>}
-          {!sidebar && <span className="literary-news__today">{displayDate(today, language)}</span>}
+          {(!sidebar || archive) && <span className="literary-news__today">{displayDate(today, language)}</span>}
         </div>
       </header>
 
+
+      {archive && <div className="literary-news__reader-search literary-news__search">
+        <SearchIcon />
+        <input id={`${listId}-search`} type="search" value={query} aria-label={text.search} placeholder={text.searchPlaceholder} maxLength={160} onChange={(event) => { setQuery(event.target.value); setOpenStoryIds([]); }} />
+        {query && <button type="button" aria-label={text.clearSearch} onClick={() => { setQuery(""); document.getElementById(`${listId}-search`)?.focus(); }}>×</button>}
+      </div>}
       <div className="literary-news__toolbar">
         <div className="literary-news__filters" role="group" aria-label={text.filters}>
           {(["all", "today", "upcoming"] as const).map((value) => (
@@ -517,15 +644,15 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
               type="button"
               aria-pressed={filter === value}
               aria-controls={listId}
-              onClick={() => { setFilter(value); setExpanded(false); setOpenStoryIds([]); }}
+              onClick={() => { setFilter(value); setOpenStoryIds([]); }}
             >
               {text[value]}
             </button>
           ))}
         </div>
-        <button type="button" className="literary-news__search-toggle" aria-label={text.search} title={text.search} aria-expanded={searchOpen} aria-controls={`${listId}-search`} onClick={() => { setSearchOpen((value) => !value); if (searchOpen) setQuery(""); else window.requestAnimationFrame(() => document.getElementById(`${listId}-search`)?.focus()); }}>
+        {!archive && <button type="button" className="literary-news__search-toggle" aria-label={text.search} title={text.search} aria-expanded={searchOpen} aria-controls={`${listId}-search`} onClick={() => { setSearchOpen((value) => !value); if (searchOpen) setQuery(""); else window.requestAnimationFrame(() => document.getElementById(`${listId}-search`)?.focus()); }}>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>
-        </button>
+        </button>}
         <button
           type="button"
           className="literary-news__refresh"
@@ -539,30 +666,85 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
         </button>
       </div>
 
-      {searchOpen && <div className="literary-news__search"><input id={`${listId}-search`} type="search" value={query} aria-label={text.search} placeholder={text.searchPlaceholder} maxLength={160} onChange={(event) => { setQuery(event.target.value); setExpanded(false); setOpenStoryIds([]); }} />{query && <button type="button" aria-label={text.clearSearch} onClick={() => { setQuery(""); document.getElementById(`${listId}-search`)?.focus(); }}>×</button>}</div>}
+      {!archive && searchOpen && <div className="literary-news__search"><input id={`${listId}-search`} type="search" value={query} aria-label={text.search} placeholder={text.searchPlaceholder} maxLength={160} onChange={(event) => { setQuery(event.target.value); setOpenStoryIds([]); }} />{query && <button type="button" aria-label={text.clearSearch} onClick={() => { setQuery(""); document.getElementById(`${listId}-search`)?.focus(); }}>×</button>}</div>}
 
-      <div className="literary-news__discovery">
+      {!archive && <div className="literary-news__discovery">
         <label className="literary-news__topic">
           <span>{text.topic}</span>
-          <select value={topic} onChange={(event) => { setTopic(event.target.value as NewsTopic); setExpanded(false); setOpenStoryIds([]); }}>
+          <select aria-label={text.topic} value={topic} onChange={(event) => { setTopic(event.target.value as NewsTopic); setOpenStoryIds([]); }}>
             <option value="all">{text.allTopics}</option>
             {NEWS_CATEGORIES.map((category) => <option key={category} value={category}>{categoryCopy[category][language]}</option>)}
           </select>
         </label>
         <label className="literary-news__topic literary-news__region">
           <span>{text.region}</span>
-          <select value={region} onChange={(event) => { setRegion(event.target.value as NewsRegion | "all"); setExpanded(false); setOpenStoryIds([]); }}>
+          <select aria-label={text.region} value={region} onChange={(event) => { setRegion(event.target.value as NewsRegion | "all"); setOpenStoryIds([]); }}>
             <option value="all">{text.allRegions}</option>
             {NEWS_REGIONS.map((value) => <option key={value} value={value}>{regionCopy[value][language]}</option>)}
           </select>
         </label>
-        <button id={`${listId}-saved`} type="button" className="literary-news__saved-filter" aria-pressed={savedOnly} title={persistentSaved ? text.savedInBrowser : text.savedForSession} onClick={() => { setSavedOnly((value) => !value); setExpanded(false); setOpenStoryIds([]); }}>
+        <button id={`${listId}-saved`} type="button" className="literary-news__saved-filter" aria-pressed={savedOnly} title={persistentSaved ? text.savedInBrowser : text.savedForSession} onClick={() => { setSavedOnly((value) => !value); setOpenStoryIds([]); }}>
           <BookmarkIcon />{text.saved}{savedIds.length > 0 && <span>{savedIds.length}</span>}
         </button>
-        <button id={`${listId}-unread`} type="button" className="literary-news__unread-filter" aria-pressed={unreadOnly} title={persistentRead ? text.readInBrowser : text.readForSession} onClick={() => { setUnreadOnly((value) => !value); setExpanded(false); setOpenStoryIds([]); }}>
+        <button id={`${listId}-unread`} type="button" className="literary-news__unread-filter" aria-pressed={unreadOnly} title={persistentRead ? text.readInBrowser : text.readForSession} onClick={() => { setUnreadOnly((value) => !value); setOpenStoryIds([]); }}>
           <span className="literary-news__unread-dot" aria-hidden="true" />{text.unread}
         </button>
-      </div>
+      </div>}
+      {archive && <>
+        <div className="literary-news__topic-chips" role="group" aria-label={text.topic}>
+          {(["all", "releases", "awards", "festivals"] as const).map((value) => <button type="button" key={value} aria-pressed={topic === value} onClick={() => { setTopic(value); setOpenStoryIds([]); }}>{value === "all" ? text.allTopics : categoryCopy[value][language]}</button>)}
+        </div>
+        <div className="literary-news__reader-tools">
+        <button id={`${listId}-saved`} type="button" className="literary-news__saved-filter" aria-pressed={savedOnly} title={persistentSaved ? text.savedInBrowser : text.savedForSession} onClick={() => { setSavedOnly((value) => !value); setOpenStoryIds([]); }}>
+          <BookmarkIcon />{text.saved}{savedIds.length > 0 && <span>{savedIds.length}</span>}
+        </button>
+        <button id={`${listId}-unread`} type="button" className="literary-news__unread-filter" aria-pressed={unreadOnly} title={persistentRead ? text.readInBrowser : text.readForSession} onClick={() => { setUnreadOnly((value) => !value); setOpenStoryIds([]); }}>
+          <span className="literary-news__unread-dot" aria-hidden="true" />{text.unread}
+        </button>
+          <button type="button" className="literary-news__refine-toggle" aria-expanded={advancedOpen} aria-controls={`${listId}-advanced`} onClick={() => setAdvancedOpen(value => !value)}><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 17h16M9 4v6M15 14v6" /></svg>{text.refineShort}{(region !== "all" || source || publishedFrom || publishedTo) && <span className="literary-news__filter-indicator" />}</button>
+        </div>
+      </>}
+      {archive && <div className="literary-news__advanced" id={`${listId}-advanced`} hidden={!advancedOpen}>
+        <div className="literary-news__archive-filters">
+        <label className="literary-news__topic">
+          <span>{text.topic}</span>
+          <select aria-label={text.topic} value={topic} onChange={(event) => { setTopic(event.target.value as NewsTopic); setOpenStoryIds([]); }}>
+            <option value="all">{text.allTopics}</option>
+            {NEWS_CATEGORIES.map((category) => <option key={category} value={category}>{categoryCopy[category][language]}</option>)}
+          </select>
+        </label>
+        <label className="literary-news__topic literary-news__region">
+          <span>{text.region}</span>
+          <select aria-label={text.region} value={region} onChange={(event) => { setRegion(event.target.value as NewsRegion | "all"); setOpenStoryIds([]); }}>
+            <option value="all">{text.allRegions}</option>
+            {NEWS_REGIONS.map((value) => <option key={value} value={value}>{regionCopy[value][language]}</option>)}
+          </select>
+        </label>
+
+        <label className="literary-news__topic">
+          <span>{text.sourceFilter}</span>
+          <select aria-label={text.sourceFilter} value={source} onChange={(event) => setSource(event.target.value)}>
+            <option value="">{text.allSources}</option>
+            {publicationSources.map(([origin, name]) => <option key={origin} value={origin}>{name} · {new URL(origin).hostname}</option>)}
+          </select>
+        </label>
+        <label className="literary-news__topic">
+          <span>{text.sort}</span>
+          <select aria-label={text.sort} value={sort} onChange={(event) => setSort(event.target.value as NewsSort)}>
+            {(["newest", "oldest", "briefing"] as const).map((value) => <option key={value} value={value}>{text[`${value}Option`]}</option>)}
+          </select>
+        </label>
+        <label className="literary-news__topic">
+          <span>{text.publishedFrom}</span>
+          <input type="date" aria-label={text.publishedFrom} value={publishedFrom} onChange={(event) => setPublishedFrom(event.target.value)} aria-invalid={dateRangeInvalid} aria-describedby={`${listId}-date-note`} />
+        </label>
+        <label className="literary-news__topic">
+          <span>{text.publishedTo}</span>
+          <input type="date" aria-label={text.publishedTo} value={publishedTo} onChange={(event) => setPublishedTo(event.target.value)} aria-invalid={dateRangeInvalid} aria-describedby={`${listId}-date-note`} />
+        </label>
+        </div>
+        <p id={`${listId}-date-note`} className="literary-news__saved-note" role={dateRangeInvalid ? "status" : undefined}>{dateRangeInvalid ? text.dateRangeInvalid : text.unknownDates}</p>
+      </div>}
       {savedOnly && <p className="literary-news__saved-note" role="status">{persistentSaved ? text.savedInBrowser : text.savedForSession}</p>}
       {unreadOnly && !persistentRead && <p className="literary-news__saved-note" role="status">{text.readForSession}</p>}
 
@@ -571,31 +753,60 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
           {feed && <>{pendingItems.length ? text.newArrivals : hasActiveFilters ? text.matched : text.selection}: <strong>{pendingItems.length || (hasActiveFilters ? filteredItems.length : feed.items.length)}</strong></>}
         </span>
         {pendingItems.length > 0 && <button type="button" className="literary-news__apply-updates" onClick={showPendingNews} title={text.keepFilters} aria-controls={listId}>{text.applyUpdates}<span aria-hidden="true">↑</span></button>}
-        {!pendingItems.length && regionCount > 0 && <span className="literary-news__coverage-note" title={text.regions}>{text.regions}: {regionCount}</span>}
+        {!pendingItems.length && archive ? <span className="literary-news__coverage-note" title={text.sort}>{text[sort]}</span> : !pendingItems.length && regionCount > 0 && <span className="literary-news__coverage-note" title={text.regions}>{text.regions}: {regionCount}</span>}
+        {archive && hasActiveFilters && <button type="button" className="literary-news__clear-filters" onClick={clearFilters}>{text.reset}</button>}
       </div>
 
       <div className="literary-news__content" id={listId} tabIndex={-1} aria-busy={loading}>
         {loading ? (
           <p className="literary-news__loading" role="status">{text.loading}</p>
         ) : visibleItems.length ? (
-          <ol className="literary-news__items">
-            {visibleItems.map((item) => (
-              <li id={`${listId}-item-${encodeURIComponent(item.id)}`} className="literary-news__item" key={item.id} data-news-read={readIds.includes(item.id)}>
+          <ol className="literary-news__items" start={expanded ? pagination.start : undefined}>
+            {visibleItems.map((item, index) => (
+              <li id={`${listId}-item-${encodeURIComponent(item.id)}`} className={`literary-news__item${archive && index === 0 ? " literary-news__item--lead" : ""}`} key={item.id} data-news-read={readIds.includes(item.id)}>
+                {archive ? <article data-news-id={item.id} data-read={readIds.includes(item.id)} data-news-region={item.region ?? "global"}>
+                  <div className="literary-news__reader-meta">
+                    <span className="literary-news__category">{index === 0 && <span className="literary-news__focus">{text.focus} · </span>}{categoryCopy[item.category][language]}</span>
+                    <span className="literary-news__event-date" title={item.kind === "news" ? text.publication : text.event}>{item.kind === "news" ? item.publishedAt ? <time dateTime={item.publishedAt}>{displayDate(item.publishedAt, language)}</time> : text.publishedUnknownShort : <time dateTime={item.eventDate}>{displayDate(item.eventDate, language)}{eventDateHint(item.eventDate, today, language) && <span className="literary-news__date-hint">{eventDateHint(item.eventDate, today, language)}</span>}</time>}</span>
+                  </div>
+                  {item.kind !== "news" && <span className={`literary-news__reader-kind${item.kind === "announcement" && !newsAnnouncementIsCurrent(item, today, timeZone) ? " literary-news__inline-kind--past" : ""}`}>{item.kind === "calendar" ? text.calendar : !newsAnnouncementIsCurrent(item, today, timeZone) ? text.endedAnnouncement : text.announcement}</span>}
+                  <div className="literary-news__story-heading">
+                    <h3><button type="button" className="literary-news__headline" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{item.title[language]}</button></h3>
+                    <NewsArticleThumbnail item={item} language={language} onRead={() => readFromSource(item.id)} />
+                  </div>
+                  <p className="literary-news__summary">{openStoryIds.includes(item.id) ? item.summary[language] : newsExcerpt(item.summary[language], index === 0 ? 210 : 145)}</p>
+                  <div id={`${listId}-story-${encodeURIComponent(item.id)}`} className="literary-news__reader-details" hidden={!openStoryIds.includes(item.id)}>
+                    <div className="literary-news__story-dates">
+                      <span>{item.publishedAt ? <>{text.publication}: <time dateTime={item.publishedAt}>{displayDate(item.publishedAt, language)}</time></> : text.publicationUnknown}</span>
+                      {(item.kind !== "news" || item.eventDate !== item.publishedAt?.slice(0, 10)) && <span>{text.event}: <time dateTime={item.eventDate}>{displayDate(item.eventDate, language)}</time></span>}
+                      <span>{text.reviewed}: <time dateTime={item.verifiedAt}>{displayDate(item.verifiedAt, language)}</time></span>
+                    </div>
+                  </div>
+                  <footer className="literary-news__item-footer">
+                    <div className="literary-news__byline"><a href={item.source.url} target="_blank" rel="noopener noreferrer" aria-label={`${text.source}: ${item.source.name}`} onClick={() => readFromSource(item.id)} onAuxClick={(event) => { if (event.button === 1) readFromSource(item.id); }}>{item.source.name}<BrandExternalLinkIcon /></a>{item.region && <span>{regionCopy[item.region][language]}</span>}</div>
+                    <div className="literary-news__reader-actions">
+                      <button type="button" className="literary-news__reader-more" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} aria-label={`${openStoryIds.includes(item.id) ? text.closeStory : text.details}: ${item.title[language]}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{openStoryIds.includes(item.id) ? text.closeStory : text.details}<span aria-hidden="true">{openStoryIds.includes(item.id) ? "−" : "+"}</span></button>
+                      <span className="literary-news__read-state">{readIds.includes(item.id) ? text.read : ""}</span>
+                      <button type="button" className="literary-news__read-toggle" aria-pressed={readIds.includes(item.id)} aria-label={`${readIds.includes(item.id) ? text.markUnread : text.markRead}: ${item.title[language]}`} title={readIds.includes(item.id) ? text.markUnread : text.markRead} onClick={() => toggleRead(item.id)}><ReadIcon /></button>
+                      <button type="button" className="literary-news__bookmark" aria-pressed={savedIds.includes(item.id)} aria-label={`${savedIds.includes(item.id) ? text.removeSaved : text.saveStory}: ${item.title[language]}`} title={savedIds.includes(item.id) ? text.removeSaved : text.saveStory} onClick={() => toggleSaved(item.id)}><BookmarkIcon /></button>
+                    </div>
+                  </footer>
+                </article> : (
                 <article data-news-id={item.id} data-read={readIds.includes(item.id)} data-news-region={item.region ?? "global"}>
                   <div className="literary-news__item-meta">
-                    <span className="literary-news__category">{categoryCopy[item.category][language]}{sidebar && item.kind === "announcement" && <span className="literary-news__inline-kind"> · {text.announcement}</span>}</span>
-                    <time className="literary-news__event-date" dateTime={item.eventDate}>{displayDate(item.eventDate, language)}{eventDateHint(item.eventDate, today, language) && <span className="literary-news__date-hint">{eventDateHint(item.eventDate, today, language)}</span>}</time>
+                    <span className="literary-news__category">{categoryCopy[item.category][language]}{sidebar && item.kind === "announcement" && <span className={`literary-news__inline-kind${!newsAnnouncementIsCurrent(item, today, timeZone) ? " literary-news__inline-kind--past" : ""}`}> · {!newsAnnouncementIsCurrent(item, today, timeZone) ? text.endedAnnouncement : text.announcement}</span>}</span>
+                    <span className="literary-news__event-date" title={archive && item.kind === "news" ? text.publication : text.event}>{archive && item.kind === "news" ? item.publishedAt ? <time dateTime={item.publishedAt}>{displayDate(item.publishedAt, language)}</time> : text.publishedUnknownShort : <time dateTime={item.eventDate}>{displayDate(item.eventDate, language)}{eventDateHint(item.eventDate, today, language) && <span className="literary-news__date-hint">{eventDateHint(item.eventDate, today, language)}</span>}</time>}</span>
                     <div className="literary-news__item-actions">
                       <button type="button" className="literary-news__read-toggle" aria-pressed={readIds.includes(item.id)} aria-label={`${readIds.includes(item.id) ? text.markUnread : text.markRead}: ${item.title[language]}`} title={readIds.includes(item.id) ? text.markUnread : text.markRead} onClick={() => toggleRead(item.id)}><ReadIcon /></button>
                       <button type="button" className="literary-news__bookmark" aria-pressed={savedIds.includes(item.id)} aria-label={`${savedIds.includes(item.id) ? text.removeSaved : text.saveStory}: ${item.title[language]}`} title={savedIds.includes(item.id) ? text.removeSaved : text.saveStory} onClick={() => toggleSaved(item.id)}><BookmarkIcon /></button>
                     </div>
                   </div>
                   {!sidebar && item.kind !== "news" && (
-                    <span className="literary-news__kind">{item.kind === "calendar" ? text.calendar : text.announcement}</span>
+                    <span className={`literary-news__kind${item.kind === "announcement" && !newsAnnouncementIsCurrent(item, today, timeZone) ? " literary-news__kind--past" : ""}`}>{item.kind === "calendar" ? text.calendar : !newsAnnouncementIsCurrent(item, today, timeZone) ? text.endedAnnouncement : text.announcement}</span>
                   )}
                   {item.region && <span className="literary-news__item-region">{regionCopy[item.region][language]}</span>}
                   <div className="literary-news__story-heading">
-                    <h3>{sidebar ? <button type="button" className="literary-news__headline" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{item.title[language]}</button> : item.title[language]}</h3>
+                    <h3>{sidebar ? <button type="button" className="literary-news__headline" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{item.title[language]}</button> : archive ? <a href={item.source.url} target="_blank" rel="noopener noreferrer" onClick={() => readFromSource(item.id)} onAuxClick={(event) => { if (event.button === 1) readFromSource(item.id); }}>{item.title[language]}</a> : item.title[language]}</h3>
                     <NewsArticleThumbnail item={item} language={language} onRead={() => readFromSource(item.id)} />
                   </div>
                   {sidebar ? (
@@ -604,6 +815,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
                       <p className="literary-news__summary">{item.summary[language]}</p>
                       <div className="literary-news__story-dates">
                         <span>{item.publishedAt ? <>{text.publication}: <time dateTime={item.publishedAt}>{displayDate(item.publishedAt, language)}</time></> : text.publicationUnknown}</span>
+                        {archive && (item.kind !== "news" || item.eventDate !== item.publishedAt?.slice(0, 10)) && <span>{text.event}: <time dateTime={item.eventDate}>{displayDate(item.eventDate, language)}</time></span>}
                         <span>{text.reviewed}: <time dateTime={item.verifiedAt}>{displayDate(item.verifiedAt, language)}</time></span>
                       </div>
                     </details>
@@ -612,12 +824,14 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
                     <a href={item.source.url} target="_blank" rel="noopener noreferrer" aria-label={`${text.source}: ${item.source.name}`} onClick={() => readFromSource(item.id)} onAuxClick={(event) => { if (event.button === 1) readFromSource(item.id); }}>
                       {item.source.name}<BrandExternalLinkIcon />
                     </a>
-                    {!sidebar && item.publishedAt && (
+                    {!sidebar && !archive && item.publishedAt && (
                       <span>{text.publication}: <time dateTime={item.publishedAt}>{displayDate(item.publishedAt, language)}</time></span>
                     )}
+                    {archive && !sidebar && (item.kind !== "news" || item.eventDate !== item.publishedAt?.slice(0, 10)) && <span>{text.event}: <time dateTime={item.eventDate}>{displayDate(item.eventDate, language)}</time></span>}
                     {!sidebar && <span>{text.reviewed}: <time dateTime={item.verifiedAt}>{displayDate(item.verifiedAt, language)}</time></span>}
                   </footer>
                 </article>
+                )}
               </li>
             ))}
           </ol>
@@ -626,16 +840,21 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
             <p>{emptyTitle}</p>
             <span>{emptyDescription}</span>
             {!unavailable && hasActiveFilters && <button type="button" className="literary-news__clear-filters" onClick={clearFilters}>{text.clearFilters}</button>}
+            {unavailable && <button type="button" className="literary-news__clear-filters" disabled={refreshing} onClick={() => setRefreshVersion((version) => version + 1)}>{text.retry}</button>}
           </div>
         )}
       </div>
 
-      {expanded && visibleItems.length < filteredItems.length && (
-        <button type="button" className="literary-news__expand" aria-controls={listId}
-          onClick={() => setVisibleLimit((count) => count + 25)}>
-          {text.more} ({visibleItems.length}/{filteredItems.length})
-        </button>
-      )}
+      {archive && filteredItems.length > 0 && <p className="literary-news__result-range"><span>{text.scrollHint}<span aria-hidden="true"> ↓</span></span><span>{text.shown} {expanded ? pagination.start : 1}-{expanded ? pagination.end : visibleItems.length} {text.of} {filteredItems.length}</span></p>}
+      {expanded && pagination.totalPages > 1 && <nav className="literary-news__pagination" aria-label={text.pagination}>
+        <button type="button" disabled={pagination.page === 1} onClick={() => changePage(pagination.page - 1)}><span aria-hidden="true">←</span>{text.previousPage}</button>
+        <div>{newsPageNumbers(pagination.page, pagination.totalPages).map((value, index) => value === null ? <span className="literary-news__pagination-gap" key={`gap-${index}`} aria-hidden="true">…</span> : <button type="button" key={value} aria-label={`${text.page} ${value}`} aria-current={value === pagination.page ? "page" : undefined} onClick={() => changePage(value)}>{value}</button>)}</div>
+        <button type="button" disabled={pagination.page === pagination.totalPages} onClick={() => changePage(pagination.page + 1)}>{text.nextPage}<span aria-hidden="true">→</span></button>
+        <span className="literary-news__pagination-note">{text.page} {pagination.page} {text.of} {pagination.totalPages} · 25 {language === "ru" ? "новостей на странице" : "stories per page"}</span>
+      </nav>}
+      <nav className="literary-news__channel-links" aria-label={text.eyebrow}>
+        <a href="https://t.me/probbaperra" target="_blank" rel="noopener noreferrer">{text.telegram}<BrandExternalLinkIcon /></a>
+      </nav>
 
       {sidebar ? (
         <footer className="literary-news__sidebar-footer">

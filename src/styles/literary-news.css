@@ -1,4 +1,7 @@
 @layer site-defaults {
+.literary-news__channel-links { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 18px; margin: 12px 0; padding-top: 12px; border-top: 1px solid var(--news-line); }
+.literary-news__channel-links a { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; color: var(--news-accent); font-size: 12px; font-weight: 600; text-decoration: none; }
+.literary-news__channel-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .literary-news {
   --news-type-action: var(--type-action);
   --news-type-copy: var(--type-body);
@@ -1394,6 +1397,125 @@
   .literary-news__refresh {
     transition: none;
   }
+}
+
+/* The complete feed stays inside the familiar book-of-month news panel. */
+.literary-news.literary-news--reader {
+  scroll-margin-top: 140px;
+  padding: 22px;
+  background: #fffaf2;
+  border-top: 4px solid var(--news-accent);
+}
+#book-day.has-literary-news .literary-news-slot > .literary-news.literary-news--reader { block-size: auto; }
+.literary-news--reader .literary-news__header { padding-bottom: 17px; }
+.literary-news--reader .literary-news__eyebrow { padding-right: 65px; margin-bottom: 14px; font-size: 10px; letter-spacing: .12em; }
+.literary-news--reader .literary-news__header h2 { max-width: 350px; font-family: var(--serif); font-size: 32px; font-weight: 600; line-height: 1.08; letter-spacing: -.04em; }
+.literary-news--reader .literary-news__description { margin-top: 9px; max-width: 32em; font-size: 13px; line-height: 1.5; }
+.literary-news.literary-news--reader .literary-news__header-meta { position: absolute; top: 0; right: 0; margin: 0; }
+.literary-news--reader .literary-news__today { font-size: 11px; }
+.literary-news--reader .literary-news__reader-search { position: relative; margin: 0; }
+.literary-news--reader .literary-news__reader-search input { min-height: 46px; padding: 10px 40px; background: #fff; border-color: #ded1c6; border-radius: 10px; font-size: 13px; }
+.literary-news__reader-search > svg { position: absolute; left: 13px; top: 14px; width: 18px; height: 18px; stroke: var(--news-accent); stroke-width: 1.6; pointer-events: none; }
+.literary-news--reader .literary-news__toolbar { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; margin-top: 10px; padding-bottom: 0; border: 0; }
+.literary-news--reader .literary-news__filters { gap: 0; width: 100%; padding: 0; background: none; border: 0; border-radius: 0; }
+.literary-news--reader .literary-news__filters button { flex: 1; min-height: 38px; padding: 8px 10px; color: var(--news-muted); background: none; border: 0; border-bottom: 2px solid transparent; border-radius: 0; font-size: 13px; }
+.literary-news--reader .literary-news__filters button[aria-pressed="true"] { color: var(--news-accent); background: none; border-bottom-color: var(--news-accent); box-shadow: none; }
+.literary-news--reader .literary-news__refresh { width: 38px; min-height: 38px; border: 1px solid var(--news-line); background: none; border-radius: 50%; }
+.literary-news__topic-chips { display: flex; gap: 6px; padding: 10px 0 5px; overflow-x: auto; scrollbar-width: thin; }
+.literary-news__topic-chips button { flex: 0 0 auto; min-height: 30px; padding: 5px 10px; color: #765e6c; background: transparent; border: 1px solid #e8ddd3; border-radius: 7px; font-family: var(--sans); font-size: 11px; cursor: pointer; }
+.literary-news__topic-chips button[aria-pressed="true"] { color: #fffaf2; border-color: #58384e; background: #58384e; }
+.literary-news__reader-tools { display: flex; align-items: center; gap: 8px; padding: 3px 0 7px; }
+.literary-news--reader .literary-news__reader-tools > button { display: inline-flex; flex: 0 1 auto; align-items: center; gap: 5px; min-width: 0; min-height: 36px; padding: 5px 0; color: var(--news-muted); background: none; border: 0; border-radius: 4px; font-family: var(--sans); font-size: 12px; font-weight: 400; cursor: pointer; }
+.literary-news__reader-tools > button:first-child { margin-right: 4px; }
+.literary-news__reader-tools .literary-news__refine-toggle { margin-left: auto; }
+.literary-news__reader-tools svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.5; }
+.literary-news--reader .literary-news__reader-tools > button[aria-pressed="true"], .literary-news--reader .literary-news__reader-tools > button[aria-expanded="true"] { color: var(--news-accent); font-weight: 600; }
+.literary-news__filter-indicator { width: 5px; height: 5px; border-radius: 50%; background: var(--news-accent); }
+.literary-news--reader .literary-news__advanced { margin-bottom: 8px; padding: 13px; background: #f5eee6; border: 1px solid #e8ddd3; border-radius: 10px; }
+.literary-news__archive-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.literary-news__archive-filters .literary-news__topic { min-width: 0; max-width: none; }
+.literary-news__archive-filters input { width: 100%; min-width: 0; min-height: 36px; padding: 5px 8px; color: var(--news-ink); background: #fffaf5; border: 1px solid #ded1c6; border-radius: 7px; font-family: var(--sans); font-size: 12px; }
+.literary-news__archive-filters input[aria-invalid="true"] { border-color: var(--news-accent); }
+.literary-news--reader .literary-news__update-bar { min-height: 36px; margin: 0; padding: 9px 0; border-top: 1px solid #e8ddd3; border-bottom: 0; font-size: 11px; }
+.literary-news--reader .literary-news__coverage-note { font-size: 11px; }
+.literary-news--reader .literary-news__content,
+#book-day.has-literary-news .literary-news.literary-news--sidebar.literary-news--reader .literary-news__content {
+  flex: 0 0 auto; block-size: 535px; max-height: 535px; overflow-y: auto;
+  overscroll-behavior-y: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: #b9987e #f4e9de;
+}
+.literary-news--reader .literary-news__items { display: grid; gap: 12px; padding: 0 9px 8px 0; }
+.literary-news--reader .literary-news__item, .literary-news--reader .literary-news__item + .literary-news__item { margin: 0; padding: 16px; background: #fffefd; border: 1px solid #eadfd4; border-radius: 11px; }
+.literary-news--reader .literary-news__item--lead { background: #fff; border-color: #e4cbb7; }
+.literary-news--reader .literary-news__item article { display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
+.literary-news__reader-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
+.literary-news--reader .literary-news__category { color: #a64110; font-size: 10px; font-weight: 600; line-height: 1.5; letter-spacing: .04em; }
+.literary-news__focus { color: #68475b; }
+.literary-news--reader .literary-news__event-date { color: var(--news-muted); font-size: 11px; }
+.literary-news__reader-kind { align-self: flex-start; padding: 3px 7px; color: #9b4a26; background: #fbecdf; border-radius: 5px; font-size: 11px; }
+.literary-news--reader .literary-news__inline-kind--past { color: #715c49; background: #f1e9e1; }
+.literary-news--reader .literary-news__item h3 { font-size: 18px; line-height: 1.3; }
+.literary-news--reader .literary-news__headline { padding: 0; font-family: var(--serif); font-size: inherit; font-weight: 600; line-height: inherit; letter-spacing: -.025em; }
+.literary-news--reader .literary-news__item--lead h3 { font-size: 23px; line-height: 1.18; }
+.literary-news--reader .literary-news__summary { margin: 0; color: #655260; font-family: var(--sans); font-size: 13px; line-height: 1.65; }
+.literary-news--reader .literary-news__item-footer { display: flex; flex-direction: column; align-items: stretch; gap: 7px; margin: 0; padding-top: 3px; }
+.literary-news__byline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 3px 12px; }
+.literary-news__byline a { display: inline-flex; align-items: center; gap: 4px; min-width: 0; color: #715368; font-size: 11px; font-weight: 600; text-decoration: none; }
+.literary-news__byline a:hover { color: var(--news-accent); text-decoration: underline; }
+.literary-news__byline > span { color: var(--news-muted); font-size: 11px; }
+.literary-news__reader-actions { display: flex; align-items: center; gap: 6px; padding-top: 6px; border-top: 1px solid #eee5dd; }
+.literary-news__reader-actions .literary-news__bookmark { position: static; }
+.literary-news__reader-actions .literary-news__reader-more { display: inline-flex; align-items: center; gap: 9px; min-height: 32px; padding: 4px 0; color: var(--news-accent); background: transparent; border: 0; border-radius: 4px; font-family: var(--sans); font-size: 11px; font-weight: 600; cursor: pointer; }
+.literary-news__read-state { flex: 1; color: var(--news-muted); font-size: 11px; text-align: right; }
+.literary-news__reader-actions :is(.literary-news__bookmark, .literary-news__read-toggle) { min-width: 32px; min-height: 32px; border-radius: 50%; }
+.literary-news__reader-details { padding: 10px 12px; background: #f8f2ed; border-left: 2px solid #c56a3c; border-radius: 0 7px 7px 0; }
+.literary-news__reader-details .literary-news__story-dates { display: grid; gap: 5px; font-size: 11px; }
+.literary-news--reader .literary-news__result-range { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 5px; margin: 0; padding: 10px 0 12px; color: var(--news-muted); border-top: 1px solid #e7d8cb; font-size: 10px; font-variant-numeric: tabular-nums; }
+.literary-news__result-range > span:first-child { color: #965533; }
+.literary-news__pagination { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px 6px; margin: 2px 0 10px; }
+.literary-news__pagination > div { display: flex; justify-content: center; align-items: center; gap: 3px; }
+.literary-news__pagination button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-width: 30px; min-height: 34px; padding: 5px 7px; color: var(--news-muted); background: transparent; border: 1px solid var(--news-line); border-radius: 7px; font-family: var(--sans); font-size: 11px; cursor: pointer; }
+.literary-news__pagination button[aria-current="page"] { color: #fffaf2; background: var(--news-accent); border-color: var(--news-accent); }
+.literary-news__pagination button:hover:not(:disabled):not([aria-current="page"]) { color: var(--news-accent); background: #f8eee4; }
+.literary-news__pagination button:disabled { opacity: .4; cursor: default; }
+.literary-news__pagination > button > span { display: none; }
+.literary-news__pagination-gap { color: var(--news-muted); }
+.literary-news__pagination-note { grid-column: 1 / -1; text-align: center; color: var(--news-muted); font-size: 10px; }
+.literary-news--reader .literary-news__channel-links { justify-content: flex-end; order: 10; margin: 6px 0 0; padding: 0; border: 0; }
+.literary-news--reader .literary-news__channel-links a { min-height: 24px; color: var(--news-muted); font-size: 11px; font-weight: 400; }
+.literary-news--reader .literary-news__sidebar-footer { padding-top: 4px; border: 0; align-items: center; }
+.literary-news--reader .literary-news__feed-details > summary { font-size: 11px; }
+.literary-news--reader .literary-news__expand { min-height: 38px; padding: 8px 14px; color: #fffaf2; background: var(--news-accent); border: 1px solid var(--news-accent); border-radius: 8px; font-size: 12px; }
+.literary-news--reader .literary-news__expand[aria-expanded="true"] { color: var(--news-accent); background: transparent; }
+@media (max-width: 680px), (pointer: coarse) {
+  .literary-news.literary-news--reader { padding: 17px; }
+  .literary-news--reader .literary-news__header h2 { max-width: 280px; font-size: 30px; }
+  .literary-news--reader .literary-news__header { padding-bottom: 13px; }
+  .literary-news--reader .literary-news__eyebrow { margin-bottom: 11px; }
+  .literary-news--reader .literary-news__eyebrow { padding-right: 64px; font-size: 9px; letter-spacing: .07em; }
+  .literary-news--reader .literary-news__header-meta { position: absolute; margin: 0; }
+  .literary-news--reader .literary-news__description { font-size: 12px; }
+  .literary-news--reader .literary-news__filters button { padding-inline: 7px; font-size: 12px; }
+  .literary-news__topic-chips { gap: 5px; padding-block: 7px 3px; }
+  .literary-news__topic-chips button { padding-inline: 9px; }
+  .literary-news__reader-tools { gap: 8px; }
+  .literary-news--reader .literary-news__reader-tools > button { min-height: 44px; font-size: 11px; }
+  .literary-news__reader-tools > button:first-child { margin-right: 0; }
+  .literary-news--reader .literary-news__content,
+  #book-day.has-literary-news .literary-news.literary-news--sidebar.literary-news--reader .literary-news__content { block-size: 540px; max-height: 540px; }
+  .literary-news--reader .literary-news__items { padding-right: 5px; gap: 10px; }
+  .literary-news--reader .literary-news__item, .literary-news--reader .literary-news__item + .literary-news__item { padding: 13px; }
+  .literary-news--reader .literary-news__item--lead h3 { font-size: 21px; }
+  .literary-news--reader .literary-news__item h3 { font-size: 18px; }
+  .literary-news--reader .literary-news__summary { font-size: 12px; line-height: 1.65; }
+  .literary-news--reader .literary-news__reader-actions button { min-width: 44px; min-height: 44px; }
+  .literary-news--reader .literary-news__archive-filters :is(input, select) { min-height: 44px; }
+  .literary-news__byline a { min-height: 44px; }
+  .literary-news__pagination { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .literary-news__pagination > div { order: 1; grid-column: 1 / -1; gap: 3px; }
+  .literary-news__pagination > button:first-child { order: 2; }
+  .literary-news__pagination > button:nth-of-type(2) { order: 3; }
+  .literary-news__pagination-note { order: 4; }
+  .literary-news__pagination > button > span { display: inline; }
 }
 
 @media (max-width: 420px) {

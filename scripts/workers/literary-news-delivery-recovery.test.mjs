@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { describe, expect, it, vi } from 'vitest';
 import worker, { scheduleNativeNewsDelivery } from './literary-news-delivery-worker.mjs';
 
-function fixture({time='2026-10-09T13:25:00Z',recover=async()=>Response.json({status:'supply_degraded',publicationConfirmed:true}),
+function fixture({time='2026-10-09T13:25:00Z',recover=async()=>Response.json({status:'supply_degraded',publicationConfirmed:false}),
   dispatch=null,capture={status:'capture_not_due',deliveredThisRun:0}}={}) {
   const events=[],report={status:'daily_target_deficit',deliveredThisRun:1},controller={noRetry:vi.fn(),scheduledTime:0},log=vi.fn();
   let current=new Date(time);
@@ -18,6 +18,14 @@ function fixture({time='2026-10-09T13:25:00Z',recover=async()=>Response.json({st
 }
 
 describe('private preparation recovery after native delivery',()=>{
+  it('immediately captures confirmed recovery publications without another provider dispatch',async()=>{
+    const f=fixture({recover:async()=>Response.json({status:'supply_degraded',publicationConfirmed:true})});
+    expect(await f.run()).toEqual(f.report);
+    expect(f.events).toEqual(['capture','dispatch','recover','capture']);
+    expect(f.delivery.fetch.mock.calls.filter(([url])=>new URL(url).pathname==='/dispatch')).toHaveLength(1);
+    expect(f.log.mock.calls.map(([value])=>JSON.parse(value))).toContainEqual(
+      {component:'literary-news-preparation-capture',status:'capture_not_due'});
+  });
   it.each([
     ['13:24:59.999',false],['13:25:00.000',true],['13:29:59.999',true],['13:30:00.000',false],
     ['13:54:59.999',false],['13:55:00.000',true],['13:59:59.999',true],['14:00:00.000',false],

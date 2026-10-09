@@ -99,7 +99,8 @@ async function buildNewsProjection(request, env, current) {
       && !reviewed.some(authored=>authored.kind===item.kind && authored.category===item.category
         && authored.eventDate===item.eventDate && authored.source?.url===item.source.url))];
     const feed = await buildPublishedNewsFeed({ records, withdrawals, state, current, timeZone,
-      release: env.NEWS_RELEASE_SHA, contractVersion: url.searchParams.get("contract") === "2" ? 2 : 1 });
+      release: env.NEWS_RELEASE_SHA, contractVersion: url.searchParams.get("contract") === "2" ? 2 : 1,
+      archive: url.searchParams.get('view') === 'archive' });
     // The response owns only the validated public projection. Release large private
     // proof arrays before its streaming body is consumed; no record is truncated.
     approvedProfile.length = 0;
@@ -148,7 +149,8 @@ export class LiteraryNewsPublicReader {
       const zone=resolveNewsTimeZone(new URL(request.url).searchParams.get('timeZone'));
       if(value?.mode!=='reviewed'||value.timeZone!==zone||!Array.isArray(value.items)||!Array.isArray(value.sources)
         ||value.generatedAt!==current.toISOString())throw Error('public_snapshot_invalid');
-      if(new URL(request.url).searchParams.get('contract')==='2')await verifyPublishedNewsSnapshot(value,{requireRelease:false});
+      if(new URL(request.url).searchParams.get('contract')==='2')await verifyPublishedNewsSnapshot(value,
+        {requireRelease:false,archive:new URL(request.url).searchParams.get('view')==='archive'});
       const freeze=object=>{if(object&&typeof object==='object'){for(const child of Object.values(object))freeze(child);Object.freeze(object);}return object;};
       this.cached={key,value:freeze(value)};return this.cached.value;
     });
@@ -164,7 +166,8 @@ export class LiteraryNewsPublicReader {
     // well, so an abandoned body cannot permanently pin the previous bucket.
     for(const lease of this.readers)if(lease.expiresAt<=current.getTime())lease.cancel();
     if(request.signal.aborted)return Response.json({error:'snapshot_unavailable'},{status:503,headers});
-    const key=[headers['X-Probpera-News-Release'],zone,url.searchParams.get('contract')==='2'?2:1,Math.floor(current.getTime()/30000)].join('|');
+    const key=[headers['X-Probpera-News-Release'],zone,url.searchParams.get('contract')==='2'?2:1,
+      url.searchParams.get('view')==='archive'?'archive':'current',Math.floor(current.getTime()/30000)].join('|');
     if(this.pending>=8||this.pending>0&&this.activeKey!==key)return Response.json({error:'snapshot_unavailable'},
       {status:503,headers:{...headers,'Retry-After':'1'}});
     this.pending++;this.activeKey=key;

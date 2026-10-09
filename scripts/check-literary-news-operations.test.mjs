@@ -2,12 +2,14 @@ import { describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { checkNewsOperations, createNewsOperationsReportReader, createNewsOperationsRuntimeReadFetch,
-  newsDeliveryCheckpointAge, summarizeNewsOperations } from './check-literary-news-operations.mjs';
+  newsDeliveryCheckpointAge, newsOperationsSupplyCandidates, newsOperationsWorkflowWarnings, summarizeNewsOperations } from './check-literary-news-operations.mjs';
 import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
   DAILY_NEWS_OWNER_KEY } from './lib/literary-news-daily-profile.mjs';
 import { emptyDailyLedger } from './lib/literary-news-daily-automation.mjs';
 import { buildPublishedNewsFeed } from './lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from './lib/literary-news-state.mjs';
+import { newsPostKey, prepareNewsPost } from './lib/literary-news-social.mjs';
+import { newsDeliveryPacingKey } from './lib/literary-news-pacing.mjs';
 
 const current = new Date('2026-10-01T10:00:00Z'), release = 'a'.repeat(40), destination = { platform: 'telegram', id: '-100123' };
 const privateMarker = 'PRIVATE_ARTICLE_BODY_AND_TOKEN_DO_NOT_OUTPUT';
@@ -51,7 +53,167 @@ async function cadenceInput(at = '2026-10-09T09:00:00Z', freshCreates = 0) {
   return value;
 }
 
+async function overdueInput(at = '2026-10-09T10:00:00Z') {
+  const value = await cadenceInput(at, 1), day = '2026-10-09';
+  const item = { id: 'current-story', eventKey: 'current-story', verification: 'confirmed', kind: 'news', category: 'releases',
+    eventDate: day, publishedAt: '2026-10-09T07:00:00Z', verifiedAt: '2026-10-09T07:00:00Z',
+    title: { ru: 'Новая книга', en: 'New book' }, summary: { ru: 'Издатель сообщил о книге.', en: 'Publisher announced a book.' },
+    source: { name: 'Fixture', url: 'https://publisher.example/book', language: 'en' } };
+  value.feed = await buildPublishedNewsFeed({ records: [item], withdrawals: [], state: pendingNewsSourceState(),
+    current: value.current, timeZone: 'Europe/Moscow', release, contractVersion: 2 });
+  const prepared = await prepareNewsPost(item, value.feed.snapshot, 'telegram');
+  const key = newsPostKey(item.id, { ...destination, mode: 'on' }), lastKey = newsPostKey('last-story', { ...destination, mode: 'on' });
+  value.dueRows = [{ id: 2, entity_id: key, metadata: { key, newsId: item.id, destination, status: 'pending',
+    originalAdmission: '2026-10-09T07:00:00Z', nextDueAt: '2026-10-09T08:00:00Z', prepared, desiredRevision: prepared.revision } }];
+  value.pacingRow = { id: 3, state: { schemaVersion: 5, key: newsDeliveryPacingKey(destination), platform: 'telegram',
+    destinationId: destination.id, day, reservations: 1, timeZone: 'Europe/Moscow', dailyLimit: 10, intervalSeconds: 6300,
+    minIntervalSeconds: 6300, maxIntervalSeconds: 6300, scheduleToleranceSeconds: 0,
+    publicationStartHour: 8, publicationEndHourExclusive: 23, reservedAt: '2026-10-09T07:15:00Z',
+    nextDueAt: '2026-10-09T09:00:00Z', jobKey: lastKey, attemptId: 'prior-attempt' } };
+  value.reservedPost = { key: lastKey, status: 'sent_current', remoteId: '42', firstAcknowledgedAt: '2026-10-09T07:18:00Z' };
+  value.supplyCandidateCount = 1;
+  value.supply = { schemaVersion: 1, checkedAt: value.current.toISOString(), candidateCount: 1, readyNow: 1, readyByClose: 1,
+    ambiguous: 0, ambiguousFingerprint: null, acknowledged: 0, inflight: 0, missing: 0, stale: 0 };
+  return value;
+}
+
 describe('bounded read-only news operations projection', () => {
+  it('identifies a specific current unacknowledged post only after actual acknowledgement spacing and grace', async () => {
+    const value = await overdueInput('2026-10-09T09:18:00Z'), report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual(['operations_delivery_post_overdue']);
+    expect(report.telegram.pacing.eligibleAt).toBe('2026-10-09T09:03:00.000Z');
+    expect(report.telegram.overdue).toMatchObject({ status: 'overdue', graceSeconds: 900, posts: [{ eligibleAt: '2026-10-09T09:03:00.000Z' }] });
+    expect(report.telegram.overdue.posts[0].reference).toMatch(/^[a-f0-9]{24}$/);
+    expect(JSON.stringify(report)).not.toContain(value.dueRows[0].entity_id);
+    const later = await overdueInput('2026-10-09T09:27:00Z'), repeated = await summarizeNewsOperations(later);
+    expect(repeated.attention.fingerprint).toBe(report.attention.fingerprint);
+    expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+  });
+  it.each(['interval', 'grace', 'cooldown', 'item_retry', 'new_admission', 'live_lease', 'budget', 'attempt', 'acknowledged',
+    'night', 'paused', 'day_cap', 'stale_public_revision', 'read_failed', 'bad_due', 'bad_admission'])(
+    'does not infer an overdue create during %s', async boundary => {
+      const value = await overdueInput(), job = value.dueRows[0].metadata;
+      if (boundary === 'interval') value.reservedPost.firstAcknowledgedAt = '2026-10-09T09:00:00Z';
+      if (boundary === 'grace') job.nextDueAt = '2026-10-09T09:45:00.001Z';
+      if (boundary === 'cooldown') value.control.nextDueAt = '2026-10-09T09:50:00Z';
+      if (boundary === 'item_retry') job.nextDueAt = '2026-10-09T10:10:00Z';
+      if (boundary === 'new_admission') job.originalAdmission = '2026-10-09T09:50:00Z';
+      if (boundary === 'live_lease') { job.status = 'inflight'; job.leaseUntil = '2026-10-09T10:01:00Z'; }
+      if (boundary === 'budget') value.deliveryHeartbeat.budgetStopped = true;
+      if (boundary === 'attempt') value.deliveryHeartbeat.attemptedJobs = 1;
+      if (boundary === 'acknowledged') job.remoteId = '43';
+      if (boundary === 'night') value.current = new Date('2026-10-09T20:00:00Z');
+      if (boundary === 'paused') value.control.paused = true;
+      if (boundary === 'day_cap') value.pacingRow.state.reservations = 10;
+      if (boundary === 'stale_public_revision') job.prepared.textRevision = 'a'.repeat(64);
+      if (boundary === 'read_failed') value.readFailures = ['operations_supply_read_failed'];
+      if (boundary === 'bad_due') job.nextDueAt = privateMarker;
+      if (boundary === 'bad_admission') job.originalAdmission = privateMarker;
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).not.toContain('operations_delivery_post_overdue');
+      expect(report.telegram.overdue.posts).toEqual([]); expect(JSON.stringify(report)).not.toContain(privateMarker);
+    });
+  it('requires manual review of durable ambiguity and never promotes it into resendable reserve', async () => {
+    const value = await overdueInput(); value.dueRows = [];
+    value.reservedPost = { ...value.reservedPost, status: 'ambiguous', remoteId: null, firstAcknowledgedAt: null,
+      dispatchStartedAt: '2026-10-09T07:16:00Z', leaseUntil: '2026-10-09T07:17:00Z' };
+    Object.assign(value.supply, { readyNow: 0, readyByClose: 0, ambiguous: 1, ambiguousFingerprint: 'b'.repeat(32) });
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toContain('operations_delivery_reconciliation_required');
+    expect(report.telegram.reconciliation).toEqual({ status: 'operator_review_required', currentReservedPost: true, currentPublicCandidates: 1 });
+    expect(report.telegram.reserve.counts.readyByClose).toBe(0);
+    expect(report.attention.scope).toContain('never retries');
+    value.reservedPost.status = 'inflight';
+    expect((await summarizeNewsOperations(value)).telegram.reconciliation.currentReservedPost).toBe(true);
+    value.reservedPost.leaseUntil = '2026-10-09T10:01:00Z';
+    expect((await summarizeNewsOperations(value)).telegram.reconciliation.currentReservedPost).toBe(false);
+  });
+  it('compares the verified current-public reserve with only remaining permitted minimum slots', async () => {
+    const value = await overdueInput('2026-10-09T19:50:00Z'); value.dueRows = [];
+    const covered = await summarizeNewsOperations(value);
+    expect(covered.telegram.reserve).toMatchObject({ status: 'covered', possibleRemainingSlots: 1, requiredReadyForMinimum: 1 });
+    Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 });
+    const shortfall = await summarizeNewsOperations(value);
+    expect(shortfall.telegram.reserve.status).toBe('shortfall');
+    expect(shortfall.attention.items.some(row => row.code === 'operations_delivery_reserve_shortfall')).toBe(true);
+    expect(shortfall.failures).not.toContain('operations_delivery_reserve_shortfall');
+    expect(shortfall.telegram.reserve.scope).toContain('excludes unseen older queue items');
+    value.control.nextDueAt = '2026-10-09T20:01:00Z';
+    expect((await summarizeNewsOperations(value)).telegram.reserve).toMatchObject({ status: 'covered', possibleRemainingSlots: 0, requiredReadyForMinimum: 0 });
+  });
+  it.each([['2026-10-09T09:03:00Z', false], ['2026-10-09T09:17:59.999Z', false], ['2026-10-09T09:18:00Z', true]])(
+    'alerts a confirmed empty reserve only after the permitted slot and 15-minute grace at %s', async (at, failed) => {
+      const value = await overdueInput(at); value.dueRows = [];
+      Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 });
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures.includes('operations_delivery_reserve_empty')).toBe(failed);
+      expect(report.telegram.reserve.status).toBe(failed ? 'empty' : 'shortfall');
+      expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
+      expect(report.attention.items.some(row => row.code === 'operations_delivery_reserve_empty')).toBe(failed);
+      expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+    });
+  it.each(['pacing_wait', 'night', 'disabled', 'read_failed', 'paused', 'budget', 'retry_attempt', 'future_ready', 'live_inflight'])(
+    'does not declare an actionable empty reserve during %s', async boundary => {
+      const value = await overdueInput('2026-10-09T09:30:00Z'); value.dueRows = [];
+      Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 });
+      if (boundary === 'pacing_wait') value.reservedPost.firstAcknowledgedAt = '2026-10-09T09:00:00Z';
+      if (boundary === 'night') value.current = new Date('2026-10-09T20:00:00Z');
+      if (boundary === 'disabled') disablePreparation(value);
+      if (boundary === 'read_failed') value.readFailures = ['operations_supply_read_failed'];
+      if (boundary === 'paused') value.control.paused = true;
+      if (boundary === 'budget') value.deliveryHeartbeat.budgetStopped = true;
+      if (boundary === 'retry_attempt') value.deliveryHeartbeat.attemptedJobs = 1;
+      if (boundary === 'future_ready') Object.assign(value.supply, { readyByClose: 1, missing: 0 });
+      if (boundary === 'live_inflight') Object.assign(value.supply, { inflight: 1, missing: 0 });
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).not.toContain('operations_delivery_reserve_empty');
+      expect(report.telegram.reserve.status).not.toBe('empty');
+    });
+  it('warns about three ready stories for seven remaining minimum slots without claiming preparation has failed', async () => {
+    const value = await overdueInput('2026-10-09T09:18:00Z'); value.dueRows = [];
+    const records = Array.from({ length: 7 }, (_, index) => ({ ...value.feed.items[0], id: 'reserve-' + index, eventKey: 'reserve-' + index }));
+    value.feed = await buildPublishedNewsFeed({ records, withdrawals: [], state: pendingNewsSourceState(), current: value.current,
+      timeZone: 'Europe/Moscow', release, contractVersion: 2 });
+    value.supplyCandidateCount = 7;
+    Object.assign(value.supply, { candidateCount: 7, readyNow: 3, readyByClose: 3, missing: 4 });
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.status).toBe('supply_degraded');
+    expect(report.telegram.reserve).toMatchObject({ status: 'shortfall', requiredReadyForMinimum: 7, counts: { readyNow: 3 } });
+    expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
+    expect(newsOperationsWorkflowWarnings(report, { GITHUB_ACTIONS: 'true' })).toEqual([
+      '::warning title=Literary news reserve::operations_delivery_reserve_shortfall: The current verified reserve is smaller than the remaining permitted minimum slots. Later preparation may replenish it.',
+    ]);
+    expect(newsOperationsWorkflowWarnings(report, {})).toEqual([]);
+  });
+  it('emits only fixed allowlisted workflow warnings and never serializes caller text into an annotation', () => {
+    expect(newsOperationsWorkflowWarnings({ warnings: [privateMarker, 'operations_' + privateMarker] }, { GITHUB_ACTIONS: 'true' })).toEqual([]);
+    const warnings = newsOperationsWorkflowWarnings({ warnings: ['operations_delivery_reserve_shortfall', privateMarker,
+      'operations_delivery_reserve_shortfall'] }, { GITHUB_ACTIONS: 'true' });
+    expect(warnings).toHaveLength(1); expect(warnings[0]).not.toContain(privateMarker);
+    expect(newsOperationsWorkflowWarnings({ warnings: privateMarker }, { GITHUB_ACTIONS: 'true' })).toEqual([]);
+  });
+  it.each(['wrong_count', 'string_count', 'over_count', 'future_time', 'ready_above_total', 'ambiguous_without_fingerprint'])(
+    'does not use corrupt supply metrics: %s', async boundary => {
+      const value = await overdueInput();
+      if (boundary === 'wrong_count') value.supply.candidateCount = 2;
+      if (boundary === 'string_count') value.supply.readyNow = '1';
+      if (boundary === 'over_count') value.supply.readyByClose = 2;
+      if (boundary === 'future_time') value.supply.checkedAt = '2026-10-09T10:01:00Z';
+      if (boundary === 'ready_above_total') value.supply.acknowledged = 1;
+      if (boundary === 'ambiguous_without_fingerprint') value.supply.ambiguous = 1;
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).toContain('operations_supply_invalid'); expect(report.telegram.reserve.counts).toBeNull();
+      expect(report.failures).not.toContain('operations_delivery_post_overdue');
+    });
+  it('bounds supply inputs to exact keys and verified public hashes, rejecting partial or changed feeds', async () => {
+    const value = await overdueInput(), candidates = await newsOperationsSupplyCandidates(value.feed, destination, value.current);
+    expect(candidates).toHaveLength(1); expect(Object.keys(candidates[0]).sort()).toEqual(['key', 'temporal', 'textRevision']);
+    expect(candidates[0].textRevision).toMatch(/^[a-f0-9]{64}$/); expect(JSON.stringify(candidates)).not.toContain('Новая книга');
+    const corrupted = structuredClone(value.feed); corrupted.items[0].title.ru = privateMarker;
+    await expect(newsOperationsSupplyCandidates(corrupted, destination, value.current)).rejects.toThrow();
+    const partial = structuredClone(value.feed); partial.items = [];
+    await expect(newsOperationsSupplyCandidates(partial, destination, value.current)).rejects.toThrow();
+  });
   it('alerts a verified material delivery gap after noon without claiming pending supply is empty', async () => {
     const report = await summarizeNewsOperations(await cadenceInput());
     expect(report.status).toBe('failed'); expect(report.failures).toEqual(['operations_delivery_cadence_deficit']);
@@ -330,6 +492,7 @@ describe('read-only operations report network boundaries', () => {
     for (const [path, method, first] of [
       ['/rest/v1/admin_audit_log', 'GET', async () => { throw new TypeError('fetch failed ' + privateMarker); }],
       ['/rest/v1/rpc/read_due_literary_news_runtime_posts', 'POST', async () => Response.json({ message: privateMarker }, { status: 503 })],
+      ['/rest/v1/rpc/literary_news_operations_supply', 'POST', async () => Response.json({ message: privateMarker }, { status: 503 })],
       ['/rest/v1/rpc/literary_news_delivery_day_status', 'POST', async () => Response.json({ message: privateMarker }, { status: 429, headers: { 'retry-after': '1' } })],
     ]) {
       const fetchImpl = vi.fn().mockImplementationOnce(first).mockResolvedValueOnce(Response.json([])), sleep = vi.fn();
@@ -451,6 +614,7 @@ describe('read-only operations report network boundaries', () => {
         if (key?.startsWith('eq.destination:telegram:')) return scenario.unauthorizedDestination
           ? Response.json({ message: privateMarker }, { status: 401 }) : Response.json([{ id: 1, metadata: value.control }]);
         if (key === 'eq.heartbeat:native-delivery') return Response.json([{ id: 2, metadata: value.deliveryHeartbeat }]);
+        if (key?.startsWith('eq.history:pacing:telegram:')) return Response.json([]);
       }
       if (url.origin === origin && url.pathname === '/rest/v1/rpc/literary_news_delivery_day_status' && method === 'POST') {
         const args = JSON.parse(options.body);
@@ -459,6 +623,12 @@ describe('read-only operations report network boundaries', () => {
       if (url.origin === origin && url.pathname === '/rest/v1/rpc/read_due_literary_news_runtime_posts' && method === 'POST') {
         if (++dueAttempts <= (scenario.dueFailures || 0)) return Response.json({ message: privateMarker }, { status: 503 });
         return Response.json(scenario.invalidQueue ? { invalid: privateMarker } : []);
+      }
+      if (url.origin === origin && url.pathname === '/rest/v1/rpc/literary_news_operations_supply' && method === 'POST') {
+        const args = JSON.parse(options.body);
+        expect(args.p_candidates).toEqual([]);
+        return Response.json({ schemaVersion: 1, checkedAt: args.p_now, candidateCount: 0, readyNow: 0, readyByClose: 0,
+          ambiguous: 0, ambiguousFingerprint: null, acknowledged: 0, inflight: 0, missing: 0, stale: 0 });
       }
       throw Error('Unexpected network request');
     });
@@ -486,8 +656,9 @@ describe('read-only operations report network boundaries', () => {
     const privateKv = calls.filter(row => row.url.pathname.includes('/storage/kv/'));
     expect(privateKv).toHaveLength(scenario.actualPreparation ? 5 : 0); expect(privateKv.every(row => row.method === 'GET')).toBe(true);
     const rpcs = calls.filter(row => row.method === 'POST');
-    expect(rpcs).toHaveLength(8 + Math.min(scenario.dueFailures || 0, 2)); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
-    expect(rpcs.every(row => ['/rest/v1/rpc/literary_news_delivery_day_status', '/rest/v1/rpc/read_due_literary_news_runtime_posts'].includes(row.url.pathname))).toBe(true);
+    expect(rpcs).toHaveLength(9 + Math.min(scenario.dueFailures || 0, 2)); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
+    expect(rpcs.every(row => ['/rest/v1/rpc/literary_news_delivery_day_status', '/rest/v1/rpc/read_due_literary_news_runtime_posts',
+      '/rest/v1/rpc/literary_news_operations_supply'].includes(row.url.pathname))).toBe(true);
     expect(report.public.release).toBe(release); expect(report.telegram.lastRunAt).toBe(current.toISOString());
     expect(report.telegram.acknowledgedPerDay).toHaveLength(7); expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3);
     if (!scenario.actualPreparation) {

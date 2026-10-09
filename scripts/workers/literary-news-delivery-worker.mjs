@@ -13,6 +13,7 @@ import { trustedSupabaseOrigin } from '../lib/trusted-server-url.mjs';
 import { validatePreparedNewsMedia } from '../lib/literary-news-media-policy.mjs';
 import { DELIVERY_MEDIA_INDEX_KEY, DELIVERY_MEDIA_BYTES_PREFIX, DELIVERY_MEDIA_INDEX_MAX_BYTES,
   validateDeliveryMediaIndex, checkDeliveryMediaDescriptor, checkDeliveryMediaBytes } from '../lib/literary-news-delivery-media-profile.mjs';
+import { captureChangedNativeNews, planNewsCapture, completedNewsCaptureProgress } from '../lib/literary-news-capture-progress.mjs';
 
 export const DELIVERY_WINDOW = Object.freeze({start:DAILY_NEWS_WINDOW.start+'T00:00:00+03:00',
   end:DAILY_NEWS_WINDOW.endExclusive+'T00:00:00+03:00'});
@@ -25,6 +26,7 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid',
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 safeCodes.add('delivery_request_budget_exhausted');
+safeCodes.add('delivery_capture_progress_invalid');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
 const safePauseReasons = new Set(['destination_rights_unverified','release_operator_pause',
   'telegram_permission_denied','vk_permission_denied','provider_token_missing','provider_endpoint_invalid']);
@@ -188,7 +190,7 @@ async function readMediaOptions(binding,current) {
 
 export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,createClientImpl=createClient,
   storeFactory=createNewsRuntimeStore,dispatchImpl=dispatchNativeNewsJob,fetchFeedImpl=fetchNativeNewsAdmissionFeed,
-  invocation='dispatch'}={}) {
+  invocation='dispatch',captureProgress,saveCaptureProgress}={}) {
   const current=now(),runId=randomUUID(),base={runner:'native-cron',invocation,runId,startedAt:current.toISOString()};
   if(!['capture','dispatch'].includes(invocation))fail('delivery_runtime_failed');
   if(env?.NEWS_DELIVERY_ENABLED!=='true')return {...base,status:'disabled',deliveredThisRun:0};
@@ -235,7 +237,8 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     let candidates=checkedDeliveryDueRows(rawDue,destination,current);
     phase='public_feed';
     const feed=await fetchFeedImpl({fetchImpl:budget.fetch,current});
-    const captureIds=invocation==='capture'?rotatingNativeNewsCaptureIds(feed,current):[];
+    const capturePlan=invocation==='capture'&&captureProgress!==undefined?await planNewsCapture(feed,current,captureProgress):null;
+    const captureIds=invocation==='capture'?(capturePlan?capturePlan.ids:rotatingNativeNewsCaptureIds(feed,current)):[];
     let mediaOptions={registry:{assets:[]},now:current,deferBytes:true},mediaIndexUnavailable=false;
     if(captureIds.length||candidates.some(row=>row.state.prepared?.media)){
       phase='media_index';
@@ -245,8 +248,13 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     if(invocation==='capture'){
       phase='capture';
       const capture=await reconcileNewsSnapshot(store,feed,[destination],current,{mediaOptions,boundedCaptureIds:captureIds});
+      if(capturePlan&&typeof saveCaptureProgress==='function') {
+        const failed=new Set(capture.preparationFailures.map(row=>row.newsId));
+        await saveCaptureProgress(completedNewsCaptureProgress(capturePlan,captureIds.filter(id=>!failed.has(id)),current,
+          captureIds.filter(id=>failed.has(id))));
+      }
       phase='heartbeat';
-      return await heartbeat({...base,phase,finishedAt:now().toISOString(),status:'admissions_captured',
+      return await heartbeat({...base,phase,finishedAt:now().toISOString(),status:capturePlan&&!captureIds.length?'capture_not_due':'admissions_captured',
         capturedCandidates:captureIds.length,newAdmissions:capture.newAdmissions,deliveredThisRun:0});
     }
     phase='current_queue';
@@ -313,6 +321,12 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
       acknowledgedCorrectionsThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted&&rowsByKey.get(row.key)?.state.remoteId).length,
       deliveredThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted).length,
       ambiguousThisRun:outcomes.filter(row=>row.status==='ambiguous').length,dayStatus};
+    // Timer advice never grants a slot. Dispatch still rechecks the durable
+    // reservation and actual receipt through the shared CAS provider path.
+    const knownDue=Math.max(Date.parse(pacing?.nextDueAt)||0,Date.parse(control.nextDueAt)||0,
+      ...outcomes.map(row=>Date.parse(row.nextDueAt)||0),
+      summary.acknowledgedCreatesThisRun?now().getTime()+6300000:0);
+    if(knownDue>current.getTime()&&Number.isFinite(knownDue))summary.nextDispatchAt=new Date(knownDue).toISOString();
     return await heartbeat(summary);
   } catch(error){
     const summary={...base,phase,status:'blocked',code:budget.quota?'runtime_quota_exceeded'
@@ -350,17 +364,37 @@ async function dispatchNativeNewsJob({store,jobs,transport,now}){
 /** SDK, JSON/hash validation and dispatch run under the Durable Object CPU budget.
  * Existing Supabase CAS and shared provider pacing remain the dispatch fence. */
 export class LiteraryNewsDeliveryCoordinator {
-  constructor(state,env){this.env=env;this.storage=state.storage;this.captureInFlight=null;}
+  constructor(state,env,{runTick=runDeliveryTick,now=()=>new Date()}={}){
+    this.env=env;this.storage=state.storage;this.captureInFlight=null;this.dispatchInFlight=null;
+    this.runTick=runTick;this.now=now;
+  }
+  async dispatch(){
+    this.dispatchInFlight??=(async()=>{
+      const summary=await this.runTick({env:this.env});
+      await scheduleNextNativeNewsAlarm(this.storage,this.env,summary,this.now());
+      return summary;
+    })();
+    const active=this.dispatchInFlight;
+    try{return await active;}finally{if(this.dispatchInFlight===active)this.dispatchInFlight=null;}
+  }
+  async alarm(){
+    // Alarm retries are at-least-once; all writes retain the same SQL/CAS,
+    // provider receipt and ambiguous-send fences as Cron dispatches.
+    try{await this.dispatch();}catch{
+      console.warn(JSON.stringify({component:'literary-news-delivery-alarm',status:'unavailable'}));
+      throw Error('delivery_alarm_retry_required');
+    }
+  }
   async fetch(request){
     const path=new URL(request.url).pathname;
     if(request.method!=='POST'||!['/capture','/dispatch'].includes(path))
       return new Response(null,{status:404});
     let summary;
     if(path==='/capture'&&this.env.NEWS_DELIVERY_ENABLED==='true'){
-      this.captureInFlight??=captureNativeNewsOncePerHour({storage:this.storage,
-        capture:()=>runDeliveryCaptureTick({env:this.env})});
+      this.captureInFlight??=captureChangedNativeNews({storage:this.storage,
+        capture:options=>runDeliveryCaptureTick({env:this.env,...options})});
       try{summary=await this.captureInFlight;}finally{this.captureInFlight=null;}
-    } else summary=await runDeliveryTick({env:this.env,invocation:path==='/capture'?'capture':'dispatch'});
+    } else summary=path==='/dispatch'?await this.dispatch():await runDeliveryCaptureTick({env:this.env});
     return Response.json(summary,{status:summary.status==='blocked'?503:200});
   }
 }
@@ -380,6 +414,21 @@ async function scheduledDelivery(controller,env,log) {
   if(!response.ok||summary.status==='blocked'||summary.status==='dispatch_reconciliation_required')controller.noRetry();
   log(JSON.stringify(summary));
   return summary;
+}
+
+export async function scheduleNextNativeNewsAlarm(storage,env,summary,current=new Date()) {
+  if(typeof storage?.setAlarm!=='function')return;
+  if(env.NEWS_DELIVERY_ENABLED!=='true'||['disabled','outside_authorized_window',
+    'destination_not_enabled_or_history_gap','dispatch_reconciliation_required'].includes(summary?.status)) {
+    if(typeof storage.deleteAlarm==='function')await storage.deleteAlarm();return;
+  }
+  const window=newsDeliveryPublicationWindow(current),advised=Date.parse(summary?.nextDispatchAt);
+  let due=!window.open?Date.parse(window.nextDueAt):Number.isFinite(advised)&&advised>current.getTime()
+    ?advised:current.getTime()+300000;
+  const dueWindow=newsDeliveryPublicationWindow(new Date(due));
+  if(!dueWindow.open)due=Date.parse(dueWindow.nextDueAt);
+  if(due>=Date.parse(DELIVERY_WINDOW.end)) {await storage.deleteAlarm?.();return;}
+  await storage.setAlarm(due);
 }
 
 const preparationStatuses=new Set(['disabled','outside_admission_window','busy','provider_quota_cooldown',
@@ -402,6 +451,7 @@ async function recoverScheduledPreparation(env,current,log) {
     const report=JSON.parse(Buffer.from(await boundedDeliveryResponse(response,65536)).toString('utf8'));
     if(!preparationStatuses.has(report?.status))throw Error('preparation_recovery_response_invalid');
     log(JSON.stringify({component,status:report.status,publicationConfirmed:report.publicationConfirmed===true}));
+    return report.publicationConfirmed===true;
   }catch{
     log(JSON.stringify({component,status:'unavailable'}));
   }
@@ -413,7 +463,19 @@ export async function scheduleNativeNewsDelivery(controller,env,{log=console.log
   if(env.NEWS_DELIVERY_ENABLED!=='true')return;
   if(!env.DELIVERY_COORDINATOR)fail('delivery_coordinator_missing');
   try{return await scheduledDelivery(controller,env,log);}
-  finally{await recoverScheduledPreparation(env,now(),log);}
+  finally{
+    if(await recoverScheduledPreparation(env,now(),log)) {
+      // The recovery completed after the ordinary capture. Admit its newly
+      // published items now; this second private call never sends to Telegram.
+      try {
+        const stub=env.DELIVERY_COORDINATOR.get(env.DELIVERY_COORDINATOR.idFromName('literary-news-delivery'));
+        const response=await stub.fetch('https://coordinator.internal/capture',{method:'POST'});
+        const captured=JSON.parse(Buffer.from(await boundedDeliveryResponse(response,65536)).toString('utf8'));
+        log(JSON.stringify({component:'literary-news-preparation-capture',status:response.ok&&
+          ['admissions_captured','capture_not_due'].includes(captured?.status)?captured.status:'unavailable'}));
+      }catch{log(JSON.stringify({component:'literary-news-preparation-capture',status:'unavailable'}));}
+    }
+  }
 }
 
 export default {

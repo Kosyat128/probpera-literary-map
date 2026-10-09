@@ -2,6 +2,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
+import { createHash } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import configuration from '../data/news/social-destinations.json' with { type: 'json' };
 import { verifyNativeNewsWorkers } from './verify-native-news-workers.mjs';
@@ -10,8 +11,9 @@ import { createDailyNewsStorageClient, validateDailyLedger } from './lib/literar
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DAILY_NEWS_WINDOW,
   DAILY_NEWS_LIMITS, dailyNewsDay, validateDailyApprovedPayload } from './lib/literary-news-daily-profile.mjs';
 import { verifyPublishedNewsSnapshot } from './lib/literary-news-publication.mjs';
-import { createNewsRuntimeStore } from './lib/literary-news-social.mjs';
-import { NEWS_DELIVERY_MAX_INTERVAL_SECONDS } from './lib/literary-news-pacing.mjs';
+import { createNewsRuntimeStore, newsPostKey, newsSemanticRevision } from './lib/literary-news-social.mjs';
+import { NEWS_DELIVERY_MAX_INTERVAL_SECONDS, inspectNewsDeliveryPacing, newsDeliveryPacingKey } from './lib/literary-news-pacing.mjs';
+import { currentNativeNewsDueRows, selectNativeNewsAdmissionIds } from './lib/literary-news-native-admissions.mjs';
 import { trustedSupabaseOrigin } from './lib/trusted-server-url.mjs';
 import { validTimestamp } from './lib/literary-news-reviewed.mjs';
 import { createDeliverySupabaseFetch, checkedDeliveryDayStatus, checkedDeliveryDueRows } from './workers/literary-news-delivery-worker.mjs';
@@ -19,6 +21,7 @@ import { PREPARATION_REPORT_KEY, PREPARATION_ATTEMPT_KEY } from './workers/liter
 
 const MAX_AGE = 6 * 3600000;
 const PREPARATION_ATTEMPT_MAX_AGE = 90 * 60000;
+const DELIVERY_OVERDUE_GRACE = 15 * 60000;
 const NAMESPACE = 'f3ae59fd55ee4c0cac8ff1613db81680';
 const fail = code => { throw Error(code); };
 const safeCount = value => Number.isSafeInteger(value) && value >= 0 && value <= 5000000 ? value : null;
@@ -31,7 +34,8 @@ const safeResumeTime = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}
 const READ_FAILURES = ['operations_public_feed_read_failed', 'operations_profile_read_failed', 'operations_ledger_read_failed',
   'operations_owner_read_failed', 'operations_preparation_report_read_failed', 'operations_destination_read_failed',
   'operations_day_metrics_read_failed', 'operations_due_queue_read_failed', 'operations_delivery_heartbeat_read_failed',
-  'operations_day_history_read_failed', 'operations_preparation_attempt_read_failed'];
+  'operations_day_history_read_failed', 'operations_preparation_attempt_read_failed',
+  'operations_pacing_read_failed', 'operations_reserved_post_read_failed', 'operations_supply_read_failed'];
 const HELD_REASONS = new Set(['daily_article_evidence_unavailable', 'daily_draft_ungrounded', 'daily_duplicate_topic',
   'daily_existing_or_withdrawn', 'daily_independent_review_rejected', 'daily_model_held', 'daily_publication_date_conflict',
   'daily_publication_date_future', 'daily_publication_date_invalid', 'daily_publication_date_stale',
@@ -73,7 +77,7 @@ export function createNewsOperationsRuntimeReadFetch(origin, fetchImpl = fetch,
     const method = (options.method || input?.method || 'GET').toUpperCase();
     const readonly = url.origin === origin && (method === 'GET' && url.pathname === '/rest/v1/admin_audit_log'
       || method === 'POST' && ['/rest/v1/rpc/literary_news_delivery_day_status',
-        '/rest/v1/rpc/read_due_literary_news_runtime_posts'].includes(url.pathname));
+      '/rest/v1/rpc/read_due_literary_news_runtime_posts', '/rest/v1/rpc/literary_news_operations_supply'].includes(url.pathname));
     for (let attempt = 0; ; attempt++) {
       let response;
       try { response = await boundedFetch(input, options); }
@@ -116,6 +120,45 @@ export function newsDeliveryCheckpointAge(checkpoint, current) {
   return age;
 }
 
+/** Supply lookup inputs come from the original complete public proof, never
+ * from a partial feed or an unverified queue record. Only exact keys, hashes
+ * and publication dates cross the service-only read boundary. */
+export async function newsOperationsSupplyCandidates(feed, destination, current) {
+  await verifyPublishedNewsSnapshot(feed);
+  if (feed.timeZone !== DAILY_NEWS_WINDOW.timeZone || feed.fallbackCapturedAt
+    || !safeTime(feed.generatedAt) || Math.abs(current - Date.parse(feed.generatedAt)) > 300000)
+    fail('operations_public_feed_invalid');
+  const byId = new Map(feed.items.map(item => [item.id, item]));
+  return Promise.all(selectNativeNewsAdmissionIds(feed, current).map(async id => {
+    const item = byId.get(id);
+    return { key: newsPostKey(id, { ...destination, mode: 'on' }), textRevision: await newsSemanticRevision(item),
+      temporal: { kind: item.kind, eventDate: item.eventDate, publishedAt: item.publishedAt, verifiedAt: item.verifiedAt } };
+  }));
+}
+
+function checkedSupply(value, candidateCount, current) {
+  if (value?.schemaVersion !== 1 || !safeTime(value.checkedAt) || Date.parse(value.checkedAt) !== current.getTime()
+    || !Number.isSafeInteger(candidateCount) || candidateCount < 0 || candidateCount > 24 || value.candidateCount !== candidateCount
+    || ['readyNow', 'readyByClose', 'ambiguous', 'acknowledged', 'inflight', 'missing', 'stale']
+      .some(key => !Number.isSafeInteger(value[key]) || value[key] < 0 || value[key] > candidateCount)
+    || value.readyNow > value.readyByClose || value.readyByClose + value.acknowledged > candidateCount
+    || value.ambiguousFingerprint !== null && !/^[a-f0-9]{32}$/.test(value.ambiguousFingerprint || '')
+    || Boolean(value.ambiguous) !== Boolean(value.ambiguousFingerprint)) fail('operations_supply_invalid');
+  return Object.fromEntries(['candidateCount', 'readyNow', 'readyByClose', 'ambiguous', 'acknowledged', 'inflight', 'missing', 'stale',
+    'ambiguousFingerprint'].map(key => [key, value[key]]));
+}
+
+const postReference = job => createHash('sha256').update(job.key + ':' + (job.desiredRevision || '')).digest('hex').slice(0, 24);
+
+/** Fixed annotations make an editorial reserve warning visible in a green
+ * workflow. No remote content or caller-provided text becomes a command. */
+export function newsOperationsWorkflowWarnings(report, env = process.env) {
+  if (env.GITHUB_ACTIONS !== 'true' || !Array.isArray(report?.warnings)) return [];
+  return report.warnings.includes('operations_delivery_reserve_shortfall') ? [
+    '::warning title=Literary news reserve::operations_delivery_reserve_shortfall: The current verified reserve is smaller than the remaining permitted minimum slots. Later preparation may replenish it.',
+  ] : [];
+}
+
 /** Only two fixed private diagnostic keys. This adapter cannot write or retrieve arbitrary KV content. */
 export function createNewsOperationsReportReader({ accountId, apiToken, fetchImpl = fetch, kind = 'report' }) {
   if (typeof accountId !== 'string' || !/^[a-f0-9]{32}$/i.test(accountId)
@@ -149,7 +192,7 @@ export function createNewsOperationsReportReader({ accountId, apiToken, fetchImp
 export async function summarizeNewsOperations({ feed, profile, ledger, owner, preparationReport, workers, control,
   dayStatus, recentDayStatuses = [], dueRows, deliveryHeartbeat, destination, current = new Date(), expectedHead = null,
   preparationEnabled = true, preparationBlockReason = null, autoResumeEnabled = false, resumeScheduledAt = null,
-  preparationAttempt = null, readFailures = [] }) {
+  preparationAttempt = null, pacingRow = null, reservedPost = null, supply = null, supplyCandidateCount = null, readFailures = [] }) {
   if (!Number.isFinite(current.getTime())) fail('operations_clock_invalid');
   if (typeof preparationEnabled !== 'boolean' || typeof autoResumeEnabled !== 'boolean') fail('operations_configuration_invalid');
   const failures = READ_FAILURES.filter(code => Array.isArray(readFailures) && readFailures.includes(code));
@@ -158,7 +201,9 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     operations_profile_missing_or_invalid: 'operations_profile_read_failed', operations_checkpoint_missing_or_invalid: 'operations_ledger_read_failed',
     operations_native_owner_not_enabled: 'operations_owner_read_failed', operations_preparation_checkpoint_missing: 'operations_preparation_report_read_failed',
     operations_destination_not_enabled: 'operations_destination_read_failed', operations_day_metrics_invalid: 'operations_day_metrics_read_failed',
-    operations_due_queue_invalid: 'operations_due_queue_read_failed', operations_delivery_checkpoint_missing: 'operations_delivery_heartbeat_read_failed' };
+    operations_due_queue_invalid: 'operations_due_queue_read_failed', operations_delivery_checkpoint_missing: 'operations_delivery_heartbeat_read_failed',
+    operations_pacing_invalid: 'operations_pacing_read_failed', operations_reserved_post_missing: 'operations_reserved_post_read_failed',
+    operations_supply_invalid: 'operations_supply_read_failed' };
   const add = code => { if (!failures.includes(code) && !failures.includes(unavailable[code])) failures.push(code); };
   const day = dailyNewsDay(current), inWindow = day >= DAILY_NEWS_WINDOW.start && day < DAILY_NEWS_WINDOW.endExclusive;
   const mode = preparationEnabled ? 'enabled' : 'delivery-only';
@@ -215,6 +260,16 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
   let deliveryDay = null, due = [], dueValid = false;
   try { deliveryDay = checkedDeliveryDayStatus(dayStatus, current); } catch { add('operations_day_metrics_invalid'); }
   try { due = checkedDeliveryDueRows(dueRows, destination, current); dueValid = true; } catch { add('operations_due_queue_invalid'); }
+  let pacing = null, supplyCounts = null;
+  if (pacingRow !== null) {
+    pacing = inspectNewsDeliveryPacing({ row: pacingRow, destination, current, receipt: reservedPost, control });
+    if (!pacing.valid) add('operations_pacing_invalid');
+    if (pacingRow?.state && !reservedPost) add('operations_reserved_post_missing');
+  }
+  if (supplyCandidateCount !== null) {
+    try { supplyCounts = checkedSupply(supply, supplyCandidateCount, current); }
+    catch { add('operations_supply_invalid'); }
+  }
   const perDay = new Map(), records = profileValid ? profile.records : [];
   for (const record of records) { const acceptedDay = dailyNewsDay(new Date(record.provenance.firstAcceptedAt));
     perDay.set(acceptedDay, (perDay.get(acceptedDay) || 0) + 1); }
@@ -268,13 +323,67 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     Math.floor((current - deliveryOpening) / (NEWS_DELIVERY_MAX_INTERVAL_SECONDS * 1000)) - 1) : null;
   const cadenceDeficit = cadenceChecked && deliveryDay.freshCreates < cadenceMinimum;
   if (cadenceDeficit) add('operations_delivery_cadence_deficit');
+  const publicationOpen = inWindow && current.getTime() >= deliveryOpening && current.getTime() < deliveryClosing;
+  const destinationActive = control?.mode === 'on' && control.paused === false && control.historyReconciled === true;
+  const freshQuietHeartbeat = Boolean(deliveryAt && current - Date.parse(deliveryAt) >= 0 && current - Date.parse(deliveryAt) <= 15 * 60000
+    && ['daily_target_deficit', 'daily_minimum_reached'].includes(deliveryHeartbeat.status) && deliveryHeartbeat.phase === 'heartbeat'
+    && deliveryHeartbeat.heartbeatRecorded === true && deliveryHeartbeat.budgetStopped === false
+    && deliveryHeartbeat.attemptedJobs === 0 && deliveryHeartbeat.providerWriteAttempts === 0
+    && deliveryHeartbeat.deliveredThisRun === 0 && deliveryHeartbeat.ambiguousThisRun === 0
+    && heartbeatDay?.freshCreates === deliveryDay?.freshCreates && heartbeatDay?.acknowledgedCreates === deliveryDay?.acknowledgedCreates);
+  const overdueChecked = Boolean(publicationOpen && destinationActive && failures.length === 0 && deliveryDay && dueValid
+    && publicValid && pacing?.valid && pacing.reason === 'pacing_due' && freshQuietHeartbeat
+    && deliveryDay.acknowledgedCreates < deliveryDay.maximum);
+  let overdue = [];
+  if (overdueChecked) {
+    const currentDue = await currentNativeNewsDueRows(due, feed);
+    overdue = currentDue.filter(({ state: job }) => {
+      if (job.remoteId || job.firstAcknowledgedAt || job.dispatchStartedAt || job.withdrawal
+        || job.prepared?.revision !== job.desiredRevision || !safeTime(job.originalAdmission)
+        || job.nextDueAt != null && !safeTime(job.nextDueAt)
+        || job.status === 'inflight' && !safeTime(job.leaseUntil)) return false;
+      const allowedAt = Math.max(Date.parse(pacing.eligibleAt), Date.parse(job.originalAdmission), Date.parse(job.nextDueAt) || 0,
+        job.status === 'inflight' ? Date.parse(job.leaseUntil) : 0);
+      return current.getTime() - allowedAt >= DELIVERY_OVERDUE_GRACE;
+    }).map(({ state: job }) => ({ reference: postReference(job), eligibleAt: new Date(Math.max(Date.parse(pacing.eligibleAt),
+      Date.parse(job.originalAdmission), Date.parse(job.nextDueAt) || 0, job.status === 'inflight' ? Date.parse(job.leaseUntil) : 0)).toISOString() }));
+  }
+  if (overdue.length) add('operations_delivery_post_overdue');
+  const reservedAmbiguous = Boolean(reservedPost && pacing?.valid && (reservedPost.status === 'ambiguous'
+    || reservedPost.status === 'inflight' && safeTime(reservedPost.dispatchStartedAt)
+      && safeTime(reservedPost.leaseUntil) && Date.parse(reservedPost.leaseUntil) <= current.getTime()));
+  const reconciliationRequired = Boolean(reservedAmbiguous || supplyCounts?.ambiguous);
+  if (publicationOpen && destinationActive && reconciliationRequired) add('operations_delivery_reconciliation_required');
+  const possibleSlots = publicationOpen && pacing?.valid && deliveryDay ? Math.min(Math.max(0, deliveryDay.maximum
+    - Math.max(pacing.reservations, deliveryDay.acknowledgedCreates)), Math.max(0,
+    Math.ceil((deliveryClosing - Math.max(current.getTime(), Date.parse(pacing.eligibleAt))) / (NEWS_DELIVERY_MAX_INTERVAL_SECONDS * 1000)))) : null;
+  const requiredReady = possibleSlots === null ? null : Math.min(deliveryDay.deficitToMinimum, possibleSlots);
+  const supplyChecked = Boolean(preparationEnabled && publicationOpen && destinationActive && supplyCounts && requiredReady !== null
+    && !failures.some(code => READ_FAILURES.includes(code) || ['operations_pacing_invalid', 'operations_day_metrics_invalid'].includes(code)));
+  const reserveShortfall = supplyChecked && supplyCounts.readyByClose < requiredReady;
+  const reserveEmpty = Boolean(preparationEnabled && publicationOpen && destinationActive && failures.length === 0
+    && supplyChecked && freshQuietHeartbeat && pacing.reason === 'pacing_due' && requiredReady > 0
+    && supplyCounts.readyNow === 0 && supplyCounts.readyByClose === 0 && supplyCounts.inflight === 0
+    && current.getTime() - Date.parse(pacing.eligibleAt) >= DELIVERY_OVERDUE_GRACE);
+  if (reserveEmpty) add('operations_delivery_reserve_empty');
+  const warnings = reserveShortfall ? ['operations_delivery_reserve_shortfall'] : [];
+  const attentionItems = [
+    ...(overdue.length ? [{ code: 'operations_delivery_post_overdue', references: overdue.map(row => row.reference).sort() }] : []),
+    ...(reconciliationRequired ? [{ code: 'operations_delivery_reconciliation_required', references: [
+      ...(reservedAmbiguous ? [postReference(reservedPost)] : []), ...(supplyCounts?.ambiguousFingerprint ? [supplyCounts.ambiguousFingerprint] : [])].sort() }] : []),
+    ...(reserveShortfall ? [{ code: 'operations_delivery_reserve_shortfall', references: [day] }] : []),
+    ...(reserveEmpty ? [{ code: 'operations_delivery_reserve_empty', references: [day] }] : []),
+  ];
+  const attentionFingerprint = attentionItems.length ? createHash('sha256').update(JSON.stringify(attentionItems)).digest('hex') : null;
   return { schemaVersion: 1, readonly: true, externalWrites: 0, checkedAt: current.toISOString(), day,
     timeZone: DAILY_NEWS_WINDOW.timeZone, window: DAILY_NEWS_WINDOW, mode, enabledVerified: !failures.includes('operations_workers_not_enabled'),
     requestedMode: workers?.requestedExpected === 'auto-resume' ? 'auto-resume' : mode,
     autoResumeEnabled, resumeScheduledAt: autoResumeEnabled ? safeResumeTime(resumeScheduledAt) : null,
     status: failures.length ? 'failed' : !inWindow ? 'outside_authorized_window' : !preparationEnabled ? 'preparation_disabled'
       : admittedToday < DAILY_NEWS_LIMITS.minimum ? 'supply_degraded' : 'operational',
-    failures, scope: 'Verified schedules describe the configured mode only. Disabled preparation is not operational preparation. Actual accepted news and acknowledged Telegram creates remain separate; the daily target is not a guaranteed supply.',
+    failures, warnings, scope: 'Verified schedules describe the configured mode only. Disabled preparation is not operational preparation. Actual accepted news and acknowledged Telegram creates remain separate; the daily target is not a guaranteed supply.',
+    attention: { fingerprint: attentionFingerprint, items: attentionItems,
+      scope: 'Stable state fingerprint for deduplicating operator notices. This read-only check sends no notice and never retries an ambiguous publication.' },
     public: { valid: publicValid, release: /^[a-f0-9]{40}$/.test(feed?.snapshot?.release || '') ? feed.snapshot.release : null,
       generatedAt: safeTime(feed?.generatedAt), sourceCheckedAt: safeTime(feed?.lastCheckedAt),
       items: publicValid ? feed.items.length : null, sources: publicValid ? feed.sources.length : null,
@@ -295,6 +404,15 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       acceptedPerDay: preparationEnabled ? [...perDay].filter(([acceptedDay]) => acceptedDay >= since).sort()
         .map(([acceptedDay, count]) => ({ day: acceptedDay, count })) : null },
     telegram: { lastRunAt: deliveryAt, acknowledgedCreatesToday: deliveryDay?.acknowledgedCreates ?? null,
+      pacing: pacing?.valid ? { status: pacing.reason, nextDueAt: pacing.nextDueAt, eligibleAt: pacing.eligibleAt,
+        reservationsToday: pacing.reservations } : null,
+      overdue: { status: overdue.length ? 'overdue' : overdueChecked ? 'within_tolerance' : 'not_evaluated',
+        graceSeconds: DELIVERY_OVERDUE_GRACE / 1000, posts: overdue },
+      reconciliation: { status: reconciliationRequired ? 'operator_review_required' : 'none_observed',
+        currentReservedPost: reservedAmbiguous, currentPublicCandidates: supplyCounts?.ambiguous ?? null },
+      reserve: { status: reserveEmpty ? 'empty' : reserveShortfall ? 'shortfall' : supplyChecked ? 'covered' : 'not_evaluated',
+        possibleRemainingSlots: possibleSlots, requiredReadyForMinimum: requiredReady, counts: supplyCounts,
+        scope: 'Exact latest states matching up to 24 currently eligible public revisions; this selected reserve excludes unseen older queue items and cannot guarantee future editorial supply.' },
       cadence: { status: cadenceDeficit ? 'deficit' : cadenceChecked ? 'within_tolerance' : 'not_evaluated',
         minimumFreshCreatesByNow: cadenceMinimum, graceIntervals: 1, intervalSeconds: NEWS_DELIVERY_MAX_INTERVAL_SECONDS,
         scope: 'Observed acknowledged delivery shortfall only; due reads do not establish whether future jobs or pending supply exist.' },
@@ -336,13 +454,34 @@ export async function checkNewsOperations({ env = process.env, fetchImpl = fetch
     ...Array.from({ length: 6 }, (_, index) => client.rpc('literary_news_delivery_day_status', {
       p_destination_id: destination.id, p_now: new Date(current.getTime() - (index + 1) * 86400000).toISOString() })),
     preparation.preparationEnabled ? createNewsOperationsReportReader({ accountId: env.CLOUDFLARE_ACCOUNT_ID,
-      apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl, kind: 'attempt' })() : null]);
+      apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl, kind: 'attempt' })() : null,
+    store.read(newsDeliveryPacingKey(destination))]);
   const get = index => values[index].status === 'fulfilled' ? values[index].value : null;
   const rpc = index => get(index)?.error ? null : get(index)?.data;
   const readFailures = values.flatMap((result, index) => result.status === 'rejected'
     || (index === 6 || index === 7 || index >= 9 && index < 15) && result.value?.error
-    ? [READ_FAILURES[index === 15 ? 10 : Math.min(index, 9)]] : []);
-  return summarizeNewsOperations({ ...preparation, workers, current, destination, expectedHead, readFailures, feed: get(0), profile: get(1), ledger: get(2), owner: get(3),
+    ? [READ_FAILURES[index === 16 ? 11 : index === 15 ? 10 : Math.min(index, 9)]] : []);
+  let reservedPost = null, supply = null, supplyCandidateCount = null;
+  const pacingRow = get(16), pacing = inspectNewsDeliveryPacing({ row: pacingRow, destination, current, control: get(5)?.state });
+  if (values[16].status === 'fulfilled' && pacing.valid && pacingRow?.state) {
+    try { reservedPost = (await store.read(pacingRow.state.jobKey)).state; }
+    catch { readFailures.push('operations_reserved_post_read_failed'); }
+  }
+  let candidates = null;
+  try {
+    if (expectedHead === null || get(0)?.snapshot?.release === expectedHead)
+      candidates = await newsOperationsSupplyCandidates(get(0), destination, current);
+  } catch { /* The public proof failure is reported independently; it never authorizes a queue-supply lookup. */ }
+  if (candidates !== null) {
+    supplyCandidateCount = candidates.length;
+    try {
+      const result = await client.rpc('literary_news_operations_supply', { p_destination_id: destination.id,
+        p_candidates: candidates, p_now: current.toISOString() });
+      if (result.error) throw Error(); supply = result.data;
+    } catch { readFailures.push('operations_supply_read_failed'); }
+  }
+  return summarizeNewsOperations({ ...preparation, workers, current, destination, expectedHead, readFailures, pacingRow, reservedPost,
+    supply, supplyCandidateCount, feed: get(0), profile: get(1), ledger: get(2), owner: get(3),
     preparationReport: get(4), preparationAttempt: get(15), control: get(5)?.state, dayStatus: rpc(6), dueRows: rpc(7), deliveryHeartbeat: get(8)?.state,
     recentDayStatuses: Array.from({ length: 6 }, (_, index) => ({
       at: new Date(current.getTime() - (index + 1) * 86400000).toISOString(), status: rpc(index + 9),
@@ -359,5 +498,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   } catch (error) { report = { schemaVersion: 1, readonly: true, externalWrites: 0, status: 'failed', code: safeCode(error?.message) }; }
   const json = JSON.stringify(report, null, 2) + '\n';
   if (output) { await mkdir(dirname(output), { recursive: true }); await writeFile(output, json); }
-  console.log(json); if (report.status === 'failed') process.exitCode = 1;
+  console.log(json);
+  for (const warning of newsOperationsWorkflowWarnings(report)) console.log(warning);
+  if (report.status === 'failed') process.exitCode = 1;
 }
