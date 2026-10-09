@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "kind": "INTERIM_ADULT_DIAGNOSTIC_WEB_CORE_LOCAL_CHECKPOINT",
+  "status": "PARTIAL_WEB_CORE_LOCAL_EVIDENCE_NATIVE_SAVE_NOT_IMPLEMENTED",
+  "generatedAt": "2026-10-09T06:21:07.074Z",
+  "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "sourceRows": 1958,
+  "sourceFingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+  "qa": {
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\result.json",
+      "bytes": 19196,
+      "sha256": "c701612199b3ecd4d4e13ea1fd9bd67d53317bd35a0d74aa9ef9ee46c20b1923"
+    },
+    "actualRootPid": 11384,
+    "typescriptPid": 19188,
+    "new18Pid": 13152,
+    "new2Pid": 20948,
+    "passedNewCases": 20,
+    "oldNativeCasesSkipped": 71,
+    "rawAst": {
+      "actualPid": 17612,
+      "naturalExitCode": 0,
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-raw-audit-owned-root-a1\\terminal.json",
+        "bytes": 292,
+        "sha256": "1a25612402e7335d3726df5159b1b865cd664f02daa83dbfff0194573ce13aaa"
+      },
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-raw-audit-owned-root-a1\\stdout.bin",
+        "bytes": 131,
+        "sha256": "36bbf8a6ac934565e89c0a25cc754b2a1cc9a76a4b9824213188a698206796c4"
+      }
+    },
+    "staticGlobe": {
+      "helper": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\canonical-globe-proof.mjs",
+        "sha256": "f5faa098755e788d3e39032f7c0c88e165bbaf20c28743a953d4db808f95f986",
+        "bytes": 10122
+      },
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\globe-static-proof.json",
+        "sha256": "8f7fbf56d3847bc627e8ada2d72a5e32dee78ad963f25922a537e1c5dbcb28d4",
+        "bytes": 2403
+      },
+      "status": "PASS_STATIC_CANONICAL_GLOBE_OBSERVATION_ONLY",
+      "runtimeAcceptance": false
+    },
+    "qualification": "ACTUAL_NEW20_AND_TYPESCRIPT_RAW_AST_STATIC_PROOF_NOT_RUNTIME_GLOBE_ACCEPTANCE"
+  },
+  "ui": {
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\result.json",
+      "bytes": 11646,
+      "sha256": "bcae933e2a350aab2cb3d3914764b721da9e9f02824de612235ad2ad74c11723"
+    },
+    "actualOwnerPid": 10576,
+    "actualHarnessPid": 18516,
+    "status": "PASS_NEW_DIAGNOSTIC_MOUNTED_UI_LOCAL_FIXTURE_NOT_ACCEPTANCE",
+    "cases": [
+      {
+        "language": "ru",
+        "touch": false,
+        "downloads": 2,
+        "observations": 8,
+        "unmountedLeaseDenied": true,
+        "unexpectedPortCalls": 0
+      },
+      {
+        "language": "en",
+        "touch": true,
+        "downloads": 2,
+        "observations": 8,
+        "unmountedLeaseDenied": true,
+        "unexpectedPortCalls": 0
+      }
+    ],
+    "screenshots": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\ru-keyboard-320-diagnostics.png",
+        "sha256": "4dda934b9424a76790000b3686bb8b17f267f75f7125b556fa7f1294f5970af9",
+        "bytes": 39533,
+        "humanReviewed": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\en-touch-320-diagnostics.png",
+        "sha256": "9d5d4c9c690521799b90407094e7f1679adf63a5ac05c766c88ba6c888acf9db",
+        "bytes": 32649,
+        "humanReviewed": false
+      }
+    ],
+    "downloads": 4,
+    "rootDirectScreenshotReview": "ROOT_REPORTED_TWO_EXACT_CAPTURE_VIEWS",
+    "humanScreenshotReview": false,
+    "limitations": {
+      "actualMountedPanelHookControllerAndLocale": true,
+      "nativeCapability": "SYNTHETIC_BOOLEAN_NOT_NATIVE_CURRENT_AUTHORITY_ACCEPTANCE",
+      "observations": "SYNTHETIC_GRAPHICS_TIER_WITH_EXPLICIT_UNKNOWN_OS_STORE_AND_OTHER_UNEXPOSED_FIELDS",
+      "auth": "NO_REAL_AUTH_SERVICE",
+      "actualAppMounted": false,
+      "canonicalGlobeMounted": false,
+      "installedOS": "NOT_RUN",
+      "screenReader": "NOT_RUN",
+      "humanScreenshotReview": false,
+      "browserProcessTraffic": "NOT_INSTRUMENTED",
+      "productBuild": false,
+      "unitTestsRepeated": false,
+      "rawAstRepeated": false,
+      "releaseReady": false,
+      "criteriaClosed": 0,
+      "repositoryWrites": 0
+    }
+  },
+  "builds": {
+    "pwa": {
+      "reference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-pwa-finalization-result-a1\\result.json",
+        "bytes": 6489,
+        "sha256": "9e4b85d94043d2ad4f6365666928652d09b03556bb60478ebf071e7c7b6bade9"
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-pwa-finalization-owned-root-a1\\terminal.json",
+        "bytes": 292,
+        "sha256": "294a04476edb1df28ad62b046233c7c0a7595da8c09b5a24cff18bcab39b57a9"
+      },
+      "actualPid": 13680,
+      "naturalExitCode": 0,
+      "status": "PASS_CURRENT_RETAINED_PWA_INTEGRITY_ONLY",
+      "original": {
+        "ownerPid": 23420,
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-build-owned-pwa-a1\\launch.json",
+          "sha256": "967d67246683e1b4ba2789bcc14c8cdf6b6d117020adc6470c493fc29ee29d89",
+          "bytes": 697
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\preparation.json",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "originalNaturalTermination": "UNKNOWN",
+        "originalExitCode": null,
+        "childNaturalExitCodes": "UNKNOWN",
+        "originalFullInputSnapshot": "UNRECOVERABLE_EMPTY_PREPARATION",
+        "originalPidAbsentAtChecks": true,
+        "sourceCommitFromFinalArtifact": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+        "artifactsRetainedWithoutModification": true
+      },
+      "retainedAudit": {
+        "reference": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-audit.stdout.txt",
+          "sha256": "95c13eb2c008899c8bd05c8a49d97a940c8f65ce9d8af45289c46c1c0abc77c6",
+          "bytes": 797
+        },
+        "reportedPass": true,
+        "reexecuted": false,
+        "identity": {
+          "buildId": "3bb9898884ff665665ca12deaeb0824b3e86a08c9fd14f666f93a0f27cec0c7a",
+          "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+          "localQaAuthority": false
+        },
+        "counts": {
+          "files": 1427,
+          "bytes": 77798542,
+          "bootstrapFiles": 1397,
+          "bootstrapBytes": 73262106,
+          "sourceInputs": 1198,
+          "publicSources": 1349,
+          "scripts": 45
+        },
+        "limitations": [
+          "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+          "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+        ]
+      },
+      "currentIntegrity": {
+        "dist": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa",
+          "files": 1427,
+          "bytes": 77798542,
+          "inventorySha256": "7712e57cc8e767974ccbbb68a07d9f7a22ccc9ba457ce6f37694f4f0cc829532",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa\\artifact.json",
+            "sha256": "b259fc974d9570856626990af4f033a74540e2302b937740372147baf062dd6d",
+            "bytes": 510015
+          }
+        },
+        "retained": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-bundle",
+          "files": 1427,
+          "bytes": 77798542,
+          "inventorySha256": "7712e57cc8e767974ccbbb68a07d9f7a22ccc9ba457ce6f37694f4f0cc829532",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-bundle\\artifact.json",
+            "sha256": "b259fc974d9570856626990af4f033a74540e2302b937740372147baf062dd6d",
+            "bytes": 510015
+          }
+        },
+        "pwaInputFiles": 1198,
+        "pwaInputSha256": "a30050e42566fb97e7b432caa720ae0d841ca416af92426aee74ab759bbe328c",
+        "publicProvenanceRows": 1349,
+        "uniquePublicSources": 1347,
+        "sourceUnchanged": true
+      },
+      "actions": {
+        "compile": 0,
+        "publicCopies": 0,
+        "auditReruns": 0,
+        "tests": 0,
+        "archives": 0,
+        "trackedWrites": 0,
+        "remote": 0
+      },
+      "qualification": "Current byte-verified retained PWA artifact; original control-plane completion and natural exits remain UNKNOWN."
+    },
+    "android": {
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\preparation.json",
+        "bytes": 334003,
+        "sha256": "3b8b4a2a60816a25b6b941cfd75f6955d1e20a693ddb6b5bef03754903b46c15"
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-build-owned-android-a2\\terminal.json",
+        "bytes": 291,
+        "sha256": "c8dbed2089cada16a3065846062b33e63d98f2a085a0890868cdaffc0ba9f519"
+      },
+      "actualPid": 3244,
+      "naturalExitCode": 0,
+      "naturalTermination": true,
+      "attempts": 12,
+      "outputs": [
+        {
+          "path": ".tmp/mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c/native-artifact.json",
+          "sha256": "36e47abf06b73f6d05481e3b32f3252064662542ae33e6a53f8a561e6a32e9c5",
+          "bytes": 732161
+        },
+        {
+          "path": ".tmp/mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c/app-dev-debug.apk",
+          "sha256": "5961937626e35aeabdd4e896959b60cc32a9c521f6dfa5fb6353be9abc1483a2",
+          "bytes": 70775044
+        },
+        {
+          "path": ".tmp/mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c/app-dev-debug-androidTest.apk",
+          "sha256": "6bbca53d02978d21d8c67ce3f9a3b0627e5ac2cfad86fccd126d4caa04aff2a8",
+          "bytes": 830056
+        }
+      ],
+      "binaryReceipt": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\binary.json",
+        "bytes": 216792,
+        "sha256": "d3d8cc408078076ccc89a09f0886cc73b0f0a260cdb9531741e1bb10cc863cbf"
+      },
+      "nativeArtifact": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\native-artifact.json",
+        "bytes": 732161,
+        "sha256": "36e47abf06b73f6d05481e3b32f3252064662542ae33e6a53f8a561e6a32e9c5"
+      },
+      "javaCompile": "MAIN_AND_INSTRUMENTATION_UP_TO_DATE_NOT_FRESH_COMPILE",
+      "mainJavaLog": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\android-assemble.stdout.txt",
+        "bytes": 13665,
+        "sha256": "305f87bd3151a50fc20e81b754bed504ea18addf5c11f7fcfdb92ff8a12a5072"
+      },
+      "testJavaLog": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\android-instrumentation-assemble.stdout.txt",
+        "bytes": 14930,
+        "sha256": "88b620cbe3f6dd779f4f1243a8038927f87936bb23deae4e1c3f84d819b3fd90"
+      },
+      "deviceTested": false,
+      "originalInterruptedPid": 6256,
+      "originalNaturalTermination": "UNKNOWN",
+      "originalExitCode": null
+    }
+  },
+  "nativeSaving": {
+    "status": "NOT_IMPLEMENTED_BY_THIS_SNAPSHOT",
+    "review": "ASTRA_ULTRA_FROZEN_SOURCE_ONLY_AUDIT",
+    "sourcePointers": [
+      {
+        "path": "src/support/SupportDiagnosticsPanel.tsx",
+        "line": 34
+      },
+      {
+        "path": "src/App.tsx",
+        "line": 3578
+      }
+    ],
+    "localImplementationGap": true,
+    "ownerDeviceProofSubstitute": false,
+    "sourcePins": [
+      {
+        "path": "src/support/SupportDiagnosticsPanel.tsx",
+        "bytes": 6414,
+        "sha256": "b2ff565404939e8aea1e68d6c07b51935b88f8e3eebd35ebcc916077e10b67f2"
+      },
+      {
+        "path": "src/support/supportDiagnosticSession.ts",
+        "bytes": 3316,
+        "sha256": "f42a3fff39202bc83adaf9fcc46b44aacff918bf6c9c517bbc627b66c12dd31d"
+      },
+      {
+        "path": "src/support/useSupportDiagnostics.tsx",
+        "bytes": 4378,
+        "sha256": "c626997a0ee603b56e39c9f7e181599cdbb5a8abee0c0ab221367536b674fe1e"
+      },
+      {
+        "path": "src/support/supportDiagnostics.ts",
+        "bytes": 11117,
+        "sha256": "bc6d3eba9c6ceee5cf36b8cbe686581a7dd3a1e67c14df7d62328a7899af3bea"
+      },
+      {
+        "path": "src/App.tsx",
+        "bytes": 223531,
+        "sha256": "a751f5393d5423d68ab39140679e611f24ad7b7dcc45fc2777b78287f215772c"
+      },
+      {
+        "path": "src/platform/ports.ts",
+        "bytes": 3553,
+        "sha256": "4d4849a63696eb31b8971c4864b497c5f5632f1baa3f0216398adeea4ff566d1"
+      },
+      {
+        "path": "src/child/childNativeAppBridge.ts",
+        "bytes": 72590,
+        "sha256": "bb9bdf1c471a19e08c34132ff02baac182751101a95af12c453d6f685c98ddf5"
+      },
+      {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+        "bytes": 900,
+        "sha256": "72cbbb44c7fe31e3f23421485ade2f9d8995ce3b19078073603c3ad5f5f59faa"
+      },
+      {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "bytes": 1110065,
+        "sha256": "e7ee1ebd8734a5b6c9eef40895d112385fc2390a093e12c23c9678ccf242cd7e"
+      },
+      {
+        "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+        "bytes": 1339541,
+        "sha256": "88c0bb8dfe00516e4a203e624a7eb2584240aff66d1c302e2740f1a6fd1001ad"
+      },
+      {
+        "path": "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+        "bytes": 15295,
+        "sha256": "9f9cd470853d056f1dbd9b26694091577a89bc30565a41825f4ca4327722dca0"
+      },
+      {
+        "path": "package.json",
+        "bytes": 17160,
+        "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+      },
+      {
+        "path": "node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/Bridge.java",
+        "bytes": 59779,
+        "sha256": "862e5cca9f8fb6d4f5ffd534caaa3908876321c2dfc593fa0345b5fdbc4c4461"
+      },
+      {
+        "path": "node_modules/@capacitor/ios/Capacitor/Capacitor/WebViewDelegationHandler.swift",
+        "bytes": 15608,
+        "sha256": "913ee4bfcdeb4d44ca8c3719ef8f2dacc12568211c4184dc6555930a5f54ca0c"
+      },
+      {
+        "path": "docs/mobile/requirements/v12/26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+        "bytes": 4433,
+        "sha256": "f182253130337a3a4bd98a390e2e9ddaae0175bf4b113fcdc944c8ca79703ccb"
+      }
+    ],
+    "audit": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-diagnostic-transport-audit-a1\\receipt.json",
+      "bytes": 6013,
+      "sha256": "1725cb717b3c2a852948c2047d1af18479bcfc07cfbb49545ad1f6091a6ac0b6"
+    },
+    "findings": [
+      "SupportDiagnosticsPanel.tsx:34-53 always Blob/objectURL/anchor.download; true means only no synchronous click exception. No native-save call or result.",
+      "App.tsx:3578 mounts the same panel in native adult settings. PlatformServices ports.ts:40-62 has no file-save/share port.",
+      "Capacitor core/android/ios 8.5.1. No Filesystem/Share dependency. Native custom plugin registrations contain ContentStore, SecureStore and Child.",
+      "Bundled Android Bridge.java:409-410 leaves blob/data inside WebView. No DownloadListener/setDownloadListener in bundled Capacitor Android or application Java sources.",
+      "Bundled iOS WebViewDelegationHandler.swift:107-124 hands external top-level navigation to UIApplication.open and cancels. No WKDownload/destination delegate in bundled Capacitor iOS or application Swift sources.",
+      "Existing Android Vault:4339-4368 and Swift Vault:9023-9035/9082 system export is private child-data custody bound to export-child-data, profileId and literary-planet-child-personal-data schema. It is not a diagnostics API.",
+      "supportDiagnosticSession.ts:59 currently bounds UTF-16 string.length. New native transport must enforce actual UTF-8 bytes."
+    ],
+    "nextOriginalPlanAction": "Implement and wire dedicated adult-only Android/iOS diagnostic-save with current native adult lease, action-time consent, exact reviewed closed-JSON bytes at most 16384 UTF-8 bytes, fixed literary-planet-diagnostics.json filename, one-use bounded OS picker custody, asynchronous saved/cancelled/error result and cleanup. Preserve private child export. No NoOp/unsupported button substitute."
+  },
+  "packet": {
+    "status": "NOT_RUN_KNOWN_NATIVE_IMPLEMENTATION_GAP",
+    "sourceOnlyWriterPreserved": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\adult-diagnostic-packet-proposal-a1\\write-adult-diagnostic-packet-a1.ps1",
+    "oldArchivesOpenedCopiedOrRehashed": false
+  },
+  "nextAction": "Продолжить то же требование 26 §3 / S27: GPT-6 Astra / ultra должен реализовать настоящий локальный native Android/iOS OS save/export для одобренного взрослым redacted diagnostic JSON. Текущий e8ac использует browser Blob/a download и НЕ РЕАЛИЗУЕТ native save; это локальная программная задача, а не отсутствие installed-device доказательства. Сохранить явное согласие, точный preview, adult admission, cancellation/error receipts и cleanup; проверить только изменённые пути, затем обновить сборки и один пакет после завершения исправления. Browser/core C3 и текущие20 QA/RU-EN fixture/PWA retained-integrity/Android3244 доказательства не повышают native export или release acceptance. Сохранить четыре исходных внешних условия NOT_RECHECKED, PSP UNSELECTED, human RU/EN/editorial/legal/voice, Auth/deletion/remote gates; не повторять неизменённые проверки, не создавать новый D-stage.",
+  "ownerFourConditions": "HISTORICAL_NOT_RECHECKED_UNVERIFIED",
+  "ownerConditions": {
+    "installedNativeOS": {
+      "status": "NOT_RUN",
+      "reason": "NO_DEVICE_VM_OR_IOS_TEST_STAND"
+    },
+    "payments": {
+      "psp": "UNSELECTED",
+      "realTransactions": "NOT_RUN"
+    },
+    "ruEnEditorialLegalVoice": {
+      "status": "PENDING_HUMAN_APPROVAL"
+    },
+    "authDeletionAuthorizedRemote": {
+      "status": "NOT_RUN"
+    }
+  },
+  "ownerConditionsQualification": "NO_NEW_EXTERNAL_VERIFICATION_NOT_PASS",
+  "installedOS": "NOT_RUN",
+  "PSP": "UNSELECTED",
+  "actualTransactions": "NOT_RUN",
+  "humanEditorialLegalVoice": "PENDING_HUMAN",
+  "authDeletion": "NOT_RUN",
+  "remote": "NOT_RUN",
+  "currentSourceRestore": "NOT_RUN",
+  "crc": "NOT_RUN",
+  "releaseReady": false,
+  "criteriaClosed": 0,
+  "formalTransitions": 0,
+  "productChecksRepeated": false
+}
