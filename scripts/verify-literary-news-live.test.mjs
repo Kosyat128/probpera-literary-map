@@ -1,7 +1,7 @@
 import {describe,it,expect,vi} from "vitest";
 import limits from "../data/news/contract.json" with { type: "json" };
 import {readFileSync} from "node:fs";
-import {verifyLiteraryNewsFeed,runLiteraryNewsLiveVerification} from "./verify-literary-news-live.mjs";
+import {verifyLiteraryNewsFeed,runLiteraryNewsLiveVerification,NEWS_LIVE_READINESS_ATTEMPTS} from "./verify-literary-news-live.mjs";
 import {buildPublishedNewsFeed,newsDigest,newsSnapshotPayload,publicNewsItem} from "./lib/literary-news-publication.mjs";
 import {pendingNewsSourceState} from "./lib/literary-news-state.mjs";
 import {buildNobelProfile,nobelPublishedRecords} from "./lib/literary-news-nobel-profile.mjs";
@@ -93,7 +93,42 @@ describe("live release verifier compatibility and exactness",()=>{
         {headers:{"access-control-allow-origin":"https://probpera.ru","x-probpera-news-release":release}});
     });
     await expect(runLiteraryNewsLiveVerification({args:[],env:{},records,withdrawals:[],fetchImpl,now:()=>current,waitImpl:async()=>{}})).rejects.toThrow("public_snapshot_incomplete");
-    expect(fetchImpl.mock.calls.filter(([url])=>new URL(url).searchParams.get("contract")==="2")).toHaveLength(6);
+    expect(fetchImpl.mock.calls.filter(([url])=>new URL(url).searchParams.get("contract")==="2")).toHaveLength(NEWS_LIVE_READINESS_ATTEMPTS);
+    expect(fetchImpl.mock.calls.every(([,init])=>init.method===undefined)).toBe(true);
+  });
+  it("waits beyond six stale deployments, reloads private evidence and then verifies every complete release contract",async()=>{
+    const records=Array.from({length:501},(_,index)=>item(index)),staleAttempts=8;
+    const readDailyProfile=vi.fn(async()=>null),waitImpl=vi.fn(async()=>{});
+    const fetchImpl=vi.fn(async(url,init)=>{
+      if(init.method==="POST")return new Response(null,{status:405});
+      const query=new URL(url).searchParams,activeRelease=readDailyProfile.mock.calls.length<=staleAttempts?"b".repeat(40):release;
+      return Response.json(await build(records,{timeZone:query.get("timeZone"),
+        contractVersion:query.get("contract")==="2"?2:1,release:activeRelease}),
+      {headers:{"access-control-allow-origin":"https://probpera.ru","x-probpera-news-release":activeRelease}});
+    });
+    const result=await runLiteraryNewsLiveVerification({args:["--expected-head",release],env:{},records,withdrawals:[],
+      fetchImpl,readDailyProfile,now:()=>current,waitImpl});
+    expect(result).toMatchObject({legacyZones:3,legacyItems:500,items:501,contractVersion:2,timeZone:"Europe/Moscow",release});
+    expect(readDailyProfile).toHaveBeenCalledTimes(staleAttempts+1);
+    expect(waitImpl).toHaveBeenCalledTimes(staleAttempts);
+    expect(waitImpl.mock.calls.every(([milliseconds])=>milliseconds===10_000)).toBe(true);
+    expect(fetchImpl).toHaveBeenCalledTimes(staleAttempts+5);
+    expect(fetchImpl.mock.calls.slice(-5).map(([url,init])=>init.method==="POST"?"POST":new URL(url).searchParams.get("timeZone")))
+      .toEqual(["UTC","Pacific/Kiritimati","America/Los_Angeles","Europe/Moscow","POST"]);
+  });
+  it("rejects a permanently wrong release after exactly the readiness bound without sleeping after its final attempt",async()=>{
+    const records=[item(1)],readDailyProfile=vi.fn(async()=>null),waitImpl=vi.fn(async()=>{});
+    const fetchImpl=vi.fn(async url=>{
+      const query=new URL(url).searchParams;
+      return Response.json(await build(records,{timeZone:query.get("timeZone"),contractVersion:1,release:"b".repeat(40)}),
+        {headers:{"access-control-allow-origin":"https://probpera.ru","x-probpera-news-release":"b".repeat(40)}});
+    });
+    await expect(runLiteraryNewsLiveVerification({args:["--expected-head",release],env:{},records,withdrawals:[],
+      fetchImpl,readDailyProfile,now:()=>current,waitImpl})).rejects.toThrow("expected release");
+    expect(fetchImpl).toHaveBeenCalledTimes(NEWS_LIVE_READINESS_ATTEMPTS);
+    expect(readDailyProfile).toHaveBeenCalledTimes(NEWS_LIVE_READINESS_ATTEMPTS);
+    expect(waitImpl).toHaveBeenCalledTimes(NEWS_LIVE_READINESS_ATTEMPTS-1);
+    expect(waitImpl.mock.calls.every(([milliseconds])=>milliseconds===10_000)).toBe(true);
     expect(fetchImpl.mock.calls.every(([,init])=>init.method===undefined)).toBe(true);
   });
 });

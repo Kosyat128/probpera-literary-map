@@ -12,6 +12,7 @@ import { createDailyNewsStorageClient } from "./lib/literary-news-daily-automati
 
 const endpoint = "https://news.probpera.ru/api/literary-news/feed";
 const zones = ["UTC", "Pacific/Kiritimati", "America/Los_Angeles"];
+export const NEWS_LIVE_READINESS_ATTEMPTS = 18;
 
 /** The same verifier runs against HTTP responses and isolated release fixtures. */
 export async function verifyLiteraryNewsFeed(feed, { timeZone, contractVersion = 2, expectedHead = null,
@@ -108,7 +109,7 @@ export async function runLiteraryNewsLiveVerification({ args = process.argv.slic
       releaseHeader:response.headers.get("x-probpera-news-release"),records,withdrawals,dailyProfile:validatedDailyProfile,current:now()});
   }
   let lastError;
-  for (let attempt = 0; attempt < 6; attempt++) {
+  for (let attempt = 0; attempt < NEWS_LIVE_READINESS_ATTEMPTS; attempt++) {
     try {
       // Reload private evidence on each retry so an intervening preparation commit cannot become a trusted public extra.
       if (dailyProfile === undefined) validatedDailyProfile = readDailyProfile
@@ -124,7 +125,7 @@ export async function runLiteraryNewsLiveVerification({ args = process.argv.slic
         sources:complete.sources.length,contractVersion:2,timeZone:complete.timeZone,release:complete.snapshot.release};
     } catch(error) {
       lastError = error;
-      if (attempt < 5) await waitImpl(10_000);
+      if (attempt < NEWS_LIVE_READINESS_ATTEMPTS - 1) await waitImpl(10_000);
     }
   }
   throw lastError;
