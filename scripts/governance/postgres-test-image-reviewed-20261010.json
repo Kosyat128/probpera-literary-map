@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "id": "POSTGRES-TEST-IMAGE-RESILIENCE-20261010",
+  "baselineCommitSha": "e2a712a4707fcf70c7561691c89c5c2bb512113e",
+  "authorization": {
+    "userAuthorized": true,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "historicalPinsChanged": false,
+  "historicalAssertionsChanged": false,
+  "scope": {
+    "workflowBootstrapOnly": true,
+    "postgresMajor": 17,
+    "sqlFixturesChanged": false,
+    "migrationFilesChanged": false,
+    "mandatoryAuditChanged": false,
+    "existingTestCommandsChanged": false,
+    "productionDatabaseAccessAdded": false,
+    "currentBootstrapAssertionsAdded": true,
+    "currentPreflightStepCountDelta": 1
+  },
+  "allowedProjectionPaths": [
+    ".github/workflows/quality.yml",
+    ".github/workflows/deploy-pages.yml",
+    "scripts/lib/reviewed-news-dependency-security-followup.mjs",
+    "scripts/lib/quality-browser-matrix.test.mjs"
+  ],
+  "sourceBaselines": {
+    ".github/workflows/quality.yml": "a29c911bccc1f8f7949f7d7beb3fb4c8bb8b307cfdc7e160b8df0bea118c1337",
+    ".github/workflows/deploy-pages.yml": "5024d7e978beeb40803e835b7b1a4617d6ad9e01f8eccb5d1d2c97286f00a099",
+    "scripts/lib/reviewed-news-dependency-security-followup.mjs": "fabc862907650541ccfdbf414ce3da0d2630af93e7390fd610558f4a89226f32",
+    "scripts/lib/quality-browser-matrix.test.mjs": "22ab1a82180220648a54f5a5a3b0056e217b80b5e03915158431ca91bf7d3d5e"
+  },
+  "reviewedSources": {
+    ".github/workflows/quality.yml": "63698e8b67cc6d4b244bba76132fdfb448ae4ff81b27713a55baf135abb05aa2",
+    ".github/workflows/deploy-pages.yml": "30f5568f71fb4dc8098d3a0ca9c8bfd9fb0fe456ad025915eccdc584bcc6abd7",
+    "scripts/lib/reviewed-news-dependency-security-followup.mjs": "67e13344abc82afe2a4a6334b527dc67925c00101a7aae97614897932a0571bd",
+    "scripts/lib/quality-browser-matrix.test.mjs": "22f6d28faffed1335079f1fd0eca798fe3160f4d39167f7ccffcdb71a58c7082"
+  },
+  "markers": {
+    ".github/workflows/quality.yml": [
+      {
+        "text": "      - name: Prepare PostgreSQL integration test image\n",
+        "count": 1
+      },
+      {
+        "text": "scripts/database/prepare-postgres-test-image.mjs",
+        "count": 1
+      }
+    ],
+    ".github/workflows/deploy-pages.yml": [
+      {
+        "text": "      - name: Prepare PostgreSQL integration test image\n",
+        "count": 1
+      },
+      {
+        "text": "scripts/database/prepare-postgres-test-image.mjs",
+        "count": 1
+      }
+    ],
+    "scripts/lib/reviewed-news-dependency-security-followup.mjs": [
+      {
+        "text": "projectReviewedPostgresTestImage",
+        "count": 2
+      },
+      {
+        "text": "'./reviewed-postgres-test-image.mjs'",
+        "count": 1
+      }
+    ],
+    "scripts/lib/quality-browser-matrix.test.mjs": [
+      {
+        "text": "    const postgresSteps =",
+        "count": 1
+      },
+      {
+        "text": "scripts/database/prepare-postgres-test-image.mjs",
+        "count": 1
+      }
+    ]
+  },
+  "projections": [
+    {
+      "id": "quality-postgres-bootstrap",
+      "path": ".github/workflows/quality.yml",
+      "before": "      - name: Run automated tests\n        run: npm test\n",
+      "after": "      - name: Prepare PostgreSQL integration test image\n        timeout-minutes: 5\n        run: node scripts/database/prepare-postgres-test-image.mjs\n\n      - name: Run automated tests\n        run: npm test\n",
+      "beforeSha256Lf": "4a0f035df98a51713b2201966974f9f47b039817e83d29c9bf5149e4576327be",
+      "afterSha256Lf": "5c22cacb1545529373f1c45c394b8279244e9821108b4f0c3145647ce2f50723"
+    },
+    {
+      "id": "pages-postgres-bootstrap",
+      "path": ".github/workflows/deploy-pages.yml",
+      "before": "      - name: Verify public site and editorial archive\n        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')\n",
+      "after": "      - name: Prepare PostgreSQL integration test image\n        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')\n        timeout-minutes: 5\n        run: node scripts/database/prepare-postgres-test-image.mjs\n\n      - name: Verify public site and editorial archive\n        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')\n",
+      "beforeSha256Lf": "7646dec3b7f73f6cb57d6cdbac9ddb44005f31860addae694d086b93b46351e5",
+      "afterSha256Lf": "c244515e649824fcaf7b7a7ba7d592e6983950595d7bfbe4e190ba0bd6a07b19"
+    },
+    {
+      "id": "postgres-reader-import",
+      "path": "scripts/lib/reviewed-news-dependency-security-followup.mjs",
+      "before": "import { createHash } from 'node:crypto';\n",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';\n",
+      "beforeSha256Lf": "e99a245dd6a438bcaeb012ed910aa7f585bb1ff757109782eaf29f82ac478a8b",
+      "afterSha256Lf": "309f728ea2a678f0974eec3623e8cc87954132cc66d37e2d239e6ab3b6a029cd"
+    },
+    {
+      "id": "postgres-reader-call",
+      "path": "scripts/lib/reviewed-news-dependency-security-followup.mjs",
+      "before": "  let projected = source.replace(/\\r\\n?/gu, '\\n');\n",
+      "after": "  let projected = projectReviewedPostgresTestImage(relativePath, source);\n",
+      "beforeSha256Lf": "bbf4358f4f3fa118c85cf720f80cdc9dbeb711fc2c50f93f7bc95cf2680a30cc",
+      "afterSha256Lf": "e6d9ac7150339fa7297bfa4e4e2099a835f9b4e9af2c7ff834cd6b591747b81b"
+    },
+    {
+      "id": "postgres-current-workflow-assertions",
+      "path": "scripts/lib/quality-browser-matrix.test.mjs",
+      "before": "    expect(preflight.steps).toHaveLength(previous.length + 2);\n",
+      "after": "    expect(preflight.steps).toHaveLength(previous.length + 3);\n    const postgresSteps = preflight.steps.filter(step => step.name === \"Prepare PostgreSQL integration test image\");\n    expect(postgresSteps).toEqual([{\n      name: \"Prepare PostgreSQL integration test image\",\n      \"timeout-minutes\": 5,\n      run: \"node scripts/database/prepare-postgres-test-image.mjs\",\n    }]);\n    expect(preflight.steps.indexOf(postgresSteps[0])).toBe(preflight.steps.findIndex(step => step.name === \"Run automated tests\") - 1);\n",
+      "beforeSha256Lf": "bf1d172c55e9fb82ccad0ba04fe754e30b5c1dcaac38d406e2d945da2b2aa8dc",
+      "afterSha256Lf": "292d86c6b65711d0dec14f212ba01380b219adae874df4da3026b915d7b69ed6"
+    }
+  ],
+  "additions": [
+    {
+      "path": "scripts/database/prepare-postgres-test-image.mjs",
+      "sha256Lf": "3eac98f871239201f2666cce8274deff9009cbd06096435e7045b98dab666c44"
+    },
+    {
+      "path": "scripts/database/prepare-postgres-test-image.test.mjs",
+      "sha256Lf": "fcd7e99373e3d5f891f2015a078d184531934324db19d3689d7afe85658ee4b1"
+    },
+    {
+      "path": "scripts/lib/reviewed-postgres-test-image.mjs",
+      "sha256Lf": "351ccc6dadd7d766734bfa5a3512cb4a09213c74617b6ff81e6b67218511e4be"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+      "sha256Lf": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c",
+      "jsonSha256": "a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    },
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "jsonSha256": "686317fc56832427bf3226d6013bd37c08186164a03ea3f8772a7809f915c2d7"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "jsonSha256": "bdfa16eeae3719d13585559b56f693bd50e44b15cedb84c19b19242456daa997"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    },
+    {
+      "path": "scripts/governance/next-security-followup-reviewed-20261002.json",
+      "sha256Lf": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "jsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc"
+    },
+    {
+      "path": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "sha256Lf": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748",
+      "jsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e"
+    },
+    {
+      "path": "scripts/governance/author-column-reference-removal-reviewed-20261002.json",
+      "sha256Lf": "5afa96685dff6076ed29479587d8365d3fc94bf35e85d559cd9a18deb784de80",
+      "jsonSha256": "26c4c0193ec8d681f1983a71eabe188d9a0c0725a810afba1fca8121ce53e459"
+    },
+    {
+      "path": "scripts/governance/live-ui-followup-reviewed-20261002.json",
+      "sha256Lf": "e1cbda9237776d14855a67901a01d70008374d5a45cd699ead86530a68fd75b0",
+      "jsonSha256": "951e041cd53bb776d2acd9606c92d56e06d49cfde91b8f998c8b0f5a8f33b352"
+    },
+    {
+      "path": "scripts/governance/news-dependency-security-followup-reviewed-20261009.json",
+      "sha256Lf": "a87c6896024b0935eb4f0e1786f44d4058651914bb00e697ae2ae01f5713ca50",
+      "jsonSha256": "262db8c61f772fa04f9ad0e8045109f913d9a599ba29f7a67f847a414e8f64cb"
+    }
+  ],
+  "testReadBoundaries": [
+    {
+      "path": "scripts/lib/reviewed-news-dependency-security-followup.test.mjs",
+      "sourceBaseline": "c6bf55741b489b0c9655ebd2cade6e56912e717ebdc1279832f60d885d732f3f",
+      "reviewedSource": "336a89358435a93c17d497df436dfbfe63474177d3151ba23b517784442366a5",
+      "deltas": [
+        {
+          "id": "postgres-test-read-import",
+          "path": "scripts/lib/reviewed-news-dependency-security-followup.test.mjs",
+          "before": "import { readFileSync } from 'node:fs';\n",
+          "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';\n",
+          "beforeSha256Lf": "64adc6e9ca168ca5d2aa0ec3b027b597df54b5d137f9f788543900b856b6e286",
+          "afterSha256Lf": "58834cd98d81c753698a33084e15e2d6bf864603b359600cf0176b9415cf6168"
+        },
+        {
+          "id": "postgres-test-read-call",
+          "path": "scripts/lib/reviewed-news-dependency-security-followup.test.mjs",
+          "before": "const read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');\n",
+          "after": "const read = path => projectReviewedPostgresTestImage(path, readFileSync(path, 'utf8'));\n",
+          "beforeSha256Lf": "cf878ff398a43fcbf600b4a2cbc9588de23d57ac5bcd19c075af36221415c272",
+          "afterSha256Lf": "4733f12e2e05820cfc8cf24f7fc2b0c85cdd8ea49275c451b0b485eec37df7dd"
+        }
+      ]
+    },
+    {
+      "path": "scripts/lib/reviewed-live-ui-followup.test.mjs",
+      "sourceBaseline": "6b749e797ea5230d4bb2822cfdd7730dab1b9ec7a7bd48244a49f194fe29b4a9",
+      "reviewedSource": "184288e2ec580410a35094af177740b304e33d7abb589ad4924bc8e82240abd0",
+      "deltas": [
+        {
+          "id": "postgres-live-ui-read-import",
+          "path": "scripts/lib/reviewed-live-ui-followup.test.mjs",
+          "before": "import { readFileSync } from 'node:fs';\n",
+          "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';\n",
+          "beforeSha256Lf": "64adc6e9ca168ca5d2aa0ec3b027b597df54b5d137f9f788543900b856b6e286",
+          "afterSha256Lf": "58834cd98d81c753698a33084e15e2d6bf864603b359600cf0176b9415cf6168"
+        },
+        {
+          "id": "postgres-live-ui-read-call",
+          "path": "scripts/lib/reviewed-live-ui-followup.test.mjs",
+          "before": "const read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');\n",
+          "after": "const read = path => projectReviewedPostgresTestImage(path, readFileSync(path, 'utf8'));\n",
+          "beforeSha256Lf": "cf878ff398a43fcbf600b4a2cbc9588de23d57ac5bcd19c075af36221415c272",
+          "afterSha256Lf": "4733f12e2e05820cfc8cf24f7fc2b0c85cdd8ea49275c451b0b485eec37df7dd"
+        }
+      ]
+    }
+  ]
+}

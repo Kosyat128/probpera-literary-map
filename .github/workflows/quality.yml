@@ -44,6 +44,10 @@ jobs:
       - name: Check types and admin code
         run: npm run lint
 
+      - name: Prepare PostgreSQL integration test image
+        timeout-minutes: 5
+        run: node scripts/database/prepare-postgres-test-image.mjs
+
       - name: Run automated tests
         run: npm test
 

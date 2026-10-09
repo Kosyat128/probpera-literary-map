@@ -53,7 +53,14 @@ describe("parallel browser quality contract", () => {
     for (const step of previous) {
       expect(preflight.steps.find(current => current.name === step.name), step.name).toEqual(step);
     }
-    expect(preflight.steps).toHaveLength(previous.length + 2);
+    expect(preflight.steps).toHaveLength(previous.length + 3);
+    const postgresSteps = preflight.steps.filter(step => step.name === "Prepare PostgreSQL integration test image");
+    expect(postgresSteps).toEqual([{
+      name: "Prepare PostgreSQL integration test image",
+      "timeout-minutes": 5,
+      run: "node scripts/database/prepare-postgres-test-image.mjs",
+    }]);
+    expect(preflight.steps.indexOf(postgresSteps[0])).toBe(preflight.steps.findIndex(step => step.name === "Run automated tests") - 1);
     const install = preflight.steps.findIndex(step => step.run === "npm ci");
     expect(preflight.steps[install + 1].run).toBe("npm audit --omit=dev --audit-level=high");
     for (const job of Object.values(workflow.jobs)) {

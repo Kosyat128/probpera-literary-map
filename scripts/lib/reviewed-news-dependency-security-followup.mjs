@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';
 import { readFileSync } from 'node:fs';
 
 // The October 9 repair adds exact security patches; prior authority stays immutable.
@@ -9,7 +10,7 @@ export const newsDependencySecurityFollowupSha256 = source => createHash('sha256
 
 /** Reverse the complete reviewed patch, retaining every unrelated byte for older locks. */
 export function projectReviewedNewsDependencySecurityFollowup(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedPostgresTestImage(relativePath, source);
   const deltas = newsDependencySecurityFollowupAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   // Older boundaries may receive the predecessor again. A partial downgrade is not a predecessor.

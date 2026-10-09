@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedPostgresTestImage } from './reviewed-postgres-test-image.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { newsDependencySecurityFollowupAttestation as packet, newsDependencySecurityFollowupSha256 as sha,
@@ -6,7 +7,7 @@ import { newsDependencySecurityFollowupAttestation as packet, newsDependencySecu
 import { projectReviewedLiveUiFollowup } from './reviewed-live-ui-followup.mjs';
 import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';
 
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedPostgresTestImage(path, readFileSync(path, 'utf8'));
 const historical = path => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, 'show',
   `${packet.baselineCommitSha}:${path}`], { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');
 const failure = 'Missing or duplicate reviewed news dependency-security delta';
