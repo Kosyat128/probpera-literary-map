@@ -18,6 +18,7 @@ import { createDeliverySupabaseFetch, checkedDeliveryDayStatus, checkedDeliveryD
 import { PREPARATION_REPORT_KEY, PREPARATION_ATTEMPT_KEY } from './workers/literary-news-preparation-worker.mjs';
 
 const MAX_AGE = 6 * 3600000;
+const PREPARATION_ATTEMPT_MAX_AGE = 90 * 60000;
 const NAMESPACE = 'f3ae59fd55ee4c0cac8ff1613db81680';
 const fail = code => { throw Error(code); };
 const safeCount = value => Number.isSafeInteger(value) && value >= 0 && value <= 5000000 ? value : null;
@@ -193,7 +194,7 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
   if (preparationEnabled && (!preparationAt || preparationReport?.schemaVersion !== 1 || preparationReport.publicationConfirmed !== true))
     add('operations_preparation_checkpoint_missing');
   if (inWindow) {
-    if (attempt && current - Date.parse(attempt.finishedAt) > MAX_AGE) add('operations_preparation_attempt_stale');
+    if (attempt && current - Date.parse(attempt.finishedAt) > PREPARATION_ATTEMPT_MAX_AGE) add('operations_preparation_attempt_stale');
     if (quotaRetryAt && Date.parse(quotaRetryAt) <= current.getTime()) add('operations_preparation_retry_overdue');
     if (preparationAt && (Date.parse(preparationAt) > current.getTime() || !quotaCooldown && current - Date.parse(preparationAt) > MAX_AGE))
       add('operations_preparation_stale');

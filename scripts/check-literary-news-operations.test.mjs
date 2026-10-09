@@ -1,4 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { parse } from 'yaml';
 import { checkNewsOperations, createNewsOperationsReportReader, createNewsOperationsRuntimeReadFetch,
   newsDeliveryCheckpointAge, summarizeNewsOperations } from './check-literary-news-operations.mjs';
 import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
@@ -32,6 +34,11 @@ function disablePreparation(value, reason = 'ai_quota_exceeded') {
   value.workers.expected = 'delivery-only';
   value.workers.workers[0].flags = { NEWS_AUTOMATION_ENABLED: 'false', NEWS_AUTOMATION_BOOTSTRAP: 'false', NEWS_AUTOMATION_WRITER: 'native' };
   return value;
+}
+
+function completedPreparationAttempt(finishedAt, fields = {}) {
+  return { schemaVersion: 1, startedAt: finishedAt, finishedAt, status: 'supply_degraded',
+    reason: null, publicationConfirmed: true, retryAfterAt: null, ...fields };
 }
 
 async function cadenceInput(at = '2026-10-09T09:00:00Z', freshCreates = 0) {
@@ -104,6 +111,55 @@ describe('bounded read-only news operations projection', () => {
     const report = await summarizeNewsOperations(value);
     expect(report.status).toBe('failed');
     expect(report.failures).toEqual(expect.arrayContaining(['operations_preparation_stale', 'operations_profile_stale', 'operations_ledger_stale']));
+  });
+  it.each([[90 * 60000 - 1, false], [90 * 60000, false], [90 * 60000 + 1, true]])(
+    'checks preparation attempts independently of fresh publication state at age %i ms', async (age, stale) => {
+      const value = await input();
+      value.preparationAttempt = completedPreparationAttempt(new Date(current.getTime() - age).toISOString());
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).toEqual(stale ? ['operations_preparation_attempt_stale'] : []);
+      expect(report.preparation.lastRunAt).toBe(current.toISOString());
+      expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+    });
+  it.each([[6 * 3600000, false], [6 * 3600000 + 1, true]])(
+    'retains the six-hour publication threshold with a fresh preparation attempt at age %i ms', async (age, stale) => {
+      const value = await input(), older = new Date(current.getTime() - age);
+      value.preparationReport.checkedAt = older.toISOString(); value.profile = await makeDailyApprovedPayload([], older);
+      value.ledger = emptyDailyLedger(older); value.preparationAttempt = completedPreparationAttempt(current.toISOString());
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).toEqual(stale
+        ? ['operations_preparation_stale', 'operations_profile_stale', 'operations_ledger_stale'] : []);
+    });
+  it.each(['provider_quota_cooldown', 'provider_degraded'])(
+    'flags a stopped preparation heartbeat during %s while preserving quota publication semantics', async status => {
+      const value = await input(), older = new Date(current.getTime() - 8 * 3600000);
+      value.preparationReport.checkedAt = older.toISOString(); value.preparationReport.stoppedReason = 'ai_quota_exceeded';
+      value.profile = await makeDailyApprovedPayload([], older); value.ledger = emptyDailyLedger(older);
+      value.preparationAttempt = completedPreparationAttempt(new Date(current.getTime() - 100 * 60000).toISOString(), {
+        status, reason: 'ai_quota_exceeded', publicationConfirmed: false,
+        retryAfterAt: status === 'provider_quota_cooldown' ? '2026-10-02T00:00:00.000Z' : null });
+      const report = await summarizeNewsOperations(value);
+      expect(report.preparation.quotaCooldown).toBe(true);
+      expect(report.preparation.retryAfterAt).toBe('2026-10-02T00:00:00.000Z');
+      expect(report.failures).toEqual(['operations_preparation_attempt_stale', 'operations_preparation_degraded']);
+    });
+  it('does not require a new heartbeat from explicitly disabled preparation', async () => {
+    const value = disablePreparation(await input());
+    value.preparationAttempt = completedPreparationAttempt(new Date(current.getTime() - 2 * 3600000).toISOString());
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.status).toBe('preparation_disabled');
+  });
+  it.each(['2026-09-28T10:00:00Z', '2027-09-30T10:00:00Z'])(
+    'does not require preparation attempts outside the authorized admission window at %s', async at => {
+      const value = await input(new Date(at)); value.dayStatus.editorialDay = at.slice(0, 10);
+      value.preparationAttempt = completedPreparationAttempt(new Date(Date.parse(at) - 2 * 3600000).toISOString());
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).not.toContain('operations_preparation_attempt_stale');
+      expect(report.status).toBe('outside_authorized_window');
+    });
+  it.each([null, undefined])('retains legacy checkpoint compatibility when the optional attempt is %s', async preparationAttempt => {
+    const report = await summarizeNewsOperations({ ...await input(), preparationAttempt });
+    expect(report.failures).toEqual([]); expect(report.preparation.lastRunAt).toBe(current.toISOString());
   });
   it('uses a fresh quota attempt to distinguish an active cooldown from a stopped preparation schedule', async () => {
     const value = await input(), older = new Date(current.getTime() - 8 * 3600000);
@@ -446,5 +502,22 @@ describe('read-only operations report network boundaries', () => {
     await expect(checkNewsOperations({ env: { [flag]: 'False' }, fetchImpl }))
       .rejects.toThrow('operations_configuration_invalid');
     expect(fetchImpl).not.toHaveBeenCalled();
+  });
+  it('checks every half hour after preparation without adding deployment or mutation commands', () => {
+    const workflow = parse(readFileSync(new URL('../.github/workflows/check-literary-news-operations.yml', import.meta.url), 'utf8'));
+    expect(workflow.on).toEqual({ workflow_dispatch: null, schedule: [{ cron: '27,57 * * * *' }] });
+    expect(workflow.permissions).toEqual({ contents: 'read' });
+    expect(workflow.concurrency).toEqual({ group: 'literary-news-operations-check', 'cancel-in-progress': false });
+    expect(Object.keys(workflow.jobs)).toEqual(['status']);
+    const job = workflow.jobs.status;
+    expect(job.if).toBe("github.ref == 'refs/heads/main' && vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED == 'true'");
+    expect(job.steps.filter(step => step.run).map(step => step.run)).toEqual([
+      'npm ci', 'npx vitest run scripts/check-literary-news-operations.test.mjs',
+      'node scripts/check-literary-news-operations.mjs --expect-enabled --expected-head "$GITHUB_SHA" --output .tmp/news-operations/status.json',
+    ]);
+    expect(job.steps.filter(step => step.uses).map(step => step.uses)).toEqual([
+      'actions/checkout@v7', 'actions/setup-node@v7', 'actions/upload-artifact@v7',
+    ]);
+    expect(job.steps.at(-1).with).toMatchObject({ path: '.tmp/news-operations/status.json', 'retention-days': 14 });
   });
 });
