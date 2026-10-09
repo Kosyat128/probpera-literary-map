@@ -11,6 +11,7 @@ import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DA
   DAILY_NEWS_LIMITS, dailyNewsDay, validateDailyApprovedPayload } from './lib/literary-news-daily-profile.mjs';
 import { verifyPublishedNewsSnapshot } from './lib/literary-news-publication.mjs';
 import { createNewsRuntimeStore } from './lib/literary-news-social.mjs';
+import { NEWS_DELIVERY_MAX_INTERVAL_SECONDS } from './lib/literary-news-pacing.mjs';
 import { trustedSupabaseOrigin } from './lib/trusted-server-url.mjs';
 import { validTimestamp } from './lib/literary-news-reviewed.mjs';
 import { createDeliverySupabaseFetch, checkedDeliveryDayStatus, checkedDeliveryDueRows } from './workers/literary-news-delivery-worker.mjs';
@@ -247,6 +248,25 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     preparationCounts[key] = preparationEnabled ? safeCount(preparationReport?.native?.[key]) : null;
   const deterministicHeld = preparationEnabled ? preparationReport?.native?.deterministicHeld : null;
   preparationCounts.deterministicHeldCount = Array.isArray(deterministicHeld) && deterministicHeld.length <= 5000 ? deterministicHeld.length : null;
+  // An empty due page cannot prove an empty pending queue. Alert only on the
+  // independently observed daily delivery gap, with one full interval of grace.
+  const deliveryOpening = Date.parse(day + 'T08:00:00+03:00'), deliveryClosing = Date.parse(day + 'T23:00:00+03:00');
+  let heartbeatDay = null;
+  try { heartbeatDay = checkedDeliveryDayStatus(deliveryHeartbeat?.dayStatus, current); } catch { /* Older/incomplete heartbeats cannot establish a cadence alert. */ }
+  const cadenceChecked = Boolean(preparationEnabled && inWindow && failures.length === 0 && deliveryDay && dueValid && due.length === 0
+    && current.getTime() >= deliveryOpening + 4 * 3600000 && current.getTime() < deliveryClosing
+    && preparationAt && dailyNewsDay(new Date(preparationAt)) === day
+    && deliveryAt && current - Date.parse(deliveryAt) <= 15 * 60000
+    && deliveryHeartbeat.status === 'daily_target_deficit' && deliveryHeartbeat.phase === 'heartbeat'
+    && deliveryHeartbeat.heartbeatRecorded === true && deliveryHeartbeat.budgetStopped === false
+    && deliveryHeartbeat.eligibleJobs === 0 && deliveryHeartbeat.selectedJobs === 0 && deliveryHeartbeat.attemptedJobs === 0
+    && deliveryHeartbeat.deliveredThisRun === 0 && deliveryHeartbeat.providerWriteAttempts === 0 && deliveryHeartbeat.ambiguousThisRun === 0
+    && safeCount(deliveryHeartbeat.inspectedJobs) !== null && deliveryHeartbeat.inspectedJobs <= 20
+    && heartbeatDay?.freshCreates === deliveryDay.freshCreates && heartbeatDay?.acknowledgedCreates === deliveryDay.acknowledgedCreates);
+  const cadenceMinimum = cadenceChecked ? Math.min(DAILY_NEWS_LIMITS.minimum, deliveryDay.minimum,
+    Math.floor((current - deliveryOpening) / (NEWS_DELIVERY_MAX_INTERVAL_SECONDS * 1000)) - 1) : null;
+  const cadenceDeficit = cadenceChecked && deliveryDay.freshCreates < cadenceMinimum;
+  if (cadenceDeficit) add('operations_delivery_cadence_deficit');
   return { schemaVersion: 1, readonly: true, externalWrites: 0, checkedAt: current.toISOString(), day,
     timeZone: DAILY_NEWS_WINDOW.timeZone, window: DAILY_NEWS_WINDOW, mode, enabledVerified: !failures.includes('operations_workers_not_enabled'),
     requestedMode: workers?.requestedExpected === 'auto-resume' ? 'auto-resume' : mode,
@@ -274,6 +294,9 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       acceptedPerDay: preparationEnabled ? [...perDay].filter(([acceptedDay]) => acceptedDay >= since).sort()
         .map(([acceptedDay, count]) => ({ day: acceptedDay, count })) : null },
     telegram: { lastRunAt: deliveryAt, acknowledgedCreatesToday: deliveryDay?.acknowledgedCreates ?? null,
+      cadence: { status: cadenceDeficit ? 'deficit' : cadenceChecked ? 'within_tolerance' : 'not_evaluated',
+        minimumFreshCreatesByNow: cadenceMinimum, graceIntervals: 1, intervalSeconds: NEWS_DELIVERY_MAX_INTERVAL_SECONDS,
+        scope: 'Observed acknowledged delivery shortfall only; due reads do not establish whether future jobs or pending supply exist.' },
       acknowledgedPhotoCreatesToday: deliveryDay?.acknowledgedPhotoCreates ?? null,
       freshAcknowledgedCreatesToday: deliveryDay?.freshCreates ?? null, freshAcknowledgedPhotoCreatesToday: deliveryDay?.freshPhotoCreates ?? null,
       minimumDeficit: deliveryDay?.deficitToMinimum ?? null, legacyReceiptsWithUnknownFirstDate: deliveryDay?.legacyReceiptsWithUnknownFirstDate ?? null,

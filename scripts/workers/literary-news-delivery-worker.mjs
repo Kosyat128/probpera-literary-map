@@ -46,9 +46,11 @@ export function createDeliveryRequestBudget(fetchImpl=fetch) {
     get providerWrites(){return providerWrites;},
     get quota(){return quota;},get exhausted(){return exhausted;},
     canStartJob(job){
-      // Includes fresh rights checks (twice for photos), the dispatch marker,
-      // worst-case acknowledgement CAS and the final heartbeat.
-      const beforeProvider=job.prepared?.media?(job.remoteId?16:18):(job.remoteId?9:11);
+      // Include the prior slot receipt read, rights checks (twice for photos),
+      // marker and all five claim CAS attempts before consuming a new slot.
+      // Reusing a cached photo also persists its cache before dispatch.
+      const beforeProvider=(job.prepared?.media?(job.remoteId?16:19):(job.remoteId?10:13))
+        +8+(job.prepared?.media&&job.mediaCache?1:0);
       return !quota && budget.remaining>=beforeProvider+PROVIDER_ACKNOWLEDGEMENT_RESERVE;
     },
     canWriteProvider(){return !quota && budget.remaining>=PROVIDER_ACKNOWLEDGEMENT_RESERVE;},
@@ -126,15 +128,19 @@ async function requiredRpc(client,name,args) {
 }
 
 export function checkedDeliveryDayStatus(value,current) {
-  // Accept the prior lower reporting ceiling during the worker-first rollout;
-  // the durable pacing reservation independently enforces the active cap.
-  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||value.minimum!==10||![15,NEWS_DAILY_TARGET.maximum].includes(value.maximum)
+  // Validate the database's original counts before normalizing the current
+  // policy during worker-first rollout. Historical days retain their old plan.
+  const policyActive=dayOf(current)>='2026-10-09';
+  const legacyPolicy=value?.minimum===10&&[15,20].includes(value?.maximum);
+  const activePolicy=policyActive&&value?.minimum===NEWS_DAILY_TARGET.minimum&&value?.maximum===NEWS_DAILY_TARGET.maximum;
+  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||!legacyPolicy&&!activePolicy
     || ['acknowledgedCreates','acknowledgedPhotoCreates','freshCreates','freshPhotoCreates','legacyReceiptsWithUnknownFirstDate','deficitToMinimum']
       .some(key=>!Number.isSafeInteger(value[key])||value[key]<0)
     ||value.freshPhotoCreates>value.freshCreates||value.freshCreates>value.acknowledgedCreates
     ||value.freshPhotoCreates>value.acknowledgedPhotoCreates||value.acknowledgedPhotoCreates>value.acknowledgedCreates
-    ||value.deficitToMinimum!==Math.max(0,10-value.freshCreates))fail('runtime_day_status_invalid');
-  return value;
+    ||value.deficitToMinimum!==Math.max(0,value.minimum-value.freshCreates))fail('runtime_day_status_invalid');
+  return policyActive?{...value,minimum:NEWS_DAILY_TARGET.minimum,maximum:NEWS_DAILY_TARGET.maximum,
+    deficitToMinimum:Math.max(0,NEWS_DAILY_TARGET.minimum-value.freshCreates)}:value;
 }
 
 /** The service-only due RPC is required; there is deliberately no journal scan fallback. */

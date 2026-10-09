@@ -34,13 +34,64 @@ function disablePreparation(value, reason = 'ai_quota_exceeded') {
   return value;
 }
 
+async function cadenceInput(at = '2026-10-09T09:00:00Z', freshCreates = 0) {
+  const value = await input(new Date(at));
+  Object.assign(value.dayStatus, { editorialDay: '2026-10-09', minimum: 8, maximum: 10, acknowledgedCreates: freshCreates, acknowledgedPhotoCreates: 0, freshCreates,
+    freshPhotoCreates: 0, deficitToMinimum: Math.max(0, 8 - freshCreates) });
+  Object.assign(value.deliveryHeartbeat, { phase: 'heartbeat', heartbeatRecorded: true, budgetStopped: false,
+    eligibleJobs: 0, selectedJobs: 0, attemptedJobs: 0, deliveredThisRun: 0, providerWriteAttempts: 0,
+    ambiguousThisRun: 0, inspectedJobs: 0, dayStatus: { ...value.dayStatus } });
+  return value;
+}
+
 describe('bounded read-only news operations projection', () => {
+  it('alerts a verified material delivery gap after noon without claiming pending supply is empty', async () => {
+    const report = await summarizeNewsOperations(await cadenceInput());
+    expect(report.status).toBe('failed'); expect(report.failures).toEqual(['operations_delivery_cadence_deficit']);
+    expect(report.telegram.cadence).toMatchObject({ status: 'deficit', minimumFreshCreatesByNow: 1, graceIntervals: 1, intervalSeconds: 6300 });
+    expect(report.telegram.cadence.scope).toContain('do not establish');
+    expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+    expect(JSON.stringify(report)).not.toContain(privateMarker);
+  });
+  it.each([
+    ['2026-10-09T09:00:00Z', 1, 1], ['2026-10-09T10:30:00Z', 2, 2], ['2026-10-09T19:30:00Z', 8, 7],
+  ])('allows 105-minute spacing and the completed daily minimum at %s', async (at, creates, minimum) => {
+    const report = await summarizeNewsOperations(await cadenceInput(at, creates));
+    expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+    expect(report.telegram.cadence).toMatchObject({ status: 'within_tolerance', minimumFreshCreatesByNow: minimum });
+  });
+  it.each(['2026-10-09T08:59:59Z', '2026-10-09T20:00:00Z', '2026-10-09T04:59:59Z'])(
+    'does not alert before noon or overnight at %s', async at => {
+      const report = await summarizeNewsOperations(await cadenceInput(at));
+      expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+      expect(report.telegram.cadence).toMatchObject({ status: 'not_evaluated', minimumFreshCreatesByNow: null });
+    });
+  it.each(['stale_heartbeat', 'missing_count', 'string_count', 'negative_count', 'eligible_work', 'unconfirmed',
+    'budget_deferred', 'inconsistent_metrics', 'invalid_metrics', 'failed_read', 'quota', 'disabled'])(
+    'does not infer a cadence failure from %s', async boundary => {
+      const value = await cadenceInput();
+      if (boundary === 'stale_heartbeat') value.deliveryHeartbeat.finishedAt = '2026-10-09T08:44:59Z';
+      if (boundary === 'missing_count') delete value.deliveryHeartbeat.eligibleJobs;
+      if (boundary === 'string_count') value.deliveryHeartbeat.eligibleJobs = '0';
+      if (boundary === 'negative_count') value.deliveryHeartbeat.inspectedJobs = -1;
+      if (boundary === 'eligible_work') value.deliveryHeartbeat.eligibleJobs = 1;
+      if (boundary === 'unconfirmed') value.deliveryHeartbeat.heartbeatRecorded = false;
+      if (boundary === 'budget_deferred') value.deliveryHeartbeat.budgetStopped = true;
+      if (boundary === 'inconsistent_metrics') value.deliveryHeartbeat.dayStatus.acknowledgedCreates = 1;
+      if (boundary === 'invalid_metrics') value.dayStatus.freshCreates = -1;
+      if (boundary === 'failed_read') { value.dueRows = null; value.readFailures = ['operations_due_queue_read_failed']; }
+      if (boundary === 'quota') value.preparationReport.stoppedReason = 'ai_quota_exceeded';
+      if (boundary === 'disabled') disablePreparation(value);
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+      expect(report.telegram.cadence.status).toBe('not_evaluated');
+    });
   it('separates actual receipts and supply deficit from enabled schedules without publishing private data', async () => {
     const report = await summarizeNewsOperations(await input());
     expect(report.status).toBe('supply_degraded'); expect(report.failures).toEqual([]);
     expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
     expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3); expect(report.telegram.minimumDeficit).toBe(7);
-    expect(report.preparation.admittedToday).toBe(0); expect(report.preparation.minimumDeficit).toBe(10);
+    expect(report.preparation.admittedToday).toBe(0); expect(report.preparation.minimumDeficit).toBe(8);
     expect(report.public.sourceFailures).toEqual({ http_503: 1 });
     const serialized = JSON.stringify(report);
     expect(serialized).not.toContain(privateMarker); expect(serialized).not.toContain('remoteId');

@@ -152,12 +152,12 @@ describe('Private native daily preparation and bounded public source adapter',()
   });
   it('publishes only validated profile/ledger and reports the actual empty daily deficit',async()=>{
     const f=fixture(),report=await f.run();
-    expect(report).toMatchObject({status:'supply_degraded',minimumDeficit:10,newlyAccepted:0,publicationConfirmed:true,deliveryConfirmed:false,
+    expect(report).toMatchObject({status:'supply_degraded',minimumDeficit:8,newlyAccepted:0,minimum:8,maximum:10,publicationConfirmed:true,deliveryConfirmed:false,
       native:{maximumCandidateAttempts:5,maximumAiCalls:10,sourceCounts:{checkedSources:32}}});
     expect(f.env.AI.run).not.toHaveBeenCalled();
     expect(JSON.parse(f.values.get(DAILY_NEWS_OWNER_KEY))).toMatchObject({owner:'native',nativeEnabled:true,drained:false});
     expect(JSON.parse(f.values.get(DAILY_NEWS_LEDGER_KEY)).accepted).toEqual([]);
-    expect(JSON.parse(f.values.get(PREPARATION_REPORT_KEY)).minimumDeficit).toBe(10);
+    expect(JSON.parse(f.values.get(PREPARATION_REPORT_KEY)).minimumDeficit).toBe(8);
     expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toMatchObject({lease:null,pendingLedgerSha:null,pendingProfileSha:null});
   });
   it('preserves a saved inference budget and fences a profile PUT with a lost acknowledgement',async()=>{

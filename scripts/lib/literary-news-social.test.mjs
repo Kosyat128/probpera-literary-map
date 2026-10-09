@@ -315,7 +315,7 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     expect((await store.read(key)).state.dispatchStartedAt).toBeNull();
     await reconcileNewsSnapshot(store, await completeFeed([{ ...item, summary: { ...item.summary, ru: "Исправленный текст." } }]), destinations, now);
     expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => now })).reason).toBe("destination_pacing");
-    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => new Date(now.getTime()+3600000) })).status).toBe("sent_current");
+    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => new Date(now.getTime()+6300000) })).status).toBe("sent_current");
   });
   it("rate limits the whole destination while the other platform can proceed", async () => {
     const { store, key } = await setup(); const send = vi.fn(async () => ({ kind: "retry", scope: "retry", code: "rate_limit", retryAfterSeconds: 90 }));

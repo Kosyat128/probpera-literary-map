@@ -57,7 +57,7 @@ function sourceContract(source) {
  * A missing publication date stays unknown; observedAt is not publishedAt. */
 export function extractDailyNewsDetail(html, url, source = {}) {
   const $ = load(html), dates = [], images = [];
-  for (const selector of ['meta[property="article:published_time"]','meta[name="date"]','meta[name="DC.date.issued"]']) {
+  for (const selector of ['meta[property="article:published_time"]','meta[property="og:article:published_time"]','meta[name="date"]','meta[name="DC.date.issued"]']) {
     const value = $(selector).attr('content'); if (value) dates.push({ value, method: selector });
   }
   // Only explicit publication semantics qualify. A generic <time>, dateModified

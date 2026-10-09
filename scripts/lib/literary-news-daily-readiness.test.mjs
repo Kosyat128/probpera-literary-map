@@ -28,16 +28,17 @@ describe('honest daily photo supply and accepted receipt counts',()=>{
       prepared:{temporal:{kind:'news',publishedAt:'2026-09-29'}},remoteMediaKind:'text'},
       {newsId:'legacy-edit',destination,remoteId:'2',acknowledgedAt:'2026-09-29T07:00:00Z'}];
     const result=await literaryNewsDailyReadiness({feed,destination,jobs,current,mediaOptions:await fixture()});
+    expect(result.target).toMatchObject({minimum:8,maximum:10});
     expect(result.counts).toMatchObject({currentFeedItems:3,sourcePublishedToday:1,unknownSourcePublicationDates:1,
-      photoReady:3,recentPhotoReady:1,acceptedFirstPostsToday:1,firstPostDatesUnknown:1,minimumSupplyDeficit:8,targetSupplyDeficit:18});
+      photoReady:3,recentPhotoReady:1,acceptedFirstPostsToday:1,firstPostDatesUnknown:1,minimumSupplyDeficit:6,targetSupplyDeficit:8});
     expect(result.outcomes.every(row=>row.nativeMethod==='sendPhoto')).toBe(true);
   });
   it('counts all fresh unsent text or photo supply toward the news goal, with photos separately',async()=>{
     const optional={...destination,requirePhotoForNewPosts:false},feed={snapshot:{id:'fixture',release:'a'.repeat(40)},
       items:[item('fresh','2026-09-29'),item('text','2026-09-28'),item('undated',null),item('old','2026-09-01')]};
     const result=await literaryNewsDailyReadiness({feed,destination:optional,current,mediaOptions:await fixture()});
-    expect(result.counts).toMatchObject({recentPhotoReady:1,recentTextReady:1,recentReady:2,minimumSupplyDeficit:8,
-      targetSupplyDeficit:18,minimumPhotoSupplyDeficit:9,targetPhotoSupplyDeficit:19});
+    expect(result.counts).toMatchObject({recentPhotoReady:1,recentTextReady:1,recentReady:2,minimumSupplyDeficit:6,
+      targetSupplyDeficit:8,minimumPhotoSupplyDeficit:7,targetPhotoSupplyDeficit:9});
     expect(result.outcomes.find(row=>row.newsId==='text')).toMatchObject({status:'text_ready',nativeMethod:'sendMessage'});
   });
   it('does not call a missing or changed JPEG ready or create a send claim for local previews',async()=>{

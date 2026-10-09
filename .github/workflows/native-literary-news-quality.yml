@@ -56,7 +56,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Verify preparation, delivery and licensed media boundaries
-        run: npx vitest run scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+        run: npx vitest run scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-intake-history.test.mjs scripts/lib/literary-news-intake-publication.test.mjs scripts/lib/literary-news-daily-draft-contract.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/workers/literary-news-day-status-policy.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
       - name: Verify public and native Worker bundles
         run: |
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news.jsonc --outdir .tmp/literary-news-worker
