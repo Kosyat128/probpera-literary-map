@@ -1,0 +1,79 @@
+{
+  "status": "PASS_STATIC_CANONICAL_GLOBE_OBSERVATION_ONLY",
+  "files": [
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "baseline": {
+        "bytes": 136726,
+        "sha256": "d5a0cbd1c95c5c66a9ae8a7ee525fa08c775618b1d4791cd3acbad79b76a3ee4"
+      },
+      "candidate": {
+        "bytes": 137836,
+        "sha256": "049ca418f0aa5c813e48b6704716ce6cf5c5112d9b64af10eefb6d8569824be7"
+      },
+      "exactAllowedDelta": true,
+      "canvasBefore": 1,
+      "canvasAfter": 1,
+      "canvasOpeningAndPropsUnchanged": true,
+      "constructorCount": 44,
+      "protectedCallCount": 50,
+      "lifecycleInstallCount": 1,
+      "observerCallCount": 4
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "baseline": {
+        "bytes": 10044,
+        "sha256": "0fb21d6270b129f924e25a32d86c4e24813a26b1650c9dfd3fd64077892cc71d"
+      },
+      "candidate": {
+        "bytes": 10296,
+        "sha256": "597ec7f080244209a1c35cbc71e0891a76d9f8c3869aa4e70f06168dda6e14da"
+      },
+      "exactAllowedDelta": true,
+      "canvasBefore": 0,
+      "canvasAfter": 0,
+      "canvasOpeningAndPropsUnchanged": true,
+      "constructorCount": 0,
+      "protectedCallCount": 0,
+      "lifecycleInstallCount": 0,
+      "observerCallCount": 0
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "baseline": {
+        "bytes": 14669,
+        "sha256": "7585b7ffb9816ac015e87bc2718594dc80a392374e56626a418e1d40b70dacc2"
+      },
+      "candidate": {
+        "bytes": 14853,
+        "sha256": "c611238d7b6b682f4bc5ad5c26e93aa096276331efb2bacd29faa87168385433"
+      },
+      "exactAllowedDelta": true,
+      "canvasBefore": 0,
+      "canvasAfter": 0,
+      "canvasOpeningAndPropsUnchanged": true,
+      "constructorCount": 0,
+      "protectedCallCount": 7,
+      "lifecycleInstallCount": 0,
+      "observerCallCount": 0
+    }
+  ],
+  "manifestPin": {
+    "bytes": 4146,
+    "sha256": "033ae723259315ebd569dd65ce6d79a14098c2cc659b68f82f410e6d0feec6dd",
+    "relativePath": "adult-diagnostic-export-proposal-a1/proposal.json"
+  },
+  "typeOnlyPerformanceAddition": true,
+  "observerFields": [
+    "lossCount",
+    "restorationCount"
+  ],
+  "cleanupEmitsNull": true,
+  "lineEndingsNormalizedForTextComparison": true,
+  "pinnedByteHashesChecked": true,
+  "productModulesImportedOrExecuted": false,
+  "runtimeAcceptance": false,
+  "deviceTested": false,
+  "releaseReady": false
+}

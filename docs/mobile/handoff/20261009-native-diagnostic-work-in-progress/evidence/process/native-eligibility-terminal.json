@@ -1,0 +1,65 @@
+{
+  "mode": "native-eligibility-new2",
+  "startedAt": "2026-10-09T05:22:25.374Z",
+  "finishedAt": "2026-10-09T05:22:26.601Z",
+  "actualPid": 20948,
+  "actualParentPid": 11384,
+  "actualExitCode": 0,
+  "signal": null,
+  "naturalCloseObserved": true,
+  "naturalStatus": "PASS",
+  "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+  "executable": {
+    "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "bytes": 237988664,
+    "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+  },
+  "processRuntimeQualification": "Original child preload pid/version/path observed",
+  "args": [
+    "--import",
+    "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGFkdWx0LWRpYWdub3N0aWMtcWEtcnVuLWExXFxuYXRpdmUtZWxpZ2liaWxpdHktbmV3MlxccnVudGltZS5qc29uIixKU09OLnN0cmluZ2lmeSh7cGlkOnByb2Nlc3MucGlkLHBhcmVudFBpZDpwcm9jZXNzLnBwaWQsdmVyc2lvbjpwcm9jZXNzLnZlcnNpb24sZXhlY1BhdGg6cHJvY2Vzcy5leGVjUGF0aCxlbGVjdHJvblJ1bkFzTm9kZTpwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSxhcmd2OnByb2Nlc3MuYXJndn0sbnVsbCwyKSsnXG4nLHtmbGFnOid3eCd9KTtpZihwcm9jZXNzLnZlcnNpb24hPT0ndjI0LjIxLjAnfHxwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSE9PScxJyl0aHJvdyBFcnJvcignT1dORURfQ0hJTERfUlVOVElNRV9DSEFOR0VEJyk7",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "--config",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\vitest.config.mjs",
+    "--configLoader",
+    "native",
+    "--no-file-parallelism",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "src/child/childNativeAppBridge.test.ts",
+    "--testNamePattern",
+    "adult diagnostic eligibility",
+    "--outputFile",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-report.json"
+  ],
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "launch": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\launch.json",
+    "sha256": "0e693c376841d152c01f6cbdb4eeb6519fad94cfd1466caf9f2374d4c4ff0697",
+    "bytes": 1929
+  },
+  "runtime": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\runtime.json",
+    "sha256": "f9c27e81a538aa444722fe345622156bdac947f4d75bf421857014311581fc35",
+    "bytes": 1046
+  },
+  "runtimeValid": true,
+  "runtimeError": null,
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\stdout.bin",
+    "sha256": "90d015ddf7b77d42206c83df2e0ff8dc7f2e9f74294d17642b82b82bed4d3d5f",
+    "bytes": 200,
+    "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+  },
+  "spawnError": null,
+  "receiptError": null,
+  "deadlineReported": false,
+  "deviceTested": false
+}

@@ -1,3 +1,8 @@
+GITHUB CONTINUATION HANDOFF — 2026-10-09
+Start with docs/mobile/GITHUB_CONTINUE_20261009_RU.md and docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/manifest.json on the new computer.
+Native Android/iOS drafts are NOT_APPLIED / NOT_COMPILED / NOT_TESTED; TS/controller/UI unfinished. Review and finish the documented Android destination-cleanup and iOS bounded-detach defects before applying.
+Original product source/evidence remains e8ac3c03e8aa142e219cb03e46e75757910c82dd; all original prompt bytes and model ownership below are retained.
+
 CURRENT S27 interim adult diagnostic checkpoint 2026-10-09T06:21:07.074Z
 Product e8ac3c03e8aa142e219cb03e46e75757910c82dd; common1958/220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128. Web/core new20 QA root11384, TSC19188/rawAST17612 PASS; actual mounted RU/EN panel/hook fixture18516 owned10576: four exact local downloads/two root-viewed captures, synthetic native capability only.
 Fresh Android3244/0 natural; main/test Java tasks UP_TO_DATE. PWA13680/0 is retained-current-integrity-only1427/77798542; original23420 natural/exit UNKNOWN and preparation0B remain unchanged.

@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-only-isolated-draft-archive-security-review",
+  "reviewDateUtc": "2026-10-09T07:48:34.2987014Z",
+  "reviewer": "GPT-6 Astra / ultra",
+  "safeToArchive": true,
+  "safeToApply": false,
+  "status": "ARCHIVAL_ALLOWED_INERT_WIP_ONLY",
+  "wholeHeadAtReview": "0c8d758da4b56c5a34dd32c9db7180ddac58c7c3",
+  "sourceProductCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "sourceCommon": {
+    "rows": 1958,
+    "fingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+    "provenance": "Exact snapshot supplied by root: adult-diagnostic-qa-run-a1/after-full.json; independently pinned relevant sources below"
+  },
+  "userAuthorization": "Save latest work to GitHub to continue on another computer; isolated source-draft archive and branch push only.",
+  "scope": "Exact ten ignored native source candidates and one source-only audit receipt. Diff inspection against tracked native baselines, text/metadata inspection, common credential-signature scan and repeated SHA256 stability check. No candidate code execution.",
+  "archiveAdmission": {
+    "status": "ALLOWED_AS_ISOLATED_NOT_APPLIED_WIP",
+    "credentialOrPrivateUserDataFinding": "NONE_DETECTED_IN_REVIEWED_ADDITIONS_AND_METADATA",
+    "contentQualification": "Five full native source candidates derive from already tracked app source; other files are source additions, patch and metadata. No user diagnostic payload, credentials, private keys, databases, authentication files, screenshots or runtime exports occur in this inventory.",
+    "credentialScan": "No AWS access-key, GitHub-token, OpenAI-key, Google API-key, Slack-token, JWT or PEM private-key signature hits in candidate directory and audit receipt.",
+    "limitation": "Scoped source-only review is not an exhaustive secret audit of repository history or unrelated artifacts. Existing unchanged source retains prior provenance."
+  },
+  "productAdmission": {
+    "status": "NOT_ADMITTED",
+    "applied": "NO",
+    "typescriptControllerUiWiring": "UNFINISHED",
+    "androidCompile": "NOT_RUN",
+    "swiftCompile": "NOT_RUN",
+    "tests": "NOT_RUN",
+    "installedOs": "NOT_RUN",
+    "releaseAcceptance": "NOT_GRANTED"
+  },
+  "findings": [
+    {
+      "id": "ANDROID_DESTINATION_DELETE",
+      "severity": "BLOCKS_PRODUCT_INTEGRATION",
+      "path": "android/PlanetAdultDiagnosticSave.java",
+      "lines": "119,137-138,151",
+      "detail": "removePartial calls DocumentsContract.deleteDocument on any returned content URI without independently establishing newly created operation-owned destination. Cleanup can run before any write; cancellation can call deletion twice. Correct ownership and idempotence before integration; never delete arbitrary user files."
+    },
+    {
+      "id": "ANDROID_PICKER_CLEANUP_RACES",
+      "severity": "REQUIRES_SOURCE_AND_OS_REVIEW",
+      "path": "android/PlanetAdultDiagnosticSave.java; android/MainActivity.java",
+      "lines": "receive 79-87; close 141-153; MainActivity 7-33",
+      "detail": "Dedicated request-code range and finishActivity exist only as drafts. Cleanup waits two seconds for a result and may seal owner on timeout; late callback can update destination after close. Request-code collision with other bridge consumers and actual picker/result ordering are unverified."
+    },
+    {
+      "id": "IOS_PICKER_DETACH_JOIN",
+      "severity": "REQUIRES_CORRECTION_OR_PROVEN_LIFECYCLE_BEFORE_ADMISSION",
+      "path": "ios/diagnostic-addition.swift.txt",
+      "lines": "265-284",
+      "detail": "close waits indefinitely for actual picker detachment while repeatedly synchronizing with main queue. If detachment never completes, worker and queued cancellation/retirement replies can remain pending."
+    },
+    {
+      "id": "IOS_DESTINATION_PRESERVATION",
+      "severity": "INFORMATION",
+      "path": "ios/diagnostic-addition.swift.txt",
+      "lines": "233-250,265-284",
+      "detail": "OS destination is read for verification, never deleted. Cleanup unlinks owned private temp source file/directory; residue cleanup uses bounded diagnostic namespace and regular-file/link/size checks. Cancellation after OS copy can leave user-owned destination, so UI/result semantics need review."
+    },
+    {
+      "id": "UNFINISHED_INTEGRATION",
+      "severity": "BLOCKS_FEATURE_COMPLETION",
+      "path": "all",
+      "lines": "n/a",
+      "detail": "TS/controller/UI wiring unfinished. Neither platform candidate compiled or tested. Exact-byte schema agreement, original adult authority, cancellation and lifecycle require focused review and verification. No specific compiler success or failure claimed."
+    }
+  ],
+  "sourceBaselinePins": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "bytes": 900,
+      "sha256": "72cbbb44c7fe31e3f23421485ade2f9d8995ce3b19078073603c3ad5f5f59faa"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPlugin.java",
+      "bytes": 5832,
+      "sha256": "c69e20bf6c30566b789dff207887f7eeb9c6bbc91f32bf52a1efd6f585075ad7"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "bytes": 1110065,
+      "sha256": "e7ee1ebd8734a5b6c9eef40895d112385fc2390a093e12c23c9678ccf242cd7e"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildPlugin.swift",
+      "bytes": 6598,
+      "sha256": "3035d666bfab03f864ed218d191670b6095eed58f8064c8a97db7647354a3b6b"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "bytes": 1339541,
+      "sha256": "88c0bb8dfe00516e4a203e624a7eb2584240aff66d1c302e2740f1a6fd1001ad"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+      "bytes": 4433,
+      "sha256": "f182253130337a3a4bd98a390e2e9ddaae0175bf4b113fcdc944c8ca79703ccb"
+    }
+  ],
+  "candidateCount": 10,
+  "candidateBytes": 2584386,
+  "candidates": [
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/android/MainActivity.java",
+      "bytes": 3320,
+      "sha256": "7457c7112969725df6fab7ea9db235a6d86659a1bac963a435ad744fa6db99a5",
+      "lastWriteTimeUtc": "2026-10-09T06:34:39.8527753Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetAdultDiagnosticJson.java",
+      "bytes": 10218,
+      "sha256": "e95c6fb58c9d4dbaec61c40ed90a2edcc7d3cfab9f5e0d23136e934147521a65",
+      "lastWriteTimeUtc": "2026-10-09T06:26:30.670113Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetAdultDiagnosticSave.java",
+      "bytes": 10669,
+      "sha256": "736b60d1c5a26a220025bfb106b2d10b549006031f354db9efc8514d1625bb8a",
+      "lastWriteTimeUtc": "2026-10-09T06:34:39.8577755Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetChildPlugin.java",
+      "bytes": 6741,
+      "sha256": "9a5f34d907d773b7a87e969cd052526345e9db8faeccd4b9f30ede3f0c684187",
+      "lastWriteTimeUtc": "2026-10-09T06:29:54.9174898Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetChildVault.java",
+      "bytes": 1117144,
+      "sha256": "da5b73eaaa7e725d526a93714a2e12cc53640d783a19361b599818bb98dd1ea1",
+      "lastWriteTimeUtc": "2026-10-09T06:29:54.9149702Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/ios/diagnostic-addition.swift.txt",
+      "bytes": 23827,
+      "sha256": "c0a93ccbc35f4cec4e40095061b4ce9e1972c7de5ae03fe44e0f96f083e04ebd",
+      "lastWriteTimeUtc": "2026-10-09T06:29:41.5175659Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/ios/integration-manifest.json",
+      "bytes": 3399,
+      "sha256": "1619808b3a92139f5bb4f76b725a8aa3fa9f0743128dfb341dbcee915ffdb15e",
+      "lastWriteTimeUtc": "2026-10-09T06:31:08.6174032Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/ios/ios-diagnostic-save.patch",
+      "bytes": 37517,
+      "sha256": "2316ab255b907adfd066dc8be539d56c9f1c28fae152d4f5095c4adac7a7d216",
+      "lastWriteTimeUtc": "2026-10-09T06:30:32.3216018Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/ios/PlanetChildPlugin.swift",
+      "bytes": 7661,
+      "sha256": "75f00f496c213e71e3b067d4245d31ee6627d3e9376f1c6873b3eb7218aea743",
+      "lastWriteTimeUtc": "2026-10-09T06:28:24.8505316Z"
+    },
+    {
+      "path": ".tmp/native-diagnostic-transport-candidates-a1/ios/PlanetChildVault.swift",
+      "bytes": 1363890,
+      "sha256": "6dcf65223d67c582c10a082f127057cd5437326f730d912caf6e05983e485e9d",
+      "lastWriteTimeUtc": "2026-10-09T06:29:41.5426001Z"
+    }
+  ],
+  "auditReceipt": {
+    "path": ".tmp/native-diagnostic-transport-audit-a1/receipt.json",
+    "bytes": 6013,
+    "sha256": "1725cb717b3c2a852948c2047d1af18479bcfc07cfbb49545ad1f6091a6ac0b6",
+    "status": "CONFIRMED_MISSING_NATIVE_DIAGNOSTIC_SAVE_IMPLEMENTATION"
+  },
+  "iOSManifestPins": "Both candidate size/SHA256 pins verified. Patch archived as draft; applying or reconstructing exact candidate bytes from patch NOT_TESTED.",
+  "freezeCheck": "All ten candidate SHA256 values unchanged across repeated inspection passes. Reviewer did not edit candidates or product.",
+  "requiredHandoffLabels": [
+    "WORK_IN_PROGRESS",
+    "NOT_APPLIED",
+    "NOT_COMPILED",
+    "NOT_TESTED",
+    "NO_NATIVE_OS_ACCEPTANCE",
+    "NO_RELEASE_ACCEPTANCE"
+  ]
+}

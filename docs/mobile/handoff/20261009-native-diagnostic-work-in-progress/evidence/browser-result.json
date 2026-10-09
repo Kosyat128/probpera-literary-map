@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "scope": "ACTUAL_DIAGNOSTIC_PANEL_HOOK_CONTROLLER_SYNTHETIC_NATIVE_PORT",
+  "actualRootPid": 18516,
+  "actualParentPid": 10576,
+  "startedAt": "2026-10-09T05:31:26.202Z",
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-inputs-a1.json",
+    "sha256": "c87a2c2095933cc463c27e08e368a8b4e7d8a9f0635d9b5d89020142a7ef7bbb",
+    "bytes": 6766
+  },
+  "helper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\run-diagnostic-browser.mjs",
+    "bytes": 11784,
+    "sha256": "1fff3a3f204018e7929a23f0ce415dca809d07b567f2db0fcfb8873842e4c2ce"
+  },
+  "fixture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\diagnostic-browser-fixture.tsx",
+    "bytes": 5328,
+    "sha256": "a6412ebfc4045051dadff62c7a95cbd2099b4e76278583c48afafb80fa308535"
+  },
+  "case": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\diagnostic-browser-case.mjs",
+    "bytes": 9344,
+    "sha256": "fdedf4e6e3ba1a21cc43e919c701ea3c0767f3169a5eee7e5495d07b80475bb2"
+  },
+  "sourcePins": [
+    {
+      "path": "src/child/childNativeAppBridge.ts",
+      "bytes": 72590,
+      "sha256": "bb9bdf1c471a19e08c34132ff02baac182751101a95af12c453d6f685c98ddf5"
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "bytes": 14853,
+      "sha256": "c611238d7b6b682f4bc5ad5c26e93aa096276331efb2bacd29faa87168385433"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "bytes": 137836,
+      "sha256": "049ca418f0aa5c813e48b6704716ce6cf5c5112d9b64af10eefb6d8569824be7"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "bytes": 10296,
+      "sha256": "597ec7f080244209a1c35cbc71e0891a76d9f8c3869aa4e70f06168dda6e14da"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "bytes": 18507,
+      "sha256": "b49cfb9ccaa53ffc79102de22deb202e9793142b78c509e9096324f779ad0610"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 223531,
+      "sha256": "a751f5393d5423d68ab39140679e611f24ad7b7dcc45fc2777b78287f215772c"
+    },
+    {
+      "path": "src/support/supportDiagnostics.ts",
+      "bytes": 11117,
+      "sha256": "bc6d3eba9c6ceee5cf36b8cbe686581a7dd3a1e67c14df7d62328a7899af3bea"
+    },
+    {
+      "path": "src/support/supportDiagnosticSession.ts",
+      "bytes": 3316,
+      "sha256": "f42a3fff39202bc83adaf9fcc46b44aacff918bf6c9c517bbc627b66c12dd31d"
+    },
+    {
+      "path": "src/support/supportDiagnosticObservations.ts",
+      "bytes": 3206,
+      "sha256": "563f6791d48177397df25f13493da3cb01ffe6b4ea8867a0ce1e0e9a7bc6a6e2"
+    },
+    {
+      "path": "src/support/useSupportDiagnostics.tsx",
+      "bytes": 4378,
+      "sha256": "c626997a0ee603b56e39c9f7e181599cdbb5a8abee0c0ab221367536b674fe1e"
+    },
+    {
+      "path": "src/support/supportDiagnostics.test.ts",
+      "bytes": 11097,
+      "sha256": "cde71a36083c468e3227ea137b65a2ec9dbc2b32d339550196a8b17cb9d01aa2"
+    },
+    {
+      "path": "src/child/childNativeAppBridge.test.ts",
+      "bytes": 73570,
+      "sha256": "9bb0eebba6ce0ec53359f6ef5badf3afe0e5695d310b6faf1c1bf80f870353e2"
+    },
+    {
+      "path": "src/support/SupportDiagnosticsPanel.tsx",
+      "bytes": 6414,
+      "sha256": "b2ff565404939e8aea1e68d6c07b51935b88f8e3eebd35ebcc916077e10b67f2"
+    },
+    {
+      "path": "src/support/supportDiagnosticsPanel.css",
+      "bytes": 1856,
+      "sha256": "ee2431170309e0625f7ff7ca42b7ab419b80d57252131418808a56cbe31a1b13"
+    },
+    {
+      "path": "src/support/SupportDiagnosticsPanel.test.ts",
+      "bytes": 3014,
+      "sha256": "a747dc15fa4e67a8e0bbc9a94b2254dcbdc12e2bbddae318165aba79d9eaf0a2"
+    }
+  ],
+  "before": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\before-full.json",
+    "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e",
+    "bytes": 303521
+  },
+  "observations": [
+    {
+      "label": "exact-reviewed-download-after-observation-change",
+      "language": "ru",
+      "bytes": 1537,
+      "sha256": "f9a7137ab4be0e8968955ac78564f025acdb4a859695a1d4cc0a13bea0082248",
+      "reviewedSha256": "f9a7137ab4be0e8968955ac78564f025acdb4a859695a1d4cc0a13bea0082248",
+      "temporaryStateCleared": true
+    },
+    {
+      "label": "exact-refreshed-download",
+      "language": "ru",
+      "bytes": 1536,
+      "sha256": "ee4ad138dd67f6cf4492783fa4840edcfa8ad97d5b1026e9da24af7d55c1f438",
+      "reviewedSha256": "ee4ad138dd67f6cf4492783fa4840edcfa8ad97d5b1026e9da24af7d55c1f438",
+      "temporaryStateCleared": true
+    },
+    {
+      "label": "cancel-clears",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "disclosure-close-clears",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "locale-change-clears",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "background-clears",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "live-authority-recheck-without-notification",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "notified-authority-loss-clears",
+      "language": "ru",
+      "touch": false,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "final-new-diagnostic-lifecycle",
+      "language": "ru",
+      "touch": false,
+      "readCalls": 8,
+      "downloads": 2,
+      "io": {
+        "storage": 0,
+        "fetch": 0,
+        "beacon": 0,
+        "webSocket": 0,
+        "xhr": 0,
+        "windowOpen": 0,
+        "urlsCreated": 2,
+        "urlsRevoked": 2,
+        "liveUrls": 0
+      },
+      "remainingSubscriptions": 0
+    },
+    {
+      "label": "exact-reviewed-download-after-observation-change",
+      "language": "en",
+      "bytes": 1537,
+      "sha256": "f9a7137ab4be0e8968955ac78564f025acdb4a859695a1d4cc0a13bea0082248",
+      "reviewedSha256": "f9a7137ab4be0e8968955ac78564f025acdb4a859695a1d4cc0a13bea0082248",
+      "temporaryStateCleared": true
+    },
+    {
+      "label": "exact-refreshed-download",
+      "language": "en",
+      "bytes": 1536,
+      "sha256": "ee4ad138dd67f6cf4492783fa4840edcfa8ad97d5b1026e9da24af7d55c1f438",
+      "reviewedSha256": "ee4ad138dd67f6cf4492783fa4840edcfa8ad97d5b1026e9da24af7d55c1f438",
+      "temporaryStateCleared": true
+    },
+    {
+      "label": "cancel-clears",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "disclosure-close-clears",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "locale-change-clears",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "background-clears",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "live-authority-recheck-without-notification",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "notified-authority-loss-clears",
+      "language": "en",
+      "touch": true,
+      "consented": false,
+      "preview": null
+    },
+    {
+      "label": "final-new-diagnostic-lifecycle",
+      "language": "en",
+      "touch": true,
+      "readCalls": 8,
+      "downloads": 2,
+      "io": {
+        "storage": 0,
+        "fetch": 0,
+        "beacon": 0,
+        "webSocket": 0,
+        "xhr": 0,
+        "windowOpen": 0,
+        "urlsCreated": 2,
+        "urlsRevoked": 2,
+        "liveUrls": 0
+      },
+      "remainingSubscriptions": 0
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\ru-keyboard-320-diagnostics.png",
+      "sha256": "4dda934b9424a76790000b3686bb8b17f267f75f7125b556fa7f1294f5970af9",
+      "bytes": 39533,
+      "humanReviewed": false
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\en-touch-320-diagnostics.png",
+      "sha256": "9d5d4c9c690521799b90407094e7f1679adf63a5ac05c766c88ba6c888acf9db",
+      "bytes": 32649,
+      "humanReviewed": false
+    }
+  ],
+  "pageErrors": [],
+  "consoleWarnings": [],
+  "deniedPageRequests": [],
+  "pass": true,
+  "limitations": {
+    "actualMountedPanelHookControllerAndLocale": true,
+    "nativeCapability": "SYNTHETIC_BOOLEAN_NOT_NATIVE_CURRENT_AUTHORITY_ACCEPTANCE",
+    "observations": "SYNTHETIC_GRAPHICS_TIER_WITH_EXPLICIT_UNKNOWN_OS_STORE_AND_OTHER_UNEXPOSED_FIELDS",
+    "auth": "NO_REAL_AUTH_SERVICE",
+    "actualAppMounted": false,
+    "canonicalGlobeMounted": false,
+    "installedOS": "NOT_RUN",
+    "screenReader": "NOT_RUN",
+    "humanScreenshotReview": false,
+    "browserProcessTraffic": "NOT_INSTRUMENTED",
+    "productBuild": false,
+    "unitTestsRepeated": false,
+    "rawAstRepeated": false,
+    "releaseReady": false,
+    "criteriaClosed": 0,
+    "repositoryWrites": 0
+  },
+  "bundle": {
+    "write": false,
+    "inputCount": 34,
+    "metafileSha256": "c84423ab2f4dff43a84348367d21c935ed80e224d08fc42b8da00a596d080c6c",
+    "outputs": [
+      {
+        "name": "fixture.js",
+        "bytes": 1375675,
+        "sha256": "6c4ddd8b26a5d77b1534f4a8c2ae30ae3669b46686692092e78506637f4d9d60"
+      },
+      {
+        "name": "fixture.css",
+        "bytes": 2026,
+        "sha256": "523ffe226c561fafaa2799ac113431f123bf70c0e97942607ad64174d497454d"
+      }
+    ]
+  },
+  "browser": {
+    "version": "154.0.4258.62",
+    "origin": "http://127.0.0.1:55719"
+  },
+  "cases": [
+    {
+      "language": "ru",
+      "touch": false,
+      "downloads": 2,
+      "observations": 8,
+      "unmountedLeaseDenied": true,
+      "unexpectedPortCalls": 0
+    },
+    {
+      "language": "en",
+      "touch": true,
+      "downloads": 2,
+      "observations": 8,
+      "unmountedLeaseDenied": true,
+      "unexpectedPortCalls": 0
+    }
+  ],
+  "checksCompleted": true,
+  "cleanup": {
+    "contextsClosed": 2,
+    "browserClosed": true,
+    "serverClosed": true,
+    "errors": []
+  },
+  "after": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\after-full.json",
+    "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e",
+    "bytes": 303521
+  },
+  "sourceUnchanged": true,
+  "finishedAt": "2026-10-09T05:31:49.513Z",
+  "failure": null,
+  "status": "PASS_NEW_DIAGNOSTIC_MOUNTED_UI_LOCAL_FIXTURE_NOT_ACCEPTANCE"
+}

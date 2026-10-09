@@ -1,0 +1,300 @@
+{
+  "status": "PASS_ADULT_DIAGNOSTIC_NEW20_LOCAL_QA_NOT_ACCEPTANCE",
+  "pass": true,
+  "actualPid": 11384,
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\apply-qa-inputs.json",
+    "bytes": 11795,
+    "sha256": "e91b24e58f6e24b66e63151d98d017fa0dae26db64be15c319b24dfafc091d2e"
+  },
+  "helper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\apply-and-qa.mjs",
+    "sha256": "f5a66134b8bf00e85ef7bf3f0a3d1c0714a3346609242cf56c9480e3cdb006c8",
+    "bytes": 10085
+  },
+  "before": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\before-full.json",
+    "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e",
+    "bytes": 303521
+  },
+  "after": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\after-full.json",
+    "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e",
+    "bytes": 303521
+  },
+  "sourceRows": 1958,
+  "sourceFingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+  "processes": [
+    {
+      "record": {
+        "mode": "app-tsc",
+        "startedAt": "2026-10-09T05:21:59.989Z",
+        "finishedAt": "2026-10-09T05:22:24.046Z",
+        "actualPid": 19188,
+        "actualParentPid": 11384,
+        "actualExitCode": 0,
+        "signal": null,
+        "naturalCloseObserved": true,
+        "naturalStatus": "PASS",
+        "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "executable": {
+          "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "bytes": 237988664,
+          "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+        },
+        "processRuntimeQualification": "Original child preload pid/version/path observed",
+        "args": [
+          "--import",
+          "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGFkdWx0LWRpYWdub3N0aWMtcWEtcnVuLWExXFxhcHAtdHNjXFxydW50aW1lLmpzb24iLEpTT04uc3RyaW5naWZ5KHtwaWQ6cHJvY2Vzcy5waWQscGFyZW50UGlkOnByb2Nlc3MucHBpZCx2ZXJzaW9uOnByb2Nlc3MudmVyc2lvbixleGVjUGF0aDpwcm9jZXNzLmV4ZWNQYXRoLGVsZWN0cm9uUnVuQXNOb2RlOnByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFLGFyZ3Y6cHJvY2Vzcy5hcmd2fSxudWxsLDIpKydcbicse2ZsYWc6J3d4J30pO2lmKHByb2Nlc3MudmVyc2lvbiE9PSd2MjQuMjEuMCd8fHByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFIT09JzEnKXRocm93IEVycm9yKCdPV05FRF9DSElMRF9SVU5USU1FX0NIQU5HRUQnKTs=",
+          "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\bin\\tsc",
+          "--noEmit",
+          "-p",
+          "tsconfig.json"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\launch.json",
+          "sha256": "7fbc237f386a425a3bdf6ce83e24f40807949d38a83b3f848a60e6c1f184bf96",
+          "bytes": 1287
+        },
+        "runtime": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\runtime.json",
+          "sha256": "8fa59a151d29222b470d03e52156075c495e9487dedc3d4eb8b13ba763f1a21d",
+          "bytes": 440
+        },
+        "runtimeValid": true,
+        "runtimeError": null,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "spawnError": null,
+        "receiptError": null,
+        "deadlineReported": false,
+        "deviceTested": false
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\terminal.json",
+        "sha256": "109a4af69664a44c365d799ca8458bfd60c3b20b929057727de085f8e6fadb71",
+        "bytes": 3238
+      }
+    },
+    {
+      "record": {
+        "mode": "support-ui-new18",
+        "startedAt": "2026-10-09T05:22:24.048Z",
+        "finishedAt": "2026-10-09T05:22:25.371Z",
+        "actualPid": 13152,
+        "actualParentPid": 11384,
+        "actualExitCode": 0,
+        "signal": null,
+        "naturalCloseObserved": true,
+        "naturalStatus": "PASS",
+        "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "executable": {
+          "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "bytes": 237988664,
+          "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+        },
+        "processRuntimeQualification": "Original child preload pid/version/path observed",
+        "args": [
+          "--import",
+          "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGFkdWx0LWRpYWdub3N0aWMtcWEtcnVuLWExXFxzdXBwb3J0LXVpLW5ldzE4XFxydW50aW1lLmpzb24iLEpTT04uc3RyaW5naWZ5KHtwaWQ6cHJvY2Vzcy5waWQscGFyZW50UGlkOnByb2Nlc3MucHBpZCx2ZXJzaW9uOnByb2Nlc3MudmVyc2lvbixleGVjUGF0aDpwcm9jZXNzLmV4ZWNQYXRoLGVsZWN0cm9uUnVuQXNOb2RlOnByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFLGFyZ3Y6cHJvY2Vzcy5hcmd2fSxudWxsLDIpKydcbicse2ZsYWc6J3d4J30pO2lmKHByb2Nlc3MudmVyc2lvbiE9PSd2MjQuMjEuMCd8fHByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFIT09JzEnKXRocm93IEVycm9yKCdPV05FRF9DSElMRF9SVU5USU1FX0NIQU5HRUQnKTs=",
+          "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+          "run",
+          "--config",
+          "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\vitest.config.mjs",
+          "--configLoader",
+          "native",
+          "--no-file-parallelism",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "src/support/supportDiagnostics.test.ts",
+          "src/support/SupportDiagnosticsPanel.test.ts",
+          "--outputFile",
+          "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-report.json"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\launch.json",
+          "sha256": "a870755247b265f042736068123ef5175abfb00a5a9b1621401a7f9b278611df",
+          "bytes": 1908
+        },
+        "runtime": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\runtime.json",
+          "sha256": "82372aa17f8a2ec46ad37e54af8ed8f9fa441ad1dc77a180eefc35253875477f",
+          "bytes": 1040
+        },
+        "runtimeValid": true,
+        "runtimeError": null,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\stdout.bin",
+          "sha256": "6492edbe0de7d26dbaf26b99eb02e0a648921d48c3c071048ce722dd2ea7f861",
+          "bytes": 204,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "spawnError": null,
+        "receiptError": null,
+        "deadlineReported": false,
+        "deviceTested": false
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\terminal.json",
+        "sha256": "2b65ac20d35e66815b28f7cd2c147eddd47d52f62617d134b7b629ce9d49a1e4",
+        "bytes": 3898
+      }
+    },
+    {
+      "record": {
+        "mode": "native-eligibility-new2",
+        "startedAt": "2026-10-09T05:22:25.374Z",
+        "finishedAt": "2026-10-09T05:22:26.601Z",
+        "actualPid": 20948,
+        "actualParentPid": 11384,
+        "actualExitCode": 0,
+        "signal": null,
+        "naturalCloseObserved": true,
+        "naturalStatus": "PASS",
+        "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "executable": {
+          "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "bytes": 237988664,
+          "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+        },
+        "processRuntimeQualification": "Original child preload pid/version/path observed",
+        "args": [
+          "--import",
+          "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGFkdWx0LWRpYWdub3N0aWMtcWEtcnVuLWExXFxuYXRpdmUtZWxpZ2liaWxpdHktbmV3MlxccnVudGltZS5qc29uIixKU09OLnN0cmluZ2lmeSh7cGlkOnByb2Nlc3MucGlkLHBhcmVudFBpZDpwcm9jZXNzLnBwaWQsdmVyc2lvbjpwcm9jZXNzLnZlcnNpb24sZXhlY1BhdGg6cHJvY2Vzcy5leGVjUGF0aCxlbGVjdHJvblJ1bkFzTm9kZTpwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSxhcmd2OnByb2Nlc3MuYXJndn0sbnVsbCwyKSsnXG4nLHtmbGFnOid3eCd9KTtpZihwcm9jZXNzLnZlcnNpb24hPT0ndjI0LjIxLjAnfHxwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSE9PScxJyl0aHJvdyBFcnJvcignT1dORURfQ0hJTERfUlVOVElNRV9DSEFOR0VEJyk7",
+          "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+          "run",
+          "--config",
+          "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\vitest.config.mjs",
+          "--configLoader",
+          "native",
+          "--no-file-parallelism",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "src/child/childNativeAppBridge.test.ts",
+          "--testNamePattern",
+          "adult diagnostic eligibility",
+          "--outputFile",
+          "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-report.json"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\launch.json",
+          "sha256": "0e693c376841d152c01f6cbdb4eeb6519fad94cfd1466caf9f2374d4c4ff0697",
+          "bytes": 1929
+        },
+        "runtime": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\runtime.json",
+          "sha256": "f9c27e81a538aa444722fe345622156bdac947f4d75bf421857014311581fc35",
+          "bytes": 1046
+        },
+        "runtimeValid": true,
+        "runtimeError": null,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\stdout.bin",
+          "sha256": "90d015ddf7b77d42206c83df2e0ff8dc7f2e9f74294d17642b82b82bed4d3d5f",
+          "bytes": 200,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "spawnError": null,
+        "receiptError": null,
+        "deadlineReported": false,
+        "deviceTested": false
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\terminal.json",
+        "sha256": "ef71c4ea7c43ed9fbb1e8c67ad8700f3abc5a36e5cc13f326ba7abde0726f8f5",
+        "bytes": 3947
+      }
+    }
+  ],
+  "reportProofs": [
+    {
+      "report": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-report.json",
+        "sha256": "81126d1126e17509fb00eba29107e6fe8d9454bad14ef67422360250a0858ac4",
+        "bytes": 7444
+      },
+      "passed": 18,
+      "skipped": 0,
+      "caseNames": [
+        "closed adult diagnostic projection exports exactly ten field groups with explicit absent sources and no ambient reads",
+        "closed adult diagnostic projection rejects private extra fields at every exported observation boundary",
+        "closed adult diagnostic projection rejects accessors, custom serialization, symbols, foreign prototypes and throwing proxies",
+        "closed adult diagnostic projection admits IDs only in the known current catalog relation, never a syntactically valid stored alias",
+        "closed adult diagnostic projection rejects impossible counters, unbounded IDs and untrusted version strings",
+        "explicit consent and exact preview lifetime never reads adult observations before consent or through a denied boundary",
+        "explicit consent and exact preview lifetime takes a fresh snapshot on each explicit preview and downloads exactly the reviewed bytes",
+        "explicit consent and exact preview lifetime clears bytes and consent when admission is lost, and requires new consent after return",
+        "explicit consent and exact preview lifetime rejects a preview whose synchronous reader crosses the adult boundary",
+        "explicit consent and exact preview lifetime does not restore consent or bytes when an authority read synchronously invalidates the session",
+        "explicit consent and exact preview lifetime never retains a prior preview or raw exception after a rejected observation",
+        "existing PWA observations reports only coarse storage and observed matching-build integrity",
+        "existing PWA observations does not infer a successful update or check from a ready worker",
+        "existing PWA observations rejects nonsensical storage without exporting exact sizes",
+        "explicit support preview download does not create a URL or anchor when controller admission denies export",
+        "explicit support preview download downloads exactly the approved bytes as JSON and releases all temporary DOM/URL state",
+        "explicit support preview download still removes the anchor and revokes the URL when the browser click fails",
+        "explicit support preview download does not retain an anchor or URL when URL creation fails"
+      ]
+    },
+    {
+      "report": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-report.json",
+        "sha256": "465c0296fcd26586cf87db89be93dc06b348575ed2aa3764efe12d96e2c02737",
+        "bytes": 28811
+      },
+      "passed": 2,
+      "skipped": 71,
+      "caseNames": [
+        "adult diagnostic eligibility is a boolean observation of the current native adult lease and performs no native call",
+        "adult diagnostic eligibility denies child/background/disposed contexts while permitting an observed unenrolled adult"
+      ]
+    }
+  ],
+  "globeProof": {
+    "helper": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-apply-qa-a1\\canonical-globe-proof.mjs",
+      "sha256": "f5faa098755e788d3e39032f7c0c88e165bbaf20c28743a953d4db808f95f986",
+      "bytes": 10122
+    },
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\globe-static-proof.json",
+      "sha256": "8f7fbf56d3847bc627e8ada2d72a5e32dee78ad963f25922a537e1c5dbcb28d4",
+      "bytes": 2403
+    },
+    "status": "PASS_STATIC_CANONICAL_GLOBE_OBSERVATION_ONLY",
+    "runtimeAcceptance": false
+  },
+  "testsPassed": 20,
+  "checks": {
+    "browser": "NOT_RUN",
+    "installedOS": "NOT_VERIFIED",
+    "wholeGlobeVisual": "NOT_RUN"
+  },
+  "releaseReady": false,
+  "criteriaClosed": 0
+}

@@ -1,0 +1,195 @@
+{
+  "status": "PASS_LOCAL_DOCUMENT_CHECKPOINT_VALIDATION_NOT_ACCEPTANCE",
+  "pass": true,
+  "actualRootPid": 2520,
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\input-root-a2.json",
+    "sha256": "017bcfcf8c0f2404af2997b3bd6fc8701eb8e53cd77ddd97579375c8b5c84494",
+    "bytes": 1711
+  },
+  "before": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\before-full.json",
+    "sha256": "a8d5c9f42d055d3dca1d1aaa5f82d42ce590087bc9ad9dfceedce73d1c8e6179",
+    "bytes": 302271
+  },
+  "after": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\after-full.json",
+    "sha256": "a8d5c9f42d055d3dca1d1aaa5f82d42ce590087bc9ad9dfceedce73d1c8e6179",
+    "bytes": 302271
+  },
+  "processes": [
+    {
+      "record": {
+        "mode": "verify-requirements",
+        "startedAt": "2026-10-09T06:25:20.827Z",
+        "finishedAt": "2026-10-09T06:25:21.046Z",
+        "actualPid": 24380,
+        "actualParentPid": 2520,
+        "actualExitCode": 0,
+        "signal": null,
+        "naturalCloseObserved": true,
+        "naturalStatus": "PASS",
+        "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "executable": {
+          "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "bytes": 237988664,
+          "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+        },
+        "processRuntimeQualification": "Original child preload pid/version/path observed",
+        "args": [
+          "--import",
+          "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXHN1cHBvcnQtaW50YWtlLWZpbmFsLXZhbGlkYXRpb24tcm9vdC1hMVxccnVuLXJvb3QtYTJcXHZlcmlmeS1yZXF1aXJlbWVudHNcXHJ1bnRpbWUuanNvbiIsSlNPTi5zdHJpbmdpZnkoe3BpZDpwcm9jZXNzLnBpZCxwYXJlbnRQaWQ6cHJvY2Vzcy5wcGlkLHZlcnNpb246cHJvY2Vzcy52ZXJzaW9uLGV4ZWNQYXRoOnByb2Nlc3MuZXhlY1BhdGgsZWxlY3Ryb25SdW5Bc05vZGU6cHJvY2Vzcy5lbnYuRUxFQ1RST05fUlVOX0FTX05PREUsYXJndjpwcm9jZXNzLmFyZ3Z9LG51bGwsMikrJ1xuJyx7ZmxhZzond3gnfSk7aWYocHJvY2Vzcy52ZXJzaW9uIT09J3YyNC4yMS4wJ3x8cHJvY2Vzcy5lbnYuRUxFQ1RST05fUlVOX0FTX05PREUhPT0nMScpdGhyb3cgRXJyb3IoJ09XTkVEX0NISUxEX1JVTlRJTUVfQ0hBTkdFRCcpOw==",
+          "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\verify-requirements.mjs"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\verify-requirements\\launch.json",
+          "sha256": "7f9c7b55712e97391a8e76d7182f48587e68139d622f5ffc5364f7054f35cc19",
+          "bytes": 1309
+        },
+        "runtime": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\verify-requirements\\runtime.json",
+          "sha256": "1f3075fddc2e0cc48f06d55b2ee9e274d7513f4cda48acd7a5b3d438b3744fe0",
+          "bytes": 398
+        },
+        "runtimeValid": true,
+        "runtimeError": null,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\verify-requirements\\stdout.bin",
+          "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+          "bytes": 396,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\verify-requirements\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "spawnError": null,
+        "receiptError": null,
+        "deadlineReported": false,
+        "deviceTested": false
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\verify-requirements\\terminal.json",
+        "sha256": "6b00110e28f53d33a789e1fd761b06e6fb0e12051795b825192659db33e7cc9b",
+        "bytes": 3414
+      }
+    },
+    {
+      "record": {
+        "mode": "stage-context-S27",
+        "startedAt": "2026-10-09T06:25:21.049Z",
+        "finishedAt": "2026-10-09T06:25:21.216Z",
+        "actualPid": 9952,
+        "actualParentPid": 2520,
+        "actualExitCode": 0,
+        "signal": null,
+        "naturalCloseObserved": true,
+        "naturalStatus": "PASS",
+        "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "executable": {
+          "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "bytes": 237988664,
+          "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+        },
+        "processRuntimeQualification": "Original child preload pid/version/path observed",
+        "args": [
+          "--import",
+          "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXHN1cHBvcnQtaW50YWtlLWZpbmFsLXZhbGlkYXRpb24tcm9vdC1hMVxccnVuLXJvb3QtYTJcXHN0YWdlLWNvbnRleHQtUzI3XFxydW50aW1lLmpzb24iLEpTT04uc3RyaW5naWZ5KHtwaWQ6cHJvY2Vzcy5waWQscGFyZW50UGlkOnByb2Nlc3MucHBpZCx2ZXJzaW9uOnByb2Nlc3MudmVyc2lvbixleGVjUGF0aDpwcm9jZXNzLmV4ZWNQYXRoLGVsZWN0cm9uUnVuQXNOb2RlOnByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFLGFyZ3Y6cHJvY2Vzcy5hcmd2fSxudWxsLDIpKydcbicse2ZsYWc6J3d4J30pO2lmKHByb2Nlc3MudmVyc2lvbiE9PSd2MjQuMjEuMCd8fHByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFIT09JzEnKXRocm93IEVycm9yKCdPV05FRF9DSElMRF9SVU5USU1FX0NIQU5HRUQnKTs=",
+          "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\stage-context.mjs",
+          "S27"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "launch": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\stage-context-S27\\launch.json",
+          "sha256": "60a0b6341605dc0fc1aa402996c4074657507d15d109d1e1e8acd59f6a9803f8",
+          "bytes": 1307
+        },
+        "runtime": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\stage-context-S27\\runtime.json",
+          "sha256": "66f97f1293cc8be31263690a6cf7f789808cf9841376f1cc4c26929f78aee4aa",
+          "bytes": 402
+        },
+        "runtimeValid": true,
+        "runtimeError": null,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\stage-context-S27\\stdout.bin",
+          "sha256": "8b5b3fa0ece98bb5edc9f475e857fb396bdd7946e9644383bfa04938deec7ed9",
+          "bytes": 965,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\stage-context-S27\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+        },
+        "spawnError": null,
+        "receiptError": null,
+        "deadlineReported": false,
+        "deviceTested": false
+      },
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\stage-context-S27\\terminal.json",
+        "sha256": "123623cb17c55d4fde24a85153051cc51ce2188bd51799214018ad0fcb833f5a",
+        "bytes": 3404
+      }
+    }
+  ],
+  "verify": {
+    "value": {
+      "package": "LITERARY_PLANET_CODEX_FINAL_V12_BILINGUAL_RU_EN_ALL_IN_ONE",
+      "version": "12.0",
+      "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+      "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
+      "checksumCount": 194,
+      "manifestFileCount": 191,
+      "bindingDocumentCount": 173,
+      "pass": true,
+      "failures": []
+    },
+    "error": null
+  },
+  "stageContext": {
+    "value": {
+      "stage": "S27",
+      "route": "S21-S27",
+      "documents": [
+        "03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+        "03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+        "03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+        "68_REQUIREMENT_ID_INDEX.csv",
+        "69_STAGE_ACCEPTANCE_MATRIX.csv",
+        "89_CODEX_CONTEXT_ORCHESTRATION_RU.md",
+        "03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+        "119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+        "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+        "15_RIGHTS_PROVENANCE_NO_AI_RU.md",
+        "19_ACCOUNT_DATA_LIFECYCLE_RU.md",
+        "20_SECURITY_PRIVACY_COMPLIANCE_RU.md",
+        "24_ADMIN_CMS_OPERATIONS_RU.md",
+        "25_QA_RELEASE_GATES_RU.md",
+        "26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+        "27_STORE_SUBMISSION_LEGAL_HANDOFF_RU.md"
+      ],
+      "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+      "instruction": "Read these documents and active state; do not read the standalone fallback again."
+    },
+    "error": null
+  },
+  "graphError": null,
+  "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "wholeHead": "0c8d758da4b56c5a34dd32c9db7180ddac58c7c3",
+  "childGitAutocrlfOverride": {
+    "key": "GIT_CONFIG_VALUE_3",
+    "value": "true",
+    "scope": "two verifier children only"
+  },
+  "releaseReady": false,
+  "criteriaClosed": 0,
+  "sourceWrites": 0,
+  "gitWrites": 0,
+  "remoteActions": 0
+}

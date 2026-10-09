@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-retained-current-pwa-integrity-finalization",
+  "status": "PASS_CURRENT_RETAINED_PWA_INTEGRITY_ONLY",
+  "actualPid": 13680,
+  "finishedAt": "2026-10-09T06:10:40.694Z",
+  "helper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-pwa-finalization-proposal-a1\\finalize-retained-pwa.mjs",
+    "sha256": "521cd8df42f213c989ca29a11a94c009c9d6fb46ccd0dbf323a90538e1e8868d",
+    "bytes": 9235
+  },
+  "source": {
+    "repositoryHead": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+    "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+    "sourceFingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+    "sourceRows": 1958,
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "d3f1ffaff66191d5b076747da99323d0d4d25da4c46c94aad0676343b36f5208"
+  },
+  "original": {
+    "ownerPid": 23420,
+    "launch": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-build-owned-pwa-a1\\launch.json",
+      "sha256": "967d67246683e1b4ba2789bcc14c8cdf6b6d117020adc6470c493fc29ee29d89",
+      "bytes": 697
+    },
+    "preparation": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\preparation.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "originalNaturalTermination": "UNKNOWN",
+    "originalExitCode": null,
+    "childNaturalExitCodes": "UNKNOWN",
+    "originalFullInputSnapshot": "UNRECOVERABLE_EMPTY_PREPARATION",
+    "originalPidAbsentAtChecks": true,
+    "sourceCommitFromFinalArtifact": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+    "artifactsRetainedWithoutModification": true
+  },
+  "retainedAudit": {
+    "reference": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-audit.stdout.txt",
+      "sha256": "95c13eb2c008899c8bd05c8a49d97a940c8f65ce9d8af45289c46c1c0abc77c6",
+      "bytes": 797
+    },
+    "reportedPass": true,
+    "reexecuted": false,
+    "identity": {
+      "buildId": "3bb9898884ff665665ca12deaeb0824b3e86a08c9fd14f666f93a0f27cec0c7a",
+      "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+      "localQaAuthority": false
+    },
+    "counts": {
+      "files": 1427,
+      "bytes": 77798542,
+      "bootstrapFiles": 1397,
+      "bootstrapBytes": 73262106,
+      "sourceInputs": 1198,
+      "publicSources": 1349,
+      "scripts": 45
+    },
+    "limitations": [
+      "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+      "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+    ]
+  },
+  "buildCompletion": {
+    "stdout": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-build.stdout.txt",
+      "sha256": "ed108e4a2f556a8afdf16fadee24d9215aeb479c39aebe7821e78eb91f3cbc07",
+      "bytes": 8268
+    },
+    "stderr": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-build.stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "bytes": 5424
+    },
+    "reportedOutput": {
+      "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa",
+      "previous": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-8321b41c-7665-4801-8633-a3fa8877f8e3",
+      "buildId": "3bb9898884ff665665ca12deaeb0824b3e86a08c9fd14f666f93a0f27cec0c7a",
+      "essentialFiles": 1397,
+      "essentialBytes": 73262106,
+      "releaseReady": false
+    }
+  },
+  "currentIntegrity": {
+    "dist": {
+      "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa",
+      "files": 1427,
+      "bytes": 77798542,
+      "inventorySha256": "7712e57cc8e767974ccbbb68a07d9f7a22ccc9ba457ce6f37694f4f0cc829532",
+      "artifact": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-pwa\\artifact.json",
+        "sha256": "b259fc974d9570856626990af4f033a74540e2302b937740372147baf062dd6d",
+        "bytes": 510015
+      }
+    },
+    "retained": {
+      "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-bundle",
+      "files": 1427,
+      "bytes": 77798542,
+      "inventorySha256": "7712e57cc8e767974ccbbb68a07d9f7a22ccc9ba457ce6f37694f4f0cc829532",
+      "artifact": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-bundle\\artifact.json",
+        "sha256": "b259fc974d9570856626990af4f033a74540e2302b937740372147baf062dd6d",
+        "bytes": 510015
+      }
+    },
+    "pwaInputFiles": 1198,
+    "pwaInputSha256": "a30050e42566fb97e7b432caa720ae0d841ca416af92426aee74ab759bbe328c",
+    "publicProvenanceRows": 1349,
+    "uniquePublicSources": 1347,
+    "sourceUnchanged": true
+  },
+  "packageableRetainedBundle": true,
+  "packageableQualification": "Current byte-verified retained PWA artifact; original control-plane completion and natural exits remain UNKNOWN.",
+  "actions": {
+    "compile": 0,
+    "publicCopies": 0,
+    "auditReruns": 0,
+    "tests": 0,
+    "archives": 0,
+    "trackedWrites": 0,
+    "remote": 0
+  },
+  "releaseReady": false,
+  "productionActionsAuthorized": false,
+  "deviceTested": false,
+  "criteriaClosed": 0,
+  "formalTransitions": 0,
+  "limitations": [
+    "This new receipt verifies current retained bytes and current inputs only. It is not a replacement natural-exit record for PID 23420 or either child.",
+    "Installed OS, human materials, PSP selection, configured Auth/deletion and remote authorization gates remain open."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-only-native-diagnostic-transport-audit",
+  "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "workingTreeAtAudit": "CLEAN",
+  "auditDate": "2026-10-09",
+  "sourceCommon": {
+    "rows": 1958,
+    "fingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+    "provenance": "Exact snapshot supplied by root: adult-diagnostic-qa-run-a1/after-full.json; independently pinned relevant sources below"
+  },
+  "status": "CONFIRMED_MISSING_NATIVE_DIAGNOSTIC_SAVE_IMPLEMENTATION",
+  "nativeOsRuntime": "NOT_RUN",
+  "testsBuildsSourceExecution": "NOT_RUN_SOURCE_ONLY_AUDIT",
+  "trackedWrites": 0,
+  "scope": "Req26 section3 local adult redacted diagnostic export. Implementing local OS save does not require support operators, SLA, routing or Auth delivery from req155.",
+  "findings": [
+    "SupportDiagnosticsPanel.tsx:34-53 always Blob/objectURL/anchor.download; true means only no synchronous click exception. No native-save call or result.",
+    "App.tsx:3578 mounts the same panel in native adult settings. PlatformServices ports.ts:40-62 has no file-save/share port.",
+    "Capacitor core/android/ios 8.5.1. No Filesystem/Share dependency. Native custom plugin registrations contain ContentStore, SecureStore and Child.",
+    "Bundled Android Bridge.java:409-410 leaves blob/data inside WebView. No DownloadListener/setDownloadListener in bundled Capacitor Android or application Java sources.",
+    "Bundled iOS WebViewDelegationHandler.swift:107-124 hands external top-level navigation to UIApplication.open and cancels. No WKDownload/destination delegate in bundled Capacitor iOS or application Swift sources.",
+    "Existing Android Vault:4339-4368 and Swift Vault:9023-9035/9082 system export is private child-data custody bound to export-child-data, profileId and literary-planet-child-personal-data schema. It is not a diagnostics API.",
+    "supportDiagnosticSession.ts:59 currently bounds UTF-16 string.length. New native transport must enforce actual UTF-8 bytes."
+  ],
+  "qualification": "Missing integrated native transport is confirmed by source inspection. Installed Android/iOS WebView, system picker, storage provider and file lifecycle behavior was not observed. Synthetic-platform browser downloads are not native OS acceptance.",
+  "nextOriginalPlanAction": "Implement and wire dedicated adult-only Android/iOS diagnostic-save with current native adult lease, action-time consent, exact reviewed closed-JSON bytes at most 16384 UTF-8 bytes, fixed literary-planet-diagnostics.json filename, one-use bounded OS picker custody, asynchronous saved/cancelled/error result and cleanup. Preserve private child export. No NoOp/unsupported button substitute.",
+  "officialSources": [
+    "https://developer.android.com/reference/android/webkit/DownloadListener",
+    "https://developer.android.com/training/data-storage/shared/documents-files",
+    "https://developer.apple.com/documentation/webkit/wkdownloaddelegate",
+    "https://developer.apple.com/documentation/uikit/uidocumentpickerviewcontroller/init(forexporting:ascopy:)"
+  ],
+  "sourcePins": [
+    {
+      "path": "src/support/SupportDiagnosticsPanel.tsx",
+      "bytes": 6414,
+      "sha256": "b2ff565404939e8aea1e68d6c07b51935b88f8e3eebd35ebcc916077e10b67f2"
+    },
+    {
+      "path": "src/support/supportDiagnosticSession.ts",
+      "bytes": 3316,
+      "sha256": "f42a3fff39202bc83adaf9fcc46b44aacff918bf6c9c517bbc627b66c12dd31d"
+    },
+    {
+      "path": "src/support/useSupportDiagnostics.tsx",
+      "bytes": 4378,
+      "sha256": "c626997a0ee603b56e39c9f7e181599cdbb5a8abee0c0ab221367536b674fe1e"
+    },
+    {
+      "path": "src/support/supportDiagnostics.ts",
+      "bytes": 11117,
+      "sha256": "bc6d3eba9c6ceee5cf36b8cbe686581a7dd3a1e67c14df7d62328a7899af3bea"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 223531,
+      "sha256": "a751f5393d5423d68ab39140679e611f24ad7b7dcc45fc2777b78287f215772c"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "bytes": 3553,
+      "sha256": "4d4849a63696eb31b8971c4864b497c5f5632f1baa3f0216398adeea4ff566d1"
+    },
+    {
+      "path": "src/child/childNativeAppBridge.ts",
+      "bytes": 72590,
+      "sha256": "bb9bdf1c471a19e08c34132ff02baac182751101a95af12c453d6f685c98ddf5"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "bytes": 900,
+      "sha256": "72cbbb44c7fe31e3f23421485ade2f9d8995ce3b19078073603c3ad5f5f59faa"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "bytes": 1110065,
+      "sha256": "e7ee1ebd8734a5b6c9eef40895d112385fc2390a093e12c23c9678ccf242cd7e"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "bytes": 1339541,
+      "sha256": "88c0bb8dfe00516e4a203e624a7eb2584240aff66d1c302e2740f1a6fd1001ad"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+      "bytes": 15295,
+      "sha256": "9f9cd470853d056f1dbd9b26694091577a89bc30565a41825f4ca4327722dca0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 17160,
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/Bridge.java",
+      "bytes": 59779,
+      "sha256": "862e5cca9f8fb6d4f5ffd534caaa3908876321c2dfc593fa0345b5fdbc4c4461"
+    },
+    {
+      "path": "node_modules/@capacitor/ios/Capacitor/Capacitor/WebViewDelegationHandler.swift",
+      "bytes": 15608,
+      "sha256": "913ee4bfcdeb4d44ca8c3719ef8f2dacc12568211c4184dc6555930a5f54ca0c"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+      "bytes": 4433,
+      "sha256": "f182253130337a3a4bd98a390e2e9ddaae0175bf4b113fcdc944c8ca79703ccb"
+    }
+  ]
+}

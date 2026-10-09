@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "kind": "GITHUB_CROSS_COMPUTER_WORK_CHECKPOINT",
+  "createdAt": "2026-10-09T07:58:24.4853000Z",
+  "status": "PORTABLE_SOURCE_AND_QUALIFIED_EVIDENCE_WITH_INERT_NATIVE_WIP",
+  "wholeHeadBeforeTransfer": "0c8d758da4b56c5a34dd32c9db7180ddac58c7c3",
+  "sourceProductCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "sourceRows": 1958,
+  "sourceFingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "repository": "https://github.com/Kosyat128/probpera-literary-map",
+  "productChangesInTransfer": 0,
+  "testsRerun": 0,
+  "buildsRerun": 0,
+  "releaseReady": false,
+  "criteriaClosed": 0,
+  "formalTransitions": 0,
+  "draftAdmission": {
+    "safeToApply": false,
+    "candidates": [
+      {
+        "entry": "android/MainActivity.java",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/android/MainActivity.java",
+        "bytes": 3320,
+        "sha256": "7457c7112969725df6fab7ea9db235a6d86659a1bac963a435ad744fa6db99a5"
+      },
+      {
+        "entry": "android/PlanetAdultDiagnosticJson.java",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetAdultDiagnosticJson.java",
+        "bytes": 10218,
+        "sha256": "e95c6fb58c9d4dbaec61c40ed90a2edcc7d3cfab9f5e0d23136e934147521a65"
+      },
+      {
+        "entry": "android/PlanetAdultDiagnosticSave.java",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetAdultDiagnosticSave.java",
+        "bytes": 10669,
+        "sha256": "736b60d1c5a26a220025bfb106b2d10b549006031f354db9efc8514d1625bb8a"
+      },
+      {
+        "entry": "android/PlanetChildPlugin.java",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetChildPlugin.java",
+        "bytes": 6741,
+        "sha256": "9a5f34d907d773b7a87e969cd052526345e9db8faeccd4b9f30ede3f0c684187"
+      },
+      {
+        "entry": "android/PlanetChildVault.java",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/android/PlanetChildVault.java",
+        "bytes": 1117144,
+        "sha256": "da5b73eaaa7e725d526a93714a2e12cc53640d783a19361b599818bb98dd1ea1"
+      },
+      {
+        "entry": "ios/diagnostic-addition.swift.txt",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/ios/diagnostic-addition.swift.txt",
+        "bytes": 23827,
+        "sha256": "c0a93ccbc35f4cec4e40095061b4ce9e1972c7de5ae03fe44e0f96f083e04ebd"
+      },
+      {
+        "entry": "ios/integration-manifest.json",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/ios/integration-manifest.json",
+        "bytes": 3399,
+        "sha256": "1619808b3a92139f5bb4f76b725a8aa3fa9f0743128dfb341dbcee915ffdb15e"
+      },
+      {
+        "entry": "ios/ios-diagnostic-save.patch",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/ios/ios-diagnostic-save.patch",
+        "bytes": 37517,
+        "sha256": "2316ab255b907adfd066dc8be539d56c9f1c28fae152d4f5095c4adac7a7d216"
+      },
+      {
+        "entry": "ios/PlanetChildPlugin.swift",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/ios/PlanetChildPlugin.swift",
+        "bytes": 7661,
+        "sha256": "75f00f496c213e71e3b067d4245d31ee6627d3e9376f1c6873b3eb7218aea743"
+      },
+      {
+        "entry": "ios/PlanetChildVault.swift",
+        "originalPath": ".tmp/native-diagnostic-transport-candidates-a1/ios/PlanetChildVault.swift",
+        "bytes": 1363890,
+        "sha256": "6dcf65223d67c582c10a082f127057cd5437326f730d912caf6e05983e485e9d"
+      }
+    ],
+    "status": "NOT_APPLIED_NOT_COMPILED_NOT_TESTED",
+    "safeToArchive": true
+  },
+  "carriedFiles": [
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/.gitattributes",
+      "sourcePath": "Scoped transfer attribute",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "qualification": "Preserve raw bytes during fresh checkout; no global Git change."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/native-candidates.NOT_APPLIED.zip",
+      "sourcePath": ".tmp/native-diagnostic-transport-candidates-a1",
+      "bytes": 554945,
+      "sha256": "540972b413ade27c5938841230d16a8cc3e6a32a744872b1916b4099fdb37895",
+      "qualification": "10 inert WIP source drafts, safeToApply=false. Entry size/SHA readback PASS; CRC validation NOT_RUN."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/astra-archive-review.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\handoff-github-20261009\\astra-archive-review.json",
+      "bytes": 9631,
+      "sha256": "3ed70d2269484143f560c090139499797299c72a85c68ff253b4bd5a0f900e32",
+      "qualification": "Astra Ultra scoped archival review; unresolved product blockers remain."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/native-transport-audit.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-diagnostic-transport-audit-a1\\receipt.json",
+      "bytes": 6013,
+      "sha256": "1725cb717b3c2a852948c2047d1af18479bcfc07cfbb49545ad1f6091a6ac0b6",
+      "qualification": "Current native OS export missing, source-only audit; no installed OS run."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/CODEX_PROMPT.original.md",
+      "sourcePath": "C:\\Users\\User\\Desktop\\CODEX_PROMPT.md",
+      "bytes": 52054,
+      "sha256": "fa3c37962d642d7f995de562046f173ba240c898ac7483f1c04f3b93d60ba97c",
+      "qualification": "Exact original adopted task. Read whole file with current instructions; historical SHA is orientation only."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/unexecuted-packet-draft/write-adult-diagnostic-packet-a1.ps1",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\adult-diagnostic-packet-proposal-a1\\write-adult-diagnostic-packet-a1.ps1",
+      "bytes": 29262,
+      "sha256": "871f19a0f372fe091d021c2742da338a296daea2d620f22e8bf799a6d19b72d0",
+      "qualification": "UNEXECUTED DRAFT; old e8ac pins and original machine paths. Read and rebind after native fix."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/unexecuted-packet-draft/proposal-inputs-draft-a1.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\adult-diagnostic-packet-proposal-a1\\proposal-inputs-draft-a1.json",
+      "bytes": 20114,
+      "sha256": "d2529331ee912159e0d17c6eccd0a052009cbc818bb55347a18a355c0354c2c1",
+      "qualification": "UNEXECUTED old snapshot packet inputs. No new ZIP/native acceptance."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/qa-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\result.json",
+      "bytes": 19196,
+      "sha256": "c701612199b3ecd4d4e13ea1fd9bd67d53317bd35a0d74aa9ef9ee46c20b1923",
+      "qualification": "Actual20 new targeted tests+TSC, not nativeOS acceptance."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/support-ui-report.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-report.json",
+      "bytes": 7444,
+      "sha256": "81126d1126e17509fb00eba29107e6fe8d9454bad14ef67422360250a0858ac4",
+      "qualification": "18 new unit casesPASS."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/native-eligibility-report.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-report.json",
+      "bytes": 28811,
+      "sha256": "465c0296fcd26586cf87db89be93dc06b348575ed2aa3764efe12d96e2c02737",
+      "qualification": "2 new eligibility casesPASS;71old skipped."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/globe-static-proof.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\globe-static-proof.json",
+      "bytes": 2403,
+      "sha256": "8f7fbf56d3847bc627e8ada2d72a5e32dee78ad963f25922a537e1c5dbcb28d4",
+      "qualification": "Static observation-only proof; runtimeNOT_RUN."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/qa-source-inputs.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\after-full.json",
+      "bytes": 303521,
+      "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e",
+      "qualification": "Exact original pre-source-commit run capture; do not relabel original runHEAD."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/app-tsc-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\app-tsc\\terminal.json",
+      "bytes": 3238,
+      "sha256": "109a4af69664a44c365d799ca8458bfd60c3b20b929057727de085f8e6fadb71",
+      "qualification": "Original naturalTSCterminal."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/support-unit-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\support-ui-new18\\terminal.json",
+      "bytes": 3898,
+      "sha256": "2b65ac20d35e66815b28f7cd2c147eddd47d52f62617d134b7b629ce9d49a1e4",
+      "qualification": "Original new18terminal."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/native-eligibility-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-qa-run-a1\\native-eligibility-new2\\terminal.json",
+      "bytes": 3947,
+      "sha256": "ef71c4ea7c43ed9fbb1e8c67ad8700f3abc5a36e5cc13f326ba7abde0726f8f5",
+      "qualification": "Original new2terminal."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/browser-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\result.json",
+      "bytes": 11646,
+      "sha256": "bcae933e2a350aab2cb3d3914764b721da9e9f02824de612235ad2ad74c11723",
+      "qualification": "Actual mountedRUEN localfixture; syntheticnativecapability/HTMLdownloads only."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/ru-keyboard-320-diagnostics.png",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\ru-keyboard-320-diagnostics.png",
+      "bytes": 39533,
+      "sha256": "4dda934b9424a76790000b3686bb8b17f267f75f7125b556fa7f1294f5970af9",
+      "qualification": "Root-viewed fixture capture; humanapprovalNOT_RUN."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/en-touch-320-diagnostics.png",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-ui-browser-proposal-a1\\browser-run-root-a1\\en-touch-320-diagnostics.png",
+      "bytes": 32649,
+      "sha256": "9d5d4c9c690521799b90407094e7f1679adf63a5ac05c766c88ba6c888acf9db",
+      "qualification": "Root-viewed fixture capture; humanapprovalNOT_RUN."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/raw-ast-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-raw-audit-owned-root-a1\\terminal.json",
+      "bytes": 292,
+      "sha256": "1a25612402e7335d3726df5159b1b865cd664f02daa83dbfff0194573ce13aaa",
+      "qualification": "Original ASTnaturalexit0."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/raw-ast-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-raw-audit-owned-root-a1\\stdout.bin",
+      "bytes": 131,
+      "sha256": "36bbf8a6ac934565e89c0a25cc754b2a1cc9a76a4b9824213188a698206796c4",
+      "qualification": "Original ASToutput."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/pwa-retained-integrity-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-pwa-finalization-result-a1\\result.json",
+      "bytes": 6489,
+      "sha256": "9e4b85d94043d2ad4f6365666928652d09b03556bb60478ebf071e7c7b6bade9",
+      "qualification": "PASS_CURRENT_RETAINED_PWA_INTEGRITY_ONLY; originalcompile23420terminalUNKNOWN."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/pwa-finalization-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-pwa-finalization-owned-root-a1\\terminal.json",
+      "bytes": 292,
+      "sha256": "294a04476edb1df28ad62b046233c7c0a7595da8c09b5a24cff18bcab39b57a9",
+      "qualification": "Original13680/0 finalizer, no repeatedcompile."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/android-preparation-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-build-owned-android-a2\\terminal.json",
+      "bytes": 291,
+      "sha256": "c8dbed2089cada16a3065846062b33e63d98f2a085a0890868cdaffc0ba9f519",
+      "qualification": "Original3244/0prep, noinstallation."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/document-validator-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-final-validation-root-a1\\run-root-a2\\result.json",
+      "bytes": 11415,
+      "sha256": "0d60417814668c725df1f171bf1df7f61e0b1f13046ea9cc9828808a5bf0a882",
+      "qualification": "Actual0c8interimdocumentvalidators, NOT_ACCEPTANCE."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/process/document-validator-terminal.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\adult-diagnostic-interim-final-validation-owned-root-a1\\terminal.json",
+      "bytes": 291,
+      "sha256": "40815e2f15cf008f272a117285ae2c546fd2e928087761b2276f600c5cf3cf98",
+      "qualification": "Original2520/0natural."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/artifact.pwa.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-0f6fbd2c-c3dd-4afd-bcc2-7c67398fa691\\pwa-artifact.json",
+      "bytes": 510015,
+      "sha256": "b259fc974d9570856626990af4f033a74540e2302b937740372147baf062dd6d",
+      "qualification": "Retained e8acmetadata; bundleomitted/originalpreparation0B."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/android/preparation.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\preparation.json",
+      "bytes": 334003,
+      "sha256": "3b8b4a2a60816a25b6b941cfd75f6955d1e20a693ddb6b5bef03754903b46c15",
+      "qualification": "Actual e8acdev/nonstoremetadata; APKbinariesomitted/notinstalled."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/android/native-artifact.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\native-artifact.json",
+      "bytes": 732161,
+      "sha256": "36e47abf06b73f6d05481e3b32f3252064662542ae33e6a53f8a561e6a32e9c5",
+      "qualification": "Actual e8acdev/nonstoremetadata; APKbinariesomitted/notinstalled."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/evidence/android/binary.json",
+      "sourcePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3c7adb17-c315-4851-9b50-2ff6ba9c741c\\binary.json",
+      "bytes": 216792,
+      "sha256": "d3d8cc408078076ccc89a09f0886cc73b0f0a260cdb9531741e1bb10cc863cbf",
+      "qualification": "Actual e8acdev/nonstoremetadata; APKbinariesomitted/notinstalled."
+    },
+    {
+      "path": "docs/mobile/handoff/20261009-native-diagnostic-work-in-progress/NATIVE_NEXT_CONTRACT.md",
+      "sourcePath": "New source-only saved design",
+      "bytes": 5597,
+      "sha256": "6f7d70aba183151f125d102e8679157d8eff9fe1f72519874743f3b99de25f02",
+      "qualification": "Frozen proposal only; NOT_IMPLEMENTED/NOT_TESTED."
+    }
+  ],
+  "carriedInventoryScope": "Imported raw files and native ZIP. Manifest/new authored continuation+contract docs are Git-reviewed, excluded from self-hashing inventory.",
+  "omitted": [
+    {
+      "kind": "Android dev/test APK",
+      "reason": "Generated binaries omitted fromGit; SHA/size metadata carried. Rebuild is new preparation, not originalOSproof."
+    },
+    {
+      "kind": "PWA/native bundles and prior137MB ZIPs",
+      "reason": "Large generated packages stay originalmachine; metadata/identities retained. Source snapshots areGit history."
+    },
+    {
+      "kind": "node_modules,SDK/JDK,browserprofiles,signingkeys,secrets,auth,unrelatedtemporaryfiles",
+      "reason": "No private/environment data transferred; provision securely on destination."
+    }
+  ],
+  "remainingOwnerConditions": {
+    "installedNativeOS": "NOT_RUN",
+    "authDeletionAndSpecificAuthorizedRemoteEnvironment": "NOT_RUN",
+    "humanRuEnEditorialLegalVoice": "PENDING_HUMAN_APPROVAL",
+    "PSP": "UNSELECTED"
+  },
+  "nextAction": "Read originalprompt, continuationdoc and nativecontract. AstraUltra corrects unsafeAndroiddestinationdeletion/iOSboundedcleanup, completes nativeTS/session/controller; SOLUltra routineRUEN UI. Review beforeapply; changed-path QA then builds/onepacket.",
+  "preparationHistory": {
+    "firstAttemptExitCode": 1,
+    "firstAttemptError": "Incorrect artifact metadata filename, exact saved ZIP/copies retained; original helper backed up. Recovery verifies retained copies and adds only missing files."
+  },
+  "remotePush": "NOT_YET_ATTEMPTED_AT_MANIFEST_CREATION",
+  "verification": "Entry size/SHA and carried raw-file integrityPASS. CRC/producttests/OS/releaseacceptance NOT_RUN."
+}

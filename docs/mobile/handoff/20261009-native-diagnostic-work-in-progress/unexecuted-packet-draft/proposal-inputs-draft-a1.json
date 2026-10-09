@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "kind": "ADULT_DIAGNOSTIC_PACKET_SOURCE_ONLY_DRAFT_PENDING_FRESH_BUILD_PINS",
+  "physicalRepo": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "evidenceRoot": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006",
+  "sourceCommit": "e8ac3c03e8aa142e219cb03e46e75757910c82dd",
+  "baselineSourceCommit": "b2f7018e6c0a695864d381b7c0b4cdd4908bc3e4",
+  "commonClosingGraph": {
+    "sourceRows": 1958,
+    "sourceFingerprint": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128"
+  },
+  "baselinePacket": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\support-intake-packet-run-a0adaf2b-0faa-4ba6-a4a8-10d7f5e5cb4f\\current-support-intake-b2.zip",
+    "bytes": 137377494,
+    "sha256": "68f8974d7a010e5fd8b1cf7f43ea0ba50f84292b7a17f4a307c2fcf6a49a1acb",
+    "kind": "SUPPLEMENT_TO_OLDER_K_NOT_FULL_SOURCE",
+    "archiveOpenedCopiedOrRehashed": false
+  },
+  "composite": {
+    "baselineFiles": 3947,
+    "overlayFiles": 15,
+    "overlayBytes": 595581,
+    "replacements": 7,
+    "additions": 8,
+    "sourceFiles": 3955,
+    "sourceBytes": 127763368,
+    "inheritedDocs": 196,
+    "metadataOnly": true,
+    "wholeHeadSourceClaim": false,
+    "restore": "NOT_RUN",
+    "crc": "NOT_RUN"
+  },
+  "sourceOverlays": [
+    {
+      "path": "src/child/childNativeAppBridge.ts",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 72234,
+        "sha256": "23ec23c2c26e62674f2620223fff12478c5666afaa17e0d6ff3746e1ec612de3"
+      },
+      "bytes": 72590,
+      "sha256": "bb9bdf1c471a19e08c34132ff02baac182751101a95af12c453d6f685c98ddf5"
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 14669,
+        "sha256": "7585b7ffb9816ac015e87bc2718594dc80a392374e56626a418e1d40b70dacc2"
+      },
+      "bytes": 14853,
+      "sha256": "c611238d7b6b682f4bc5ad5c26e93aa096276331efb2bacd29faa87168385433"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 136726,
+        "sha256": "d5a0cbd1c95c5c66a9ae8a7ee525fa08c775618b1d4791cd3acbad79b76a3ee4"
+      },
+      "bytes": 137836,
+      "sha256": "049ca418f0aa5c813e48b6704716ce6cf5c5112d9b64af10eefb6d8569824be7"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 10044,
+        "sha256": "0fb21d6270b129f924e25a32d86c4e24813a26b1650c9dfd3fd64077892cc71d"
+      },
+      "bytes": 10296,
+      "sha256": "597ec7f080244209a1c35cbc71e0891a76d9f8c3869aa4e70f06168dda6e14da"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 17705,
+        "sha256": "b7fc6ad3a9561a9c9d8a0240642fd4edfb6252b5f53fa883621347e7e522e503"
+      },
+      "bytes": 18507,
+      "sha256": "b49cfb9ccaa53ffc79102de22deb202e9793142b78c509e9096324f779ad0610"
+    },
+    {
+      "path": "src/App.tsx",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 221569,
+        "sha256": "d5ceca3b51f6f9da870fa72e26cd39dabe15d3f489626849ccffefd2b2efc00b"
+      },
+      "bytes": 223531,
+      "sha256": "a751f5393d5423d68ab39140679e611f24ad7b7dcc45fc2777b78287f215772c"
+    },
+    {
+      "path": "src/support/supportDiagnostics.ts",
+      "operation": "ADD",
+      "baseline": null,
+      "bytes": 11117,
+      "sha256": "bc6d3eba9c6ceee5cf36b8cbe686581a7dd3a1e67c14df7d62328a7899af3bea"
+    },
+    {
+      "path": "src/support/supportDiagnosticSession.ts",
+      "operation": "ADD",
+      "baseline": null,
+      "bytes": 3316,
+      "sha256": "f42a3fff39202bc83adaf9fcc46b44aacff918bf6c9c517bbc627b66c12dd31d"
+    },
+    {
+      "path": "src/support/supportDiagnosticObservations.ts",
+      "operation": "ADD",
+      "baseline": null,
+      "bytes": 3206,
+      "sha256": "563f6791d48177397df25f13493da3cb01ffe6b4ea8867a0ce1e0e9a7bc6a6e2"
+    },
+    {
+      "path": "src/support/useSupportDiagnostics.tsx",
+      "operation": "ADD",
+      "baseline": null,
+      "bytes": 4378,
+      "sha256": "c626997a0ee603b56e39c9f7e181599cdbb5a8abee0c0ab221367536b674fe1e"
+    },
+    {
+      "path": "src/support/supportDiagnostics.test.ts",
+      "operation": "ADD",
+      "baseline": null,
+      "bytes": 11097,
+      "sha256": "cde71a36083c468e3227ea137b65a2ec9dbc2b32d339550196a8b17cb9d01aa2"
+    },
+    {
+      "path": "src/child/childNativeAppBridge.test.ts",
+      "operation": "REPLACE",
+      "baseline": {
+        "bytes": 71928,
+        "sha256": "af9e29554091db0511b23c6ef398baea6d73b5144fc83609e542e811cb072f03"
+      },
+      "bytes": 73570,
+      "sha256": "9bb0eebba6ce0ec53359f6ef5badf3afe0e5695d310b6faf1c1bf80f870353e2"
+    },
+    {
+      "path": "src/support/SupportDiagnosticsPanel.tsx",
+      "bytes": 6414,
+      "sha256": "b2ff565404939e8aea1e68d6c07b51935b88f8e3eebd35ebcc916077e10b67f2",
+      "operation": "ADD",
+      "baseline": null
+    },
+    {
+      "path": "src/support/supportDiagnosticsPanel.css",
+      "bytes": 1856,
+      "sha256": "ee2431170309e0625f7ff7ca42b7ab419b80d57252131418808a56cbe31a1b13",
+      "operation": "ADD",
+      "baseline": null
+    },
+    {
+      "path": "src/support/SupportDiagnosticsPanel.test.ts",
+      "bytes": 3014,
+      "sha256": "a747dc15fa4e67a8e0bbc9a94b2254dcbdc12e2bbddae318165aba79d9eaf0a2",
+      "operation": "ADD",
+      "baseline": null
+    }
+  ],
+  "graphSpecs": {
+    "release": {
+      "roots": [
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "excludeTests": false,
+      "rows": 1958,
+      "digest": "220f3d9e58530e3f072674d77628428c6bdc1344bea106a374b3827eac62c128",
+      "format": "compact"
+    },
+    "pwa": {
+      "roots": [
+        "src",
+        "index.html",
+        "tsconfig.json",
+        "vite.config.ts",
+        "vite.pwa.config.ts",
+        "package.json",
+        "package-lock.json",
+        "scripts/mobile/build-pwa.mjs",
+        "scripts/mobile/pwa-artifact.mjs",
+        "scripts/mobile/pwa-shell.mjs",
+        "scripts/mobile/pwa-portrait-selection.mjs",
+        "scripts/mobile/native-base-assets.json",
+        "data/book-canon-source-registry.json"
+      ],
+      "excludeTests": true,
+      "rows": 1198,
+      "digest": "a30050e42566fb97e7b432caa720ae0d841ca416af92426aee74ab759bbe328c",
+      "format": "pretty"
+    },
+    "native": {
+      "roots": [
+        "src",
+        "native.html",
+        "vite.native.config.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "package-lock.json",
+        "capacitor.config.json",
+        "scripts/mobile/build-native.mjs",
+        "scripts/mobile/native-base-assets.json",
+        "scripts/mobile/pwa-artifact.mjs",
+        "data/book-canon-source-registry.json",
+        "scripts/mobile/native-child-package-assets.mjs",
+        "scripts/mobile/native-child-media-assets.mjs",
+        "scripts/mobile/native-child-resource-assets.mjs",
+        "scripts/mobile/native-child-scene-assets.mjs",
+        "scripts/mobile/native-child-passport-assets.mjs"
+      ],
+      "excludeTests": true,
+      "rows": 1202,
+      "digest": "8d1fe488d71eb35b17769276e1fa70737b7430db7bb421b1326b94573718d0cc",
+      "format": "pretty"
+    },
+    "binary": {
+      "roots": [
+        "src",
+        "apps/mobile/android",
+        "apps/mobile/ios",
+        "native.html",
+        "vite.native.config.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "package-lock.json",
+        "capacitor.config.json",
+        "scripts/mobile/build-native.mjs",
+        "scripts/mobile/native-base-assets.json",
+        "scripts/mobile/pwa-artifact.mjs",
+        "scripts/mobile/native-child-package-assets.mjs"
+      ],
+      "excludeTests": true,
+      "rows": 1337,
+      "digest": "7bb20fe2d564d17fa2790bf2bfe2d7511df8e097ac0fd7ca3ea6e78a63c4f8c7",
+      "format": "pretty"
+    }
+  },
+  "references": {
+    "baselineRestore": {
+      "root": "W",
+      "path": "support-intake-source-restore-root-a1/result.json",
+      "entry": "evidence/baseline-b2/restore-result.json",
+      "bytes": 5933,
+      "sha256": "43503d8d301e3d8ed44a24b29442881d15761ae8609755418540a24aae3199f0"
+    },
+    "baselineInventory": {
+      "root": "W",
+      "path": "support-intake-source-restore-root-a1/restored-file-inventory.json",
+      "entry": "evidence/baseline-b2/source-inventory.json",
+      "bytes": 683860,
+      "sha256": "2b4faafabf7447c005d71e546cfdabcca0dcfdd73c1f0de2448adfa2e33f3d2b"
+    },
+    "baselinePacketReceipt": {
+      "root": "W",
+      "path": "support-intake-packet-run-a0adaf2b-0faa-4ba6-a4a8-10d7f5e5cb4f/result.json",
+      "entry": "evidence/baseline-b2/packet-receipt.json",
+      "bytes": 5140,
+      "sha256": "b0bc7dcd7fb1dfd814ed7a4c024516fa18b95dcecb18b475e002e0565b07bbf3"
+    },
+    "qa": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/result.json",
+      "entry": "evidence/qa/result.json",
+      "bytes": 19196,
+      "sha256": "c701612199b3ecd4d4e13ea1fd9bd67d53317bd35a0d74aa9ef9ee46c20b1923"
+    },
+    "browser": {
+      "root": "W",
+      "path": "adult-diagnostic-ui-browser-proposal-a1/browser-run-root-a1/result.json",
+      "entry": "evidence/browser/result.json",
+      "bytes": 11646,
+      "sha256": "bcae933e2a350aab2cb3d3914764b721da9e9f02824de612235ad2ad74c11723"
+    },
+    "coreProposal": {
+      "root": "W",
+      "path": "adult-diagnostic-export-proposal-a1/proposal.json",
+      "entry": "evidence/proposals/core.json",
+      "bytes": 4146,
+      "sha256": "033ae723259315ebd569dd65ce6d79a14098c2cc659b68f82f410e6d0feec6dd"
+    },
+    "uiProposal": {
+      "root": "W",
+      "path": "adult-diagnostic-ui-proposal-a1/proposal.json",
+      "entry": "evidence/proposals/ui.json",
+      "bytes": 2982,
+      "sha256": "d1fa6abd753d7d2358825d700d89eb37c50c718094d3c3cfb1c68ec5a8ff04a6"
+    },
+    "evidence/qa/globe-static-proof.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/globe-static-proof.json",
+      "entry": "evidence/qa/globe-static-proof.json",
+      "bytes": 2403,
+      "sha256": "8f7fbf56d3847bc627e8ada2d72a5e32dee78ad963f25922a537e1c5dbcb28d4"
+    },
+    "evidence/qa/after-full.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/after-full.json",
+      "entry": "evidence/qa/after-full.json",
+      "bytes": 303521,
+      "sha256": "4187a52c4b4969e8c271a1e44668d46aee516e2280cd8fb1d4a1998689d2544e"
+    },
+    "evidence/qa/support-ui-report.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-report.json",
+      "entry": "evidence/qa/support-ui-report.json",
+      "bytes": 7444,
+      "sha256": "81126d1126e17509fb00eba29107e6fe8d9454bad14ef67422360250a0858ac4"
+    },
+    "evidence/qa/native-report.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-report.json",
+      "entry": "evidence/qa/native-report.json",
+      "bytes": 28811,
+      "sha256": "465c0296fcd26586cf87db89be93dc06b348575ed2aa3764efe12d96e2c02737"
+    },
+    "evidence/qa/app-tsc/launch.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/app-tsc/launch.json",
+      "entry": "evidence/qa/app-tsc/launch.json",
+      "bytes": 1287,
+      "sha256": "7fbc237f386a425a3bdf6ce83e24f40807949d38a83b3f848a60e6c1f184bf96"
+    },
+    "evidence/qa/app-tsc/runtime.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/app-tsc/runtime.json",
+      "entry": "evidence/qa/app-tsc/runtime.json",
+      "bytes": 440,
+      "sha256": "8fa59a151d29222b470d03e52156075c495e9487dedc3d4eb8b13ba763f1a21d"
+    },
+    "evidence/qa/app-tsc/stdout.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/app-tsc/stdout.bin",
+      "entry": "evidence/qa/app-tsc/stdout.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/qa/app-tsc/stderr.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/app-tsc/stderr.bin",
+      "entry": "evidence/qa/app-tsc/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/qa/app-tsc/terminal.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/app-tsc/terminal.json",
+      "entry": "evidence/qa/app-tsc/terminal.json",
+      "bytes": 3238,
+      "sha256": "109a4af69664a44c365d799ca8458bfd60c3b20b929057727de085f8e6fadb71"
+    },
+    "evidence/qa/support-ui-new18/launch.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-new18/launch.json",
+      "entry": "evidence/qa/support-ui-new18/launch.json",
+      "bytes": 1908,
+      "sha256": "a870755247b265f042736068123ef5175abfb00a5a9b1621401a7f9b278611df"
+    },
+    "evidence/qa/support-ui-new18/runtime.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-new18/runtime.json",
+      "entry": "evidence/qa/support-ui-new18/runtime.json",
+      "bytes": 1040,
+      "sha256": "82372aa17f8a2ec46ad37e54af8ed8f9fa441ad1dc77a180eefc35253875477f"
+    },
+    "evidence/qa/support-ui-new18/stdout.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-new18/stdout.bin",
+      "entry": "evidence/qa/support-ui-new18/stdout.bin",
+      "bytes": 204,
+      "sha256": "6492edbe0de7d26dbaf26b99eb02e0a648921d48c3c071048ce722dd2ea7f861"
+    },
+    "evidence/qa/support-ui-new18/stderr.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-new18/stderr.bin",
+      "entry": "evidence/qa/support-ui-new18/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/qa/support-ui-new18/terminal.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/support-ui-new18/terminal.json",
+      "entry": "evidence/qa/support-ui-new18/terminal.json",
+      "bytes": 3898,
+      "sha256": "2b65ac20d35e66815b28f7cd2c147eddd47d52f62617d134b7b629ce9d49a1e4"
+    },
+    "evidence/qa/native-eligibility-new2/launch.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-eligibility-new2/launch.json",
+      "entry": "evidence/qa/native-eligibility-new2/launch.json",
+      "bytes": 1929,
+      "sha256": "0e693c376841d152c01f6cbdb4eeb6519fad94cfd1466caf9f2374d4c4ff0697"
+    },
+    "evidence/qa/native-eligibility-new2/runtime.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-eligibility-new2/runtime.json",
+      "entry": "evidence/qa/native-eligibility-new2/runtime.json",
+      "bytes": 1046,
+      "sha256": "f9c27e81a538aa444722fe345622156bdac947f4d75bf421857014311581fc35"
+    },
+    "evidence/qa/native-eligibility-new2/stdout.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-eligibility-new2/stdout.bin",
+      "entry": "evidence/qa/native-eligibility-new2/stdout.bin",
+      "bytes": 200,
+      "sha256": "90d015ddf7b77d42206c83df2e0ff8dc7f2e9f74294d17642b82b82bed4d3d5f"
+    },
+    "evidence/qa/native-eligibility-new2/stderr.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-eligibility-new2/stderr.bin",
+      "entry": "evidence/qa/native-eligibility-new2/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evidence/qa/native-eligibility-new2/terminal.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-run-a1/native-eligibility-new2/terminal.json",
+      "entry": "evidence/qa/native-eligibility-new2/terminal.json",
+      "bytes": 3947,
+      "sha256": "ef71c4ea7c43ed9fbb1e8c67ad8700f3abc5a36e5cc13f326ba7abde0726f8f5"
+    },
+    "evidence/browser/ru-keyboard-320-diagnostics.png": {
+      "root": "W",
+      "path": "adult-diagnostic-ui-browser-proposal-a1/browser-run-root-a1/ru-keyboard-320-diagnostics.png",
+      "entry": "evidence/browser/ru-keyboard-320-diagnostics.png",
+      "bytes": 39533,
+      "sha256": "4dda934b9424a76790000b3686bb8b17f267f75f7125b556fa7f1294f5970af9"
+    },
+    "evidence/browser/en-touch-320-diagnostics.png": {
+      "root": "W",
+      "path": "adult-diagnostic-ui-browser-proposal-a1/browser-run-root-a1/en-touch-320-diagnostics.png",
+      "entry": "evidence/browser/en-touch-320-diagnostics.png",
+      "bytes": 32649,
+      "sha256": "9d5d4c9c690521799b90407094e7f1679adf63a5ac05c766c88ba6c888acf9db"
+    },
+    "adult-diagnostic-qa-owned-a1/launch.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-owned-a1/launch.json",
+      "entry": "evidence/process/adult-diagnostic-qa-owned-a1/launch.json",
+      "bytes": 762,
+      "sha256": "631e63bc585084b3a1382572794d41d16a9c7ce518a141f3f2ffb6b034f6f79a"
+    },
+    "adult-diagnostic-qa-owned-a1/terminal.json": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-owned-a1/terminal.json",
+      "entry": "evidence/process/adult-diagnostic-qa-owned-a1/terminal.json",
+      "bytes": 292,
+      "sha256": "86b9b9795b9ba894f4753291fd811ed584da9fdbe57c741cf3739b4ea160baf0"
+    },
+    "adult-diagnostic-qa-owned-a1/stdout.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-owned-a1/stdout.bin",
+      "entry": "evidence/process/adult-diagnostic-qa-owned-a1/stdout.bin",
+      "bytes": 1890,
+      "sha256": "df41b16ee9932df810ccd281be740cb4ff664e8b933ead8b748429159c8b7921"
+    },
+    "adult-diagnostic-qa-owned-a1/stderr.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-qa-owned-a1/stderr.bin",
+      "entry": "evidence/process/adult-diagnostic-qa-owned-a1/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "adult-diagnostic-raw-audit-owned-root-a1/launch.json": {
+      "root": "W",
+      "path": "adult-diagnostic-raw-audit-owned-root-a1/launch.json",
+      "entry": "evidence/process/adult-diagnostic-raw-audit-owned-root-a1/launch.json",
+      "bytes": 671,
+      "sha256": "6627054bef80baf3d74d121ef669b47b44ca57910f81c7ba566d27e5aae75408"
+    },
+    "adult-diagnostic-raw-audit-owned-root-a1/terminal.json": {
+      "root": "W",
+      "path": "adult-diagnostic-raw-audit-owned-root-a1/terminal.json",
+      "entry": "evidence/process/adult-diagnostic-raw-audit-owned-root-a1/terminal.json",
+      "bytes": 292,
+      "sha256": "1a25612402e7335d3726df5159b1b865cd664f02daa83dbfff0194573ce13aaa"
+    },
+    "adult-diagnostic-raw-audit-owned-root-a1/stdout.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-raw-audit-owned-root-a1/stdout.bin",
+      "entry": "evidence/process/adult-diagnostic-raw-audit-owned-root-a1/stdout.bin",
+      "bytes": 131,
+      "sha256": "36bbf8a6ac934565e89c0a25cc754b2a1cc9a76a4b9824213188a698206796c4"
+    },
+    "adult-diagnostic-raw-audit-owned-root-a1/stderr.bin": {
+      "root": "W",
+      "path": "adult-diagnostic-raw-audit-owned-root-a1/stderr.bin",
+      "entry": "evidence/process/adult-diagnostic-raw-audit-owned-root-a1/stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "fixedBuildFiles": {},
+  "pwa": {
+    "status": "PENDING_ROOT_ACTUAL_RECOVERY_PINS",
+    "originalPid": 23420,
+    "originalExitCode": null,
+    "originalNaturalTermination": null,
+    "originalState": "INTERRUPTED_BEFORE_FINAL_PREPARATION_WRITE"
+  },
+  "android": {
+    "status": "PENDING_ROOT_FRESH_DURABLE_LAUNCH_AND_ACTUAL_PINS",
+    "originalPid": 6256,
+    "originalExitCode": null,
+    "originalNaturalTermination": null,
+    "originalState": "INTERRUPTED_BEFORE_ATTEMPTS"
+  },
+  "sourceOnly": true,
+  "executed": false,
+  "trackedWrites": false,
+  "releaseReady": false,
+  "criteriaClosed": 0
+}
