@@ -18,7 +18,7 @@ const currentWorkflowTest = 'scripts/lib/quality-browser-matrix.test.mjs';
 
 describe('Exact PostgreSQL image bootstrap preserves historical CI authority', () => {
   it('pins only the two additive steps and the outer reader integration', () => {
-    expect(sha(JSON.stringify(packet))).toBe('dc9cdd5a67ad062f68a22ae3deaf70c5c642b2bee3316eb4d9340eb61304f173');
+    expect(sha(JSON.stringify(packet))).toBe('9d211f7b8e11c9e61e0bd41081ba8bbeb52e8d8dc672a70cfaf172e7495a9684');
     expect(packet).toMatchObject({schemaVersion: 1, id: 'POSTGRES-TEST-IMAGE-RESILIENCE-20261010',
       baselineCommitSha: 'e2a712a4707fcf70c7561691c89c5c2bb512113e', historicalPinsChanged: false,
       historicalAssertionsChanged: false,

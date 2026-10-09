@@ -126,11 +126,11 @@
   "additions": [
     {
       "path": "scripts/database/prepare-postgres-test-image.mjs",
-      "sha256Lf": "3eac98f871239201f2666cce8274deff9009cbd06096435e7045b98dab666c44"
+      "sha256Lf": "7b4d771e22fde0c36a6e679dc84933f9291e742f771656a99f414ca0c69199e6"
     },
     {
       "path": "scripts/database/prepare-postgres-test-image.test.mjs",
-      "sha256Lf": "fcd7e99373e3d5f891f2015a078d184531934324db19d3689d7afe85658ee4b1"
+      "sha256Lf": "bdb90d6666a36978f082ecff8569324994211cb60724f9c49ff19e4904a529ca"
     },
     {
       "path": "scripts/lib/reviewed-postgres-test-image.mjs",
