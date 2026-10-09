@@ -17,6 +17,16 @@ import { fallbackUnsentNewsPhoto,newsNewCreateIsFresh } from './lib/literary-new
 import { fetchNewsFeedWithTransientRetry } from './lib/literary-news-feed-request.mjs';
 
 const endpoint = "https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=Europe%2FMoscow";
+const PUBLIC_READ_HTTP_STATUSES = new Set([200, 204, 400, 401, 402, 403, 404, 405, 408, 409, 410,
+  413, 414, 415, 422, 425, 429, 500, 501, 502, 503, 504]);
+const PUBLIC_READER_STATUSES = new Set(['busy', 'queue_full', 'wait_expired', 'load_failed', 'aborted']);
+
+/** Only fixed public transport diagnostics may leave the read boundary. */
+export function publicAgendaReadFailure(error) {
+  return { httpStatus: PUBLIC_READ_HTTP_STATUSES.has(error?.publicHttpStatus) ? error.publicHttpStatus : null,
+    readerStatus: PUBLIC_READER_STATUSES.has(error?.publicReaderStatus) ? error.publicReaderStatus : null };
+}
+
 export function selectDueNewsMediaJobs(rows,controls,now=new Date(),pacing=new Map()) {
   return scheduleNewsJobs(rows.map(row=>row.state)).filter(job=>{
     const control=controls.get(`${job.destination.platform}:${job.destination.id}`);
@@ -63,7 +73,12 @@ export async function fetchPublishedAgenda(fetchImpl = fetch, { waitImpl } = {})
     await response.body?.cancel().catch(() => {}); throw new Error("public_snapshot_origin_invalid");
   }
   if (!response.ok || !response.body) {
-    await response.body?.cancel().catch(() => {}); throw new Error("public_snapshot_unavailable");
+    await response.body?.cancel().catch(() => {});
+    const diagnostic = publicAgendaReadFailure({ publicHttpStatus: response.status,
+      publicReaderStatus: response.headers.get('x-probpera-news-reader-status') });
+    const error = new Error("public_snapshot_unavailable");
+    error.publicHttpStatus = diagnostic.httpStatus; error.publicReaderStatus = diagnostic.readerStatus;
+    throw error;
   }
   const reader = response.body.getReader(); let bytes = 0; const chunks = [];
   try {

@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import configuration from '../data/news/social-destinations.json' with { type: 'json' };
 import { verifyNativeNewsWorkers } from './verify-native-news-workers.mjs';
-import { fetchPublishedAgenda } from './publish-literary-news.mjs';
+import { fetchPublishedAgenda, publicAgendaReadFailure } from './publish-literary-news.mjs';
 import { createDailyNewsStorageClient, validateDailyLedger } from './lib/literary-news-daily-automation.mjs';
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DAILY_NEWS_WINDOW,
   DAILY_NEWS_LIMITS, dailyNewsDay, validateDailyApprovedPayload } from './lib/literary-news-daily-profile.mjs';
@@ -192,7 +192,8 @@ export function createNewsOperationsReportReader({ accountId, apiToken, fetchImp
 export async function summarizeNewsOperations({ feed, profile, ledger, owner, preparationReport, workers, control,
   dayStatus, recentDayStatuses = [], dueRows, deliveryHeartbeat, destination, current = new Date(), expectedHead = null,
   preparationEnabled = true, preparationBlockReason = null, autoResumeEnabled = false, resumeScheduledAt = null,
-  preparationAttempt = null, pacingRow = null, reservedPost = null, supply = null, supplyCandidateCount = null, readFailures = [] }) {
+  preparationAttempt = null, pacingRow = null, reservedPost = null, supply = null, supplyCandidateCount = null, readFailures = [],
+  publicReadFailure = null }) {
   if (!Number.isFinite(current.getTime())) fail('operations_clock_invalid');
   if (typeof preparationEnabled !== 'boolean' || typeof autoResumeEnabled !== 'boolean') fail('operations_configuration_invalid');
   const failures = READ_FAILURES.filter(code => Array.isArray(readFailures) && readFailures.includes(code));
@@ -406,7 +407,8 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     public: { valid: publicValid, release: /^[a-f0-9]{40}$/.test(feed?.snapshot?.release || '') ? feed.snapshot.release : null,
       generatedAt: safeTime(feed?.generatedAt), sourceCheckedAt: safeTime(feed?.lastCheckedAt),
       items: publicValid ? feed.items.length : null, sources: publicValid ? feed.sources.length : null,
-      sourceStatuses, sourceFailures },
+      sourceStatuses, sourceFailures,
+      readFailure: failures.includes('operations_public_feed_read_failed') ? publicAgendaReadFailure(publicReadFailure) : null },
     preparation: { enabled: preparationEnabled, status: preparationEnabled ? 'enabled' : 'preparation_disabled',
       reason: preparationEnabled ? null : disabledPreparationReason(preparationBlockReason),
       lastRunAt: preparationAt, lastAttempt: attempt, quotaCooldown, retryAfterAt: quotaRetryAt,
@@ -502,6 +504,7 @@ export async function checkNewsOperations({ env = process.env, fetchImpl = fetch
     } catch { readFailures.push('operations_supply_read_failed'); }
   }
   return summarizeNewsOperations({ ...preparation, workers, current, destination, expectedHead, readFailures, pacingRow, reservedPost,
+    publicReadFailure: values[0].status === 'rejected' ? values[0].reason : null,
     supply, supplyCandidateCount, feed: get(0), profile: get(1), ledger: get(2), owner: get(3),
     preparationReport: get(4), preparationAttempt: get(15), control: get(5)?.state, dayStatus: rpc(6), dueRows: rpc(7), deliveryHeartbeat: get(8)?.state,
     recentDayStatuses: Array.from({ length: 6 }, (_, index) => ({

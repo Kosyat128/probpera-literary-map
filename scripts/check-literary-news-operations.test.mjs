@@ -92,6 +92,30 @@ async function cappedDraftInput() {
 }
 
 describe('bounded read-only news operations projection', () => {
+  it.each([
+    { status: 503, reader: 'queue_full', expected: { httpStatus: 503, readerStatus: 'queue_full' } },
+    { status: 504, reader: 'wait_expired', expected: { httpStatus: 504, readerStatus: 'wait_expired' } },
+    { status: 503, reader: privateMarker, expected: { httpStatus: 503, readerStatus: null } },
+    { status: '503', reader: privateMarker, expected: { httpStatus: null, readerStatus: null } },
+    { status: 999, reader: privateMarker, expected: { httpStatus: null, readerStatus: null } },
+  ])('projects only safe public-read diagnostics from status $status and keeps failure', async scenario => {
+    const value = await input(); value.feed = null;
+    value.readFailures = ['operations_public_feed_read_failed'];
+    value.publicReadFailure = Object.assign(new Error(privateMarker), { publicHttpStatus: scenario.status,
+      publicReaderStatus: scenario.reader, body: privateMarker, url: privateMarker, privateItems: [privateMarker] });
+    const report = await summarizeNewsOperations(value);
+    expect(report.status).toBe('failed'); expect(report.failures).toContain('operations_public_feed_read_failed');
+    expect(report.public.readFailure).toEqual(scenario.expected); expect(JSON.stringify(report)).not.toContain(privateMarker);
+  });
+  it('does not emit diagnostics when the public read succeeded or expose network error messages', async () => {
+    const value = await input();
+    value.publicReadFailure = Object.assign(new Error(privateMarker), { publicHttpStatus: 503, publicReaderStatus: 'busy' });
+    expect((await summarizeNewsOperations(value)).public.readFailure).toBeNull();
+    value.feed = null; value.readFailures = ['operations_public_feed_read_failed']; value.publicReadFailure = new TypeError(privateMarker);
+    const report = await summarizeNewsOperations(value);
+    expect(report.status).toBe('failed'); expect(report.public.readFailure).toEqual({ httpStatus: null, readerStatus: null });
+    expect(JSON.stringify(report)).not.toContain(privateMarker);
+  });
   it('identifies a specific current unacknowledged post only after actual acknowledgement spacing and grace', async () => {
     const value = await overdueInput('2026-10-09T09:18:00Z'), report = await summarizeNewsOperations(value);
     expect(report.failures).toEqual(['operations_delivery_post_overdue']);
@@ -647,6 +671,12 @@ describe('read-only operations report network boundaries', () => {
     { label: 'queue read remains unavailable', actualPreparation: false, dueFailures: 3, readFailure: 'operations_due_queue_read_failed' },
     { label: 'invalid queue is not a transport failure', actualPreparation: false, invalidQueue: true },
     { label: 'destination read is unauthorized', actualPreparation: false, unauthorizedDestination: true, readFailure: 'operations_destination_read_failed' },
+    { label: 'public reader wait expires with HTTP503', actualPreparation: false, publicFeedStatus: 503, publicReaderStatus: 'wait_expired',
+      readFailure: 'operations_public_feed_read_failed', publicReadFailure: { httpStatus: 503, readerStatus: 'wait_expired' } },
+    { label: 'public reader injected reason stays private', actualPreparation: false, publicFeedStatus: 503, publicReaderStatus: privateMarker,
+      readFailure: 'operations_public_feed_read_failed', publicReadFailure: { httpStatus: 503, readerStatus: null } },
+    { label: 'public feed network error stays private', actualPreparation: false, publicFeedNetworkError: true,
+      readFailure: 'operations_public_feed_read_failed', publicReadFailure: { httpStatus: null, readerStatus: null } },
   ])('checks $label through four real Worker GETs and keeps actual read-only metrics', async scenario => {
     const value = await input(), calls = [], origin = 'https://isolated-test.supabase.co';
     let dueAttempts = 0;
@@ -678,7 +708,10 @@ describe('read-only operations report network boundaries', () => {
         throw Error('Unexpected private Cloudflare request');
       }
       if (url.origin === 'https://news.probpera.ru') {
-        const response = Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
+        if (scenario.publicFeedNetworkError) throw new TypeError(privateMarker);
+        const response = scenario.publicFeedStatus ? Response.json({ privateDetail: privateMarker }, { status: scenario.publicFeedStatus,
+          headers: { 'x-probpera-news-reader-status': scenario.publicReaderStatus } })
+          : Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
         Object.defineProperty(response, 'url', { value: url.href }); return response;
       }
       if (url.origin === origin && url.pathname === '/rest/v1/admin_audit_log' && method === 'GET') {
@@ -728,10 +761,13 @@ describe('read-only operations report network boundaries', () => {
     const privateKv = calls.filter(row => row.url.pathname.includes('/storage/kv/'));
     expect(privateKv).toHaveLength(scenario.actualPreparation ? 5 : 0); expect(privateKv.every(row => row.method === 'GET')).toBe(true);
     const rpcs = calls.filter(row => row.method === 'POST');
-    expect(rpcs).toHaveLength(9 + Math.min(scenario.dueFailures || 0, 2)); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
+    const publicReadFailed = Boolean(scenario.publicFeedStatus || scenario.publicFeedNetworkError);
+    expect(rpcs).toHaveLength(9 - Number(publicReadFailed) + Math.min(scenario.dueFailures || 0, 2)); expect(rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status'))).toHaveLength(7);
     expect(rpcs.every(row => ['/rest/v1/rpc/literary_news_delivery_day_status', '/rest/v1/rpc/read_due_literary_news_runtime_posts',
       '/rest/v1/rpc/literary_news_operations_supply'].includes(row.url.pathname))).toBe(true);
-    expect(report.public.release).toBe(release); expect(report.telegram.lastRunAt).toBe(current.toISOString());
+    expect(report.public.release).toBe(publicReadFailed ? null : release);
+    expect(report.public.readFailure).toEqual(scenario.publicReadFailure || null);
+    expect(report.telegram.lastRunAt).toBe(current.toISOString());
     expect(report.telegram.acknowledgedPerDay).toHaveLength(7); expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3);
     if (!scenario.actualPreparation) {
       expect(report.preparation.lastRunAt).toBeNull(); expect(report.preparation.admittedToday).toBeNull();
