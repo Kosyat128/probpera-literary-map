@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
 import limits from '../../data/news/contract.json' with { type: 'json' };
-import { runDeliveryTick, runDeliveryCaptureTick } from './literary-news-delivery-worker.mjs';
+import { createDeliveryRequestBudget, runDeliveryTick, runDeliveryCaptureTick } from './literary-news-delivery-worker.mjs';
 import { buildPublishedNewsFeed, newsDigest, newsSnapshotPayload } from '../lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from '../lib/literary-news-state.mjs';
 import { newsPostKey, prepareNewsPost, reconcileNewsSnapshot } from '../lib/literary-news-social.mjs';
@@ -261,5 +261,71 @@ describe('public response trust and stream bounds fail before any native queue w
     expect(network.mock.calls.filter(([input]) => String(input).includes('read_due_literary_news_runtime_posts'))).toHaveLength(1);
     expect(network.mock.calls.some(([input]) => new URL(String(input)).hostname === 'api.telegram.org')).toBe(false);
     expect(JSON.stringify(result)).not.toMatch(/PRIVATE|isolated-key|isolated-token/);
+  });
+});
+
+describe('native public feed retries preserve proof, stream capacity and invocation request limits', () => {
+  it('releases both busy streams before retrying with one deadline and accounts every attempt in the native budget', async () => {
+    const feed = await completeFeed([item('retry-verified')]), cancellations = [vi.fn(), vi.fn()];
+    const network = vi.fn()
+      .mockImplementationOnce(() => publicResponse(null, { status: 503, headers: { 'retry-after': '1' },
+        raw: new ReadableStream({ cancel: cancellations[0] }) }))
+      .mockImplementationOnce(() => publicResponse(null, { status: 503, headers: { 'retry-after': '2' },
+        raw: new ReadableStream({ cancel: cancellations[1] }) }))
+      .mockImplementationOnce(() => publicResponse(feed));
+    const budget = createDeliveryRequestBudget(network), waitImpl = vi.fn(async () => {
+      expect(cancellations[waitImpl.mock.calls.length - 1]).toHaveBeenCalledOnce();
+    });
+    expect(await fetchNativeNewsAdmissionFeed({ fetchImpl: budget.fetch, waitImpl, current })).toEqual(feed);
+    expect(budget.requests).toBe(3); expect(budget.providerWrites).toBe(0); expect(network).toHaveBeenCalledTimes(3);
+    expect(network.mock.calls.every(([url, options]) => url === NATIVE_NEWS_ADMISSION_FEED_URL && options.redirect === 'manual')).toBe(true);
+    const signal = network.mock.calls[0][1].signal;
+    expect(signal).toBeInstanceOf(AbortSignal); expect(signal.aborted).toBe(false);
+    expect(network.mock.calls.every(([, options]) => options.signal === signal)).toBe(true);
+    expect(waitImpl.mock.calls).toEqual([[1000, signal], [2000, signal]]);
+  });
+  it('accepts a retried complete snapshot through capture and existing dispatch fences', async () => {
+    const feed = await completeFeed([item('busy-then-current')]); let publicRequests = 0;
+    const f = await tickFixture(feed, { response: () => ++publicRequests === 1
+      ? publicResponse(null, { status: 503, headers: { 'retry-after': '1' } }) : publicResponse(feed) });
+    expect(await f.run()).toMatchObject({ newAdmissions: 1, deliveredThisRun: 1 });
+    expect(publicRequests).toBe(3);
+    expect(f.store.rows.get('admission:news:busy-then-current').state.snapshotId).toBe(feed.snapshot.id);
+    expect(f.store.rows.get(newsPostKey('busy-then-current', destination)).state).toMatchObject({ status: 'sent_current', remoteId: '1' });
+    expect(f.store.list).not.toHaveBeenCalled();
+    expect(f.fetchImpl.mock.calls.filter(([url]) => String(url).endsWith('/sendMessage'))).toHaveLength(1);
+  });
+  it('stops after three busy responses and cancels the final failed stream as well', async () => {
+    const cancel = vi.fn(), network = vi.fn(async () => publicResponse(null, { status: 503, headers: { 'retry-after': '1' },
+      raw: new ReadableStream({ cancel }) })), budget = createDeliveryRequestBudget(network), waitImpl = vi.fn();
+    await expect(fetchNativeNewsAdmissionFeed({ fetchImpl: budget.fetch, waitImpl, current })).rejects.toThrow('delivery_public_feed_unavailable');
+    expect(network).toHaveBeenCalledTimes(3); expect(waitImpl).toHaveBeenCalledTimes(2); expect(cancel).toHaveBeenCalledTimes(3);
+    expect(budget.requests).toBe(3); expect(budget.providerWrites).toBe(0);
+  });
+  it('does not start another GET when the retry wait is cancelled', async () => {
+    const cancel = vi.fn(), fetchImpl = vi.fn(async () => publicResponse(null, { status: 503, headers: { 'retry-after': '1' },
+      raw: new ReadableStream({ cancel }) })), waitImpl = vi.fn(async () => { throw new DOMException('cancelled', 'AbortError'); });
+    await expect(fetchNativeNewsAdmissionFeed({ fetchImpl, waitImpl, current })).rejects.toThrow('delivery_public_feed_unavailable');
+    expect(fetchImpl).toHaveBeenCalledOnce(); expect(cancel).toHaveBeenCalledOnce(); expect(waitImpl).toHaveBeenCalledOnce();
+  });
+  it.each(['wrong-origin', 'redirected'])('never retries %s busy responses or accepts their body', async kind => {
+    const cancel = vi.fn(), response = publicResponse(null, { status: 503, headers: { 'retry-after': '1' },
+      url: kind === 'wrong-origin' ? 'https://attacker.example/feed' : NATIVE_NEWS_ADMISSION_FEED_URL,
+      raw: new ReadableStream({ cancel }) });
+    if (kind === 'redirected') Object.defineProperty(response, 'redirected', { value: true });
+    const fetchImpl = vi.fn(async () => response), waitImpl = vi.fn();
+    await expect(fetchNativeNewsAdmissionFeed({ fetchImpl, waitImpl, current })).rejects.toThrow('delivery_public_feed_origin_invalid');
+    expect(fetchImpl).toHaveBeenCalledOnce(); expect(waitImpl).not.toHaveBeenCalled(); expect(cancel).toHaveBeenCalledOnce();
+  });
+  it('preserves the reserved heartbeat requests when a retry reaches the ordinary request ceiling', async () => {
+    const cancel = vi.fn(), network = vi.fn(async input => String(input) === NATIVE_NEWS_ADMISSION_FEED_URL
+      ? publicResponse(null, { status: 503, headers: { 'retry-after': '1' }, raw: new ReadableStream({ cancel }) }) : Response.json({}));
+    const budget = createDeliveryRequestBudget(network), waitImpl = vi.fn();
+    for (let index = 0; index < 47; index++) await budget.fetch('https://fixture.example/read');
+    await expect(fetchNativeNewsAdmissionFeed({ fetchImpl: budget.fetch, waitImpl, current })).rejects.toThrow('delivery_request_budget_exhausted');
+    expect(budget.requests).toBe(48); expect(budget.exhausted).toBe(true); expect(network).toHaveBeenCalledTimes(48);
+    expect(waitImpl).toHaveBeenCalledOnce(); expect(cancel).toHaveBeenCalledOnce();
+    budget.beginHeartbeat(); await budget.fetch('https://fixture.example/heartbeat-read'); await budget.fetch('https://fixture.example/heartbeat-cas');
+    expect(budget.requests).toBe(50); expect(network).toHaveBeenCalledTimes(50); expect(budget.providerWrites).toBe(0);
   });
 });

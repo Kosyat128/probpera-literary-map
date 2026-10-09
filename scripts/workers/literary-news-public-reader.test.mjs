@@ -34,6 +34,21 @@ describe('Public read-only news projection Durable Object boundary',()=>{
     expect(JSON.stringify(feed)).not.toContain('PRIVATE_HELD_UNREVIEWED');
     expect(f.env.NEWS_STATE.put).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.delete).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.list).not.toHaveBeenCalled();
   });
+  it('exposes the bounded busy retry delay through fixed CORS while retaining one active projection',async()=>{
+    const f=fixture({now:()=>new Date('2026-09-30T12:00:00Z')});
+    const current=await worker.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow'),f.env);
+    const archive=await worker.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow&view=archive',
+      {headers:{Origin:'https://untrusted.example'}}),f.env);
+    expect(current.status).toBe(200);expect(archive.status).toBe(503);
+    expect(archive.headers.get('retry-after')).toBe('1');
+    expect(archive.headers.get('access-control-expose-headers').split(/,\s*/)).toEqual(['X-Probpera-News-Release','Retry-After']);
+    expect(archive.headers.get('access-control-allow-origin')).toBe('https://probpera.ru');
+    expect(archive.headers.get('access-control-allow-credentials')).toBeNull();
+    expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(3);expect(f.reader.pending).toBe(1);
+    await current.body.cancel();
+    const recovered=await worker.fetch(new Request(url+'?contract=2&timeZone=Europe%2FMoscow&view=archive'),f.env);
+    expect(recovered.status).toBe(200);await verifyPublishedNewsSnapshot(await recovered.json(),{archive:true});expect(f.reader.pending).toBe(0);
+  });
   it('the internal reader itself rejects writes and unregistered paths without storage',async()=>{
     const f=fixture();expect((await f.reader.fetch(new Request(url,{method:'POST'}))).status).toBe(405);
     expect((await f.reader.fetch(new Request('https://private.internal/ledger'))).status).toBe(404);

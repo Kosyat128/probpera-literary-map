@@ -26,7 +26,7 @@ const item=id=>({id,eventKey:id,verification:'confirmed',kind:'news',category:'r
   source:{name:'Isolated publisher fixture',url:`https://publisher.example/books/${id}`,language:'en'}});
 
 async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0,claimConflicts=0,captureConflicts=0,quotaAt=null,providerFailure=false,
-  priorPacing=false,extraFeedReads=0,cachedPhoto=false,
+  priorPacing=false,extraFeedReads=0,cachedPhoto=false,feedBusyResponses=0,
   control={mode:'on',paused:false,historyReconciled:true}}={}){
   const records=Array.from({length:30},(_,i)=>item(`news-${String(i).padStart(2,'0')}`));
   const correctionRecords=Array.from({length:corrections},(_,i)=>item(`correction-${String(i).padStart(2,'0')}`));
@@ -39,7 +39,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
     transformations:{resize:true,metadataRemoval:true,reencode:true,crop:false},
     permissions:[{platform:'telegram',destinationId:destination.id,publish:true,providerProcessing:true,evidenceUrl:'https://publisher.example/license'}],derivative:descriptor};
   const assets=photo?[asset]:[],index=await makeDeliveryMediaIndex({assets,downloadHosts:[],uploads:photo?[{sha256:descriptor.sha256,uploadedAt:current.toISOString()}]:[],generatedAt:current.toISOString()});
-  const rows=new Map(),requests=[],writes=[],conflicts=new Map(),invocations=new Map();let sequence=0,acknowledgedCreates=0,invocation='none';
+  const rows=new Map(),requests=[],writes=[],conflicts=new Map(),invocations=new Map();let sequence=0,acknowledgedCreates=0,invocation='none',publicAttempts=0;
   const seed=(key,state)=>rows.set(key,{id:++sequence,state:structuredClone(state)});
   seed(controlKey,control);
   const pacingKey=`history:pacing:telegram:${destination.id}`,priorKey=newsPostKey('prior-receipt',destination);
@@ -76,7 +76,9 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
     expect(options.redirect).toBe('manual');requests.push({invocation,path:url.pathname,origin:url.origin,key:url.searchParams.get('entity_id')?.slice(3)});
     expect(requests.filter(row=>row.invocation===invocation).length).toBeLessThanOrEqual(50);
     if(url.href===NATIVE_NEWS_ADMISSION_FEED_URL){
-      const response=Response.json(feed,{headers:{'x-probpera-news-release':release}});
+      const response=++publicAttempts<=feedBusyResponses
+        ?Response.json({error:'public_projection_busy'},{status:503,headers:{'retry-after':'1'}})
+        :Response.json(feed,{headers:{'x-probpera-news-release':release}});
       Object.defineProperty(response,'url',{value:url.href});return response;
     }
     if(url.origin==='https://worker-fixture.supabase.co'){
@@ -132,7 +134,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
     const fetchFeedImpl=async args=>{const value=await fetchNativeNewsAdmissionFeed(args);
       for(let i=0;i<extraFeedReads;i++)await args.fetchImpl('https://worker-fixture.supabase.co/budget-read');return value;};
     const report=await (phase==='capture'?runDeliveryCaptureTick({env,now:()=>current,fetchImpl,...captureOptions}):runDeliveryTick({env,now:()=>current,fetchImpl,fetchFeedImpl}));
-    evidence.push({phase,corrections,creates,receiptConflicts,claimConflicts,captureConflicts,quotaAt,providerFailure,priorPacing,extraFeedReads,cachedPhoto,
+    evidence.push({phase,corrections,creates,receiptConflicts,claimConflicts,captureConflicts,quotaAt,providerFailure,priorPacing,extraFeedReads,cachedPhoto,feedBusyResponses,
       externalRequests:report.externalRequests,providerWriteAttempts:report.providerWriteAttempts||0,
       status:report.status,code:report.code||null,heartbeatRecorded:report.heartbeatRecorded,
       acknowledgedCreatesThisRun:report.acknowledgedCreatesThisRun||0,acknowledgedCorrectionsThisRun:report.acknowledgedCorrectionsThisRun||0});
@@ -142,6 +144,19 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
 }
 
 describe('native capture and dispatch under the real SDK external-request budget',()=>{
+  it('stops a busy feed retry at the ordinary request ceiling and persists a zero-write failure heartbeat through the real SDK',async()=>{
+    const f=await sdkFixture({photo:false,feedBusyResponses:1}),waitImpl=vi.fn();
+    const report=await f.run('capture',{fetchFeedImpl:async args=>{
+      for(let index=0;index<44;index++)await args.fetchImpl('https://worker-fixture.supabase.co/budget-read');
+      return fetchNativeNewsAdmissionFeed({...args,waitImpl});
+    }});
+    expect(report).toMatchObject({status:'blocked',phase:'public_feed',code:'delivery_request_budget_exhausted',
+      externalRequests:50,heartbeatRecorded:true,providerWriteAttempts:0,deliveredThisRun:null});
+    expect(f.requests).toHaveLength(50);expect(waitImpl).toHaveBeenCalledOnce();expect(f.writes).toEqual([]);
+    expect(f.requests.filter(row=>row.origin==='https://news.probpera.ru')).toHaveLength(1);
+    expect(f.rows.get('heartbeat:native-delivery-capture').state).toMatchObject({code:report.code,externalRequests:50,providerWriteAttempts:0});
+    expect([...f.rows.keys()].some(key=>key.startsWith('admission:')||key.startsWith('post:'))).toBe(false);
+  });
   it('does not duplicate an acknowledged create after timer persistence fails and alarm/Cron retry concurrently',async()=>{
     const f=await sdkFixture({creates:1,photo:false}),storage={setAlarm:vi.fn()
       .mockRejectedValueOnce(Error('PRIVATE storage failure')).mockResolvedValue(undefined),deleteAlarm:vi.fn()};

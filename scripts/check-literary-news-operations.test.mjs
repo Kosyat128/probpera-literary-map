@@ -4,7 +4,7 @@ import { parse } from 'yaml';
 import { checkNewsOperations, createNewsOperationsReportReader, createNewsOperationsRuntimeReadFetch,
   newsDeliveryCheckpointAge, newsOperationsSupplyCandidates, newsOperationsWorkflowWarnings, summarizeNewsOperations } from './check-literary-news-operations.mjs';
 import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
-  DAILY_NEWS_OWNER_KEY } from './lib/literary-news-daily-profile.mjs';
+  DAILY_NEWS_OWNER_KEY, DAILY_NEWS_LIMITS } from './lib/literary-news-daily-profile.mjs';
 import { emptyDailyLedger } from './lib/literary-news-daily-automation.mjs';
 import { buildPublishedNewsFeed } from './lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from './lib/literary-news-state.mjs';
@@ -74,6 +74,20 @@ async function overdueInput(at = '2026-10-09T10:00:00Z') {
   value.supplyCandidateCount = 1;
   value.supply = { schemaVersion: 1, checkedAt: value.current.toISOString(), candidateCount: 1, readyNow: 1, readyByClose: 1,
     ambiguous: 0, ambiguousFingerprint: null, acknowledged: 0, inflight: 0, missing: 0, stale: 0 };
+  return value;
+}
+
+async function cappedDraftInput() {
+  const value = await input(new Date('2026-10-09T18:23:55.409Z'));
+  Object.assign(value.dayStatus, { editorialDay: '2026-10-09', minimum: 8, maximum: 10,
+    acknowledgedCreates: 5, acknowledgedPhotoCreates: 1, freshCreates: 5, freshPhotoCreates: 1, deficitToMinimum: 3 });
+  Object.assign(value.preparationReport, { checkedAt: '2026-10-09T18:18:09.757Z', publicationConfirmed: true,
+    stoppedReason: 'ai_daily_candidate_budget_exhausted', draftRequestsToday: DAILY_NEWS_LIMITS.draftRequestsPerDay,
+    reservedAiCallsToday: 48, aiCalls: 0 });
+  value.preparationAttempt = { schemaVersion: 1, startedAt: '2026-10-09T18:18:00.579Z',
+    finishedAt: '2026-10-09T18:18:10.160Z', status: 'provider_degraded', reason: 'ai_daily_candidate_budget_exhausted',
+    publicationConfirmed: true, retryAfterAt: null };
+  value.ledger.inferenceBudgets = [{ day: '2026-10-09', draftRequests: DAILY_NEWS_LIMITS.draftRequestsPerDay, reservedCalls: 48 }];
   return value;
 }
 
@@ -273,6 +287,61 @@ describe('bounded read-only news operations projection', () => {
     const report = await summarizeNewsOperations(value);
     expect(report.status).toBe('failed');
     expect(report.failures).toEqual(expect.arrayContaining(['operations_preparation_stale', 'operations_profile_stale', 'operations_ledger_stale']));
+  });
+  it('treats a confirmed fresh draft cap as deferred while preserving unmet supply and delivery warnings', async () => {
+    const value = await cappedDraftInput();
+    value.pacingRow = { id: null, state: null }; value.supplyCandidateCount = 0;
+    value.supply = { schemaVersion: 1, checkedAt: value.current.toISOString(), candidateCount: 0,
+      readyNow: 0, readyByClose: 0, ambiguous: 0, ambiguousFingerprint: null, acknowledged: 0, inflight: 0, missing: 0, stale: 0 };
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.status).toBe('supply_degraded');
+    expect(report.preparation).toMatchObject({ budgetDeferred: true, budgetDeferredReason: 'ai_daily_candidate_budget_exhausted',
+      providerStop: null, quotaCooldown: false, admittedToday: 0, minimum: 8, minimumDeficit: 8 });
+    expect(report.preparation.lastRunCounts).toMatchObject({ draftRequestsToday: 40, reservedAiCallsToday: 48, aiCalls: 0 });
+    expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
+    expect(report.telegram.reserve.status).toBe('shortfall');
+    expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+  });
+  it.each(['below_cap', 'string_cap', 'over_cap', 'ledger_below_cap', 'missing_ledger_budget', 'reserved_below_drafts',
+    'reserved_above_limit', 'unconfirmed_report', 'unconfirmed_attempt', 'invalid_report', 'future_report', 'missing_attempt', 'mismatched_reason',
+    'mismatched_status', 'future_attempt', 'stale_attempt', 'unrelated_report', 'previous_day'])(
+    'does not hide a claimed daily draft stop with %s evidence', async boundary => {
+      const value = await cappedDraftInput();
+      if (boundary === 'below_cap') value.preparationReport.draftRequestsToday = 39;
+      if (boundary === 'string_cap') value.preparationReport.draftRequestsToday = '40';
+      if (boundary === 'over_cap') value.preparationReport.draftRequestsToday = 41;
+      if (boundary === 'ledger_below_cap') value.ledger.inferenceBudgets[0].draftRequests = 39;
+      if (boundary === 'missing_ledger_budget') value.ledger.inferenceBudgets = [];
+      if (boundary === 'reserved_below_drafts') value.preparationReport.reservedAiCallsToday = 39;
+      if (boundary === 'reserved_above_limit') value.preparationReport.reservedAiCallsToday = 81;
+      if (boundary === 'unconfirmed_report') value.preparationReport.publicationConfirmed = false;
+      if (boundary === 'unconfirmed_attempt') value.preparationAttempt.publicationConfirmed = false;
+      if (boundary === 'invalid_report') value.preparationReport.schemaVersion = 99;
+      if (boundary === 'future_report') value.preparationReport.checkedAt = '2026-10-09T18:24:00Z';
+      if (boundary === 'missing_attempt') value.preparationAttempt = null;
+      if (boundary === 'mismatched_reason') value.preparationAttempt.reason = 'ai_request_unavailable';
+      if (boundary === 'mismatched_status') value.preparationAttempt.status = 'degraded';
+      if (boundary === 'future_attempt') value.preparationAttempt.finishedAt = '2026-10-09T18:24:00Z';
+      if (boundary === 'stale_attempt') value.preparationAttempt.startedAt = value.preparationAttempt.finishedAt = '2026-10-09T16:00:00Z';
+      if (boundary === 'unrelated_report') value.preparationReport.checkedAt = '2026-10-09T18:17:59Z';
+      if (boundary === 'previous_day') { value.preparationReport.checkedAt = '2026-10-08T18:18:09.757Z';
+        value.preparationAttempt.startedAt = '2026-10-08T18:18:00.579Z'; value.preparationAttempt.finishedAt = '2026-10-08T18:18:10.160Z'; }
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).toContain('operations_preparation_degraded');
+      expect(report.preparation).toMatchObject({ budgetDeferred: false, budgetDeferredReason: null,
+        providerStop: 'ai_daily_candidate_budget_exhausted' });
+    });
+  it('preserves genuine provider quota and delivery failures even with forty reserved drafts', async () => {
+    const value = await cappedDraftInput(); value.deliveryHeartbeat.status = 'blocked';
+    const deliveryBlocked = await summarizeNewsOperations(value);
+    expect(deliveryBlocked.preparation.budgetDeferred).toBe(true);
+    expect(deliveryBlocked.failures).toEqual(['operations_delivery_blocked']);
+    value.preparationReport.stoppedReason = 'ai_quota_exceeded';
+    Object.assign(value.preparationAttempt, { status: 'provider_quota_cooldown', reason: 'ai_quota_exceeded',
+      publicationConfirmed: false, retryAfterAt: '2026-10-10T00:00:00.000Z' });
+    const quota = await summarizeNewsOperations(value);
+    expect(quota.failures).toEqual(expect.arrayContaining(['operations_preparation_degraded', 'operations_delivery_blocked']));
+    expect(quota.preparation).toMatchObject({ budgetDeferred: false, quotaCooldown: true, providerStop: 'ai_quota_exceeded' });
   });
   it.each([[90 * 60000 - 1, false], [90 * 60000, false], [90 * 60000 + 1, true]])(
     'checks preparation attempts independently of fresh publication state at age %i ms', async (age, stale) => {
@@ -608,7 +677,10 @@ describe('read-only operations report network boundaries', () => {
         }
         throw Error('Unexpected private Cloudflare request');
       }
-      if (url.origin === 'https://news.probpera.ru') return Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
+      if (url.origin === 'https://news.probpera.ru') {
+        const response = Response.json(value.feed, { headers: { 'x-probpera-news-release': release } });
+        Object.defineProperty(response, 'url', { value: url.href }); return response;
+      }
       if (url.origin === origin && url.pathname === '/rest/v1/admin_audit_log' && method === 'GET') {
         const key = url.searchParams.get('entity_id');
         if (key?.startsWith('eq.destination:telegram:')) return scenario.unauthorizedDestination

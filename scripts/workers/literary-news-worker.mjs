@@ -22,7 +22,7 @@ const headersFor = (release) => ({
   "Cache-Control": "no-store",
   "X-Content-Type-Options": "nosniff",
   "Access-Control-Allow-Origin": READER_ORIGIN,
-  "Access-Control-Expose-Headers": "X-Probpera-News-Release",
+  "Access-Control-Expose-Headers": "X-Probpera-News-Release, Retry-After",
   "X-Probpera-News-Release": /^[a-f0-9]{40}$/.test(release || "") ? release : "local",
 });
 

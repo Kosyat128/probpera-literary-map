@@ -22,11 +22,11 @@ const feed = (timeZone, items = [story("first")]) => buildPublishedNewsFeed({
   state: { lastCheckedAt: instant, refreshIntervalSeconds: 600, sources: [], pendingCount: 0 },
 });
 
-async function respondFeed(route, json, status = 200) {
+async function respondFeed(route, json, status = 200, headers = {}) {
   // The browser still enforces CORS on this intercepted cross-origin response.
   return route.fulfill({
     status, json: await json,
-    headers: { "access-control-allow-origin": route.request().headers().origin },
+    headers: { "access-control-allow-origin": route.request().headers().origin, ...headers },
   });
 }
 
@@ -42,6 +42,112 @@ test.beforeEach(async ({ page, baseURL }) => {
       headers: { ...response.headers(), "content-security-policy": PUBLIC_CONTENT_SECURITY_POLICY },
     });
   });
+});
+
+test("a transient busy reader retries automatically without requesting the fallback", async ({ page }) => {
+  const requests = [];
+  let fallbacks = 0;
+  await page.route("**/literary-news-snapshot.json", route => {
+    fallbacks++;
+    return route.fulfill({ status: 503, json: { error: "unexpected_fallback" } });
+  });
+  await page.route(endpoint, route => {
+    requests.push({ url: route.request().url(), at: Date.now() });
+    return requests.length === 1
+      ? respondFeed(route, { error: "snapshot_unavailable" }, 503, {
+        "retry-after": "1", "access-control-expose-headers": "Retry-After",
+      })
+      : respondFeed(route, feed("America/Los_Angeles"));
+  });
+  await page.goto("/#book-day", { waitUntil: "domcontentloaded" });
+  const panel = page.locator("#literary-news");
+  await expect(panel.locator("article")).toHaveCount(1, { timeout: 30_000 });
+  await expect(panel.locator(".literary-news__refresh")).toBeEnabled();
+  expect(requests).toHaveLength(2);
+  expect(requests[1].url).toBe(requests[0].url);
+  // This measures real server-side receipt time, not the page's fixed Date.now.
+  expect(requests[1].at - requests[0].at).toBeGreaterThanOrEqual(900);
+  expect(fallbacks).toBe(0);
+  await panel.locator(".literary-news__feed-details > summary").click();
+  await expect(panel.locator(".literary-news__warning")).toHaveCount(0);
+});
+
+test("a persistently busy reader stops after three attempts and shows an honest fallback", async ({ page }) => {
+  let attempts = 0, fallbacks = 0;
+  const fallback = await buildPublishedNewsFeed({
+    records: [story("retained")], current: new Date(instant), timeZone: "America/Los_Angeles",
+    release: "a".repeat(40),
+    state: { lastCheckedAt: instant, refreshIntervalSeconds: 600, sources: [], pendingCount: 0 },
+  });
+  await page.route("**/literary-news-snapshot.json", route => {
+    fallbacks++;
+    return route.fulfill({ json: fallback });
+  });
+  await page.route(endpoint, route => {
+    attempts++;
+    return respondFeed(route, { error: "snapshot_unavailable" }, 503, {
+      "retry-after": "1", "access-control-expose-headers": "Retry-After",
+    });
+  });
+  await page.goto("/#book-day", { waitUntil: "domcontentloaded" });
+  const panel = page.locator("#literary-news");
+  await expect(panel.locator("article")).toHaveCount(1, { timeout: 30_000 });
+  await expect(panel.locator(".literary-news__headline")).toHaveText("Тестовое событие retained");
+  await expect(panel.locator(".literary-news__refresh")).toBeEnabled();
+  expect(attempts).toBe(3);
+  expect(fallbacks).toBe(1);
+  await panel.locator(".literary-news__feed-details > summary").click();
+  await expect(panel.locator(".literary-news__warning")).toContainText("Архив временно недоступен");
+  // Observe beyond the server's retry interval: no fourth attempt is scheduled.
+  await page.waitForTimeout(1200);
+  expect(attempts).toBe(3);
+  expect(fallbacks).toBe(1);
+});
+
+test("unmounting the news panel aborts its pending retry and does not request a fallback", async ({ page }) => {
+  let attempts = 0, fallbacks = 0;
+  // The intentional render error must not be sent to the live diagnostics store.
+  await page.route("**/rest/v1/rpc/submit_client_error", route => route.fulfill({
+    status: 204,
+    headers: { "access-control-allow-origin": "*", "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "*" },
+  }));
+  await page.addInitScript(() => {
+    window.__newsRequestSignals = [];
+    const nativeFetch = window.fetch;
+    window.fetch = function (input, init) {
+      const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+      if (url.startsWith("https://news.probpera.ru/api/literary-news/feed")) window.__newsRequestSignals.push(init.signal);
+      return nativeFetch.call(this, input, init);
+    };
+  });
+  await page.route("**/literary-news-snapshot.json", route => {
+    fallbacks++;
+    return route.fulfill({ status: 503, json: { error: "unexpected_fallback" } });
+  });
+  await page.route(endpoint, route => {
+    attempts++;
+    return respondFeed(route, { error: "snapshot_unavailable" }, 503, {
+      "retry-after": "2", "access-control-expose-headers": "Retry-After",
+    });
+  });
+  const busy = page.waitForResponse(response => response.url().startsWith("https://news.probpera.ru/api/literary-news/feed") && response.status() === 503);
+  await page.goto("/#book-day", { waitUntil: "domcontentloaded" });
+  await busy;
+  const panel = page.locator("#literary-news");
+  await expect(panel.getByRole("searchbox")).toBeVisible();
+  // Exercise actual React cleanup through the production error boundary. Merely
+  // navigating away would destroy timers even if the component forgot to abort.
+  await page.evaluate(() => {
+    Intl.DisplayNames = class { constructor() { throw new Error("test-only news unmount"); } };
+    const input = document.querySelector("#literary-news input[type='search']");
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(input, "unmount");
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await expect(panel).toHaveCount(0);
+  await expect.poll(() => page.evaluate(() => window.__newsRequestSignals.length > 0 && window.__newsRequestSignals.every(signal => signal.aborted))).toBe(true);
+  await page.waitForTimeout(2300);
+  expect(attempts).toBe(1);
+  expect(fallbacks).toBe(0);
 });
 
 test("public news loads near the book feature and follows language and visitor dates", async ({ page }) => {

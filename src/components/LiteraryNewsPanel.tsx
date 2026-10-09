@@ -1,5 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import newsLimits from "../../data/news/contract.json";
+import { fetchNewsFeedWithTransientRetry } from "../../scripts/lib/literary-news-feed-request.mjs";
 
 import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { readNewsFeedResponse } from "../news/transport";
@@ -476,7 +477,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
         url.searchParams.set("timeZone", timeZone);
         url.searchParams.set("contract", "2");
         if (archive) url.searchParams.set("view", "archive");
-        const response = await fetch(url, {
+        const response = await fetchNewsFeedWithTransientRetry(url, {
           cache: "no-store",
           headers: { Accept: "application/json" },
           signal: activeController.signal,
