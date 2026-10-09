@@ -365,11 +365,7 @@ export class LiteraryNewsDeliveryCoordinator {
   }
 }
 
-/** Each private DO POST has a fresh 50-external-request budget. Cron itself
- * performs only the two internal binding calls and logs their safe summaries. */
-export async function scheduleNativeNewsDelivery(controller,env,{log=console.log}={}) {
-  if(env.NEWS_DELIVERY_ENABLED!=='true')return;
-  if(!env.DELIVERY_COORDINATOR)fail('delivery_coordinator_missing');
+async function scheduledDelivery(controller,env,log) {
   const stub=env.DELIVERY_COORDINATOR.get(env.DELIVERY_COORDINATOR.idFromName('literary-news-delivery'));
   const captureResponse=await stub.fetch('https://coordinator.internal/capture',{method:'POST'});
   const capture=await captureResponse.json();
@@ -384,6 +380,40 @@ export async function scheduleNativeNewsDelivery(controller,env,{log=console.log
   if(!response.ok||summary.status==='blocked'||summary.status==='dispatch_reconciliation_required')controller.noRetry();
   log(JSON.stringify(summary));
   return summary;
+}
+
+const preparationStatuses=new Set(['disabled','outside_admission_window','busy','provider_quota_cooldown',
+  'degraded','provider_degraded','supply_degraded','target_met','skipped']);
+
+/** The same preparation DO owns the lease, AI budgets and durable slot gate.
+ * A missing/older binding or failed preparation must not retry delivery. */
+async function recoverScheduledPreparation(env,current,log) {
+  const minute=current.getUTCMinutes();
+  if(!env.NEWS_PREPARATION_RECOVERY||!(minute>=25&&minute<30||minute>=55&&minute<60))return;
+  const component='literary-news-preparation-recovery';
+  try{
+    const stub=env.NEWS_PREPARATION_RECOVERY.get(env.NEWS_PREPARATION_RECOVERY.idFromName('daily-news-preparation'));
+    const response=await stub.fetch('https://coordinator.internal/recover',{
+      method:'POST',signal:AbortSignal.timeout(7*60000)});
+    if(!response.ok){
+      await response.body?.cancel().catch(()=>{});
+      log(JSON.stringify({component,status:'unavailable',httpStatus:response.status}));return;
+    }
+    const report=JSON.parse(Buffer.from(await boundedDeliveryResponse(response,65536)).toString('utf8'));
+    if(!preparationStatuses.has(report?.status))throw Error('preparation_recovery_response_invalid');
+    log(JSON.stringify({component,status:report.status,publicationConfirmed:report.publicationConfirmed===true}));
+  }catch{
+    log(JSON.stringify({component,status:'unavailable'}));
+  }
+}
+
+/** Every private DO POST retains its own 50-external-request budget. Complete
+ * delivery first; the optional recovery calls the existing preparation DO. */
+export async function scheduleNativeNewsDelivery(controller,env,{log=console.log,now=()=>new Date()}={}) {
+  if(env.NEWS_DELIVERY_ENABLED!=='true')return;
+  if(!env.DELIVERY_COORDINATOR)fail('delivery_coordinator_missing');
+  try{return await scheduledDelivery(controller,env,log);}
+  finally{await recoverScheduledPreparation(env,now(),log);}
 }
 
 export default {

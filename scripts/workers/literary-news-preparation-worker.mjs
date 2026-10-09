@@ -11,6 +11,7 @@ import {DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_OWNER_KEY,DAILY_
   dailyNewsDay,dailyNewsDigest,approvedDailySource,validateDailyApprovedPayload,validateDailyNewsRecord} from '../lib/literary-news-daily-profile.mjs';
 import {acquireNewsPreparationLease,stageNewsPreparationCheckpoint,confirmNewsPreparationCheckpoint,stageNewsPreparationPublication,
   confirmNewsPreparationPublication,releaseNewsPreparationLease} from '../lib/literary-news-preparation-fence.mjs';
+import {claimNewsPreparationSlot} from '../lib/literary-news-preparation-slots.mjs';
 import reviewed from '../../data/news/reviewed.json' with{type:'json'};
 import withdrawals from '../../data/news/withdrawals.json' with{type:'json'};
 
@@ -210,11 +211,24 @@ export async function observeNativeNewsPreparation(env,storage,{now=()=>new Date
   }
   return{report,httpStatus};
 }
+export async function observeSlottedNativeNewsPreparation(env,storage,{trigger='primary',now=()=>new Date(),run=runNativeNewsPreparation}={}){
+  if(env.NEWS_AUTOMATION_ENABLED!=='true')return{report:{status:'disabled',publicationConfirmed:false,deliveryConfirmed:false},httpStatus:200};
+  const current=now(),day=dailyNewsDay(current);
+  if(day<DAILY_NEWS_WINDOW.start||day>=DAILY_NEWS_WINDOW.endExclusive)
+    return{report:{status:'outside_admission_window',window:DAILY_NEWS_WINDOW},httpStatus:200};
+  let claim;
+  try{claim=await claimNewsPreparationSlot(storage,{current:current.getTime(),trigger});}
+  catch(error){return{report:{status:'degraded',reason:safeError(error),publicationConfirmed:false,deliveryConfirmed:false},httpStatus:503};}
+  // Skipped requests are not preparation attempts and must not refresh health.
+  if(!claim.acquired)return{report:{status:'skipped',reason:claim.reason,publicationConfirmed:false,deliveryConfirmed:false},httpStatus:200};
+  return observeNativeNewsPreparation(env,storage,{now,run});
+}
 export class DailyNewsPreparationCoordinator{
   constructor(state,env){this.storage=state.storage;this.env=env;}
   async fetch(request){
-    if(request.method!=='POST'||new URL(request.url).pathname!=='/run')return new Response(null,{status:404});
-    const {report,httpStatus}=await observeNativeNewsPreparation(this.env,this.storage);
+    const path=new URL(request.url).pathname;
+    if(request.method!=='POST'||!['/run','/recover'].includes(path))return new Response(null,{status:404});
+    const {report,httpStatus}=await observeSlottedNativeNewsPreparation(this.env,this.storage,{trigger:path==='/recover'?'recovery':'primary'});
     return Response.json(report,{status:httpStatus});
   }
 }

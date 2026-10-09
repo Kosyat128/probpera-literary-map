@@ -429,7 +429,9 @@ describe('read-only operations report network boundaries', () => {
             { name: 'NEWS_AUTOMATION_ENABLED', type: 'plain_text', text: String(scenario.actualPreparation) },
             { name: 'NEWS_AUTOMATION_BOOTSTRAP', type: 'plain_text', text: String(scenario.actualPreparation) },
             { name: 'NEWS_AUTOMATION_WRITER', type: 'plain_text', text: 'native' }]
-            : [{ name: 'NEWS_DELIVERY_ENABLED', type: 'plain_text', text: 'true' }] } });
+            : [{ name: 'NEWS_DELIVERY_ENABLED', type: 'plain_text', text: 'true' },
+              { name: 'NEWS_PREPARATION_RECOVERY', type: 'durable_object_namespace',
+                class_name: 'DailyNewsPreparationCoordinator', script_name: 'probpera-literary-news-preparation' }] } });
         }
         if (url.pathname.endsWith('/schedules')) return Response.json({ success: true, result: { schedules: [{
           cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17,47 * * * *' : '*/5 5-19 * * *' }] } });

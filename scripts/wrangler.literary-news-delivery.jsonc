@@ -8,7 +8,10 @@
   "preview_urls": false,
   "triggers": { "crons": ["*/5 5-19 * * *"] },
   "kv_namespaces": [{ "binding": "NEWS_STATE", "id": "f3ae59fd55ee4c0cac8ff1613db81680" }],
-  "durable_objects": {"bindings":[{"name":"DELIVERY_COORDINATOR","class_name":"LiteraryNewsDeliveryCoordinator"}]},
+  "durable_objects": {"bindings":[
+    {"name":"DELIVERY_COORDINATOR","class_name":"LiteraryNewsDeliveryCoordinator"},
+    {"name":"NEWS_PREPARATION_RECOVERY","class_name":"DailyNewsPreparationCoordinator","script_name":"probpera-literary-news-preparation"}
+  ]},
   "migrations": [{"tag":"v1","new_sqlite_classes":["LiteraryNewsDeliveryCoordinator"]}],
   "vars": { "NEWS_DELIVERY_ENABLED": "false" },
   "observability": { "enabled": true, "head_sampling_rate": 1 }

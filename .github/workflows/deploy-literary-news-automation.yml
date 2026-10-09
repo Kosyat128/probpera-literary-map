@@ -89,7 +89,7 @@ jobs:
       - name: Verify native preparation, delivery and media boundaries
         if: steps.invocation.outputs.run_needed == 'true'
         run: |
-          npx vitest run scripts/check-literary-news-quota-resume.test.mjs scripts/verify-native-news-workers.test.mjs scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+          npx vitest run scripts/check-literary-news-quota-resume.test.mjs scripts/verify-native-news-workers.test.mjs scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/lib/literary-news-preparation-slots.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-recovery.test.mjs scripts/workers/literary-news-delivery-workerd.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/native-news-preparation
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/native-news-delivery
       - name: Verify the deployed public feed before activating writes

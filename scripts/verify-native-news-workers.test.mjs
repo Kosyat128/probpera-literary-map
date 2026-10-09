@@ -7,6 +7,8 @@ const accountId = "0123456789abcdef0123456789abcdef";
 const apiToken = "test_only_private_token_marker";
 const credentials = { accountId, apiToken };
 const json = result => new Response(JSON.stringify({ success: true, result }));
+const recoveryBinding = { name: "NEWS_PREPARATION_RECOVERY", type: "durable_object_namespace",
+  class_name: "DailyNewsPreparationCoordinator", script_name: "probpera-literary-news-preparation" };
 function preparationBindings(expected) {
   return [
     { name: "NEWS_AUTOMATION_ENABLED", type: "plain_text", text: expected === "enabled" ? "true" : "false" },
@@ -22,7 +24,9 @@ function providerFixture(expected = "enabled", override = () => null) {
   const replies = [
     { bindings: preparationBindings(expected) },
     { schedules: [{ cron: "17,47 * * * *" }] },
-    { bindings: [{ name: "NEWS_DELIVERY_ENABLED", type: "plain_text", text: ["enabled", "delivery-only"].includes(expected) ? "true" : "false" }] },
+    { bindings: [{ name: "NEWS_DELIVERY_ENABLED", type: "plain_text", text: ["enabled", "delivery-only"].includes(expected) ? "true" : "false" },
+      ...(["enabled", "delivery-only"].includes(expected)
+        ? [{ ...recoveryBinding, namespace_id: "provider_private_namespace", environment: null }] : [])] },
     { schedules: [{ cron: "*/5 5-19 * * *" }] },
   ];
   const fetchImpl = vi.fn(async (url, options) => {
@@ -36,6 +40,47 @@ function providerFixture(expected = "enabled", override = () => null) {
 const run = (fixture, expected = "enabled") => verifyNativeNewsWorkers({ ...credentials, expected, fetchImpl: fixture.fetchImpl });
 
 describe("native worker activation read-only postflight", () => {
+  it.each(['enabled','delivery-only','auto-resume'])('requires the recovery binding for active delivery in %s mode',async expected=>{
+    const actual=providerFixture(expected==='delivery-only'?'delivery-only':'enabled',(index,value)=>index===2
+      ? json({bindings:value.bindings.filter(row=>row.name!==recoveryBinding.name)}) : null);
+    await expect(run(actual,expected)).rejects.toThrow('native_check_recovery_binding_mismatch');
+    expect(actual.calls).toHaveLength(3);
+  });
+  it('allows a missing old binding only with the explicit upgrade option and reports its absence',async()=>{
+    const fixture=providerFixture('enabled',(index,value)=>index===2
+      ? json({bindings:value.bindings.filter(row=>row.name!==recoveryBinding.name)}) : null);
+    const result=await verifyNativeNewsWorkers({...credentials,expected:'enabled',fetchImpl:fixture.fetchImpl,
+      allowMissingPreparationRecoveryBinding:true});
+    expect(fixture.calls).toHaveLength(4);expect(result.workers[1].preparationRecoveryBinding).toBeNull();
+    const legacy=providerFixture('enabled',(index,value)=>index===1?json({schedules:[{cron:'17 */2 * * *'}]}):index===2
+      ? json({bindings:value.bindings.filter(row=>row.name!==recoveryBinding.name)}) : null);
+    const previous=await verifyNativeNewsWorkers({...credentials,expected:'enabled',fetchImpl:legacy.fetchImpl,
+      allowMissingPreparationRecoveryBinding:true,allowPreviousPreparationSchedule:true});
+    expect(previous.workers[0].cronUtc).toBe('17 */2 * * *');expect(previous.workers[1].preparationRecoveryBinding).toBeNull();
+    const scheduleOnly=providerFixture('enabled',(index,value)=>index===2
+      ? json({bindings:value.bindings.filter(row=>row.name!==recoveryBinding.name)}) : null);
+    await expect(verifyNativeNewsWorkers({...credentials,expected:'enabled',fetchImpl:scheduleOnly.fetchImpl,
+      allowPreviousPreparationSchedule:true})).rejects.toThrow('native_check_recovery_binding_mismatch');
+  });
+  it.each([{}, {type:'service'}, {class_name:'OtherCoordinator'}, {script_name:'other-preparation'},
+    {script_name:null}, {environment:'staging'}, {dispatch_namespace:'other-namespace'}])(
+    'refuses malformed existing recovery bindings even during the compatible precheck: %j',async change=>{
+      for(const allowMissingPreparationRecoveryBinding of [false,true]){
+        const fixture=providerFixture('enabled',(index,value)=>index===2?json({bindings:value.bindings.map(row=>
+          row.name===recoveryBinding.name?Object.keys(change).length?{...row,...change}:{name:recoveryBinding.name}:row)}):null);
+        await expect(verifyNativeNewsWorkers({...credentials,expected:'enabled',fetchImpl:fixture.fetchImpl,
+          allowMissingPreparationRecoveryBinding})).rejects.toThrow('native_check_recovery_binding_mismatch');
+        expect(fixture.calls).toHaveLength(3);
+      }
+    });
+  it('rejects duplicate recovery bindings and does not require an absent binding while delivery is disabled',async()=>{
+    const duplicate=providerFixture('enabled',(index,value)=>index===2?json({bindings:[...value.bindings,{...recoveryBinding}]}):null);
+    await expect(verifyNativeNewsWorkers({...credentials,expected:'enabled',fetchImpl:duplicate.fetchImpl,
+      allowMissingPreparationRecoveryBinding:true})).rejects.toThrow('native_check_recovery_binding_mismatch');
+    const disabled=providerFixture('disabled',(index,value)=>index===2
+      ? json({bindings:value.bindings.filter(row=>row.name!==recoveryBinding.name)}) : null);
+    expect((await run(disabled,'disabled')).workers[1].preparationRecoveryBinding).toBeNull();
+  });
   it('allows the previous preparation cron only for an explicit compatible upgrade precheck', async () => {
     const fixture = providerFixture('enabled', (index, value) => index === 1
       ? json({ schedules: [{ cron: '17 */2 * * *' }] }) : null);
@@ -69,7 +114,7 @@ describe("native worker activation read-only postflight", () => {
     expect(result).toMatchObject({ readonly: true, externalWrites: 0, providerRequests: 4, expected, deliveryConfirmed: false });
     expect(result.workers).toEqual([
       { worker: "probpera-literary-news-preparation", flags: { NEWS_AUTOMATION_ENABLED: String(expected === "enabled"), NEWS_AUTOMATION_BOOTSTRAP: String(expected === "enabled"), NEWS_AUTOMATION_WRITER: "native" }, cronUtc: "17,47 * * * *" },
-      { worker: "probpera-literary-news-delivery", flags: { NEWS_DELIVERY_ENABLED: String(["enabled", "delivery-only"].includes(expected)) }, cronUtc: "*/5 5-19 * * *" },
+      { worker: "probpera-literary-news-delivery", flags: { NEWS_DELIVERY_ENABLED: String(["enabled", "delivery-only"].includes(expected)) }, cronUtc: "*/5 5-19 * * *", preparationRecoveryBinding: expected === "disabled" ? null : recoveryBinding },
     ]);
     expect(Number.isFinite(Date.parse(result.checkedAt))).toBe(true);
     expect(JSON.stringify(result)).not.toMatch(/provider_private|SUPABASE_SERVICE_ROLE_KEY|TELEGRAM_BOT_TOKEN|UNRELATED_PRIVATE_SETTING|test_only_private_token_marker/);
@@ -86,6 +131,8 @@ describe("native worker activation read-only postflight", () => {
       { apiToken: "a".repeat(513) }, { apiToken: "token\r\nInjected: secret" },
       { apiToken: "token with spaces" }, { apiToken: "private/../schedules" },
       { expected: true }, { expected: false }, { expected: "true" }, { expected: "ENABLED" }, { expected: coercion },
+      { allowMissingPreparationRecoveryBinding: 'true' }, { allowMissingPreparationRecoveryBinding: 1 },
+      { allowMissingPreparationRecoveryBinding: null }, { allowMissingPreparationRecoveryBinding: coercion },
     ];
     for (const fields of invalid) {
       const fetchImpl = vi.fn();
@@ -275,7 +322,8 @@ describe("native worker activation read-only postflight", () => {
     for (const args of [[], ["--send"], ["--expect-enabled", "--send"], ["--expect-disabled"], ["--expect-delivery-only"],
       ["--expect-delivery-only", "--expect-enabled"], ["--expect-disabled", "--expect-delivery-only"],
       ["--expect-delivery-only", "--expect-delivery-only"], ["--expect-auto-resume"],
-      ["--expect-auto-resume", "--expect-delivery-only"]]) {
+      ["--expect-auto-resume", "--expect-delivery-only"],
+      ["--expect-enabled", "--allow-missing-preparation-recovery-binding"]]) {
       let failure;
       try {
         execFileSync(process.execPath, [script, ...args], { encoding: "utf8", windowsHide: true,
