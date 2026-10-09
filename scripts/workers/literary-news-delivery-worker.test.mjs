@@ -100,9 +100,34 @@ describe('Private native delivery cron boundary',()=>{
    expect((await runDeliveryTick({env,now:()=>new Date(Date.parse(DELIVERY_WINDOW.start)+8*3600000)})).code).toBe('delivery_credentials_missing');
    expect((await runDeliveryTick({env,now:()=>new Date(DELIVERY_WINDOW.end)})).status).toBe('outside_authorized_window');
  });
- it.each([{mode:'off',historyReconciled:true},{mode:'on',historyReconciled:false},{mode:'on',paused:true,historyReconciled:true}])('preserves existing control and never changes activation: %j',async control=>{
-   const f=await fixture({control});expect((await f.run()).status).toBe('destination_not_enabled_or_history_gap');
-   expect(f.client.rpc).not.toHaveBeenCalled();expect(f.store.compareAppend).not.toHaveBeenCalled();expect(f.dispatch).not.toHaveBeenCalled();
+ it.each([
+   [{mode:'off',historyReconciled:true},'destination_mode_not_on'],
+   [{mode:'on',historyReconciled:false},'destination_history_unreconciled'],
+   [{mode:'on',paused:true,pauseReason:'destination_rights_unverified',historyReconciled:true},'destination_paused'],
+   [null,'destination_control_missing'],
+ ])('records a bounded failure heartbeat while preserving control: %j',async(control,reason)=>{
+   const f=await fixture({control}),controlKey=`destination:telegram:${destination.id}`,before=structuredClone(f.state.get(controlKey));
+   const result=await f.run();expect(result).toMatchObject({status:'destination_not_enabled_or_history_gap',phase:'destination',
+     reason,finishedAt:now.toISOString(),heartbeatRecorded:true,providerWriteAttempts:0,deliveredThisRun:0});
+   expect(f.state.get('heartbeat:native-delivery').state).toMatchObject({status:result.status,reason,finishedAt:now.toISOString()});
+   expect(f.state.get(controlKey)).toEqual(before);
+   expect(f.client.rpc).not.toHaveBeenCalled();expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.dispatch).not.toHaveBeenCalled();
+   expect(f.store.compareAppend).toHaveBeenCalledTimes(1);expect(f.store.compareAppend.mock.calls[0][0]).toBe('heartbeat:native-delivery');
+ });
+ it.each(['release_operator_pause','sensitive-token-with-private-context'])('records only approved pause reasons and keeps capture separate: %s',async pauseReason=>{
+   const f=await fixture({control:{mode:'on',paused:true,historyReconciled:true,pauseReason}}),result=await f.capture();
+   expect(result.pauseReason).toBe(pauseReason==='release_operator_pause'?pauseReason:'destination_pause_reason_unknown');
+   expect(f.state.has('heartbeat:native-delivery')).toBe(false);
+   expect(f.state.get('heartbeat:native-delivery-capture').state).toMatchObject({paused:true,historyReconciled:true,
+     destinationMode:'on',status:'destination_not_enabled_or_history_gap',pauseReason:result.pauseReason,finishedAt:now.toISOString()});
+   expect(JSON.stringify(result)).not.toContain('sensitive-token');expect(f.dispatch).not.toHaveBeenCalled();
+ });
+ it('reports an uncommitted destination heartbeat as unrecorded without changing control or dispatching',async()=>{
+   const control={mode:'on',paused:true,pauseReason:'release_operator_pause',historyReconciled:true},f=await fixture({control});
+   f.store.compareAppend.mockResolvedValue({applied:false});
+   expect(await f.run()).toMatchObject({status:'destination_not_enabled_or_history_gap',heartbeatRecorded:false,deliveredThisRun:0});
+   expect(f.store.compareAppend).toHaveBeenCalledTimes(1);expect(f.dispatch).not.toHaveBeenCalled();
+   expect(f.state.get(`destination:telegram:${destination.id}`).state).toEqual(control);
  });
  it('requires the bounded SQL prerequisites without a full-history fallback',async()=>{
    const f=await fixture({rpcError:true});const result=await f.run();expect(result.code).toBe('runtime_day_status_rpc_required');

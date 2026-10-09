@@ -391,7 +391,7 @@ describe("native photo delivery without duplicate creates",()=>{
       expect(stored.dispatchStartedAt).toBeFalsy();
       await f.store.seed("destination:vk:-456",{mode:"on",paused:false,historyReconciled:true});
       if(scenario==="rate") expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+61000)})).reason).toBe("destination_pacing");
-      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?3600000:61000))})).status).toBe("sent_current");
+      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?6300000:61000))})).status).toBe("sent_current");
       expect(uploadImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls.filter(([url])=>url.endsWith("photos.saveWallPhoto"))).toHaveLength(1);
     }
   });

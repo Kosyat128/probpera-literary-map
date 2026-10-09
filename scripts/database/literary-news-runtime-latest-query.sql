@@ -116,11 +116,14 @@ create or replace function public.literary_news_delivery_day_status(
 ) returns jsonb language plpgsql stable security invoker set search_path = ''
 as $$
 declare p_day date; creates bigint; photos bigint; fresh bigint; fresh_photos bigint; unknown_first bigint;
+  daily_minimum integer; daily_maximum integer;
 begin
   if p_destination_id is null or p_destination_id !~ '^-[1-9][0-9]{0,15}$' or p_now is null then
     raise exception 'invalid literary news daily status query' using errcode = '22023';
   end if;
   p_day := (p_now at time zone 'Europe/Moscow')::date;
+  daily_minimum := case when p_day >= date '2026-10-09' then 8 else 10 end;
+  daily_maximum := case when p_day >= date '2026-10-09' then 10 else 20 end;
   with latest_ids as (
     select distinct on (a.entity_id collate "C") a.id, a.entity_id
     from public.admin_audit_log a where a.entity_type = 'literary_news_runtime'
@@ -147,7 +150,8 @@ begin
   into creates, photos, fresh, fresh_photos, unknown_first from receipt;
   return pg_catalog.jsonb_build_object('editorialDay',p_day::text,'timeZone','Europe/Moscow',
     'acknowledgedCreates',creates,'acknowledgedPhotoCreates',photos,'freshCreates',fresh,'freshPhotoCreates',fresh_photos,
-    'legacyReceiptsWithUnknownFirstDate',unknown_first,'minimum',10,'maximum',20,'deficitToMinimum',greatest(0,10-fresh));
+    'legacyReceiptsWithUnknownFirstDate',unknown_first,'minimum',daily_minimum,'maximum',daily_maximum,
+    'deficitToMinimum',greatest(0,daily_minimum-fresh));
 end;
 $$;
 revoke all on function public.literary_news_delivery_day_status(text,timestamptz) from public, anon, authenticated;

@@ -8,13 +8,17 @@ export const DAILY_NEWS_LEDGER_KEY = "literary-news:v1:daily-automation:ledger";
 export const DAILY_NEWS_OWNER_KEY = "literary-news:v1:daily-automation:owner";
 export const DAILY_NEWS_PROFILE_ID = "daily-grounded-v1";
 export const DAILY_NEWS_WINDOW = Object.freeze({ start: "2026-09-29", endExclusive: "2027-09-30", timeZone: "Europe/Moscow" });
-export const DAILY_NEWS_LIMITS = Object.freeze({ minimum: 10, maximum: 15, records: 5490,
+export const DAILY_NEWS_LIMITS = Object.freeze({ minimum: 8, maximum: 10, records: 5490,
   aiCallsPerDay: 80, draftRequestsPerDay: 40,
   profileBytes: 18 * 1024 * 1024, ledgerBytes: 24 * 1024 * 1024, cacheEntries: 120 });
+// The owner reduced the current admission target to 8-10. Retained proofs may
+// contain days admitted under the earlier 15-story cap; never invalidate them
+// or rewrite their hashes when the operational target changes.
+export const DAILY_NEWS_ARCHIVE_DAILY_MAXIMUM = 15;
 export const DAILY_NEWS_MODELS = Object.freeze({ draft: "@cf/openai/gpt-oss-120b", review: "@cf/meta/llama-3.3-70b-instruct-fp8-fast" });
 export const DAILY_NEWS_POLICY = "source-grounded-bilingual-double-machine-review-v1";
-export const PUBLICATION_DATE_METHODS = new Set(['meta[property="article:published_time"]', 'meta[name="date"]',
-  'meta[name="DC.date.issued"]', "jsonld.datePublished"]);
+export const PUBLICATION_DATE_METHODS = new Set(['meta[property="article:published_time"]', 'meta[property="og:article:published_time"]', 'meta[name="date"]',
+  'meta[name="DC.date.issued"]', 'meta[itemprop~="datePublished"]', 'time[itemprop~="datePublished"]', "jsonld.datePublished"]);
 const DAY = 86400000;
 const hash = value => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
 const size = newsJsonByteSize;
@@ -132,7 +136,7 @@ export async function validateDailyApprovedPayload(value, current = new Date(), 
       || ids.has(record.id) || urls.has(record.source.url) || events.has(record.eventKey)) fail("daily_profile_duplicate");
     ids.add(record.id); urls.add(record.source.url); events.add(record.eventKey);
     days.set(day, (days.get(day) || 0) + 1);
-    if (days.get(day) > DAILY_NEWS_LIMITS.maximum) fail("daily_profile_daily_limit");
+    if (days.get(day) > DAILY_NEWS_ARCHIVE_DAILY_MAXIMUM) fail("daily_profile_daily_limit");
   }
   return value;
 }

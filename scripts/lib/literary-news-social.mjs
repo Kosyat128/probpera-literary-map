@@ -396,6 +396,22 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
   return result;
 }
 
+async function deferUnavailablePreflight({ store, key, claimId, job, destinationKey, rights, now }) {
+  const seconds = Number.isSafeInteger(rights.retryAfterSeconds) && rights.retryAfterSeconds > 0
+    ? Math.min(rights.retryAfterSeconds, 86400) : 60;
+  const due = now().getTime() + seconds * 1000, nextDueAt = new Date(due).toISOString();
+  const code = ["preflight_unavailable", "preflight_response_invalid", "provider_rate_limited"].includes(rights.reason)
+    ? rights.reason : "preflight_unavailable";
+  // These are read-only provider checks, before the dispatch marker and pacing
+  // reservation. Keep the same job, preserve any concurrent operator pause and
+  // require a fresh successful rights check on the later scheduled attempt.
+  await transition(store, destinationKey, current => current ? { ...current,
+    nextDueAt: Date.parse(current.nextDueAt) > due ? current.nextDueAt : nextDueAt } : null);
+  await store.compareAppend(key, claimId, { ...job, status: job.remoteId ? "correction_pending" : "pending",
+    runnerId: null, leaseUntil: null, nextDueAt, lastError: code });
+  return { status: "pending", reason: "destination_rate_limit", preflightReason: code, nextDueAt };
+}
+
 export async function dispatchNewsJob({ store, key, transport, now = () => new Date(), runnerId = randomUUID() }) {
   const prior = await store.read(key);
   if (!prior.state) return { status: "missing_job" };
@@ -437,8 +453,11 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   const job = claim.state;
   let claimId = claim.id;
   let rights;
-  try { rights = await transport.preflight(job.destination, {control,requiresMedia:Boolean(job.prepared.media)}); } catch { rights = {ok:false}; }
+  try { rights = await transport.preflight(job.destination, {control,requiresMedia:Boolean(job.prepared.media)}); }
+  catch { rights = {ok:false,retryable:true,reason:"preflight_unavailable",retryAfterSeconds:60}; }
   if (rights?.ok !== true) {
+    if (rights?.retryable === true)
+      return deferUnavailablePreflight({store,key,claimId,job,destinationKey,rights,now});
     await transition(store,destinationKey,(current) => ({...current,paused:true,pauseReason:"destination_rights_unverified"}));
     await store.compareAppend(key,claimId,{...job,status:job.remoteId?"correction_pending":"pending",runnerId:null,leaseUntil:null});
     return {status:"pending",reason:"destination_rights_unverified"};
@@ -479,8 +498,11 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
       claimId = cached.id; job.mediaCache = delivery.cache;
     }
     const afterUploadControl = (await store.read(destinationKey)).state;
-    try { rights = await transport.preflight(job.destination,{control:afterUploadControl,requiresMedia:true}); } catch { rights = {ok:false}; }
+    try { rights = await transport.preflight(job.destination,{control:afterUploadControl,requiresMedia:true}); }
+    catch { rights = {ok:false,retryable:true,reason:"preflight_unavailable",retryAfterSeconds:60}; }
     if (rights?.ok !== true || delivery?.providerAccountId && rights.providerAccountId !== delivery.providerAccountId) {
+      if (rights?.ok !== true && rights?.retryable === true)
+        return deferUnavailablePreflight({store,key,claimId,job,destinationKey,rights,now});
       await transition(store,destinationKey,(current)=>({...current,paused:true,pauseReason:"destination_rights_unverified"}));
       await store.compareAppend(key,claimId,{...job,status:job.remoteId?"correction_pending":"pending",runnerId:null,leaseUntil:null});
       return {status:"pending",reason:"destination_rights_unverified"};

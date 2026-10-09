@@ -26,6 +26,8 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 safeCodes.add('delivery_request_budget_exhausted');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
+const safePauseReasons = new Set(['destination_rights_unverified','release_operator_pause',
+  'telegram_permission_denied','vk_permission_denied','provider_token_missing','provider_endpoint_invalid']);
 
 export const DELIVERY_EXTERNAL_REQUEST_LIMIT = 50;
 export const DELIVERY_CAPTURE_LIMIT = 4;
@@ -44,9 +46,11 @@ export function createDeliveryRequestBudget(fetchImpl=fetch) {
     get providerWrites(){return providerWrites;},
     get quota(){return quota;},get exhausted(){return exhausted;},
     canStartJob(job){
-      // Includes fresh rights checks (twice for photos), the dispatch marker,
-      // worst-case acknowledgement CAS and the final heartbeat.
-      const beforeProvider=job.prepared?.media?(job.remoteId?16:18):(job.remoteId?9:11);
+      // Include the prior slot receipt read, rights checks (twice for photos),
+      // marker and all five claim CAS attempts before consuming a new slot.
+      // Reusing a cached photo also persists its cache before dispatch.
+      const beforeProvider=(job.prepared?.media?(job.remoteId?16:19):(job.remoteId?10:13))
+        +8+(job.prepared?.media&&job.mediaCache?1:0);
       return !quota && budget.remaining>=beforeProvider+PROVIDER_ACKNOWLEDGEMENT_RESERVE;
     },
     canWriteProvider(){return !quota && budget.remaining>=PROVIDER_ACKNOWLEDGEMENT_RESERVE;},
@@ -124,15 +128,19 @@ async function requiredRpc(client,name,args) {
 }
 
 export function checkedDeliveryDayStatus(value,current) {
-  // Accept the prior lower reporting ceiling during the worker-first rollout;
-  // the durable pacing reservation independently enforces the active cap.
-  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||value.minimum!==10||![15,NEWS_DAILY_TARGET.maximum].includes(value.maximum)
+  // Validate the database's original counts before normalizing the current
+  // policy during worker-first rollout. Historical days retain their old plan.
+  const policyActive=dayOf(current)>='2026-10-09';
+  const legacyPolicy=value?.minimum===10&&[15,20].includes(value?.maximum);
+  const activePolicy=policyActive&&value?.minimum===NEWS_DAILY_TARGET.minimum&&value?.maximum===NEWS_DAILY_TARGET.maximum;
+  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||!legacyPolicy&&!activePolicy
     || ['acknowledgedCreates','acknowledgedPhotoCreates','freshCreates','freshPhotoCreates','legacyReceiptsWithUnknownFirstDate','deficitToMinimum']
       .some(key=>!Number.isSafeInteger(value[key])||value[key]<0)
     ||value.freshPhotoCreates>value.freshCreates||value.freshCreates>value.acknowledgedCreates
     ||value.freshPhotoCreates>value.acknowledgedPhotoCreates||value.acknowledgedPhotoCreates>value.acknowledgedCreates
-    ||value.deficitToMinimum!==Math.max(0,10-value.freshCreates))fail('runtime_day_status_invalid');
-  return value;
+    ||value.deficitToMinimum!==Math.max(0,value.minimum-value.freshCreates))fail('runtime_day_status_invalid');
+  return policyActive?{...value,minimum:NEWS_DAILY_TARGET.minimum,maximum:NEWS_DAILY_TARGET.maximum,
+    deficitToMinimum:Math.max(0,NEWS_DAILY_TARGET.minimum-value.freshCreates)}:value;
 }
 
 /** The service-only due RPC is required; there is deliberately no journal scan fallback. */
@@ -210,7 +218,13 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     const control=(await store.read(`destination:telegram:${destination.id}`)).state;
     storeValid=true;
     if(control?.mode!=='on'||control.paused||control.historyReconciled!==true)
-      return {...base,phase,externalRequests:budget.requests,status:'destination_not_enabled_or_history_gap',deliveredThisRun:0};
+      return await heartbeat({...base,phase,finishedAt:now().toISOString(),status:'destination_not_enabled_or_history_gap',
+        reason:!control?'destination_control_missing':control.mode!=='on'?'destination_mode_not_on'
+          :control.paused?'destination_paused':'destination_history_unreconciled',
+        destinationMode:['on','off','canary'].includes(control?.mode)?control.mode:null,
+        paused:control?.paused===true,historyReconciled:control?.historyReconciled===true,
+        pauseReason:control?.paused?safePauseReasons.has(control.pauseReason)?control.pauseReason:'destination_pause_reason_unknown':null,
+        providerWriteAttempts:0,deliveredThisRun:0});
     // Prove that the metrics prerequisite exists before any external provider write.
     phase='day_status';
     let dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',

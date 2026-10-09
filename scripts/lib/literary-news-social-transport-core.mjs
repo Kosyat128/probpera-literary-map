@@ -21,6 +21,20 @@ const validId = (id) => Number.isSafeInteger(id) && id > 0;
 // Other HTTP 400 errors cannot establish the state of an existing message.
 const telegramNotModified = "Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message";
 const retrySeconds = (value, fallback = 60) => Number.isSafeInteger(Number(value)) && Number(value) > 0 ? Math.min(Number(value), 86400) : fallback;
+const unavailablePreflight = (reason = "preflight_unavailable", retryAfterSeconds = 60) =>
+  ({ ok: false, retryable: true, reason, retryAfterSeconds });
+function telegramPreflightFailure({ status, data, retryAfter }) {
+  if ([401, 403].includes(status) || [401, 403].includes(data?.error_code))
+    return { ok: false, reason: "telegram_permission_denied" };
+  if (status === 429 || data?.error_code === 429)
+    return unavailablePreflight("provider_rate_limited", retrySeconds(data?.parameters?.retry_after || retryAfter));
+  if (status === 408 || status >= 500 || data?.error_code >= 500) return unavailablePreflight();
+  if (status < 200 || status >= 300 || Number.isSafeInteger(data?.error_code) && data.error_code >= 400 && data.error_code < 500)
+    return { ok: false, reason: "telegram_preflight_rejected" };
+  if (data?.ok !== true || !data.result || typeof data.result !== "object")
+    return unavailablePreflight("preflight_response_invalid");
+  return null;
+}
 function vkUploadFailure(response) {
   const {status,data}=response;
   if(status===429 || [6,9].includes(data?.error?.error_code)) return {kind:"retry",scope:"retry",code:"provider_rate_limited",retryAfterSeconds:retrySeconds(response.retryAfter)};
@@ -61,7 +75,15 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
     }
     const response = await fetchImpl(target.href, { method: "POST", redirect: "error", signal: AbortSignal.timeout(30000),
       headers: photo ? {} : { "Content-Type": platform === "telegram" ? "application/json" : "application/x-www-form-urlencoded" }, body });
-    return { status: response.status, retryAfter: response.headers.get("retry-after"), data: await boundedJson(response) };
+    let result;
+    try { result = await boundedJson(response); }
+    catch (error) {
+      // Read failures cannot have published a message. Keep the HTTP status so
+      // a malformed 401/403 still blocks, while a timeout/5xx can be retried.
+      if (platform !== "telegram" || !["getMe", "getChat", "getChatMember"].includes(method)) throw error;
+      result = null;
+    }
+    return { status: response.status, retryAfter: response.headers.get("retry-after"), data: result };
   };
   return {
     async preflight(destination, {control = null,requiresMedia = false} = {}) {
@@ -69,13 +91,22 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
       try {
         if (destination.platform === "telegram") {
           const me = await call("telegram", "getMe", {});
-          if (me.data?.ok !== true || !validId(me.data.result?.id)) return { ok: false, reason: "bot_identity_unverified" };
+          const meFailure = telegramPreflightFailure(me); if (meFailure) return meFailure;
+          if (!validId(me.data.result?.id)) return unavailablePreflight("preflight_response_invalid");
           const chat = await call("telegram", "getChat", { chat_id: destination.id });
+          const chatFailure = telegramPreflightFailure(chat); if (chatFailure) return chatFailure;
+          if (!Number.isSafeInteger(chat.data.result?.id) || typeof chat.data.result?.type !== "string")
+            return unavailablePreflight("preflight_response_invalid");
+          if (String(chat.data.result.id) !== destination.id || chat.data.result.type !== "channel")
+            return { ok: false, reason: "destination_identity_unverified" };
           const rights = await call("telegram", "getChatMember", { chat_id: destination.id, user_id: me.data.result.id });
+          const rightsFailure = telegramPreflightFailure(rights); if (rightsFailure) return rightsFailure;
           const member = rights.data?.result;
-          return { ok: chat.data?.ok === true && String(chat.data.result?.id) === destination.id
-            && chat.data.result?.type === "channel" && rights.data?.ok === true
-            && (member?.status === "creator" || member?.status === "administrator" && member.can_post_messages === true && member.can_edit_messages === true),
+          if (!["creator", "administrator", "member", "restricted", "left", "kicked"].includes(member?.status))
+            return unavailablePreflight("preflight_response_invalid");
+          const permitted = member.status === "creator" || member.status === "administrator"
+            && member.can_post_messages === true && member.can_edit_messages === true;
+          return { ok: permitted, ...(!permitted ? { reason: "telegram_permission_denied" } : {}),
           destinationId: String(chat.data?.result?.id || ""), providerAccountId: String(me.data.result.id) };
         }
         const result = await call("vk", "groups.getById", { group_id: destination.id.slice(1), fields: "can_post" });
@@ -96,7 +127,8 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
           destinationId: group?.id ? `-${group.id}` : null, providerAccountId: account?.id ? String(account.id) : null,
           identityVerified, rightsVerified, profileApproved,
           reason: !rightsVerified ? "vk_user_token_or_permissions_unverified" : profileApproved || authorizedCanary ? null : "vk_profile_canary_required" };
-      } catch { return { ok: false, reason: "preflight_unavailable" }; }
+      } catch (error) { return error?.message === "provider_endpoint_invalid"
+        ? { ok: false, reason: "provider_endpoint_invalid" } : unavailablePreflight(); }
     },
     async prepareDelivery({destination,prepared,providerAccountId,cachedMedia}) {
       if(mode!=="live") return {kind:"blocked",code:"shadow_external_write_disabled"};

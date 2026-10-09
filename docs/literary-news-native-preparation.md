@@ -14,7 +14,7 @@ for an absent owner/fence. Bootstrap validates any existing ledger and public pr
 before establishing the first fence. It never resets an existing fence or accepts a
 corrupt profile. Once initialized, leaving bootstrap enabled does not bypass hashes.
 
-Each two-hour run checks up to 32 rotating registered sources and 10 article pages,
+Each half-hour run checks up to 32 rotating registered sources and 10 article pages,
 using at most 48 external source requests including redirects. Source requests use
 the fixed HTTPS registry, reject credentials/IP literals/unregistered ports and
 cross-origin redirects, and bound response streams to 1 MiB for listings or 512 KiB
@@ -145,3 +145,15 @@ degraded state, not a successful publication/delivery guarantee.
 Official references: [Durable Objects limits](https://developers.cloudflare.com/durable-objects/platform/limits/),
 [Workers limits](https://developers.cloudflare.com/workers/platform/limits/),
 [Workers AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
+
+## October 2026 recovery improvements
+
+Preparation checks sources at minutes 17 and 47 each hour. The owner's October 9 setting is 8-10 accepted stories daily; existing inference ceilings remain 40 draft requests and 80 total provider calls. Historical days with up to 15 accepted stories remain readable without rewriting their hashes. A bounded persistent least-recently-fetched history rotates article details even when sources repeatedly expose undated or rejected links; a rejected URL rests for six hours. Exact source publication dates and two independent grounded RU/EN passes remain mandatory.
+
+Telegram uses a fixed minimum interval of 105 minutes during 08:00-23:00 Moscow, with an 8-10 daily target and at most 10 reserved slots. The five-minute scheduler may add a few minutes; starting at 08:00 normally allows nine posts before closing. Existing reservations and acknowledgements are retained and cannot shorten the new interval. Temporary read failures while checking Telegram permissions defer the same job and retry fresh checks instead of permanently pausing the channel. Confirmed permission loss still pauses. An uncertain write is never automatically resent.
+
+The separate native-attempt checkpoint records completed preparation attempts, including quota cooldown and failures, without changing the accepted-content checkpoint. The read-only monitor runs every two hours, retries only known transient reads and distinguishes unreadable state from an intentionally disabled destination. After noon it also flags an observed delivery shortfall against the 105-minute cadence, allowing one interval of grace and requiring fresh successful reads; an empty due page alone is never treated as proof that the future queue is empty.
+
+For compatible code fixes on active workers, first deploy the public news API on the exact reviewed main SHA, then use **Upgrade active literary news workers without disabling delivery** on that same SHA. The upgrade requires the public reader to report the new release before preparation can publish additional publication-date provenance. It preserves enabled flags, credentials, source state, accepted content, locks and Telegram receipts; tests and bundle checks happen before deployment. A failed precheck leaves current workers running. Use the original activation workflow only for initial activation or an explicit mode change.
+
+For the October 9 cadence change, update the service-only `literary_news_delivery_day_status` function from `scripts/database/literary-news-runtime-latest-query.sql` after the compatible worker deployment. The new client validates and normalizes the previous function's reply during this transition; the SQL keeps historical days on their original target and applies 8-10 from October 9 Moscow time. No receipt or pacing journal row is rewritten. Keep schema-5 support during any later rollback.

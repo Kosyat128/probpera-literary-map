@@ -130,8 +130,8 @@ describe('native delivery under the actual Workers fetch implementation',()=>{
     expect(rows.get(newsPostKey('isolated-photo-news',destination)).state).toMatchObject({status:'sent_current',remoteId:'901',
       remoteMediaKind:'photo',firstAcknowledgedAt:current.toISOString(),acknowledgedAt:current.toISOString(),dispatchStartedAt:null});
     const pacing=rows.get(`history:pacing:telegram:${destination.id}`).state;
-    expect(pacing).toMatchObject({schemaVersion:4,minIntervalSeconds:2700,maxIntervalSeconds:3300,dailyLimit:20,scheduleToleranceSeconds:0});
-    expect(pacing.intervalSeconds).toBeGreaterThanOrEqual(2700);expect(pacing.intervalSeconds).toBeLessThanOrEqual(3300);
+    expect(pacing).toMatchObject({schemaVersion:5,minIntervalSeconds:6300,maxIntervalSeconds:6300,dailyLimit:10,scheduleToleranceSeconds:0});
+    expect(pacing.intervalSeconds).toBe(105*60);
     expect(Date.parse(pacing.nextDueAt)-Date.parse(pacing.reservedAt)).toBe(pacing.intervalSeconds*1000);
     expect(heartbeats).toHaveLength(1);expect(heartbeats[0].p_state.acknowledgedCreatesThisRun).toBe(1);
   },15000);

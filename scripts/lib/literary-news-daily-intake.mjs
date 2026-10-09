@@ -2,6 +2,7 @@ import { load } from 'cheerio';
 import { createNewsService } from './literary-news-feed.mjs';
 import { LITERARY_NEWS_SOURCES } from './literary-news-sources.mjs';
 import { canonicalUrl, selectReviewed } from './literary-news-reviewed.mjs';
+import { checkedDailyIntakeHistory, selectDailyNewsDetails } from './literary-news-intake-history.mjs';
 
 export const DAILY_NEWS_INTAKE_CONTRACT = 'literary-news-daily-intake-v2';
 export const DAILY_NEWS_INTAKE_LIMITS = Object.freeze({ sources:32, details:30, maximumSources:48,
@@ -56,8 +57,16 @@ function sourceContract(source) {
  * A missing publication date stays unknown; observedAt is not publishedAt. */
 export function extractDailyNewsDetail(html, url, source = {}) {
   const $ = load(html), dates = [], images = [];
-  for (const selector of ['meta[property="article:published_time"]','meta[name="date"]','meta[name="DC.date.issued"]']) {
+  for (const selector of ['meta[property="article:published_time"]','meta[property="og:article:published_time"]','meta[name="date"]','meta[name="DC.date.issued"]']) {
     const value = $(selector).attr('content'); if (value) dates.push({ value, method: selector });
+  }
+  // Only explicit publication semantics qualify. A generic <time>, dateModified
+  // or the listing's observation time never supplies a missing publication date.
+  for (const selector of ['meta[itemprop~="datePublished"]','time[itemprop~="datePublished"]']) {
+    $(selector).each((_,element)=>{
+      const value=$(element).attr(selector.startsWith('meta')?'content':'datetime');
+      if(value)dates.push({value,method:selector});
+    });
   }
   for (const property of ['og:image','twitter:image']) {
     const value = $(`meta[property="${property}"],meta[name="${property}"]`).first().attr('content');
@@ -103,10 +112,11 @@ export function extractDailyNewsDetail(html, url, source = {}) {
 export async function collectDailyNewsReview({ current = new Date(), detailLimit = DAILY_NEWS_INTAKE_LIMITS.details,
   sourceLimit=DAILY_NEWS_INTAKE_LIMITS.sources, rotationMinutes=DAILY_NEWS_INTAKE_LIMITS.rotationMinutes,
   sources:approvedSources=LITERARY_NEWS_SOURCES,
-  reviewed:reviewedInput=[],readReviewed=null,fetchImpl,
+  reviewed:reviewedInput=[],readReviewed=null,reviewCache=[],intakeHistory,fetchImpl,
   resolveMediaEvidence=async()=>({status:'rights_unverified'}) } = {}) {
   if(typeof fetchImpl!=='function')throw Error('daily_fetch_adapter_required');
   if (!Number.isSafeInteger(detailLimit) || detailLimit < 0 || detailLimit > 40) throw Error('daily_detail_budget_invalid');
+  checkedDailyIntakeHistory(intakeHistory,current);
   const reviewed = typeof readReviewed==='function' ? await readReviewed() : reviewedInput;
   if(!Array.isArray(reviewed))throw Error('daily_reviewed_input_invalid');
   const existing = new Set(reviewed.map(row => canonicalUrl(row.source.url)?.href));
@@ -131,14 +141,10 @@ export async function collectDailyNewsReview({ current = new Date(), detailLimit
     && (!row.publishedAt || Date.parse(row.publishedAt) >= earliest && Date.parse(row.publishedAt) <= current.getTime()))
     .sort((a, b) => Number(Boolean(b.publishedAt)) - Number(Boolean(a.publishedAt))
       || (Date.parse(b.publishedAt) || 0) - (Date.parse(a.publishedAt) || 0));
-  // Round-robin sources avoids a large wire filling the whole editorial intake.
-  const bySource = new Map(); for (const row of candidates) {
-    const rows = bySource.get(row.sourceId) || []; rows.push(row); bySource.set(row.sourceId, rows);
-  }
-  const selected = [];
-  while (selected.length < detailLimit && [...bySource.values()].some(rows => rows.length)) {
-    for (const rows of bySource.values()) { if (rows.length && selected.length < detailLimit) selected.push(rows.shift()); }
-  }
+  // Reserve detail attempts fairly before fetching. Failed/undated articles also
+  // advance history, so they cannot occupy the same bounded slots indefinitely.
+  const selection=await selectDailyNewsDetails(candidates,{current,detailLimit,intakeHistory,reviewCache});
+  const {selected}=selection;
   const details = await dailyNewsIntakePool(selected, async row => {
     try {
       const source=sourceById.get(row.sourceId),result = await fetchImpl(row.source.url,{encoding:source?.encoding});
@@ -156,7 +162,8 @@ export async function collectDailyNewsReview({ current = new Date(), detailLimit
       checkedSources: sources.length, totalFinds: finds.length, unreviewedRecentOrUndated: candidates.length,
       knownPublishedWithinSevenDays: candidates.filter(row => row.publishedAt).length,
       unknownPublicationDates: candidates.filter(row => !row.publishedAt).length,
+      deferredRejections: selection.deferredRejections,
       verifiedDetails: details.filter(row => row.evidence?.httpStatus === 200).length,
       reviewedEligible: selectReviewed(reviewed, current, 'Europe/Moscow').length, newlyReady: 0, newlyPublished: 0 },
-    sourceHealth, requests, details, documents, finds };
+    sourceHealth, requests, details, documents, finds, intakeHistory:selection.intakeHistory };
 }

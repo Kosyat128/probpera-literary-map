@@ -74,6 +74,12 @@ try {
   assert.equal(day.minimum, 10); assert.equal(day.maximum, 20);
   assert.equal(day.legacyReceiptsWithUnknownFirstDate, 3);
   checks.push('Moscow-day fresh first receipts in both formats, old edits excluded, legacy dates unknown');
+  for (const [at, minimum, maximum] of [['2026-10-08T20:59:59Z', 10, 20], ['2026-10-08T21:00:00Z', 8, 10]]) {
+    const policy = (await db.query('select public.literary_news_delivery_day_status($1,$2) as value', [destination.id, at])).rows[0].value;
+    assert.equal(policy.minimum, minimum); assert.equal(policy.maximum, maximum);
+    assert.equal(policy.freshCreates, 0); assert.equal(policy.deficitToMinimum, minimum);
+  }
+  checks.push('2026-10-09 Moscow target cutover preserves historical 10/20 and applies current 8/10');
   await db.exec('reset role');
   const announcement = (eventDate, verifiedAt) => ({ ...base.prepared,
     temporal: { kind: 'announcement', eventDate, verifiedAt, publishedAt: '2026-09-29T11:00:00Z' } });

@@ -1,0 +1,239 @@
+{
+  "checkedAt": "2026-10-09T10:29:34Z",
+  "method": "Direct web inspection of each complete article, followed by HTTP200 public-source fetch and date metadata verification. Original bilingual summaries; no machine-review provenance asserted.",
+  "references": [
+    {
+      "id": "tarki-tau-two-cities-results-20261008",
+      "url": "https://lgz.ru/news/dagestan-vstretil-pisatelej/",
+      "sourceId": "literaturnaya-gazeta",
+      "publishedAt": "2026-10-08T09:53:03+03:00",
+      "eventDate": "2026-10-04",
+      "eventDateBasis": "Explicit festival closing day in article.",
+      "verifiedFacts": "The October 2-4 book festival took place in Makhachkala and Buynaksk, with nearly 50 publishers participating. Its grand prize went to OGI’s anthology of contemporary poetry and prose by Russia’s peoples.",
+      "sourceCheckedAt": "2026-10-09T10:26:48.335Z",
+      "httpStatus": 200,
+      "documentSha256": "44f4f473eddf42eefb4a05581abf668583727669fdc8d0b6f6fd1ae878ffd884",
+      "observedPublicationMetadata": [
+        {
+          "method": "og:article:published_time",
+          "value": "2026-10-08T09:53:03+03:00"
+        }
+      ]
+    },
+    {
+      "id": "nizhny-book-fair-results-20261006",
+      "url": "https://lgz.ru/news/yarmarka-kak-zhivaya-sreda/",
+      "sourceId": "literaturnaya-gazeta",
+      "publishedAt": "2026-10-06T12:27:57+03:00",
+      "eventDate": "2026-10-04",
+      "eventDateBasis": "Explicit closing day; distinct completed-event stage from the retained advance announcement.",
+      "verifiedFacts": "The second fair ended on October 4. Visitors bought more than 26,000 books over three days; over 100 publishers from 16 regions participated, and the programme featured more than 90 events.",
+      "sourceCheckedAt": "2026-10-09T10:26:48.615Z",
+      "httpStatus": 200,
+      "documentSha256": "41b5b4efb1bd8db5d7c546afbb8ae2ce2a5268245f467eaaf5b1fa3242e30af0",
+      "observedPublicationMetadata": [
+        {
+          "method": "og:article:published_time",
+          "value": "2026-10-06T12:27:57+03:00"
+        }
+      ]
+    },
+    {
+      "id": "russian-sf-prize-second-edition-20261006",
+      "url": "https://godliteratury.ru/articles/2026/10/06/utverzhdena-ii-vserossijskaia-premiia-v-oblasti-nauchnoj-fantastiki",
+      "sourceId": "god-literatury",
+      "publishedAt": "2026-10-06",
+      "eventDate": "2026-10-06",
+      "eventDateBasis": "October 6 presentation explicitly dated in Wsem report, corroborated by the Russian Writers Union event listing dated October 6.",
+      "verifiedFacts": "The National Centre Russia has joined the Russian Writers’ Union as a co-founder of the prize. Five categories carry awards of one million roubles each, with the ceremony scheduled for November 13.",
+      "sourceCheckedAt": "2026-10-09T10:26:49.144Z",
+      "httpStatus": 200,
+      "documentSha256": "b5a11ed18e397848a3406215bccc2129a189d372566ad82167d0db06fd85cb4b",
+      "observedPublicationMetadata": [
+        {
+          "method": "datePublished",
+          "value": "2026-10-06T18:55:00"
+        }
+      ],
+      "corroboratingSources": [
+        {
+          "url": "https://wsem.ru/publications/45692/",
+          "eventDateEvidence": "6 октября 2026 года"
+        },
+        {
+          "url": "https://sprf.ru/",
+          "eventDateEvidence": "Событие · 6 октября 2026; presentation of the science-fiction prize"
+        }
+      ]
+    },
+    {
+      "id": "kirkus-prize-winners-20261007",
+      "url": "https://lithub.com/here-are-the-winners-of-the-2026-kirkus-prize/",
+      "sourceId": "literary-hub",
+      "publishedAt": "2026-10-08T00:45:36+00:00",
+      "eventDate": "2026-10-07",
+      "eventDateBasis": "Ceremony on October7 local New York date, explicitly reported that evening; exact publication UTC metadata falls October8.",
+      "verifiedFacts": "Tayari Jones’s Kin won fiction, while Pamela Colloff’s Catch the Devil won nonfiction. Elizabeth Acevedo received the young readers’ award for Anger Is Only a Shadow. Each prize is worth $50,000.",
+      "sourceCheckedAt": "2026-10-09T10:26:49.691Z",
+      "httpStatus": 200,
+      "documentSha256": "1bb8ae6ff6b5f8e80f3883c51af4f7d455de0a3d2078d6561f857e9b6a2fe860",
+      "observedPublicationMetadata": [
+        {
+          "method": "article:published_time",
+          "value": "2026-10-08T00:45:36+00:00"
+        }
+      ]
+    },
+    {
+      "id": "national-book-awards-finalists-20261006",
+      "url": "https://lithub.com/here-are-the-2026-national-book-awards-finalists/",
+      "sourceId": "literary-hub",
+      "publishedAt": "2026-10-06T14:30:04+00:00",
+      "eventDate": "2026-10-06",
+      "eventDateBasis": "Announcement explicitly datedOctober6; distinct finalist stage from earlier longlists.",
+      "verifiedFacts": "On October 6, the National Book Foundation announced finalists for fiction, nonfiction, poetry, translated literature and young people’s literature. Fiction finalists include Edwidge Danticat’s Dèy and Valeria Luiselli’s Beginning Middle End.",
+      "sourceCheckedAt": "2026-10-09T10:26:50.417Z",
+      "httpStatus": 200,
+      "documentSha256": "1100d1c0af5173cac364deadbd84cf7d2e4b18ff0882c5f16112c84aa68e976d",
+      "observedPublicationMetadata": [
+        {
+          "method": "article:published_time",
+          "value": "2026-10-06T14:30:04+00:00"
+        }
+      ]
+    },
+    {
+      "id": "save-our-stories-supper-20261008",
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/libraries/article/101480-prh-ftrf-save-our-stories-event-wields-the-power-of-resistance-to-bans.html",
+      "sourceId": "publishers-weekly",
+      "publishedAt": "2026-10-08",
+      "eventDate": "2026-10-05",
+      "eventDateBasis": "Primary Penguin Random House report posted October 8 explicitly says Monday night, which resolves to October 5, 2026; this corroborates the Publishers Weekly index and overrides conflicting October 4 in its body.",
+      "verifiedFacts": "Penguin Random House and the Freedom to Read Foundation held their second Save Our Stories Supper at the New York Public Library. During Banned Books Week, authors and librarians discussed protecting access to books; speakers included Jodi Picoult and Laurie Halse Anderson.",
+      "sourceCheckedAt": "2026-10-09T10:26:51.268Z",
+      "httpStatus": 200,
+      "documentSha256": "c0d4fd294b407fd81501067dcf36f7e4611fcf91e01d1a374465542f9c1b917a",
+      "observedPublicationMetadata": [],
+      "publicationDateEvidence": "Visible article date: Oct 08, 2026; inspected on the source article itself.",
+      "corroboratingSources": [
+        {
+          "url": "https://global.penguinrandomhouse.com/announcements/prhs-save-our-stories-supper-bringing-together-influential-voices-for-the-freedom-to-read/",
+          "publishedAt": "2026-10-08",
+          "eventDateEvidence": "On Monday night"
+        }
+      ]
+    },
+    {
+      "id": "paul-young-return-to-shack-interview-20261008",
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101422-wm-paul-young-revisits-the-shack.html",
+      "sourceId": "publishers-weekly",
+      "publishedAt": "2026-10-08",
+      "eventDate": "2026-10-08",
+      "eventDateBasis": "Exact publication day of interview; source confirms book is already out, without asserting an exact release day.",
+      "verifiedFacts": "In a Publishers Weekly interview, Young discussed Return to the Shack, now published by Apiary. The sequel returns to Mackenzie Phillips, who is asked to meet his daughter’s murderer on death row ten years after her death.",
+      "sourceCheckedAt": "2026-10-09T10:26:51.538Z",
+      "httpStatus": 200,
+      "documentSha256": "3344104a59be91f035ee2d19368abd8dfeb8907a6bcab02fbb1622a2c5ab9fb0",
+      "observedPublicationMetadata": [],
+      "publicationDateEvidence": "Visible article date: Oct 08, 2026; inspected on the source article itself."
+    }
+  ],
+  "validation": {
+    "reviewedContractPassed": true,
+    "currentWindow": "2026-10-03 through 2026-10-09",
+    "records": 7,
+    "duplicateUrlsOrIds": 0,
+    "approvedSourceIds": [
+      "literaturnaya-gazeta",
+      "god-literatury",
+      "literary-hub",
+      "publishers-weekly"
+    ],
+    "existingNewsChecked": 1328
+  },
+  "heldReferences": [
+    {
+      "id": "aksakov-prize-winners-20261008",
+      "url": "https://lgz.ru/news/torzhestva-v-orenburzhe/",
+      "sourceId": "literaturnaya-gazeta",
+      "publishedAt": "2026-10-08T09:11:39+03:00",
+      "eventDate": "2026-10-08",
+      "eventDateBasis": "Publication day; the article does not specify the ceremony day.",
+      "verifiedFacts": "Alexander Mulenko won for prose, Vladimir Shemshuchenko for poetry, and Darya Nazarova for writing for children and young adults. The awards ceremony took place at Sergei Aksakov’s family estate in the Orenburg region.",
+      "sourceCheckedAt": "2026-10-09T10:26:48.413Z",
+      "httpStatus": 200,
+      "documentSha256": "313b2ca42b55dd1d5e0035187f552838697174331301f622a3b201fe756e2a94",
+      "observedPublicationMetadata": [
+        {
+          "method": "og:article:published_time",
+          "value": "2026-10-08T09:11:39+03:00"
+        }
+      ],
+      "independentReviewReason": "Held: ceremony reported September 26 by Orenburg Media, outside the fresh-event recovery window; staged October 8 was only publication day."
+    },
+    {
+      "id": "chekhov-detvora-exhibition-open-20261007",
+      "url": "https://lgz.ru/news/detvora-v-muzee-chehova/",
+      "sourceId": "literaturnaya-gazeta",
+      "publishedAt": "2026-10-07T18:24:05+03:00",
+      "eventDate": "2026-10-07",
+      "eventDateBasis": "Publication day; opening is confirmed but its exact day is not specified.",
+      "verifiedFacts": "The exhibition marks 140 years since Chekhov’s story Detvora and explores childhood in his fiction. It includes editions published during his lifetime, story illustrations and photographs of the Kiselyov family at Babkino.",
+      "sourceCheckedAt": "2026-10-09T10:26:48.481Z",
+      "httpStatus": 200,
+      "documentSha256": "8afa08a5bcf233b0490b85be448acd280717fc11ed2322cbc81f49f937fa88be",
+      "observedPublicationMetadata": [
+        {
+          "method": "og:article:published_time",
+          "value": "2026-10-07T18:24:05+03:00"
+        }
+      ],
+      "independentReviewReason": "Held: source says exhibition opened recently, without an exact opening date; October 7 is publication day only."
+    },
+    {
+      "id": "preobrazhenie-rossii-winners-20261007",
+      "url": "https://lgz.ru/news/preobrazhenie-rossii-v-stihah-i-proze/",
+      "sourceId": "literaturnaya-gazeta",
+      "publishedAt": "2026-10-07T09:40:22+03:00",
+      "eventDate": "2026-10-07",
+      "eventDateBasis": "Publication day; exact ceremony date is not specified.",
+      "verifiedFacts": "Valery Yevtushenko won the prose category and Maxim Kraynov the poetry category in the sixth Sergeyev-Tsensky competition. The winners were honoured in Koptevo, Tambov region, and later met readers at the regional library.",
+      "sourceCheckedAt": "2026-10-09T10:26:48.548Z",
+      "httpStatus": 200,
+      "documentSha256": "0021917fe01f6a1590ff010e6f79834c247d280fa7dacabaf28330479e3f0dc0",
+      "observedPublicationMetadata": [
+        {
+          "method": "og:article:published_time",
+          "value": "2026-10-07T09:40:22+03:00"
+        }
+      ],
+      "independentReviewReason": "Held: source does not state ceremony day; October 7 is publication day only."
+    },
+    {
+      "id": "caine-prize-kundizeza-winner-20261007",
+      "url": "https://lithub.com/read-the-winning-story-of-the-2026-caine-prize-for-african-writing/",
+      "sourceId": "literary-hub",
+      "publishedAt": "2026-10-07T13:48:09+00:00",
+      "eventDate": "2026-10-07",
+      "eventDateBasis": "Publication day; source says the award was announced this week without specifying the day.",
+      "verifiedFacts": "The Zimbabwean writer was honoured for The Blue Fighter, first published by The Shallow Tales Review in 2025. The award for a short story by an African writer carries £10,000.",
+      "sourceCheckedAt": "2026-10-09T10:26:50.153Z",
+      "httpStatus": 200,
+      "documentSha256": "c8e9ece9dc8e4d6d0d1b0095680ea16b251b98819b30308cfeeba29688be7b36",
+      "observedPublicationMetadata": [
+        {
+          "method": "article:published_time",
+          "value": "2026-10-07T13:48:09+00:00"
+        }
+      ],
+      "independentReviewReason": "Held: article says this week; exact announcement day remains unconfirmed, October 7 is publication day only."
+    }
+  ],
+  "independentReview": {
+    "originalCount": 11,
+    "acceptedCount": 7,
+    "heldCount": 4,
+    "manualEventDatesChecked": true,
+    "notes": "Manual reviewed recovery uses actual event dates where known; the interview uses the dated publication event. Native daily source-publication date semantics were not applied to undated manual events."
+  }
+}

@@ -31,12 +31,12 @@ const transport=()=>({preflight:async()=>({ok:true}),send:vi.fn(async()=>({kind:
 const batch=async(store,t,time)=>dispatchNewsBatch({store,jobs:(await store.list('post:')).map(r=>r.state),transport:t,now:()=>time});
 
 describe('gradual news publication through the real dispatcher',()=>{
-  it('waits for the persisted variable interval across restarts and never catches up in a burst',async()=>{
+  it('waits for the persisted 105-minute interval across restarts and never catches up in a burst',async()=>{
     const store=await setup(),t=transport();
     await batch(store,t,start);expect(t.send).toHaveBeenCalledTimes(1);
     const restarted=client(store.journal);
     const pacing=(await store.read('history:pacing:telegram:-100123')).state;
-    expect(pacing.intervalSeconds).toBeGreaterThanOrEqual(2700);expect(pacing.intervalSeconds).toBeLessThanOrEqual(3300);
+    expect(pacing).toMatchObject({schemaVersion:5,intervalSeconds:6300,dailyLimit:10});
     await batch(restarted,t,new Date(Date.parse(pacing.nextDueAt)-1));expect(t.send).toHaveBeenCalledTimes(1);
     await batch(restarted,t,new Date(pacing.nextDueAt));expect(t.send).toHaveBeenCalledTimes(2);
     await batch(restarted,t,new Date(start.getTime()+6*3600000));expect(t.send).toHaveBeenCalledTimes(3);

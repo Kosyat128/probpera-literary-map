@@ -16972,5 +16972,173 @@
     "verification": "confirmed",
     "region": "europe",
     "eventKey": "polish-book-market-protection-legislative-first-step-20261002"
+  },
+  {
+    "id": "tarki-tau-two-cities-results-20261008",
+    "eventKey": "tarki-tau-2026-completed-two-cities",
+    "category": "festivals",
+    "eventDate": "2026-10-04",
+    "publishedAt": "2026-10-08T09:53:03+03:00",
+    "title": {
+      "ru": "«Тарки-Тау» впервые прошёл в двух городах Дагестана",
+      "en": "Tarki-Tau book festival expands to two Dagestani cities"
+    },
+    "summary": {
+      "ru": "Книжный фестиваль прошёл 2-4 октября в Махачкале и Буйнакске, собрав около 50 издательств. Гран-при получила антология «Современная литература народов России: Поэзия и проза», выпущенная ОГИ.",
+      "en": "The October 2-4 book festival took place in Makhachkala and Buynaksk, with nearly 50 publishers participating. Its grand prize went to OGI’s anthology of contemporary poetry and prose by Russia’s peoples."
+    },
+    "region": "europe",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Литературная газета",
+      "url": "https://lgz.ru/news/dagestan-vstretil-pisatelej/",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "nizhny-book-fair-results-20261006",
+    "eventKey": "nizhny-book-fair-2026-completed-attendance-results",
+    "category": "festivals",
+    "eventDate": "2026-10-04",
+    "publishedAt": "2026-10-06T12:27:57+03:00",
+    "title": {
+      "ru": "Нижегородская книжная ярмарка собрала более 23 тысяч гостей",
+      "en": "Nizhny Novgorod book fair draws over 23,000 visitors"
+    },
+    "summary": {
+      "ru": "Вторая ярмарка завершилась 4 октября. За три дня посетители приобрели свыше 26 тысяч книг; участие приняли более 100 издательств из 16 регионов, а программа включала свыше 90 событий.",
+      "en": "The second fair ended on October 4. Visitors bought more than 26,000 books over three days; over 100 publishers from 16 regions participated, and the programme featured more than 90 events."
+    },
+    "region": "europe",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Литературная газета",
+      "url": "https://lgz.ru/news/yarmarka-kak-zhivaya-sreda/",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "russian-sf-prize-second-edition-20261006",
+    "eventKey": "russian-sf-prize-2026-second-edition-cofounder",
+    "category": "awards",
+    "eventDate": "2026-10-06",
+    "publishedAt": "2026-10-06",
+    "title": {
+      "ru": "Представлена вторая Всероссийская премия по научной фантастике",
+      "en": "Russia presents its second national science-fiction prize"
+    },
+    "summary": {
+      "ru": "Национальный центр «Россия» стал соучредителем премии вместе с Союзом писателей России. Предусмотрено пять номинаций с наградой по миллиону рублей; церемония запланирована на 13 ноября.",
+      "en": "The National Centre Russia has joined the Russian Writers’ Union as a co-founder of the prize. Five categories carry awards of one million roubles each, with the ceremony scheduled for November 13."
+    },
+    "region": "europe",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/10/06/utverzhdena-ii-vserossijskaia-premiia-v-oblasti-nauchnoj-fantastiki",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "kirkus-prize-winners-20261007",
+    "eventKey": "kirkus-prize-2026-winners",
+    "category": "awards",
+    "eventDate": "2026-10-07",
+    "publishedAt": "2026-10-08T00:45:36+00:00",
+    "title": {
+      "ru": "Киркусовскую премию получили Таяри Джонс, Памела Коллофф и Элизабет Асеведо",
+      "en": "Tayari Jones, Pamela Colloff and Elizabeth Acevedo win the Kirkus Prize"
+    },
+    "summary": {
+      "ru": "В художественной прозе победил роман Kin Таяри Джонс, в документальной литературе - Catch the Devil Памелы Коллофф. Награда за литературу для юных читателей досталась Элизабет Асеведо за Anger Is Only a Shadow. Каждая премия составляет 50 тысяч долларов.",
+      "en": "Tayari Jones’s Kin won fiction, while Pamela Colloff’s Catch the Devil won nonfiction. Elizabeth Acevedo received the young readers’ award for Anger Is Only a Shadow. Each prize is worth $50,000."
+    },
+    "region": "north-america",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Literary Hub",
+      "url": "https://lithub.com/here-are-the-winners-of-the-2026-kirkus-prize/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "national-book-awards-finalists-20261006",
+    "eventKey": "national-book-awards-2026-finalists-announced",
+    "category": "awards",
+    "eventDate": "2026-10-06",
+    "publishedAt": "2026-10-06T14:30:04+00:00",
+    "title": {
+      "ru": "National Book Awards объявила финалистов пяти номинаций",
+      "en": "National Book Awards announces finalists in five categories"
+    },
+    "summary": {
+      "ru": "6 октября National Book Foundation представил финалистов в прозе, документальной литературе, поэзии, переводной и детско-юношеской литературе. В список художественной прозы вошли Dèy Эдвидж Дантика и Beginning Middle End Валерии Луиселли.",
+      "en": "On October 6, the National Book Foundation announced finalists for fiction, nonfiction, poetry, translated literature and young people’s literature. Fiction finalists include Edwidge Danticat’s Dèy and Valeria Luiselli’s Beginning Middle End."
+    },
+    "region": "north-america",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Literary Hub",
+      "url": "https://lithub.com/here-are-the-2026-national-book-awards-finalists/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "save-our-stories-supper-20261008",
+    "eventKey": "save-our-stories-supper-2026-completed",
+    "category": "publishing",
+    "eventDate": "2026-10-05",
+    "publishedAt": "2026-10-08",
+    "title": {
+      "ru": "Писатели собрались в Нью-Йорке в поддержку свободы чтения",
+      "en": "Writers gather in New York to defend the freedom to read"
+    },
+    "summary": {
+      "ru": "Penguin Random House и Freedom to Read Foundation провели второй вечер Save Our Stories в Нью-Йоркской публичной библиотеке. Во время Недели запрещённых книг авторы и библиотекари обсуждали защиту доступа к книгам; среди выступивших были Джоди Пиколт и Лори Холс Андерсон.",
+      "en": "Penguin Random House and the Freedom to Read Foundation held their second Save Our Stories Supper at the New York Public Library. During Banned Books Week, authors and librarians discussed protecting access to books; speakers included Jodi Picoult and Laurie Halse Anderson."
+    },
+    "region": "north-america",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Publishers Weekly",
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/libraries/article/101480-prh-ftrf-save-our-stories-event-wields-the-power-of-resistance-to-bans.html",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "paul-young-return-to-shack-interview-20261008",
+    "eventKey": "paul-young-return-to-shack-release-interview-2026",
+    "category": "releases",
+    "eventDate": "2026-10-08",
+    "publishedAt": "2026-10-08",
+    "title": {
+      "ru": "Уильям Пол Янг рассказал о продолжении «Хижины»",
+      "en": "Wm. Paul Young discusses his sequel to The Shack"
+    },
+    "summary": {
+      "ru": "В интервью Publishers Weekly писатель представил уже вышедший в Apiary роман Return to the Shack. Продолжение возвращает читателя к Маккензи Филлипсу: спустя десять лет после убийства дочери ему предлагают встретиться с её убийцей в камере смертников.",
+      "en": "In a Publishers Weekly interview, Young discussed Return to the Shack, now published by Apiary. The sequel returns to Mackenzie Phillips, who is asked to meet his daughter’s murderer on death row ten years after her death."
+    },
+    "region": "north-america",
+    "kind": "news",
+    "verifiedAt": "2026-10-09T10:29:34Z",
+    "source": {
+      "name": "Publishers Weekly",
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101422-wm-paul-young-revisits-the-shack.html",
+      "language": "en"
+    },
+    "verification": "confirmed"
   }
 ]

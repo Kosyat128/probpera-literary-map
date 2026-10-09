@@ -39,22 +39,42 @@ function options(details, ai = aiFixture(), extra = {}) {
 }
 
 describe("bounded annual grounded daily news automation (no live provider or publication)", () => {
-  it("admits at most 15 distinct records per Moscow day, replays with no inference, and preserves the entire prior day", async () => {
+  it("admits at most 10 distinct records per Moscow day, replays with no inference, and preserves the entire prior day", async () => {
     const ai = aiFixture(), result = await runDailyNewsAutomation(options(Array.from({ length: 20 }, (_, n) => detail(n)), ai));
-    expect(result.profile.records).toHaveLength(15); expect(ai.requests).toHaveLength(30);
-    expect(result.report).toMatchObject({ newlyAccepted: 15, admittedToday: 15, minimumDeficit: 0,
-      photoReady: 0, newlyAcceptedPhotoHeld: 15, publicationConfirmed: false, deliveryConfirmed: false });
+    expect(result.profile.records).toHaveLength(10); expect(ai.requests).toHaveLength(20);
+    expect(result.report).toMatchObject({ newlyAccepted: 10, admittedToday: 10, minimum: 8, maximum: 10, minimumDeficit: 0,
+      photoReady: 0, newlyAcceptedPhotoHeld: 10, publicationConfirmed: false, deliveryConfirmed: false });
     expect(result.profile.records[0].provenance.reviewKind).toBe("machineReviewed");
     expect(result.profile.records[0].provenance.sourceEvidence.thumbnail).toMatchObject({
       sourceUrl: detail(0).source.url, imageUrl: "https://images.example/novel0.jpg",
       sourceDocumentSha256: "a".repeat(64), alt: draft(0).title, displayOnly: true, socialReuseApproved: false });
     const replay = await runDailyNewsAutomation(options(Array.from({ length: 20 }, (_, n) => detail(n)), ai, { previous: result.state }));
-    expect(replay.report.newlyAccepted).toBe(0); expect(ai.requests).toHaveLength(30);
+    expect(replay.report.newlyAccepted).toBe(0); expect(ai.requests).toHaveLength(20);
     const next = new Date("2026-09-30T12:00:00Z");
     const later = await runDailyNewsAutomation(options(Array.from({ length: 20 }, (_, n) => detail(n, next)), ai,
       { previous: result.state, current: next }));
-    expect(later.report).toMatchObject({ newlyAccepted: 5, admittedToday: 5, minimumDeficit: 5, status: "supply_degraded" });
-    expect(later.state.accepted.slice(0, 15)).toEqual(result.state.accepted);
+    expect(later.report).toMatchObject({ newlyAccepted: 10, admittedToday: 10, minimumDeficit: 0, status: "target_met" });
+    expect(later.state.accepted.slice(0, 10)).toEqual(result.state.accepted);
+  });
+  it.each([[7, 1, 'supply_degraded'], [8, 0, 'target_met']])('reports the revised eight-story minimum with %i admissions', async (count, deficit, status) => {
+    const result = await runDailyNewsAutomation(options(Array.from({ length: count }, (_, n) => detail(n))));
+    expect(result.report).toMatchObject({ minimum: 8, maximum: 10, minimumDeficit: deficit, status });
+  });
+  it('validates retained fifteen-story days without rewriting proofs while preventing any further current-day admissions', async () => {
+    // Independent reviewed fixtures reconstruct a previously authorized archive;
+    // no single current-policy run is permitted to admit this many stories.
+    const historical = await Promise.all(Array.from({ length: 16 }, async (_, n) =>
+      (await runDailyNewsAutomation(options([detail(n)]))).state.accepted[0]));
+    const legacy = { ...emptyDailyLedger(current), accepted: historical.slice(0, 15) };
+    const before = await dailyNewsDigest(legacy.accepted), profile = await makeDailyApprovedPayload(legacy.accepted, current);
+    expect((await validateDailyApprovedPayload(profile, current, { sources })).records).toHaveLength(15);
+    const merged = await mergeDailyLedgers(legacy, profile, null, current, { sources }), ai = aiFixture();
+    const replay = await runDailyNewsAutomation(options([detail(16)], ai, { previous: merged }));
+    expect(ai.request).not.toHaveBeenCalled(); expect(replay.report).toMatchObject({ admittedToday: 15, newlyAccepted: 0, minimum: 8, maximum: 10 });
+    expect(await dailyNewsDigest(replay.state.accepted)).toBe(before);
+    expect(replay.profile.sha256).toBe(profile.sha256);
+    await expect(validateDailyApprovedPayload(await makeDailyApprovedPayload(historical, current), current, { sources }))
+      .rejects.toThrow('daily_profile_daily_limit');
   });
   it("requires real article publication metadata, fresh and consistent dates, approved article paths and literal source facts", async () => {
     const missing = detail(0); missing.evidence.publishedDates = []; missing.publishedAt = current.toISOString();
