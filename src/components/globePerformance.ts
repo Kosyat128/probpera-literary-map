@@ -318,6 +318,9 @@ export type GlobeWebGlContextSnapshot = Readonly<{
   lastRestorationAt: number | null;
 }>;
 
+/** Only counters may cross into the explicit adult support preview. */
+export type GlobeWebGlRecoveryObservation = Pick<GlobeWebGlContextSnapshot, "lossCount" | "restorationCount">;
+
 export type GlobeWebGlContextLifecycleOptions = Readonly<{
   onContextLost?: (
     snapshot: GlobeWebGlContextSnapshot,

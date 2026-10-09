@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useSupportPwaObservation } from "../support/useSupportDiagnostics";
+import { observePwaDiagnostics } from "../support/supportDiagnosticObservations";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { PwaInstallController } from "./PwaInstallController";
 import type { PwaOfflineReadinessResult, PwaOfflineRepairResult, PwaWorkerController } from "./registerPwaWorker";
@@ -82,7 +84,8 @@ function useStorageStatus() {
   const controller = useMemo(() => createPwaStorageStatus(), []);
   const state = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
   useEffect(() => controller.activate(), [controller]);
-  return { state, refresh: controller.refresh, requestPersistence: controller.requestPersistence };
+  return { state, refresh: controller.refresh, requestPersistence: controller.requestPersistence,
+    getSnapshot: controller.getSnapshot };
 }
 
 export default function PwaDevicePanel({ install, worker }: { install: PwaInstallController; worker: PwaWorkerController }) {
@@ -99,6 +102,14 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
   const mounted = useRef(false);
   const request = useRef<AbortController | null>(null);
   const storage = useStorageStatus();
+  const registerSupportReader = useSupportPwaObservation();
+  const supportResults = useRef({ offline, repair, checking, repairing });
+  useLayoutEffect(() => { supportResults.current = { offline, repair, checking, repairing }; });
+  useLayoutEffect(() => registerSupportReader?.(() => {
+    const current = supportResults.current;
+    return observePwaDiagnostics(worker.getSnapshot(), current.checking || current.repairing ? null : current.offline,
+      current.repairing ? null : current.repair, storage.getSnapshot());
+  }), [registerSupportReader, worker, storage.getSnapshot]);
   useEffect(() => { mounted.current = true; return () => {
     mounted.current = false; request.current?.abort(); repairRequest.current?.abort();
   }; }, []);

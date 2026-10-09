@@ -118,6 +118,7 @@ import {
   resolveGlobeAutoRotationPolicy,
   resolveGlobeFrameMode,
   type GlobeFrameMode,
+  type GlobeWebGlRecoveryObservation,
 } from "./globePerformance";
 import {
   createGlobeTouchActivationState,
@@ -184,6 +185,8 @@ interface Props {
   onViewSample?: (sample: GlobeViewSample) => void;
   /** Atlas assets only; ready does not claim that a scene frame has rendered. */
   onLoadStatusChange?: (status: DeferredLoadStatus) => void;
+  /** Observation only: never creates a renderer, listener, recovery request or scene mutation. */
+  onSupportWebglObservation?: (value: GlobeWebGlRecoveryObservation | null) => void;
   onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
@@ -2038,6 +2041,7 @@ export default function LiteraryGlobe({
   mode = "embedded",
   rootRef,
   onLoadStatusChange,
+  onSupportWebglObservation,
   onViewSample,
   onCameraViewChange,
   onHoverCountryChange,
@@ -2058,6 +2062,15 @@ export default function LiteraryGlobe({
   const { language, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const supportWebglObserver = useRef(!childPresentation && isPlanetApplication ? onSupportWebglObservation : undefined);
+  useLayoutEffect(() => {
+    supportWebglObserver.current = !childPresentation && isPlanetApplication ? onSupportWebglObservation : undefined;
+  }, [childPresentation, isPlanetApplication, onSupportWebglObservation]);
+  const observeSupportWebgl = useCallback((value: GlobeWebGlRecoveryObservation | null) => {
+    try { supportWebglObserver.current?.(value === null ? null
+      : { lossCount: value.lossCount, restorationCount: value.restorationCount }); }
+    catch { /* Support observation must never interrupt the canonical renderer. */ }
+  }, []);
   const standInspectionActive = isPlanetApplication && Boolean(standInspection
     && (standInspection.phase !== "closed" || standInspection.request));
   const standInspectionActiveRef = useRef(standInspectionActive);
@@ -2838,14 +2851,16 @@ export default function LiteraryGlobe({
         );
       };
       const lifecycle = installGlobeWebGlContextLifecycle(canvas, {
-        onContextLost: () => {
+        onContextLost: (snapshot) => {
+          observeSupportWebgl(snapshot);
           standCustomizationRef.current?.onContextLost();
           backgroundCustomizationRef.current?.onContextLost();
           window.cancelAnimationFrame(diagnosticFrame);
           setFrameloop("never");
           setWebglContextState("lost");
         },
-        onContextRestored: () => {
+        onContextRestored: (snapshot) => {
+          observeSupportWebgl(snapshot);
           canRestore = gl.extensions.has("WEBGL_lose_context");
           setWebglContextState("restoring");
           window.cancelAnimationFrame(diagnosticFrame);
@@ -2864,6 +2879,7 @@ export default function LiteraryGlobe({
         onRecoveryStateChange: setWebglContextState,
         requestRender: invalidate,
       });
+      observeSupportWebgl(lifecycle.snapshot());
       webglRecoveryRef.current = lifecycle.requestRestoration;
       captureDiagnostics();
       webglDiagnosticsRefreshRef.current = captureDiagnostics;
@@ -2872,6 +2888,7 @@ export default function LiteraryGlobe({
       webglListenerCleanupRef.current = () => {
         window.cancelAnimationFrame(diagnosticFrame);
         lifecycle.dispose();
+        observeSupportWebgl(null);
         if (webglRecoveryRef.current === lifecycle.requestRestoration) {
           webglRecoveryRef.current = null;
         }

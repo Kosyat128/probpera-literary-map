@@ -106,6 +106,8 @@ export interface ChildNativeAppController {
   /** A native save result only, never a context/PIN/content capability. */
   exportChildData?(profileId: string): Promise<ChildNativeExportReceipt | null>;
   getExportSnapshot?(): ChildNativeExportState;
+  /** Current adult lifecycle eligibility only; never returns context, token or profile data. */
+  isAdultDiagnosticsAllowed?(): boolean;
   getSnapshot(): ChildNativeAppSnapshot;
   subscribe(listener: () => void): () => void;
   /** A concrete host synchronously clears old child content/routes/resources.
@@ -909,6 +911,11 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         return ok && snapshot.context === c;
       },
     } satisfies ChildNativeMediaController),
+    isAdultDiagnosticsAllowed: () => {
+      const c = snapshot.context;
+      return !!c && c.mode === "adult" && (snapshot.status === "adult" || snapshot.status === "unenrolled")
+        && current(c, epoch);
+    },
     getSnapshot: () => snapshot,
     subscribe(listener: () => void) { if (disposed) return () => undefined; listeners.add(listener); return () => { listeners.delete(listener); }; },
     attachPresentationBarrier(clear: () => void) {

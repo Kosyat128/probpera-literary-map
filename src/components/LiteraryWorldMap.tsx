@@ -46,6 +46,8 @@ function loadLiteraryGlobe() {
 
 const GLOBE_HASH_TARGETS = ["atlas"] as const;
 
+import type { GlobeWebGlRecoveryObservation } from "./globePerformance";
+
 interface Props {
   countries: Country[];
   /** Native compiled child text scope; reuse the canonical scene with sealed adult sources. */
@@ -69,6 +71,7 @@ interface Props {
   onViewSample?: (sample: GlobeViewSample) => void;
   /** Current module/catalog fallback or the mounted globe's actual atlas state. */
   onLoadStatusChange?: (status: DeferredLoadStatus) => void;
+  onSupportWebglObservation?: (value: GlobeWebGlRecoveryObservation | null) => void;
   onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
@@ -105,6 +108,7 @@ export default function LiteraryWorldMap({
   mode = "embedded",
   rootRef,
   onLoadStatusChange,
+  onSupportWebglObservation,
   onViewSample,
   onCameraViewChange,
   onHoverCountryChange,
@@ -232,6 +236,7 @@ export default function LiteraryWorldMap({
           mode={mode}
           onViewSample={onViewSample}
           onLoadStatusChange={onLoadStatusChange}
+          onSupportWebglObservation={onSupportWebglObservation}
           onCameraViewChange={onCameraViewChange}
           onHoverCountryChange={onHoverCountryChange}
           focusRequest={focusRequest}

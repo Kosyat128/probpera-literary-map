@@ -57,6 +57,35 @@ function fixture() {
 beforeEach(() => { vi.useFakeTimers(); vi.setSystemTime(0); });
 afterEach(async () => { for (const controller of controllers.splice(0)) await controller.dispose(); vi.useRealTimers(); vi.restoreAllMocks(); });
 
+describe("adult diagnostic eligibility", () => {
+  it("is a boolean observation of the current native adult lease and performs no native call", async () => {
+    const f = fixture(); f.setNative(nativeContext(1, "adult"));
+    expect(f.controller.isAdultDiagnosticsAllowed?.()).toBe(false);
+    await f.controller.start();
+    const calls = f.plugin.bootstrap.mock.calls.length + f.plugin.readContext.mock.calls.length;
+    expect(f.controller.isAdultDiagnosticsAllowed?.()).toBe(true);
+    expect(f.plugin.bootstrap.mock.calls.length + f.plugin.readContext.mock.calls.length).toBe(calls);
+    // Advance wall time without executing the scheduled expiry timer: raw ready state alone is insufficient.
+    vi.setSystemTime(50_000);
+    expect(f.controller.getSnapshot().phase).toBe("ready");
+    expect(f.controller.isAdultDiagnosticsAllowed?.()).toBe(false);
+  });
+  it("denies child/background/disposed contexts while permitting an observed unenrolled adult", async () => {
+    const child = fixture(); await child.controller.start();
+    expect(child.controller.isAdultDiagnosticsAllowed?.()).toBe(false);
+    const adult = fixture();
+    adult.plugin.bootstrap.mockImplementation(async r => ({
+      ...appReply(r, { ...nativeContext(1, "adult"), profileId: null }, "unenrolled"), profiles: [],
+    }));
+    await adult.controller.start();
+    expect(adult.controller.isAdultDiagnosticsAllowed?.()).toBe(true);
+    adult.visibility("background");
+    expect(adult.controller.isAdultDiagnosticsAllowed?.()).toBe(false);
+    await adult.controller.dispose();
+    expect(adult.controller.isAdultDiagnosticsAllowed?.()).toBe(false);
+  });
+});
+
 describe("LOCAL2 native app DTO projection", () => {
   it("sends only exact route identity and current passport revision and requires a correlated durable route receipt", async () => {
     const f = fixture(), route = { journeyId: "journey-a", journeyVersion: 1, contentVersion: 1, title: "Synthetic route", description: "Text only.", nodeCount: 2,

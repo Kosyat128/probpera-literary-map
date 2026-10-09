@@ -23,6 +23,9 @@ import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel, { type NativePlanetSectionRequest } from "./host/NativePlanetPanel";
 import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
+import SupportDiagnosticsPanel from "./support/SupportDiagnosticsPanel";
+import { SupportPwaObservationContext, useSupportDiagnostics, type SupportAppObservation } from "./support/useSupportDiagnostics";
+import type { DiagnosticWebgl } from "./support/supportDiagnostics";
 import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
 import { usePlanetComposition } from "./host/planetComposition";
@@ -596,6 +599,8 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
   const [globeLoadStatus, setGlobeLoadStatus] = useState<DeferredLoadStatus | null>(null);
+  const supportWebgl = useRef<DiagnosticWebgl | null>(null);
+  const observeSupportWebgl = useCallback((value: DiagnosticWebgl | null) => { supportWebgl.current = value; }, []);
   const mascot = useMemo(() => createPlanetMascotController(), []);
   const mascotSnapshot = useSyncExternalStore(mascot.subscribe, mascot.getSnapshot, mascot.getSnapshot);
   const mascotPersistence = useMemo(() => createPlanetMascotPersistence({ controller: mascot,
@@ -1266,6 +1271,24 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
     () => bookArchive.filter(isPublicBook),
     [bookArchive]
   );
+  const readSupportApp = useCallback((): SupportAppObservation => {
+    const reader = nativeCollectionOpen && journeyBookView.active && journeyBookView.settled;
+    const selected = selectedCountry !== null;
+    return {
+      graphicsTier: graphics.qualityTier,
+      activeItems: reader ? { scope: "settled-reader", countryId: journeyBookView.countryId,
+        writerId: journeyBookView.writerId, workId: journeyBookView.workId }
+        : selected ? { scope: "globe-selection", countryId: selectedCountry.id,
+          writerId: selectedWriter?.id ?? null, workId: null }
+          : { scope: "none", countryId: null, writerId: null, workId: null },
+      webgl: supportWebgl.current,
+      // These are the current canonical catalogs; private/editorial candidate books are excluded.
+      catalog: { countries: countryArchive, books: verifiedBookArchive },
+    };
+  }, [graphics.qualityTier, nativeCollectionOpen, journeyBookView, selectedCountry, selectedWriter, countryArchive, verifiedBookArchive]);
+  const supportDiagnostics = useSupportDiagnostics({
+    active: isPlanetApplication && nativeCollectionOpen, language, readApp: readSupportApp,
+  });
   // The archive counter includes both publication-gated records and the
   // canonical editorial queue. Stable keys promote a record in place rather
   // than adding a second card for the same country/writer/work relation.
@@ -3196,6 +3219,7 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
                 onWriterSelect={selectGlobeWriter}
                 onViewSample={setGlobeViewSample}
                 onLoadStatusChange={isPlanetApplication ? setGlobeLoadStatus : undefined}
+                onSupportWebglObservation={isPlanetApplication ? observeSupportWebgl : undefined}
                 onCameraViewChange={isPlanetApplication ? setJourneyCameraView : undefined}
                 onHoverCountryChange={setGlobeHoveredCountry}
                 focusRequest={globeFocusRequest}
@@ -3548,7 +3572,10 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
           <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
           {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
           {nativeProfileControls}
-          {productHelp}
+          <SupportPwaObservationContext.Provider value={supportDiagnostics.registerPwaReader}>
+            {productHelp}
+          </SupportPwaObservationContext.Provider>
+          <SupportDiagnosticsPanel session={supportDiagnostics.session} active={nativeCollectionOpen} />
         </section>
       </NativePlanetPanel>
       {!nativeCollectionOpen && mascotControls}
