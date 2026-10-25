@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "id": "NEWS-RUNTIME-DEPENDENCY-SECURITY-20261025",
+  "baselineCommitSha": "7fc141d0600def29625adc4227f13143292312f5",
+  "authorization": {
+    "userAuthorized": true,
+    "packetSpecificHumanApprovalClaim": false,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "historicalPinsChanged": false,
+  "historicalAssertionsChanged": false,
+  "auditCommand": "npm audit --omit=dev --audit-level=high",
+  "scope": {
+    "applicationDependencies": {
+      "next": {
+        "before": "16.3.8",
+        "after": "16.4.3"
+      },
+      "sanitize-html": {
+        "before": "^2.17.7",
+        "after": "2.18.1"
+      },
+      "zod": {
+        "before": "^4.4.3",
+        "after": "4.6.6"
+      }
+    },
+    "productionUndici": {
+      "before": "7.29.1",
+      "after": "7.30.1",
+      "scope": "cheerio only"
+    },
+    "sanitizerPostcss": {
+      "before": "8.5.24",
+      "after": "8.5.31",
+      "scope": "sanitize-html only"
+    },
+    "unrelatedDependenciesChanged": false,
+    "mandatoryAuditChanged": false,
+    "existingTestCommandsChanged": false,
+    "productionDatabaseAccessAdded": false
+  },
+  "allowedProjectionPaths": [
+    "package.json",
+    "apps/admin/package.json",
+    "package-lock.json",
+    "scripts/lib/reviewed-postgres-test-image.mjs"
+  ],
+  "changedPackages": [
+    "apps/admin",
+    "node_modules/@next/env",
+    "node_modules/@next/swc-darwin-arm64",
+    "node_modules/@next/swc-darwin-x64",
+    "node_modules/@next/swc-linux-arm64-gnu",
+    "node_modules/@next/swc-linux-arm64-musl",
+    "node_modules/@next/swc-linux-x64-gnu",
+    "node_modules/@next/swc-linux-x64-musl",
+    "node_modules/@next/swc-win32-arm64-msvc",
+    "node_modules/@next/swc-win32-x64-msvc",
+    "node_modules/cheerio/node_modules/undici",
+    "node_modules/dayjs",
+    "node_modules/deepmerge",
+    "node_modules/is-plain-object",
+    "node_modules/launder",
+    "node_modules/nanoid",
+    "node_modules/next",
+    "node_modules/sanitize-html",
+    "node_modules/zod",
+    "node_modules/sanitize-html/node_modules/postcss"
+  ],
+  "sourceBaselines": {
+    "package.json": "c12ddb2342eb84961468c5b4f81d133bbbf734a2dc844990fa667b7850c60249",
+    "apps/admin/package.json": "9c7011a27d6e2fd012c6dc7b46716b681b6950487c34c622c6025087aa616792",
+    "package-lock.json": "452f737b9851fef7d796ee014c4e73deb944f50cf3ffb5b0ea48aaec446183cf",
+    "scripts/lib/reviewed-postgres-test-image.mjs": "351ccc6dadd7d766734bfa5a3512cb4a09213c74617b6ff81e6b67218511e4be"
+  },
+  "reviewedSources": {
+    "package.json": "b47f719a4ff4c917efe6bd3520d0706cb3777229ef91bcdf7920ee2f827a058a",
+    "apps/admin/package.json": "979805d1ec4968f68b80c40f038a2cf3ca5e25bfc6b5887946273932e91768fc",
+    "package-lock.json": "738226d3dcb3f908dafd0007d72763543479dd9bfff4497404f38eab87d27908",
+    "scripts/lib/reviewed-postgres-test-image.mjs": "60deb4701d7b539c798f32b3091372d7f063dacc183d1a485c1a3bc3077c1ad5"
+  },
+  "markers": {
+    "package.json": [
+      {
+        "text": "    \"cheerio\": {\n      \"undici\": \"7.30.1\"\n    }",
+        "count": 1
+      },
+      {
+        "text": "    \"sanitize-html\": {\n      \"postcss\": \"8.5.31\"\n    }",
+        "count": 1
+      }
+    ],
+    "apps/admin/package.json": [
+      {
+        "text": "    \"next\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"sanitize-html\": \"2.18.1\"",
+        "count": 1
+      },
+      {
+        "text": "    \"zod\": \"4.6.6\"",
+        "count": 1
+      }
+    ],
+    "package-lock.json": [
+      {
+        "text": "    \"node_modules/@next/env\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-darwin-arm64\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-darwin-x64\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-linux-arm64-gnu\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-linux-arm64-musl\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-linux-x64-gnu\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-linux-x64-musl\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-win32-arm64-msvc\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/@next/swc-win32-x64-msvc\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/cheerio/node_modules/undici\": {\n      \"version\": \"7.30.1\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/dayjs\": {\n      \"version\": \"1.11.23\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/is-plain-object\": {\n      \"version\": \"5.1.0\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/launder\": {\n      \"version\": \"1.7.2\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/nanoid\": {\n      \"version\": \"3.3.20\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/next\": {\n      \"version\": \"16.4.3\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/sanitize-html\": {\n      \"version\": \"2.18.1\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/zod\": {\n      \"version\": \"4.6.6\"",
+        "count": 1
+      },
+      {
+        "text": "    \"node_modules/sanitize-html/node_modules/postcss\": {\n      \"version\": \"8.5.31\"",
+        "count": 1
+      }
+    ],
+    "scripts/lib/reviewed-postgres-test-image.mjs": [
+      {
+        "text": "projectReviewedNewsRuntimeDependencySecurity",
+        "count": 2
+      }
+    ]
+  },
+  "projections": [
+    {
+      "id": "root-security-overrides-01",
+      "path": "package.json",
+      "before": "    },\n    \"stats-gl\": {\n      \"three\": \"0.178.0\"\n    }\n  },\n  \"scripts\": {\n",
+      "after": "    },\n    \"stats-gl\": {\n      \"three\": \"0.178.0\"\n    },\n    \"cheerio\": {\n      \"undici\": \"7.30.1\"\n    },\n    \"sanitize-html\": {\n      \"postcss\": \"8.5.31\"\n    }\n  },\n  \"scripts\": {\n",
+      "beforeSha256Lf": "3d078c46d19c7729421930036d37f98c63c24d37e31b9fa0629a567f709e39b5",
+      "afterSha256Lf": "a75895a7abc3c2f01a839207a94878a0f8c0e6d5256e83d098e233c80bb4cbaf"
+    },
+    {
+      "id": "admin-security-next",
+      "path": "apps/admin/package.json",
+      "before": "    \"next\": \"16.3.8\"",
+      "after": "    \"next\": \"16.4.3\"",
+      "beforeSha256Lf": "a23d2931da3b2620816036d6b2b0b86a0f7b0166c3cfc9922088e8eb55d5bcde",
+      "afterSha256Lf": "4c391d5316dab5ad510cb04eadc98ab0565abd826eac90f27bb56486d84050cf"
+    },
+    {
+      "id": "admin-security-sanitize-html",
+      "path": "apps/admin/package.json",
+      "before": "    \"sanitize-html\": \"^2.17.7\"",
+      "after": "    \"sanitize-html\": \"2.18.1\"",
+      "beforeSha256Lf": "2d52c3584928f4c3af36152c06f8c5f6aade9885b68ab3ac11fa52cc82a43832",
+      "afterSha256Lf": "57ec2fd059a97c9da7de4d2c2ab4e31ca106a24d00af7b2f219e59b0fe945bb3"
+    },
+    {
+      "id": "admin-security-zod",
+      "path": "apps/admin/package.json",
+      "before": "    \"zod\": \"^4.4.3\"",
+      "after": "    \"zod\": \"4.6.6\"",
+      "beforeSha256Lf": "f4c478279422532c9e9fa3295defbc4d80f84faf80048f7bfc9104573e541c2a",
+      "afterSha256Lf": "9ad4f1c86ae8a74bb71453afdef19daf247756f1e9e662697bd41557b1e91162"
+    },
+    {
+      "id": "runtime-security-lock-01",
+      "path": "package-lock.json",
+      "before": "        \"@tiptap/react\": \"3.30.5\",\n        \"@tiptap/starter-kit\": \"3.30.5\",\n        \"cheerio\": \"^1.2.0\",\n        \"next\": \"16.3.8\",\n        \"react\": \"^18.3.1\",\n        \"react-dom\": \"^18.3.1\",\n        \"sanitize-html\": \"^2.17.7\",\n        \"zod\": \"^4.4.3\"\n      },\n      \"devDependencies\": {\n        \"@cloudflare/workers-types\": \"^5.20260823.1\",\n",
+      "after": "        \"@tiptap/react\": \"3.30.5\",\n        \"@tiptap/starter-kit\": \"3.30.5\",\n        \"cheerio\": \"^1.2.0\",\n        \"next\": \"16.4.3\",\n        \"react\": \"^18.3.1\",\n        \"react-dom\": \"^18.3.1\",\n        \"sanitize-html\": \"2.18.1\",\n        \"zod\": \"4.6.6\"\n      },\n      \"devDependencies\": {\n        \"@cloudflare/workers-types\": \"^5.20260823.1\",\n",
+      "beforeSha256Lf": "f4013611caffb6ab2fcba44ebf6b88687a219604b83d431baf67e09e3e1dec99",
+      "afterSha256Lf": "90fe2c39de28e2ce6c6bc7a76038906877d33b568f3cca471385fa5d49df545f"
+    },
+    {
+      "id": "runtime-security-lock-02",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/env\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/env/-/env-16.3.8.tgz\",\n      \"integrity\": \"sha512-Al9zqHVV7TJv0eFuOU4U7Lvv74PTih4Ch63sk2xCIpSTkE3udFnaOcnzP2lQVymiL7yS9Cj2iClUXlR3EQ5sEw==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/@next/swc-darwin-arm64\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.3.8.tgz\",\n      \"integrity\": \"sha512-2JPRMh2nmQG5CiL7cXGL9AGwnPWJQ//cTtAUCT+w511QHk79SYz3LGv/pc5X643B/WEO0rvu3Yww0hqwt3kgeA==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/env\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/env/-/env-16.4.3.tgz\",\n      \"integrity\": \"sha512-a7tz1QCcWWkwC/rPJcPMJk/UNRu9CFhDd3OHYE5hddbJrs8BqRTalxI6GlKCWEGzRLHN+S/B7a4PAHCtm25aBQ==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/@next/swc-darwin-arm64\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.4.3.tgz\",\n      \"integrity\": \"sha512-4yq5EXBt+VDtAZwTyfijaFp5D2C5oz3Ikw5a2kiX2K9nw72vrZX2q5UuAlkPtUMO1tQz6JTKpaKWjS7OOefTDQ==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "beforeSha256Lf": "43625b6cef313067ae2506960da5a62ca13fdee9266c4273d8457143ca107e5e",
+      "afterSha256Lf": "2460b06fa744183ecc9f5ea3c53d891acbf9c84789a1598033701aca7f895d94"
+    },
+    {
+      "id": "runtime-security-lock-03",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-darwin-x64\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.3.8.tgz\",\n      \"integrity\": \"sha512-GZtCCOBKJ4leVIT/Th0llWKhD1ca92lzbQiS5R5ON9QkoiFnilFsebDae1JU2a3HWoKMEmEZWGs1AGLavVM72Q==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-darwin-x64\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-16.4.3.tgz\",\n      \"integrity\": \"sha512-1Rvkn/LUhnEF8WxnRkOrqGhbwXui1bkWFxONKIbN+r7C+9KHDSZ+iUoj4CzymVMWUyZIyx9szcb9+kbKhD500A==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "beforeSha256Lf": "52d0049fc2d2986bb87ed18d818968d6cce554d6f1b38622638f8b0dcd5659ee",
+      "afterSha256Lf": "a7af9e0277e6c1f20959d2084f6c433f38ad2d17eb0db7939fe72853db8e1a9a"
+    },
+    {
+      "id": "runtime-security-lock-04",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-gnu\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.3.8.tgz\",\n      \"integrity\": \"sha512-O659ygeQYqneJ1fBKMpFxIFqYkYswu8IAS1OCKK/4f3ZgJJm1dRz4fVJZRi/kLLWjnBKnebOePA4WNv+sV1pVA==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-gnu\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-16.4.3.tgz\",\n      \"integrity\": \"sha512-dCKpXErGg3abUM6t5JTJV/ottVBTStJB5lRJTbgdUdQaQ+jNHiK56Hsc0YAEg/rinSh42hYG3HWiYmEMdilnxg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "beforeSha256Lf": "78c161bb5d29ae442d044509e85ac43d14a494d01694ff483b9dfa0680d1b88b",
+      "afterSha256Lf": "20616f64b1161a48352cb4785184bf3d676247a2e5755bdd322197733b2ddd7b"
+    },
+    {
+      "id": "runtime-security-lock-05",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-musl\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.3.8.tgz\",\n      \"integrity\": \"sha512-dSjKSyWpzxoO1d3DIZZcP4XJcNaKeLmxQMFOiYl5vuBRMmweIqnAhty8tAmRsvTss779cK1FtYnDMj40e4TQlg==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-arm64-musl\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-16.4.3.tgz\",\n      \"integrity\": \"sha512-WwYbhWkhYBvBtib1K4W0kL8MW2snBD2A5b3SN4vPpqalZbZs5+bQ1yzAdepVoOqrFfEW3dmREy4Zs1MrWcrFbw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "beforeSha256Lf": "d8c53e879492bd7706350c98be78540ab55b0f730b630e8d869d98f17aa1fe61",
+      "afterSha256Lf": "9c5f63be3b4866e6d24f1444c9e29db5c25252712760a58609d2e2b43411cf69"
+    },
+    {
+      "id": "runtime-security-lock-06",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-gnu\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.3.8.tgz\",\n      \"integrity\": \"sha512-lbqOuz3RPRcv+o9msNsJw5x4+Y1ZwPTs6vmL6DCf7i0fZfvng/F59wyeDwqHIvV0mK//RBy/jJkZ+nCKsSMXjQ==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-gnu\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-16.4.3.tgz\",\n      \"integrity\": \"sha512-QymWvfUwDEC5/lpJOsxX5VAbyoR2D13+2Jsjz4be7gT4LPqEgdpkeLIR/HFfCLgKzoMhpJbp6I/JnogyNZHcaA==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "beforeSha256Lf": "c8dd0db715cdc729973e788a54a8919ffc1c24e33671a2755e6e8b1d4caa8412",
+      "afterSha256Lf": "09f47f8be117dc0a9a73c883ab21f4f7a59dda4939508b4a5f4fe273d857b055"
+    },
+    {
+      "id": "runtime-security-lock-07",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-musl\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.3.8.tgz\",\n      \"integrity\": \"sha512-+316WswI8ScVgZeUd+1KGaXkHhaYQzCjvH/05TZSpJ8zBizb1a4G7DtO7F12jcBIqMOtsz9ji1t48fmKtzqsGA==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-linux-x64-musl\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-16.4.3.tgz\",\n      \"integrity\": \"sha512-Vmjd9D7DpA4Vv3cUlr82QWgJD/BQZmns801vtC5VWHg6jCIA4a5vMKpQnfrM2pyCrp2eV0ENdUg4PlN3bAc2Yw==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "beforeSha256Lf": "a45f8b07a7fc8de4777cf91de9d1195ab6713e7ae071f28b6a65dafd00eb9229",
+      "afterSha256Lf": "409245eeb7b1359f99b6259bd133d25ae46247b93bf463f8f4cd0f5652fdc262"
+    },
+    {
+      "id": "runtime-security-lock-08",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-win32-arm64-msvc\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.3.8.tgz\",\n      \"integrity\": \"sha512-ji0gd4kMYUxO+1fJBIbiBVRCjzG/lloiyCccnlebvb1ZJ5qXCPZqYg4Jl1DrrixnWNMKylzgpmMWx0yNDYXlzw==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-win32-arm64-msvc\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-16.4.3.tgz\",\n      \"integrity\": \"sha512-lG1pPdPLk7gTyGb00n5JIMLdBJgjb+UEhSdZvFbhUMg0DyC6z4B7RnpSKF9VCd4imkLObVbXOFA0kFCpw7yFow==\",\n      \"cpu\": [\n        \"arm64\"\n      ],\n",
+      "beforeSha256Lf": "981f72bf5ed0be47c73449f249a15c150bfb2f9e30f923d88c32692727fdca5b",
+      "afterSha256Lf": "299f52ef17dc163fd08dfa2fb4a606123412ddd4988644b9132d33d5202b8cba"
+    },
+    {
+      "id": "runtime-security-lock-09",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/@next/swc-win32-x64-msvc\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.3.8.tgz\",\n      \"integrity\": \"sha512-WcTlaKt/TWkh5kUjdJcUmB1XgZ+1c6fz4Y9fDHL73YNSdGaUWjceeWrrlwF0nv19iABYWC4iAq1oX1w4Bn0vfg==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "after": "      }\n    },\n    \"node_modules/@next/swc-win32-x64-msvc\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.4.3.tgz\",\n      \"integrity\": \"sha512-NmQC9RkJdnPXRaMxtkCzobB3teVjqF33oSOnwDfi+XYGWWYpt+xlGK3mtktSKLbdjwaWbJu2OkkMiRFGUUncKg==\",\n      \"cpu\": [\n        \"x64\"\n      ],\n",
+      "beforeSha256Lf": "156b840e0fc3fb6c44be752bcfdcba346332b4e74c0ed70b0bfaf587638c05a9",
+      "afterSha256Lf": "f76007bf7bad801e0ca7e909cd03d1b87dc8358381f92f205b3b406d60d66659"
+    },
+    {
+      "id": "runtime-security-lock-10",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/cheerio/node_modules/undici\": {\n      \"version\": \"7.29.1\",\n      \"resolved\": \"https://registry.npmjs.org/undici/-/undici-7.29.1.tgz\",\n      \"integrity\": \"sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=20.18.1\"\n",
+      "after": "      }\n    },\n    \"node_modules/cheerio/node_modules/undici\": {\n      \"version\": \"7.30.1\",\n      \"resolved\": \"https://registry.npmjs.org/undici/-/undici-7.30.1.tgz\",\n      \"integrity\": \"sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=20.18.1\"\n",
+      "beforeSha256Lf": "254d76e06482ed85aeb98702c948c30970541dc34d036c8faa118dd190bd2d24",
+      "afterSha256Lf": "37869fe4949d73313f5adb76e7b3ab83b476521f455206824884c12a59706482"
+    },
+    {
+      "id": "runtime-security-lock-11",
+      "path": "package-lock.json",
+      "before": "      \"license\": \"MIT\"\n    },\n    \"node_modules/dayjs\": {\n      \"version\": \"1.11.21\",\n      \"resolved\": \"https://registry.npmjs.org/dayjs/-/dayjs-1.11.21.tgz\",\n      \"integrity\": \"sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/debug\": {\n",
+      "after": "      \"license\": \"MIT\"\n    },\n    \"node_modules/dayjs\": {\n      \"version\": \"1.11.23\",\n      \"resolved\": \"https://registry.npmjs.org/dayjs/-/dayjs-1.11.23.tgz\",\n      \"integrity\": \"sha512-QDTCU0M0MxR3hQfnlDJfwekQiaanm1ubOD231u73WBckQ/fsamwRLiE2GBz6D3a/xF1NgfiDLJjXBa1hYOYTtQ==\",\n      \"license\": \"MIT\"\n    },\n    \"node_modules/debug\": {\n",
+      "beforeSha256Lf": "f491a16b25cef13a54bc9ca3f85a6c4b2e3c7105986f49192adf9117c2e028ec",
+      "afterSha256Lf": "9286b424f4c3b707db134c63b318b86a018960c234aa6ea1efe956cd2f22cd3f"
+    },
+    {
+      "id": "runtime-security-lock-12",
+      "path": "package-lock.json",
+      "before": "        }\n      }\n    },\n    \"node_modules/deepmerge\": {\n      \"version\": \"4.3.1\",\n      \"resolved\": \"https://registry.npmjs.org/deepmerge/-/deepmerge-4.3.1.tgz\",\n      \"integrity\": \"sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=0.10.0\"\n      }\n    },\n    \"node_modules/delayed-stream\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz\",\n",
+      "after": "        }\n      }\n    },\n    \"node_modules/delayed-stream\": {\n      \"version\": \"1.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz\",\n",
+      "beforeSha256Lf": "db2cc3ba9909752e1503c48b5b3a247c235e0f7432449288fe9f89990e1ee87d",
+      "afterSha256Lf": "2863735776d5fae8b957c9f56f50cd070418811e54bf5263d684004ed645eabb"
+    },
+    {
+      "id": "runtime-security-lock-13",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/is-plain-object\": {\n      \"version\": \"5.0.0\",\n      \"resolved\": \"https://registry.npmjs.org/is-plain-object/-/is-plain-object-5.0.0.tgz\",\n      \"integrity\": \"sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=0.10.0\"\n",
+      "after": "      }\n    },\n    \"node_modules/is-plain-object\": {\n      \"version\": \"5.1.0\",\n      \"resolved\": \"https://registry.npmjs.org/is-plain-object/-/is-plain-object-5.1.0.tgz\",\n      \"integrity\": \"sha512-bUi/yjmtKYcRVUtWRGr0UA6xEFh2I6zWUwMrUXB3s7bmYCaZ8a+0ZsTRkrawh/mzlSD1Y0Ph8bp/U+TvBpWDNw==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=0.10.0\"\n",
+      "beforeSha256Lf": "facfb3c3461ad4f766ec1ef40ec72a1836dbdb34dc0e39c4bb4e6bcf150c461a",
+      "afterSha256Lf": "838e8bf882271a452cb7005c469e8be5233a0db263c29f69d2291423a5147f62"
+    },
+    {
+      "id": "runtime-security-lock-14",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/launder\": {\n      \"version\": \"1.7.1\",\n      \"resolved\": \"https://registry.npmjs.org/launder/-/launder-1.7.1.tgz\",\n      \"integrity\": \"sha512-mU6WRz5EusL9ZZuiZ5SO4Y6C0P9PAUR9iwdb6bzj4KDihm28DiHFw+/yk9DBH4f+Pv1wuzQ4e2jV3oQ7mkIqvw==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"dayjs\": \"^1.11.7\"\n      }\n    },\n    \"node_modules/leaflet\": {\n",
+      "after": "      }\n    },\n    \"node_modules/launder\": {\n      \"version\": \"1.7.2\",\n      \"resolved\": \"https://registry.npmjs.org/launder/-/launder-1.7.2.tgz\",\n      \"integrity\": \"sha512-DLg3HPnHUfBi5/MxMLmJD12dmlMpFEC2HgMW6vkZ/9JR0RU00kXoRGvDxAvFmdO0o610OA77i4FgNTLucmhDVg==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"dayjs\": \"^1.11.23\"\n      }\n    },\n    \"node_modules/leaflet\": {\n",
+      "beforeSha256Lf": "f943710e43f509007141329f853165d3a51c43e1afd42e79ea02519e266ab6b3",
+      "afterSha256Lf": "30d9a37ba88576879340e3a129b45b83316a08d0dcef1f87f41052f1328440c9"
+    },
+    {
+      "id": "runtime-security-lock-15",
+      "path": "package-lock.json",
+      "before": "      \"license\": \"MIT\"\n    },\n    \"node_modules/nanoid\": {\n      \"version\": \"3.3.18\",\n      \"resolved\": \"https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz\",\n      \"integrity\": \"sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w==\",\n      \"funding\": [\n        {\n          \"type\": \"github\",\n",
+      "after": "      \"license\": \"MIT\"\n    },\n    \"node_modules/nanoid\": {\n      \"version\": \"3.3.20\",\n      \"resolved\": \"https://registry.npmjs.org/nanoid/-/nanoid-3.3.20.tgz\",\n      \"integrity\": \"sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==\",\n      \"funding\": [\n        {\n          \"type\": \"github\",\n",
+      "beforeSha256Lf": "c326efd4b84cc268115cadd7c658a243784802b7f55893f6ae301da94ab295de",
+      "afterSha256Lf": "4d949ba63320b2558676024a154e726b85ad5cb0e19086caecb1ffc50ccbf918"
+    },
+    {
+      "id": "runtime-security-lock-16",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/next\": {\n      \"version\": \"16.3.8\",\n      \"resolved\": \"https://registry.npmjs.org/next/-/next-16.3.8.tgz\",\n      \"integrity\": \"sha512-U7QEZaTini6wKrb8A8hqLLqYQyCetegKjCpJOyxk642vWoMoU1x5PyZCJFvgYgiptA8xc5j/9xYlZFO7w9Sjmw==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@next/env\": \"16.3.8\",\n        \"@swc/helpers\": \"0.5.23\",\n        \"baseline-browser-mapping\": \"^2.9.19\",\n        \"caniuse-lite\": \"^1.0.30001579\",\n",
+      "after": "      }\n    },\n    \"node_modules/next\": {\n      \"version\": \"16.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/next/-/next-16.4.3.tgz\",\n      \"integrity\": \"sha512-OqxKTGi9u80FydydsMNYNjnuje9Au+kvHlt2GZ//ftdpDHm1dxKqAaENoOOTX5wKzn+9vaKUNIfZeyZUuLhCnA==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"@next/env\": \"16.4.3\",\n        \"@swc/helpers\": \"0.5.23\",\n        \"baseline-browser-mapping\": \"^2.9.19\",\n        \"caniuse-lite\": \"^1.0.30001579\",\n",
+      "beforeSha256Lf": "7e696202c5a8617cf32b3d445e09abd3083eeb9fff505212dc5a50fd01b254b5",
+      "afterSha256Lf": "a28531cf73cd32f78ffe5c7bd579b9b8461fb1f874ff608788000d358902ee1d"
+    },
+    {
+      "id": "runtime-security-lock-17",
+      "path": "package-lock.json",
+      "before": "        \"node\": \">=20.9.0\"\n      },\n      \"optionalDependencies\": {\n        \"@next/swc-darwin-arm64\": \"16.3.8\",\n        \"@next/swc-darwin-x64\": \"16.3.8\",\n        \"@next/swc-linux-arm64-gnu\": \"16.3.8\",\n        \"@next/swc-linux-arm64-musl\": \"16.3.8\",\n        \"@next/swc-linux-x64-gnu\": \"16.3.8\",\n        \"@next/swc-linux-x64-musl\": \"16.3.8\",\n        \"@next/swc-win32-arm64-msvc\": \"16.3.8\",\n        \"@next/swc-win32-x64-msvc\": \"16.3.8\",\n        \"sharp\": \"^0.35.4\"\n      },\n      \"peerDependencies\": {\n        \"@opentelemetry/api\": \"^1.1.0\",\n",
+      "after": "        \"node\": \">=20.9.0\"\n      },\n      \"optionalDependencies\": {\n        \"@next/swc-darwin-arm64\": \"16.4.3\",\n        \"@next/swc-darwin-x64\": \"16.4.3\",\n        \"@next/swc-linux-arm64-gnu\": \"16.4.3\",\n        \"@next/swc-linux-arm64-musl\": \"16.4.3\",\n        \"@next/swc-linux-x64-gnu\": \"16.4.3\",\n        \"@next/swc-linux-x64-musl\": \"16.4.3\",\n        \"@next/swc-win32-arm64-msvc\": \"16.4.3\",\n        \"@next/swc-win32-x64-msvc\": \"16.4.3\",\n        \"sharp\": \"^0.35.5\"\n      },\n      \"peerDependencies\": {\n        \"@opentelemetry/api\": \"^1.1.0\",\n",
+      "beforeSha256Lf": "418a0d7f8b2b03f2a575a51d93204b4cdbd7cde7524323243377c8bae346d41b",
+      "afterSha256Lf": "4c4ac9c59fa6ea9292311a7fe583a944460428ebba1024dc95a7d22435501874"
+    },
+    {
+      "id": "runtime-security-lock-18",
+      "path": "package-lock.json",
+      "before": "      \"license\": \"MIT\"\n    },\n    \"node_modules/sanitize-html\": {\n      \"version\": \"2.17.7\",\n      \"resolved\": \"https://registry.npmjs.org/sanitize-html/-/sanitize-html-2.17.7.tgz\",\n      \"integrity\": \"sha512-PGtEkc9cbnedU3s9TmzDbpsZ8w086g/0Q8k8/oIO1NLNU3i5k9yn835CrjJSajp1KMmkisbO1qPXxNKO3welAg==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"deepmerge\": \"^4.2.2\",\n        \"escape-string-regexp\": \"^4.0.0\",\n        \"htmlparser2\": \"^12.0.0\",\n        \"is-plain-object\": \"^5.0.0\",\n        \"launder\": \"^1.7.1\",\n        \"parse-srcset\": \"^1.0.2\",\n        \"postcss\": \"^8.3.11\"\n      },\n      \"engines\": {\n        \"node\": \">=22.12.0\"\n",
+      "after": "      \"license\": \"MIT\"\n    },\n    \"node_modules/sanitize-html\": {\n      \"version\": \"2.18.1\",\n      \"resolved\": \"https://registry.npmjs.org/sanitize-html/-/sanitize-html-2.18.1.tgz\",\n      \"integrity\": \"sha512-2X5lC8fYla8YaT8g73Nj+HcLWXan5dLyCWLgVvaOmfw7JI78IRsyNtIDytTHdn7hBQbIkCah7Zbmd5jabzeDig==\",\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"escape-string-regexp\": \"^4.0.0\",\n        \"htmlparser2\": \"^12.0.0\",\n        \"is-plain-object\": \"^5.1.0\",\n        \"launder\": \"^1.7.2\",\n        \"parse-srcset\": \"^1.0.2\",\n        \"postcss\": \"^8.5.27\"\n      },\n      \"engines\": {\n        \"node\": \">=22.12.0\"\n",
+      "beforeSha256Lf": "77f54c84be367e37ff4f59dc40b1d92f717b5418166d9388cf23afddae8294c9",
+      "afterSha256Lf": "a32533d0b29d151b1193556c2b96f6660710d90a1aaae08d09038d11c59358c9"
+    },
+    {
+      "id": "runtime-security-lock-19",
+      "path": "package-lock.json",
+      "before": "        \"node\": \">=20.19.0\"\n      }\n    },\n    \"node_modules/scheduler\": {\n      \"version\": \"0.21.0\",\n      \"resolved\": \"https://registry.npmjs.org/scheduler/-/scheduler-0.21.0.tgz\",\n",
+      "after": "        \"node\": \">=20.19.0\"\n      }\n    },\n    \"node_modules/sanitize-html/node_modules/postcss\": {\n      \"version\": \"8.5.31\",\n      \"resolved\": \"https://registry.npmjs.org/postcss/-/postcss-8.5.31.tgz\",\n      \"integrity\": \"sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==\",\n      \"funding\": [\n        {\n          \"type\": \"opencollective\",\n          \"url\": \"https://opencollective.com/postcss/\"\n        },\n        {\n          \"type\": \"tidelift\",\n          \"url\": \"https://tidelift.com/funding/github/npm/postcss\"\n        },\n        {\n          \"type\": \"github\",\n          \"url\": \"https://github.com/sponsors/ai\"\n        }\n      ],\n      \"license\": \"MIT\",\n      \"dependencies\": {\n        \"nanoid\": \"^3.3.20\",\n        \"picocolors\": \"^1.1.1\",\n        \"source-map-js\": \"^1.2.2\"\n      },\n      \"engines\": {\n        \"node\": \"^10 || ^12 || >=14\"\n      }\n    },\n    \"node_modules/scheduler\": {\n      \"version\": \"0.21.0\",\n      \"resolved\": \"https://registry.npmjs.org/scheduler/-/scheduler-0.21.0.tgz\",\n",
+      "beforeSha256Lf": "014485a9c13c4c1931705cb50439b6a93371c4e46ed602cc16b12ab16abeff01",
+      "afterSha256Lf": "3a66aafd78eaa25fb9142d497d0635926802b454983d17b625f9c5ed338057c3"
+    },
+    {
+      "id": "runtime-security-lock-20",
+      "path": "package-lock.json",
+      "before": "      }\n    },\n    \"node_modules/zod\": {\n      \"version\": \"4.4.3\",\n      \"resolved\": \"https://registry.npmjs.org/zod/-/zod-4.4.3.tgz\",\n      \"integrity\": \"sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==\",\n      \"license\": \"MIT\",\n      \"funding\": {\n        \"url\": \"https://github.com/sponsors/colinhacks\"\n",
+      "after": "      }\n    },\n    \"node_modules/zod\": {\n      \"version\": \"4.6.6\",\n      \"resolved\": \"https://registry.npmjs.org/zod/-/zod-4.6.6.tgz\",\n      \"integrity\": \"sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==\",\n      \"license\": \"MIT\",\n      \"funding\": {\n        \"url\": \"https://github.com/sponsors/colinhacks\"\n",
+      "beforeSha256Lf": "cd504a541421a957f9f076a832219a879768bf3eb284f47eb1d21e99a7bece34",
+      "afterSha256Lf": "2cfd7a9ac9a13c40d2ea6fb22b679496330aa26013563f8d4318b10e5011ac78"
+    },
+    {
+      "id": "runtime-security-reader-import",
+      "path": "scripts/lib/reviewed-postgres-test-image.mjs",
+      "before": "import { createHash } from 'node:crypto';\n",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';\n",
+      "beforeSha256Lf": "e99a245dd6a438bcaeb012ed910aa7f585bb1ff757109782eaf29f82ac478a8b",
+      "afterSha256Lf": "78d1da2185dc67cab94cd3047a03f848ca1ffc8b5f2d8c1dfc72a957418ffb00"
+    },
+    {
+      "id": "runtime-security-reader-call",
+      "path": "scripts/lib/reviewed-postgres-test-image.mjs",
+      "before": "  let projected = source.replace(/\\r\\n?/gu, '\\n');\n",
+      "after": "  let projected = projectReviewedNewsRuntimeDependencySecurity(relativePath, source);\n",
+      "beforeSha256Lf": "bbf4358f4f3fa118c85cf720f80cdc9dbeb711fc2c50f93f7bc95cf2680a30cc",
+      "afterSha256Lf": "2abb77232dee4048b4f8612f360dd6c8ca29977ab802ebe890a9c532fa990aac"
+    }
+  ],
+  "additions": [
+    {
+      "path": "scripts/lib/reviewed-news-runtime-dependency-security.mjs",
+      "sha256Lf": "c373fa3024a50de6cfd3a58e44d2b643d7d060ae761d10523ad15bcfc75e5fe5"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+      "sha256Lf": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c",
+      "jsonSha256": "a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    },
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "jsonSha256": "686317fc56832427bf3226d6013bd37c08186164a03ea3f8772a7809f915c2d7"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "jsonSha256": "bdfa16eeae3719d13585559b56f693bd50e44b15cedb84c19b19242456daa997"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    },
+    {
+      "path": "scripts/governance/next-security-followup-reviewed-20261002.json",
+      "sha256Lf": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "jsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc"
+    },
+    {
+      "path": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "sha256Lf": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748",
+      "jsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e"
+    },
+    {
+      "path": "scripts/governance/author-column-reference-removal-reviewed-20261002.json",
+      "sha256Lf": "5afa96685dff6076ed29479587d8365d3fc94bf35e85d559cd9a18deb784de80",
+      "jsonSha256": "26c4c0193ec8d681f1983a71eabe188d9a0c0725a810afba1fca8121ce53e459"
+    },
+    {
+      "path": "scripts/governance/live-ui-followup-reviewed-20261002.json",
+      "sha256Lf": "e1cbda9237776d14855a67901a01d70008374d5a45cd699ead86530a68fd75b0",
+      "jsonSha256": "951e041cd53bb776d2acd9606c92d56e06d49cfde91b8f998c8b0f5a8f33b352"
+    },
+    {
+      "path": "scripts/governance/news-dependency-security-followup-reviewed-20261009.json",
+      "sha256Lf": "a87c6896024b0935eb4f0e1786f44d4058651914bb00e697ae2ae01f5713ca50",
+      "jsonSha256": "262db8c61f772fa04f9ad0e8045109f913d9a599ba29f7a67f847a414e8f64cb"
+    },
+    {
+      "path": "scripts/governance/postgres-test-image-reviewed-20261010.json",
+      "sha256Lf": "09398194008c31b78f646c67e61071ab7c7bb866f5df40c236e1ad903cc3c47d",
+      "jsonSha256": "9d211f7b8e11c9e61e0bd41081ba8bbeb52e8d8dc672a70cfaf172e7495a9684"
+    }
+  ],
+  "testReadBoundaries": [
+    {
+      "path": "scripts/lib/reviewed-postgres-test-image.test.mjs",
+      "sourceBaseline": "b77de3e720d32ce18f4573d683460b45d14e10c8ea7f3e5357e8e96b9283c679",
+      "reviewedSource": "541b14ca0b3e10fcee8fbaa303357fe540113104ccc66bc993217c805e2745f0",
+      "deltas": [
+        {
+          "id": "runtime-security-test-read-import",
+          "path": "scripts/lib/reviewed-postgres-test-image.test.mjs",
+          "before": "import { readFileSync } from 'node:fs';\n",
+          "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';\n",
+          "beforeSha256Lf": "64adc6e9ca168ca5d2aa0ec3b027b597df54b5d137f9f788543900b856b6e286",
+          "afterSha256Lf": "6d64a059a3246b7d2e0db39c436cc351c347eee15c1ef846397a52aef57055c9"
+        },
+        {
+          "id": "runtime-security-test-read-call",
+          "path": "scripts/lib/reviewed-postgres-test-image.test.mjs",
+          "before": "const read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');\n",
+          "after": "const read = path => projectReviewedNewsRuntimeDependencySecurity(path, readFileSync(path, 'utf8'));\n",
+          "beforeSha256Lf": "cf878ff398a43fcbf600b4a2cbc9588de23d57ac5bcd19c075af36221415c272",
+          "afterSha256Lf": "1a9ddedc58f12329f2aafa33326734cc0cc78c6b4b806e3d502fa565a7bd3d30"
+        }
+      ]
+    }
+  ]
+}

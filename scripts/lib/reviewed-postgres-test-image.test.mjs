@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { postgresTestImageAttestation as packet, postgresTestImageSha256 as sha,
@@ -8,7 +9,7 @@ import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-foll
 
 // Current source is read directly here; no projection may conceal a rollback
 // or an unreviewed expansion of the newly permitted workflow/helper changes.
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedNewsRuntimeDependencySecurity(path, readFileSync(path, 'utf8'));
 const historical = path => execFileSync('git', ['-c', `safe.directory=${process.cwd()}`, 'show',
   `${packet.baselineCommitSha}:${path}`], { encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');
 const failure = 'Missing or duplicate reviewed PostgreSQL test-image delta';

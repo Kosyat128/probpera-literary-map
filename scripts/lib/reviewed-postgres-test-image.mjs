@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';
 import { readFileSync } from 'node:fs';
 
 // Additive CI resilience evidence; historical authority and acceptance stay intact.
@@ -9,7 +10,7 @@ export const postgresTestImageSha256 = source => createHash('sha256')
 
 /** Reverse only the exact bootstrap steps and their outer read integration. */
 export function projectReviewedPostgresTestImage(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedNewsRuntimeDependencySecurity(relativePath, source);
   const deltas = postgresTestImageAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   const markers = postgresTestImageAttestation.markers[relativePath];

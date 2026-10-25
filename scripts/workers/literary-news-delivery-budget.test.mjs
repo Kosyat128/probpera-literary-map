@@ -1,4 +1,4 @@
-import { afterAll, describe, expect, it, vi } from 'vitest';
+import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mkdir, writeFile } from 'node:fs/promises';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
 import { runDeliveryTick, runDeliveryCaptureTick, rotatingNativeNewsCaptureIds,
@@ -14,6 +14,10 @@ import { captureChangedNativeNews } from '../lib/literary-news-capture-progress.
 const current=new Date('2026-10-02T12:00:00Z'),destination=configuration.destinations.find(row=>row.platform==='telegram');
 const controlKey=`destination:telegram:${destination.id}`,release='a'.repeat(40);
 const evidence=[];
+// The final provider transport deliberately rechecks media rights against Date.
+// Keep that wall clock within this fixture's licence; SDK and abort timers stay real.
+beforeEach(()=>{vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(current);});
+afterEach(()=>vi.useRealTimers());
 afterAll(async()=>{
   const directory=new URL('../../.tmp/telegram-live-audit/',import.meta.url);
   await mkdir(directory,{recursive:true});
@@ -144,6 +148,15 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
 }
 
 describe('native capture and dispatch under the real SDK external-request budget',()=>{
+  it('refuses a photo when its licence expires at the final provider check without consuming a publication slot',async()=>{
+    const f=await sdkFixture({creates:1}),key=newsPostKey('news-00',destination);
+    expect(f.rows.get(key).state.prepared.media).toMatchObject({validUntil:'2026-10-10T00:00:00Z'});
+    vi.setSystemTime(new Date('2026-10-10T00:00:00Z'));
+    const report=await f.run('dispatch');
+    expect(report).toMatchObject({deliveredThisRun:0,providerWriteAttempts:0,heartbeatRecorded:true});
+    expect(f.writes).toEqual([]);expect(f.rows.get(key).state.remoteId).toBeUndefined();
+    expect(f.rows.has(f.pacingKey)).toBe(false);
+  });
   it('stops a busy feed retry at the ordinary request ceiling and persists a zero-write failure heartbeat through the real SDK',async()=>{
     const f=await sdkFixture({photo:false,feedBusyResponses:1}),waitImpl=vi.fn();
     const report=await f.run('capture',{fetchFeedImpl:async args=>{

@@ -38,11 +38,11 @@
     "@tiptap/react": "3.30.5",
     "@tiptap/starter-kit": "3.30.5",
     "cheerio": "^1.2.0",
-    "next": "16.3.8",
+    "next": "16.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sanitize-html": "^2.17.7",
-    "zod": "^4.4.3"
+    "sanitize-html": "2.18.1",
+    "zod": "4.6.6"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260823.1",
