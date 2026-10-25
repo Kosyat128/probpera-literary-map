@@ -466,6 +466,15 @@ export async function checkNewsOperations({ env = process.env, fetchImpl = fetch
     accountId: env.CLOUDFLARE_ACCOUNT_ID, apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl }) : null;
   const client = createClient(origin, env.SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false, autoRefreshToken: false },
     global: { fetch: createNewsOperationsRuntimeReadFetch(origin, fetchImpl) } }), store = createNewsRuntimeStore(client);
+  // Keep the current day independent, but never fan six full-history aggregates
+  // out together. A failed historical read must release the next queued day.
+  let priorHistoricalRead = Promise.resolve();
+  const readHistoricalDay = at => {
+    const reading = priorHistoricalRead.then(() => client.rpc('literary_news_delivery_day_status', {
+      p_destination_id: destination.id, p_now: at.toISOString() }));
+    priorHistoricalRead = reading.then(() => undefined, () => undefined);
+    return reading;
+  };
   const values = await Promise.allSettled([fetchPublishedAgenda(fetchImpl), storage?.read(DAILY_NEWS_PROFILE_KEY),
     storage?.read(DAILY_NEWS_LEDGER_KEY), storage?.read(DAILY_NEWS_OWNER_KEY),
     preparation.preparationEnabled ? createNewsOperationsReportReader({ accountId: env.CLOUDFLARE_ACCOUNT_ID,
@@ -474,8 +483,7 @@ export async function checkNewsOperations({ env = process.env, fetchImpl = fetch
     client.rpc('literary_news_delivery_day_status', { p_destination_id: destination.id, p_now: current.toISOString() }),
     client.rpc('read_due_literary_news_runtime_posts', { p_destination_id: destination.id, p_now: current.toISOString(), p_limit: 20 }),
     store.read('heartbeat:native-delivery'),
-    ...Array.from({ length: 6 }, (_, index) => client.rpc('literary_news_delivery_day_status', {
-      p_destination_id: destination.id, p_now: new Date(current.getTime() - (index + 1) * 86400000).toISOString() })),
+    ...Array.from({ length: 6 }, (_, index) => readHistoricalDay(new Date(current.getTime() - (index + 1) * 86400000))),
     preparation.preparationEnabled ? createNewsOperationsReportReader({ accountId: env.CLOUDFLARE_ACCOUNT_ID,
       apiToken: env.CLOUDFLARE_API_TOKEN, fetchImpl, kind: 'attempt' })() : null,
     store.read(newsDeliveryPacingKey(destination))]);

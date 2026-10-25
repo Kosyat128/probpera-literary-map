@@ -671,6 +671,10 @@ describe('read-only operations report network boundaries', () => {
     { label: 'queue read remains unavailable', actualPreparation: false, dueFailures: 3, readFailure: 'operations_due_queue_read_failed' },
     { label: 'invalid queue is not a transport failure', actualPreparation: false, invalidQueue: true },
     { label: 'destination read is unauthorized', actualPreparation: false, unauthorizedDestination: true, readFailure: 'operations_destination_read_failed' },
+    { label: 'bounded daily reads preserve all seven days', actualPreparation: false, delayedDayReads: true },
+    { label: 'a failed current day preserves every historical read', actualPreparation: false, delayedDayReads: true, failedDayOffsets: [0] },
+    { label: 'failed historical days release the remaining reads', actualPreparation: false, delayedDayReads: true, failedDayOffsets: [2, 4] },
+    { label: 'current and historical failures remain distinct', actualPreparation: false, delayedDayReads: true, failedDayOffsets: [0, 2] },
     { label: 'public reader wait expires with HTTP503', actualPreparation: false, publicFeedStatus: 503, publicReaderStatus: 'wait_expired',
       readFailure: 'operations_public_feed_read_failed', publicReadFailure: { httpStatus: 503, readerStatus: 'wait_expired' } },
     { label: 'public reader injected reason stays private', actualPreparation: false, publicFeedStatus: 503, publicReaderStatus: privateMarker,
@@ -679,7 +683,7 @@ describe('read-only operations report network boundaries', () => {
       readFailure: 'operations_public_feed_read_failed', publicReadFailure: { httpStatus: null, readerStatus: null } },
   ])('checks $label through four real Worker GETs and keeps actual read-only metrics', async scenario => {
     const value = await input(), calls = [], origin = 'https://isolated-test.supabase.co';
-    let dueAttempts = 0;
+    let dueAttempts = 0, activeDayReads = 0, maximumDayReads = 0;
     if (scenario.providerStop) value.preparationReport.stoppedReason = scenario.providerStop;
     const fetchImpl = vi.fn(async (request, options = {}) => {
       const url = new URL(request instanceof URL ? request.href : typeof request === 'string' ? request : request.url);
@@ -723,7 +727,15 @@ describe('read-only operations report network boundaries', () => {
       }
       if (url.origin === origin && url.pathname === '/rest/v1/rpc/literary_news_delivery_day_status' && method === 'POST') {
         const args = JSON.parse(options.body);
-        return Response.json({ ...value.dayStatus, editorialDay: args.p_now.slice(0, 10) });
+        const offset = (current.getTime() - Date.parse(args.p_now)) / 86400000;
+        activeDayReads++; maximumDayReads = Math.max(maximumDayReads, activeDayReads);
+        try {
+          if (scenario.delayedDayReads) await new Promise(resolve => setTimeout(resolve, 10));
+          if (scenario.failedDayOffsets?.includes(offset)) return Response.json({ message: privateMarker }, { status: 400 });
+          return Response.json({ ...value.dayStatus, editorialDay: args.p_now.slice(0, 10),
+            ...(scenario.delayedDayReads ? { acknowledgedCreates: 4 + offset, freshCreates: 3 + offset,
+              deficitToMinimum: 7 - offset } : {}) });
+        } finally { activeDayReads--; }
       }
       if (url.origin === origin && url.pathname === '/rest/v1/rpc/read_due_literary_news_runtime_posts' && method === 'POST') {
         if (++dueAttempts <= (scenario.dueFailures || 0)) return Response.json({ message: privateMarker }, { status: 503 });
@@ -746,8 +758,11 @@ describe('read-only operations report network boundaries', () => {
     expect(report.mode).toBe(scenario.actualPreparation ? 'enabled' : 'delivery-only');
     expect(report.requestedMode).toBe(scenario.autoResume ? 'auto-resume' : 'delivery-only');
     expect(report.resumeScheduledAt).toBe(scenario.autoResume ? '2026-10-03T00:00:00.000Z' : null);
-    if (scenario.readFailure || scenario.invalidQueue) {
-      expect(report.status).toBe('failed'); expect(report.failures).toEqual([scenario.readFailure || 'operations_due_queue_invalid']);
+    if (scenario.readFailure || scenario.invalidQueue || scenario.failedDayOffsets?.length) {
+      const dailyFailures = [scenario.failedDayOffsets?.includes(0) ? 'operations_day_metrics_read_failed' : null,
+        scenario.failedDayOffsets?.some(offset => offset > 0) ? 'operations_day_history_read_failed' : null].filter(Boolean);
+      expect(report.status).toBe('failed'); expect(report.failures).toEqual(dailyFailures.length
+        ? dailyFailures : [scenario.readFailure || 'operations_due_queue_invalid']);
       if (scenario.readFailure === 'operations_due_queue_read_failed' || scenario.invalidQueue) expect(report.telegram.dueJobs).toBeNull();
     } else if (scenario.missingPreparation || scenario.providerStop) {
       expect(report.status).toBe('failed'); expect(report.preparation.enabled).toBe(true); expect(report.preparation.reason).toBeNull();
@@ -768,7 +783,18 @@ describe('read-only operations report network boundaries', () => {
     expect(report.public.release).toBe(publicReadFailed ? null : release);
     expect(report.public.readFailure).toEqual(scenario.publicReadFailure || null);
     expect(report.telegram.lastRunAt).toBe(current.toISOString());
-    expect(report.telegram.acknowledgedPerDay).toHaveLength(7); expect(report.telegram.freshAcknowledgedCreatesToday).toBe(3);
+    if (scenario.delayedDayReads) {
+      expect(maximumDayReads).toBe(2); expect(activeDayReads).toBe(0);
+      const days = rpcs.filter(row => row.url.pathname.endsWith('/literary_news_delivery_day_status')).map(row => JSON.parse(row.body));
+      expect(days.map(row => row.p_now).sort()).toEqual(Array.from({ length: 7 }, (_, index) =>
+        new Date(current.getTime() - index * 86400000).toISOString()).sort());
+      expect(new Set(days.map(row => row.p_destination_id)).size).toBe(1);
+      expect(report.telegram.acknowledgedPerDay).toEqual(Array.from({ length: 7 }, (_, index) => index)
+        .filter(offset => !scenario.failedDayOffsets?.includes(offset)).reverse().map(offset => ({
+          day: new Date(current.getTime() - offset * 86400000).toISOString().slice(0, 10),
+          creates: 4 + offset, freshCreates: 3 + offset, photos: 2, freshPhotos: 2 })));
+    } else expect(report.telegram.acknowledgedPerDay).toHaveLength(7);
+    expect(report.telegram.freshAcknowledgedCreatesToday).toBe(scenario.failedDayOffsets?.includes(0) ? null : 3);
     if (!scenario.actualPreparation) {
       expect(report.preparation.lastRunAt).toBeNull(); expect(report.preparation.admittedToday).toBeNull();
     } else if (!scenario.missingPreparation) {
