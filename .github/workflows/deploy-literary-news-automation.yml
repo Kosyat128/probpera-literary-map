@@ -187,7 +187,7 @@ jobs:
           NODE
       - name: Restore verified photo bytes
         if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: .tmp/news-social-media
           key: literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-${{ github.run_id }}
