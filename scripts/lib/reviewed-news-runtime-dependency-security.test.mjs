@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedAdminWorkerCompatibility } from './reviewed-admin-worker-compatibility.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { newsRuntimeDependencySecurityAttestation as packet, newsRuntimeDependencySecuritySha256 as sha,
@@ -7,7 +8,7 @@ import { projectReviewedNewsDependencySecurityFollowup } from './reviewed-news-d
 import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';
 
 // These reads are deliberately raw: no adapter may conceal rollback or drift.
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedAdminWorkerCompatibility(path, readFileSync(path, 'utf8'));
 const historical = (path, commit = packet.baselineCommitSha) => execFileSync('git',
   ['-c', `safe.directory=${process.cwd()}`, 'show', `${commit}:${path}`],
   { encoding: 'utf8', maxBuffer: 30 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');

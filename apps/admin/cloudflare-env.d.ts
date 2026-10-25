@@ -21,3 +21,27 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 declare namespace NodeJS {
 	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "ADMIN_BASE_PATH" | "NEXT_PUBLIC_ADMIN_URL" | "NEXT_PUBLIC_SITE_URL" | "ADMIN_ALLOWED_ORIGINS" | "PREMIUM_TRANSLATION_PROVIDER" | "OPENAI_AUTO_TRANSLATE_PROFILES">> {}
 }
+declare module "*.txt" {
+	const value: string;
+	export default value;
+}
+declare module "*.html" {
+	const value: string;
+	export default value;
+}
+declare module "*.sql" {
+	const value: string;
+	export default value;
+}
+declare module "*.bin" {
+	const value: ArrayBuffer;
+	export default value;
+}
+declare module "*.wasm" {
+	const value: WebAssembly.Module;
+	export default value;
+}
+declare module "*.wasm?module" {
+	const value: WebAssembly.Module;
+	export default value;
+}
