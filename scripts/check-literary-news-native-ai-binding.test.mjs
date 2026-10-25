@@ -162,14 +162,17 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(source).not.toContain('runtime.getBindings(');
     expect(source).not.toContain('createPreparationBindingAi(');
   });
-  it('uses a fixture date supported by the installed local runtime instead of the newer production date', () => {
+  it('uses a fixture date supported by both the installed and legacy local runtimes', () => {
     const runtimeVersion = createRequire(import.meta.url)('workerd/package.json').version;
     const match = /^\d+\.(\d{4})(\d{2})(\d{2})\./.exec(runtimeVersion);
     expect(match).not.toBeNull();
     const releaseDate = `${match[1]}-${match[2]}-${match[3]}`;
     expect(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291').compatibilityDate <= releaseDate).toBe(true);
-    // The formerly used production date could pass schema validation and fail workerd startup.
-    expect('2026-09-30' > releaseDate).toBe(true);
+    // Preserve the original older-runtime regression without assuming that
+    // every future installed runtime must predate the production fixture.
+    const legacyReleaseDate = '2026-08-11';
+    expect(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291').compatibilityDate <= legacyReleaseDate).toBe(true);
+    expect('2026-09-30' > legacyReleaseDate).toBe(true);
   });
   it('bundles the real adapter into the local Worker entirely in memory with no Node RPC model arguments', async () => {
     const script = await buildNativeAiProbeWorker();

@@ -197,6 +197,7 @@
     "esbuild@0.25.4": true,
     "esbuild@0.28.1": true,
     "esbuild@0.28.2": true,
-    "workerd@1.20260811.1": true
+    "workerd@1.20260811.1": true,
+    "workerd@1.20261019.1": true
   }
 }

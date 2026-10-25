@@ -17,6 +17,8 @@ on:
       - "scripts/export-editorial-catalog.mjs"
       - "scripts/export-interface-copy-catalog.mjs"
       - "scripts/check-admin-worker-size.mjs"
+      - "scripts/smoke-admin-workerd.mjs"
+      - "scripts/smoke-admin-workerd.test.mjs"
       - "scripts/admin-deploy-workflow.source.test.mjs"
       - "package.json"
       - "package-lock.json"
@@ -34,6 +36,8 @@ on:
       - "scripts/export-editorial-catalog.mjs"
       - "scripts/export-interface-copy-catalog.mjs"
       - "scripts/check-admin-worker-size.mjs"
+      - "scripts/smoke-admin-workerd.mjs"
+      - "scripts/smoke-admin-workerd.test.mjs"
       - "scripts/admin-deploy-workflow.source.test.mjs"
       - "package.json"
       - "package-lock.json"
@@ -106,6 +110,10 @@ jobs:
         run: |
           npm run cf:build --workspace @probpera/admin
           npm run cf:size --workspace @probpera/admin
+
+      - name: Smoke-test built Worker in local workerd
+        timeout-minutes: 3
+        run: node scripts/smoke-admin-workerd.mjs
 
       - name: Verify preseeded private admin catalogs
         if: github.event_name != 'pull_request'

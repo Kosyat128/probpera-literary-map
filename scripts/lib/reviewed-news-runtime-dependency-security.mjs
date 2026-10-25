@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedAdminWorkerCompatibility } from './reviewed-admin-worker-compatibility.mjs';
 import { readFileSync } from 'node:fs';
 
 // Additive security evidence; previous packets and their assertions stay intact.
@@ -9,7 +10,7 @@ export const newsRuntimeDependencySecuritySha256 = source => createHash('sha256'
 
 /** Reverse the complete exact security update; expose every unrelated byte. */
 export function projectReviewedNewsRuntimeDependencySecurity(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedAdminWorkerCompatibility(relativePath, source);
   const deltas = newsRuntimeDependencySecurityAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   const markers = newsRuntimeDependencySecurityAttestation.markers[relativePath];
