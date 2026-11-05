@@ -15,6 +15,12 @@ let script,feed;
 beforeAll(async()=>{
   const result=await build({stdin:{contents:`
     import { runDeliveryTick } from './literary-news-delivery-worker.mjs';
+    // Fresh media-rights rechecks must use the same historical clock as this tick.
+    const NativeDate=Date;
+    globalThis.Date=class extends NativeDate {
+      constructor(...args){super(...(args.length?args:[${current.getTime()}]));}
+      static now(){return ${current.getTime()};}
+    };
     export default { async fetch(request,env) {
       return Response.json(await runDeliveryTick({env,now:()=>new Date('${current.toISOString()}')}));
     }};`,resolveDir:fileURLToPath(new URL('.',import.meta.url))},
