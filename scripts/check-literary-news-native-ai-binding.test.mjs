@@ -7,13 +7,16 @@ import { checkNativeNewsAiBinding as check, nativeAiProbeRuntimeOptions,
 import { createNativeAiProbeWorker } from './workers/literary-news-native-ai-probe-worker.mjs';
 import { createPreparationBindingAi as sharedAdapter } from './lib/literary-news-preparation-binding-ai.mjs';
 import { createPreparationBindingAi as productionAdapter } from './workers/literary-news-preparation-worker.mjs';
-import { NATIVE_AI_PROBE_URL, nativeAiProbeReport } from './lib/literary-news-native-ai-probe-fixture.mjs';
+import { NATIVE_AI_PROBE_URL, nativeAiProbeReport, NATIVE_AI_PROBE_CATALOG,
+  NATIVE_AI_PROBE_TEXT, NATIVE_AI_PROBE_MESSAGES } from './lib/literary-news-native-ai-probe-fixture.mjs';
 import { DAILY_NEWS_DRAFT_SCHEMA, DAILY_NEWS_REVIEW_SCHEMA } from './lib/literary-news-daily-automation.mjs';
 import { DAILY_NEWS_MODELS } from './lib/literary-news-daily-profile.mjs';
+import { createLiteralEvidenceCatalog, decodeLiteralEvidenceDraft } from './lib/literary-news-literal-evidence.mjs';
 
 const credentials = { accountId: 'a'.repeat(32), apiToken: 'INTENDED_GITHUB_TOKEN_NOT_A_REAL_SECRET' };
-const held = { status: 'held', reason: 'connectivity_fixture', title: { ru: '', en: '' },
-  summary: { ru: '', en: '' }, category: 'publishing', eventIdentity: 'connectivity fixture', literaryEvidence: '', facts: [] };
+const held = { protocolVersion: 'literal-evidence-refs-v1', catalogSha256: NATIVE_AI_PROBE_CATALOG.catalogSha256,
+  status: 'held', reason: 'connectivity_fixture', title: { ru: '', en: '' },
+  summary: { ru: '', en: '' }, category: 'publishing', eventIdentity: '', literaryEvidenceId: '', facts: [] };
 const rejected = { accepted: false, literaryTopic: false, categoryMatches: false, translationsMatch: false,
   titleSupported: false, summarySupported: false, publicationDateMatches: false,
   duplicateOf: null, unsupportedClaims: [], factChecks: [] };
@@ -83,7 +86,14 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(f.run).toHaveBeenCalledTimes(2);
     const [[draftModel, draftInput, draftOptions], [reviewModel, reviewInput]] = f.run.mock.calls;
     expect(draftModel).toBe(DAILY_NEWS_MODELS.draft);
-    expect(draftInput.text.format).toEqual({ type: 'json_schema', name: 'literary_news_draft', strict: true, schema: DAILY_NEWS_DRAFT_SCHEMA });
+    expect(draftInput.text.format).toEqual({ type: 'json_schema', name: 'literary_news_draft', strict: true,
+      schema: { ...DAILY_NEWS_DRAFT_SCHEMA, properties: { ...DAILY_NEWS_DRAFT_SCHEMA.properties,
+        catalogSha256: { type: 'string', const: NATIVE_AI_PROBE_CATALOG.catalogSha256 },
+        literaryEvidenceId: { type: 'string', enum: ['', 'e000', 'e001'] },
+        facts: { ...DAILY_NEWS_DRAFT_SCHEMA.properties.facts,
+          items: { ...DAILY_NEWS_DRAFT_SCHEMA.properties.facts.items,
+            properties: { evidenceId: { type: 'string', enum: ['e000', 'e001'] } } } } } } });
+    expect(draftInput.input).toEqual(NATIVE_AI_PROBE_MESSAGES);
     expect(draftInput).toMatchObject({ reasoning: { effort: 'low' }, max_output_tokens: 2400 });
     expect(draftOptions.signal).toBeInstanceOf(AbortSignal);
     expect(reviewModel).toBe(DAILY_NEWS_MODELS.review);
@@ -98,6 +108,18 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     }
     expect(f.runtime.dispose).toHaveBeenCalledTimes(1); expect(f.session.dispose).toHaveBeenCalledTimes(1);
   });
+  it('independently regenerates the isolated catalogue and decodes only the new held wire contract', async () => {
+    expect(await createLiteralEvidenceCatalog(NATIVE_AI_PROBE_TEXT)).toEqual(NATIVE_AI_PROBE_CATALOG);
+    const decoded = await decodeLiteralEvidenceDraft(held, NATIVE_AI_PROBE_CATALOG, NATIVE_AI_PROBE_TEXT);
+    expect(decoded).toMatchObject({ draft: { status: 'held', literaryEvidence: '', facts: [] }, draftEvidence: null });
+    const legacy = { ...held, literaryEvidence: '' };
+    delete legacy.protocolVersion; delete legacy.catalogSha256; delete legacy.literaryEvidenceId;
+    await expect(decodeLiteralEvidenceDraft(legacy, NATIVE_AI_PROBE_CATALOG, NATIVE_AI_PROBE_TEXT))
+      .rejects.toMatchObject({ detailReason: 'schema' });
+    const f = fixture(); f.run.mockReset().mockResolvedValue({ response: JSON.stringify(legacy) });
+    await expect(check({ ...credentials, ...f })).rejects.toThrow('native_ai_probe_fixture_unconfirmed');
+    expect(f.run).toHaveBeenCalledTimes(1);
+  });
   it.each([{ apiToken: '' }, { apiToken: undefined }, { apiToken: ' padded ' }, { apiToken: 'line\nbreak' },
     { accountId: 'wrong' }])('fails before any session or local credential fallback for invalid intended auth %j', async change => {
     const f = fixture();
@@ -109,6 +131,9 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     { response: JSON.stringify({ ...held, title: { ru: 'Invented news', en: '' } }) },
     { response: JSON.stringify({ ...held, facts: [{ quote: 'Invented fact' }] }) },
     { response: JSON.stringify({ ...held, extra: 'Unexpected field' }) },
+    { response: JSON.stringify({ ...held, protocolVersion: 'legacy' }) },
+    { response: JSON.stringify({ ...held, catalogSha256: 'b'.repeat(64) }) },
+    { response: JSON.stringify({ ...held, literaryEvidenceId: 'e999' }) },
     { status: 'incomplete', output_text: JSON.stringify(held) },
     { response: 'invalid JSON' },
   ])('refuses unsafe or incomplete draft before the review and disposes both resources', async payload => {

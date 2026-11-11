@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { runDailyNewsAutomation } from './literary-news-daily-automation.mjs';
+import { referencedDraftFixture } from './literary-news-evidence.test-fixture.mjs';
 import { DAILY_NEWS_LIMITS, DAILY_NEWS_WINDOW } from './literary-news-daily-profile.mjs';
 
 const current = new Date('2026-10-02T09:00:00Z');
@@ -7,6 +8,7 @@ const source = { id: 'context-fixture', name: 'Literary context fixture', langua
   url: 'https://source.example/news/', topics: ['releases'], linkPattern: /^\/news\/[^/]+$/ };
 const articleUrl = 'https://source.example/news/new-novel';
 const quote = 'The publisher released a literary novel by a debut writer.';
+const articleText = `${quote} Readers can find the new work in the publisher’s literary catalogue.`;
 const proposed = { status: 'draft', reason: '', category: 'releases', eventIdentity: 'debut-writer-new-novel-release',
   title: { ru: 'Издатель выпустил дебютный роман', en: 'Publisher releases a debut writer’s novel' },
   summary: { ru: 'Издатель выпустил литературный роман автора-дебютанта.', en: quote },
@@ -25,23 +27,34 @@ async function captureReview(reviewed) {
   const requests = [];
   const ai = { request: vi.fn(async request => {
     requests.push(request);
-    return request.phase === 'draft' ? structuredClone(proposed) : structuredClone(accepted);
+    return request.phase === 'draft'
+      ? referencedDraftFixture(structuredClone(proposed), request.messages) : structuredClone(accepted);
   }) };
   const result = await runDailyNewsAutomation({ current, sources: [source], reviewed, ai, maxAiCalls: 30,
     intake: { schemaVersion: 2, contract: 'literary-news-daily-intake-v2', details: [{
       id: 'new-novel', sourceId: source.id, source: { name: source.name, language: 'en', url: articleUrl },
       evidence: { url: articleUrl, canonical: articleUrl, httpStatus: 200, accessedAt: current.toISOString(),
         responseSha256: 'a'.repeat(64), headline: 'A debut writer’s literary novel',
-        text: `${quote} Readers can find the new work in the publisher’s literary catalogue.`,
+        text: articleText,
         publishedDates: [{ value: '2026-10-02T08:00:00Z', method: 'meta[property="article:published_time"]' }], images: [] },
     }] } });
   expect(result.report.newlyAccepted).toBe(1);
   expect(requests.map(request => request.phase)).toEqual(['draft', 'review']);
   const draftRequest = JSON.parse(requests[0].messages[1].content);
   expect(draftRequest).not.toHaveProperty('recentExisting');
+  expect(draftRequest.SOURCE_DATA).not.toHaveProperty('text');
+  expect(draftRequest.SOURCE_DATA.evidenceCatalog.spans.length).toBeGreaterThan(0);
   const reviewRequest = JSON.parse(requests[1].messages[1].content);
   expect(reviewRequest.SOURCE_DATA.publication.value).toBe('2026-10-02T08:00:00Z');
-  expect(reviewRequest.draft).toEqual(proposed);
+  expect(reviewRequest.SOURCE_DATA.text).toBe(articleText);
+  expect(reviewRequest.SOURCE_DATA).not.toHaveProperty('evidenceCatalog');
+  expect(reviewRequest.draft).toMatchObject({ status: proposed.status, reason: proposed.reason,
+    title: proposed.title, summary: proposed.summary, category: proposed.category, eventIdentity: proposed.eventIdentity });
+  expect(reviewRequest.draft.facts).toHaveLength(1);
+  expect(reviewRequest.draft.facts[0].quote).toContain(quote);
+  expect(articleText).toContain(reviewRequest.draft.facts[0].quote);
+  expect(reviewRequest.draft.literaryEvidence).toContain(proposed.literaryEvidence);
+  expect(articleText).toContain(reviewRequest.draft.literaryEvidence);
   return reviewRequest.recentExisting;
 }
 

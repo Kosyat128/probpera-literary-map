@@ -13,6 +13,7 @@ import {acquireNewsPreparationLease,stageNewsPreparationCheckpoint,confirmNewsPr
   confirmNewsPreparationPublication,releaseNewsPreparationLease,assertNewsPreparationWrite,readNewsPreparationPayload,
   NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
 import {claimNewsPreparationSlot} from '../lib/literary-news-preparation-slots.mjs';
+import {DAILY_NEWS_DRAFT_PROTOCOL,DAILY_NEWS_DRAFT_DETAIL_REASONS} from '../lib/literary-news-draft-diagnostics.mjs';
 import reviewed from '../../data/news/reviewed.json' with{type:'json'};
 import withdrawals from '../../data/news/withdrawals.json' with{type:'json'};
 
@@ -112,8 +113,11 @@ export async function boundedNativeNewsCandidates(intake,state,current,sources=L
     let candidate;
     try{candidate=await checkedDailyCandidate(detail,current,sources);}
     catch(error){held.push({sourceId:detail?.sourceId||null,reason:safeError(error)});continue;}
-    const cached=cache.get(candidate.key)||cache.get(candidate.legacyKey);
-    if(cached?.status==='rejected'){held.push({sourceId:candidate.source.id,reason:cached.reason});continue;}
+    const cached=cache.get(candidate.key);
+    if(cached?.status==='rejected'&&cached.protocolVersion===DAILY_NEWS_DRAFT_PROTOCOL){
+      held.push({sourceId:candidate.source.id,reason:cached.reason,protocolVersion:DAILY_NEWS_DRAFT_PROTOCOL,
+        ...(DAILY_NEWS_DRAFT_DETAIL_REASONS.includes(cached.detailReason)?{detailReason:cached.detailReason}:{})});continue;
+    }
     if(details.length<maximum)details.push(detail);
   }
   return{intake:{...intake,details},held,maximum};
@@ -214,7 +218,9 @@ async function prepareNativeNews(env,storage,{now=()=>new Date(),collect=collect
     const admittedToday=state.accepted.filter(r=>dailyNewsDay(new Date(r.provenance.firstAcceptedAt))===day).length;
     const intake=cooling||admittedToday>=DAILY_NEWS_LIMITS.maximum?{details:[],counts:{checkedSources:0}}:await collect({
       current:started,sourceLimit:32,detailLimit:10,rotationMinutes:30,reviewed:[...reviewed,...state.accepted],
-      reviewCache:state.reviewCache,intakeHistory:state.intakeHistory,
+      // Retry an old protocol's decision once under the new protocol without
+      // deleting its checkpoint or changing the durable inference counters.
+      reviewCache:state.reviewCache.filter(row=>row.protocolVersion===DAILY_NEWS_DRAFT_PROTOCOL),intakeHistory:state.intakeHistory,
       fetchImpl:createPreparationSourceFetch({fetchImpl,current:now,deadline})});
     const bounded=await boundedNativeNewsCandidates(intake,state,now());
     const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:bounded.maximum*2,
