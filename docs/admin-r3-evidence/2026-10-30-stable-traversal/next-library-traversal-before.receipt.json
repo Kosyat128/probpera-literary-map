@@ -1,0 +1,19 @@
+{
+  "atUtc": "2026-10-29T23:32:24.9375532Z",
+  "path": "C:\\Users\\Костя\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-evidence\\2026-10-30-stable-traversal\\next-library-traversal-before.zip",
+  "bytes": 453453,
+  "sha256": "55b10dade79c6cf88ea429a17e58b12f23e108e8f9d7c0445716447273cbb356",
+  "payloadFiles": 342,
+  "manifestVerified": true,
+  "mode": "UNRESOLVED_BEFORE_NOT_CURRENT_PASS",
+  "originalExecutionFailures": 0,
+  "frozenExecutionFailures": 0,
+  "originalTargetFailures": 4,
+  "frozenTargetFailures": 4,
+  "sourceModules": 19,
+  "immutableInputs": 22,
+  "sameContractSha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+  "providerCalls": 0,
+  "canonicalWritesByAction": 0,
+  "publicBuilds": 0
+}

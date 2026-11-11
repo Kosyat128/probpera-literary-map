@@ -4,16 +4,25 @@ import { z } from "zod";
 
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslationConfigurationIdentity } from "./premium-translation-probe";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
-import { translationErrorCode } from "./translation-errors";
+import { translationErrorCode, type TranslationErrorCode } from "./translation-errors";
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 import {
-  PremiumTranslationDraftError, premiumTranslationCandidateOutcome,
-  readPremiumTranslationWorkingDraft, samePremiumTranslationJson, stagePremiumTranslationWorkingDraft,
+  createTranslationOperationBudget, TranslationOperationBudgetError, type TranslationOperationBudget, type TranslationOperationBudgetStop,
+} from "./translation-operation-budget";
+import {
+  premiumTranslationCandidateOutcome,
+  readPremiumTranslationWorkingDraft, samePremiumTranslationJson,
   type PremiumTranslationCandidateOutcome,
 } from "./premium-translation-working-draft";
 
 type SupabaseServerClient = SupabaseClient;
+
+import { catalogTranslationOperationResult, createCatalogTranslationOperation, retainedCatalogTranslationPass,
+  type CatalogTranslationOperation } from "./catalog-translation-operation";
+import { CatalogTranslationOperationRpcError, catalogTranslationConfigurationSchema,
+  type CatalogTranslationOperationArtifacts, type CatalogTranslationOperationCandidate, type CatalogTranslationOperationReceipt } from "./catalog-translation-operation-rpc";
 
 const translatedWorkSchema = z.object({
   description: z.string().trim().min(140).max(900),
@@ -65,6 +74,39 @@ function translationMeta(value: unknown) {
     : {};
 }
 
+async function retainedWorkCandidate(artifact: CatalogTranslationOperationArtifacts): Promise<CatalogTranslationOperationCandidate | null> {
+  try {
+    if (artifact.receipt.entityType !== "literary_work" || artifact.rawSeed.version !== 1 || !Array.isArray(artifact.rawSeed.sources)) return null;
+    const work = translationMeta(artifact.rawSeed.work), russian = translationMeta(artifact.rawSeed.russian), english = translationMeta(artifact.rawSeed.english);
+    const titleSource = artifact.rawSeed.sources.map(translationMeta).find(row => row.id === artifact.rawSeed.selectedTitleSourceId);
+    if (!titleSource || work.id !== artifact.receipt.entityId || russian.locale !== "ru" || english.locale !== "en" ||
+      russian.work_id !== work.id || english.work_id !== work.id || titleSource.work_id !== work.id ||
+      !new Set(["reviewed", "verified"]).has(String(work.editorial_status)) ||
+      !new Set(["reviewed", "verified"]).has(String(russian.editorial_status)) ||
+      english.translation_method !== "machine-translation" || typeof english.title !== "string" ||
+      !english.title.trim() || /\p{Script=Cyrillic}/u.test(english.title) ||
+      !Array.isArray(russian.source_urls) || russian.source_urls.length === 0 ||
+      !Array.isArray(titleSource.field_names) || !titleSource.field_names.includes("title")) return null;
+    const urls = Array.isArray(english.source_urls) ? english.source_urls.filter((url): url is string => typeof url === "string" && /^https:\/\//u.test(url)) : [];
+    const locked = translationMeta(translationMeta(english.metadata).premiumTranslation);
+    const recorded = translationMeta(locked.bibliographicTitle);
+    if (recorded.value !== english.title.trim() || recorded.sourceUrl !== titleSource.source_url || !urls.includes(String(titleSource.source_url))) return null;
+    const source = { russianTitle: russian.title, verifiedEnglishTitle: english.title.trim(),
+      verifiedEnglishTitleSourceUrl: titleSource.source_url, description: russian.description,
+      originalTitle: work.original_title || "", firstPublished: work.first_published,
+      originalLanguage: work.original_language || "", sourceLanguage: russian.source_language, sourceUrls: russian.source_urls };
+    if (await sha256(source) !== artifact.receipt.sourceHash || !samePremiumTranslationJson(source, artifact.sourceSnapshot)) return null;
+    const pass = retainedCatalogTranslationPass(artifact);
+    if (!pass) return null;
+    const value = validateWorkTranslation(pass.value);
+    return { payload: { description: value.description, sourceLanguage: "Russian",
+      sourceUrls: [...new Set([...urls, ...russian.source_urls])],
+      bibliographicTitle: { value: source.verifiedEnglishTitle, provider: titleSource.provider,
+        sourceUrl: titleSource.source_url, retrievedAt: titleSource.retrieved_at || null } },
+      provenance: pass.provenance, translatorCallId: pass.translatorCallId, reviewerCallId: pass.reviewerCallId };
+  } catch (error) { unstable_rethrow(error); return null; }
+}
+
 export type LiteraryWorkAutoTranslationState =
   | "translated"
   | "review-pending"
@@ -75,6 +117,8 @@ export type LiteraryWorkAutoTranslationState =
   | "skipped"
   | "not-configured"
   | "conflict"
+  | "unconfirmed"
+  | "cancelled"
   | "failed";
 
 export type LiteraryWorkAutoTranslationResult = {
@@ -82,16 +126,27 @@ export type LiteraryWorkAutoTranslationResult = {
   model?: string;
   reviewerModel?: string | null;
   error?: string;
+  errorCode?: TranslationErrorCode;
+  operation?: CatalogTranslationOperation;
+  budgetStop?: TranslationOperationBudgetStop;
 } & Partial<PremiumTranslationCandidateOutcome>;
 
-export { validateWorkTranslation as validateLiteraryWorkTranslationCandidate };
+export { validateWorkTranslation as validateLiteraryWorkTranslationCandidate,
+  retainedWorkCandidate as retainedLiteraryWorkTranslationCandidate };
 
 export async function ensureLiteraryWorkEnglishTranslation(input: {
   supabase: SupabaseServerClient;
   actorId: string;
   workId: string;
   runtimeApproved?: boolean;
+  operationBudget?: TranslationOperationBudget;
+  operationCursor?: { current: Record<string, unknown>; next: Record<string, unknown> };
+  operationAdmission?: (receipt: CatalogTranslationOperationReceipt) => Promise<void>;
 }): Promise<LiteraryWorkAutoTranslationResult> {
+  input = { ...input, workId: input.workId.toLowerCase() };
+  const operationBudget = input.operationBudget ?? createTranslationOperationBudget({
+    maxAttempts: 1, maxProviderCalls: 4, deadlineMs: 300_000,
+  });
   if (!adminEnv.openAiAutoTranslateLibrary) return { state: "skipped" };
   if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
     return { state: "not-configured" };
@@ -262,16 +317,32 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
     return { state: "not-ready", error: "Private translation drafts are unavailable" };
   }
 
-  const startedAt = Date.now();
   const runtime = premiumTranslationRuntimeMetadata();
+  const providerCallsBefore = operationBudget.snapshot().providerCalls;
+  let attemptStarted = false;
+  let operation: ReturnType<typeof createCatalogTranslationOperation> | null = null;
+  const unconfirmed = () => ({ state: "unconfirmed" as const, error: "translation_retry_pending",
+    errorCode: "translation_retry_pending" as const, operation: operation?.operation() });
+  const fromReceipt = (receipt: import("./catalog-translation-operation-rpc").CatalogTranslationOperationReceipt | null) =>
+    catalogTranslationOperationResult({ supabase: input.supabase, operation: operation!, receipt, candidateFromArtifacts: retainedWorkCandidate });
   try {
+    const identity = await premiumTranslationConfigurationIdentity({ review: runtime.twoPassReview });
+    const configuration = catalogTranslationConfigurationSchema.parse({ ...identity.configuration,
+      schemaName: "probpera_literary_work_translation", maxOutputTokens: 4_000 });
+    operation = createCatalogTranslationOperation({ supabase: input.supabase,
+      intent: { jobId: crypto.randomUUID(), itemId: crypto.randomUUID(), operationId: crypto.randomUUID(),
+        actorId: input.actorId, entityType: "literary_work", entityId: input.workId, provider: runtime.provider,
+        sourceHash, sourceSnapshot: source, sourceRevision, targetRevision, expectedState: JSON.parse(JSON.stringify({ version: 1, work, russian, english: existing, titleSource: titleSourceResponse.data })),
+        configuration, currentCursor: input.operationCursor?.current || {}, resumeCursor: input.operationCursor?.next || {} },
+      candidateFromArtifacts: retainedWorkCandidate,
+      ...(input.operationAdmission === undefined ? {} : { onAdmission: input.operationAdmission }) });
+    if (!(await operation.admit())) return fromReceipt(await operation.recoverCandidate());
+    operationBudget.startAttempt();
+    attemptStarted = true;
     const translated = await premiumTranslateToEnglish({
-      source,
-      schema: translatedWorkJsonSchema,
-      schemaName: "probpera_literary_work_translation",
-      validate: validateWorkTranslation,
-      review: runtime.twoPassReview,
-      maxOutputTokens: 4_000,
+      source, schema: translatedWorkJsonSchema, schemaName: "probpera_literary_work_translation",
+      validate: validateWorkTranslation, review: runtime.twoPassReview,
+      maxOutputTokens: 4_000, operationBudget, providerJournal: operation.providerJournal, responseArtifacts: operation.responseArtifacts,
       domainInstructions: [
         "This is a compact literary-encyclopedia record for a book or literary work.",
         "Return only the English description. The verified English title is editorially locked and is not part of the model output.",
@@ -280,96 +351,28 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
         "Do not translate or modify sourceUrls, publication years, identifiers or original-language metadata.",
       ],
     });
-
-    // Re-read the RU row immediately before writing so a translation never
-    // overwrites text generated from a stale editorial source.
-    const latestRussian = await input.supabase
-      .from("literary_work_translations")
-      .select("updated_at")
-      .eq("id", russian.id)
-      .maybeSingle();
-    if (
-      latestRussian.error ||
-      !latestRussian.data ||
-      latestRussian.data.updated_at !== russian.updated_at
-    ) {
-      return { state: "conflict", error: "Russian work translation changed during translation" };
-    }
-
-    const saved = await stagePremiumTranslationWorkingDraft(input.supabase, {
-      entityType: "literary_work", entityId: input.workId,
-      sourceHash, sourceSnapshot: source, sourceRevision, targetRevision,
-      provenance: {
-        provider: runtime.provider,
-        translatorModel: translated.translatorModel,
-        reviewerModel: translated.reviewerModel,
-        translatorRequestId: translated.translatorRequestId || null,
-        reviewerRequestId: translated.reviewerRequestId || null,
-        generatedAt: new Date().toISOString(),
-      },
-      payload: {
-        description: translated.value.description,
-        sourceLanguage: "Russian",
-        sourceUrls: [...new Set([...englishTitleSourceUrls, ...russian.source_urls])] as string[],
-        bibliographicTitle: {
-          value: verifiedEnglishTitle,
-          provider: titleSourceResponse.data.provider,
-          sourceUrl: titleSourceResponse.data.source_url,
-          retrievedAt: titleSourceResponse.data.retrieved_at || null,
-        },
-      },
-    });
-
-    await input.supabase.from("admin_audit_log").insert({
-      actor_id: input.actorId,
-      action: "literary_work.auto_translation.staged",
-      entity_type: "literary_work",
-      entity_id: input.workId,
-      metadata: {
-        locale: "en",
-        source_hash: sourceHash,
-        provider: runtime.provider,
-        model: translated.translatorModel,
-        reviewer_model: translated.reviewerModel,
-        translator_request_id: translated.translatorRequestId,
-        reviewer_request_id: translated.reviewerRequestId,
-        input_tokens: translated.inputTokens,
-        output_tokens: translated.outputTokens,
-        review_input_tokens: translated.reviewInputTokens,
-        review_output_tokens: translated.reviewOutputTokens,
-        duration_ms: Date.now() - startedAt,
-        working_draft_id: saved.id,
-        human_review: "pending",
-      },
-    });
-
-    return {
-      state: "translated",
-      ...premiumTranslationCandidateOutcome(saved),
-      model: translated.translatorModel,
-      reviewerModel: translated.reviewerModel,
-    };
+    return fromReceipt(await operation.complete({ description: translated.value.description, sourceLanguage: "Russian",
+      sourceUrls: [...new Set([...englishTitleSourceUrls, ...russian.source_urls])],
+      bibliographicTitle: { value: verifiedEnglishTitle, provider: titleSourceResponse.data.provider,
+        sourceUrl: titleSourceResponse.data.source_url, retrievedAt: titleSourceResponse.data.retrieved_at || null } }));
   } catch (error) {
     unstable_rethrow(error);
-    if (error instanceof PremiumTranslationDraftError && error.code === "conflict") {
-      return { state: "conflict", error: error.message };
+    const receipt = operation ? await operation.failed(error) : null;
+    if (receipt?.phase === "finished" && receipt.result?.candidateHash !== null) return fromReceipt(receipt);
+    if (error instanceof TranslationOperationBudgetError) {
+      const providerCalls = operationBudget.snapshot().providerCalls - providerCallsBefore;
+      return { ...(providerCalls > 0 ? unconfirmed() : { state: "skipped" as const, operation: operation?.operation() }),
+        error: error.message, errorCode: "translation_operation_stopped",
+        budgetStop: { reason: error.reason, attemptStarted, providerCalls } };
     }
-    const message =
-      error instanceof Error ? error.message : "automatic work translation failed";
-    await input.supabase.from("admin_audit_log").insert({
-      actor_id: input.actorId,
-      action: "literary_work.auto_translation.failed",
-      entity_type: "literary_work",
-      entity_id: input.workId,
-      metadata: {
-        locale: "en",
-        provider: runtime.provider,
-        model: runtime.model,
-        reviewer_model: runtime.reviewerModel,
-        error_code: translationErrorCode(message),
-        duration_ms: Date.now() - startedAt,
-      },
-    });
-    return { state: "failed", error: message };
+    if (receipt?.phase === "finished" && receipt.result?.state !== "skipped") return fromReceipt(receipt);
+    if (operation?.receipt) return unconfirmed();
+    const errorCode = error instanceof CatalogTranslationOperationRpcError ? error.errorCode : translationErrorCode(error);
+    await input.supabase.from("admin_audit_log").insert({ actor_id: input.actorId,
+      action: "literary_work.auto_translation.failed", entity_type: "literary_work", entity_id: input.workId,
+      metadata: { locale: "en", provider: runtime.provider, model: runtime.model,
+        reviewer_model: operation?.receipt?.configuration.reviewerModel ?? runtime.reviewerModel, error_code: errorCode } });
+    return { state: errorCode === "translation_migration_required" ? "not-ready" : "failed",
+      error: errorCode, errorCode, operation: operation?.operation() };
   }
 }

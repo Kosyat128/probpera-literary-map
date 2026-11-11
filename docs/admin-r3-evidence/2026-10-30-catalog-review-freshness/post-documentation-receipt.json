@@ -1,0 +1,48 @@
+{
+  "status": "PASS_WITH_UNCHANGED_EXCLUDED_GATE_FAILURE",
+  "checkedAt": "2026-10-29T23:29:23.688Z",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "branch": "codex/admin-r3-data-errors",
+  "validationSourceFiles": 10454,
+  "validationSourceSha256": "c482dd130803939827a621432a104965cb0a0a35e0df848d4160604ec7e0c0ae",
+  "sameAsFullBroadAndGates": true,
+  "nonDocChanges": [],
+  "trackedDocumentChanges": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "size": 433119,
+      "sha256": "3a9559281b39a55b4fef97984cae9d69032f93229246df13bbf8766e7b52af17"
+    }
+  ],
+  "readonly": {
+    "exitCode": 1,
+    "byteIdenticalToFinalBroadGate": true,
+    "findings": 41,
+    "logSha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+    "normalizerWriteFlagUsed": false
+  },
+  "finalDocuments": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "sha256": "3a9559281b39a55b4fef97984cae9d69032f93229246df13bbf8766e7b52af17"
+    },
+    {
+      "path": "docs/admin-r3-evidence/2026-10-30-catalog-review-freshness/README.md",
+      "sha256": "e2c94fbc4204ba817745ec14a3b56f23a56028fa153df76b4eb3d75dc6344b69"
+    }
+  ],
+  "archiveHashes": [
+    {
+      "file": "catalog-review-freshness-controlled-tests.zip",
+      "sha256": "b6b63d0f6919dc4224fc7fde398cfd526f1d442560bff24ef39d4620917c8965"
+    },
+    {
+      "file": "sql-evidence.zip",
+      "sha256": "93c02052ee11250946780c36cfeb7fc16ae6512e9cd06723037c043a4a9d747b"
+    },
+    {
+      "file": "whole-validation-evidence.zip",
+      "sha256": "3f6f7b8b3bc02578a92feaaf4f72ed9cc9049453c2c5a7d6c47bacdb660fa6a1"
+    }
+  ]
+}

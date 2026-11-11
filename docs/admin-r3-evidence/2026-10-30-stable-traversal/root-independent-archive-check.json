@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-30T07:21:33.936158+00:00",
+  "archives": [
+    {
+      "file": "whole-validation-evidence.zip",
+      "sha256": "549bd5b93aaf65da2ae913cdcedb9b233b4407f4f85a894987610cf3841fff28",
+      "bytes": 3281221,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 65
+    },
+    {
+      "file": "library-stable-scan-controlled-tests.zip",
+      "sha256": "321a14785250ef53a0ce760de67a63fc231c7ac9c902122e63567f822baedf66",
+      "bytes": 7415427,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 473
+    },
+    {
+      "file": "sql-evidence.zip",
+      "sha256": "661b061b6ada98aab93b8d12aba1a346749db25d227958eabf2a8630d146ef59",
+      "bytes": 3272317,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 1085
+    },
+    {
+      "file": "next-library-traversal-before.zip",
+      "sha256": "55b10dade79c6cf88ea429a17e58b12f23e108e8f9d7c0445716447273cbb356",
+      "bytes": 453453,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 342
+    },
+    {
+      "file": "next-profile-traversal-before.zip",
+      "sha256": "5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a",
+      "bytes": 871053,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 77
+    },
+    {
+      "file": "next-profile-traversal-current-1de717.zip",
+      "sha256": "47cf32cefdb447dbe903fd2eb8cebb482399cf60a2e1f876c0fccda1ed76afa8",
+      "bytes": 1885743,
+      "safeUniquePaths": true,
+      "verifiedPayloads": 66
+    }
+  ],
+  "scope": "Root independent safe unique payload readback, final broad/gates/history/erratum consistency. Full source equality verified separately by post-documentation receipt."
+}

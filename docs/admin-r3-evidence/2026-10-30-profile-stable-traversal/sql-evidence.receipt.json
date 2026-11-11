@@ -1,0 +1,130 @@
+{
+  "status": "ROOT_INDEPENDENT_NATIVE_ARCHIVE_READBACK_PASS",
+  "checkedAt": "2026-10-30T08:05:36.323505+00:00",
+  "archive": "sql-evidence.zip",
+  "bytes": 2444333,
+  "sha256": "cc0ceb177384bea9ddf2a575fafd3a1dec629fe27c1b5de9601837b22a7601b6",
+  "verifiedPayloads": 988,
+  "safeUniquePaths": true,
+  "sourceInputs": 39,
+  "allSourceBindingsMatchCurrentAndFrozenSnapshot": true,
+  "validationSourceSha256": "3011c18ee1b73a306883e28cee0791b0fe2e861526ca545b5db531443c9fa2c3",
+  "storedCoreLabels": 21,
+  "coreLabelsIncludeSetupAndIntermediateReceipts": true,
+  "forgeryMatrixCases": 14,
+  "concurrentGroups": {
+    "twoSession": 10,
+    "threeSession": 2,
+    "providerCalls": 0
+  },
+  "nativeGoldens": {
+    "count": 56,
+    "sha256": "e338b3303355bbc57cf4bcb9eee84d72fd1a5a889ab29d48bc15fd42af0cad15",
+    "rpcKinds": 5
+  },
+  "oldPreservation": {
+    "routineBodiesSecurityConfigAcl": 139,
+    "tableColumnsRlsAcl": 5,
+    "indexes": 24,
+    "allExact": true
+  },
+  "advisors": {
+    "baseline": 15,
+    "current": 15,
+    "new": 0,
+    "removed": 0,
+    "exitCode": 1,
+    "lint": "NOT_RUN_PLPGSQL_CHECK_UNAVAILABLE_NO_INSTALL"
+  },
+  "committed10000Performance": {
+    "originalMeasuredElapsedMs": 33682.8266,
+    "originalDeferredTriggerCalls": 20,
+    "originalDeferredTimeMs": 29235.355,
+    "current": {
+      "startedAt": "2026-10-30T07:58:16.0082352Z",
+      "finishedAt": "2026-10-30T07:58:21.7586423Z",
+      "elapsedMs": 5751.2963,
+      "exitCode": 0,
+      "scope": "One actual10000-member BEGIN plus COMMIT including all deferred triggers"
+    },
+    "currentFunctionStats": [
+      {
+        "calls": 2,
+        "function": "profile_scan_assert_chain",
+        "selfTimeMs": 160.544,
+        "totalTimeMs": 2854.994
+      },
+      {
+        "calls": 20,
+        "function": "profile_scan_insert_chain_guard",
+        "selfTimeMs": 0.355,
+        "totalTimeMs": 1429.22
+      }
+    ],
+    "noGlobalRuntimeGuarantee": true
+  },
+  "cleanup": [
+    {
+      "file": "cleanup.json",
+      "atUtc": "2026-10-30T07:53:20.5111481Z",
+      "ownedPid": 14332,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "file": "final-cleanup.json",
+      "atUtc": "2026-10-30T07:57:26.7023521Z",
+      "ownedPid": 20536,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "file": "concurrency-cleanup.json",
+      "atUtc": "2026-10-30T07:56:33.0649260Z",
+      "ownedPid": 26988,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "file": "three-session-cleanup.json",
+      "atUtc": "2026-10-30T07:57:14.4274613Z",
+      "ownedPid": 3516,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "file": "measure-cleanup.json",
+      "atUtc": "2026-10-30T07:58:22.0463206Z",
+      "ownedPid": 21668,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    }
+  ],
+  "sdkScope": "Native-only archive. Installed SDK/DTO/action/UI acceptance belongs to the separate controlled evidence and final cross-artifact receipt.",
+  "limitations": [
+    "Synthetic owned-loopback PG17 Auth/catalog/override rows only. No managed PostgREST/Auth/browser E2E or paid provider execution.",
+    "Core result labels and concurrent groups overlap; they do not count acceptance criteria. Existing provider expense ledger is not cloned into logical parent observations.",
+    "Catalog hashes are opaque original JavaScript strings supplied by the trusted server; PostgreSQL cannot attest remote KV freshness. Old owned admission/full-source CAS remains final expense authority.",
+    "An eager finite initial manifest is limited10000 records/4MiB and20 windows500 each. Overflow rejects; no truncation or future-corpus membership guarantee.",
+    "Root-only deferred full-chain proof is combined with immediate exact root/predecessor child insertion guards, immutable membership and unique finite indices; no GUC/xmin/table/role/column bypass.",
+    "Cancellation affects the actual attached window; no automatic ancestor-to-active-successor cancellation, remote cancellation or billing guarantee.",
+    "Raw55/37 prior exports and original v2 genuine syntax failure/v4 fixture search_path failure retain their original source scope; final current bytes require the named final version.",
+    "Native source scope is39 SQL/fixture inputs, not the full application working tree. Actual SDK/DTO/action/UI proofs and broad gates are separately bound.",
+    "Whole M07/M24/M04/M02/M13/R3 and all26 modules/230criteria remain pending; no commit/push/PR/production migration/deploy/social send or key setup."
+  ]
+}

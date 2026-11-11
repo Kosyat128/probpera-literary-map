@@ -1,0 +1,24 @@
+{
+  "classification": "SCOPED_TARGETED_REQUIRED_FIXES_NOT_CURRENT_FULL_SUITE_NOT_M04_NATIVE_ACCEPTANCE",
+  "archive": "targeted-validation-evidence.zip",
+  "bytes": 20740834,
+  "sha256": "3ce0b326014c423e08707db13ef190df000d4b5ae30ff2e7331afda1a9239f08",
+  "manifestSha256": "6530da3bbfc7d8376ee975e0b1cf29cb45e9a0dde889a01fd870b1eb3076a238",
+  "payloads": 2645,
+  "archiveEntries": 2646,
+  "sourceFingerprint": "990d7eb981fe115b365e6f86f9c827698b4353fb1067e3643e3d962123d193fc",
+  "currentPhysicalInputs": 158,
+  "targetedCases": 458,
+  "targetedFiles": 7,
+  "includedGroups": {
+    "sitecopyCore": 398,
+    "knownPaidPartial": 29,
+    "parameters": 7,
+    "M11API": 24
+  },
+  "gatesPassed": 4,
+  "gatesTotal": 5,
+  "readonlyByteExactFindings": 41,
+  "currentFullSuite": "NOT_RUN",
+  "newTestsExecutedByPackaging": 0
+}

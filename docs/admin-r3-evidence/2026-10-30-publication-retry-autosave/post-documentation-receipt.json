@@ -1,0 +1,28 @@
+{
+  "classification": "POST_IMMUTABLE_SEAL_DOCUMENTATION_ONLY_ACTUAL_REHASH_ALL_TRACKED_OWNED_INPUTS",
+  "checkedAt": "2026-10-30T18:52:58.317Z",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "sourceFingerprint": "4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78",
+  "nonDocInputs": 10524,
+  "fullTrackedOwnedInputs": 10751,
+  "allNonDocInputsStillExact": true,
+  "changed": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "beforeSha256": "249d8c33438e8965b0c370daa594e78ce476b883f8400bd854aa04ce75ac5028",
+      "afterSha256": "6a874980c97e014512a2a6c5164a4e688e8e7ff2c8ab86ef035dcdf856b308a7"
+    }
+  ],
+  "archiveSha256": "1e666195050b0a2f05577874bbfc3dc6e71b0e932b1a887962e41a0c515c0031",
+  "independentSha256": "c4895f5365832a929303b8c0219486714a3ec7eca2fa54c8de0552ba7ca5869a",
+  "whole": {
+    "files": 224,
+    "cases": 7424,
+    "passed": 7418,
+    "knownMissingM02Failures": 6,
+    "pending": 0,
+    "todo": 0
+  },
+  "noNewTestsRun": true,
+  "noProductSourceChanges": true
+}

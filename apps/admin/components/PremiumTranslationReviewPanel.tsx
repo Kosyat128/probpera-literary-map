@@ -9,7 +9,7 @@ import ConfirmSubmitButton from "./ConfirmSubmitButton";
 
 type PendingReview = Extract<PremiumTranslationReviewView, { status: "pending" }>;
 type ReviewText = PendingReview["currentSource"];
-type ReturnTo = "library" | "editorial-database";
+type ReturnTo = "library" | "editorial-database" | "site-copy";
 
 const countryTextLabels = {
   name: "Название", region: "Регион", continent: "Континент",
@@ -29,7 +29,10 @@ function TextColumn({ heading, text, language }: {
   return <section className="work-workspace-section">
     <h3>{heading}</h3>
     {!text ? <p>{language === "ru" ? "Текущий русский источник не найден." : "Сохранённого английского текста нет."}</p> : <div lang={language}>
-      {text.fields ? <>
+      {text.items ? <dl>{text.items.map((item) => <div key={item.key}>
+        <dt style={{ overflowWrap: "anywhere" }}>{item.key}</dt>
+        <dd style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{item.text}</dd>
+      </div>)}</dl> : text.fields ? <>
         {Object.entries(countryTextLabels).map(([key, label]) => {
           const value = text.fields![key as keyof typeof countryTextLabels];
           return value ? <div key={key}>
@@ -81,7 +84,10 @@ export default function PremiumTranslationReviewPanel({ view, returnTo }: {
     <p className="form-message form-error" role="alert">{view.problem}</p>
   </section>;
 
-  return <section className="panel" id="premium-translation-review" aria-label="Проверка английского перевода">
+  return <section className="panel"
+    id={view.draft.entityType === "writer_biography" ? "writer-biography-translation-review"
+      : view.draft.entityType === "site_copy" ? `site-copy-translation-review-${view.draft.id}` : "premium-translation-review"}
+    aria-label="Проверка английского перевода">
     <header>
       <h2>Английский перевод ожидает проверки</h2>
       <span className="badge">Машинный черновик</span>
@@ -102,6 +108,24 @@ export default function PremiumTranslationReviewPanel({ view, returnTo }: {
       <summary>Источники перевода и названия</summary>
       <p>{view.draft.payload.bibliographicTitle.provider}: {view.draft.payload.bibliographicTitle.value}</p>
       <ul>{view.draft.payload.sourceUrls.map((url) => <li key={url} style={{ overflowWrap: "anywhere" }}>{url}</li>)}</ul>
+    </details>}
+    {view.draft.entityType === "writer_biography" && <details>
+      <summary>Исходная биография, источники и права</summary>
+      <h3>{view.draft.sourceSnapshot.writerName}</h3>
+      <p>Язык исходника: {view.draft.sourceSnapshot.sourceLanguage}</p>
+      <h4>Текст на момент создания перевода</h4>
+      <p lang="ru" style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{view.draft.sourceSnapshot.text}</p>
+      <h4>Источники и сведения о правах</h4>
+      <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{JSON.stringify(view.draft.sourceSnapshot.sources, null, 2)}</pre>
+      <h4>Сохранённые редакционные сведения об исходной биографии</h4>
+      <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{JSON.stringify(view.draft.sourceSnapshot.russianProfile, null, 2)}</pre>
+    </details>}
+    {view.draft.entityType === "site_copy" && <details>
+      <summary>Русские тексты на момент создания перевода</summary>
+      <dl>{view.draft.sourceSnapshot.items.map((item) => <div key={item.key}>
+        <dt style={{ overflowWrap: "anywhere" }}>{item.key}</dt>
+        <dd lang="ru" style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{item.text}</dd>
+      </div>)}</dl>
     </details>}
     {view.canPromote && <form className="settings-stack" action={approvePremiumTranslationWorkingDraftAction}>
       <IdentityFields view={view} returnTo={returnTo} />

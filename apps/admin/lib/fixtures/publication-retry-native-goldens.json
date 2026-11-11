@@ -1,0 +1,2080 @@
+[
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "8",
+      "p_retry_operation_id": "51edab5a-20b2-4d81-9db8-552f0136ec45",
+      "p_expected_updated_at": "2026-10-30T16:39:09.328637+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "51edab5a-20b2-4d81-9db8-552f0136ec45",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/real-old-legacy-unbound-refused.sql:6: ERROR:  22023: legacy publication retry binding is unconfirmed\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 76 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9",
+      "p_retry_operation_id": "419459c5-8d0f-4021-9f26-cd1e3daf2dd1",
+      "p_expected_updated_at": "2026-10-30T16:39:11.968714+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "requested",
+        "outboxId": "9",
+        "updatedAt": "2026-10-30T16:39:11.968714+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:11.968714+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "9",
+        "operationId": "419459c5-8d0f-4021-9f26-cd1e3daf2dd1",
+        "expectedUpdatedAt": "2026-10-30T16:39:11.968714+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "419459c5-8d0f-4021-9f26-cd1e3daf2dd1"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "10",
+      "p_retry_operation_id": "9a23970c-cf00-450e-b11b-7f839ebd069d",
+      "p_expected_updated_at": "2026-10-30T16:39:13.089915+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "dispatched",
+        "outboxId": "10",
+        "updatedAt": "2026-10-30T16:39:13.089915+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "dispatched",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "10",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:13.089915+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "10",
+        "operationId": "9a23970c-cf00-450e-b11b-7f839ebd069d",
+        "expectedUpdatedAt": "2026-10-30T16:39:13.089915+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "10"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "9a23970c-cf00-450e-b11b-7f839ebd069d"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "11",
+      "p_retry_operation_id": "1bdf82b4-0ae3-482c-86ec-3c4fd0f26678",
+      "p_expected_updated_at": "2026-10-30T16:39:14.243163+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "deployed",
+        "outboxId": "11",
+        "updatedAt": "2026-10-30T16:39:14.243163+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "complete",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "11",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:14.243163+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "11",
+        "operationId": "1bdf82b4-0ae3-482c-86ec-3c4fd0f26678",
+        "expectedUpdatedAt": "2026-10-30T16:39:14.243163+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "11"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "1bdf82b4-0ae3-482c-86ec-3c4fd0f26678"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:m04-native-fresh-4",
+        "entityId": "same-entity",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:15.585473+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:15.585473+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:15.585473+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597F-E58B-4FF0-B104-5C6A49E994A9"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "actorId": "22222222-2222-4222-8222-222222222222",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/global-foreign-actor.sql:6: ERROR:  22023: publication retry command binding does not match\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 41 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/global-other-source.sql:6: ERROR:  22023: publication retry command binding does not match\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 41 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-31T01:39:15.340210+09:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/replay-equal-instant-raw-different.sql:6: ERROR:  22023: publication retry command binding does not match\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 41 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "44752cbe-61b8-47ac-b66b-cfbe3c02a310",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:18.802651+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "44752cbe-61b8-47ac-b66b-cfbe3c02a310",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "44752cbe-61b8-47ac-b66b-cfbe3c02a310"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "6cc2eb2f-c5ed-4555-9c06-adc57b9fe577",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "dispatched",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:19.357463+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "6cc2eb2f-c5ed-4555-9c06-adc57b9fe577",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "6cc2eb2f-c5ed-4555-9c06-adc57b9fe577"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "de1d3576-5f6d-46d4-bd1f-71ee21b22df8",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "failed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:19.943526+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "de1d3576-5f6d-46d4-bd1f-71ee21b22df8",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "de1d3576-5f6d-46d4-bd1f-71ee21b22df8"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "5d1d91e7-0df5-4227-bc9f-2f216db85cf5",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:15.34021+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "complete",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:20.530573+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "5d1d91e7-0df5-4227-bc9f-2f216db85cf5",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "5d1d91e7-0df5-4227-bc9f-2f216db85cf5"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "13",
+      "p_retry_operation_id": "f4cd16f9-5354-448f-99bf-4a682ef76f0f",
+      "p_expected_updated_at": "2026-10-30T16:39:15.585473+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "deployed",
+        "outboxId": "13",
+        "updatedAt": "2026-10-30T16:39:20.530573+00:00",
+        "retryOfOutboxId": "12"
+      },
+      "outcome": "root-required",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:20.530573+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "13",
+        "operationId": "f4cd16f9-5354-448f-99bf-4a682ef76f0f",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.585473+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "f4cd16f9-5354-448f-99bf-4a682ef76f0f"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "12",
+      "p_retry_operation_id": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+      "p_expected_updated_at": "2026-10-30T16:39:15.34021+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "deployed",
+        "outboxId": "12",
+        "updatedAt": "2026-10-30T16:39:21.48049+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "13",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:20.530573+00:00",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "retryOfOutboxId": "12"
+      },
+      "requested": {
+        "outboxId": "12",
+        "operationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9",
+        "expectedUpdatedAt": "2026-10-30T16:39:15.34021+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "12"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "4551597f-e58b-4ff0-b104-5c6a49e994a9"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "15",
+      "p_retry_operation_id": "294f96ad-9c23-4091-a3fb-f9040709ae3c",
+      "p_expected_updated_at": "2026-10-30T16:39:22.077103+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "15",
+        "updatedAt": "2026-10-30T16:39:22.077102+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "stale",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "failed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "15",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:22.077102+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "15",
+        "operationId": "294f96ad-9c23-4091-a3fb-f9040709ae3c",
+        "expectedUpdatedAt": "2026-10-30T16:39:22.077103+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "15"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "294f96ad-9c23-4091-a3fb-f9040709ae3c"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "15",
+      "p_retry_operation_id": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+      "p_expected_updated_at": "2026-10-31T01:39:22.077102+09:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "15",
+        "updatedAt": "2026-10-30T16:39:22.077102+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:m04-native-one-microsecond-6",
+        "entityId": "same-entity",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "16",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:22.939167+00:00",
+        "operationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+        "retryOfOutboxId": "15"
+      },
+      "requested": {
+        "outboxId": "15",
+        "operationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+        "expectedUpdatedAt": "2026-10-31T01:39:22.077102+09:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "15"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "15",
+      "p_retry_operation_id": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+      "p_expected_updated_at": "2026-10-31T01:39:22.077102+09:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "15",
+        "updatedAt": "2026-10-30T16:39:22.077102+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "dispatched",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "16",
+        "provider": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00",
+        "updatedAt": "2026-10-30T16:39:23.142029+00:00",
+        "operationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+        "retryOfOutboxId": "15"
+      },
+      "requested": {
+        "outboxId": "15",
+        "operationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1",
+        "expectedUpdatedAt": "2026-10-31T01:39:22.077102+09:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "15"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "f9b35490-f4a7-4789-95e6-2e1250e924d1"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "17",
+      "p_retry_operation_id": "61477185-04ce-45d4-b92c-8ee5c049d606",
+      "p_expected_updated_at": "1969-12-31T23:59:59.123456Z"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "17",
+        "updatedAt": "1969-12-31T23:59:59.123456+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:pre1970",
+        "entityId": "pre1970",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "18",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:23.747915+00:00",
+        "operationId": "61477185-04ce-45d4-b92c-8ee5c049d606",
+        "retryOfOutboxId": "17"
+      },
+      "requested": {
+        "outboxId": "17",
+        "operationId": "61477185-04ce-45d4-b92c-8ee5c049d606",
+        "expectedUpdatedAt": "1969-12-31T23:59:59.123456Z"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "17"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "61477185-04ce-45d4-b92c-8ee5c049d606"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "19",
+      "p_retry_operation_id": "c11bd0b1-5110-45fd-b37d-17d8ab106647",
+      "p_expected_updated_at": "2000-02-29T00:00:00.000000Z"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "19",
+        "updatedAt": "2000-02-29T00:00:00+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:leap2000",
+        "entityId": "leap2000",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "20",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:24.239298+00:00",
+        "operationId": "c11bd0b1-5110-45fd-b37d-17d8ab106647",
+        "retryOfOutboxId": "19"
+      },
+      "requested": {
+        "outboxId": "19",
+        "operationId": "c11bd0b1-5110-45fd-b37d-17d8ab106647",
+        "expectedUpdatedAt": "2000-02-29T00:00:00.000000Z"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "19"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "c11bd0b1-5110-45fd-b37d-17d8ab106647"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "21",
+      "p_retry_operation_id": "d52d299f-9aad-4ad3-9826-54a43da3bb0b",
+      "p_expected_updated_at": "1900-03-01T00:00:00.000001Z"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "21",
+        "updatedAt": "1900-03-01T00:00:00.000001+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:nonleap1900",
+        "entityId": "nonleap1900",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "22",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:24.635733+00:00",
+        "operationId": "d52d299f-9aad-4ad3-9826-54a43da3bb0b",
+        "retryOfOutboxId": "21"
+      },
+      "requested": {
+        "outboxId": "21",
+        "operationId": "d52d299f-9aad-4ad3-9826-54a43da3bb0b",
+        "expectedUpdatedAt": "1900-03-01T00:00:00.000001Z"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "21"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "d52d299f-9aad-4ad3-9826-54a43da3bb0b"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "23",
+      "p_retry_operation_id": "ac3f1993-1f34-464e-a4c6-01ec02a187d1",
+      "p_expected_updated_at": "0001-01-01T00:00:00Z"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "23",
+        "updatedAt": "0001-01-01T00:00:00+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:year0001",
+        "entityId": "year0001",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "24",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:25.0927+00:00",
+        "operationId": "ac3f1993-1f34-464e-a4c6-01ec02a187d1",
+        "retryOfOutboxId": "23"
+      },
+      "requested": {
+        "outboxId": "23",
+        "operationId": "ac3f1993-1f34-464e-a4c6-01ec02a187d1",
+        "expectedUpdatedAt": "0001-01-01T00:00:00Z"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "23"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "ac3f1993-1f34-464e-a4c6-01ec02a187d1"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254740993",
+      "p_retry_operation_id": "15b36952-1cef-4c35-910e-d6cc4845ae39",
+      "p_expected_updated_at": "2026-10-30T16:39:25.319025+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254740993",
+        "updatedAt": "2026-10-30T16:39:25.319025+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:large-id",
+        "entityId": "large-id",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254740994",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:25.730643+00:00",
+        "operationId": "15b36952-1cef-4c35-910e-d6cc4845ae39",
+        "retryOfOutboxId": "9007199254740993"
+      },
+      "requested": {
+        "outboxId": "9007199254740993",
+        "operationId": "15b36952-1cef-4c35-910e-d6cc4845ae39",
+        "expectedUpdatedAt": "2026-10-30T16:39:25.319025+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254740993"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "15b36952-1cef-4c35-910e-d6cc4845ae39"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "4bcb9a15-d060-4f06-a163-de7790e57ed9",
+      "p_expected_updated_at": "2026-02-30T00:00:00Z"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "4bcb9a15-d060-4f06-a163-de7790e57ed9",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-invalid-calendar.sql:6: ERROR:  22023: invalid publication retry source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 24 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "717806ae-5c07-4614-9454-d7fbc3bed26c",
+      "p_expected_updated_at": "2026-10-30T24:00:00Z"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "717806ae-5c07-4614-9454-d7fbc3bed26c",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-invalid-hour.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "0b02145f-2bee-43a8-9b55-7b421786380b",
+      "p_expected_updated_at": "2026-10-30T00:00:60Z"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "0b02145f-2bee-43a8-9b55-7b421786380b",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-invalid-second.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "5899b48e-0775-4ad0-889b-7d9aa28047bb",
+      "p_expected_updated_at": "2026-10-30T00:00:00.1234567Z"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "5899b48e-0775-4ad0-889b-7d9aa28047bb",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-overprecision.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "9a1c9888-b52b-47fd-a4c1-509de55afc37",
+      "p_expected_updated_at": "2026-10-30T00:00:00+16:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "9a1c9888-b52b-47fd-a4c1-509de55afc37",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-invalid-offset.sql:6: ERROR:  22023: invalid publication retry source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 24 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "2969aa64-8195-4a0a-8f68-6246476ea398",
+      "p_expected_updated_at": "2026-10-30 00:00:00+00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "2969aa64-8195-4a0a-8f68-6246476ea398",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-non-iso.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9223372036854775807",
+      "p_retry_operation_id": "3ac02471-b2ba-488d-bca3-a39464180723",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "3ac02471-b2ba-488d-bca3-a39464180723",
+    "error": {
+      "code": "P0002",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/missing-max-bigint-source.sql:6: ERROR:  P0002: publication retry source is unavailable\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 55 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "0",
+      "p_retry_operation_id": "fd3ed629-5d54-4c4b-ae66-f27df4b08a50",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "fd3ed629-5d54-4c4b-ae66-f27df4b08a50",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-source-zero.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "-1",
+      "p_retry_operation_id": "0bf3621a-2394-4835-815b-dc0dcec75588",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": false,
+    "rawSqlInputOperationId": "0bf3621a-2394-4835-815b-dc0dcec75588",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/invalid-source-negative.sql:6: ERROR:  22023: invalid publication retry identity or source version\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 18 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "bfcd9be3-7ee7-46a3-bd31-11e28fc5beee",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "33333333-3333-4333-8333-333333333333",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "bfcd9be3-7ee7-46a3-bd31-11e28fc5beee",
+    "error": {
+      "code": "42501",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/nonstaff-denied.sql:6: ERROR:  42501: staff access required\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 13 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "14",
+      "p_retry_operation_id": "1f0fd553-0989-4553-a419-a2bb5e4a93d9",
+      "p_expected_updated_at": "2026-10-30T16:39:17.511161+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "anon",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "1f0fd553-0989-4553-a419-a2bb5e4a93d9",
+    "error": {
+      "code": "42501",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/anon-execute-denied.sql:6: ERROR:  42501: permission denied for function admit_public_build_retry\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  aclcheck_error, aclchk.c:2845\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254740995",
+      "p_retry_operation_id": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+      "p_expected_updated_at": "2026-10-30T16:39:29.299504+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254740995",
+        "updatedAt": "2026-10-30T16:39:29.299504+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:m04-native-lost-ack-7",
+        "entityId": "same-entity",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254740996",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:29.523531+00:00",
+        "operationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+        "retryOfOutboxId": "9007199254740995"
+      },
+      "requested": {
+        "outboxId": "9007199254740995",
+        "operationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+        "expectedUpdatedAt": "2026-10-30T16:39:29.299504+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254740995"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254740995",
+      "p_retry_operation_id": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+      "p_expected_updated_at": "2026-10-30T16:39:29.299504+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254740995",
+        "updatedAt": "2026-10-30T16:39:29.299504+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254740996",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:29.523531+00:00",
+        "operationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+        "retryOfOutboxId": "9007199254740995"
+      },
+      "requested": {
+        "outboxId": "9007199254740995",
+        "operationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197",
+        "expectedUpdatedAt": "2026-10-30T16:39:29.299504+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254740995"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "3b362a6f-85e7-4945-974f-00b4bbdaa197"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254740997",
+      "p_retry_operation_id": "d8df6d91-c526-4601-9207-494763448eaa",
+      "p_expected_updated_at": "2026-10-30T16:39:30.339783+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254740997",
+        "updatedAt": "2026-10-30T16:39:30.339783+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:m04-native-audit-failure-8",
+        "entityId": "same-entity",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254740999",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:31.00344+00:00",
+        "operationId": "d8df6d91-c526-4601-9207-494763448eaa",
+        "retryOfOutboxId": "9007199254740997"
+      },
+      "requested": {
+        "outboxId": "9007199254740997",
+        "operationId": "d8df6d91-c526-4601-9207-494763448eaa",
+        "expectedUpdatedAt": "2026-10-30T16:39:30.339783+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254740997"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "d8df6d91-c526-4601-9207-494763448eaa"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741000",
+      "p_retry_operation_id": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+      "p_expected_updated_at": "2026-10-30T16:39:35.197233+00:00"
+    },
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741000",
+        "updatedAt": "2026-10-30T16:39:35.197233+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:m04-native-tombstone-9",
+        "entityId": "same-entity",
+        "entityType": "native-m04"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "7dc43943-1478-4c82-ad45-ba42ba4fadf2",
+        "outboxId": "9007199254741001",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:39:35.408547+00:00",
+        "operationId": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+        "retryOfOutboxId": "9007199254741000"
+      },
+      "requested": {
+        "outboxId": "9007199254741000",
+        "operationId": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+        "expectedUpdatedAt": "2026-10-30T16:39:35.197233+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741000"
+    },
+    "actorId": "7dc43943-1478-4c82-ad45-ba42ba4fadf2",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "ec525584-76bb-4a42-b7fb-83230a69d5b6"
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741000",
+      "p_retry_operation_id": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+      "p_expected_updated_at": "2026-10-30T16:39:35.197233+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+    "error": {
+      "code": "22023",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/tombstone-foreign-rebind.sql:6: ERROR:  22023: publication retry command binding does not match\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 41 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741000",
+      "p_retry_operation_id": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+      "p_expected_updated_at": "2026-10-30T16:39:35.197233+00:00"
+    },
+    "actorId": "7dc43943-1478-4c82-ad45-ba42ba4fadf2",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "rawSqlInputOperationId": "ec525584-76bb-4a42-b7fb-83230a69d5b6",
+    "error": {
+      "code": "42501",
+      "message": "psql:C:/Users/\ufffd\ufffd\ufffd\ufffd\ufffd/Documents/Codex/2026-10-09/v/work/m04-retry-native-v1/native-cases/tombstone-deleted-actor.sql:6: ERROR:  42501: staff access required\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  PL/pgSQL function public.admit_public_build_retry(bigint,uuid,text) line 13 at RAISE\r\n\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd:  exec_stmt_raise, pl_exec.c:3911\r\n"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741005",
+      "p_retry_operation_id": "05fef353-5d57-43f2-b2fd-f4b0a58c4d37",
+      "p_expected_updated_at": "2026-10-30T16:54:25.458415+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741005",
+        "updatedAt": "2026-10-30T16:54:25.458415+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-new-intents-one-root",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741006",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:25.70429+00:00",
+        "operationId": "05fef353-5d57-43f2-b2fd-f4b0a58c4d37",
+        "retryOfOutboxId": "9007199254741005"
+      },
+      "requested": {
+        "outboxId": "9007199254741005",
+        "operationId": "05fef353-5d57-43f2-b2fd-f4b0a58c4d37",
+        "expectedUpdatedAt": "2026-10-30T16:54:25.458415+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741005"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741005",
+      "p_retry_operation_id": "0566be95-9bce-4ff8-9426-ddd9771d547c",
+      "p_expected_updated_at": "2026-10-30T16:54:25.458415+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741005",
+        "updatedAt": "2026-10-30T16:54:25.458415+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741006",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:25.70429+00:00",
+        "operationId": "05fef353-5d57-43f2-b2fd-f4b0a58c4d37",
+        "retryOfOutboxId": "9007199254741005"
+      },
+      "requested": {
+        "outboxId": "9007199254741005",
+        "operationId": "0566be95-9bce-4ff8-9426-ddd9771d547c",
+        "expectedUpdatedAt": "2026-10-30T16:54:25.458415+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741005"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741007",
+      "p_retry_operation_id": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+      "p_expected_updated_at": "2026-10-30T16:54:26.712632+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741007",
+        "updatedAt": "2026-10-30T16:54:26.712632+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-same-op-same-actor",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741008",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:26.962284+00:00",
+        "operationId": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+        "retryOfOutboxId": "9007199254741007"
+      },
+      "requested": {
+        "outboxId": "9007199254741007",
+        "operationId": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+        "expectedUpdatedAt": "2026-10-30T16:54:26.712632+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741007"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741007",
+      "p_retry_operation_id": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+      "p_expected_updated_at": "2026-10-30T16:54:26.712632+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741007",
+        "updatedAt": "2026-10-30T16:54:26.712632+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741008",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:26.962284+00:00",
+        "operationId": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+        "retryOfOutboxId": "9007199254741007"
+      },
+      "requested": {
+        "outboxId": "9007199254741007",
+        "operationId": "124296f0-b2af-447f-9e5b-be30c6b9699c",
+        "expectedUpdatedAt": "2026-10-30T16:54:26.712632+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741007"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741009",
+      "p_retry_operation_id": "00820875-5fbf-459c-bbce-d3075bef1544",
+      "p_expected_updated_at": "2026-10-30T16:54:27.943412+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741009",
+        "updatedAt": "2026-10-30T16:54:27.943412+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-same-op-foreign-actor",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741010",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:28.161739+00:00",
+        "operationId": "00820875-5fbf-459c-bbce-d3075bef1544",
+        "retryOfOutboxId": "9007199254741009"
+      },
+      "requested": {
+        "outboxId": "9007199254741009",
+        "operationId": "00820875-5fbf-459c-bbce-d3075bef1544",
+        "expectedUpdatedAt": "2026-10-30T16:54:27.943412+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741009"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741009",
+      "p_retry_operation_id": "00820875-5fbf-459c-bbce-d3075bef1544",
+      "p_expected_updated_at": "2026-10-30T16:54:27.943412+00:00"
+    },
+    "actorId": "22222222-2222-4222-8222-222222222222",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "error": {
+      "code": "22023",
+      "message": "publication retry command binding does not match"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741011",
+      "p_retry_operation_id": "64f772cc-95f2-4d67-b8e5-8d1b87939097",
+      "p_expected_updated_at": "2026-10-30T16:54:29.253624+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741011",
+        "updatedAt": "2026-10-30T16:54:29.253624+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-same-op-two-roots",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741013",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:29.882674+00:00",
+        "operationId": "64f772cc-95f2-4d67-b8e5-8d1b87939097",
+        "retryOfOutboxId": "9007199254741011"
+      },
+      "requested": {
+        "outboxId": "9007199254741011",
+        "operationId": "64f772cc-95f2-4d67-b8e5-8d1b87939097",
+        "expectedUpdatedAt": "2026-10-30T16:54:29.253624+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741011"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741012",
+      "p_retry_operation_id": "64f772cc-95f2-4d67-b8e5-8d1b87939097",
+      "p_expected_updated_at": "2026-10-30T16:54:29.681242+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "error": {
+      "code": "22023",
+      "message": "publication retry command binding does not match"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741014",
+      "p_retry_operation_id": "577efdc8-ffe7-4a58-a992-f32b574fc204",
+      "p_expected_updated_at": "2026-10-30T16:54:31.128199+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "deployed",
+        "outboxId": "9007199254741014",
+        "updatedAt": "2026-10-30T16:54:31.347035+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "complete",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741014",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:31.347035+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "9007199254741014",
+        "operationId": "577efdc8-ffe7-4a58-a992-f32b574fc204",
+        "expectedUpdatedAt": "2026-10-30T16:54:31.128199+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741014"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741015",
+      "p_retry_operation_id": "fe87997b-9955-4464-818c-838328947025",
+      "p_expected_updated_at": "2026-10-30T16:54:32.217504+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741015",
+        "updatedAt": "2026-10-30T16:54:32.431177+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "stale",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "failed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741015",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:32.431177+00:00",
+        "operationId": null,
+        "retryOfOutboxId": null
+      },
+      "requested": {
+        "outboxId": "9007199254741015",
+        "operationId": "fe87997b-9955-4464-818c-838328947025",
+        "expectedUpdatedAt": "2026-10-30T16:54:32.217504+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741015"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741016",
+      "p_retry_operation_id": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+      "p_expected_updated_at": "2026-10-30T16:54:33.305375+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741016",
+        "updatedAt": "2026-10-30T16:54:33.305375+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-audit-three-session-success",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741017",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:33.675927+00:00",
+        "operationId": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+        "retryOfOutboxId": "9007199254741016"
+      },
+      "requested": {
+        "outboxId": "9007199254741016",
+        "operationId": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+        "expectedUpdatedAt": "2026-10-30T16:54:33.305375+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741016"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741016",
+      "p_retry_operation_id": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+      "p_expected_updated_at": "2026-10-30T16:54:33.305375+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741016",
+        "updatedAt": "2026-10-30T16:54:33.305375+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "replay",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741017",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:33.675927+00:00",
+        "operationId": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+        "retryOfOutboxId": "9007199254741016"
+      },
+      "requested": {
+        "outboxId": "9007199254741016",
+        "operationId": "8d8dcfd1-77d0-4e5f-adda-d8eb56fa1fa9",
+        "expectedUpdatedAt": "2026-10-30T16:54:33.305375+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741016"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741018",
+      "p_retry_operation_id": "1426a8cb-4a97-4c96-bf89-11cf09c9c959",
+      "p_expected_updated_at": "2026-10-30T16:54:34.858694+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "error": {
+      "code": "23514",
+      "message": "new row for relation \"admin_audit_log\" violates check constraint \"m04_race_audit_119d3570\""
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741018",
+      "p_retry_operation_id": "1426a8cb-4a97-4c96-bf89-11cf09c9c959",
+      "p_expected_updated_at": "2026-10-30T16:54:34.858694+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741018",
+        "updatedAt": "2026-10-30T16:54:34.858694+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-audit-blocked-failure-retry",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741020",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:36.044302+00:00",
+        "operationId": "1426a8cb-4a97-4c96-bf89-11cf09c9c959",
+        "retryOfOutboxId": "9007199254741018"
+      },
+      "requested": {
+        "outboxId": "9007199254741018",
+        "operationId": "1426a8cb-4a97-4c96-bf89-11cf09c9c959",
+        "expectedUpdatedAt": "2026-10-30T16:54:34.858694+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741018"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741021",
+      "p_retry_operation_id": "2b069810-6425-4318-9245-b17edb30d8d5",
+      "p_expected_updated_at": "2026-10-30T16:54:36.674885+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741021",
+        "updatedAt": "2026-10-30T16:54:36.674885+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-rr-hidden-child-unique-source",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741022",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:37.031887+00:00",
+        "operationId": "2b069810-6425-4318-9245-b17edb30d8d5",
+        "retryOfOutboxId": "9007199254741021"
+      },
+      "requested": {
+        "outboxId": "9007199254741021",
+        "operationId": "2b069810-6425-4318-9245-b17edb30d8d5",
+        "expectedUpdatedAt": "2026-10-30T16:54:36.674885+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741021"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741021",
+      "p_retry_operation_id": "8464526e-f3ee-4fad-ac3e-b5238917a5e0",
+      "p_expected_updated_at": "2026-10-30T16:54:36.674885+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "error": {
+      "code": "23505",
+      "message": "duplicate key value violates unique constraint \"public_build_outbox_retry_source_uidx\""
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741024",
+      "p_retry_operation_id": "9f9e9719-4742-4c93-ac9b-7dc92104e9fe",
+      "p_expected_updated_at": "2026-10-30T16:54:38.083056+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741024",
+        "updatedAt": "2026-10-30T16:54:38.083056+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-rr-hidden-child-root-core",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741025",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:38.436327+00:00",
+        "operationId": "9f9e9719-4742-4c93-ac9b-7dc92104e9fe",
+        "retryOfOutboxId": "9007199254741024"
+      },
+      "requested": {
+        "outboxId": "9007199254741024",
+        "operationId": "9f9e9719-4742-4c93-ac9b-7dc92104e9fe",
+        "expectedUpdatedAt": "2026-10-30T16:54:38.083056+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741024"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741026",
+      "p_retry_operation_id": "5f64284e-18ae-4bef-bbd0-4c3b8d935121",
+      "p_expected_updated_at": "2026-10-30T16:54:39.493626+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741026",
+        "updatedAt": "2026-10-30T16:54:39.493626+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-child-finalization-vs-native-read",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741027",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:39.710198+00:00",
+        "operationId": "5f64284e-18ae-4bef-bbd0-4c3b8d935121",
+        "retryOfOutboxId": "9007199254741026"
+      },
+      "requested": {
+        "outboxId": "9007199254741026",
+        "operationId": "5f64284e-18ae-4bef-bbd0-4c3b8d935121",
+        "expectedUpdatedAt": "2026-10-30T16:54:39.493626+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741026"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741026",
+      "p_retry_operation_id": "71e9dce2-ca43-487c-ad7c-6877963744a7",
+      "p_expected_updated_at": "2026-10-30T16:54:39.493626+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741026",
+        "updatedAt": "2026-10-30T16:54:39.493626+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "active",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741027",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:39.710198+00:00",
+        "operationId": "5f64284e-18ae-4bef-bbd0-4c3b8d935121",
+        "retryOfOutboxId": "9007199254741026"
+      },
+      "requested": {
+        "outboxId": "9007199254741026",
+        "operationId": "71e9dce2-ca43-487c-ad7c-6877963744a7",
+        "expectedUpdatedAt": "2026-10-30T16:54:39.493626+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741026"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741026",
+      "p_retry_operation_id": "377b3810-a0e7-4ac8-aed9-340af17b28bb",
+      "p_expected_updated_at": "2026-10-30T16:54:39.493626+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741026",
+        "updatedAt": "2026-10-30T16:54:39.493626+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "complete",
+      "version": 1,
+      "dispatch": null,
+      "observed": {
+        "status": "deployed",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741027",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:39.950971+00:00",
+        "operationId": "5f64284e-18ae-4bef-bbd0-4c3b8d935121",
+        "retryOfOutboxId": "9007199254741026"
+      },
+      "requested": {
+        "outboxId": "9007199254741026",
+        "operationId": "377b3810-a0e7-4ac8-aed9-340af17b28bb",
+        "expectedUpdatedAt": "2026-10-30T16:54:39.493626+00:00"
+      },
+      "canDispatch": false,
+      "rootOutboxId": "9007199254741026"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741028",
+      "p_retry_operation_id": "dd87036b-8ca0-4c18-a35a-617452e21e1b",
+      "p_expected_updated_at": "2026-10-30T16:54:40.899376+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741028",
+        "updatedAt": "2026-10-30T16:54:40.899376+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-child-finalization-vs-root-edit",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741029",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:41.101456+00:00",
+        "operationId": "dd87036b-8ca0-4c18-a35a-617452e21e1b",
+        "retryOfOutboxId": "9007199254741028"
+      },
+      "requested": {
+        "outboxId": "9007199254741028",
+        "operationId": "dd87036b-8ca0-4c18-a35a-617452e21e1b",
+        "expectedUpdatedAt": "2026-10-30T16:54:40.899376+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741028"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741030",
+      "p_retry_operation_id": "7fcbe277-465d-4604-8c3b-d28d2a132523",
+      "p_expected_updated_at": "2026-10-30T16:54:42.842903+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741030",
+        "updatedAt": "2026-10-30T16:54:42.842903+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-distinct-roots-same-entity",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741032",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:43.808956+00:00",
+        "operationId": "7fcbe277-465d-4604-8c3b-d28d2a132523",
+        "retryOfOutboxId": "9007199254741030"
+      },
+      "requested": {
+        "outboxId": "9007199254741030",
+        "operationId": "7fcbe277-465d-4604-8c3b-d28d2a132523",
+        "expectedUpdatedAt": "2026-10-30T16:54:42.842903+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741030"
+    }
+  },
+  {
+    "rpc": "admit_public_build_retry",
+    "args": {
+      "p_outbox_id": "9007199254741031",
+      "p_retry_operation_id": "0c4c324b-a767-40f2-8d02-4a3129829232",
+      "p_expected_updated_at": "2026-10-30T16:54:43.452687+00:00"
+    },
+    "actorId": "11111111-1111-4111-8111-111111111111",
+    "role": "authenticated",
+    "typedInputValid": true,
+    "response": {
+      "source": {
+        "status": "failed",
+        "outboxId": "9007199254741031",
+        "updatedAt": "2026-10-30T16:54:43.452687+00:00",
+        "retryOfOutboxId": null
+      },
+      "outcome": "admitted",
+      "version": 1,
+      "dispatch": {
+        "reason": "manual-retry:119d3570-distinct-roots-same-entity-second",
+        "entityId": "same-entity",
+        "entityType": "native-m04-race"
+      },
+      "observed": {
+        "status": "requested",
+        "actorId": "11111111-1111-4111-8111-111111111111",
+        "outboxId": "9007199254741033",
+        "provider": null,
+        "updatedAt": "2026-10-30T16:54:44.12822+00:00",
+        "operationId": "0c4c324b-a767-40f2-8d02-4a3129829232",
+        "retryOfOutboxId": "9007199254741031"
+      },
+      "requested": {
+        "outboxId": "9007199254741031",
+        "operationId": "0c4c324b-a767-40f2-8d02-4a3129829232",
+        "expectedUpdatedAt": "2026-10-30T16:54:43.452687+00:00"
+      },
+      "canDispatch": true,
+      "rootOutboxId": "9007199254741031"
+    }
+  }
+]

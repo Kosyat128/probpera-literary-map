@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-29T21:19:22.692Z",
+  "archive": {
+    "file": "writer-admission-controlled-tests.zip",
+    "sha256": "1092eb007c1a699903525eb20bd4537a070a85a0bde8f60b9a008df6f5d0f11e",
+    "bytes": 1130515,
+    "members": 299
+  },
+  "externalManifest": {
+    "file": "writer-admission-controlled-tests.manifest.json",
+    "sha256": "8050cb736dfb59def4f965b4aa97812d9213cc4575dac7d47e67fe898fa79fda"
+  },
+  "checks": {
+    "exactMemberSet": true,
+    "everyZipMemberHashAndSizeMatches": true,
+    "internalManifestReadbackMatches": true,
+    "owned11SourcesUnchanged": true,
+    "production55SourcesUnchanged": true,
+    "originalBeforeArchiveUnchanged": true,
+    "originalFourBudgetExpectedValuesUnchanged": true,
+    "narrowSecretPatternMatches": 0,
+    "unrelatedMembers": 0
+  },
+  "validation": {
+    "focused": {
+      "files": 6,
+      "passed": 154,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "adminTypeScriptExit": 0,
+    "nativeDtoChecks": 20,
+    "originalInvariantBefore": {
+      "controlsPassed": 4,
+      "targetsFailed": 2,
+      "exitCode": 1
+    },
+    "originalInvariantCurrent": {
+      "checksPassed": 6,
+      "exitCode": 0
+    }
+  },
+  "scope": "Controlled local acceptance and preserved historical failures. No managed Auth/DB/provider/browser/production acceptance or global goal completion."
+}

@@ -1,18 +1,31 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { unstable_rethrow } from "next/navigation";
+import { readCatalogTranslationCandidateFreshness } from "./catalog-translation-candidate-freshness-rpc";
 
 import {
   countryProfileTranslationSource, validateCountryTranslationCandidate,
 } from "./auto-translate-country-profile";
 import { validateLiteraryWorkTranslationCandidate } from "./auto-translate-literary-work";
 import {
+  validateWriterBiographyTranslationCandidate, writerBiographyTranslationOwnership,
+  writerBiographyTranslationSource,
+} from "./auto-translate-writer-biography";
+import { writerBiographySourceIdentity } from "./writer-biography-edit";
+import { SiteCopyTranslationParameterError } from "./site-copy-parameters";
+import {
+  inspectSiteCopyTranslationOwnership, siteCopyTranslationSource, validateSiteCopyTranslationCandidate,
+} from "./site-copy-translation-contract";
+import {
   PremiumTranslationDraftError, readPremiumTranslationWorkingDraft,
   promotePremiumTranslationWorkingDraft, samePremiumTranslationJson,
+  listSiteCopyPremiumTranslationWorkingDrafts,
+  parseWriterBiographyCandidateIdentity,
   type PremiumTranslationCountryFields, type PremiumTranslationEntityType,
   type PremiumTranslationWorkingDraft,
 } from "./premium-translation-working-draft";
 
-export type ReviewText = { title: string; description?: string; fields?: PremiumTranslationCountryFields };
+export type ReviewText = { title: string; description?: string; fields?: PremiumTranslationCountryFields;
+  items?: Array<{ key: string; text: string }> };
 export type PremiumTranslationReviewView =
   | { status: "none" }
   | { status: "unavailable"; problem: string }
@@ -191,9 +204,176 @@ async function inspectCountry(input: ReviewInput, draft: Extract<PremiumTranslat
   };
 }
 
+async function withCatalogFreshness(input: ReviewInput,
+  draft: Extract<PremiumTranslationWorkingDraft, { entityType: "literary_work" | "country" }>, current: Inspection): Promise<Inspection> {
+  // Already-disabled source/manual branches need no additional database read.
+  if (!current.view.canPromote) return current;
+  let problem: string;
+  try {
+    const receipt = await readCatalogTranslationCandidateFreshness(input.supabase, {
+      entityType: draft.entityType, entityId: draft.entityId, draftId: draft.id, draftVersion: draft.version,
+      candidateHash: draft.candidateHash, sourceHash: draft.sourceHash,
+      catalogSourceHash: current.catalogSourceHash,
+      catalogSourceFields: draft.entityType === "country" ? record(input.sourceFields) : null,
+    });
+    if (receipt.canPromote) return current;
+    problem = receipt.reason === "source_changed"
+      ? "Полные данные исходника или права изменились. Одобрение недоступно; черновик можно просмотреть или удалить."
+      : "Черновик изменился или больше не найден. Обновите карточку перед одобрением.";
+  } catch (error) {
+    unstable_rethrow(error);
+    problem = "Не удалось подтвердить актуальность полных данных исходника. Одобрение недоступно; черновик можно просмотреть или удалить.";
+  }
+  return { ...current, view: { ...current.view, canPromote: false, problem } };
+}
+
 async function inspect(input: ReviewInput, draft: PremiumTranslationWorkingDraft): Promise<Inspection> {
   if (draft.entityType !== input.entityType || draft.entityId !== input.entityId) throw new PremiumTranslationDraftError("unconfirmed");
-  return draft.entityType === "literary_work" ? inspectBook(input, draft) : inspectCountry(input, draft);
+  if (draft.entityType === "literary_work") return withCatalogFreshness(input, draft, await inspectBook(input, draft));
+  if (draft.entityType === "writer_biography") return inspectWriter(input, draft);
+  if (draft.entityType === "site_copy") return withSiteCopyFreshness(input, draft, await inspectSiteCopy(input, draft));
+  return withCatalogFreshness(input, draft, await inspectCountry(input, draft));
+}
+
+async function withSiteCopyFreshness(input: ReviewInput,
+  draft: Extract<PremiumTranslationWorkingDraft, { entityType: "site_copy" }>, current: Inspection): Promise<Inspection> {
+  if (!current.view.canPromote) return current;
+  let problem: string;
+  try {
+    const { readSiteCopyTranslationCandidateFreshness } = await import("./site-copy-translation-candidate-freshness-rpc");
+    const receipt = await readSiteCopyTranslationCandidateFreshness(input.supabase, {
+      entityType: "site_copy", entityId: draft.entityId, draftId: draft.id, draftVersion: draft.version,
+      candidateHash: draft.candidateHash, sourceHash: draft.sourceHash,
+    });
+    if (receipt.canPromote) return current;
+    problem = receipt.reason === "source_changed"
+      ? "Полные данные текстов сайта изменились. Одобрение недоступно; черновик можно просмотреть или удалить."
+      : "Связь сохранённого результата с этим черновиком не подтверждена. Обновите страницу перед одобрением.";
+  } catch (error) {
+    unstable_rethrow(error);
+    problem = "Не удалось подтвердить полные данные исходника и сохранённого результата. Одобрение недоступно; черновик можно просмотреть или удалить.";
+  }
+  return { ...current, view: { ...current.view, canPromote: false, problem } };
+}
+
+async function inspectSiteCopy(input: ReviewInput,
+  draft: Extract<PremiumTranslationWorkingDraft, { entityType: "site_copy" }>): Promise<Inspection> {
+  const source = draft.sourceSnapshot;
+  const bound = await siteCopyTranslationSource(source.settings);
+  if (source.items.some((item) => !samePremiumTranslationJson(item, bound.items.find((candidate) => candidate.key === item.key))) ||
+      await sourceHash(source.items) !== draft.sourceHash) throw new PremiumTranslationDraftError("unconfirmed");
+  let parameterProblem: string | null = null;
+  try {
+    validateSiteCopyTranslationCandidate(source.items, draft.payload);
+  } catch (error) {
+    if (!(error instanceof SiteCopyTranslationParameterError)) throw error;
+    parameterProblem = error.operatorMessage;
+  }
+
+  const response = await input.supabase.from("homepage_blocks").select("id,settings,updated_at")
+    .contains("settings", { systemKey: "site-copy-overrides" }).limit(2);
+  unstable_rethrow(response?.error);
+  if (!response || response.error || !Array.isArray(response.data) || response.data.length > 1) {
+    throw new PremiumTranslationDraftError("unavailable");
+  }
+  const existing = response.data.length ? record(response.data[0]) : null;
+  const settings = existing ? record(existing.settings) : {};
+  const copy = optionalRecord(settings.siteCopy), ru = optionalRecord(copy.ru), en = optionalRecord(copy.en);
+  const revision = existing ? { id: text(existing.id), updatedAt: text(existing.updated_at) } : null;
+  let problem: string | null = parameterProblem;
+  let currentHash: string | null = null;
+  if (!existing || existing.id !== input.entityId) {
+    problem = "Исходный блок текстов сайта больше не найден. Кандидат можно просмотреть или удалить.";
+  } else if (source.items.some((item) => ["manual", "invalid"].includes(inspectSiteCopyTranslationOwnership(settings, item.key)))) {
+    problem = "Английские тексты изменены вручную или имеют неполные сведения о происхождении. Подтверждение кандидата недоступно.";
+  } else if (!samePremiumTranslationJson(revision, draft.targetRevision) || !samePremiumTranslationJson(settings, source.settings)) {
+    problem = "Тексты сайта изменились после создания кандидата. Его можно просмотреть или удалить.";
+  } else {
+    try {
+      const live = await siteCopyTranslationSource(settings);
+      const selected = source.items.map((item) => live.items.find((candidate) => candidate.key === item.key));
+      if (!samePremiumTranslationJson(selected, source.items)) {
+        problem = "Русский исходник или сведения о переводе изменились. Подтверждение кандидата недоступно.";
+      } else {
+        currentHash = await sourceHash(selected);
+        validateSiteCopyTranslationCandidate(source.items, draft.payload);
+      }
+    } catch (error) {
+      unstable_rethrow(error);
+      problem = error instanceof SiteCopyTranslationParameterError ? error.operatorMessage
+        : "Текущие исходники не прошли проверку. Кандидат можно просмотреть или удалить.";
+    }
+  }
+  const currentItems = (values: Record<string, unknown>) => source.items.flatMap((item) =>
+    typeof values[item.key] === "string" ? [{ key: item.key, text: values[item.key] as string }] : []);
+  return {
+    sourceHash: currentHash, catalogSourceHash: null,
+    view: { status: "pending", draft,
+      currentSource: existing ? { title: "Тексты сайта", items: currentItems(ru) } : null,
+      currentEnglish: existing ? { title: "Сохранённый перевод", items: currentItems(en) } : null,
+      candidateEnglish: { title: "Машинный кандидат", items: draft.payload.items },
+      canPromote: problem === null, problem },
+  };
+}
+
+async function inspectWriter(input: ReviewInput,
+  draft: Extract<PremiumTranslationWorkingDraft, { entityType: "writer_biography" }>): Promise<Inspection> {
+  const identity = parseWriterBiographyCandidateIdentity(input.entityId);
+  if (!identity) throw new PremiumTranslationDraftError("unconfirmed");
+  const sourceFields = record(input.sourceFields);
+  const existing = data(await input.supabase.from("writer_profile_overrides")
+    .select("id,fields,updated_at").eq("country_id", identity.countryId).eq("writer_id", identity.writerId).maybeSingle());
+  const overrideFields = existing ? record(existing.fields) : {};
+  const effectiveFields = { ...sourceFields, ...overrideFields };
+  const current = writerBiographyTranslationSource(effectiveFields, identity.writerId);
+  const source = draft.sourceSnapshot;
+  const bound = writerBiographyTranslationSource({
+    fullName: source.writerName, biographyTranslations: { ru: source.russianProfile },
+  }, identity.writerId);
+  const recordedProviderSource = {
+    writerName: source.writerName, text: source.text, sourceLanguage: source.sourceLanguage, sources: source.sources,
+  };
+  // Validate a stale candidate against its captured source, so it stays inspectable
+  // and discardable even when the live RU profile has been removed.
+  if (!bound?.eligible || !samePremiumTranslationJson(
+    JSON.parse(JSON.stringify(bound.source)), recordedProviderSource
+  ) || await sourceHash(bound.source) !== draft.sourceHash) {
+    throw new PremiumTranslationDraftError("unconfirmed");
+  }
+  validateWriterBiographyTranslationCandidate(draft.payload, recordedProviderSource);
+
+  const currentHash = current ? await sourceHash(current.source) : null;
+  const catalogHash = await sourceHash(sourceFields);
+  const currentRevision = { id: existing ? text(existing.id) : null, updatedAt: existing ? text(existing.updated_at) : null };
+  const ownership = writerBiographyTranslationOwnership(sourceFields, overrideFields);
+  let problem: string | null = null;
+  if (ownership === "human") {
+    problem = "Ручная или неполная английская биография сохранена. Машинный кандидат не может её заменить.";
+  } else if (ownership === "tombstone" && !draft.sourceRevision.replaceEnglishTombstone) {
+    problem = "Английская биография была явно удалена. Подтверждение этого кандидата недоступно.";
+  } else if (!samePremiumTranslationJson(currentRevision, draft.targetRevision)) {
+    problem = "Карточка автора изменилась после создания кандидата. Подтверждение недоступно.";
+  } else if (!current?.eligible || currentHash !== draft.sourceHash ||
+      catalogHash !== draft.sourceRevision.catalogSourceHash ||
+      !samePremiumTranslationJson(sourceFields, source.catalogFields) ||
+      !samePremiumTranslationJson(current.russianProfile, source.russianProfile) ||
+      !samePremiumTranslationJson(JSON.parse(JSON.stringify(current.source)), recordedProviderSource)) {
+    problem = "Русская биография или её источники изменились. Кандидат устарел; его можно просмотреть или удалить.";
+  }
+  if (problem === null && current) validateWriterBiographyTranslationCandidate(draft.payload, current.source);
+  const translations = optionalRecord(effectiveFields.biographyTranslations);
+  const russian = optionalRecord(translations.ru), english = optionalRecord(translations.en);
+  const title = writerBiographySourceIdentity(effectiveFields, identity.writerId);
+  return {
+    sourceHash: currentHash, catalogSourceHash: catalogHash,
+    view: {
+      status: "pending", draft,
+      currentSource: typeof russian.text === "string" ? { title, description: russian.text } : null,
+      currentEnglish: typeof english.text === "string" ? { title, description: english.text } : null,
+      candidateEnglish: { title: source.writerName, description: draft.payload.text },
+      canPromote: problem === null, problem,
+    },
+  };
 }
 
 export async function loadPremiumTranslationReview(input: ReviewInput): Promise<PremiumTranslationReviewView> {
@@ -203,6 +383,20 @@ export async function loadPremiumTranslationReview(input: ReviewInput): Promise<
   } catch (error) {
     unstable_rethrow(error);
     return { status: "unavailable", problem: "Машинный кандидат недоступен или не прошёл проверку данных. Подтверждение перевода недоступно; сохранённые редакционные записи остаются на месте." };
+  }
+}
+
+export async function loadSiteCopyPremiumTranslationReviews(input: { supabase: SupabaseClient; afterId?: string | null }): Promise<{
+  views: PremiumTranslationReviewView[]; nextCursor: string | null;
+}> {
+  try {
+    const page = await listSiteCopyPremiumTranslationWorkingDrafts(input.supabase, input.afterId ?? null);
+    return { views: await Promise.all(page.entityIds.map((entityId) => loadPremiumTranslationReview({
+      supabase: input.supabase, entityType: "site_copy", entityId,
+    }))), nextCursor: page.nextCursor };
+  } catch (error) {
+    unstable_rethrow(error);
+    return { views: [{ status: "unavailable", problem: "Список машинных кандидатов недоступен. Сохранённые редакционные тексты остаются доступны." }], nextCursor: null };
   }
 }
 
@@ -219,7 +413,8 @@ export async function approvePremiumTranslationReview(input: ReviewInput & {
     entityType: input.entityType, entityId: input.entityId, draftId: input.draftId,
     version: input.version, candidateHash: input.candidateHash, actorId: input.actorId,
     sourceHash: current.sourceHash, catalogSourceHash: current.catalogSourceHash,
-    catalogSourceFields: input.entityType === "country" ? record(input.sourceFields) : null,
+    catalogSourceFields: input.entityType === "country" || input.entityType === "writer_biography"
+      ? record(input.sourceFields) : null,
   });
   if (draft.targetRevision.id !== null && receipt.canonicalId !== draft.targetRevision.id) {
     throw new PremiumTranslationDraftError("unconfirmed");

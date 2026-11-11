@@ -67,7 +67,7 @@ describe("structured writer biography editor integration", () => {
     expect(actionsSource).toContain("!existing && Boolean(expectedUpdatedAt)");
   });
 
-  it("durably queues RU before AI and queues a second release only for new EN", () => {
+  it("durably queues accepted RU before AI and leaves machine candidates private", () => {
     const saveAudit = biographyActionSource.indexOf(
       'action: "writer_profile.biography.saved"'
     );
@@ -77,23 +77,18 @@ describe("structured writer biography editor integration", () => {
     const translation = biographyActionSource.indexOf(
       "const translation = await ensureWriterEnglishBiography({"
     );
-    const englishPublication = biographyActionSource.indexOf(
-      'reason: "writer_profile.biography.english_generated"'
-    );
-
     for (const position of [
       saveAudit,
       russianPublication,
       translation,
-      englishPublication,
     ]) {
       expect(position).toBeGreaterThanOrEqual(0);
     }
     expect(saveAudit).toBeLessThan(translation);
     expect(russianPublication).toBeLessThan(translation);
-    expect(englishPublication).toBeGreaterThan(translation);
-    expect(biographyActionSource).toContain(
-      'if (translation.state === "translated")'
+    expect(biographyActionSource.match(/requestPublicBuild\(/gu)).toHaveLength(1);
+    expect(biographyActionSource).not.toContain(
+      'reason: "writer_profile.biography.english_generated"'
     );
   });
 
@@ -107,6 +102,9 @@ describe("structured writer biography editor integration", () => {
   it("renders every automatic translation outcome", () => {
     for (const state of [
       "translated",
+      "review-pending",
+      "stale",
+      "not-ready",
       "current",
       "manual",
       "skipped",
@@ -126,7 +124,10 @@ describe("structured writer biography editor integration", () => {
     expect(autoTranslationSource).not.toContain("review: runtime.twoPassReview");
     expect(autoTranslationSource).toContain("if (!translated.reviewerModel)");
     expect(autoTranslationSource).toContain(
-      "writerBiographySourceIdentity(effectiveFields, input.writerId)"
+      "writerBiographyTranslationSource(effectiveFields, input.writerId)"
+    );
+    expect(autoTranslationSource).toContain(
+      "writerBiographySourceIdentity(fields, writerId)"
     );
     expect(autoTranslationSource).toContain(
       'englishOwnership === "tombstone"'

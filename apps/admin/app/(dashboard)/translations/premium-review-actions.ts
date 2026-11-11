@@ -5,21 +5,27 @@ import { unstable_rethrow } from "next/navigation";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
-import { editorialCountry, loadEditorialCatalog } from "@/lib/editorial-catalog";
+import { editorialCountry, editorialWriter, loadEditorialCatalog } from "@/lib/editorial-catalog";
 import { redirect } from "@/lib/navigation";
 import { approvePremiumTranslationReview } from "@/lib/premium-translation-review";
-import { discardPremiumTranslationWorkingDraft } from "@/lib/premium-translation-working-draft";
+import {
+  discardPremiumTranslationWorkingDraft, parseWriterBiographyCandidateIdentity,
+} from "@/lib/premium-translation-working-draft";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const formSchema = z.object({
-  entityType: z.enum(["literary_work", "country"]), entityId: z.string().min(1).max(120),
+  entityType: z.enum(["literary_work", "country", "writer_biography", "site_copy"]), entityId: z.string().min(1).max(481),
   draftId: z.string().uuid(), version: z.string().regex(/^[1-9]\d*$/u),
-  candidateHash: z.string().regex(/^[a-f0-9]{64}$/u), returnTo: z.enum(["library", "editorial-database"]),
+  candidateHash: z.string().regex(/^[a-f0-9]{64}$/u), returnTo: z.enum(["library", "editorial-database", "site-copy"]),
 }).strict().refine((value) => Number.isSafeInteger(Number(value.version)) &&
   (value.entityType === "literary_work"
     ? z.string().uuid().safeParse(value.entityId).success && value.returnTo === "library"
-    : value.returnTo === "editorial-database"));
+    : value.entityType === "site_copy"
+      ? z.string().uuid().safeParse(value.entityId).success && value.returnTo === "site-copy"
+      : value.returnTo === "editorial-database" && (value.entityType === "writer_biography"
+      ? parseWriterBiographyCandidateIdentity(value.entityId) !== null
+      : value.entityId.length <= 120)));
 
 function formInput(formData: FormData) {
   const parsed = formSchema.safeParse({
@@ -32,9 +38,11 @@ function formInput(formData: FormData) {
 }
 
 function target(input: NonNullable<ReturnType<typeof formInput>>, error?: string) {
-  const query = new URLSearchParams({
-    [input.entityType === "literary_work" ? "work_id" : "country_id"]: input.entityId,
-  });
+  const writer = input.entityType === "writer_biography"
+    ? parseWriterBiographyCandidateIdentity(input.entityId) : null;
+  const query = new URLSearchParams(input.entityType === "site_copy" ? {} : writer
+    ? { country_id: writer.countryId, writer_id: writer.writerId }
+    : { [input.entityType === "literary_work" ? "work_id" : "country_id"]: input.entityId });
   if (error) query.set("error", error);
   return `/${input.returnTo}?${query.toString()}${input.returnTo === "library" ? "#work-workspace" : ""}`;
 }
@@ -44,6 +52,7 @@ function refresh() {
   revalidatePath("/editorial-database");
   revalidatePath("/translations");
   revalidatePath("/history");
+  revalidatePath("/site-copy");
 }
 
 export async function approvePremiumTranslationWorkingDraftAction(formData: FormData) {
@@ -62,13 +71,21 @@ export async function approvePremiumTranslationWorkingDraftAction(formData: Form
       const country = editorialCountry(await loadEditorialCatalog({}), input.entityId);
       if (!country) throw new Error("Country source unavailable");
       sourceFields = country.fields;
+    } else if (input.entityType === "writer_biography") {
+      const identity = parseWriterBiographyCandidateIdentity(input.entityId);
+      if (!identity) throw new Error("Writer identity unavailable");
+      const writer = editorialWriter(await loadEditorialCatalog({}), identity.countryId, identity.writerId);
+      if (!writer) throw new Error("Writer source unavailable");
+      sourceFields = writer.fields;
     }
     const receipt = await approvePremiumTranslationReview({
       supabase, ...input, actorId: session.user.id, sourceFields,
     });
     const publication = await requestPublicBuild({
       supabase, actorId: session.user.id,
-      entityType: input.entityType === "literary_work" ? "literary_work_translation" : "country_profile",
+      entityType: input.entityType === "literary_work" ? "literary_work_translation"
+        : input.entityType === "writer_biography" ? "writer_profile"
+          : input.entityType === "site_copy" ? "site_copy" : "country_profile",
       entityId: receipt.canonicalId, reason: "premium_translation.human_reviewed",
       metadata: { translationEntityType: input.entityType, translationEntityId: input.entityId,
         workingDraftId: input.draftId, candidateHash: input.candidateHash,

@@ -1,0 +1,1326 @@
+{
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "checkedAt": "2026-11-11T11:48:02.830Z",
+  "normalizers": [
+    {
+      "path": "scripts/normalize-short-hyphens.mjs",
+      "baselineSha256": "2a77183d8ab46dc2115ea8b1d46fbe22c4ec8b7e4e93dc82455ec3cfdce86b15",
+      "currentSha256": "2a77183d8ab46dc2115ea8b1d46fbe22c4ec8b7e4e93dc82455ec3cfdce86b15",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/short-hyphens.mjs",
+      "baselineSha256": "df07d5fed322737c0ee5b45619a125f89e1f446fbaa514246aea0a9a7d7f7bb3",
+      "currentSha256": "df07d5fed322737c0ee5b45619a125f89e1f446fbaa514246aea0a9a7d7f7bb3",
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/lib/short-hyphens.ts",
+      "baselineSha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "currentSha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "unchanged": true
+    },
+    {
+      "path": "src/utils/shortHyphens.ts",
+      "baselineSha256": "669af768ea5d11c4830213de2e4064e04e59133658074b94cdb7b3569ece093b",
+      "currentSha256": "669af768ea5d11c4830213de2e4064e04e59133658074b94cdb7b3569ece093b",
+      "unchanged": true
+    }
+  ],
+  "normalizerRulesAndTests": [
+    {
+      "path": "apps/admin/lib/short-hyphens.test.ts",
+      "baselineSha256": "3b3c6bfec5a4fb1be04de16a85aa1e69cec02db2a75df028902d602eff97b0ee",
+      "currentSha256": "3b3c6bfec5a4fb1be04de16a85aa1e69cec02db2a75df028902d602eff97b0ee",
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/lib/short-hyphens.ts",
+      "baselineSha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "currentSha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "unchanged": true
+    },
+    {
+      "path": "reports/cms-source-punctuation-reviewed-20260914.json",
+      "baselineSha256": "d21c2e3eb94abb321f0d6506ee9f43ccc96cc3731d47c8f9ba17c8bc26d7b90d",
+      "currentSha256": "d21c2e3eb94abb321f0d6506ee9f43ccc96cc3731d47c8f9ba17c8bc26d7b90d",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/governance/cms-source-punctuation-reviewed-20260914.json",
+      "baselineSha256": "7fc8a65b9188a561029efc0aaf1838dbc826a9b0355d0389b6fa25cb9cb95bbf",
+      "currentSha256": "7fc8a65b9188a561029efc0aaf1838dbc826a9b0355d0389b6fa25cb9cb95bbf",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/governance/r10-exact-source-punctuation-20260930.json",
+      "baselineSha256": "02166194407e01130d951bc8610298bbf9f11db8a1bdeb5f2f3f9e2c9ee73405",
+      "currentSha256": "02166194407e01130d951bc8610298bbf9f11db8a1bdeb5f2f3f9e2c9ee73405",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/governance/r10-source-punctuation-followup-20260930.json",
+      "baselineSha256": "0ba3fef83e0fe7b65e08d7d5088596605369740b092fb407401d62415b759c76",
+      "currentSha256": "0ba3fef83e0fe7b65e08d7d5088596605369740b092fb407401d62415b759c76",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/cms-exact-source-punctuation.mjs",
+      "baselineSha256": "c847fcd9a18e11e915d2f89a25a83cfc1cd21dcd41833b9678345beabf867e14",
+      "currentSha256": "c847fcd9a18e11e915d2f89a25a83cfc1cd21dcd41833b9678345beabf867e14",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/cms-exact-source-punctuation.test.mjs",
+      "baselineSha256": "da4dab35d1ddb47c01e40c3d6b44b6eedc9cf1afba1ec362daf2f2e9b375fde6",
+      "currentSha256": "da4dab35d1ddb47c01e40c3d6b44b6eedc9cf1afba1ec362daf2f2e9b375fde6",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.mjs",
+      "baselineSha256": "1aa5f20142e16e679e54e0600c5459b891b4aa3153558721f6b2e5f488bed3cd",
+      "currentSha256": "1aa5f20142e16e679e54e0600c5459b891b4aa3153558721f6b2e5f488bed3cd",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.test.mjs",
+      "baselineSha256": "e4b2a1346fe40a658e43ef3fe173d70f2591899432aec8016ce8462b1cb9a2ac",
+      "currentSha256": "e4b2a1346fe40a658e43ef3fe173d70f2591899432aec8016ce8462b1cb9a2ac",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/reviewed-cms-source-punctuation.mjs",
+      "baselineSha256": "f2761cc9069dfe6b8167a4a4286ac97146da677e51ab06c065593c312de096ed",
+      "currentSha256": "f2761cc9069dfe6b8167a4a4286ac97146da677e51ab06c065593c312de096ed",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "baselineSha256": "f3377feb7a08b86645cb6fbf9fbd548cf81f77c205205d98ca8c146037927dad",
+      "currentSha256": "f3377feb7a08b86645cb6fbf9fbd548cf81f77c205205d98ca8c146037927dad",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/reviewed-r10-source-punctuation.mjs",
+      "baselineSha256": "f1ebb865b873692f44b23497c2102cc83fa412ba7f86d8965098a051ffe557d8",
+      "currentSha256": "f1ebb865b873692f44b23497c2102cc83fa412ba7f86d8965098a051ffe557d8",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/short-hyphen-exact-source.mjs",
+      "baselineSha256": "7dcef7fc2ea89bd60f8d1d97840f069b9e9fa53825132b01b62780da782edff3",
+      "currentSha256": "7dcef7fc2ea89bd60f8d1d97840f069b9e9fa53825132b01b62780da782edff3",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/short-hyphen-exact-source.test.mjs",
+      "baselineSha256": "b514528fb157654d374ee4504d7154b28984915f6cfcfb372bdbd75e0feaba78",
+      "currentSha256": "b514528fb157654d374ee4504d7154b28984915f6cfcfb372bdbd75e0feaba78",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/short-hyphens.mjs",
+      "baselineSha256": "df07d5fed322737c0ee5b45619a125f89e1f446fbaa514246aea0a9a7d7f7bb3",
+      "currentSha256": "df07d5fed322737c0ee5b45619a125f89e1f446fbaa514246aea0a9a7d7f7bb3",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/normalize-short-hyphens.mjs",
+      "baselineSha256": "2a77183d8ab46dc2115ea8b1d46fbe22c4ec8b7e4e93dc82455ec3cfdce86b15",
+      "currentSha256": "2a77183d8ab46dc2115ea8b1d46fbe22c4ec8b7e4e93dc82455ec3cfdce86b15",
+      "unchanged": true
+    },
+    {
+      "path": "src/utils/shortHyphens.test.ts",
+      "baselineSha256": "1b16591ef0abfd88d1f18253d40b36bbd12ac015e317ec1958ab6a97dfbec57a",
+      "currentSha256": "1b16591ef0abfd88d1f18253d40b36bbd12ac015e317ec1958ab6a97dfbec57a",
+      "unchanged": true
+    },
+    {
+      "path": "src/utils/shortHyphens.ts",
+      "baselineSha256": "669af768ea5d11c4830213de2e4064e04e59133658074b94cdb7b3569ece093b",
+      "currentSha256": "669af768ea5d11c4830213de2e4064e04e59133658074b94cdb7b3569ece093b",
+      "unchanged": true
+    }
+  ],
+  "normalizerImportAndCallScopes": [
+    {
+      "path": "apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphensFormData } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphensFormData } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/articles/legacy-import-action.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphensDeep } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensDeep({\n        legacy_id: article.id,\n        title: article.title.trim(),\n        excerpt: String(article.description || \"\").trim().slice(0, 700),\n        content_json: machineArticleContentJsonFromHtml(contentHtml),\n        content_html: contentHtml,\n        cover_external_url: article.imageUrl || null,\n        cover_alt:\n          article.imageAlt ||\n          (article.imageUrl ? `Иллюстрация к статье «${article.title}»` : \"\"),\n        category_id: categorySlug ? categoryIds.get(categorySlug) || null : null,\n        author_id: userId,\n        status: \"draft\",\n        slug,\n        legacy_path: path,\n        published_at: null,\n        seo_title: article.title.trim(),\n        seo_description:\n          String(article.description || \"\").trim().slice(0, 400) ||\n          `Авторский материал журнала «Проба Пера»: ${article.title}`,\n        canonical_url: `${adminEnv.publicSiteUrl}${articlePublicPath(slug, categorySlug)}`,\n        allow_indexing: false,\n        created_by: userId,\n        updated_by: userId,\n      })"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphensDeep } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensDeep({\n        legacy_id: article.id,\n        title: article.title.trim(),\n        excerpt: String(article.description || \"\").trim().slice(0, 700),\n        content_json: machineArticleContentJsonFromHtml(contentHtml),\n        content_html: contentHtml,\n        cover_external_url: article.imageUrl || null,\n        cover_alt:\n          article.imageAlt ||\n          (article.imageUrl ? `Иллюстрация к статье «${article.title}»` : \"\"),\n        category_id: categorySlug ? categoryIds.get(categorySlug) || null : null,\n        author_id: userId,\n        status: \"draft\",\n        slug,\n        legacy_path: path,\n        published_at: null,\n        seo_title: article.title.trim(),\n        seo_description:\n          String(article.description || \"\").trim().slice(0, 400) ||\n          `Авторский материал журнала «Проба Пера»: ${article.title}`,\n        canonical_url: `${adminEnv.publicSiteUrl}${articlePublicPath(slug, categorySlug)}`,\n        allow_indexing: false,\n        created_by: userId,\n        updated_by: userId,\n      })"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/articles/save-article-action.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphensFormData } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphensFormData } from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/articles/template-actions.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "supabase\n    .from(\"editor_templates\")\n    .upsert({\n      owner_id: session.user.id,\n      label: normalizeShortHyphens(parsed.data.label),\n      content_html: sanitizeEditorTemplateHtml(\n        normalizeShortHyphens(parsed.data.html)\n      ),\n      content_json: normalizeShortHyphensDeep(parsed.data.json),\n      visibility: parsed.data.visibility,\n    }, { onConflict: \"owner_id,label\" })\n    .select(\"id,label,content_html,visibility,owner_id\")\n    .single()",
+          "supabase\n    .from(\"editor_templates\")\n    .upsert({\n      owner_id: session.user.id,\n      label: normalizeShortHyphens(parsed.data.label),\n      content_html: sanitizeEditorTemplateHtml(\n        normalizeShortHyphens(parsed.data.html)\n      ),\n      content_json: normalizeShortHyphensDeep(parsed.data.json),\n      visibility: parsed.data.visibility,\n    }, { onConflict: \"owner_id,label\" })\n    .select(\"id,label,content_html,visibility,owner_id\")",
+          "normalizeShortHyphens(parsed.data.label)",
+          "normalizeShortHyphens(parsed.data.html)",
+          "normalizeShortHyphensDeep(parsed.data.json)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "supabase\n    .from(\"editor_templates\")\n    .upsert({\n      owner_id: session.user.id,\n      label: normalizeShortHyphens(parsed.data.label),\n      content_html: sanitizeEditorTemplateHtml(\n        normalizeShortHyphens(parsed.data.html)\n      ),\n      content_json: normalizeShortHyphensDeep(parsed.data.json),\n      visibility: parsed.data.visibility,\n    }, { onConflict: \"owner_id,label\" })\n    .select(\"id,label,content_html,visibility,owner_id\")\n    .single()",
+          "supabase\n    .from(\"editor_templates\")\n    .upsert({\n      owner_id: session.user.id,\n      label: normalizeShortHyphens(parsed.data.label),\n      content_html: sanitizeEditorTemplateHtml(\n        normalizeShortHyphens(parsed.data.html)\n      ),\n      content_json: normalizeShortHyphensDeep(parsed.data.json),\n      visibility: parsed.data.visibility,\n    }, { onConflict: \"owner_id,label\" })\n    .select(\"id,label,content_html,visibility,owner_id\")",
+          "normalizeShortHyphens(parsed.data.label)",
+          "normalizeShortHyphens(parsed.data.html)",
+          "normalizeShortHyphensDeep(parsed.data.json)"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/homepage/actions.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(\n    String(formData.get(key) || \"\").trim().slice(0, maxLength)\n  )",
+          "supabase\n    .from(\"homepage_blocks\")\n    .insert({\n      block_type: blockType,\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(settingsFromForm(formData)),\n      display_order: lastDisplayOrder + 10,\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .select(\"id\")\n    .single()",
+          "supabase\n    .from(\"homepage_blocks\")\n    .insert({\n      block_type: blockType,\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(settingsFromForm(formData)),\n      display_order: lastDisplayOrder + 10,\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .select(\"id\")",
+          "normalizeShortHyphensDeep(settingsFromForm(formData))",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)\n    .select(\"id\")\n    .maybeSingle()",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)\n    .select(\"id\")",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)",
+          "normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      )",
+          "normalizeShortHyphensDeep({\n      ...nextSettings,\n      coreSectionKey,\n    })"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(\n    String(formData.get(key) || \"\").trim().slice(0, maxLength)\n  )",
+          "supabase\n    .from(\"homepage_blocks\")\n    .insert({\n      block_type: blockType,\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(settingsFromForm(formData)),\n      display_order: lastDisplayOrder + 10,\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .select(\"id\")\n    .single()",
+          "supabase\n    .from(\"homepage_blocks\")\n    .insert({\n      block_type: blockType,\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(settingsFromForm(formData)),\n      display_order: lastDisplayOrder + 10,\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .select(\"id\")",
+          "normalizeShortHyphensDeep(settingsFromForm(formData))",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)\n    .select(\"id\")\n    .maybeSingle()",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)\n    .select(\"id\")",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)\n    .eq(\"updated_at\", expectedUpdatedAt)",
+          "supabase\n    .from(\"homepage_blocks\")\n    .update({\n      title: text(formData, \"title\", 240),\n      settings: normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      ),\n      background_style: backgroundStyle,\n      background_media_id: optionalUuid(formData, \"background_media_id\"),\n      updated_by: session.user.id,\n    })\n    .eq(\"id\", id)",
+          "normalizeShortHyphensDeep(\n        mergedSettingsFromForm(existingSettings, formData)\n      )",
+          "normalizeShortHyphensDeep({\n      ...nextSettings,\n      coreSectionKey,\n    })"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/pages/actions.ts",
+      "wholeFileUnchanged": false,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import {\n  normalizeShortHyphensDeep,\n  normalizeShortHyphensFormData,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)",
+          "normalizeShortHyphensFormData(formData)",
+          "normalizeShortHyphensDeep({\n      title: parsed.data.title,\n      slug: parsed.data.slug,\n      excerpt: parsed.data.excerpt,\n      content_html: contentHtml,\n      content_json: contentJson,\n      status: parsed.data.status,\n      seo_title: parsed.data.seoTitle || parsed.data.title,\n      seo_description: parsed.data.seoDescription || parsed.data.excerpt,\n      canonical_url:\n        parsed.data.canonicalUrl ||\n        `${adminEnv.publicSiteUrl}/stranitsy/${parsed.data.slug}/`,\n      allow_indexing: parsed.data.allowIndexing,\n      updated_by: session.user.id,\n    })",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)\n    .select(\"id\")\n    .maybeSingle()",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)\n    .select(\"id\")",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)",
+          "normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    })"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import {\n  normalizeShortHyphensDeep,\n  normalizeShortHyphensFormData,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensFormData(formData)",
+          "normalizeShortHyphensFormData(formData)",
+          "normalizeShortHyphensDeep({\n      title: parsed.data.title,\n      slug: parsed.data.slug,\n      excerpt: parsed.data.excerpt,\n      content_html: contentHtml,\n      content_json: contentJson,\n      status: parsed.data.status,\n      seo_title: parsed.data.seoTitle || parsed.data.title,\n      seo_description: parsed.data.seoDescription || parsed.data.excerpt,\n      canonical_url:\n        parsed.data.canonicalUrl ||\n        `${adminEnv.publicSiteUrl}/stranitsy/${parsed.data.slug}/`,\n      allow_indexing: parsed.data.allowIndexing,\n      updated_by: session.user.id,\n    })",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)\n    .select(\"id\")\n    .maybeSingle()",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)\n    .select(\"id\")",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)\n    .eq(\"updated_at\", expectedUpdatedAt.data)",
+          "supabase\n    .from(\"pages\")\n    .update(normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    }))\n    .eq(\"id\", id.data)",
+          "normalizeShortHyphensDeep({\n      title: snapshot.title,\n      slug: snapshot.slug,\n      excerpt: snapshot.excerpt,\n      content_html: restoredContent.contentHtml,\n      content_json: restoredContent.contentJson,\n      status: restoredStatus.data,\n      seo_title: snapshot.seo_title,\n      seo_description: snapshot.seo_description,\n      canonical_url: snapshot.canonical_url,\n      allow_indexing: snapshot.allow_indexing,\n      updated_by: session.user.id,\n    })"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/site-copy/actions.ts",
+      "wholeFileUnchanged": false,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(\n    String(formData.get(\"custom_source\") || \"\").trim()\n  )",
+          "normalizeShortHyphens(\n        String(formData.get(\"custom_ru\") || \"\").trim()\n      )",
+          "normalizeShortHyphens(\n        String(formData.get(\"custom_en\") || \"\").trim()\n      )",
+          "normalizeShortHyphensDeep({ ru, en })"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(String(value))",
+          "normalizeShortHyphens(\n    String(formData.get(\"custom_source\") || \"\").trim()\n  )",
+          "normalizeShortHyphens(\n        String(formData.get(\"custom_ru\") || \"\").trim()\n      )",
+          "normalizeShortHyphens(\n        String(formData.get(\"custom_en\") || \"\").trim()\n      )",
+          "normalizeShortHyphensDeep({ ru, en })"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/site-copy/inline-actions.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(String(input.key || \"\").trim())",
+          "normalizeShortHyphens(String(input.value || \"\").trim())",
+          "normalizeShortHyphensDeep(siteCopy)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import {\n  normalizeShortHyphens,\n  normalizeShortHyphensDeep,\n} from \"@/lib/short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(String(input.key || \"\").trim())",
+          "normalizeShortHyphens(String(input.value || \"\").trim())",
+          "normalizeShortHyphensDeep(siteCopy)"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/lib/site-copy-storage.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(value).trim()",
+          "normalizeShortHyphens(value)",
+          "normalizeShortHyphens(\n        candidate.trim()\n      )"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./short-hyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(value).trim()",
+          "normalizeShortHyphens(value)",
+          "normalizeShortHyphens(\n        candidate.trim()\n      )"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "scripts/audit-generated-writer-facts.mjs",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(JSON.stringify(report, null, 2))",
+          "normalizeShortHyphens(reportMarkdown(report))",
+          "normalizeShortHyphens(JSON.stringify(updatedGroups, null, 2))"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(JSON.stringify(report, null, 2))",
+          "normalizeShortHyphens(reportMarkdown(report))",
+          "normalizeShortHyphens(JSON.stringify(updatedGroups, null, 2))"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "scripts/editorial-publication-fixes.mjs",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(corrected[field])"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(corrected[field])"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "scripts/export-published-content.mjs",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphensDeep } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensDeep(structuredClone(applyEditorialPublicationFix(rawArticle)))",
+          "normalizeShortHyphensDeep(structuredClone(englishTranslationByArticleId.get(article.id)))",
+          "normalizeShortHyphensDeep(exportedContent)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphensDeep } from \"./lib/short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphensDeep(structuredClone(applyEditorialPublicationFix(rawArticle)))",
+          "normalizeShortHyphensDeep(structuredClone(englishTranslationByArticleId.get(article.id)))",
+          "normalizeShortHyphensDeep(exportedContent)"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/cms-exact-source-punctuation.mjs",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { isShortHyphenExactSource, loadShortHyphenExactSources } from \"./short-hyphen-exact-source.mjs\";",
+          "import { normalizeShortHyphens } from \"./short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(value)",
+          "normalizeShortHyphens(source.slice(cursor, start))",
+          "normalizeShortHyphens(source.slice(cursor))"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { isShortHyphenExactSource, loadShortHyphenExactSources } from \"./short-hyphen-exact-source.mjs\";",
+          "import { normalizeShortHyphens } from \"./short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(value)",
+          "normalizeShortHyphens(source.slice(cursor, start))",
+          "normalizeShortHyphens(source.slice(cursor))"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/r10-exact-source-punctuation.mjs",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(source.slice(cursor, start))",
+          "normalizeShortHyphens(source.slice(cursor))"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./short-hyphens.mjs\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(source.slice(cursor, start))",
+          "normalizeShortHyphens(source.slice(cursor))"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "src/data/cms/siteCopy.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"../../utils/shortHyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(\n    typeof candidate === \"string\" && candidate.trim()\n      ? candidate.trim()\n      : fallback\n  )"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"../../utils/shortHyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(\n    typeof candidate === \"string\" && candidate.trim()\n      ? candidate.trim()\n      : fallback\n  )"
+        ]
+      },
+      "unchanged": true
+    },
+    {
+      "path": "src/utils/sanitizeArticleHtml.ts",
+      "wholeFileUnchanged": true,
+      "comparison": "AST import and call text after CRLF/LF normalization",
+      "before": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./shortHyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(source)"
+        ]
+      },
+      "after": {
+        "imports": [
+          "import { normalizeShortHyphens } from \"./shortHyphens\";"
+        ],
+        "calls": [
+          "normalizeShortHyphens(source)"
+        ]
+      },
+      "unchanged": true
+    }
+  ],
+  "oldMigrations": [
+    {
+      "path": "supabase/migrations/20260727_community_safety.sql",
+      "baselineSha256": "afb7b5113bb13c0e79c1abe9066c7bfc4033fa20bf84b8342ef693517c04b313",
+      "currentSha256": "afb7b5113bb13c0e79c1abe9066c7bfc4033fa20bf84b8342ef693517c04b313",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "baselineSha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "currentSha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260728_reader_favorites.sql",
+      "baselineSha256": "c7ed0f31d8c12e190396de616cdfbe0cd48e0be8714ccde849dec8045533f1fc",
+      "currentSha256": "c7ed0f31d8c12e190396de616cdfbe0cd48e0be8714ccde849dec8045533f1fc",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260730_literary_archive.sql",
+      "baselineSha256": "61efd3ae702719a9f8c915a4c2716aa8bb7b4c9072f4c37a01d0a0417fb387c7",
+      "currentSha256": "61efd3ae702719a9f8c915a4c2716aa8bb7b4c9072f4c37a01d0a0417fb387c7",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260730_page_revision_history.sql",
+      "baselineSha256": "64a6d3ee5e94a3adca1e419f5f9d9be89d92f17d6703db5f1987a45e8cafc91e",
+      "currentSha256": "64a6d3ee5e94a3adca1e419f5f9d9be89d92f17d6703db5f1987a45e8cafc91e",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260730_staff_management.sql",
+      "baselineSha256": "c2203867f8f0068fdefd6b4ecd0f2f3c4bf747263414402758fac0c3fa180a40",
+      "currentSha256": "c2203867f8f0068fdefd6b4ecd0f2f3c4bf747263414402758fac0c3fa180a40",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260801_forum_reports.sql",
+      "baselineSha256": "af9e3d73945ed7ab3b291aece547fe91299edd73f3f410c0ea8158e3ef653d25",
+      "currentSha256": "af9e3d73945ed7ab3b291aece547fe91299edd73f3f410c0ea8158e3ef653d25",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260801_reader_profiles_and_forum_votes.sql",
+      "baselineSha256": "1c0143b6f25e9686c24a44646779caa6a0ff2e74f256d81a72ab1b03125480b5",
+      "currentSha256": "1c0143b6f25e9686c24a44646779caa6a0ff2e74f256d81a72ab1b03125480b5",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260802_client_errors.sql",
+      "baselineSha256": "264acbeb7aab20dc8ad06f9625f3a3fbfc7c55cd5b73c9de741bca5311ea6d16",
+      "currentSha256": "264acbeb7aab20dc8ad06f9625f3a3fbfc7c55cd5b73c9de741bca5311ea6d16",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260802_editor_templates.sql",
+      "baselineSha256": "7b86a942cafea4c519d8285369ff6625b86d4463aaeea411d0219ff269cbfdfb",
+      "currentSha256": "7b86a942cafea4c519d8285369ff6625b86d4463aaeea411d0219ff269cbfdfb",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "baselineSha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "currentSha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260803_public_article_view_counts.sql",
+      "baselineSha256": "0c65d55e3ef135f976ed5bcbb818a8539f550b6897244875f7cd1cfdd4fe6e50",
+      "currentSha256": "0c65d55e3ef135f976ed5bcbb818a8539f550b6897244875f7cd1cfdd4fe6e50",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260804_content_analytics.sql",
+      "baselineSha256": "a3d07617051f68df4ad07a26411453510220b695a18c9985ca13e5f305f935da",
+      "currentSha256": "a3d07617051f68df4ad07a26411453510220b695a18c9985ca13e5f305f935da",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "baselineSha256": "daf65baf551218d7c0d4c3e045d6f95c3393f2f3709a2a26cf077d1e3fcd921e",
+      "currentSha256": "daf65baf551218d7c0d4c3e045d6f95c3393f2f3709a2a26cf077d1e3fcd921e",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "baselineSha256": "357871b2cc57bd534acb8c91d194b16b59e46ad0d4e2f38bd1fe63df0f20ef7c",
+      "currentSha256": "357871b2cc57bd534acb8c91d194b16b59e46ad0d4e2f38bd1fe63df0f20ef7c",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "baselineSha256": "eaa188a8f0f185cafc787b7d356cca54c65d19647447fdf52dc96804f95b4b20",
+      "currentSha256": "eaa188a8f0f185cafc787b7d356cca54c65d19647447fdf52dc96804f95b4b20",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "baselineSha256": "ea800be1c968aad3a59c3b0287ad0380074641142aa0930c2e2761f9165f78b0",
+      "currentSha256": "ea800be1c968aad3a59c3b0287ad0380074641142aa0930c2e2761f9165f78b0",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "baselineSha256": "339c1e87580f4ddd3a82a1e98beb82dc2a1c2a79983c29a7e348e3e62931f53e",
+      "currentSha256": "339c1e87580f4ddd3a82a1e98beb82dc2a1c2a79983c29a7e348e3e62931f53e",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "baselineSha256": "7bdd781bfec7c3f1f55aac8b5b7e670ab0b97ae574b47e9b671ab041d2e87484",
+      "currentSha256": "7bdd781bfec7c3f1f55aac8b5b7e670ab0b97ae574b47e9b671ab041d2e87484",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "baselineSha256": "b9517ee519ae181955074346c71839029eca46b52e1f44eaa3d2a6fd816e7cc6",
+      "currentSha256": "b9517ee519ae181955074346c71839029eca46b52e1f44eaa3d2a6fd816e7cc6",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "baselineSha256": "94c2f7bb9a85e664ceea73f70679557cb862e7afc362539f35c0aa5c99850e8a",
+      "currentSha256": "94c2f7bb9a85e664ceea73f70679557cb862e7afc362539f35c0aa5c99850e8a",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "baselineSha256": "7c2a143fe3f6d011c5d196d79c6a611c3b3d18b4ce823df277b6b49677c543c0",
+      "currentSha256": "7c2a143fe3f6d011c5d196d79c6a611c3b3d18b4ce823df277b6b49677c543c0",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "baselineSha256": "982b7cf6f38b1016ee7fc9da96223f1c6400b292a58dcec262fbc7015dd88917",
+      "currentSha256": "982b7cf6f38b1016ee7fc9da96223f1c6400b292a58dcec262fbc7015dd88917",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "baselineSha256": "9c07f74693406071b99e1bc5f0e80c323a85cc6ce72b1bdf3434643b7b16ba90",
+      "currentSha256": "9c07f74693406071b99e1bc5f0e80c323a85cc6ce72b1bdf3434643b7b16ba90",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "baselineSha256": "e43a6f937e86b7a6fe00093b1b97ef29c878d78d39ce275229bbfba139bc92f5",
+      "currentSha256": "e43a6f937e86b7a6fe00093b1b97ef29c878d78d39ce275229bbfba139bc92f5",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "baselineSha256": "a8c6f6213fcf6de10ae87e8b74f46724f62e536cdcf37e0836ed7de107eed257",
+      "currentSha256": "a8c6f6213fcf6de10ae87e8b74f46724f62e536cdcf37e0836ed7de107eed257",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "baselineSha256": "5a7c422b2d04d8c2bac8981584bcc862e03d30ef561cfbf113ddc62567b8ac8d",
+      "currentSha256": "5a7c422b2d04d8c2bac8981584bcc862e03d30ef561cfbf113ddc62567b8ac8d",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "baselineSha256": "b139d5454251553ce2805d6f55f81908dd11075c1377cae247b83e9202ca4892",
+      "currentSha256": "b139d5454251553ce2805d6f55f81908dd11075c1377cae247b83e9202ca4892",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "baselineSha256": "26d2cab4315241426c0beedf8bf3d281449e54094767378072fff83db7f233d1",
+      "currentSha256": "26d2cab4315241426c0beedf8bf3d281449e54094767378072fff83db7f233d1",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "baselineSha256": "f7b80e69501450f3c67be54dd047a62c3a1794dcb256068f2b780b3dce41a895",
+      "currentSha256": "f7b80e69501450f3c67be54dd047a62c3a1794dcb256068f2b780b3dce41a895",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "baselineSha256": "f0deaa81d23cf103b4614a1a016c6ce562dffd295216b3179e51c550747d2a3d",
+      "currentSha256": "f0deaa81d23cf103b4614a1a016c6ce562dffd295216b3179e51c550747d2a3d",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "baselineSha256": "761f6767c56334fb053e2ad7e0aa85d8dd5d0511dc0d006161507dc2dcf49ba0",
+      "currentSha256": "761f6767c56334fb053e2ad7e0aa85d8dd5d0511dc0d006161507dc2dcf49ba0",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "baselineSha256": "01f1f81f45e196298c083437527ee87c2f627541058b2eda794560e087674182",
+      "currentSha256": "01f1f81f45e196298c083437527ee87c2f627541058b2eda794560e087674182",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "baselineSha256": "fa772aef4e0f9db1f2122b7fb9ea4592bebb73fa625ddbe5b326e5e3ff40be71",
+      "currentSha256": "fa772aef4e0f9db1f2122b7fb9ea4592bebb73fa625ddbe5b326e5e3ff40be71",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "baselineSha256": "8af7942b3a2aaa2040c09bea252c270e64b590518fe41e48071c7ba8d6b75615",
+      "currentSha256": "8af7942b3a2aaa2040c09bea252c270e64b590518fe41e48071c7ba8d6b75615",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "baselineSha256": "b991a3842e66c3002112f4160aa9f37e07c7f70e5266215bd91ea0a45489e8d1",
+      "currentSha256": "b991a3842e66c3002112f4160aa9f37e07c7f70e5266215bd91ea0a45489e8d1",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "baselineSha256": "eaf187bc760e49dd31977e28d673597245e1adc17aad78ef2c1266574b4fd7aa",
+      "currentSha256": "eaf187bc760e49dd31977e28d673597245e1adc17aad78ef2c1266574b4fd7aa",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "baselineSha256": "cf11fe672cc80bece79a9c7bd6ebe2300bc8d7626ccee8f350be37436e80b8f8",
+      "currentSha256": "cf11fe672cc80bece79a9c7bd6ebe2300bc8d7626ccee8f350be37436e80b8f8",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "baselineSha256": "c823e673bbef15f196b6110352c5b26aa85eb443a208d1299cfbdc61a4e2c624",
+      "currentSha256": "c823e673bbef15f196b6110352c5b26aa85eb443a208d1299cfbdc61a4e2c624",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "baselineSha256": "47ba449f1980a7c2e87e28355bf9bf8c2cd9a772b10886dbc5d1e3339445c9f2",
+      "currentSha256": "47ba449f1980a7c2e87e28355bf9bf8c2cd9a772b10886dbc5d1e3339445c9f2",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "baselineSha256": "5ad002fd8ab27e0f6ff62cd73081d3eec8f0b387915d54bef42f30ec3209b252",
+      "currentSha256": "5ad002fd8ab27e0f6ff62cd73081d3eec8f0b387915d54bef42f30ec3209b252",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "baselineSha256": "502b5016dc065f0b3cb95b93993778578dfd4c37845cfbc3963b7d1449213261",
+      "currentSha256": "502b5016dc065f0b3cb95b93993778578dfd4c37845cfbc3963b7d1449213261",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "baselineSha256": "d83fec40a992068146741e77e7337e7cdf1c50f8fb290c424d41a9240d5323d8",
+      "currentSha256": "d83fec40a992068146741e77e7337e7cdf1c50f8fb290c424d41a9240d5323d8",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "baselineSha256": "1c72ffc82b7455a1af95ac868c8c6c30bcf820a44d7b02ce47a4baff1bd644df",
+      "currentSha256": "1c72ffc82b7455a1af95ac868c8c6c30bcf820a44d7b02ce47a4baff1bd644df",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "baselineSha256": "68240311e96435803f62aa63cbc3061dae4a20eb15ac00fcd9eee4f835f8f805",
+      "currentSha256": "68240311e96435803f62aa63cbc3061dae4a20eb15ac00fcd9eee4f835f8f805",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "baselineSha256": "8b9accd2e547a8e718e695839dd86564faa8327533e3445272d3bfc58658221f",
+      "currentSha256": "8b9accd2e547a8e718e695839dd86564faa8327533e3445272d3bfc58658221f",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "baselineSha256": "8db0297f22629b3db270eeab24622981ac75f3dd9dd659218b8bab7ee695b9ab",
+      "currentSha256": "8db0297f22629b3db270eeab24622981ac75f3dd9dd659218b8bab7ee695b9ab",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "baselineSha256": "508ab243ebf6f38df8af11f3f30846103b277d59d4ee715149206716e365d7bd",
+      "currentSha256": "508ab243ebf6f38df8af11f3f30846103b277d59d4ee715149206716e365d7bd",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_layout_v4.sql",
+      "baselineSha256": "88430424d6754471862896b47cc748658817a50025c7473b6d1c155725b8e2e8",
+      "currentSha256": "88430424d6754471862896b47cc748658817a50025c7473b6d1c155725b8e2e8",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "baselineSha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "currentSha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "baselineSha256": "9715d316777b5b57de783be46166afe3072626e141761ec4570d86642c79530a",
+      "currentSha256": "9715d316777b5b57de783be46166afe3072626e141761ec4570d86642c79530a",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "baselineSha256": "6f0f8c82a62df9f8236bf6fa9ae0e4e3e95a81f328aeb7d0514400eaf9a43586",
+      "currentSha256": "6f0f8c82a62df9f8236bf6fa9ae0e4e3e95a81f328aeb7d0514400eaf9a43586",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
+      "baselineSha256": "8a9631dd7b663cced2f3cf77b1fa5a7e7967bd479049427aa3cb3320e91960cf",
+      "currentSha256": "8a9631dd7b663cced2f3cf77b1fa5a7e7967bd479049427aa3cb3320e91960cf",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_translation_draft_storage.sql",
+      "baselineSha256": "1d9395cfdc9c982bffe83edacca91ef8bfa15c03725062ac74765e153e7a3616",
+      "currentSha256": "1d9395cfdc9c982bffe83edacca91ef8bfa15c03725062ac74765e153e7a3616",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20260926_literary_news_runtime_cas.sql",
+      "baselineSha256": "891065a29443dc02281e6fb0bc3d8461a52893272a396a81f45c358dc3ed70cf",
+      "currentSha256": "891065a29443dc02281e6fb0bc3d8461a52893272a396a81f45c358dc3ed70cf",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261007235851_admin_article_translation_scan_completion.sql",
+      "baselineSha256": "64eff910be8ad74822265d1024de1bc59f1b545ce1c1af7d732bcfc553d94c86",
+      "currentSha256": "64eff910be8ad74822265d1024de1bc59f1b545ce1c1af7d732bcfc553d94c86",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261007_admin_editor_operations.sql",
+      "baselineSha256": "bd8390143ca5b15606bffd2b893822ca54700eddb1db18d9522db2c0af36e58d",
+      "currentSha256": "bd8390143ca5b15606bffd2b893822ca54700eddb1db18d9522db2c0af36e58d",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008005802_admin_article_translation_item_retry.sql",
+      "baselineSha256": "becb7c631136b6401f02b216fb1717ade9dcf6ad0457fb3380b648f75a86984f",
+      "currentSha256": "becb7c631136b6401f02b216fb1717ade9dcf6ad0457fb3380b648f75a86984f",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008021735_admin_article_translation_item_retry_journal.sql",
+      "baselineSha256": "78cbcf6d195b7a31fdfb064d62178e8144070822e8dca1f1c50f153965aa1c34",
+      "currentSha256": "78cbcf6d195b7a31fdfb064d62178e8144070822e8dca1f1c50f153965aa1c34",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008031428_admin_article_translation_item_retry_candidate.sql",
+      "baselineSha256": "e7b26595dbbe463bea33ad98160bcef330f63cb4ba1a2d5225a71ca159e0f0e0",
+      "currentSha256": "e7b26595dbbe463bea33ad98160bcef330f63cb4ba1a2d5225a71ca159e0f0e0",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008043647_admin_article_machine_english_draft.sql",
+      "baselineSha256": "d361dba72e038e93e92934e5e1a21c134426903aa8b16bd987cbe1286fe1f139",
+      "currentSha256": "d361dba72e038e93e92934e5e1a21c134426903aa8b16bd987cbe1286fe1f139",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008082627_admin_article_translation_sync_admission.sql",
+      "baselineSha256": "ed56daa50d489f50596f4c98a14257e84260c449474e1936be588d99a8354b65",
+      "currentSha256": "ed56daa50d489f50596f4c98a14257e84260c449474e1936be588d99a8354b65",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008131138_admin_translation_provider_self_test_binding.sql",
+      "baselineSha256": "422400e5fd9ad74a3ce38f248d6d36efc5327972c2d20c925c6481b6f8c1f1ea",
+      "currentSha256": "422400e5fd9ad74a3ce38f248d6d36efc5327972c2d20c925c6481b6f8c1f1ea",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261008160000_premium_translation_working_drafts.sql",
+      "baselineSha256": "d6030317a8668ac0a57b663e5ea6f24fd0cc94decc12c6b7a1c834f38329c417",
+      "currentSha256": "d6030317a8668ac0a57b663e5ea6f24fd0cc94decc12c6b7a1c834f38329c417",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261009082816_writer_biography_private_translation_review.sql",
+      "baselineSha256": "d9c9a31101bbf2193ff69fdab97591b7c6cb80098a754bfbba81095b8f8300be",
+      "currentSha256": "d9c9a31101bbf2193ff69fdab97591b7c6cb80098a754bfbba81095b8f8300be",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029181630_site_copy_private_translation_review.sql",
+      "baselineSha256": "85bea15066f64998b0b2effe07b6926af30e414802e384641fb47b5ee958e52e",
+      "currentSha256": "85bea15066f64998b0b2effe07b6926af30e414802e384641fb47b5ee958e52e",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029194216_profile_translation_operation_budget.sql",
+      "baselineSha256": "0223dcc55e874d2b00deac81d4a7ac300dca396877f4f404f8247307d08cf732",
+      "currentSha256": "0223dcc55e874d2b00deac81d4a7ac300dca396877f4f404f8247307d08cf732",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029202308_writer_translation_operation_admission.sql",
+      "baselineSha256": "f09a8d9b727e9d3a3948e027ed503bfecdd86535f6d4021b78c1e205a338fca5",
+      "currentSha256": "f09a8d9b727e9d3a3948e027ed503bfecdd86535f6d4021b78c1e205a338fca5",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029220832_catalog_translation_operation_admission.sql",
+      "baselineSha256": "3f485b84d445d6bd3dad9d0733c8d3975d77ad85a6bcc785e7ad1af8dc033056",
+      "currentSha256": "3f485b84d445d6bd3dad9d0733c8d3975d77ad85a6bcc785e7ad1af8dc033056",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029230111_catalog_translation_candidate_freshness.sql",
+      "baselineSha256": "716027ea34885bc5a809e73506bb78a9f928890d592bbb2f613277acd30f20dd",
+      "currentSha256": "716027ea34885bc5a809e73506bb78a9f928890d592bbb2f613277acd30f20dd",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261029235455_library_translation_stable_scan.sql",
+      "baselineSha256": "1966f749db15362b245d32b0e5b355b3f37dc4c154e2381c578b5ba11aba721b",
+      "currentSha256": "1966f749db15362b245d32b0e5b355b3f37dc4c154e2381c578b5ba11aba721b",
+      "unchanged": true
+    },
+    {
+      "path": "supabase/migrations/20261030072209_profile_translation_stable_scan.sql",
+      "baselineSha256": "5ea2ad07b06b0f8fba6aebf0d9adf6f582df76ae729ca67d934644a9621d53e7",
+      "currentSha256": "5ea2ad07b06b0f8fba6aebf0d9adf6f582df76ae729ca67d934644a9621d53e7",
+      "unchanged": true
+    }
+  ],
+  "independentTelegram": [
+    {
+      "path": "scripts/lib/literary-news-media.test.mjs",
+      "baselineSha256": "4108bd453d64e24cad1d16dcaf016240dbe3deb03cd8105c21d4e1d6c31b50b0",
+      "currentSha256": "4108bd453d64e24cad1d16dcaf016240dbe3deb03cd8105c21d4e1d6c31b50b0",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "baselineSha256": "b70199f0464a1e550a12e92f8f18aac6d11f5a3dacdcede14db88e372bdac5ce",
+      "currentSha256": "b70199f0464a1e550a12e92f8f18aac6d11f5a3dacdcede14db88e372bdac5ce",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/literary-news-social.test.mjs",
+      "baselineSha256": "9f608a46a95dd2c4b6f4c290682caa2b755d6d9abffb6832e41aa77a1a1202e0",
+      "currentSha256": "9f608a46a95dd2c4b6f4c290682caa2b755d6d9abffb6832e41aa77a1a1202e0",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/literary-news-telegram-footer.test.mjs",
+      "baselineSha256": null,
+      "currentSha256": null,
+      "unchanged": true
+    },
+    {
+      "path": "scripts/lib/literary-news-text-fallback.test.mjs",
+      "baselineSha256": "2d2aac10cfed70d4885568da1680831aec9a46323c4ba5161c6a038abd451cd9",
+      "currentSha256": "2d2aac10cfed70d4885568da1680831aec9a46323c4ba5161c6a038abd451cd9",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/workers/literary-news-delivery-worker.test.mjs",
+      "baselineSha256": "3841223701dca20e0841f0cb548c9dbeb557c8dd82abe87131e0ae5b2d22183e",
+      "currentSha256": "3841223701dca20e0841f0cb548c9dbeb557c8dd82abe87131e0ae5b2d22183e",
+      "unchanged": true
+    }
+  ],
+  "telegramPatch": [
+    {
+      "path": "docs/admin-r3-evidence/2026-10-09-handoff/independent-telegram.patch",
+      "baselineSha256": "b2a3f221df05f373d34f7986330c664a1462462fa8eac4c0eb66c9cf39e075c1",
+      "currentSha256": "b2a3f221df05f373d34f7986330c664a1462462fa8eac4c0eb66c9cf39e075c1",
+      "unchanged": true
+    }
+  ],
+  "packages": [
+    {
+      "path": "package.json",
+      "baselineSha256": "6d1345cc01d2cd1ece9bb2e9a41cf88dd512e7c6b88274bc570a8990c0000cdf",
+      "currentSha256": "6d1345cc01d2cd1ece9bb2e9a41cf88dd512e7c6b88274bc570a8990c0000cdf",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "baselineSha256": "0034ce6010e103617e9fec2cf8501843d1707214ff38b5b269e2e485fbba3d11",
+      "currentSha256": "0034ce6010e103617e9fec2cf8501843d1707214ff38b5b269e2e485fbba3d11",
+      "unchanged": true
+    },
+    {
+      "path": "apps/admin/package.json",
+      "baselineSha256": "e1f344642385c998f75ab537c0ff65216366b8e5c36f7ba448eacf4166d4e666",
+      "currentSha256": "e1f344642385c998f75ab537c0ff65216366b8e5c36f7ba448eacf4166d4e666",
+      "unchanged": true
+    }
+  ],
+  "allOriginalNonDocsChanges": [
+    {
+      "path": ".gitattributes",
+      "baselineSha256": "8bcddea4a79e04237362b937ecab293a16133c463934b1407304096487b2dbdb",
+      "currentSha256": "18bc99583c0f8caf3d5ad51ffade8eca4787fd78d3d0eb36cd3e765d6c3dcc80",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/pages/actions.ts",
+      "baselineSha256": "3e1210a514639a1903e1eb9787dc2e51dd5d8ddea54f3db5d7bdcdcb4e088593",
+      "currentSha256": "59c491bf061e27b988699ee45dc996c5cc945880a555b96a89e91b500c1f47b0",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/pages/page.tsx",
+      "baselineSha256": "c9468f36607ee3a265ad7d765c0443a7aae617ddb1da992c181e945950f66344",
+      "currentSha256": "9ed4bf096b9166268060c8d794af0ced312dff9172a2fe4a7aa24e1731fb6b42",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/publication/actions.ts",
+      "baselineSha256": "ee0575b74ddf73321a005839b1f94913ed16e25d3c1d35c594b8a8b96b51c508",
+      "currentSha256": "d014b1151164fcbcda742da1152809bc7fbc2f7417d1c8bcc7d9a23891a61581",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/publication/page.tsx",
+      "baselineSha256": "695532dbfb041e5274c0c89112f3f2424295400f3738ee9014d06ae83c7633a7",
+      "currentSha256": "a106a3599cb8678c138f3393c2aefcd2594adb8e9a601e83b8f3f780afbcc9f6",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/publication/publication-dashboard.source.test.ts",
+      "baselineSha256": "e8d658fec4783e19c5e5bb4525fa9c262e340d5befb1097c5d595461e80eae87",
+      "currentSha256": "368af1ea936d4739b563f5dbb14d117cabe20d3fb23025cd75b3105420012c67",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/publication/publication-load-errors.integration.test.ts",
+      "baselineSha256": "82aac82524a09932f59b99f2483467e1f70820adfec2122120f603abc4b8868e",
+      "currentSha256": "d15020a08562cc0c9305c9659da61ab4fc19718123d923004d1950561c3265cc",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/site-copy/actions.ts",
+      "baselineSha256": "c177764f6321fd45f88f3d1f50815a17cb053bcbe25bb9d73e9ed5dab23b7270",
+      "currentSha256": "f6fe383517050caf5fd7a91952e85392ad5a2129cc28f8e9277b0506abe88266",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/site-copy/page.tsx",
+      "baselineSha256": "d2827480a832419e3490d4026e3ef9c45f6b4a2029ffe16231da6417af473bf9",
+      "currentSha256": "2d0e2c1a3ec7051ca3850e7b01e99756c21d55fe2c810aad2b79ef216194041f",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/site-copy/site-copy-load-errors.integration.test.ts",
+      "baselineSha256": "5bc8f5c2c7c1fb71e1e9d5229c95b0da8c05db1029e342b1c4db711671c0937d",
+      "currentSha256": "615dd6f9b58ad3e5421f19c9dc30e5ddb833b4b88d87b2e3bee77fab0b85a216",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/actions.ts",
+      "baselineSha256": "45057c9adbc9894461b02053ae6fca8f550a10a47cf200619aa4978215e1cd08",
+      "currentSha256": "9d002b19370020e6ca232d8ed68e8d0d10fff5c335425f6b2b4dcaac1e2d5743",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/article-item-retry-admission.integration.test.ts",
+      "baselineSha256": "2b95eeaffa6304379f887f8ff75927d5ec89c5103e912436c127319dcba0b263",
+      "currentSha256": "7ee6ba3c07f08aac51e22280a908e392466464f317e9e1585545df6a07b7e7bf",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/article-item-retry.integration.test.ts",
+      "baselineSha256": "5f00774d6962dde5a88b356e2239061f6baed52d00a814e3b7a5c0402aab98b5",
+      "currentSha256": "adc05b92d4814447fc1beb5a79804c97354760346926d80cbb5e81b8ae9243cc",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/article-machine-draft-callers.integration.test.ts",
+      "baselineSha256": "255f1a809d95ef5ed3647af28d23c135a10c1587946501a8a05ecb41e6e36625",
+      "currentSha256": "52b18b61cd5c1ba5a0fde8e1e870c6eb2701297e37675c77a64b5dd8e42754e0",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/article-scan.integration.test.ts",
+      "baselineSha256": "7998037cae95536c199565b247975765b7ff6eeb3d375d245dd5d8cc43027eff",
+      "currentSha256": "d88a74a71d1cba179f2ae84f37d703b6446ab300740f82c4fb7ee4a92856d818",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/article-terminal.integration.test.ts",
+      "baselineSha256": "be662eea8d8aa08d48b94c1e34de14e05a62713cdf245b01720b2110decb7304",
+      "currentSha256": "d6dad39819b4793c123986586e9924416e32f493d778495dd8770910fe9300e3",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/backfill-cursor.source.test.ts",
+      "baselineSha256": "b47e0d8d1add8be820316b578b60a26d0d1402285af21f72ea71163cddb9ed62",
+      "currentSha256": "6c989542d5813a9aa721e6660324e8bf8e5f385bd6f437ae613d4e29c412e1aa",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/library-scan-ui.integration.test.ts",
+      "baselineSha256": "4ac8e0b21230a150619593baa1a1f34553ff2e7f48f7f44e3cbb89923637411e",
+      "currentSha256": "6c14e7cf8caeb7b2885489b2636537533f3b36356adb8d1f343b11c748aacd1c",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/page.tsx",
+      "baselineSha256": "7e6ddcfce4c808bf22c0ea34a187acd54b814afa816bc2f66a03cddee3974d1f",
+      "currentSha256": "5168711927467d98f6ae0d0f90a4e65a78094abb3d7fd3493f413f084edc9c01",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/profile-scan-ui.integration.test.ts",
+      "baselineSha256": "ac3de90e008cf8b5ed7c94cad8c3aaea77e349e1cf0896cba07617c0536678dd",
+      "currentSha256": "e543e259d9424fb6394f76ac7c39846c76b1ab06dea9c756482082924962ede8",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "baselineSha256": "c958b3c2265ea331d075bb36313ceb930eb62ee0fd992d3a91078e2f4885bc60",
+      "currentSha256": "0ef0f48d0f604b4788eaa25e3d3271fa79b9da4bd8f895c23fcd10a08a7a4d9f",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/translation-operations.source.test.ts",
+      "baselineSha256": "bb972a75e009a02909f1858fda1a131252e3e1283c3e0ce72c63abe67d4660cd",
+      "currentSha256": "e381b2e5d034036ae7c437c247f01911f13ab4a502c05009ca9879b066cd1f12",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/(dashboard)/translations/translations-load-errors.integration.test.ts",
+      "baselineSha256": "d8bbf43613ad96e0a99c65a44aaa2c8e778f41f20446ef8d22b86e178cc10076",
+      "currentSha256": "836c37efe1abd5c8da63bf0a54848cef906d0e48117e3f982f9d17f455d571de",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/app/api/media/assets/route.ts",
+      "baselineSha256": "803970af2e22eb31e0c8c13973044a3c3156038b5d96d7a1756ac16fdb0bcb26",
+      "currentSha256": "ffc43d1191dcfc5a7fc1b90d49037a9ac6b1c140e594790596cfd11a06bfdb7f",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/components/EditorMediaDialog.tsx",
+      "baselineSha256": "d45c1a55f86a69c62d4f6f1c2015464d4fb2b7c20e416e6b332b845b68356adc",
+      "currentSha256": "b4ed47ae769eb7abc29e285da1acce8ea4d115380d5019cd861ee98b67fefb74",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/components/PageEditor.tsx",
+      "baselineSha256": "11acd4f3f0228f122a33677716b573a36b2fd4d0fa0b14d869a36274ef13c5a9",
+      "currentSha256": "ff28fcca7d6890adfbb6861262e2b340c3a1325363372ca26f9fa81165619f6c",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/components/editor/RecoveryController.tsx",
+      "baselineSha256": "1170602134fd9abedc80b42b64537ea21423442523c049d94bcbe889353cd088",
+      "currentSha256": "ad43ea30c5be09a8d24fa7a526c941ae9d862a1b3a9a49d0a8c97f428b88f3be",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/article-item-retry-journal.integration.test.ts",
+      "baselineSha256": "a154f7b560717912ca9b86098f8cd65a27fcb5e0c418c463d2d7a83c5350ee63",
+      "currentSha256": "c7b91397c0367a81d181f15bc7a6c6ab216a8f06979c3ac2d7562500e27ae8e3",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/auto-translate-site-copy-private.ts",
+      "baselineSha256": "2aae7290aa6ba61d54b14819db4b39ef02cc62b331459b2b607b5394545c14fb",
+      "currentSha256": "d5bb87729325a646cbc070f4c62649ab1089e6d1015f2a3178f02f1983e72676",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/auto-translate-site-copy.ts",
+      "baselineSha256": "1bd203bb52cff2fdc2a3149019e5fb5ddd11bba645c961935f23986b3f705276",
+      "currentSha256": "0e2d63c5e77fe3bac1544a0432fb7875347d292c8c5f3c6dc96aef43df66bf45",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/catalog-admission.integration.test.ts",
+      "baselineSha256": "3f2fb5b8ab71aac1af140855819cafb5134d67c9e149c0d645616852f301eafe",
+      "currentSha256": "2aa52568b563a56600bcd783dece9b1aefaaabfd53710efa6ee2b84212681fec",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/catalog-translation-operation.ts",
+      "baselineSha256": "7f7a6a614edfe1088bf73c71330345cf0fa6cc1e96cdddff41269b522bb5715c",
+      "currentSha256": "fa68718da89d4d2e4a4e47bed6c6586313a360e631ea1d0a53516208f920ddc0",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/country-profile-manual-english.integration.test.ts",
+      "baselineSha256": "a65a446b7fe5a87908bb4d80b385df2900557e3d6366232258144f05e5c11b86",
+      "currentSha256": "8bede855d775ec502d87203b436af7bc2e5c91a632f9a6caf86c09aeee33e8ac",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/fixtures/catalog-admission-cases.cjs",
+      "baselineSha256": "66c5fa0ccb68f29ec6658c8a8d5a8db81e5acf6cc1fe565d3f0d995fc4561371",
+      "currentSha256": "d97e5ea9dcc25451270701e2d2b2e9477f5f04156bc2217e3a92afc2a09cc5cd",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/fixtures/profile-library-budget-controls.cjs",
+      "baselineSha256": "f56c4ebd2f3cd1f506142cc6cbef94b8516e46c40d8263c5409ce25d45da3bc9",
+      "currentSha256": "3cfc29f8d62aff5e46e2c93f4896d1988605ab1910430d70d3bf028fc0ef4fd3",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/fixtures/site-copy-machine-review.cjs",
+      "baselineSha256": "c25d3684c7ddfea071ae659cc0d274e7a9ff2f1c02df46e7f582029874b117cd",
+      "currentSha256": "6c3d82188fc1beb1ce7bccf6ba2182c53ea670a101f178d0fb2a7c2d13dfbd0a",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/fixtures/site-copy-private-recovery-page.cjs",
+      "baselineSha256": "ba01a34d669c68fb483588e19080e1d298cb53fddd16426ce3950e92865ddaee",
+      "currentSha256": "1092269b50b29403a8d76154685a0a90384787b4e50d5185e150320ec92c22df",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/premium-translation-review.ts",
+      "baselineSha256": "15d75bf6202526ecf1278a2b1fffd3b848022094bd9d711a049f4186b8b90083",
+      "currentSha256": "bccc3641e2a2f50326a318746a7c9f98fa346aa9d1064ff255d4bdec2e1c0a2f",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/site-copy-translation-contract.ts",
+      "baselineSha256": "efa938eea74800e4539053230b94b7f2e1221ee0f07eec64b368471259952749",
+      "currentSha256": "99b291ddf41763052017896354245b90de0956c6e905d4f9dd3e01f3e0c398b3",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/translation-provider-self-test-binding.integration.test.ts",
+      "baselineSha256": "91dd8dae265774114540d8ae71a3f2a360eec929ee6ef49fd4f24ae75089a4e1",
+      "currentSha256": "f3fd5a975b75efb4bed6d3733885754769617d6bcc8c60266a5859a79ce9f765",
+      "unchanged": false
+    },
+    {
+      "path": "apps/admin/lib/writer-translation-operation.ts",
+      "baselineSha256": "7b5432b1aacb145358ac81526bf1be04e1f015cd58ba227f0a969b55b1f63483",
+      "currentSha256": "459bb4a453b97c0a7475bbb35cf237de9e5475b3d37325a1f85c46b0d243be56",
+      "unchanged": false
+    }
+  ],
+  "normalizerWriteFlagUsed": false,
+  "pass": true
+}

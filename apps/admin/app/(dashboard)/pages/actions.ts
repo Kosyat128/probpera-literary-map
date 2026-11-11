@@ -41,6 +41,8 @@ import {
   normalizeShortHyphensFormData,
 } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
+import { PAGE_PLAIN_CONTENT_MAX_LENGTH, plainTextToPageContent } from "@/lib/plain-text-page-content";
+import { pageCreateContentRejection, type PageCreateResult } from "@/lib/page-create-result";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { operatorDataError } from "@/lib/operator-data-error";
 import { isReadRecord } from "@/lib/admin-read-result";
@@ -198,7 +200,7 @@ async function auditPage(
   });
 }
 
-export async function createPageAction(formData: FormData) {
+export async function createPageAction(formData: FormData): Promise<PageCreateResult> {
   normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -214,12 +216,13 @@ export async function createPageAction(formData: FormData) {
   const slug =
     createSlug(String(formData.get("slug") || title)) ||
     `stranitsa-${Date.now()}`;
-  const content = sanitizeHtml(
-    String(formData.get("content") || "")
-      .split(/\n{2,}/u)
-      .map((paragraph) => `<p>${paragraph}</p>`)
-      .join(""),
-    allowedPageHtml
+  const initialContent = plainTextToPageContent(String(formData.get("content") || ""));
+  if (!initialContent) return pageCreateContentRejection(
+    "Начальный текст слишком длинный или содержит неподдерживаемый символ. Сократите текст или удалите недопустимый символ."
+  );
+  const content = sanitizeHtml(initialContent.contentHtml, allowedPageHtml);
+  if (content.length > PAGE_PLAIN_CONTENT_MAX_LENGTH) return pageCreateContentRejection(
+    "Начальный текст слишком длинный. Сократите его перед созданием страницы."
   );
   const parsed = pageSchema
     .pick({ title: true, excerpt: true, slug: true })
@@ -240,7 +243,7 @@ export async function createPageAction(formData: FormData) {
       slug: parsed.data.slug,
       excerpt: parsed.data.excerpt,
       content_html: content,
-      content_json: { type: "doc", content: [] },
+      content_json: initialContent.contentJson,
       status: "draft",
       seo_title: parsed.data.title,
       seo_description: parsed.data.excerpt,

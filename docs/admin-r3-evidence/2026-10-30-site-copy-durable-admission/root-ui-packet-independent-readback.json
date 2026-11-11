@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-30T10:39:27.798106+00:00",
+  "archive": "C:\\Users\\Костя\\Documents\\Codex\\2026-10-09\\v\\work\\site-copy-engine-sol\\site-copy-ui-evidence.zip",
+  "sha256": "e63c52edb96360435dfa2eb3509bebf96921c1c2ccc54926123ac5a564e14be1",
+  "payloadsVerified": 142,
+  "currentSourceBindingsVerified": 79,
+  "rawReports": [
+    {
+      "path": "runs/ui231/raw.json",
+      "total": 231,
+      "passed": 231
+    },
+    {
+      "path": "runs/old-loads158/raw.json",
+      "total": 158,
+      "passed": 158
+    }
+  ],
+  "distinctPassedCases": 389,
+  "allPassedZeroPendingTodo": true,
+  "classification": "INDEPENDENT_UI_PACKET_READBACK_AND_CURRENT_PHYSICAL_BINDING_CHECK_NOT_NATIVE_OR_BROWSER_E2E"
+}

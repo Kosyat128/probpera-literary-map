@@ -122,17 +122,28 @@ function fixture(options: {
     if (!key) throw new Error(`Unexpected RPC ${name}`);
     return queryFor(key);
   });
+  // This additive journal observation has its own spy. The original required
+  // dependency counters and RPC expectations keep their original scope.
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
+  const readRpc = (name: string, args: unknown) => name === "reconcile_site_copy_translation_operation"
+    ? operationMetadataRead(name, args) : rpc(name);
   const actionNames = ["translatePremiumArticleBatchAction", "translatePremiumLibraryBatchAction", "translatePremiumWriterBatchAction", "translatePremiumCountryBatchAction", "translatePremiumSiteCopyBatchAction", "runPremiumTranslationSelfTestAction", "resumeTranslationJobAction"];
   const actions = Object.fromEntries(actionNames.map((name) => [name, vi.fn()]));
   const providerRun = vi.fn();
   const runtimeEnv = { premiumTranslationProvider: "cloudflare", cloudflareTranslationModel: model,
-    cloudflareTranslationReviewModel: "fixture-reviewer", openAiPremiumTranslationReview: true };
+    cloudflareTranslationReviewModel: "fixture-reviewer", openAiPremiumTranslationReview: true, openAiAutoTranslateSiteCopy: true };
   const mocks = {
     "@/components/TranslationSubmitButton": {
       __esModule: true,
       default: ({ children, disabled }: { children?: ReactNode; disabled?: boolean }) => createElement("button", { type: "submit", disabled }, children),
     },
     "@/lib/env": { adminEnv: runtimeEnv }, "./env": { adminEnv: runtimeEnv },
+    "@/lib/auth": { getStaffSession: async () => ({ configured: true, user: { id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa" }, role: "owner",
+      mfa: { required: false, checkError: null }, authError: null, membershipError: null }) },
     "@/lib/editorial-catalog": { loadEditorialCatalog: async () => {
       if (options.catalogError) throw options.catalogError;
       return Object.hasOwn(options, "catalog") ? options.catalog : catalog;
@@ -140,7 +151,7 @@ function fixture(options: {
     "@opennextjs/cloudflare": { getCloudflareContext: () => ({ env: { AI: { run: providerRun } } }) },
     "@/lib/supabase/server": { createServerSupabaseClient: async () => {
       if (options.clientSignal) throw options.clientSignal;
-      return options.noClient ? null : { from, rpc };
+      return options.noClient ? null : { from, rpc: readRpc };
     } },
     "./actions": actions, "./article-actions": actions, "./country-actions": actions,
     "./self-test-action": actions, "./resume-action": actions,
@@ -154,6 +165,7 @@ function fixture(options: {
         () => Promise<unknown>;
       probe.configuration_identity = await identity();
       const markup = renderToStaticMarkup(await Page({ searchParams: Promise.resolve(query) }));
+      expect(operationMetadataRead).toHaveBeenCalledTimes(options.noClient ? 0 : 1);
       for (const action of Object.values(actions)) expect(action).not.toHaveBeenCalled();
       expect(providerRun).not.toHaveBeenCalled();
       expect(markup).not.toContain(privateError);

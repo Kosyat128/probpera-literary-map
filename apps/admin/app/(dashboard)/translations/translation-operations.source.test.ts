@@ -50,10 +50,12 @@ describe("translation operations admin boundary", () => {
 
   it("reports the durable queue honestly without claiming a runner", () => {
     expect(page).toContain('supabase.rpc("translation_operations_ready")');
-    expect(page).toContain("staff-runner");
-    expect(page).toContain("Service-role lease API");
+    expect(page).toContain("По кнопке запускается один ограниченный пакет.");
+    expect(page).toContain("Продолжение использует сохранённую попытку или исходный список");
     expect(page).toContain("resumeTranslationJobAction");
     expect(resumeAction).toContain('supabase.rpc("get_translation_job_resume"');
+    expect(resumeAction).toContain("siteCopyTranslationMarkerMatchesReceipt");
+    expect(resumeAction).toContain('next.set("siteCopyOperation", siteCopyOperation.operationId)');
   });
 
   it("runs a real persisted provider self-test behind a cooldown", () => {

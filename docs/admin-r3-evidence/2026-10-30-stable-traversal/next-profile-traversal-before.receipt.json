@@ -1,0 +1,61 @@
+{
+  "classification": "NEXT_PROFILE_TRAVERSAL_PREPARED_ONLY_GENUINE_BEFORE_EXPECTED_UNRESOLVED",
+  "archive": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-profile-traversal-before.zip",
+  "archiveBytes": 871053,
+  "archiveSha256": "5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a",
+  "manifestSha256": "888fc3006dfe1fce5760d411ae0818ded2372ac5a6a9424e8e077c92a85cf807",
+  "payloads": 77,
+  "sourceCount": 34,
+  "contractSha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+  "originalReportSha256": "5e86af8425eb38b503ba4ffba17795059ef1cb82e633708b9795c55f9d6887f3",
+  "preparedProofReceiptSha256": "e2446516469885d416ecce1ea1177c9da60ea8cceebd13be19311ac46d0dfd19",
+  "independentlyExtractedReplay": {
+    "receiptSha256": "6fd14afc993cfef1b64487277ef2b5657df2d2ce56b81b45d28cfd2e4f2651ac",
+    "actualReportSha256": "5e86af8425eb38b503ba4ffba17795059ef1cb82e633708b9795c55f9d6887f3",
+    "sourceCount": 34,
+    "targets": 8,
+    "targetFailures": 6,
+    "executionFailures": 0,
+    "providerCalls": 0,
+    "canonicalWrites": 0,
+    "publicBuilds": 0,
+    "inputHashesUnchanged": true,
+    "packages": [
+      {
+        "name": "@supabase/supabase-js",
+        "version": "2.112.3",
+        "packageJsonSha256": "d01ad122a3ed6005916169c36653c1727f2f95eaaad6968bc5ff9132524e65e1"
+      },
+      {
+        "name": "typescript",
+        "version": "5.9.3",
+        "packageJsonSha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+      },
+      {
+        "name": "next",
+        "version": "16.3.3",
+        "packageJsonSha256": "3ae720e4b8cdad7503935b27b0d14e04390068bf10d6e685797ccf1044051967"
+      },
+      {
+        "name": "zod",
+        "version": "4.4.3",
+        "packageJsonSha256": "c630bd10b52dcf71c112a2bf78dbf2734b9db58d62de663b8d86c2ec2c8cda2e"
+      },
+      {
+        "name": "fflate",
+        "version": "0.8.3",
+        "packageJsonSha256": "5922d8150b307bc0e4e441491c779c45379e9913d348848fca8d5cf02db4d134"
+      }
+    ]
+  },
+  "safety": {
+    "uniqueSafePaths": true,
+    "noCurrentSourceAsBefore": true,
+    "noSourceReconstruction": true,
+    "noLinks": true,
+    "noPaidOrProduction": true
+  },
+  "limitation": "Six target failures are reproduced, not fixed. Profile catalog/Auth/SDK transports are controlled; no native profile DB/RLS/admin-E2E/retry/full M07/R3 acceptance.",
+  "entryCount": 78,
+  "countClarification": "Root independently verified77 payloads plus the self-excluded manifest,78 ZIP entries; original outer receipt counted the manifest as a payload. ZIP and all contained evidence remain byte-identical."
+}

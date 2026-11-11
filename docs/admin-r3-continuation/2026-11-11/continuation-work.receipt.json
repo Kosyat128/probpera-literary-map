@@ -1,0 +1,14 @@
+{
+  "classification": "ALL_CURATED_PAYLOADS_HASH_VERIFIED_NOT_APP_TEST_EXECUTION",
+  "date": "2026-11-11",
+  "payloadCount": 732,
+  "uncompressedPayloadBytes": 18375130,
+  "archive": {
+    "file": "continuation-work.zip",
+    "bytes": 6821058,
+    "sha256": "f15aad11f7b97d05ebd30ab6d09c8dab12d82abbe6b9dcb6037d7d7d63651c7b"
+  },
+  "manifestSha256": "f7297f0552eb6ba3c610c9beaa00691b0125b7a23394f752c757b4524cc492a3",
+  "sourceDriftDuringPackaging": [],
+  "productionTestsRunByPackaging": 0
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "handoffDate": "2026-11-11",
+  "branch": "codex/admin-r3-data-errors",
+  "baseCommit": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "objective": "M00-M25 /26 modules /230 criteria, ACTIVE and incomplete",
+  "modelPreference": "GPT-6.1 Sol Ultra for root and agents",
+  "productionStage": "M19_M20_SIX_FILES_WIP_NOT_AFTER_VERIFIED",
+  "production": [
+    {
+      "file": "apps/admin/lib/plain-text-page-content.ts",
+      "bytes": 3049,
+      "sha256": "68c68028933aa2f76ef2d3749563df0bf76bb7a3dabaa5b24b5d05016e73579e"
+    },
+    {
+      "file": "apps/admin/lib/page-create-result.ts",
+      "bytes": 1726,
+      "sha256": "bd2c067e49d76e88f77e7dafbb4befd3a19452ce0d700e07ba50e53dd1375cbe"
+    },
+    {
+      "file": "apps/admin/app/(dashboard)/pages/CreatePageForm.tsx",
+      "bytes": 2136,
+      "sha256": "f732bad91e605435e309a50f20adca14dfcd4f303fa3df19d2f57479416a7e98"
+    },
+    {
+      "file": "apps/admin/app/(dashboard)/pages/actions.ts",
+      "bytes": 25994,
+      "sha256": "59c491bf061e27b988699ee45dc996c5cc945880a555b96a89e91b500c1f47b0"
+    },
+    {
+      "file": "apps/admin/app/(dashboard)/pages/page.tsx",
+      "bytes": 10082,
+      "sha256": "9ed4bf096b9166268060c8d794af0ced312dff9172a2fe4a7aa24e1731fb6b42"
+    },
+    {
+      "file": "apps/admin/components/PageEditor.tsx",
+      "bytes": 60451,
+      "sha256": "ff28fcca7d6890adfbb6861262e2b340c3a1325363372ca26f9fa81165619f6c"
+    }
+  ],
+  "latestVerifiedHistorical": {
+    "fingerprint": "4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78",
+    "files": 224,
+    "cases": 7424,
+    "passed": 7418,
+    "failed": 6,
+    "pending": 0,
+    "todo": 0,
+    "session": 20278,
+    "sessionConsumed": true,
+    "durationMs": 1350345,
+    "fourGatesPassed": true,
+    "readonlyExact41": true,
+    "archive": "docs/admin-r3-evidence/2026-10-30-publication-retry-autosave/whole-validation-evidence.zip",
+    "archiveSha256": "1e666195050b0a2f05577874bbfc3dc6e71b0e932b1a887962e41a0c515c0031",
+    "independentSha256": "c4895f5365832a929303b8c0219486714a3ec7eca2fa54c8de0552ba7ca5869a",
+    "postDocumentationSha256": "6eb8a5f34af0212b0f6a78e730bd88470a4647c6572a49b043357d833f81dc10",
+    "scope": "Current local increment only; not full module or R3 acceptance. Six genuine M02 originals remain unavailable; no reconstruction/search."
+  },
+  "continuationArchive": {
+    "classification": "ALL_CURATED_PAYLOADS_HASH_VERIFIED_NOT_APP_TEST_EXECUTION",
+    "date": "2026-11-11",
+    "payloadCount": 732,
+    "uncompressedPayloadBytes": 18375130,
+    "archive": {
+      "file": "continuation-work.zip",
+      "bytes": 6821058,
+      "sha256": "f15aad11f7b97d05ebd30ab6d09c8dab12d82abbe6b9dcb6037d7d7d63651c7b"
+    },
+    "manifestSha256": "f7297f0552eb6ba3c610c9beaa00691b0125b7a23394f752c757b4524cc492a3",
+    "sourceDriftDuringPackaging": [],
+    "productionTestsRunByPackaging": 0
+  },
+  "portabilityOnlyChecks": {
+    "archiveVerified": true,
+    "actualFreshRestore": true,
+    "creatorCaptureSourceCount": 70,
+    "pendingCaptureSourceCount": 65,
+    "installedPackageIdentitiesPerCapture": 23,
+    "applicationTestsRun": 0
+  },
+  "nativeM04T12": {
+    "actualSixCaseRuns": 0,
+    "v1": "Pre-PG producer syntax failure",
+    "v2": "Pre-PowerShell binary path stat failure",
+    "correctedSyntaxOnlyChecks": 4,
+    "latestPreparation": "ready.execution-v5.json; unexecuted",
+    "newMachine": "New owned PG17.11 cluster/roles/baseline/descriptor required; do not reuse PID24836"
+  },
+  "exactByteCheckoutProtection": "10 immutable fixture files and20261030161000_publication_retry_admission.sql; no content/hashes changed",
+  "next": [
+    "Restore sibling work archive and read handoff guide",
+    "Prepare fresh actual source manifests on recipient checkout",
+    "M19 same original3/42 plus real form controls",
+    "M20 same original5/76 plus actual save/publish submitter controls",
+    "Affected unit/integration tests, types and build",
+    "Continue remaining full R3 plan"
+  ],
+  "forbidden": [
+    "Re-search or reconstruct missing genuine M02 originals",
+    "Production migrations/deploy",
+    "Paid provider calls",
+    "Mass backfill",
+    "Live social sends",
+    "Excluded normalizer changes"
+  ],
+  "keysAndLocalEnvironment": "SET_UP_SEPARATELY; not included in checkpoint",
+  "originalRootLiveStateAge": "The restored root JSON is the preserved2026-10-30 WIP checkpoint; this status and canonical2026-11-11 entry are the newer handoff index"
+}

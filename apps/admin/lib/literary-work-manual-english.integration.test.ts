@@ -108,6 +108,9 @@ function setup(options: Row = {}) {
   const calls: Row[] = [], writes: Row[] = [], wire: Row[] = [], audits: Row[] = [];
   let committedWrites = 0, raceWinner: Row | null = null, loaded!: ReturnType<typeof modules>;
   let draft: Row | null = null; const stageAttempts: Row[] = [];
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const admission = createCatalogAdmissionBoundary({ actorId, getSeed() { return structuredClone({ work, russian, english, sources }); },
+    getPrivateCandidate() { return draft; }, setPrivateCandidate(_type: string, _id: string, value: Row) { draft = structuredClone(value); } });
   const snapshot = () => structuredClone({ work, russian, english, sources });
   const before = snapshot();
   const matches = (row: Row, query: URLSearchParams) => [...query].every(([key, value]) => {
@@ -124,6 +127,16 @@ function setup(options: Row = {}) {
     const method = init?.method ?? "GET", table = url.pathname.split("/").at(-1)!;
     const payload = init?.body ? JSON.parse(String(init.body)) : null;
     wire.push({ method, table, query: Object.fromEntries(url.searchParams), payload });
+    if (admission.handles(table)) {
+      if (table === "finish_catalog_translation_operation" && payload.p_candidate) {
+        const operation = admission.operations.get(payload.p_operation_id);
+        stageAttempts.push({ protocol: "actual-catalog-FINISH", args: structuredClone(payload), p_target_revision: structuredClone(operation.targetRevision), p_source_revision: structuredClone(operation.sourceRevision) });
+        expect(payload.p_candidate.payload).toEqual({ description, sourceLanguage: "Russian", sourceUrls: [titleUrl, ruUrl],
+          bibliographicTitle: { value: before.english!.title, provider: "verified-bibliography", sourceUrl: titleUrl, retrievedAt: "2026-10-08" } });
+        expect(operation.sourceSnapshot).toEqual(calls[0].source); expect(operation.sourceHash).toBe(digest(operation.sourceSnapshot));
+      }
+      return admission.fetchRpc(table, payload);
+    }
     let data: unknown, error: Row | null = null;
     if (url.pathname.includes("/rpc/")) {
       if (table === "premium_machine_translation_ready") data = options.ready !== false;
@@ -171,7 +184,9 @@ function setup(options: Row = {}) {
         const rows = table === "literary_works" ? [work] : table === "literary_work_translations" ? [russian, ...(english ? [english] : [])]
           : table === "literary_work_sources" ? sources : null;
         assert.ok(rows, `Unexpected table read ${table}`);
-        data = rows.filter(row => matches(row, url.searchParams)).map(row => structuredClone(row));
+        const columns = url.searchParams.get("select");
+        data = rows.filter(row => matches(row, url.searchParams)).map(row => columns && columns !== "*"
+          ? Object.fromEntries(columns.split(",").map(column => [column, structuredClone(row[column])])) : structuredClone(row));
       }
     } else if (method === "PATCH") {
       assert.equal(table, "literary_work_translations");
@@ -302,20 +317,21 @@ describe("literary-work manual English safe integration", () => {
   it("CAS preserves a concurrent manual English winner and repeat invocation stops without further expense", async () => {
     const view = setup({ method: "machine-translation", race: "manual" });
     const result = await view.invoke(); record("concurrent manual winner", view, result);
-    expect(result.state).toBe("conflict"); expect(view.calls.map(call => call.pass)).toEqual(["translation", "review"]);
-    expect(view.committedWrites).toBe(0); expect(view.writes).toHaveLength(0); expect(view.audits).toHaveLength(0); expect(view.draft).toBeNull(); expect(view.stageAttempts).toHaveLength(1);
+    expect(result.state).toBe("unconfirmed"); expect(view.calls.map(call => call.pass)).toEqual(["translation"]);
+    expect(view.committedWrites).toBe(0); expect(view.writes).toHaveLength(0); expect(view.audits).toHaveLength(0); expect(view.draft).toBeNull(); expect(view.stageAttempts).toHaveLength(0);
     expect(view.english).toEqual(view.raceWinner); expect(view.snapshot().work).toEqual(view.before.work);
     expect(view.snapshot().russian).toEqual(view.before.russian); expect(view.snapshot().sources).toEqual(view.before.sources);
-    expect(view.stageAttempts[0].p_target_revision).toEqual({ id: enId, updatedAt: stamp });
+    const begin = view.wire.find(row => row.table === "begin_catalog_translation_operation")!;
+    expect(begin.payload.p_target_revision).toEqual({ id: enId, updatedAt: stamp });
     const retry = await view.invoke(); record("concurrent manual repeat invocation", view, retry);
-    expect(retry).toEqual({ state: "manual" }); expect(view.calls).toHaveLength(2);
-    expect(view.writes).toHaveLength(0); expect(view.stageAttempts).toHaveLength(1); expect(view.english).toEqual(view.raceWinner);
+    expect(retry).toEqual({ state: "manual" }); expect(view.calls).toHaveLength(1);
+    expect(view.writes).toHaveLength(0); expect(view.stageAttempts).toHaveLength(0); expect(view.english).toEqual(view.raceWinner);
   });
   it("a Russian revision during translation prevents any English write", async () => {
     const view = setup({ method: "machine-translation", race: "russian" });
     const result = await view.invoke(); record("concurrent Russian revision", view, result);
-    expect(result).toEqual({ state: "conflict", error: "Russian work translation changed during translation" });
-    expect(view.calls.map(call => call.pass)).toEqual(["translation", "review"]); expect(view.writes).toHaveLength(0);
+    expect(result.state).toBe("unconfirmed");
+    expect(view.calls.map(call => call.pass)).toEqual(["translation"]); expect(view.writes).toHaveLength(0);
     expect(view.english).toEqual(view.before.english); expect(view.snapshot().work).toEqual(view.before.work);
     expect(view.snapshot().russian.description).toBe(view.before.russian.description + " Новая редакционная оговорка сохранена.");
   });

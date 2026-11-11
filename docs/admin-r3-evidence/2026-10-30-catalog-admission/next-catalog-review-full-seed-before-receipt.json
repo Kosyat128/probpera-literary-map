@@ -1,0 +1,10 @@
+{
+  "path": "next-catalog-review-full-seed-before.zip",
+  "sha256": "f45180d64f50bde36a74189641958cfc7e2aec6d899ee09cb08321572b9fd2c4",
+  "bytes": 237957,
+  "verifiedPayloads": 29,
+  "actualProductionModuleCount": 22,
+  "controls": "PASS",
+  "target": "FAIL (genuine unresolved UI preflight)",
+  "manifestSha256": "95e28e94a289539d3a16ed6f74a8ccb6c060f4ef87a692ed42458d07c0956c65"
+}

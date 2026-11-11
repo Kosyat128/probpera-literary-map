@@ -122,6 +122,9 @@ function countryForms(view: Rendered) { return view.$('form.editorial-profile-fo
 function writerForms(view: Rendered) { return view.$('form.editorial-profile-form input[name="entity_type"][value="writer"]').length + view.$("form.writer-biography-editor").length; }
 function retry(view: Rendered) { return view.$("a").filter((_i, node) => view.$(node).text() === "Повторить загрузку"); }
 function safe(view: Rendered) { expect(view.markup).not.toContain(privateError); expect(view.markup).not.toContain("[object Object]"); }
+function reviewCalls(view: Rendered, entityType: "country" | "writer_biography") {
+  return view.reviewRead.mock.calls.filter(([, args]) => args.p_entity_type === entityType);
+}
 function failure(view: Rendered, dependency: Dependency) {
   safe(view); expect(view.$("header.page-heading form").length).toBe(0); expect(retry(view).length).toBeGreaterThan(0);
   if (dependency === "country") { expect(countryForms(view)).toBe(0); expect(writerForms(view)).toBe(2); }
@@ -332,10 +335,11 @@ describe("M02 editorial database real SSR read isolation", () => {
   });
 });
 
-describe("M07 private review read stays separate from the loaded country editor", () => {
+describe("M07 private review reads stay separate from loaded profile editors", () => {
   it("keeps exact country fields editable when the private draft read fails", async () => {
     const view = await render({ reviewError: true });
-    expect(view.reviewRead).toHaveBeenCalledTimes(1);
+    expect(reviewCalls(view, "country")).toHaveLength(1);
+    expect(reviewCalls(view, "writer_biography")).toHaveLength(1);
     expect(countryForms(view)).toBe(1);
     expect(view.$('form.editorial-profile-form input[name="entity_type"][value="country"]').closest("form").find('input[name="name"]').attr("value")).toBe(countryOverride.fields.name);
     expect(view.$("input[name=confirm_human_review]").length).toBe(0);
@@ -344,8 +348,35 @@ describe("M07 private review read stays separate from the loaded country editor"
   });
   it("does not load private review when the canonical country read fails", async () => {
     const view = await render({ rejected: new Set(["country"]) });
-    expect(view.reviewRead).not.toHaveBeenCalled();
+    expect(reviewCalls(view, "country")).toHaveLength(0);
+    expect(reviewCalls(view, "writer_biography")).toEqual([
+      ["get_premium_translation_working_draft", { p_entity_type: "writer_biography", p_entity_id: "russia:writer_one" }],
+    ]);
     expect(countryForms(view)).toBe(0);
+    expect(writerForms(view)).toBe(2);
+    expect(view.$("input[name=confirm_human_review]").length).toBe(0);
+    safe(view);
+  });
+  it("does not load writer review when the canonical writer read fails", async () => {
+    const view = await render({ rejected: new Set(["writer"]) });
+    expect(reviewCalls(view, "writer_biography")).toHaveLength(0);
+    expect(reviewCalls(view, "country")).toEqual([
+      ["get_premium_translation_working_draft", { p_entity_type: "country", p_entity_id: "russia" }],
+    ]);
+    expect(writerForms(view)).toBe(0);
+    expect(countryForms(view)).toBe(1);
+    expect(view.$("input[name=confirm_human_review]").length).toBe(0);
+    safe(view);
+  });
+  it("keeps exact writer fields editable when the private draft read fails", async () => {
+    const view = await render({ reviewError: true });
+    expect(reviewCalls(view, "writer_biography")).toEqual([
+      ["get_premium_translation_working_draft", { p_entity_type: "writer_biography", p_entity_id: "russia:writer_one" }],
+    ]);
+    expect(writerForms(view)).toBe(2);
+    expect(view.$('form.editorial-profile-form input[name="entity_type"][value="writer"]').closest("form").find('input[name="name"]').attr("value")).toBe(writerOverride.fields.name);
+    expect(view.$('textarea[name="ru_text"]').text()).toBe(ru.text);
+    expect(view.$('textarea[name="en_text"]').text()).toBe(en.text);
     expect(view.$("input[name=confirm_human_review]").length).toBe(0);
     safe(view);
   });

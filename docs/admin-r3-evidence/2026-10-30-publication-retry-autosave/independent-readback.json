@@ -1,0 +1,319 @@
+{
+  "classification": "INDEPENDENT_REQUIRED_SCOPE_READBACK_PASS_OPTIONAL_DEEPER_READER_STOP_RETAINED",
+  "atUtc": "2026-10-30T18:45:55.113502+00:00",
+  "verdict": "PASS_REQUIRED_SCOPE",
+  "completedChecks": 26,
+  "checks": [
+    {
+      "name": "Outer archive exact expected immutable bytes",
+      "pass": true,
+      "verifierLine": 68,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Every outer payload has exact bytes and SHA256, safe unique paths",
+      "pass": true,
+      "verifierLine": 70,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Manifest sidecar byte-identical to sealed manifest",
+      "pass": true,
+      "verifierLine": 75,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Outer receipt matches actual archive and manifest",
+      "pass": true,
+      "verifierLine": 76,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Receipt explicitly retains inherited failures and no extra execution",
+      "pass": true,
+      "verifierLine": 77,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "All frozen snapshots have exact4df non-doc rows",
+      "pass": true,
+      "verifierLine": 84,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Gate-only drift scope is true/empty with full-array equality",
+      "pass": true,
+      "verifierLine": 85,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Whole snapshot pathsets exact",
+      "pass": true,
+      "verifierLine": 88,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Sole postgate document change is canonical249d and full equality false",
+      "pass": true,
+      "verifierLine": 90,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "476 current physical bindings are unique",
+      "pass": true,
+      "verifierLine": 91,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "All476 captured/current/frozen bindings exact",
+      "pass": true,
+      "verifierLine": 97,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "All10751 whole-after physical bytes still exact including canonical249d",
+      "pass": true,
+      "verifierLine": 101,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Genuine protected absence retained without fabricated file",
+      "pass": true,
+      "verifierLine": 103,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Whole raw7424/7418/exact6/zero pending and actual assertion statuses",
+      "pass": true,
+      "verifierLine": 108,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Target573 cases all passed in16 suites and overlap counts not summed",
+      "pass": true,
+      "verifierLine": 109,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Exact six historical M02 identities and missing paths",
+      "pass": true,
+      "verifierLine": 126,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Readonly exact41 bytes retained; four actual successful gates",
+      "pass": true,
+      "verifierLine": 127,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Original V1 failure bytes/counts retained, not relabeled",
+      "pass": true,
+      "verifierLine": 130,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "First actual failed seal producer57f and decoded transcript retained",
+      "pass": true,
+      "verifierLine": 132,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Corrected sealed producer exact f86 and gate/whole distinction proof",
+      "pass": true,
+      "verifierLine": 133,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Native38 captures retain23currentSQL and15 historical references",
+      "pass": true,
+      "verifierLine": 136,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Separate next-stage BEFORE retains16failures excluded current counts",
+      "pass": true,
+      "verifierLine": 138,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Original BEFORE M20 eleven failures and current34checks remain separate",
+      "pass": true,
+      "verifierLine": 139,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Summary declares no complete R3 or managed boundary acceptance",
+      "pass": true,
+      "verifierLine": 140,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "Exactly four declared direct nested archives present",
+      "pass": true,
+      "verifierLine": 144,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    },
+    {
+      "name": "All four direct nested manifests and every payload rehashed independently",
+      "pass": true,
+      "verifierLine": 151,
+      "basis": "Completed before actual optional deeper-discovery stop at line169/chunkc660f8."
+    }
+  ],
+  "actualExecution": {
+    "chunkId": "c660f8",
+    "overallAuditToolExitCode": 1,
+    "requiredScopeCompleted": true,
+    "stopPhase": "OPTIONAL_DEEPER_PACKET_MANIFEST_AUTODISCOVERY",
+    "sourceVerifier": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\audit-m04-m20-final-validation-v2.initial-generic-manifest.py",
+      "bytes": 16709,
+      "sha256": "7a0d39fdafe64a2c28173b8d47560f4d71599aca07f47c4c5f3e499044649c7c"
+    },
+    "decodedToolTranscript": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\m04-m20-v2-independent-audit-initial-failure.decoded-tool.json",
+      "bytes": 1006,
+      "sha256": "abb92e6be099921f615e22f1180e766dffc105704d677b2726a7cb605459a46e"
+    },
+    "executionRepeatedForFinalization": false
+  },
+  "archive": {
+    "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-evidence\\2026-10-30-publication-retry-autosave\\whole-validation-evidence.zip",
+    "bytes": 24796162,
+    "sha256": "1e666195050b0a2f05577874bbfc3dc6e71b0e932b1a887962e41a0c515c0031",
+    "verifiedInActualExecution": true
+  },
+  "manifest": {
+    "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-evidence\\2026-10-30-publication-retry-autosave\\whole-validation-evidence.manifest.json",
+    "bytes": 445966,
+    "sha256": "304a153aef865ff6ecc86726e54f7fa95d72ba644ba11229984d8374e765a771"
+  },
+  "receipt": {
+    "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-evidence\\2026-10-30-publication-retry-autosave\\whole-validation-evidence.receipt.json",
+    "bytes": 2882,
+    "sha256": "28d6b0d0f9f86021d164c0e37675bdce1e62fdb3d64b5399c9a5ab0fdb105d48"
+  },
+  "outer": {
+    "payloads": 1777,
+    "entries": 1778,
+    "manifestSha256": "304a153aef865ff6ecc86726e54f7fa95d72ba644ba11229984d8374e765a771",
+    "allPayloadBytesSha256Exact": true,
+    "safeUniqueCasefoldPaths": true,
+    "noSymlinkOrEncryptedMembers": true
+  },
+  "fourDeclaredNestedArchives": [
+    {
+      "archive": "native/m04-publication-retry-native-evidence.zip",
+      "bytes": 1100279,
+      "sha256": "fc1df1e2438ba6f3f3304234404afbfa55697d56a1773ed81718a277a3c91bbd",
+      "payloads": 1049,
+      "entries": 1050,
+      "manifest": "MANIFEST.json",
+      "manifestSha256": "d007af68cf4b367bf4fc17903fbe7b1ef49ee1b9247b4decce25c6a74113a220",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "before/next-five-required-before.zip",
+      "bytes": 3604241,
+      "sha256": "44ace998123b006c4ab51db9e28409903cb7ce17ed0dff958e464c862f0e8b5a",
+      "payloads": 430,
+      "entries": 431,
+      "manifest": "FINAL-BEFORE-MANIFEST.json",
+      "manifestSha256": "eb614c8edfe0522e174b80ecabfa3d4f5287f816f9feb9a274166263a5159bc3",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "before/m20-autosave-scope-genuine-before.zip",
+      "bytes": 231261,
+      "sha256": "fd9bcac3478748b96560330c7ff77d84aafaf561068050675d5afe6fac35ebe5",
+      "payloads": 10,
+      "entries": 11,
+      "manifest": "manifest.json",
+      "manifestSha256": "bae4c8f3cd87c680ff381acbed3e27b23b4849d0905936c3c5355edb23774a2a",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "next-stage-BEFORE-reference/m19-m20-genuine-controlled-before.zip",
+      "bytes": 2554208,
+      "sha256": "388d4fa6021a94acc98cf5fe1a01f27959e305b95a4424be4033c590d3d8851d",
+      "payloads": 260,
+      "entries": 261,
+      "manifest": "payload-manifest.json",
+      "manifestSha256": "511f8793da9bdede9dd4053df5b8954a9cdf3908266960744fa44ac4b6a229f0",
+      "allPayloadsReadbackExact": true
+    }
+  ],
+  "source": {
+    "fingerprint": "4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78",
+    "currentCapturedPhysicalFrozenBindingsVerified": 476,
+    "wholeAfterPhysicalBytesVerified": 10751,
+    "nonDocRows": 10524,
+    "beforeAndGatesFullArraysIdentical": true,
+    "gateDriftTrueAndDocumentChangesEmpty": true,
+    "allThreeNonDocArraysIdentical": true,
+    "allThreeFullArraysIdentical": false,
+    "wholeOnlyDocumentDelta": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+    "canonicalAfterSha256": "249d8c33438e8965b0c370daa594e78ce476b883f8400bd854aa04ce75ac5028",
+    "genuineProtectedAbsence": "scripts/lib/literary-news-telegram-footer.test.mjs"
+  },
+  "counts": {
+    "wholeFiles": 224,
+    "wholeTests": 7424,
+    "wholePassed": 7418,
+    "exactHistoricalM02Failures": 6,
+    "wholePending": 0,
+    "targetedFiles": 16,
+    "targetedCasesPassed": 573,
+    "fourGatesPassed": 4,
+    "readonlyByteExactInheritedFindings": 41,
+    "V1History": {
+      "total": 7424,
+      "passed": 7381,
+      "failed": 10,
+      "aggregatePending": 33,
+      "actualRawSkippedBudgetWrappers": 33
+    },
+    "nextStageBefore": {
+      "countedAsCurrentAcceptance": false,
+      "originalFailedChecks": 16,
+      "M20": {
+        "passed": 71,
+        "total": 76,
+        "failed": 5
+      },
+      "M19": {
+        "passed": 31,
+        "total": 42,
+        "failed": 11
+      }
+    }
+  },
+  "optionalDeeperReader": {
+    "status": "STOPPED_SCHEMA_DISCOVERY_NOT_PAYLOAD_MISMATCH",
+    "arbitraryDepthVerificationClaimed": false,
+    "rawFailurePreserved": true,
+    "schemaInspection": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\m04-m20-v2-deeper-manifest-schema-inspection.json",
+      "bytes": 10716,
+      "sha256": "5fcc25b6cee0a58642ab4c6d84f1dd4526166f47311bfe652fca3eda6f13d7ae"
+    },
+    "explanation": "One historical support packet uses ARCHIVE_MEMBERS.sha256.json/members rather than the generic manifest names/keys. Root requested no expansion; all four declared nested packets had already passed. Deeper historical ZIP blobs are bounded by their verified containing-member hashes and prior receipts."
+  },
+  "newProjectExecutions": {
+    "tests": 0,
+    "compiler": 0,
+    "browser": 0,
+    "database": 0,
+    "constructor": 0,
+    "provider": 0
+  },
+  "finalization": "Metadata-only receipt from actual completed required-scope checks; no replay, archive traversal, or repeated physical readback during finalization.",
+  "limits": [
+    "Six inherited M02 fixture failures remain failures, and full R3 is not complete.",
+    "Native SQL and controlled SDK/browser transport are separate proofs; no managed Auth/JWT/PostgREST/external deployment acceptance inferred.",
+    "Native physical38 captures remain23currentSQL+15historical references, including two old Page/action differences.",
+    "Separate next-stage BEFORE sixteen failures are preserved and excluded from current573/whole acceptance.",
+    "First constructor failure is saved as decoded returned tool transcript rather than raw process-byte capture; original producer/preparation/guard inputs retained."
+  ]
+}

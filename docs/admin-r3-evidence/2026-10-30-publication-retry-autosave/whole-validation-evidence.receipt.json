@@ -1,0 +1,73 @@
+{
+  "classification": "CURRENT_GLOBAL_VALIDATION_WITH_EXACT_SIX_HISTORICAL_M02_FIXTURE_FAILURES_NOT_COMPLETE_R3_ACCEPTANCE",
+  "archive": "whole-validation-evidence.zip",
+  "bytes": 24796162,
+  "sha256": "1e666195050b0a2f05577874bbfc3dc6e71b0e932b1a887962e41a0c515c0031",
+  "manifestSha256": "304a153aef865ff6ecc86726e54f7fa95d72ba644ba11229984d8374e765a771",
+  "payloads": 1777,
+  "entries": 1778,
+  "sourceFingerprint": "4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78",
+  "currentCapturedInputs": 476,
+  "allThreeNonDocArraysIdentical": true,
+  "allThreeFullArraysIdentical": false,
+  "documentChangePaths": [
+    "docs/CODEX_ADMIN_EXECUTION_STATE.md"
+  ],
+  "genuineProtectedAbsences": [
+    "scripts/lib/literary-news-telegram-footer.test.mjs"
+  ],
+  "originalD2ReportsPreserved": true,
+  "V2PhysicalRebindSha256": "7373250cedceba04672ee2713fa9d65ee42e7672b3b455d5a546960722750a70",
+  "wholeFiles": 224,
+  "wholeCases": 7424,
+  "wholePassed": 7418,
+  "wholeFailedKnownM02": 6,
+  "wholePending": 0,
+  "targetedCases": 573,
+  "targetedPassed": 573,
+  "gatesPassed": 4,
+  "readonlyByteExactFindings": 41,
+  "nestedArchives": [
+    {
+      "archive": "native/m04-publication-retry-native-evidence.zip",
+      "bytes": 1100279,
+      "sha256": "fc1df1e2438ba6f3f3304234404afbfa55697d56a1773ed81718a277a3c91bbd",
+      "payloads": 1049,
+      "entries": 1050,
+      "manifest": "MANIFEST.json",
+      "manifestSha256": "d007af68cf4b367bf4fc17903fbe7b1ef49ee1b9247b4decce25c6a74113a220",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "before/next-five-required-before.zip",
+      "bytes": 3604241,
+      "sha256": "44ace998123b006c4ab51db9e28409903cb7ce17ed0dff958e464c862f0e8b5a",
+      "payloads": 430,
+      "entries": 431,
+      "manifest": "FINAL-BEFORE-MANIFEST.json",
+      "manifestSha256": "eb614c8edfe0522e174b80ecabfa3d4f5287f816f9feb9a274166263a5159bc3",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "before/m20-autosave-scope-genuine-before.zip",
+      "bytes": 231261,
+      "sha256": "fd9bcac3478748b96560330c7ff77d84aafaf561068050675d5afe6fac35ebe5",
+      "payloads": 10,
+      "entries": 11,
+      "manifest": "manifest.json",
+      "manifestSha256": "bae4c8f3cd87c680ff381acbed3e27b23b4849d0905936c3c5355edb23774a2a",
+      "allPayloadsReadbackExact": true
+    },
+    {
+      "archive": "next-stage-BEFORE-reference/m19-m20-genuine-controlled-before.zip",
+      "bytes": 2554208,
+      "sha256": "388d4fa6021a94acc98cf5fe1a01f27959e305b95a4424be4033c590d3d8851d",
+      "payloads": 260,
+      "entries": 261,
+      "manifest": "payload-manifest.json",
+      "manifestSha256": "511f8793da9bdede9dd4053df5b8954a9cdf3908266960744fa44ac4b6a229f0",
+      "allPayloadsReadbackExact": true
+    }
+  ],
+  "newExecutionsByPackaging": 0
+}

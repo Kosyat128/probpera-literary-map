@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { z } from "zod";
+import CatalogTranslationOperationReceiptPanel from "@/components/CatalogTranslationOperationReceiptPanel";
+import { parseCatalogTranslationOperationReceipt, reconcileCatalogTranslationOperation } from "@/lib/catalog-translation-operation-rpc";
 
 import LiteraryWorkWorkspace, {
   type LiteraryWorkWorkspaceContext,
@@ -60,6 +63,7 @@ type LibrarySearchParams = {
   editions_page?: string;
   work_picker_q?: string;
   work_picker_page?: string;
+  translation_operation?: string;
 };
 
 const UUID_PATTERN =
@@ -544,6 +548,15 @@ export default async function LibraryPage({
   const workTranslationReview = workBundleReady && selectedWork && supabase
     ? await loadPremiumTranslationReview({ supabase, entityType: "literary_work", entityId: selectedWork.id })
     : { status: "none" } as const;
+  const requestedOperation = z.string().uuid().safeParse(query.translation_operation);
+  const [operationResult] = requestedOperation.success && selectedWork && z.string().uuid().safeParse(selectedWork.id).success
+    ? await Promise.allSettled([reconcileCatalogTranslationOperation(supabase,
+        { entityType: "literary_work", entityId: selectedWork.id }, requestedOperation.data).then(data => ({ data, error: null }))])
+    : [];
+  const operationRead = operationResult ? readAdminResult(operationResult, receipt => receipt === null ||
+    (parseCatalogTranslationOperationReceipt(receipt, { entityType: "literary_work", entityId: selectedWork!.id }) !== null &&
+      receipt.operationId.toLowerCase() === requestedOperation.data?.toLowerCase() && !receipt.canExecute && !receipt.canDispatch)) : null;
+  const catalogOperation = operationRead?.status === "success" ? operationRead.data : null;
   const editionBundleReady = selectedEditionRead.status === "success" && Boolean(selectedEdition) &&
     libraryActionIdSupported(selectedEdition?.id) && libraryActionIdSupported(selectedEdition?.work_id) &&
     currentWorkRead.status === "success" && Boolean(currentEditionWork) && pickerRead.status === "success" && pickerCountRead.status === "success";
@@ -631,6 +644,10 @@ export default async function LibraryPage({
         </p>
       )}
       {(query.saved || query.published) && <p className="form-message" role="status">Проверьте результат предыдущего действия в актуальных данных, истории и статусе публикации.</p>}
+      {catalogOperation && <CatalogTranslationOperationReceiptPanel receipt={catalogOperation} />}
+      {query.translation_operation && !catalogOperation && <p className="form-message form-error" role="alert">
+        Не удалось подтвердить операцию для выбранного произведения. Проверьте карточку и журнал переводов.
+      </p>}
       {notices.map(([label, read]) => read.status === "failed"
         ? <LibraryLoadNotice key={label} label={label} issue={read.issue} retryHref={retryHref} /> : null)}
       {requestedWorkId && selectedWorkRead.status === "success" && !selectedWork && (

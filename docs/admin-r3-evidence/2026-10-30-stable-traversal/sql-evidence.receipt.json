@@ -1,0 +1,132 @@
+{
+  "archive": "sql-evidence.zip",
+  "sha256": "661b061b6ada98aab93b8d12aba1a346749db25d227958eabf2a8630d146ef59",
+  "bytes": 3272317,
+  "verifiedPayloads": 1085,
+  "sourceInputs": 37,
+  "sourceBindingsMatchCurrent": true,
+  "nativeGroupsPassed": 13,
+  "actualConcurrentGroupsPassed": 7,
+  "oldRoutineBodiesSecurityConfigAclExact": 36,
+  "oldIndexDefinitionsExact": 21,
+  "columnsAndTableAclExact": true,
+  "nativeSdkConformance": 27,
+  "nativeGoldensSha256": "759bb4b6a360285a74f79dc2dc21d4e43bf157e8225b98a2dffdd0e3e32f033c",
+  "cleanup": [
+    {
+      "atUtc": "2026-10-30T00:52:37.6915507Z",
+      "ownedPid": 18512,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "atUtc": "2026-10-30T00:53:13.3819194Z",
+      "ownedPid": 30740,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "atUtc": "2026-10-30T01:05:35.5299212Z",
+      "ownedPid": 8968,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    }
+  ],
+  "advisors": {
+    "atUtc": "2026-10-30T01:05:35.1150926Z",
+    "target": "owned loopback library_scan_v8_20261030",
+    "advisorsExitCode": 1,
+    "lintStatus": "NOT_RUN_PLPGSQL_CHECK_UNAVAILABLE_NO_INSTALL",
+    "plpgsqlCheckAvailable": 0,
+    "installedAnything": false,
+    "findingCount": 15,
+    "newFindingCount": 0,
+    "findings": [
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.enqueue_public_build_request"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.move_homepage_block"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_assert"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_error"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_capture"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_stage"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_promote"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_discard"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_catalog"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_promote"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_fail_update"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.article_revisions"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.article_translation_revisions"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.public_build_outbox"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.premium_fixture_saved"
+      }
+    ]
+  },
+  "historyScope": "All original native compile/expectation/barrier failures and later successful runs retained with their own source/scheduler scope. No replacement BEFORE or first-pass claim."
+}

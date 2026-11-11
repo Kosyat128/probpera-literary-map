@@ -1,4 +1,6 @@
 import SiteCopyEditor from "@/components/SiteCopyEditor";
+import Link from "next/link";
+import PremiumTranslationReviewPanel from "@/components/PremiumTranslationReviewPanel";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 import { adminReadMessage, isReadRecord, readAdminList, readAdminResult } from "@/lib/admin-read-result";
 import { adminEnv } from "@/lib/env";
@@ -12,6 +14,9 @@ import {
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { safePublicSiteOrigin } from "@/lib/public-link-boundary";
+import { loadSiteCopyPremiumTranslationReviews } from "@/lib/premium-translation-review";
+import { readSiteCopyTranslationOperation } from "@/lib/site-copy-translation-operation-read";
+import SiteCopyTranslationOperationReceiptPanel from "../translations/SiteCopyTranslationOperationReceiptPanel";
 
 export const metadata = { title: "Тексты сайта" };
 
@@ -70,11 +75,18 @@ export default async function SiteCopyPage({
     errorCode?: string;
     saved?: string;
     published?: string;
+    error?: string;
+    translation?: string;
+    review_after?: string;
+    translation_operation?: string;
   }>;
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
+  const operationRead = await readSiteCopyTranslationOperation(supabase, {
+    ...(query.translation_operation !== undefined ? { operationId: query.translation_operation } : {}), includePreview: true,
+  });
   const reads = await Promise.allSettled([
     Promise.resolve().then(async () => ({ data: await loadAllSiteCopyCatalog(), error: null })),
     supabase
@@ -82,7 +94,7 @@ export default async function SiteCopyPage({
     .select("id,settings,updated_at")
     .contains("settings", { systemKey: SITE_COPY_SYSTEM_KEY })
     .order("updated_at", { ascending: false })
-    .limit(1),
+    .limit(2),
   ]);
   const catalogRead = readAdminResult(reads[0], isCatalog);
   let storageRead = readAdminList<SiteCopyBlock>(reads[1], isSiteCopyBlock);
@@ -96,6 +108,9 @@ export default async function SiteCopyPage({
   const loadIssue = catalogRead.status === "failed" ? catalogRead.issue
     : storageRead.status === "failed" ? storageRead.issue : null;
   const canEdit = loadIssue === null;
+  const translationReviews = canEdit
+    ? await loadSiteCopyPremiumTranslationReviews({ supabase, afterId: query.review_after ?? null })
+    : { views: [], nextCursor: null };
   const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/site-copy";
   const knownKeys = new Set(allSiteCopyCatalog.map((item) => item.key));
   const additionalDefinitions: SiteCopyDefinition[] = Array.from(
@@ -137,7 +152,7 @@ export default async function SiteCopyPage({
           <a href={retryHref}>Повторить загрузку</a>
         </p>
       )}
-      {(query.errorCode || query.saved || query.published) && (
+      {(query.errorCode || query.saved || query.published || query.error || query.translation) && (
         <p className="form-message" role="status">
           Результат действия по параметрам страницы не подтверждён. Проверьте актуальные тексты и очередь публикации перед повторным изменением.
         </p>
@@ -151,6 +166,15 @@ export default async function SiteCopyPage({
           правки. Пустой English автоматически берётся из действующего перевода.
         </p>
       </section>
+
+      <SiteCopyTranslationOperationReceiptPanel read={operationRead} returnTo="site-copy" />
+
+      {translationReviews.views.map((view, index) => <PremiumTranslationReviewPanel
+        key={view.status === "pending" ? view.draft.id : index} view={view} returnTo="site-copy" />)}
+      {translationReviews.nextCursor && <Link className="button-secondary"
+        href={`${retryHref}?review_after=${encodeURIComponent(translationReviews.nextCursor)}`}>
+        Следующие машинные кандидаты
+      </Link>}
 
       {canEdit && <SiteCopyEditor
         definitions={definitions}

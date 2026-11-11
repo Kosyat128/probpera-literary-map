@@ -69,6 +69,7 @@ export default function RecoveryController({
   const [recovery, setRecovery] = useState<EditorAutosaveRecovery | null>(null);
   const [statusDetail, setStatusDetail] = useState("");
   const lastSavedSnapshotRef = useRef("");
+  const locatorGenerationRef = useRef(0);
   const activeRequestRef = useRef(0);
   const requestPendingRef = useRef(false);
   const metadataStorage = useMemo(
@@ -82,28 +83,47 @@ export default function RecoveryController({
   );
 
   useEffect(() => {
+    const locatorGeneration = ++locatorGenerationRef.current;
     activeRequestRef.current += 1;
     requestPendingRef.current = false;
-    const current = resolveEditorAutosaveSession(
-      metadataStorage,
-      locator,
-      () => window.crypto.randomUUID()
-    );
-    setAutosaveSession(current);
+    lastSavedSnapshotRef.current = "";
+    setAutosaveSession(null);
     setStatus("idle");
     setStatusDetail("");
     setRecovery(null);
+    let sessionReady = false;
+    try {
+      const current = resolveEditorAutosaveSession(
+        metadataStorage,
+        locator,
+        () => window.crypto.randomUUID()
+      );
+      setAutosaveSession(current);
+      sessionReady = true;
+    } catch (error) {
+      unstable_rethrow(error);
+      setStatus("error");
+      setStatusDetail("Не удалось создать сеанс автокопии. Текущий текст остаётся в редакторе; сохраните его перед выходом.");
+    }
 
     let cancelled = false;
     void loadLatestEditorAutosaveAction(locator)
       .then((result) => {
-        if (cancelled || !result.ok || !result.recovery) return;
+        if (cancelled) return;
+        if (!result.ok) {
+          setStatus("error");
+          setStatusDetail(result.error);
+          return;
+        }
+        if (!result.recovery) return;
         if (JSON.stringify(result.recovery.snapshot) === snapshotText) {
           lastSavedSnapshotRef.current = snapshotText;
           return;
         }
         setRecovery(result.recovery);
-        setStatus(result.recovery.state === "conflict" ? "conflict" : "saved");
+        if (sessionReady) {
+          setStatus(result.recovery.state === "conflict" ? "conflict" : "saved");
+        }
       })
       .catch((error: unknown) => {
         unstable_rethrow(error);
@@ -111,6 +131,9 @@ export default function RecoveryController({
       });
     return () => {
       cancelled = true;
+      if (locatorGenerationRef.current === locatorGeneration) {
+        locatorGenerationRef.current += 1;
+      }
     };
   }, [locatorIdentity]); // The current editor snapshot is intentionally not a reload trigger.
 
@@ -159,6 +182,13 @@ export default function RecoveryController({
     const requestNumber = activeRequestRef.current + 1;
     activeRequestRef.current = requestNumber;
     const timer = window.setTimeout(() => {
+      // A matching recovery can resolve after this timer was scheduled.
+      if (
+        activeRequestRef.current !== requestNumber ||
+        snapshotText === lastSavedSnapshotRef.current
+      ) {
+        return;
+      }
       let parsedSnapshot: Record<string, unknown>;
       try {
         parsedSnapshot = parseEditorAutosaveSnapshot(snapshotText);
@@ -234,15 +264,22 @@ export default function RecoveryController({
 
   const discardRecovery = useCallback(() => {
     if (!recovery) return;
+    const locatorGeneration = locatorGenerationRef.current;
     void deleteExactEditorAutosaveAction({
       id: recovery.id,
       clientSessionId: recovery.clientSessionId,
       sequence: recovery.sequence,
       snapshotHash: recovery.snapshotHash,
     }).then((result) => {
+      if (locatorGenerationRef.current !== locatorGeneration) return;
       if (!result.ok) {
         setStatus("error");
         setStatusDetail(result.error);
+        return;
+      }
+      if (!result.deleted) {
+        setStatus("error");
+        setStatusDetail("Удаление автокопии не подтверждено. Копия оставлена; проверьте её текущую версию и повторите действие.");
         return;
       }
       setRecovery(null);
@@ -250,6 +287,7 @@ export default function RecoveryController({
       setStatusDetail("");
     }).catch((error: unknown) => {
       unstable_rethrow(error);
+      if (locatorGenerationRef.current !== locatorGeneration) return;
       setStatus("error");
       setStatusDetail("Не удалось подтвердить удаление серверной автокопии.");
     });

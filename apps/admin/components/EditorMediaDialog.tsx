@@ -1,23 +1,11 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { withClientAdminPath } from "@/lib/admin-path";
 import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
-
-export type EditorMediaAsset = {
-  id: string;
-  src: string;
-  alt: string;
-  caption: string;
-  creator: string;
-  sourceUrl: string;
-  licenseName: string;
-  licenseUrl: string;
-  collectionName: string;
-  width: number;
-  height: number;
-};
+import { parseEditorMediaAssetsPage, type EditorMediaAsset } from "@/lib/editor-media-assets-contract";
+export type { EditorMediaAsset } from "@/lib/editor-media-assets-contract";
 
 export type EditorMediaQueueItem = {
   id: string;
@@ -61,36 +49,63 @@ export default function EditorMediaDialog({
   const [assets, setAssets] = useState<EditorMediaAsset[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [previousCursors, setPreviousCursors] = useState<(string | null)[]>([]);
+  const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [refresh, setRefresh] = useState(0);
+  const requestGeneration = useRef(0);
+  const completedUploads = queue.filter((item) => item.status === "done").map((item) => item.id).join("\0");
+  const seenCompletedUploads = useRef(new Set(completedUploads.split("\0").filter(Boolean)));
   const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
     open,
     onClose,
   });
 
   useEffect(() => {
-    if (!open) return;
+    let newCompletion = false;
+    for (const id of completedUploads.split("\0").filter(Boolean)) {
+      if (!seenCompletedUploads.current.has(id)) newCompletion = true;
+      seenCompletedUploads.current.add(id);
+    }
+    if (!newCompletion) return;
+    setCursor(null);
+    setPreviousCursors([]);
+    setRefresh((value) => value + 1);
+  }, [completedUploads]);
+
+  useEffect(() => {
+    const generation = ++requestGeneration.current;
+    setAssets([]);
+    setNextCursor(null);
+    if (!open) {
+      setPending(false);
+      setCursor(null);
+      setPreviousCursors([]);
+      return;
+    }
     const controller = new AbortController();
+    const isCurrent = () => !controller.signal.aborted && generation === requestGeneration.current;
+    setPending(true);
+    setError("");
     const timer = window.setTimeout(() => {
-      setPending(true);
-      setError("");
-      const query = search.trim()
-        ? `?q=${encodeURIComponent(search.trim())}`
-        : "";
-      void fetch(withClientAdminPath(`/api/media/assets${query}`), {
+      const parameters = new URLSearchParams();
+      if (search.trim()) parameters.set("q", search.trim());
+      if (cursor) parameters.set("cursor", cursor);
+      const query = parameters.toString();
+      void fetch(withClientAdminPath(`/api/media/assets${query ? `?${query}` : ""}`), {
         cache: "no-store",
         signal: controller.signal,
       })
         .then(async (response) => {
-          const body = (await response.json().catch(() => ({}))) as {
-            assets?: EditorMediaAsset[];
-            error?: string;
-          };
-          if (!response.ok) {
-            throw new Error(body.error || "Не удалось открыть медиатеку.");
-          }
-          setAssets(Array.isArray(body.assets) ? body.assets : []);
+          const body: unknown = await response.json().catch(() => null);
+          const page = response.ok ? parseEditorMediaAssetsPage(body) : null;
+          if (!page) throw new Error("Не удалось открыть медиатеку. Повторите запрос.");
+          if (!isCurrent()) return;
+          setAssets(page.assets);
+          setNextCursor(page.nextCursor);
         })
         .catch((reason: unknown) => {
-          if (controller.signal.aborted) return;
+          if (!isCurrent()) return;
           setAssets([]);
           setError(
             reason instanceof Error
@@ -99,14 +114,14 @@ export default function EditorMediaDialog({
           );
         })
         .finally(() => {
-          if (!controller.signal.aborted) setPending(false);
+          if (isCurrent()) setPending(false);
         });
     }, 220);
     return () => {
       window.clearTimeout(timer);
       controller.abort();
     };
-  }, [open, search]);
+  }, [open, search, cursor, refresh]);
 
   if (!open) return null;
 
@@ -206,8 +221,12 @@ export default function EditorMediaDialog({
             data-editor-dialog-initial-focus
             type="search"
             value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Описание изображения"
+            onChange={(event) => {
+              setSearch(event.target.value);
+              setCursor(null);
+              setPreviousCursors([]);
+            }}
+            placeholder="Имя файла, описание, подпись или коллекция"
           />
         </label>
         <div role="status" aria-live="polite">
@@ -215,6 +234,7 @@ export default function EditorMediaDialog({
             ? "Загружаем медиатеку…"
             : error || (!assets.length ? "Изображения не найдены." : "")}
         </div>
+        {error && <button type="button" onClick={() => setRefresh((value) => value + 1)}>Повторить запрос</button>}
         {assets.length > 0 && (
           <div className="media-grid" role="list" aria-label="Изображения медиатеки">
             {assets.map((asset) => (
@@ -237,6 +257,21 @@ export default function EditorMediaDialog({
               </article>
             ))}
           </div>
+        )}
+
+        {(previousCursors.length > 0 || nextCursor !== null) && (
+          <nav className="editor-media-modal-actions" aria-label="Страницы медиатеки">
+            <button type="button" disabled={pending || previousCursors.length === 0} onClick={() => {
+              setCursor(previousCursors.at(-1) ?? null);
+              setPreviousCursors((values) => values.slice(0, -1));
+            }}>Предыдущие изображения</button>
+            <span>Страница {previousCursors.length + 1}</span>
+            <button type="button" disabled={pending || nextCursor === null} onClick={() => {
+              if (nextCursor === null) return;
+              setPreviousCursors((values) => [...values, cursor]);
+              setCursor(nextCursor);
+            }}>Следующие изображения</button>
+          </nav>
         )}
 
         <div className="editor-media-modal-actions">

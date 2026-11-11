@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 import { adminEnv } from "./env";
-import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslateToEnglish, type TranslationPrivateResponseArtifacts, type TranslationProviderCallJournal } from "./premium-english-translation";
+import type { TranslationOperationBudget } from "./translation-operation-budget";
+import { validateSiteCopyTranslationParameters } from "./site-copy-parameters";
 
 const siteCopySchema = z.object({
   items: z.array(z.object({
@@ -55,10 +57,11 @@ function validateOutput(
   ) {
     throw new Error("Premium site-copy translation changed keys or order");
   }
-  for (const item of parsed.items) {
+  for (const [index, item] of parsed.items.entries()) {
     if (/\p{Script=Cyrillic}/u.test(item.text)) {
       throw new Error(`English site copy still contains Cyrillic: ${item.key}`);
     }
+    validateSiteCopyTranslationParameters(source[index], item.text);
   }
   return parsed;
 }
@@ -71,6 +74,9 @@ export async function translateSiteCopyBatchToEnglish(
     reviewerModel?: string;
     review?: boolean;
     fetchImpl?: typeof fetch;
+    operationBudget?: TranslationOperationBudget;
+    providerJournal?: TranslationProviderCallJournal;
+    responseArtifacts?: TranslationPrivateResponseArtifacts;
   } = {}
 ) {
   if (!source.length) return null;
@@ -85,6 +91,7 @@ export async function translateSiteCopyBatchToEnglish(
   if (new Set(normalized.map((item) => item.key)).size !== normalized.length) {
     throw new Error("Site-copy translation contains duplicate keys");
   }
+  for (const item of normalized) validateSiteCopyTranslationParameters(item, item.text);
 
   const translated = await premiumTranslateToEnglish({
     source: { items: normalized },
@@ -96,10 +103,14 @@ export async function translateSiteCopyBatchToEnglish(
     reviewerModel: options.reviewerModel,
     review: options.review,
     fetchImpl: options.fetchImpl,
+    operationBudget: options.operationBudget,
+    providerJournal: options.providerJournal,
+    responseArtifacts: options.responseArtifacts,
     maxOutputTokens: 12_000,
     domainInstructions: [
       "Translate website UI copy into concise natural professional English.",
       "Preserve every item key and item order exactly.",
+      "Preserve named placeholders already present in the source, with the same multiplicity.",
       "Use consistent established wording for Proba Pera and Literary Planet.",
       "Do not add facts, explanations or marketing claims.",
     ],
@@ -107,3 +118,5 @@ export async function translateSiteCopyBatchToEnglish(
 
   return translated;
 }
+
+export { validateOutput as validateRetainedSiteCopyTranslation };

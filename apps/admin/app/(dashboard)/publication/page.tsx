@@ -12,7 +12,9 @@ import {
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { operatorDataError } from "@/lib/operator-data-error";
+import { publicationRetryInputSchema, publicationRetryTimestampEqual } from "@/lib/publication-retry-contract";
 import { requestFullPublicBuildAction, retryPublicationAction } from "./actions";
+import PublicationRetryForm from "./PublicationRetryForm";
 
 export const metadata = { title: "Публикация сайта" };
 
@@ -29,6 +31,9 @@ type OutboxEvent = {
   dispatched_at: string | null;
   deployed_at: string | null;
   deployment_run_id: string | null;
+  updated_at?: unknown;
+  retry_operation_id?: unknown;
+  retry_of_outbox_id?: unknown;
 };
 
 const statusLabels: Record<OutboxEvent["status"], string> = {
@@ -74,6 +79,14 @@ function displayCount(count: number | null) {
   return count === null ? "Недоступно" : count.toLocaleString("ru-RU");
 }
 
+function retryMetadata(event: OutboxEvent): { updatedAt: string; root: boolean } | null {
+  if (typeof event.updated_at !== "string" || !publicationRetryTimestampEqual(event.updated_at, event.updated_at)
+    || !Object.hasOwn(event, "retry_operation_id") || !Object.hasOwn(event, "retry_of_outbox_id")) return null;
+  if (event.retry_operation_id === null && event.retry_of_outbox_id === null) return { updatedAt: event.updated_at, root: true };
+  if (!publicationRetryInputSchema.shape.operationId.safeParse(event.retry_operation_id).success || !isOutboxId(event.retry_of_outbox_id)) return null;
+  return { updatedAt: event.updated_at, root: false };
+}
+
 function CatalogContext({ catalog }: { catalog: ReturnType<typeof parsePublicationCatalogQuery> }) {
   return (
     <>
@@ -102,7 +115,7 @@ export default async function PublicationPage({
   let eventsRequest = supabase
     .from("public_build_outbox")
     .select(
-      "id,entity_type,entity_id,reason,status,attempt_count,last_error,provider,requested_at,dispatched_at,deployed_at,deployment_run_id",
+      "id,entity_type,entity_id,reason,status,attempt_count,last_error,provider,requested_at,dispatched_at,deployed_at,deployment_run_id,updated_at,retry_operation_id,retry_of_outbox_id",
       { count: "exact" }
     )
     .order("id", { ascending: false });
@@ -223,6 +236,7 @@ export default async function PublicationPage({
             </thead>
             <tbody>
               {events.map((event) => {
+                const retry = retryMetadata(event);
                 const runUrl = event.deployment_run_id && /^\d+$/u.test(event.deployment_run_id)
                   ? `https://github.com/Kosyat128/probpera-literary-map/actions/runs/${event.deployment_run_id}`
                   : "";
@@ -245,17 +259,17 @@ export default async function PublicationPage({
                       {runUrl && <a href={runUrl} target="_blank" rel="noreferrer">Открыть сборку ↗</a>}
                     </td>
                     <td>
-                      {event.status !== "deployed" ? canChangePublication ? (
-                        <form action={retryPublicationAction}>
-                          <CatalogContext catalog={catalog} />
-                          <input type="hidden" name="outbox_id" value={String(event.id)} />
-                          <button className="button-secondary" type="submit">Повторить</button>
-                        </form>
-                      ) : (
-                        <span>Действие недоступно</span>
-                      ) : (
+                      {event.status === "deployed" ? (
                         <span aria-label="Публикация подтверждена">Готово</span>
-                      )}
+                      ) : event.status === "requested" || event.status === "dispatched" ? (
+                        <span>Уже в работе</span>
+                      ) : !canChangePublication || !retry ? (
+                        <span>Повтор недоступен до проверки данных запроса</span>
+                      ) : !retry.root ? (
+                        <span>Используйте исходный запрос №{String(event.retry_of_outbox_id)}</span>
+                      ) : <PublicationRetryForm key={`${event.id}:${retry.updatedAt}`}
+                        request={{ outboxId: String(event.id), operationId: crypto.randomUUID(), expectedUpdatedAt: retry.updatedAt }}
+                        action={retryPublicationAction} catalog={catalog} />}
                     </td>
                   </tr>
                 );

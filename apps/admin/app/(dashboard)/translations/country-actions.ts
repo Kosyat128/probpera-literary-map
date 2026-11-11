@@ -1,27 +1,13 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-
-import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
 import { requireStaff } from "@/lib/auth";
-import { loadEditorialCatalog } from "@/lib/editorial-catalog";
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import {
-  advanceBackfillCursor,
-  circularBackfillIndex,
-  normalizeBackfillCursor,
-  translationBackfillCursorParams,
-} from "@/lib/translation-backfill-cursor";
-import { translationErrorCode } from "@/lib/translation-errors";
-import { premiumTranslationRuntimeGate } from "@/lib/translation-runtime-gate";
-import {
-  recordTranslationSyncRun,
-  type TranslationRunItem,
-} from "@/lib/translation-run-record";
-
-const MAX_COUNTRY_TRANSLATIONS = 2;
-const MAX_COUNTRY_SCAN = 30;
+import { translationBackfillCursorParams } from "@/lib/translation-backfill-cursor";
+import { translationOperationBudgetNotice } from "@/lib/translation-operation-budget-notice";
+import { runProfileTranslationScan } from "@/lib/profile-translation-scan";
+import { profileTranslationScanOrdinal } from "@/lib/profile-translation-scan-rpc";
 
 function translationsUrl(values: Record<string, string | number | null | undefined>) {
   const params = new URLSearchParams();
@@ -38,86 +24,22 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
-  }
-  if (!(await premiumTranslationRuntimeGate(supabase))) {
-    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
-  }
-
-  const editorialCatalog = await loadEditorialCatalog();
-  const candidates = editorialCatalog.countries;
-  const startCursor = normalizeBackfillCursor(
-    cursorParams.countryCursor,
-    candidates.length
-  );
-  let translated = 0;
-  let reviewPending = 0;
-  let stale = 0;
-  let current = 0;
-  let manual = 0;
-  let skipped = 0;
-  let failed = 0;
-  let processed = 0;
-  let firstError = "";
-  const runItems: TranslationRunItem[] = [];
-  const scanLimit = Math.min(MAX_COUNTRY_SCAN, candidates.length);
-
-  for (let step = 0; step < scanLimit; step += 1) {
-    if (translated >= MAX_COUNTRY_TRANSLATIONS || firstError) break;
-    const country = candidates[
-      circularBackfillIndex(startCursor, step, candidates.length)
-    ];
-    if (!country) break;
-    processed += 1;
-    const result = await ensureCountryEnglishProfile({
-      supabase,
-      actorId: session.user.id,
-      countryId: country.id,
-      sourceFields: country.fields,
-      runtimeApproved: true,
-    });
-    runItems.push({
-      entityId: country.id,
-      state: result.state === "not-ready" ? "not-configured" : result.state,
-      error: result.error,
-      model: result.model,
-    });
-    if (result.state === "translated") translated += 1;
-    else if (result.state === "review-pending") reviewPending += 1;
-    else if (result.state === "stale") stale += 1;
-    else if (result.state === "current") current += 1;
-    else if (result.state === "manual") manual += 1;
-    else if (result.state === "failed") {
-      failed += 1;
-      firstError = result.error || "";
-    } else if (result.state === "conflict") failed += 1;
-    else skipped += 1;
-  }
-  const nextCountryCursor = advanceBackfillCursor(
-    startCursor,
-    processed,
-    candidates.length
-  );
-  try {
-    await recordTranslationSyncRun({
-      supabase,
-      kind: "country",
-      items: runItems,
-      resumeCursor: { countryCursor: nextCountryCursor },
-    });
-  } catch {
-    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
-  }
-
+  if (!supabase) redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
+  const result = await runProfileTranslationScan({ supabase, actorId: session.user.id, kind: "country",
+    scanIntent: String(formData.get("countryScanIntent") || "").trim() || null,
+    jobId: String(formData.get("countryJob") || "").trim() || null,
+    legacyCursor: String(formData.get("countryCursor") ?? "0") });
   revalidatePath("/translations");
   revalidatePath("/editorial-database");
-  redirect(
-    translationsUrl({
-      ...cursorParams,
-      success: `Страны: новых машинных черновиков ${translated}, ожидают проверки ${reviewPending}, устаревших черновиков ${stale}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}. Машинные черновики не опубликованы.`,
-      errorCode: firstError ? translationErrorCode(firstError) : null,
-      countryCursor: nextCountryCursor,
-    })
-  );
+  redirect(translationsUrl({ ...cursorParams,
+    countryJob: result.recoveryJobId,
+    countryCursor: result.receipt ? profileTranslationScanOrdinal(result.receipt) : cursorParams.countryCursor,
+    errorCode: result.errorCode,
+    success: result.receipt === null && result.processed === 0 ? null :
+      (result.errorCode && result.errorCode !== "translation_scan_complete" ? "Пакет стран приостановлен. Подтверждённые итоги: " : "Страны: ") +
+      `подтверждённо просмотрено ${result.processed}, подтверждённых машинных черновиков ${result.translated}, ожидают проверки ${result.reviewPending}, устаревших ${result.stale}, актуальных ${result.current}, ручных ${result.manual}, пропущено ${result.skipped}, ошибок ${result.failed}. Машинные черновики не опубликованы.` +
+      (result.receipt?.exhausted && result.receipt.status !== "cancelled" && result.receipt.status !== "cancelling"
+        ? " Сохранённый набор просмотрен; новые записи войдут в новый обход." : "") +
+      translationOperationBudgetNotice(result.budget, result.stopReason),
+  }));
 }

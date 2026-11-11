@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "classification": "GENUINE_NEXT_COUNTRY_UI_PREFLIGHT_DEFECT_NOT_ACCEPTANCE_PASS",
+  "capturedAt": "2026-10-29T22:35:33.247015+00:00",
+  "entries": [
+    {
+      "path": "README.md",
+      "bytes": 814,
+      "sha256": "140c5d595a0b900099be305958370b36390f32bfea4f2bf57570efb570a60827"
+    },
+    {
+      "path": "diagnostic-before.cjs",
+      "bytes": 2993,
+      "sha256": "09b04c13555d98c4847db148e0ad42928d0967ccc6c9f6762a7256d08e1232c8"
+    },
+    {
+      "path": "report.json",
+      "bytes": 21672,
+      "sha256": "a31e7bd261d82958b1f13f58468f065ddedc1788d43233e6b4666f2cb4b785d7"
+    },
+    {
+      "path": "runtime-packages.json",
+      "bytes": 775,
+      "sha256": "1e616ac041c2c82b7fabb8e8a0b59f75483d3ab0c319f403cf7f3f24b3d093b1"
+    },
+    {
+      "path": "sources/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 19169,
+      "sha256": "6b6eeed2fce2b2a0e883cee6300f2740750a90da7ff69144e8d8afdb881a67ca"
+    },
+    {
+      "path": "sources/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 18837,
+      "sha256": "b3e26878264a42f5e2b2a16d7fb2265c18db5a85de3d4e20a804204004aef005"
+    },
+    {
+      "path": "sources/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3696,
+      "sha256": "1bd203bb52cff2fdc2a3149019e5fb5ddd11bba645c961935f23986b3f705276"
+    },
+    {
+      "path": "sources/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 22512,
+      "sha256": "76002c254ba8ec718249f76f7c88aeca66c1f2a698af7c6813b608dae6dc1a46"
+    },
+    {
+      "path": "sources/apps/admin/lib/catalog-translation-operation-rpc.ts",
+      "bytes": 17985,
+      "sha256": "f2c4ec7e76550013e52e3ec8e1fb1c6dd092bfc82868fd6b7e96f2c88ff4d1d8"
+    },
+    {
+      "path": "sources/apps/admin/lib/catalog-translation-operation.ts",
+      "bytes": 16793,
+      "sha256": "27cbaa1649f9b232ff95a03107a090566a39f4bbbfac564e0f6585a42aabdba3"
+    },
+    {
+      "path": "sources/apps/admin/lib/env.ts",
+      "bytes": 6274,
+      "sha256": "e0ef9b147d78a8565c31ac6cfd65cc44d527f18a40237f41816fbd2c49cb58e0"
+    },
+    {
+      "path": "sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 37877,
+      "sha256": "ee22448a88f828ce41beee20131a48fdb59d0a98f4b43c679a8ca9e6a0ee2c91"
+    },
+    {
+      "path": "sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10293,
+      "sha256": "4f886b48a8b92a08e9ea9a9bd8972e4f482f774a370824d82479f7e6a0638ce3"
+    },
+    {
+      "path": "sources/apps/admin/lib/premium-translation-review.ts",
+      "bytes": 25229,
+      "sha256": "9033bdb80355f068198df2a97f0908308234da02f0d41465433d3512ae9d2b7e"
+    },
+    {
+      "path": "sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1438,
+      "sha256": "12932878ef33070075a5397ad5da9acdf819c11f5a9b154407a80198ea2dfa44"
+    },
+    {
+      "path": "sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 18782,
+      "sha256": "e37803ebbe5f66705e18c97a0227126c1210069ef82fb35d202a25ee9eb0dba6"
+    },
+    {
+      "path": "sources/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1208,
+      "sha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359"
+    },
+    {
+      "path": "sources/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3189,
+      "sha256": "6bd704e39df5f85d5c9dab788119d24a9d1f3e842b675e5c4243fd1fc2fe3c0a"
+    },
+    {
+      "path": "sources/apps/admin/lib/site-copy-translation-contract.ts",
+      "bytes": 5599,
+      "sha256": "efa938eea74800e4539053230b94b7f2e1221ee0f07eec64b368471259952749"
+    },
+    {
+      "path": "sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7903,
+      "sha256": "50d75a91b417923ce91037ab2964549eccc88e619432e2cd7c1befb6288a7639"
+    },
+    {
+      "path": "sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3783,
+      "sha256": "c0b5d6b0d6553269c499cf5deb983307988f13da9a1e5d7a30bc4ca7ff2630c4"
+    },
+    {
+      "path": "sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1407,
+      "sha256": "8a3a3da285e43cda1abde45f6784727215309db353db647bc9b050c220aa7227"
+    },
+    {
+      "path": "sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 33763,
+      "sha256": "e963b5beec854d989bc167c43ceb980f4da87c918ff3f3ff7d356328ebb2de21"
+    },
+    {
+      "path": "sources/apps/admin/lib/writer-translation-operation-rpc.ts",
+      "bytes": 15508,
+      "sha256": "7afebb406adc21b2b6678ce36dabed380e6a4978bf73dfb324b065b0a76da423"
+    },
+    {
+      "path": "sources/apps/admin/lib/writer-translation-operation.ts",
+      "bytes": 10873,
+      "sha256": "79c65b439676a7c50596993adc13bcdd851145857d660077e36299ecf592d061"
+    },
+    {
+      "path": "support/catalog-admission-boundary.cjs",
+      "bytes": 16006,
+      "sha256": "17f3f187dafcb49d98450d6702ccd97214f93663802276b06957a25dfd0d13a4"
+    },
+    {
+      "path": "support/catalog-admission-runtime.cjs",
+      "bytes": 19385,
+      "sha256": "3d2c78ab3885b645119083a3dc53e58161e2bfad2e11a0860a4db8b38aa91b45"
+    },
+    {
+      "path": "support/original-library-country-before.zip",
+      "bytes": 247080,
+      "sha256": "652bbe1367df8b92f267a418600d55ce76feb9fa1f9a69b969722a02c8f27cef"
+    }
+  ]
+}

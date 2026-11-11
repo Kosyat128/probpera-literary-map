@@ -382,11 +382,24 @@ export default function PageEditor({
     }
   }
 
+  function clearPreflightSavePending() {
+    setSavePending(false);
+    setSaveNotice(notice => notice === "Сохранение страницы..." ? "" : notice);
+  }
+
   async function savePage(formData: FormData) {
-    if (actionRunningRef.current || saveBlockedRef.current || !operationRecoveryReadyRef.current) return;
+    if (actionRunningRef.current || saveBlockedRef.current || !operationRecoveryReadyRef.current) {
+      if (!actionRunningRef.current) {
+        submitPendingRef.current = false;
+        submittedSnapshotRef.current = null;
+        clearPreflightSavePending();
+      }
+      return;
+    }
     if (readUnavailableRef.current) {
       submitPendingRef.current = false;
       submittedSnapshotRef.current = null;
+      clearPreflightSavePending();
       return;
     }
     const submittedIdentity = editorIdentity;
@@ -409,6 +422,7 @@ export default function PageEditor({
     } catch {
       submitPendingRef.current = false;
       submittedSnapshotRef.current = null;
+      clearPreflightSavePending();
       setLocalCopyError("Браузер не подтвердил сохранение полной копии исходного запроса. Запись страницы не начиналась; введённый текст оставлен в форме.");
       return;
     }
@@ -418,8 +432,6 @@ export default function PageEditor({
     } };
     actionRunningRef.current = true;
     submitPendingRef.current = true;
-    setSavePending(true);
-    setSaveNotice("Сохранение страницы...");
     try {
       const response: unknown = await savePageAction(clonePageFormData(frozenFormData));
       if (currentEntityRef.current === submittedIdentity) acceptSaveResponse(response);
@@ -920,6 +932,8 @@ export default function PageEditor({
         persistLocalCopy();
         submittedSnapshotRef.current = currentSnapshotRef.current;
         submitPendingRef.current = true;
+        setSavePending(true);
+        setSaveNotice("Сохранение страницы...");
       }}
     >
       <input name="id" type="hidden" value={page.id} />

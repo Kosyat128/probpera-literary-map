@@ -1,0 +1,60 @@
+{
+  "classification": "IMMUTABLE_RAW_FIXTURES_AND_SQL_PRESERVED_BY_GIT_ATTRIBUTES",
+  "files": [
+    {
+      "path": "apps/admin/lib/fixtures/publication-retry-native-goldens.json",
+      "bytes": 77221,
+      "sha256": "ab04230150490f180b5fe8449584bbd5f495cfcc89fc31864fdfd904f9e3e64c"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/site-copy-translation-operation-native-goldens.json",
+      "bytes": 834165,
+      "sha256": "fada405569b97282eb71e36f791ae315cf20e11cb94f0359ee862710954aad41"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/profile-translation-scan-native-goldens.json",
+      "bytes": 502306,
+      "sha256": "e338b3303355bbc57cf4bcb9eee84d72fd1a5a889ab29d48bc15fd42af0cad15"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/catalog-review-preflight.same-contract.cjs",
+      "bytes": 2881,
+      "sha256": "3aa0ccaa251cb9faa45ca7d1c59a374e10d2dd3b667b4f58748b68822664cb8e"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/known-editorial-partial.same-contract.cjs",
+      "bytes": 2495,
+      "sha256": "69d4a92ab61ce40218da726f71f0f8b6fdbdece0b52125035ce70bf33f873c80"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/publication-retry-before-oracle.cjs",
+      "bytes": 4627,
+      "sha256": "a688b198a79a56202c871ab9aa87956ac0aca6b698a97b9564fafe703b1751d9"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/page-creator-original-oracle.cjs",
+      "bytes": 3687,
+      "sha256": "72a1e6337fdbd4ed66cb4970258809de212a23e43ae2a5a0d63fdeb618accb33"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/writer-batch-budget-cap.cjs",
+      "bytes": 17179,
+      "sha256": "42546f807423531e30fdc7491e73f0096f5b7cdb88e5b870152d256d269787f3"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/library-batch-budget-cap.cjs",
+      "bytes": 19747,
+      "sha256": "2918441e4e14361cc8f4ff7571bf488e2f0876c2000152ef0e64eef57675badf"
+    },
+    {
+      "path": "apps/admin/lib/fixtures/country-batch-budget-cap.cjs",
+      "bytes": 18251,
+      "sha256": "e067f3c14ec361766c7cd704edbb2104813d3188d22c940470d0360a5167f98d"
+    },
+    {
+      "path": "supabase/migrations/20261030161000_publication_retry_admission.sql",
+      "bytes": 13160,
+      "sha256": "91e11a46e6db2834cf69bf5dda41a40151195cc410be85ce549a3a083debd320"
+    }
+  ]
+}

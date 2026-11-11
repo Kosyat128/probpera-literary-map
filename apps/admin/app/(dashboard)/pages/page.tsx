@@ -15,6 +15,7 @@ import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+import CreatePageForm from "./CreatePageForm";
 import {
   changePageStatusAction,
   createPageAction,
@@ -166,7 +167,7 @@ export default async function PagesPage({
             </nav>
           )}
         </section>
-        {canMutate && <form className="panel settings-stack" action={createPageAction}>
+        {canMutate && <CreatePageForm action={createPageAction}>
           <h2>Новая страница</h2>
           <input name="catalog_q" type="hidden" value={catalog.term} />
           <input name="catalog_status" type="hidden" value={catalog.status} />
@@ -175,8 +176,7 @@ export default async function PagesPage({
           <label className="field"><span>Адрес</span><input name="slug" placeholder="Создастся автоматически" /></label>
           <label className="field"><span>Краткое описание</span><textarea name="excerpt" /></label>
           <label className="field"><span>Начальный текст</span><textarea name="content" /></label>
-          <button className="button" type="submit">Создать черновик</button>
-        </form>}
+        </CreatePageForm>}
       </div>
     </>
   );

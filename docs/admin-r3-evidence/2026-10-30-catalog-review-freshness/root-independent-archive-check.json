@@ -1,0 +1,25 @@
+{
+  "classification": "ROOT_INDEPENDENT_ARCHIVE_READBACK_PASS",
+  "archives": [
+    {
+      "archive": "catalog-review-freshness-controlled-tests.zip",
+      "sha256": "b6b63d0f6919dc4224fc7fde398cfd526f1d442560bff24ef39d4620917c8965",
+      "bytes": 1394692,
+      "verifiedPayloads": 210,
+      "manifestSha256": "f66a2a8c4d596338f00766b5c3d37d217afd936825abc4710410e2c445328f00",
+      "status": "PASS"
+    },
+    {
+      "archive": "sql-evidence.zip",
+      "sha256": "93c02052ee11250946780c36cfeb7fc16ae6512e9cd06723037c043a4a9d747b",
+      "bytes": 816746,
+      "verifiedPayloads": 136,
+      "manifestSha256": "4392089aeb01f1cd3379871824175d5230b7fbd854217511d024e3683fb66d48",
+      "status": "PASS"
+    }
+  ],
+  "safeRelativeUniquePaths": true,
+  "currentSourceBindings": 136,
+  "sourceFingerprint": "c482dd130803939827a621432a104965cb0a0a35e0df848d4160604ec7e0c0ae",
+  "allBindingsMatchFrozenSource": true
+}

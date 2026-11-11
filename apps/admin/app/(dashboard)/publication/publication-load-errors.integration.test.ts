@@ -2,12 +2,13 @@ import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { load } from "cheerio";
-import { createElement, type ReactNode } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
+import type { ReactNode } from "react";
 import ts from "typescript";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const nativeRequire = createRequire(import.meta.url);
+const { createElement } = nativeRequire("next/dist/compiled/react");
+const { renderToStaticMarkup } = nativeRequire("next/dist/compiled/react-dom/server.node");
 const adminRoot = path.resolve(import.meta.dirname, "../../..");
 type ModuleExports = Record<string, unknown>;
 
@@ -24,6 +25,7 @@ function loadAdminModule(relative: string, mocks: Record<string, unknown>): Modu
   const module = { exports: {} as ModuleExports };
   const require = (name: string): unknown => {
     if (Object.hasOwn(mocks, name)) return mocks[name];
+    if (name === "react" || name.startsWith("react/")) return nativeRequire("next/dist/compiled/" + name);
     if (name.startsWith("@/") || name.startsWith(".")) {
       const target = name.startsWith("@/") ? path.join(adminRoot, name.slice(2))
         : path.resolve(path.dirname(filename), name);
@@ -38,11 +40,13 @@ function loadAdminModule(relative: string, mocks: Record<string, unknown>): Modu
 
 const privateError = "PRIVATE_PROVIDER_SECRET=never\u002drender\u002dthis\u002dfixture";
 const stamp = "2026\u002d09\u002d23T12:00:00.000Z";
+const retryStamp = "2026-09-23T12:00:00.123456+00:00";
 const event = {
   id: 42, entity_type: "  article  ", entity_id: "  source:writer/work  ",
-  reason: "  Original publication reason \u2014 exact  ", status: "requested",
+  reason: "  Original publication reason \u2014 exact  ", status: "failed",
   attempt_count: 0, last_error: null, provider: null, requested_at: stamp,
   dispatched_at: null, deployed_at: null, deployment_run_id: null,
+  updated_at: retryStamp, retry_operation_id: null, retry_of_outbox_id: null,
 };
 const defaults = {
   list: { data: [event], count: 1, error: null },
@@ -251,7 +255,7 @@ describe("M02 publication real SSR read isolation", () => {
   it.each(["requested", "dispatched", "deployed", "failed"])("accepts SQL nullable provider/times for %s", async (status) => {
     const view = await render({ response: { list: { data: [{ ...event, status }], count: 1, error: null } } });
     expectRows(view); expect(view.$("header form").length).toBe(1);
-    expect(view.$('input[name="outbox_id"]').length).toBe(status === "deployed" ? 0 : 1);
+    expect(view.$('input[name="outbox_id"]').length).toBe(status === "failed" ? 1 : 0);
     expect(view.$('[aria-label="Публикация подтверждена"]').length).toBe(status === "deployed" ? 1 : 0);
   });
   it("accepts direct finalized deployment without intermediate timestamps", async () => {
@@ -323,5 +327,33 @@ describe("M02 publication real SSR read isolation", () => {
   });
   it("preserves client framework signals before reading", async () => {
     const signal = new NextSignal("/login"); await expect(render({ clientSignal: signal })).rejects.toBe(signal);
+  });
+  it("renders a fresh server nonce and the exact original microsecond version without a GET mutation", async () => {
+    const first = await render(), second = await render();
+    const nonce = first.$('input[name="retry_operation_id"]').attr("value");
+    expect(nonce).toMatch(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/u);
+    expect(second.$('input[name="retry_operation_id"]').attr("value")).not.toBe(nonce);
+    expect(first.$('input[name="expected_updated_at"]').attr("value")).toBe(retryStamp);
+    expect(first.from).toHaveBeenCalledTimes(3);
+  });
+  it.each([
+    { ...event, updated_at: undefined }, { ...event, updated_at: "invalid" },
+    { ...event, retry_operation_id: undefined }, { ...event, retry_of_outbox_id: undefined },
+    { ...event, retry_operation_id: "bad", retry_of_outbox_id: "41" },
+    { ...event, retry_operation_id: null, retry_of_outbox_id: "41" },
+  ])("closes only retry when native retry metadata is unavailable: %#", async (row) => {
+    const view = await render({ response: { list: { data: [row], count: 1, error: null } } });
+    expectRows(view);
+    expect(view.$('input[name="outbox_id"]').length).toBe(0);
+    expect(view.$('input[name="retry_operation_id"]').length).toBe(0);
+    expect(view.$("header form").length).toBe(1);
+    expect(view.$(".empty-state").length).toBe(0);
+  });
+  it("keeps a native retry child visible without minting another retry form", async () => {
+    const view = await render({ response: { list: { data: [{ ...event,
+      retry_operation_id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa", retry_of_outbox_id: "41" }], count: 1, error: null } } });
+    expectRows(view);
+    expect(view.$('input[name="outbox_id"]').length).toBe(0);
+    expect(view.markup).toContain("Используйте исходный запрос №41");
   });
 });

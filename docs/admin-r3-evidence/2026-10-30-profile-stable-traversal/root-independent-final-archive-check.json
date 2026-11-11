@@ -1,0 +1,184 @@
+{
+  "status": "PASS_WITH_DECLARED_HISTORICAL_FAILURES_AND_SCOPED_EVIDENCE",
+  "classification": "ROOT_INDEPENDENT_FINAL_PROFILE_WHOLE_ARCHIVE_READ_ONLY_AUDIT",
+  "checkedAt": "2026-10-30T09:42:29.048011+00:00",
+  "wholeArchive": {
+    "file": "docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/whole-validation-evidence.zip",
+    "sha256": "b66820cc11c51824d68a1c59968bd34077e18c52eb96f06dcd14f1c84a535326",
+    "bytes": 4512244,
+    "payloads": 101,
+    "members": 102,
+    "manifestSha256": "b3d2cc799cf0da31e61a78dd5e03e4b556721a25cd6908fba575bed0572b95f3",
+    "safeUniqueCasefoldPaths": true,
+    "allPayloadLengthsAndHashesVerified": true
+  },
+  "globalSourceFingerprint": "1af04f3230b3395637a3e06090c1b25c72c66735d4c185be36c626374e4df02e",
+  "physicalCurrentNonDocFilesRehashed": 10476,
+  "fullEntryArraysComparedExact": 10703,
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "branch": "codex/admin-r3-data-errors",
+  "tests": {
+    "files": 215,
+    "total": 6774,
+    "passed": 6768,
+    "failed": 6,
+    "pending": 0,
+    "todo": 0,
+    "durationMs": 553007,
+    "sameSixHistoricalFailureCasesAndFirstErrors": true,
+    "libraryCasesPassed": 117
+  },
+  "reusedV3Gates": [
+    {
+      "id": "gate-admin-build",
+      "status": "PASS",
+      "durationMs": 48435,
+      "originalLogSha256": "26f3fe326a6340dd062aa73ca97dbeb201af6706136c22de5fc5aff42e1894ce",
+      "reusedWithoutExecution": true
+    },
+    {
+      "id": "gate-admin-typescript",
+      "status": "PASS",
+      "durationMs": 20819,
+      "originalLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reusedWithoutExecution": true
+    },
+    {
+      "id": "gate-cloudflare-typescript",
+      "status": "PASS",
+      "durationMs": 872,
+      "originalLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reusedWithoutExecution": true
+    },
+    {
+      "id": "gate-client-secrets",
+      "status": "PASS",
+      "durationMs": 105,
+      "originalLogSha256": "b349f3fdcd8b5b3cfd5973b21b2857c65fefe9bb92ce3c94ee1ea14ae4ae848b",
+      "reusedWithoutExecution": true
+    },
+    {
+      "id": "gate-readonly-hyphens",
+      "status": "FAIL",
+      "durationMs": 1940,
+      "originalLogSha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+      "reusedWithoutExecution": true
+    }
+  ],
+  "readonly": {
+    "findingCount": 41,
+    "byteIdenticalToBaseline": true,
+    "sha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+    "writeFlagUsed": false
+  },
+  "history": {
+    "V3Total": 6774,
+    "V3Passed": 6758,
+    "V3Failed": 16,
+    "libraryTimeouts": 10,
+    "isolatedUnchangedLibraryPassed": 117,
+    "same5000msTimeout": true,
+    "producerStaleObservationCorrectionRetained": true
+  },
+  "referencedArchivesVerified": [
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/profile-stable-scan-controlled-tests.zip",
+      "sha256": "1cefd3a893d19096dd6d1aa32165cc511727b9086c0fb4d1500c1cf87724e4b9",
+      "bytes": 15827736,
+      "payloads": 2627,
+      "members": 2628,
+      "manifestSha256": "c3e287c3627bab32c133256647fca839301abc0c5f31114d1a82d7785f84fbfd",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "verificationReuse": "Previously independently verified all2627 payloads, bound by exact unchanged archive SHA; no replay or redundant full decode.",
+      "scope": "CURRENT controlled source/SDK/SSR;128 exact current source bindings; native56 raw SDK/parser/GET qualification."
+    },
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/sql-evidence.zip",
+      "sha256": "cc0ceb177384bea9ddf2a575fafd3a1dec629fe27c1b5de9601837b22a7601b6",
+      "bytes": 2444333,
+      "payloads": 988,
+      "members": 989,
+      "manifestSha256": "dad2cc2dfb95c04e45604d495efe2564ce02a0359ec35f6bca817ef853455d44",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "sourceBindingsMatchCurrentAndV4": 39,
+      "scope": "Native-only finalv5; historical SQL-input subset remains exact at1af. No all-mutator/native SDK or managed-browser proof."
+    },
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/next-retry-partial-before.zip",
+      "sha256": "cf1a17f1033b1ab3bec07cf484c6d0ad1bec9a5dadfd800199d397bd58805b3b",
+      "bytes": 2865064,
+      "payloads": 714,
+      "members": 715,
+      "manifestSha256": "e7f3c7fc16d7760123bbedadfe70a11abde6c0c277bfdebb60227fa1c7e25644",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "currentBindingsMatchCurrentAndV4": 44,
+      "sourceOnlyAuditBindings": 13,
+      "scope": "Genuine NEXT negative proof:2 site-copy targets FAIL,9 guards+11 canonical/publication controls PASS. Original44 is working capture (not wholeV2); original/current/portable roles separated; no fix claimed."
+    },
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-profile-traversal-before.zip",
+      "sha256": "5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a",
+      "bytes": 871053,
+      "payloads": 77,
+      "members": 78,
+      "manifestSha256": "888fc3006dfe1fce5760d411ae0818ded2372ac5a6a9424e8e077c92a85cf807",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "scope": "Immutable original34-source profile BEFORE, historical six/eight target failures; never rebound to current1af or substituted."
+    },
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-profile-traversal-current-1de717.zip",
+      "sha256": "47cf32cefdb447dbe903fd2eb8cebb482399cf60a2e1f876c0fccda1ed76afa8",
+      "bytes": 1885743,
+      "payloads": 66,
+      "members": 67,
+      "manifestSha256": "7f17145946392d41ead6645a6180547675a6d0c1728ca2a34cdfc3d92cedbb68",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "scope": "Historical CURRENT diagnostic captured at1de717 (42 code/support bindings); superseded by finalprofile implementation, not current1af acceptance."
+    },
+    {
+      "file": "docs/admin-r3-evidence/2026-10-30-stable-traversal/whole-validation-evidence.zip",
+      "sha256": "549bd5b93aaf65da2ae913cdcedb9b233b4407f4f85a894987610cf3841fff28",
+      "bytes": 3281221,
+      "payloads": 65,
+      "members": 66,
+      "manifestSha256": "065c6741a93d8ee2e1e8fa36f076ec588be63e9e135c97e5767a9fbdc773aba5",
+      "safeUniqueCasefoldPaths": true,
+      "allPayloadLengthsAndHashesVerified": true,
+      "scope": "Prior da9 library full-validation baseline; six old M02 failures comparison, not current profile execution."
+    }
+  ],
+  "referenceCountIncludingBaseline": 6,
+  "currentNativeSqlBindingsVerified": 39,
+  "nextCurrentBindingsVerified": 44,
+  "postDocumentation": {
+    "receiptSha256": "b2f792deadcf0792caa9d59ecd7e4b5deef97dd9a512a3644e4a58f11c864c46",
+    "physicalNonDocChanges": [],
+    "trackedDocumentChanges": [
+      {
+        "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+        "size": 444925,
+        "sha256": "1a9f44a6f0bec4ba8e9f2dd2399b04c97534de031fde23aad4d55a84de380072"
+      }
+    ],
+    "declaredFinalDocumentsHashMatch": true,
+    "archiveHashesMatch": true
+  },
+  "qualifications": [
+    "Local profile increment only; whole26-module/230-criterion goal remains active.",
+    "Exactly six historic missing-original M02 cases and exact41 readonly findings remain failures; no skip, reconstruction or normalizer edit.",
+    "V3 timeout failure and unchanged isolated117/117 remain distinct from final successful same-source V4 broad run; scheduling cause is not asserted as a product fix.",
+    "V3 build/type/client gate results retain original run timestamps and are reused only after exact10703-entry equality; they were not rerun as V4.",
+    "Original1032 country action dependency graph remains unsupported; explicit separate compatibility probe/expanded verification graph and original behavioral targets retain their declared scope.",
+    "Native-only39 SQL inputs, native56 raw SDK/parser/GET, controlled mutation/action and static SSR scopes are separate, not managed end-to-end acceptance.",
+    "Historical profile CURRENT47cf is bound to1de717 and superseded; genuine original5489 and NEXTcf1a negative proof are not current acceptance or reconstructed originals."
+  ],
+  "issues": [],
+  "newTestsOrReplaysExecuted": false,
+  "maintainedNonDocWrites": 0,
+  "outputIsNewUntrackedDocumentationMetadata": true
+}

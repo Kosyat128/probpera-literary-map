@@ -4,6 +4,13 @@ export type TranslationOperationBudgetReason =
   | "deadline"
   | "stopped";
 
+export type TranslationOperationBudgetStop = {
+  reason: TranslationOperationBudgetReason;
+  attemptStarted: boolean;
+  // Reservations made by this helper invocation, not confirmed provider billing.
+  providerCalls: number;
+};
+
 export type TranslationOperationBudgetSnapshot = {
   attempts: number;
   providerCalls: number;

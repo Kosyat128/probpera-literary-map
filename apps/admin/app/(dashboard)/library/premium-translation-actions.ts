@@ -79,19 +79,6 @@ export async function saveWorkTranslationWithPremiumEnglishAction(
     );
   }
 
-  let premiumEnglish:
-    | Awaited<ReturnType<typeof ensureLiteraryWorkEnglishTranslation>>
-    | null = null;
-  if (
-    edit.locale === "ru" &&
-    new Set(["reviewed", "verified"]).has(edit.patch.editorial_status)
-  ) {
-    premiumEnglish = await ensureLiteraryWorkEnglishTranslation({
-      supabase,
-      actorId: session.user.id,
-      workId: edit.workId,
-    });
-  }
 
   const action = edit.translationId
     ? "literary_work_translation.updated"
@@ -106,9 +93,7 @@ export async function saveWorkTranslationWithPremiumEnglishAction(
       recordId: saved.id,
       locale: edit.locale,
       status: edit.patch.editorial_status,
-      premiumEnglishState: premiumEnglish?.state || null,
-      premiumEnglishModel: premiumEnglish?.model || null,
-      premiumEnglishReviewerModel: premiumEnglish?.reviewerModel || null,
+      premiumEnglishStarted: false,
     },
   });
 
@@ -121,16 +106,31 @@ export async function saveWorkTranslationWithPremiumEnglishAction(
     metadata: {
       workId: edit.workId,
       locale: edit.locale,
-      premiumEnglishState: premiumEnglish?.state || null,
+      premiumEnglishStarted: false,
     },
   });
+
+  let premiumEnglish:
+    | Awaited<ReturnType<typeof ensureLiteraryWorkEnglishTranslation>>
+    | null = null;
+  if (
+    edit.locale === "ru" &&
+    new Set(["reviewed", "verified"]).has(edit.patch.editorial_status)
+  ) {
+    premiumEnglish = await ensureLiteraryWorkEnglishTranslation({
+      supabase,
+      actorId: session.user.id,
+      workId: edit.workId,
+    });
+  }
+
 
   revalidatePath("/library");
   revalidatePath("/history");
 
   const premiumProblem =
     premiumEnglish &&
-    new Set(["failed", "conflict", "not-configured"]).has(premiumEnglish.state)
+    new Set(["failed", "conflict", "not-configured", "unconfirmed", "cancelled"]).has(premiumEnglish.state)
       ? ` Русская версия сохранена, но премиальный EN не обновлён: ${
           premiumEnglish.error || premiumEnglish.state
         }`
@@ -143,13 +143,13 @@ export async function saveWorkTranslationWithPremiumEnglishAction(
     ? ` Журнал аудита недоступен: ${auditError.message}`
     : "";
 
-  redirect(
-    workspaceHref(formData, {
+  const resultHref = new URL(workspaceHref(formData, {
       saved: "workspace",
       published: publication.state,
       ...(premiumProblem || readinessNote || auditNote
         ? { error: `${premiumProblem}${readinessNote}${auditNote}`.trim() }
         : {}),
-    })
-  );
+    }), "https://admin.invalid");
+  if (premiumEnglish?.operation?.receipt) resultHref.searchParams.set("translation_operation", premiumEnglish.operation.receipt.operationId);
+  redirect(`${resultHref.pathname}${resultHref.search}${resultHref.hash}`);
 }

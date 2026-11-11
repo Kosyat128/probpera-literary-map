@@ -104,6 +104,10 @@ function setup(options: Row = {}) {
   let committedWrites = 0, raceWinner: Row | null = null, loaded!: ReturnType<typeof modules>;
   let draft: Row | null = null;
   const stageAttempts: Row[] = [], promoteAttempts: Row[] = [], discardAttempts: Row[] = [];
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const catalogAdmission = createCatalogAdmissionBoundary({ actorId,
+    getSeed() { return structuredClone({ work, russian, english, sources }); }, getPrivateCandidate() { return draft; },
+    setPrivateCandidate(_type: string, _id: string, value: Row) { draft = structuredClone(value); } });
   const snapshot = () => structuredClone({ work, russian, english, sources });
   if (options.current && english) english.metadata.premiumTranslation.sourceHash = digest({
     russianTitle: russian.title, verifiedEnglishTitle: english.title, verifiedEnglishTitleSourceUrl: titleUrl,
@@ -125,6 +129,16 @@ function setup(options: Row = {}) {
     const method = init?.method ?? "GET", table = url.pathname.split("/").at(-1)!;
     const payload = init?.body ? JSON.parse(String(init.body)) : null;
     wire.push({ method, table, query: Object.fromEntries(url.searchParams), payload });
+    if (catalogAdmission.handles(table)) {
+      if (table === "finish_catalog_translation_operation" && payload.p_candidate) {
+        const operation = catalogAdmission.operations.get(payload.p_operation_id);
+        stageAttempts.push({ protocol: "actual-catalog-FINISH", args: structuredClone(payload), p_source_revision: structuredClone(operation.sourceRevision), p_target_revision: structuredClone(operation.targetRevision) });
+        assert.deepEqual(payload.p_candidate.payload, { description: options.output ?? description, sourceLanguage: "Russian", sourceUrls: [titleUrl, ruUrl],
+          bibliographicTitle: { value: before.english!.title, provider: "verified-bibliography", sourceUrl: titleUrl, retrievedAt: "2026-10-08" } });
+        assert.equal(operation.sourceHash, digest(operation.sourceSnapshot)); assert.deepEqual(operation.sourceSnapshot, calls[0].source);
+      }
+      return catalogAdmission.fetchRpc(table, payload);
+    }
     let data: unknown, count: number | null = null, error: Row | null = null;
     if (url.pathname.includes("/rpc/")) {
       if (table === "premium_machine_translation_ready") data = options.ready !== false;
@@ -215,7 +229,9 @@ function setup(options: Row = {}) {
           !(options.reviewMissing === "russian" && row.id === ruId) && !(options.reviewMissing === "english" && row.id === enId) &&
           !(options.reviewMissing === "title" && table === "literary_work_sources"));
         count = selected.length;
-        data = method === "HEAD" ? null : selected.map(row => structuredClone(row));
+        const columns = url.searchParams.get("select");
+        data = method === "HEAD" ? null : selected.map(row => columns && columns !== "*"
+          ? Object.fromEntries(columns.split(",").map(column => [column, structuredClone(row[column])])) : structuredClone(row));
       }
     } else if (method === "PATCH") {
       assert.equal(table, "literary_work_translations");
@@ -449,6 +465,7 @@ const countryAdmittedEnglish = {
 
 
 function countryReviewSetup(options: Row = {}) {
+  const { catalogCandidateFreshnessReceipt } = nativeRequire("./fixtures/catalog-review-freshness-boundary.cjs");
   const countryId = "iceland", overrideId = "1a2ef910-0a91-4b03-86bd-ec48392c931d";
   const inputSource: Row = structuredClone(countrySourceFields), row: Row = { id: overrideId, country_id: countryId, updated_at: stamp, fields: structuredClone(countryOriginalFields) };
   const original = structuredClone(row), originalSource = structuredClone(inputSource), wire: Row[] = [], builds: Row[] = [];
@@ -467,6 +484,9 @@ function countryReviewSetup(options: Row = {}) {
     if (name === "country_profile_overrides") { assert.equal(method, "GET"); assert.equal(url.searchParams.get("country_id"), "eq." + countryId); data = options.rowMissing ? [] : [structuredClone(row)]; }
     else if (name === "get_premium_translation_working_draft") { assert.deepEqual(payload, { p_entity_type: "country", p_entity_id: countryId });
       data = { schemaVersion: 1, entityType: "country", entityId: countryId, draft: structuredClone(draft) }; }
+    else if (name === "get_catalog_translation_candidate_freshness") {
+      data = catalogCandidateFreshnessReceipt(payload, { findDraft: () => draft, findOperation: () => null, isSourceCurrent: () => true });
+    }
     else if (name === "promote_premium_translation_working_draft") {
       assert.ok(draft); assert.deepEqual(payload, { p_entity_type: "country", p_entity_id: countryId, p_draft_id: draft.id, p_expected_version: draft.version,
         p_candidate_hash: draft.candidateHash, p_source_hash: digest(countryRussian), p_catalog_source_hash: digest(inputSource), p_catalog_source_fields: inputSource, p_confirm_human_review: true });

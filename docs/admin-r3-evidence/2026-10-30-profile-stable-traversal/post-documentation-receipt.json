@@ -1,0 +1,52 @@
+{
+  "status": "PASS_WITH_UNCHANGED_EXCLUDED_GATE_FAILURE",
+  "checkedAt": "2026-10-30T09:33:03.034Z",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "branch": "codex/admin-r3-data-errors",
+  "validationSourceFiles": 10476,
+  "validationSourceSha256": "1af04f3230b3395637a3e06090c1b25c72c66735d4c185be36c626374e4df02e",
+  "sameAsFullBroadAndGates": true,
+  "nonDocChanges": [],
+  "trackedDocumentChanges": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "size": 444925,
+      "sha256": "1a9f44a6f0bec4ba8e9f2dd2399b04c97534de031fde23aad4d55a84de380072"
+    }
+  ],
+  "readonly": {
+    "exitCode": 1,
+    "byteIdenticalToFinalBroadGate": true,
+    "findings": 41,
+    "logSha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+    "normalizerWriteFlagUsed": false
+  },
+  "finalDocuments": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "sha256": "1a9f44a6f0bec4ba8e9f2dd2399b04c97534de031fde23aad4d55a84de380072"
+    },
+    {
+      "path": "docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/README.md",
+      "sha256": "4ad7ac3ce0fc19ecc2fc72cac1161ba80e8c1c259c26b52b699abf2c919b926a"
+    }
+  ],
+  "archiveHashes": [
+    {
+      "file": "next-retry-partial-before.zip",
+      "sha256": "cf1a17f1033b1ab3bec07cf484c6d0ad1bec9a5dadfd800199d397bd58805b3b"
+    },
+    {
+      "file": "profile-stable-scan-controlled-tests.zip",
+      "sha256": "1cefd3a893d19096dd6d1aa32165cc511727b9086c0fb4d1500c1cf87724e4b9"
+    },
+    {
+      "file": "sql-evidence.zip",
+      "sha256": "cc0ceb177384bea9ddf2a575fafd3a1dec629fe27c1b5de9601837b22a7601b6"
+    },
+    {
+      "file": "whole-validation-evidence.zip",
+      "sha256": "b66820cc11c51824d68a1c59968bd34077e18c52eb96f06dcd14f1c84a535326"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "26-file captured execution/test graph, not entire repository",
+  "changes": [
+    {
+      "file": "apps/admin/lib/profile-library-batch-budgets.integration.test.ts",
+      "before": "2401a3c0ee96cb47d866ac5d1565d374390646c06098ddf8e4d904ab60fca1ee",
+      "after": "f27ebed12677e0b4336265c73c04d9a03baa531ce69be952682b3f55bb799c6f"
+    }
+  ],
+  "other25SourceFilesUnchanged": true,
+  "actual21ModuleGraphUnchanged": true,
+  "emittedJavaScriptIdentical": true,
+  "emittedJavaScriptSha256": "d74821d27f33d48a5581393ca5aa6b071d1a4b59b43480eba19b085212573b11",
+  "afterTests": {
+    "maintained": 39,
+    "passed": 39,
+    "currentScenarios": 33,
+    "adminTypeScriptExitCode": 0
+  }
+}

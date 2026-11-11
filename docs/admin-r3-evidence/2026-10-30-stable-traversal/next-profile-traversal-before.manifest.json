@@ -1,0 +1,549 @@
+{
+  "classification": "PREPARED_UNRESOLVED_PROFILE_BEFORE_NOT_IMPLEMENTATION_OR_ACCEPTANCE",
+  "sourceCount": 34,
+  "contractSha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+  "originalReportSha256": "5e86af8425eb38b503ba4ffba17795059ef1cb82e633708b9795c55f9d6887f3",
+  "preparedProofReceiptSha256": "e2446516469885d416ecce1ea1177c9da60ea8cceebd13be19311ac46d0dfd19",
+  "selfExcluded": true,
+  "files": [
+    {
+      "file": "design/design.json",
+      "bytes": 18154,
+      "sha256": "3db880417bc95a96e103c18f0a46fd0a0281ec6ab357aa6f8f3ec97a0e03a513",
+      "role": "new-proposal-only-not-before-source",
+      "origin": "../work/m07-t12-profile-stable-design-20261030-sol/design.json"
+    },
+    {
+      "file": "design/design.md",
+      "bytes": 6455,
+      "sha256": "fc8c37a585f70c94083daea9214d2722dcda4c358d8c6ad75c7c201de844af3e",
+      "role": "new-proposal-only-not-before-source",
+      "origin": "../work/m07-t12-profile-stable-design-20261030-sol/design.md"
+    },
+    {
+      "file": "design/input-bindings.json",
+      "bytes": 3258,
+      "sha256": "5035e309e385563577403450719f4d35d77f538c21a95c62d96e79755b0cd35f",
+      "role": "new-proposal-only-not-before-source",
+      "origin": "../work/m07-t12-profile-stable-design-20261030-sol/input-bindings.json"
+    },
+    {
+      "file": "freeze-manifest.json",
+      "bytes": 6562,
+      "sha256": "7322f51e7e2f208965a4c39f029ead14d6f5b2f5a2f3f6b574f1eace262a0998",
+      "role": "new-index-of-original-captured-inputs",
+      "origin": "packaging verification"
+    },
+    {
+      "file": "portable/no-network.cjs",
+      "bytes": 252,
+      "sha256": "e981419eca5304cf123b71835d28081ac1f15be3ebebd720b83b0853b080cd06",
+      "role": "new-external-network-guard",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/no-network.cjs"
+    },
+    {
+      "file": "portable/replay-adaptation.json",
+      "bytes": 1026,
+      "sha256": "0364280930bfda1a6cd5854ee0c3651bdf131f3b4be839f3876f17d340b525d0",
+      "role": "new-explicit-portability-declaration",
+      "origin": "packaging verification"
+    },
+    {
+      "file": "portable/replay.cjs",
+      "bytes": 7090,
+      "sha256": "885001d5192098703274fcd3f0b0768900d2fb02ecc2e6fdbabfb671fd01ef05",
+      "role": "new-portable-verification-wrapper-no-source-patch",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/replay.cjs"
+    },
+    {
+      "file": "portable/transitive-support-provenance.json",
+      "bytes": 630,
+      "sha256": "1cd4f71f451da946dbebde2eebe15a6652c04a66bc864712aa7cc4c77a529ab2",
+      "role": "new-binding-of-existing-genuine-archived-transitive-fixture",
+      "origin": "packaging verification"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 19183,
+      "sha256": "f843e9ed6676fb6ab85d6d0727dc9a9cad93155d33c894e123ca008e41a4ea6d",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/app/(dashboard)/translations/actions.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 7285,
+      "sha256": "652f5a398469f7aa3da3dbba6e10a70ecd21f7ef3b1835c538f6b77ef48ce3a5",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/app/(dashboard)/translations/country-actions.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "bytes": 4455,
+      "sha256": "60508cdd07ce761468662970451809cad9431e5690dc5191409665cae680996b",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/app/(dashboard)/translations/resume-action.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/admin-path.ts",
+      "bytes": 3115,
+      "sha256": "52f5e3d67668788694601d7fb8b82c63c9a0687b106e75093fe60a54a7df5214",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/admin-path.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/article-translation-scan.ts",
+      "bytes": 3158,
+      "sha256": "7e5171bf249d81f781aa3bcde559c66caa5368ed8aedda57002bdc707f6d0e74",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/article-translation-scan.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 19169,
+      "sha256": "6b6eeed2fce2b2a0e883cee6300f2740750a90da7ff69144e8d8afdb881a67ca",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-country-profile.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 1431,
+      "sha256": "591dc2ce19434819374d0a9bf825610f62eb4bf5656267cc2bf217dcad9a6df8",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-literary-work-safe.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 18837,
+      "sha256": "b3e26878264a42f5e2b2a16d7fb2265c18db5a85de3d4e20a804204004aef005",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-literary-work.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-site-copy-private.ts",
+      "bytes": 8304,
+      "sha256": "2aae7290aa6ba61d54b14819db4b39ef02cc62b331459b2b607b5394545c14fb",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-site-copy-private.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3696,
+      "sha256": "1bd203bb52cff2fdc2a3149019e5fb5ddd11bba645c961935f23986b3f705276",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-site-copy.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 22512,
+      "sha256": "76002c254ba8ec718249f76f7c88aeca66c1f2a698af7c6813b608dae6dc1a46",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/auto-translate-writer-biography.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/catalog-translation-operation-marker.ts",
+      "bytes": 764,
+      "sha256": "43b877917c80a5263f1b6bcb9c23f8ebf5182f8e93c6d16dc44e4a3ad5ea02f6",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/catalog-translation-operation-marker.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/catalog-translation-operation-rpc.ts",
+      "bytes": 17985,
+      "sha256": "f2c4ec7e76550013e52e3ec8e1fb1c6dd092bfc82868fd6b7e96f2c88ff4d1d8",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/catalog-translation-operation-rpc.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/catalog-translation-operation.ts",
+      "bytes": 16793,
+      "sha256": "27cbaa1649f9b232ff95a03107a090566a39f4bbbfac564e0f6585a42aabdba3",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/catalog-translation-operation.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/env.ts",
+      "bytes": 6274,
+      "sha256": "e0ef9b147d78a8565c31ac6cfd65cc44d527f18a40237f41816fbd2c49cb58e0",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/env.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/fixtures/catalog-admission-boundary.cjs",
+      "bytes": 16996,
+      "sha256": "35f8acec3c5c7d6b18b61be5c3bb259292c8edfc8ae3bba7893044ca4f80ac53",
+      "role": "original-captured-runtime-support",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/support/apps/admin/lib/fixtures/catalog-admission-boundary.cjs"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/fixtures/catalog-admission-runtime.cjs",
+      "bytes": 19385,
+      "sha256": "3d2c78ab3885b645119083a3dc53e58161e2bfad2e11a0860a4db8b38aa91b45",
+      "role": "original-captured-runtime-support",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/support/apps/admin/lib/fixtures/catalog-admission-runtime.cjs"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/fixtures/catalog-review-freshness-boundary.cjs",
+      "bytes": 3874,
+      "sha256": "258754a4be19266ceceb5ba8e0e6a9870283920a5cd982235612003aab1ad775",
+      "role": "original-archived-transitive-runtime-support",
+      "origin": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-library-traversal-before.zip#instrumentation/catalog-review-freshness-boundary.cjs"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/fixtures/writer-admission-boundary.cjs",
+      "bytes": 12059,
+      "sha256": "418aa109afbd1cea39a9337bb200acbd57ebb75134df1144b7c05a33cee5820b",
+      "role": "original-captured-runtime-support",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/support/apps/admin/lib/fixtures/writer-admission-boundary.cjs"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/fixtures/writer-admission-runtime.cjs",
+      "bytes": 14200,
+      "sha256": "df7b5f47abbbdd3296fdc3db7c6224fe395b0285ca469a69d0b13197ea471e16",
+      "role": "original-captured-runtime-support",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/support/apps/admin/lib/fixtures/writer-admission-runtime.cjs"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/navigation.ts",
+      "bytes": 696,
+      "sha256": "ef2a06fc2a4d0093a359582013f45f65edb47664cfebef6b10ca1110db7ac36e",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/navigation.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 37877,
+      "sha256": "ee22448a88f828ce41beee20131a48fdb59d0a98f4b43c679a8ca9e6a0ee2c91",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/premium-english-translation.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10293,
+      "sha256": "4f886b48a8b92a08e9ea9a9bd8972e4f482f774a370824d82479f7e6a0638ce3",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/premium-translation-probe.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1438,
+      "sha256": "12932878ef33070075a5397ad5da9acdf819c11f5a9b154407a80198ea2dfa44",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/premium-translation-runtime.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 18782,
+      "sha256": "e37803ebbe5f66705e18c97a0227126c1210069ef82fb35d202a25ee9eb0dba6",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/premium-translation-working-draft.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1208,
+      "sha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/short-hyphens.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3189,
+      "sha256": "6bd704e39df5f85d5c9dab788119d24a9d1f3e842b675e5c4243fd1fc2fe3c0a",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/site-copy-storage.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/site-copy-translation-contract.ts",
+      "bytes": 5599,
+      "sha256": "efa938eea74800e4539053230b94b7f2e1221ee0f07eec64b368471259952749",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/site-copy-translation-contract.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1601,
+      "sha256": "e0b349a2b75cf65ddcc3294eaa5c466ebdb5285cce0c312d0bf3f969c6eaa4c3",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-backfill-cursor.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-errors.ts",
+      "bytes": 7903,
+      "sha256": "50d75a91b417923ce91037ab2964549eccc88e619432e2cd7c1befb6288a7639",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-errors.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-operation-budget-notice.ts",
+      "bytes": 953,
+      "sha256": "247d2af6e9301f680f4499589ffd5bd008250cea982418f40527252173642f39",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-operation-budget-notice.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3783,
+      "sha256": "c0b5d6b0d6553269c499cf5deb983307988f13da9a1e5d7a30bc4ca7ff2630c4",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-operation-budget.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-profile-budget-readiness.ts",
+      "bytes": 819,
+      "sha256": "2d84a10dd3d123d53b4b59d4c60850682f83185dce2965b7dfb0c5f8f56163c4",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-profile-budget-readiness.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2330,
+      "sha256": "f9fc2485fa70fc044234ac11245b5976aabec8fcb49bc6df60485df14e729ca6",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-run-record.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1407,
+      "sha256": "8a3a3da285e43cda1abde45f6784727215309db353db647bc9b050c220aa7227",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/translation-runtime-gate.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 33763,
+      "sha256": "e963b5beec854d989bc167c43ceb980f4da87c918ff3f3ff7d356328ebb2de21",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/writer-biography-edit.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/writer-translation-operation-marker.ts",
+      "bytes": 698,
+      "sha256": "ce6509751fa64e6964a4ad9217216563be461e687beb11bff6530403d17660ad",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/writer-translation-operation-marker.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/writer-translation-operation-rpc.ts",
+      "bytes": 15508,
+      "sha256": "7afebb406adc21b2b6678ce36dabed380e6a4978bf73dfb324b065b0a76da423",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/writer-translation-operation-rpc.ts"
+    },
+    {
+      "file": "probpera-literary-map/apps/admin/lib/writer-translation-operation.ts",
+      "bytes": 10873,
+      "sha256": "79c65b439676a7c50596993adc13bcdd851145857d660077e36299ecf592d061",
+      "role": "original-frozen-application-source",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/sources/apps/admin/lib/writer-translation-operation.ts"
+    },
+    {
+      "file": "probpera-literary-map/docs/admin-r3-evidence/2026-10-29-profile-budgets/next-writer-admission-before.zip",
+      "bytes": 138357,
+      "sha256": "44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949",
+      "role": "exact-prior-runtime-dependency-archive",
+      "origin": "docs/admin-r3-evidence/2026-10-29-profile-budgets/next-writer-admission-before.zip"
+    },
+    {
+      "file": "probpera-literary-map/docs/admin-r3-evidence/2026-10-30-stable-traversal/next-library-traversal-before.zip",
+      "bytes": 453453,
+      "sha256": "55b10dade79c6cf88ea429a17e58b12f23e108e8f9d7c0445716447273cbb356",
+      "role": "exact-prior-transitive-support-origin-archive",
+      "origin": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-library-traversal-before.zip"
+    },
+    {
+      "file": "probpera-literary-map/docs/admin-r3-evidence/2026-10-30-writer-admission/next-library-country-admission-before.zip",
+      "bytes": 247080,
+      "sha256": "652bbe1367df8b92f267a418600d55ce76feb9fa1f9a69b969722a02c8f27cef",
+      "role": "exact-prior-runtime-dependency-archive",
+      "origin": "docs/admin-r3-evidence/2026-10-30-writer-admission/next-library-country-admission-before.zip"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3956,
+      "sha256": "eabbbf64e61529d82fe130c38933e0908f5d9e0153d30b0c0e4ecbc227507459",
+      "role": "new-artifact-scope-and-replay-instructions",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/README.md"
+    },
+    {
+      "file": "same-contract.cjs",
+      "bytes": 447,
+      "sha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+      "role": "exact-original-a988-invariant",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/same-contract.cjs"
+    },
+    {
+      "file": "verification/prepackage-frozen-replay/actual-frozen-report.json",
+      "bytes": 1932220,
+      "sha256": "5e86af8425eb38b503ba4ffba17795059ef1cb82e633708b9795c55f9d6887f3",
+      "role": "new-independent-original-frozen-reproduction-not-acceptance",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/stage-replay-v2/actual-frozen-report.json"
+    },
+    {
+      "file": "verification/prepackage-frozen-replay/replay-receipt.json",
+      "bytes": 3818,
+      "sha256": "42630211e1fa1f1760c342e924d8582130c1f006472b0045c4b14d572c1d83af",
+      "role": "new-independent-original-frozen-reproduction-not-acceptance",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/stage-replay-v2/replay-receipt.json"
+    },
+    {
+      "file": "verification/prepackage-frozen-replay/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "new-independent-original-frozen-reproduction-not-acceptance",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/stage-replay-v2/stderr.log"
+    },
+    {
+      "file": "verification/prepackage-frozen-replay/stdout.log",
+      "bytes": 869,
+      "sha256": "8be95db6e5c7642fe92e7b2052f5afbe1fe31db10d64a2fee9ff81a2d8592151",
+      "role": "new-independent-original-frozen-reproduction-not-acceptance",
+      "origin": "../work/m07-t12-profile-portable-20261030-sol/stage-replay-v2/stdout.log"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/contract-proof-v1/report.json",
+      "bytes": 9355,
+      "sha256": "b11e2149bf10831ad3ea408014662d0e89ab8e60a80b5d903da7719bfc509522",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/contract-proof-v1/same-contract.cjs",
+      "bytes": 447,
+      "sha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/contract-proof-v1/same-contract.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/freeze-and-contract.cjs",
+      "bytes": 4178,
+      "sha256": "1febebb2b34aef28d7bc22761e997f5fe818cd99e585d4ab8214e27dfbc1d5b7",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/freeze-and-contract.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/latest.stdout.log",
+      "bytes": 807,
+      "sha256": "019f4cafe21f74d9f30f848e2add3a600bbbccc5ba5336ad40a53b3823d6682c",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/latest.stdout.log"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/library-sdk-replay-current-v1/report.json",
+      "bytes": 86189,
+      "sha256": "7c2ac6910df7b6e301e6559ab4d225686b27a5f8f8c31704ae2e09ae15947b20",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/library-sdk-replay-current-v1/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/library-sdk-replay-frozen-v1/report.json",
+      "bytes": 86224,
+      "sha256": "6ba7e7e84db7d66002b863490c9c70371b7091d30d94dada646116ce0320304b",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/library-sdk-replay-frozen-v1/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/next-slice-test-design.json",
+      "bytes": 6644,
+      "sha256": "f759f5bdf369349ac49a7bc5e8f9940e7722ef82bbf54b82f43a1b808db4d88c",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/next-slice-test-design.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/paired-loader-adaptation.json",
+      "bytes": 1818,
+      "sha256": "b64ae9a92f4a3a7a7cc0fd0a59f15dd2526705849fc3198001fc56f401b2694b",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/paired-loader-adaptation.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/paired-profile-current-v1/report.json",
+      "bytes": 1932335,
+      "sha256": "eeb5c5d780c8cf00af567edd9eaddaa1abe0f0830c2d5355ba63b7336e0e5ea3",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/paired-profile-current-v1/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/paired-profile-frozen-v1/report.json",
+      "bytes": 1932394,
+      "sha256": "4749e33a31d4a5c9a61d3b0b008143902cf6886bf5d5a918ae7e28ddf2949be1",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/paired-profile-frozen-v1/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/prepare-paired-profile.cjs",
+      "bytes": 2307,
+      "sha256": "193bff343ca6ae19a8bbe12f4c5a6238a2cd4fdf6603d6ccc2276456c00793d4",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/prepare-paired-profile.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/prepared-proof-receipt.json",
+      "bytes": 9564,
+      "sha256": "e2446516469885d416ecce1ea1177c9da60ea8cceebd13be19311ac46d0dfd19",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/prepared-proof-receipt.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/profile-array-before.cjs",
+      "bytes": 10299,
+      "sha256": "9c9be507c1aaf762060e783d9bb56eae13d7ce92012569b4e21c065bcbb0246e",
+      "role": "unchanged-original-executed-runner",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/profile-array-before.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/profile-array-paired.cjs",
+      "bytes": 10480,
+      "sha256": "1b62e4143dfb14a3bdbad0a43f7287c623e57075b3d674012625a42415a5f92a",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/profile-array-paired.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-24-365Z/execution-error.json",
+      "bytes": 552,
+      "sha256": "44db2305309b6e70d1aa7a5cf97f4f5b2526be3d0c35c2b4e6b397d0d9dcd02d",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-24-365Z/execution-error.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/report.json",
+      "bytes": 1932220,
+      "sha256": "5e86af8425eb38b503ba4ffba17795059ef1cb82e633708b9795c55f9d6887f3",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-36-49-744Z/report.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-45-05-561Z/execution-error.json",
+      "bytes": 411,
+      "sha256": "a2d7ff85dc36745e64c12392745ac2f2fcec69c3dc71c98f7c85306fab7110cd",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-45-05-561Z/execution-error.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-45-33-754Z/scan-continue-not-retry.json",
+      "bytes": 56175,
+      "sha256": "0f4281cdf7ad0f3ae353288bff3b0845afc81053c1f57f07d03c0d0968afb76d",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/run-2026-10-29T23-45-33-754Z/scan-continue-not-retry.json"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/scan-continue-is-not-retry-v1-original.cjs",
+      "bytes": 4472,
+      "sha256": "af89178e8ab98cedf292fa61d3d553fb27bdc7f8f65841753029df20c28ce1e4",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/scan-continue-is-not-retry-v1-original.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/scan-continue-is-not-retry.cjs",
+      "bytes": 4555,
+      "sha256": "5cbdad88f0c7f88bd9edb1c9288c35f9422ee6d6893be3bb2dfaf42b56d1fb06",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/scan-continue-is-not-retry.cjs"
+    },
+    {
+      "file": "work/m07-t12-profile-before-20261030-sol/summarize-proof.cjs",
+      "bytes": 4828,
+      "sha256": "54cffd97f79da630a7a180288a7e2731612ac15178b00262a35b0ad7e82dcd11",
+      "role": "unchanged-original-history-or-preparation",
+      "origin": "../work/m07-t12-profile-before-20261030-sol/summarize-proof.cjs"
+    }
+  ]
+}

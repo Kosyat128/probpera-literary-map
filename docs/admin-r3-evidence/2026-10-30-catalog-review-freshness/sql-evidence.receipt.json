@@ -1,0 +1,129 @@
+{
+  "archive": "sql-evidence.zip",
+  "sha256": "93c02052ee11250946780c36cfeb7fc16ae6512e9cd06723037c043a4a9d747b",
+  "bytes": 816746,
+  "verifiedPayloads": 136,
+  "sourceInputs": 35,
+  "sourceBindingsMatchCurrent": true,
+  "nativeGroupsPassed": 26,
+  "oldRoutineBodiesAndConfigExact": 35,
+  "metadataGoldenCount": 27,
+  "actualTsSdkMetadataConformance": 27,
+  "cleanup": [
+    {
+      "atUtc": "2026-10-29T23:07:59.1381377Z",
+      "ownedPid": 15808,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "atUtc": "2026-10-29T23:08:05.9996503Z",
+      "ownedPid": 13564,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    },
+    {
+      "atUtc": "2026-10-29T23:12:17.3428146Z",
+      "ownedPid": 13500,
+      "pgCtlExitCode": 0,
+      "processRemains": false,
+      "pidFileRemains": false,
+      "port": 55438,
+      "serviceCreated": false
+    }
+  ],
+  "advisors": {
+    "atUtc": "2026-10-29T23:08:05.6032973Z",
+    "target": "owned loopback catalog_freshness_v3_20261030",
+    "advisorsExitCode": 1,
+    "lintStatus": "NOT_RUN_PLPGSQL_CHECK_UNAVAILABLE_NO_INSTALL",
+    "plpgsqlCheckAvailable": 0,
+    "installedAnything": false,
+    "findingCount": 15,
+    "newFindingCount": 0,
+    "findings": [
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.enqueue_public_build_request"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.move_homepage_block"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_assert"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_error"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_capture"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_stage"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_promote"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.premium_fixture_discard"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_catalog"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_promote"
+      },
+      {
+        "name": "function_search_path_mutable",
+        "level": "WARN",
+        "object": "public.writer_private_fixture_fail_update"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.article_revisions"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.article_translation_revisions"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.public_build_outbox"
+      },
+      {
+        "name": "rls_disabled_in_public",
+        "level": "ERROR",
+        "object": "public.premium_fixture_saved"
+      }
+    ]
+  },
+  "historyScope": "Initial freshness fixture used inherited synthetic clock_timestamp; actual canonical now() statement appended for freshness tests only. Original failure and later passes retained. No trigger disabling or old-source edits."
+}

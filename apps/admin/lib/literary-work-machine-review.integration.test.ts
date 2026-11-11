@@ -104,6 +104,13 @@ function setup(options: Row = {}) {
   let committedWrites = 0, raceWinner: Row | null = null, loaded!: ReturnType<typeof modules>;
   let draft: Row | null = null;
   const stageAttempts: Row[] = [];
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const catalogAdmission = createCatalogAdmissionBoundary({ actorId,
+    getSeed() { return structuredClone({ work, russian, english, sources }); },
+    getPrivateCandidate() { return draft; }, setPrivateCandidate(_type: string, _entity: string, value: Row) { draft = structuredClone(value); } });
+  const { createLibraryTranslationScanBoundary } = nativeRequire("./fixtures/library-translation-scan-boundary.cjs");
+  const libraryScans = createLibraryTranslationScanBoundary({ actorId, getEntries: () => [{ work, russian, english, sources }], catalogServer: catalogAdmission });
+  let finishFaulted = false;
   const snapshot = () => structuredClone({ work, russian, english, sources });
   if (options.current && english) english.metadata.premiumTranslation.sourceHash = digest({
     russianTitle: russian.title, verifiedEnglishTitle: english.title, verifiedEnglishTitleSourceUrl: titleUrl,
@@ -125,9 +132,21 @@ function setup(options: Row = {}) {
     const method = init?.method ?? "GET", table = url.pathname.split("/").at(-1)!;
     const payload = init?.body ? JSON.parse(String(init.body)) : null;
     wire.push({ method, table, query: Object.fromEntries(url.searchParams), payload });
+    if (libraryScans.handles(table)) return libraryScans.fetchRpc(table, payload);
+    if (catalogAdmission.handles(table)) {
+      if (table === "finish_catalog_translation_operation" && payload.p_candidate && !catalogAdmission.operations.get(payload.p_operation_id)?.candidate) {
+        stageAttempts.push({ protocol: "actual-catalog-FINISH", args: structuredClone(payload) });
+        expect(payload.p_candidate.payload).toEqual({ description: options.output ?? description, sourceLanguage: "Russian", sourceUrls: [titleUrl, ruUrl],
+          bibliographicTitle: { value: before.english!.title, provider: "verified-bibliography", sourceUrl: titleUrl, retrievedAt: "2026-10-08" } });
+        expect(catalogAdmission.operations.get(payload.p_operation_id).sourceSnapshot).toEqual(calls[0].source);
+        if (options.stageIssue && !finishFaulted) { catalogAdmission.fault(table, options.stageIssue); finishFaulted = true; }
+      }
+      return catalogAdmission.fetchRpc(table, payload);
+    }
     let data: unknown, count: number | null = null, error: Row | null = null;
     if (url.pathname.includes("/rpc/")) {
-      if (table === "premium_machine_translation_ready") data = options.ready !== false;
+      if (table === "profile_translation_budget_ready") data = true;
+      else if (table === "premium_machine_translation_ready") data = options.ready !== false;
       else if (table === "record_translation_sync_run") data = "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee";
       else if (table === "enqueue_public_build_request") data = "1";
       else if (table === "mark_public_build_dispatched") data = true;
@@ -177,7 +196,9 @@ function setup(options: Row = {}) {
         assert.ok(rows, `Unexpected table read ${table}`);
         const selected = rows.filter(row => matches(row, url.searchParams));
         count = selected.length;
-        data = method === "HEAD" ? null : selected.map(row => structuredClone(row));
+        const columns = url.searchParams.get("select");
+        data = method === "HEAD" ? null : selected.map(row => columns && columns !== "*"
+          ? Object.fromEntries(columns.split(",").map(column => [column, structuredClone(row[column])])) : structuredClone(row));
       }
     } else if (method === "PATCH") {
       assert.equal(table, "literary_work_translations");
@@ -235,7 +256,7 @@ function setup(options: Row = {}) {
     return { html, badge: en.find(".badge").first().text(), reviewedAt: en.find('[name="reviewed_at"]').attr("value") ?? "",
       status: en.find('[name="editorial_status"] option[selected]').attr("value"), description: en.find('[name="description"]').text() };
   };
-  return { invoke, batch, render, before, snapshot, calls, writes, wire, audits, builds, cache, loaded, stageAttempts,
+  return { invoke, batch, render, before, snapshot, calls, writes, wire, audits, builds, cache, loaded, stageAttempts, catalogAdmission,
     get draft() { return draft; }, get russian() { return russian; }, get work() { return work; }, get english() { return english; },
     get committedWrites() { return committedWrites; }, get raceWinner() { return raceWinner; } };
 }
@@ -244,7 +265,8 @@ function record(name: string, view: ReturnType<typeof setup>, results: unknown) 
   proofs.push({ name, results, beforeHash: digest(view.before), afterHash: digest(view.snapshot()),
     providerCalls: structuredClone(view.calls), writeAttempts: structuredClone(view.writes), committedTranslationWrites: view.committedWrites,
     wire: structuredClone(view.wire), buildDispatches: structuredClone(view.builds), privateDraft: structuredClone(view.draft),
-    stageAttempts: structuredClone(view.stageAttempts), raceWinnerHash: view.raceWinner ? digest(view.raceWinner) : null });
+    stageAttempts: structuredClone(view.stageAttempts), catalogOperations: structuredClone([...view.catalogAdmission.operations.values()]),
+    raceWinnerHash: view.raceWinner ? digest(view.raceWinner) : null });
 }
 
 function publicAdmission(view: ReturnType<typeof setup>) {
@@ -302,7 +324,8 @@ describe("literary-work technical completion and human review", () => {
       const redirect = await view.batch(), admission = publicAdmission(view);
       record("batch " + name, view, { redirect: redirect.href, admission });
       expect(view.calls.map(call => call.pass)).toEqual(["translation", "review"]);
-      expect(view.wire.filter(row => row.table === "record_translation_sync_run")).toHaveLength(1);
+      expect(view.wire.filter(row => row.table === "finish_catalog_translation_operation" && row.payload.p_candidate)).toHaveLength(1);
+      expect(view.wire.filter(row => row.table === "record_translation_sync_run")).toHaveLength(0);
       expect(view.wire.filter(row => row.table === "enqueue_public_build_request")).toHaveLength(0);
       expect(view.builds).toHaveLength(0);
       expect(redirect.searchParams.has("publication")).toBe(false);
@@ -335,7 +358,12 @@ describe("literary-work technical completion and human review", () => {
   it("concurrent human English wins without canonical overwrite", async () => {
     const view = setup({ race: "manual" });
     const result = await view.invoke(); record("concurrent human winner", view, result);
-    expect(result.state).toBe("conflict"); expect(view.committedWrites).toBe(0); expect(view.english).toEqual(view.raceWinner);
+    // The unchanged race happens after translation and before review. Durable
+    // dispatch now blocks that second expense and retains an incomplete body.
+    expect(result.state).toBe("unconfirmed"); expect(view.calls).toHaveLength(1);
+    const operation = [...view.catalogAdmission.operations.values()][0] as Row;
+    expect(operation.calls[0].artifact).not.toBeNull(); expect(operation.candidate).toBeNull(); expect(view.draft).toBeNull();
+    expect(view.committedWrites).toBe(0); expect(view.english).toEqual(view.raceWinner);
     expect(view.snapshot().russian).toEqual(view.before.russian); expect(view.snapshot().work).toEqual(view.before.work);
   });
   it("a pending candidate repeats without expense, staging or canonical mutation", async () => {
@@ -361,7 +389,7 @@ describe("literary-work technical completion and human review", () => {
     const view = setup({ stageIssue });
     const first = await view.invoke(), candidate = structuredClone(view.draft), second = await view.invoke();
     record("private " + stageIssue, view, { first, second });
-    expect(first.state).not.toBe("translated"); assert.ok(candidate);
+    expect(first).toMatchObject({ state: "translated", humanReview: "pending", publication: "unchanged", translationPersistence: "working-draft" }); assert.ok(candidate);
     expect(second.state).toBe("review-pending"); expect(view.calls).toHaveLength(2); expect(view.stageAttempts).toHaveLength(1);
     expect(view.committedWrites).toBe(0); expect(view.snapshot()).toEqual(view.before); expect(view.draft).toEqual(candidate);
   });

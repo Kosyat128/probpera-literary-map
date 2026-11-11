@@ -1,0 +1,276 @@
+{
+  "formatVersion": 1,
+  "algorithm": "SHA256",
+  "manifestExcludesItself": true,
+  "members": [
+    {
+      "file": "ARCHIVE_MEMBERS.sha256.json",
+      "bytes": 10310,
+      "sha256": "a75fd46294c74365f8f384048c0fec60416d417589828b2b95a2d1c35a90431b"
+    },
+    {
+      "file": "CAPTURE_LABELS.json",
+      "bytes": 1112,
+      "sha256": "f886f2253184ae21e9c7b55cec6bbb0875234a85a901b9fd04d6b8a7def55a01"
+    },
+    {
+      "file": "REPLAY.json",
+      "bytes": 7181,
+      "sha256": "b1bdd62b817878396b5f0cf14f19fdd7e3086bc471e981f7f8209bbe0377434a"
+    },
+    {
+      "file": "capture-provenance.cjs",
+      "bytes": 3837,
+      "sha256": "2b5b019b526f0dc8cddbcdfb4ec40959be1f74891f1ef89d364043c4216796a5"
+    },
+    {
+      "file": "diagnostic-current/manifest.json",
+      "bytes": 4250,
+      "sha256": "1e9f1345e26c0c63ed0c0989f323c9511edea85ebba4d447613e5601b7d40524"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 16821,
+      "sha256": "4415bf20001d10cd99ba01355e44f10d11c75f3edce0b455baed3e1ce6ce2a03"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3115,
+      "sha256": "52f5e3d67668788694601d7fb8b82c63c9a0687b106e75093fe60a54a7df5214"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 16826,
+      "sha256": "606fbdb7d3911d75bc1a0ac9dfb4d3c20e62f2ea4ab123cc2a353f461dbfdf8e"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/env.ts",
+      "bytes": 6274,
+      "sha256": "e0ef9b147d78a8565c31ac6cfd65cc44d527f18a40237f41816fbd2c49cb58e0"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/navigation.ts",
+      "bytes": 696,
+      "sha256": "ef2a06fc2a4d0093a359582013f45f65edb47664cfebef6b10ca1110db7ac36e"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 34687,
+      "sha256": "ec174e88ef157fbbca7e20867dc8c9fadd9d2deeb5199c2357f7085af6560eed"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10293,
+      "sha256": "4f886b48a8b92a08e9ea9a9bd8972e4f482f774a370824d82479f7e6a0638ce3"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1438,
+      "sha256": "12932878ef33070075a5397ad5da9acdf819c11f5a9b154407a80198ea2dfa44"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 18782,
+      "sha256": "e37803ebbe5f66705e18c97a0227126c1210069ef82fb35d202a25ee9eb0dba6"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1601,
+      "sha256": "e0b349a2b75cf65ddcc3294eaa5c466ebdb5285cce0c312d0bf3f969c6eaa4c3"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7903,
+      "sha256": "50d75a91b417923ce91037ab2964549eccc88e619432e2cd7c1befb6288a7639"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-operation-budget-notice.ts",
+      "bytes": 953,
+      "sha256": "247d2af6e9301f680f4499589ffd5bd008250cea982418f40527252173642f39"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3783,
+      "sha256": "c0b5d6b0d6553269c499cf5deb983307988f13da9a1e5d7a30bc4ca7ff2630c4"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-profile-budget-readiness.ts",
+      "bytes": 819,
+      "sha256": "2d84a10dd3d123d53b4b59d4c60850682f83185dce2965b7dfb0c5f8f56163c4"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2330,
+      "sha256": "f9fc2485fa70fc044234ac11245b5976aabec8fcb49bc6df60485df14e729ca6"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1407,
+      "sha256": "8a3a3da285e43cda1abde45f6784727215309db353db647bc9b050c220aa7227"
+    },
+    {
+      "file": "diagnostic-current/raw-graph/sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 33763,
+      "sha256": "e963b5beec854d989bc167c43ceb980f4da87c918ff3f3ff7d356328ebb2de21"
+    },
+    {
+      "file": "diagnostic-current/report.json",
+      "bytes": 57672,
+      "sha256": "7740c8cc11ab16fd16d65b60f999a5559228fd75af5738dfb6035ffcf9866e32"
+    },
+    {
+      "file": "frozen-before-replay.exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "file": "frozen-before-replay.stdout.log",
+      "bytes": 1983,
+      "sha256": "1fdc2a4d31323d79944094e23704f29a8bbcade2cd44b57ccfc1e7e0f1aa5f99"
+    },
+    {
+      "file": "frozen-before-replay/manifest.json",
+      "bytes": 4321,
+      "sha256": "fb49f239146faee7ea0c6f10c993904ec5c0c7948b8abf947dcde1bd25aac259"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 16821,
+      "sha256": "4415bf20001d10cd99ba01355e44f10d11c75f3edce0b455baed3e1ce6ce2a03"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/admin-path.ts",
+      "bytes": 3115,
+      "sha256": "52f5e3d67668788694601d7fb8b82c63c9a0687b106e75093fe60a54a7df5214"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 16826,
+      "sha256": "606fbdb7d3911d75bc1a0ac9dfb4d3c20e62f2ea4ab123cc2a353f461dbfdf8e"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/env.ts",
+      "bytes": 6274,
+      "sha256": "e0ef9b147d78a8565c31ac6cfd65cc44d527f18a40237f41816fbd2c49cb58e0"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/navigation.ts",
+      "bytes": 696,
+      "sha256": "ef2a06fc2a4d0093a359582013f45f65edb47664cfebef6b10ca1110db7ac36e"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 34687,
+      "sha256": "ec174e88ef157fbbca7e20867dc8c9fadd9d2deeb5199c2357f7085af6560eed"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10293,
+      "sha256": "4f886b48a8b92a08e9ea9a9bd8972e4f482f774a370824d82479f7e6a0638ce3"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1438,
+      "sha256": "12932878ef33070075a5397ad5da9acdf819c11f5a9b154407a80198ea2dfa44"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 18782,
+      "sha256": "e37803ebbe5f66705e18c97a0227126c1210069ef82fb35d202a25ee9eb0dba6"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1601,
+      "sha256": "e0b349a2b75cf65ddcc3294eaa5c466ebdb5285cce0c312d0bf3f969c6eaa4c3"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-errors.ts",
+      "bytes": 7903,
+      "sha256": "50d75a91b417923ce91037ab2964549eccc88e619432e2cd7c1befb6288a7639"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-operation-budget-notice.ts",
+      "bytes": 953,
+      "sha256": "247d2af6e9301f680f4499589ffd5bd008250cea982418f40527252173642f39"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3783,
+      "sha256": "c0b5d6b0d6553269c499cf5deb983307988f13da9a1e5d7a30bc4ca7ff2630c4"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-profile-budget-readiness.ts",
+      "bytes": 819,
+      "sha256": "2d84a10dd3d123d53b4b59d4c60850682f83185dce2965b7dfb0c5f8f56163c4"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2330,
+      "sha256": "f9fc2485fa70fc044234ac11245b5976aabec8fcb49bc6df60485df14e729ca6"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1407,
+      "sha256": "8a3a3da285e43cda1abde45f6784727215309db353db647bc9b050c220aa7227"
+    },
+    {
+      "file": "frozen-before-replay/raw-graph/sources/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 33763,
+      "sha256": "e963b5beec854d989bc167c43ceb980f4da87c918ff3f3ff7d356328ebb2de21"
+    },
+    {
+      "file": "frozen-before-replay/report.json",
+      "bytes": 57743,
+      "sha256": "9b4c5ef5d1f23a1e1fd219ac78c45a30ca752b4bbf03b1e971216d1e7ed76ecb"
+    },
+    {
+      "file": "frozen-writer-budget-fixture.cjs",
+      "bytes": 14782,
+      "sha256": "1b5f9959c94b1a9ab3e80cb7df306defe9b72008be6c96b68d011efd68e2a22d"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 16745,
+      "sha256": "da1c00825699fe2c903b97d939f13d28aae7c3fafcb28bf25314d0cd66f52137"
+    },
+    {
+      "file": "same-before-acceptance.exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "file": "same-before-acceptance.json",
+      "bytes": 3991,
+      "sha256": "f7dc032d4421c587fb82127d95365e2fb60018f8c42993c45e911bd44ba99f47"
+    },
+    {
+      "file": "same-before-acceptance.stdout.log",
+      "bytes": 1211,
+      "sha256": "22c76c496936c2803ce94b85685c7be2f4df82a17b1536153beceefce39e03b2"
+    },
+    {
+      "file": "same-writer-provider-admission.cjs",
+      "bytes": 15106,
+      "sha256": "13adb220623faa9e274a04b6d172e44afdcff64e5ee63227fff3cc6944158933"
+    },
+    {
+      "file": "writer-provider-admission.same-contract.cjs",
+      "bytes": 4285,
+      "sha256": "239bf9786db1c2c998edb5a4b6092b4460d8b1b9efeace0c94071deffaccc3ea"
+    }
+  ],
+  "ownedOriginalMembers": 48,
+  "portableMetadataMembers": 2,
+  "sourceCount": 17,
+  "graphAggregateSha256": "b98ebba92ce76cc82af74014c8a295dc5d854c71a8361020e703719ae7bac354",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "outcome": "BEFORE_EXPECTED_TARGET_FAIL",
+  "archiveFile": "next-writer-admission-before.zip",
+  "archiveBytes": 138357,
+  "archiveSha256": "44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949",
+  "memberCountIncludingInternalManifest": 51,
+  "internalManifest": {
+    "file": "ARCHIVE_MEMBERS.sha256.json",
+    "sha256": "a75fd46294c74365f8f384048c0fec60416d417589828b2b95a2d1c35a90431b"
+  }
+}

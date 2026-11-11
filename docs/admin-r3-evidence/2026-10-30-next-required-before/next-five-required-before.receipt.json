@@ -1,0 +1,17 @@
+{
+  "classification": "SEALED_GENUINE_BEFORE_FIVE_SCOPES_PRODUCT_FAILURES_PRESERVED_NOT_ACCEPTANCE",
+  "archive": "next-five-required-before.zip",
+  "bytes": 3604241,
+  "sha256": "44ace998123b006c4ab51db9e28409903cb7ce17ed0dff958e464c862f0e8b5a",
+  "payloads": 430,
+  "archiveEntries": 431,
+  "manifestSha256": "eb614c8edfe0522e174b80ecabfa3d4f5287f816f9feb9a274166263a5159bc3",
+  "globalFingerprint": "b0b79b534a1f02c326b951224d2b82482840c5397acb1d99afe7930532efda38",
+  "initialPhysicalSources": 91,
+  "m11ObserverV2ReportSha256": "ef61930957c05df9bc3d5cf3c29243d6fb1ac9190bb132d75453bd2a730eb126",
+  "m11ObserverV2ClassificationSha256": "a4105724d717158c6ddc4cc203b1e56691aba4e70b51f12215c3abb4d326bf73",
+  "sourceReconstruction": false,
+  "testsExecutedBySeal": 0,
+  "originalM11CrashObserverExit2Preserved": true,
+  "restrictedHostDenialSeparate": true
+}

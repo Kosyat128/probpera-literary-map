@@ -6,6 +6,7 @@ import ts from "typescript";
 import { afterAll, describe, expect, it, vi } from "vitest";
 
 const nativeRequire = createRequire(import.meta.url);
+const { createClient } = nativeRequire("@supabase/supabase-js");
 const repoRoot = path.resolve(import.meta.dirname, "../../..");
 const baseline = process.env.M07_COUNTRY_MANUAL_BASELINE === "1";
 const manifestPath = path.join(repoRoot, ".tmp/m07-t01-before/manifest.json");
@@ -218,7 +219,7 @@ async function fixture(options: FixtureOptions = {}) {
       if (table !== "country_profile_overrides") throw Error("Uncontrolled SDK read");
       if (columns === "id,fields,updated_at") {
         expect(filters).toEqual([["country_id", countryId]]);
-        return { data: options.readError ? null : structuredClone(row), error: options.readError ? { message: "controlled country read error" } : null };
+        return { data: options.readError || row === null ? null : { id: row.id, fields: structuredClone(row.fields), updated_at: row.updated_at }, error: options.readError ? { message: "controlled country read error" } : null };
       }
       if (columns === "updated_at") {
         expect(filters).toEqual([["id", overrideId]]);
@@ -229,7 +230,30 @@ async function fixture(options: FixtureOptions = {}) {
     return query;
   }
   let privateDraft: Record<string, any> | null = null; const privateAttempts: Record<string, any>[] = [];
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const admission = createCatalogAdmissionBoundary({ actorId,
+    getSeed() {
+      const serverRow = structuredClone(row);
+      // Preserve the existing controlled late-revision response, now at the
+      // atomic server FINISH boundary rather than a separate stale SELECT.
+      if (options.latestChanged && dispatches >= 2 && serverRow) serverRow.updated_at = "2026-10-08T12:00:02.000Z";
+      return { catalogFields: structuredClone(inputSource), override: serverRow };
+    },
+    getPrivateCandidate() { return options.casConflict && dispatches >= 2 ? { concurrentPendingSlot: true } : privateDraft; },
+    setPrivateCandidate(_type: string, _entity: string, value: Record<string, any>) { privateDraft = structuredClone(value); } });
   const rpc = async (name: string, params: Record<string, any>) => {
+    if (admission.handles(name)) {
+      if (name === "finish_catalog_translation_operation" && params.p_candidate) {
+        const operation = admission.operations.get(params.p_operation_id);
+        privateAttempts.push({ protocol: "actual-catalog-FINISH", args: structuredClone(params), p_target_revision: structuredClone(operation.targetRevision),
+          p_source_revision: structuredClone(operation.sourceRevision) });
+        expect(params.p_candidate.payload).toEqual({ fields: generated });
+        expect(operation.sourceHash).toBe(hash(JSON.stringify(operation.sourceSnapshot)));
+        expect(operation.sourceRevision).toEqual({ overrideId: originalRow?.id ?? null, overrideUpdatedAt: originalRow?.updated_at ?? null, catalogSourceHash: hash(JSON.stringify(originalSource)) });
+      }
+      const response = await admission.fetchRpc(name, params), value = await response.json();
+      return response.ok ? { data: value, error: null } : { data: null, error: value };
+    }
     if (name === "get_premium_translation_working_draft") {
       expect(params).toEqual({ p_entity_type: "country", p_entity_id: countryId });
       return { data: { schemaVersion: 1, entityType: "country", entityId: countryId, draft: structuredClone(privateDraft) }, error: null };
@@ -248,17 +272,35 @@ async function fixture(options: FixtureOptions = {}) {
       payload: structuredClone(params.p_payload), provenance: structuredClone(params.p_provenance), createdAt: new Date().toISOString(), createdBy: actorId };
     return { data: { schemaVersion: 1, entityType: "country", entityId: countryId, draft: structuredClone(privateDraft) }, error: null };
   };
-  const client = { from: tableQuery, rpc };
+  const sdkFetch: typeof globalThis.fetch = async (input, init) => {
+    const url = new URL(typeof input === "string" || input instanceof URL ? input : input.url);
+    expect(url.origin).toBe("https://country-manual.fixture.invalid");
+    const name = url.pathname.split("/").at(-1)!, method = init?.method ?? "GET", payload = init?.body ? JSON.parse(String(init.body)) : null;
+    let result: { data: any; error: any };
+    if (url.pathname.includes("/rpc/")) result = await rpc(name, payload);
+    else {
+      const query = tableQuery(name);
+      if (method === "PATCH") query.update(payload); else if (method === "POST") query.insert(payload); else expect(method).toBe("GET");
+      query.select(url.searchParams.get("select") ?? "");
+      for (const [key, value] of url.searchParams) { if (key === "select") continue; expect(value.startsWith("eq.")).toBe(true); query.eq(key, value.slice(3)); }
+      result = await query.maybeSingle();
+      if (result.data !== null && typeof result.data === "object" && !Array.isArray(result.data)) result.data = [result.data];
+      else if (result.data === null && !result.error && method === "GET") result.data = [];
+    }
+    return new Response(JSON.stringify(result.error ?? result.data), { status: result.error ? 409 : 200, headers: { "Content-Type": "application/json" } });
+  };
+  const client = createClient("https://country-manual.fixture.invalid", "controlled-no-live-auth", {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }, global: { fetch: sdkFetch } });
   const run = async () => {
     const result = await modules("apps/admin/lib/auto-translate-country-profile.ts").ensureCountryEnglishProfile({
       supabase: client, actorId, countryId, sourceFields: inputSource,
       ...(options.runtimeApproved === undefined ? {} : { runtimeApproved: options.runtimeApproved }),
     });
     expect(network).not.toHaveBeenCalled();
-    traces.push({ options, result, providerCalls: provider.mock.calls.length, reads: structuredClone(reads), writes: structuredClone(writes), sourceUnchanged: JSON.stringify(inputSource) === JSON.stringify(originalSource), rowBefore: originalRow, rowAfter: structuredClone(row), privateDraft: structuredClone(privateDraft), privateAttempts: structuredClone(privateAttempts) });
+    traces.push({ options, result, providerCalls: provider.mock.calls.length, reads: structuredClone(reads), writes: structuredClone(writes), sourceUnchanged: JSON.stringify(inputSource) === JSON.stringify(originalSource), rowBefore: originalRow, rowAfter: structuredClone(row), privateDraft: structuredClone(privateDraft), privateAttempts: structuredClone(privateAttempts), catalogOperations: structuredClone([...admission.operations.values()]) });
     return result;
   };
-  return { run, provider, network, reads, writes, originalRow, originalSource, inputSource, privateAttempts, privateDraft: () => structuredClone(privateDraft), row: () => structuredClone(row) };
+  return { run, provider, network, reads, writes, originalRow, originalSource, inputSource, privateAttempts, admission, privateDraft: () => structuredClone(privateDraft), row: () => structuredClone(row) };
 }
 
 async function expectProtected(options: FixtureOptions) {
@@ -404,7 +446,8 @@ describe("M07-T01 country manual English preservation through the actual helper"
     const view = await fixture({ latestChanged: true });
     expect((await view.run()).state).toBe("conflict");
     expect(view.provider).toHaveBeenCalledTimes(2);
-    expect(view.writes).toEqual([]);
+    expect(view.writes.filter(write => write.table === "country_profile_overrides")).toEqual([]);
+    expect(view.writes.map(write => write.payload.action)).toEqual(["country_profile.auto_translation.staged"]);
     expect(view.row()).toEqual(view.originalRow);
   });
 
@@ -412,7 +455,8 @@ describe("M07-T01 country manual English preservation through the actual helper"
     const view = await fixture({ casConflict: true });
     expect((await view.run()).state).toBe("conflict");
     expect(view.provider).toHaveBeenCalledTimes(2);
-    expect(view.writes).toHaveLength(0); expect(view.privateDraft()).toBeNull(); expect(view.privateAttempts).toHaveLength(1);
+    expect(view.writes.filter(write => write.table === "country_profile_overrides")).toHaveLength(0); expect(view.privateDraft()).toBeNull(); expect(view.privateAttempts).toHaveLength(1);
+    expect(view.writes.map(write => write.payload.action)).toEqual(["country_profile.auto_translation.staged"]);
     expect(view.privateAttempts[0].p_target_revision).toEqual({ id: overrideId, updatedAt: updatedAt });
     expect(view.row()).toEqual(view.originalRow);
   });
@@ -424,11 +468,32 @@ describe("M07-T01 country manual English preservation through the actual helper"
     ["missing required schema field", { ...generated, capital: undefined }],
   ])("runs actual translation validation and preserves the row after invalid provider output: %s", async (_label, providerValue) => {
     const view = await fixture({ providerValue });
-    expect((await view.run()).state).toBe("failed");
+    expect(await view.run()).toMatchObject({ state: "unconfirmed", errorCode: "translation_retry_pending" });
     expect(view.provider).toHaveBeenCalledTimes(2);
-    expect(view.writes.map((entry) => [entry.table, entry.operation])).toEqual([["admin_audit_log", "insert"]]);
-    expect(view.writes[0].payload.action).toBe("country_profile.auto_translation.failed");
+    // Known invalid paid responses remain acknowledged in a nonterminal hold.
+    // They cannot stage English, finalize the operation, or fund a fresh attempt.
+    expect(view.writes).toEqual([]);
+    const operation = [...view.admission.operations.values()][0] as Record<string, any>;
+    expect(operation).toMatchObject({ phase: "running", result: null });
+    expect(operation.calls).toHaveLength(2); expect(operation.calls.every((call: Record<string, any>) => call.response !== null)).toBe(true);
+    expect(operation.candidate).toBeNull();
     expect(view.row()).toEqual(view.originalRow);
     expect(view.inputSource).toEqual(view.originalSource);
+    expect(view.privateDraft()).toBeNull(); expect(view.privateAttempts).toEqual([]);
+    for (const call of operation.calls) expect(call.artifact).toMatchObject({ version: 1, body: expect.any(Object) });
+
+    const held = structuredClone(operation);
+    const mutatingNames = new Set(["begin_catalog_translation_operation", "record_catalog_translation_operation_dispatch",
+      "record_catalog_translation_operation_response", "finish_catalog_translation_operation"]);
+    const journalMutations = structuredClone(view.admission.events.filter((event: Record<string, any>) => mutatingNames.has(event.name)));
+    const repeated = await view.run();
+    expect(repeated).toMatchObject({ state: "unconfirmed", errorCode: "translation_retry_pending", operation: {
+      operationId: held.operationId, receipt: { phase: "running", providerCalls: 2, pendingCallId: null,
+        canExecute: false, canDispatch: false, result: null } } });
+    expect(view.provider).toHaveBeenCalledTimes(2); expect(view.admission.operations.size).toBe(1);
+    expect([...view.admission.operations.values()][0]).toEqual(held);
+    expect(view.admission.events.filter((event: Record<string, any>) => mutatingNames.has(event.name))).toEqual(journalMutations);
+    expect(view.writes).toEqual([]); expect(view.privateDraft()).toBeNull(); expect(view.privateAttempts).toEqual([]);
+    expect(view.row()).toEqual(view.originalRow); expect(view.inputSource).toEqual(view.originalSource);
   });
 });

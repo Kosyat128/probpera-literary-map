@@ -43,6 +43,7 @@ type FixtureEnv = {
   openAiDirectApiKey: string;
   openAiApiKey: string;
   openAiAutoTranslateArticles: boolean;
+  openAiAutoTranslateSiteCopy: boolean;
 };
 const baseEnv: FixtureEnv = {
   premiumTranslationProvider: "cloudflare", premiumTranslationConfigured: true,
@@ -55,6 +56,7 @@ const baseEnv: FixtureEnv = {
   openAiTranslationReviewReasoningEffort: "medium", openAiTranslationReviewReasoningMode: "standard",
   openAiDirectApiKey: "controlled-non-secret-fixture-key", openAiApiKey: "controlled-runtime-marker",
   openAiAutoTranslateArticles: true,
+  openAiAutoTranslateSiteCopy: true,
 };
 
 // The fixture's expected identity comes from the immutable original instruction
@@ -159,6 +161,14 @@ async function render(scenario: Scenario = {}) {
   const env = { ...baseEnv, ...scenario.env };
   const probe = Object.hasOwn(scenario, "probe") ? scenario.probe : successfulProbe(env);
   const readCalls: unknown[] = [];
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
+  const recoverSiteCopy = vi.fn(async () => { throw Error("SSR must not execute site-copy recovery"); });
+  const getStaffSession = async () => ({ configured: true, user: { id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa" }, role: "admin",
+    mfa: { required: false, checkError: null }, authError: null, membershipError: null });
   const providerCall = vi.fn(async () => { throw Error("Read-only fixture must never dispatch a provider"); });
   const mutations = vi.fn();
   const schema = actualModules({})("apps/admin/lib/editorial-schema-health.ts");
@@ -184,7 +194,9 @@ async function render(scenario: Scenario = {}) {
       },
     }; return query;
   }
-  const client = { from: tableQuery, rpc(name: string) {
+  const client = { from: tableQuery, rpc(name: string, args?: unknown) {
+    // Additional metadata reads keep the original configuration read trace intact.
+    if (name === "reconcile_site_copy_translation_operation") return operationMetadataRead(name, args);
     readCalls.push({ rpc: name });
     if (name === "get_editorial_schema_health") return Promise.resolve({ data: completeSchema, error: null });
     if (name === "get_translation_operations_status") return Promise.resolve({ data: {
@@ -196,6 +208,7 @@ async function render(scenario: Scenario = {}) {
   const actions = Object.fromEntries(["translatePremiumArticleBatchAction", "translatePremiumLibraryBatchAction", "translatePremiumWriterBatchAction",
     "translatePremiumCountryBatchAction", "translatePremiumSiteCopyBatchAction", "runPremiumTranslationSelfTestAction", "resumeTranslationJobAction", "setDiagnosticStatusAction"].map((name) => [name, mutations]));
   const modules = actualModules({
+    "@/lib/auth": { getStaffSession },
     "@/lib/env": { adminEnv: env }, "./env": { adminEnv: env },
     "@opennextjs/cloudflare": { getCloudflareContext: () => ({ env: scenario.missingBinding ? {} : { AI: { run: providerCall } } }) },
     "@/lib/supabase/server": { createServerSupabaseClient: async () => scenario.missingClient ? null : client },
@@ -203,6 +216,7 @@ async function render(scenario: Scenario = {}) {
     "@/components/TranslationSubmitButton": { __esModule: true, default: ({ children, disabled }: { children?: ReactNode; disabled?: boolean }) => createElement("button", { type: "submit", disabled }, children) },
     "next/link": { __esModule: true, default: ({ children, ...props }: { children?: ReactNode }) => createElement("a", { ...props, "data-next-link": "true" }, children) },
     "./actions": actions, "./article-actions": actions, "./country-actions": actions, "./self-test-action": actions, "./resume-action": actions,
+    "./site-copy-operation-actions": { recoverSiteCopyTranslationOperationAction: recoverSiteCopy },
   });
   let gate: unknown, gateError: unknown;
   try { gate = await modules("apps/admin/lib/translation-runtime-gate.ts").premiumTranslationRuntimeGate(client, { now, ...scenario.gateOptions }); }
@@ -214,6 +228,8 @@ async function render(scenario: Scenario = {}) {
   }
   const markup = renderToStaticMarkup(await modules("apps/admin/app/(dashboard)/translations/page.tsx").default({ searchParams: Promise.resolve({}) }));
   const healthMarkup = renderToStaticMarkup(await modules("apps/admin/app/(dashboard)/health/page.tsx").default());
+  expect(recoverSiteCopy).not.toHaveBeenCalled();
+  expect(operationMetadataRead).toHaveBeenCalledTimes(scenario.missingClient ? 0 : 1);
   const $ = loadMarkup(markup), $health = loadMarkup(healthMarkup);
   const batchDisabled = $("form.panel.settings-stack").map((_index, item) => $(item).find("button").is(":disabled")).get();
   const healthCard = $health(".stat-card").eq(7);
@@ -222,7 +238,9 @@ async function render(scenario: Scenario = {}) {
   expect(markup).not.toContain(secret); expect(healthMarkup).not.toContain(secret);
   expect($(".stats-grid .stat-card").first().find("strong").text()).toBe(scenario.missingClient ? "Недоступно" : "8");
   traces.push({ provider: env.premiumTranslationProvider, configuration: identity(env), gateReady: gate === true,
-    gateRejected: Boolean(gateError), batchDisabled, healthStatus, readCalls, providerCalls: providerCall.mock.calls.length, mutations: mutations.mock.calls.length });
+    gateRejected: Boolean(gateError), batchDisabled, healthStatus, readCalls, providerCalls: providerCall.mock.calls.length, mutations: mutations.mock.calls.length,
+    siteCopyMetadataReads: operationMetadataRead.mock.calls, siteCopyRecoveryCalls: recoverSiteCopy.mock.calls,
+    scopeAddition: "Actual site-copy metadata reader/adapter; exact null reconcile response and fresh staff; original configuration read/provider/mutation traces retain their scope" });
   return { gate, gateError, $, markup, $health, healthMarkup, healthStatus, healthCard, batchDisabled };
 }
 

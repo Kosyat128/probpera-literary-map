@@ -1,0 +1,406 @@
+{
+  "classification": "SEPARATE_CURRENT_PROFILE_NEXT_PROOF_EXPECTED_UNRESOLVED_NOT_ORIGINAL_BEFORE_NOT_ACCEPTANCE",
+  "globalSourceSha256": "1de7172827ad785bb99967618fb662e77ceeb556fa1c7ce5490d4084ad08bb47",
+  "sourceCount": 36,
+  "supportCount": 6,
+  "all42MatchGlobal": true,
+  "selfExcluded": true,
+  "files": [
+    {
+      "file": "current-source/apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 14429,
+      "sha256": "8cafb0a89e3c4d78ebccc3f8d40a383bb31a716a2ede9e2a90ca3466ac6e29f0",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 7285,
+      "sha256": "652f5a398469f7aa3da3dbba6e10a70ecd21f7ef3b1835c538f6b77ef48ce3a5",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/app/(dashboard)/translations/resume-action.ts",
+      "bytes": 5923,
+      "sha256": "263be8206f32eec43b0ac1f3c1bd26fa3fafed5734565a3d0656b3d8be6444fc",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/admin-path.ts",
+      "bytes": 3115,
+      "sha256": "52f5e3d67668788694601d7fb8b82c63c9a0687b106e75093fe60a54a7df5214",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/article-translation-scan.ts",
+      "bytes": 3158,
+      "sha256": "7e5171bf249d81f781aa3bcde559c66caa5368ed8aedda57002bdc707f6d0e74",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 19169,
+      "sha256": "6b6eeed2fce2b2a0e883cee6300f2740750a90da7ff69144e8d8afdb881a67ca",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 1615,
+      "sha256": "0117eb795a6bda0da2ba01f3f4ca987d4e62f36a15b1a71803c568795b92ee91",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 19137,
+      "sha256": "4940cd3b077285d0e1fb5ebe79377e735f62c386adb831bbe0c92108530954c3",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-site-copy-private.ts",
+      "bytes": 8304,
+      "sha256": "2aae7290aa6ba61d54b14819db4b39ef02cc62b331459b2b607b5394545c14fb",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3696,
+      "sha256": "1bd203bb52cff2fdc2a3149019e5fb5ddd11bba645c961935f23986b3f705276",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 22512,
+      "sha256": "76002c254ba8ec718249f76f7c88aeca66c1f2a698af7c6813b608dae6dc1a46",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/catalog-translation-operation-marker.ts",
+      "bytes": 764,
+      "sha256": "43b877917c80a5263f1b6bcb9c23f8ebf5182f8e93c6d16dc44e4a3ad5ea02f6",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/catalog-translation-operation-rpc.ts",
+      "bytes": 17985,
+      "sha256": "f2c4ec7e76550013e52e3ec8e1fb1c6dd092bfc82868fd6b7e96f2c88ff4d1d8",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/catalog-translation-operation.ts",
+      "bytes": 17526,
+      "sha256": "7f7a6a614edfe1088bf73c71330345cf0fa6cc1e96cdddff41269b522bb5715c",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/env.ts",
+      "bytes": 6274,
+      "sha256": "e0ef9b147d78a8565c31ac6cfd65cc44d527f18a40237f41816fbd2c49cb58e0",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/catalog-admission-boundary.cjs",
+      "bytes": 16996,
+      "sha256": "35f8acec3c5c7d6b18b61be5c3bb259292c8edfc8ae3bba7893044ca4f80ac53",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/catalog-admission-runtime.cjs",
+      "bytes": 20458,
+      "sha256": "bf9986d36859a89a8fb6176183995c12ce2187673eeb7a66d1c194f0329b25f3",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/catalog-review-freshness-boundary.cjs",
+      "bytes": 3874,
+      "sha256": "258754a4be19266ceceb5ba8e0e6a9870283920a5cd982235612003aab1ad775",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/library-translation-scan-boundary.cjs",
+      "bytes": 14138,
+      "sha256": "2f07346bf7f3ce77252cdd409bafe1fb600be12fa5ddba456e3a2f421466f08b",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/writer-admission-boundary.cjs",
+      "bytes": 12059,
+      "sha256": "418aa109afbd1cea39a9337bb200acbd57ebb75134df1144b7c05a33cee5820b",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/fixtures/writer-admission-runtime.cjs",
+      "bytes": 14200,
+      "sha256": "df7b5f47abbbdd3296fdc3db7c6224fe395b0285ca469a69d0b13197ea471e16",
+      "role": "CURRENT controlled transport fixture bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/library-translation-scan-rpc.ts",
+      "bytes": 11771,
+      "sha256": "fea47239f7f11f4a004b758ec697ce844bb9ac5ebd4c3c510348d727b42948fc",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/library-translation-scan.ts",
+      "bytes": 17042,
+      "sha256": "adcfcbe1b4d11415d4a6b6926c8df438679bea5bbfc89899b26b0c8ba3691204",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/navigation.ts",
+      "bytes": 696,
+      "sha256": "ef2a06fc2a4d0093a359582013f45f65edb47664cfebef6b10ca1110db7ac36e",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/premium-english-translation.ts",
+      "bytes": 37877,
+      "sha256": "ee22448a88f828ce41beee20131a48fdb59d0a98f4b43c679a8ca9e6a0ee2c91",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/premium-translation-probe.ts",
+      "bytes": 10293,
+      "sha256": "4f886b48a8b92a08e9ea9a9bd8972e4f482f774a370824d82479f7e6a0638ce3",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/premium-translation-runtime.ts",
+      "bytes": 1438,
+      "sha256": "12932878ef33070075a5397ad5da9acdf819c11f5a9b154407a80198ea2dfa44",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/premium-translation-working-draft.ts",
+      "bytes": 18782,
+      "sha256": "e37803ebbe5f66705e18c97a0227126c1210069ef82fb35d202a25ee9eb0dba6",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/short-hyphens.ts",
+      "bytes": 1208,
+      "sha256": "3e389e3757d9cf88e1af2ca7345ef69451e814577c2ea0e01c02f89319ce8359",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/site-copy-storage.ts",
+      "bytes": 3189,
+      "sha256": "6bd704e39df5f85d5c9dab788119d24a9d1f3e842b675e5c4243fd1fc2fe3c0a",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/site-copy-translation-contract.ts",
+      "bytes": 5599,
+      "sha256": "efa938eea74800e4539053230b94b7f2e1221ee0f07eec64b368471259952749",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-backfill-cursor.ts",
+      "bytes": 1601,
+      "sha256": "e0b349a2b75cf65ddcc3294eaa5c466ebdb5285cce0c312d0bf3f969c6eaa4c3",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-errors.ts",
+      "bytes": 7903,
+      "sha256": "50d75a91b417923ce91037ab2964549eccc88e619432e2cd7c1befb6288a7639",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-operation-budget-notice.ts",
+      "bytes": 953,
+      "sha256": "247d2af6e9301f680f4499589ffd5bd008250cea982418f40527252173642f39",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-operation-budget.ts",
+      "bytes": 3783,
+      "sha256": "c0b5d6b0d6553269c499cf5deb983307988f13da9a1e5d7a30bc4ca7ff2630c4",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-profile-budget-readiness.ts",
+      "bytes": 819,
+      "sha256": "2d84a10dd3d123d53b4b59d4c60850682f83185dce2965b7dfb0c5f8f56163c4",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-run-record.ts",
+      "bytes": 2330,
+      "sha256": "f9fc2485fa70fc044234ac11245b5976aabec8fcb49bc6df60485df14e729ca6",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/translation-runtime-gate.ts",
+      "bytes": 1407,
+      "sha256": "8a3a3da285e43cda1abde45f6784727215309db353db647bc9b050c220aa7227",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/writer-biography-edit.ts",
+      "bytes": 33763,
+      "sha256": "e963b5beec854d989bc167c43ceb980f4da87c918ff3f3ff7d356328ebb2de21",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/writer-translation-operation-marker.ts",
+      "bytes": 698,
+      "sha256": "ce6509751fa64e6964a4ad9217216563be461e687beb11bff6530403d17660ad",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/writer-translation-operation-rpc.ts",
+      "bytes": 15508,
+      "sha256": "7afebb406adc21b2b6678ce36dabed380e6a4978bf73dfb324b065b0a76da423",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/apps/admin/lib/writer-translation-operation.ts",
+      "bytes": 10873,
+      "sha256": "79c65b439676a7c50596993adc13bcdd851145857d660077e36299ecf592d061",
+      "role": "CURRENT application source bound to global1de717"
+    },
+    {
+      "file": "current-source/docs/admin-r3-evidence/2026-10-29-profile-budgets/next-writer-admission-before.zip",
+      "bytes": 138357,
+      "sha256": "44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949",
+      "role": "exact prior runtime dependency archive"
+    },
+    {
+      "file": "current-source/docs/admin-r3-evidence/2026-10-30-writer-admission/next-library-country-admission-before.zip",
+      "bytes": 247080,
+      "sha256": "652bbe1367df8b92f267a418600d55ce76feb9fa1f9a69b969722a02c8f27cef",
+      "role": "exact prior runtime dependency archive"
+    },
+    {
+      "file": "diagnostic/current-profile-global-diagnostic.json",
+      "bytes": 22974,
+      "sha256": "27129022a33a53f02166daa9c8ce734badd609d82217fe5f0bd182f92a34659c",
+      "role": "CURRENT scope/source binding or unchanged original paired harness"
+    },
+    {
+      "file": "diagnostic/current-report.json",
+      "bytes": 1934465,
+      "sha256": "645d847c41da8cb93cc9775d709d5ca10f5c2aa85a070612792ec0a384b1bfca",
+      "role": "actual global-bound CURRENT unresolved report"
+    },
+    {
+      "file": "diagnostic/paired-loader-adaptation.json",
+      "bytes": 1818,
+      "sha256": "b64ae9a92f4a3a7a7cc0fd0a59f15dd2526705849fc3198001fc56f401b2694b",
+      "role": "CURRENT scope/source binding or unchanged original paired harness"
+    },
+    {
+      "file": "diagnostic/profile-array-paired.cjs",
+      "bytes": 10480,
+      "sha256": "1b62e4143dfb14a3bdbad0a43f7287c623e57075b3d674012625a42415a5f92a",
+      "role": "CURRENT scope/source binding or unchanged original paired harness"
+    },
+    {
+      "file": "diagnostic/source-before-global-1de717.json",
+      "bytes": 2008468,
+      "sha256": "a7791d3cb2ef5ec86a90e4686b2d0680cd48696ce3e334c44aa26bfb3c4f305c",
+      "role": "CURRENT scope/source binding or unchanged original paired harness"
+    },
+    {
+      "file": "portable/no-network.cjs",
+      "bytes": 252,
+      "sha256": "e981419eca5304cf123b71835d28081ac1f15be3ebebd720b83b0853b080cd06",
+      "role": "supplementary global network denial"
+    },
+    {
+      "file": "portable/replay-current.cjs",
+      "bytes": 5913,
+      "sha256": "31b559a9a1cb1cc20cb4e13e576274a78ef5d40d2cd0594943448629d8f4b40d",
+      "role": "portable read-only CURRENT verification wrapper"
+    },
+    {
+      "file": "proposal/draft-validation.json",
+      "bytes": 6068,
+      "sha256": "6c66c5a1e39a5a1d6b37e47aada66d76da71dc6252b642b7a84e69a489a1227a",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "proposal/prior-b92b-d06/draft-validation.json",
+      "bytes": 6068,
+      "sha256": "16f7f80a99d978b2e5161490e646d30f97be3771a5ba45e0cae0f5272a3adc6a",
+      "role": "unchanged earlier proposal bytes, not app source"
+    },
+    {
+      "file": "proposal/prior-b92b-d06/profile-translation-scan-rpc.draft.ts",
+      "bytes": 21619,
+      "sha256": "b92b62fde55e12e70c39c89dec4d8802a1673ea4250f3cf64a8f8a9fd7171f43",
+      "role": "unchanged earlier proposal bytes, not app source"
+    },
+    {
+      "file": "proposal/prior-b92b-d06/rpc-contract.json",
+      "bytes": 14670,
+      "sha256": "d06a42abe1b1e18d062dd01a5e18c8facf5f8b395a58cfa807ee0bdf21c1d732",
+      "role": "unchanged earlier proposal bytes, not app source"
+    },
+    {
+      "file": "proposal/profile-translation-scan-rpc.draft.ts",
+      "bytes": 21584,
+      "sha256": "99eb49d4bbf32d6478f87033ed2dc824d214d7f474509ccb1fad496aff721d02",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "proposal/README.md",
+      "bytes": 2991,
+      "sha256": "25b1807972e109389ec6a3087d22fa09ae85fa5388b7dc43395ca9c9c9b08a5a",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "proposal/rpc-contract.json",
+      "bytes": 15175,
+      "sha256": "91863703a685777fff16e6bcdd7e2dd1841ae009fe4073b13a0c57ce5048c9ec",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "proposal/typescript-diagnostics.json",
+      "bytes": 115,
+      "sha256": "996228ffbaa9cdce50dde3246ea991054201b4f4e8b8df55bcd5caa62940aeb8",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "proposal/validate-draft.cjs",
+      "bytes": 15079,
+      "sha256": "6b817fa57bd3ad7c947e3b91ed7aa40042fb5148d074fede988523d1ccfb3368",
+      "role": "parent-only unimplemented profile proposal, not CURRENT app source"
+    },
+    {
+      "file": "README.md",
+      "bytes": 2723,
+      "sha256": "96b16b1bd7a9e82870148ddda67101e3cc4bebfe386098f59ee04116e14ce37f",
+      "role": "explicit CURRENT unresolved scope"
+    },
+    {
+      "file": "reference/genuine-profile-before.zip",
+      "bytes": 871053,
+      "sha256": "5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a",
+      "role": "unchanged genuine original5489 BEFORE reference, never relabeled CURRENT"
+    },
+    {
+      "file": "same-contract.cjs",
+      "bytes": 447,
+      "sha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+      "role": "unchanged original a988 coverage contract"
+    },
+    {
+      "file": "verification/prepackage/replay-receipt.json",
+      "bytes": 2741,
+      "sha256": "8724254710597adef9d75ab526ff8cc38330553d5264ce5a6110fdfc15935b85",
+      "role": "independent extracted-CURRENT protocol reproduction, not acceptance"
+    },
+    {
+      "file": "verification/prepackage/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "independent extracted-CURRENT protocol reproduction, not acceptance"
+    },
+    {
+      "file": "verification/prepackage/stdout.log",
+      "bytes": 802,
+      "sha256": "be1ff841a28016e4577dc6f203e153c672162daee88ebd156d7e403c093741e5",
+      "role": "independent extracted-CURRENT protocol reproduction, not acceptance"
+    }
+  ]
+}

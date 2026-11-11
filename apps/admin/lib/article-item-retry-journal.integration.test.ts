@@ -114,6 +114,7 @@ describe("M07 current journal DTO and SDK boundaries", () => {
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const nativeRequire = createRequire(import.meta.url);
 const graph = new Map<string, { module: string; source: string; sha256: string }>();
+const siteCopyReadScopes: unknown[] = [];
 function actualPage(mocks: Record<string, unknown>) {
   const modules = new Map<string, any>();
   function load(file: string): any {
@@ -136,10 +137,19 @@ function actualPage(mocks: Record<string, unknown>) {
 }
 async function renderJournal(value: unknown, denied = false, error: unknown = null) {
   const actions = { retryArticleTranslationItemAction: vi.fn() };
+  const recoverSiteCopy = vi.fn(async () => { throw Error("SSR must not execute site-copy recovery"); });
+  const getStaffSession = async () => ({ configured: true, user: { id: jobId }, role: denied ? null : "admin",
+    mfa: { required: false, checkError: null }, authError: null, membershipError: null });
+  // The new metadata read is separate from the original article journal spy.
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
   const query = (result: any): any => { const builder = { select: () => builder, contains: () => builder, is: () => builder, in: () => builder,
     order: () => builder, limit: () => builder, eq: () => builder, maybeSingle: () => builder,
     then: (resolve: any, reject: any) => Promise.resolve(result).then(resolve, reject) }; return builder; };
-  const rpc = vi.fn(async (name: string) => {
+  const rpc = vi.fn(async (name: string, _args?: unknown) => {
     if (name === "get_article_translation_sync_run") return { data: null, error: { code: "P0002", message: "ordinary article job not found" } };
     if (name === "get_translation_job_resume") return { data: { id: jobId, kind: "article", status: "reviewing", resumeCursor: {} }, error: null };
     if (name === "get_article_translation_item_retry_progress") return { data: value, error };
@@ -158,14 +168,21 @@ async function renderJournal(value: unknown, denied = false, error: unknown = nu
   const Page = actualPage({
     "@/components/TranslationSubmitButton": { __esModule: true, default: ({ children }: { children?: ReactNode }) => createElement("button", null, children) },
     "@/lib/admin-read-access": { requireStaffRead: async () => denied ? null : { user: { id: jobId }, role: "admin" } },
+    "@/lib/auth": { getStaffSession },
     "@/lib/env": { adminEnv: { premiumTranslationProvider: "cloudflare", cloudflareTranslationModel: "local-model", cloudflareTranslationReviewModel: "local-review" } },
     "@/lib/editorial-catalog": { loadEditorialCatalog: async () => ({ version: 1, countries: [] }) },
     "@/lib/premium-english-translation": { premiumTranslationRuntimeReadiness: () => ({ configured: true, bindingFound: true, provider: "cloudflare" }) },
-    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ rpc, from: () => query({ data: [], count: 0, error: null }) }) },
+    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ rpc: (...args: [name: string, input?: unknown]) =>
+      args[0] === "reconcile_site_copy_translation_operation" ? operationMetadataRead(args[0], args[1]) : rpc(...args),
+      from: () => query({ data: [], count: 0, error: null }) }) },
     "./actions": actions, "./article-actions": actions, "./country-actions": actions, "./self-test-action": actions,
     "./resume-action": actions, "./article-item-retry-action": actions,
+    "./site-copy-operation-actions": { recoverSiteCopyTranslationOperationAction: recoverSiteCopy },
   });
   const markup = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ retryJob: jobId, retryItem: itemId, retryOperation: operationId }) }));
+  expect(recoverSiteCopy).not.toHaveBeenCalled();
+  expect(operationMetadataRead).toHaveBeenCalledTimes(denied ? 0 : 1);
+  siteCopyReadScopes.push({ denied, rpc: operationMetadataRead.mock.calls, recoveryCalls: recoverSiteCopy.mock.calls });
   expect(actions.retryArticleTranslationItemAction).not.toHaveBeenCalled();
   return { markup, rpc };
 }
@@ -198,5 +215,6 @@ describe("M07 journal UI existing actual page", () => {
 });
 afterAll(() => {
   if (process.env.M07_JOURNAL_UI_TRACE) writeFileSync(process.env.M07_JOURNAL_UI_TRACE,
-    JSON.stringify({ actualModules: [...graph.values()], mocked: ["Auth", "SDK RPC ledger", "catalog", "provider readiness", "nonexecuted actions"] }, null, 2));
+    JSON.stringify({ actualModules: [...graph.values()], siteCopyReadScopes, mocked: ["Auth", "SDK RPC ledger", "catalog", "provider readiness", "nonexecuted actions"],
+      scopeAddition: "Actual site-copy metadata reader/adapter; exact null reconcile response and fresh matching staff; separate RPC trace, no paid or recovery action" }, null, 2));
 });

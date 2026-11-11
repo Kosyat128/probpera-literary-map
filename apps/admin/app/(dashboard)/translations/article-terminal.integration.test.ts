@@ -285,7 +285,7 @@ function setup(options: Options = {}) {
   const from = vi.fn((table: string) => {
     if (table === "admin_audit_log") return { insert: audit };
     if (table === "literary_work_translations" || table === "homepage_blocks" || table === "translation_provider_self_tests") {
-      const result = { data: table === "translation_provider_self_tests" ? { provider: "cloudflare", configured: true, binding_found: true, test_passed: true, model: "mock-translator", latency_ms: 1, last_error_code: null, last_test_at: sourceRevision, cooldown_until: null, test_in_progress: false, configuration_identity: providerProbeIdentity } : [], error: null, count: 0 };
+      const result = { data: table === "translation_provider_self_tests" ? { provider: "cloudflare", configured: true, binding_found: true, test_passed: true, model: "mock-translator", latency_ms: 1, last_error_code: null, last_test_at: new Date().toISOString(), cooldown_until: null, test_in_progress: false, configuration_identity: providerProbeIdentity } : [], error: null, count: 0 };
       const query: Row = { select() { return query; }, eq() { return query; }, in() { return query; }, contains() { return query; }, order() { return query; }, limit() { return query; }, maybeSingle() { return Promise.resolve(result); }, then(resolve: (value: unknown) => unknown, reject: (value: unknown) => unknown) { return Promise.resolve(result).then(resolve, reject); } };
       return query;
     }
@@ -364,13 +364,32 @@ function setup(options: Options = {}) {
     };
     return query;
   });
-  const client = { from, rpc };
+  // Preserve the existing terminal SDK wire/count scope while the page observes
+  // the new independent readonly site-copy operation metadata.
+  const siteCopyMetadataWire: Row[] = [];
+  const siteCopyMetadataSdk = nativeRequire("@supabase/supabase-js").createClient("https://local-site-copy-metadata.invalid", "synthetic-no-auth-session", {
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+    global: { fetch: async (input: unknown, init: Row = {}) => {
+      const url = String(input), args = JSON.parse(String(init.body));
+      expect(url).toBe("https://local-site-copy-metadata.invalid/rest/v1/rpc/reconcile_site_copy_translation_operation");
+      expect(init.method).toBe("POST"); expect(args).toEqual({ p_operation_id: null });
+      siteCopyMetadataWire.push({ url, method: init.method, args });
+      return new Response("null", { headers: { "Content-Type": "application/json" } });
+    } },
+  });
+  const siteCopyMetadataRpc = vi.fn((name: string, args: Row) => siteCopyMetadataSdk.rpc(name, args));
+  const client = { from, rpc: (name: string, args: Row = {}) => name === "reconcile_site_copy_translation_operation"
+    ? siteCopyMetadataRpc(name, args) : rpc(name, args) };
   const build = vi.fn(async (input: unknown) => { events.push({ kind: "build", input: structuredClone(input && typeof input === "object" ? { ...(input as Row), supabase: "mock-sdk" } : input) }); return { state: "queued" }; });
   const revalidate = vi.fn();
   const gate = vi.fn(async () => options.gateResponses?.[gate.mock.calls.length - 1] ?? options.gate !== false);
   const requireStaff = vi.fn(async () => options.session === undefined ? { user: { id: actorId } } : options.session);
+  const getStaffSession = vi.fn(async () => ({ configured: true,
+    user: options.session === undefined ? { id: actorId } : (options.session as Row | null)?.user ?? null,
+    role: options.session === null ? null : "owner",
+    mfa: { required: false, checkError: null }, authError: null, membershipError: null }));
   const modules = actualModules({
-    "@/lib/auth": { requireStaff }, "@/lib/supabase/server": { createServerSupabaseClient: vi.fn(async () => options.clientMissing ? null : client) },
+    "@/lib/auth": { requireStaff, getStaffSession }, "@/lib/supabase/server": { createServerSupabaseClient: vi.fn(async () => options.clientMissing ? null : client) },
     "@/lib/publication": { requestPublicBuild: build }, "next/cache": { revalidatePath: revalidate },
     "apps/admin/lib/translation-runtime-gate": { premiumTranslationRuntimeGate: gate, premiumTranslationSelfTestFresh: () => true },
     "@/lib/editorial-catalog": { loadEditorialCatalog: async () => ({ version: 1, countries: [] }) },
@@ -410,7 +429,7 @@ function setup(options: Options = {}) {
   const originalEnglish = structuredClone([...english.values()]);
   const helper = modules.load(helperFile).ensurePublishedArticlePremiumEnglish;
   const action = modules.load(actionFile).translatePremiumArticleBatchAction;
-  const trace = (scope: string, result: unknown) => traces.push(JSON.parse(JSON.stringify({ scope, result, options: { ...options, onModel: !!options.onModel }, translatorCalls: translator.mock.calls, writes, audit: audit.mock.calls, job: rpc.mock.calls, jobs: [...jobs.values()], build: build.mock.calls.map(call => ({ ...call[0] as Row, supabase: "mock-sdk" })), events })));
+  const trace = (scope: string, result: unknown) => traces.push(JSON.parse(JSON.stringify({ scope, result, options: { ...options, onModel: !!options.onModel }, translatorCalls: translator.mock.calls, writes, audit: audit.mock.calls, job: rpc.mock.calls, siteCopyMetadata: siteCopyMetadataRpc.mock.calls, siteCopyMetadataWire, jobs: [...jobs.values()], build: build.mock.calls.map(call => ({ ...call[0] as Row, supabase: "mock-sdk" })), events })));
   async function runActual(actionToRun: (form: FormData) => Promise<unknown>, values: Record<string, unknown>) {
     const form = new FormData(); for (const [key, value] of Object.entries(values)) if (value !== undefined) form.set(key, String(value));
     try { await actionToRun(form); throw new Error("Expected actual Next redirect"); }

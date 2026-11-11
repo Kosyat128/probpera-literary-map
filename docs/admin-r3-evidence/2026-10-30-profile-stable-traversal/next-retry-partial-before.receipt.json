@@ -1,0 +1,26 @@
+{
+  "status": "ROOT_INDEPENDENT_GENUINE_NEXT_BEFORE_READBACK_PASS_WITH_EXPECTED_TWO_TARGET_FAILURES",
+  "checkedAt": "2026-10-30T08:44:49.399243+00:00",
+  "archive": "next-retry-partial-before.zip",
+  "sha256": "cf1a17f1033b1ab3bec07cf484c6d0ad1bec9a5dadfd800199d397bd58805b3b",
+  "bytes": 2865064,
+  "verifiedPayloads": 714,
+  "safeUniquePaths": true,
+  "original44CapturedSourceBytesExact": true,
+  "originalV2Matches": 41,
+  "originalCaptureIsAWorkingStateNotAWholeV2Snapshot": true,
+  "originalSupportDifferencesFromV2": [
+    "apps/admin/lib/fixtures/catalog-admission-runtime.cjs",
+    "apps/admin/lib/fixtures/profile-translation-scan-boundary.cjs",
+    "apps/admin/lib/fixtures/writer-admission-runtime.cjs"
+  ],
+  "current44BindingsMatchV3AndCurrent": true,
+  "sourceOnlyAuditBindings": 13,
+  "originalToCurrentUnchanged": 43,
+  "declaredSupportOnlyChanges": 1,
+  "sameContractSha256": "a63a42d6b2870cd78dfb45cdf23683fac1ccc19079281fed6caa9595502bff45",
+  "targetFailures": 2,
+  "guardControlsPass": 9,
+  "canonicalPublicationControlsPass": 11,
+  "scope": "Two actual site-copy no-regeneration targets fail before implementation. Other domains safely hold unknown/partial work and recover complete output. Source-only observations are not runtime proof. Original, portable and CURRENT are separate immutable reports; no source reconstruction or current substitution into original BEFORE."
+}

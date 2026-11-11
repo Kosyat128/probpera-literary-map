@@ -35,7 +35,7 @@ const definition = { key: "interface.Search", group: "Core fields", label: "Orig
 const definitions = [definition];
 type Query = { errorCode?: string; saved?: string; published?: string };
 class NextSignal extends Error { constructor(readonly destination: string) { super("Next navigation signal"); } }
-async function render(options: { response?: unknown; catalog?: unknown; rejected?: boolean; catalogRejected?: boolean; query?: Query; noClient?: boolean; querySignal?: NextSignal; clientSignal?: NextSignal } = {}) {
+async function render(options: { response?: unknown; catalog?: unknown; rejected?: boolean; catalogRejected?: boolean; query?: Query; noClient?: boolean; querySignal?: NextSignal; clientSignal?: NextSignal; reviewUnavailable?: boolean } = {}) {
   const from = vi.fn((table: string) => {
     expect(table).toBe("homepage_blocks");
     const builder = { select: () => builder, order: () => builder, contains: vi.fn((_column: string, _value: unknown) => builder), limit: vi.fn((_limit: number) => builder),
@@ -48,20 +48,38 @@ async function render(options: { response?: unknown; catalog?: unknown; rejected
   });
   const catalog = vi.fn(async () => { if (options.catalogRejected) throw new Error(privateError); return Object.hasOwn(options, "catalog") ? options.catalog : definitions; });
   const action = vi.fn(); const rpc = vi.fn();
+  // The new operation journal adds a separately scoped, metadata-only read.
+  // The original rpc spy still observes every legacy/nonmetadata operation.
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
+  const readRpc = (name: string, args: unknown) => name === "reconcile_site_copy_translation_operation"
+    ? operationMetadataRead(name, args) : rpc(name, args);
+  const review = vi.fn(async () => ({ views: options.reviewUnavailable
+    ? [{ status: "unavailable", problem: "Машинный кандидат недоступен." }] : [], nextCursor: null }));
   const mocks = {
-    "@/lib/supabase/server": { createServerSupabaseClient: async () => { if (options.clientSignal) throw options.clientSignal; return options.noClient ? null : { from, rpc }; } },
+    "@/lib/supabase/server": { createServerSupabaseClient: async () => { if (options.clientSignal) throw options.clientSignal; return options.noClient ? null : { from, rpc: readRpc }; } },
+    "@/lib/auth": { getStaffSession: async () => ({ configured: true, user: { id: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa" }, role: "owner",
+      mfa: { required: false, checkError: null }, authError: null, membershipError: null }) },
     "@/lib/site-copy-catalog": { loadAllSiteCopyCatalog: catalog },
+    "@/lib/premium-translation-review": { loadSiteCopyPremiumTranslationReviews: review },
     "@/lib/env": { adminEnv: { publicSiteUrl: "https://public.invalid" } },
     "@/app/(dashboard)/site-copy/actions": { saveSiteCopyAction: action },
+    "@/app/(dashboard)/translations/premium-review-actions": {
+      approvePremiumTranslationWorkingDraftAction: action, discardPremiumTranslationWorkingDraftAction: action,
+    },
     "next/navigation": { unstable_rethrow: nativeRequire("next/navigation").unstable_rethrow, redirect: (destination: string): never => { throw new NextSignal(destination); } },
     "next/link": { __esModule: true, default: ({ children, ...props }: { children?: ReactNode }) => createElement("a", { ...props, "data-next-link": "true" }, children) },
   };
   const page = loadAdminModule("app/(dashboard)/site-copy/page.tsx", mocks).default as (props: { searchParams: Promise<Query> }) => Promise<ReactNode>;
   try {
     const markup = renderToStaticMarkup(await page({ searchParams: options.querySignal ? Promise.reject(options.querySignal) : Promise.resolve(options.query ?? {}) }));
-    return { markup, $: load(markup), from, catalog };
+    return { markup, $: load(markup), from, catalog, review };
   } finally {
     expect(action).not.toHaveBeenCalled(); expect(rpc).not.toHaveBeenCalled();
+    expect(operationMetadataRead).toHaveBeenCalledTimes(options.noClient || options.querySignal || options.clientSignal ? 0 : 1);
     if (options.querySignal || options.clientSignal) expect(from).not.toHaveBeenCalled();
   }
 }
@@ -71,9 +89,22 @@ function expectBlocked(view: Rendered) {
   expect(view.$("form.site-copy-editor").length).toBe(0); expect(view.$('[role="alert"]').length).toBeGreaterThan(0);
   expect(retryLink(view).length).toBe(1); expect(retryLink(view).attr("data-next-link")).toBeUndefined();
   expect(view.markup).not.toContain(privateError);
+  expect(view.review).not.toHaveBeenCalled();
 }
 afterEach(() => vi.unstubAllEnvs());
 describe("M02 site-copy actual page and editor SSR read boundaries", () => {
+  it("keeps canonical copy editable when private candidates are unavailable", async () => {
+    const view = await render({ reviewUnavailable: true });
+    expect(view.$("form.site-copy-editor").length).toBe(1);
+    expect(view.markup).toContain("Original Russian override");
+    expect(view.markup).toContain("Original English override");
+    expect(view.$('[role="alert"]').text()).toContain("Машинный кандидат недоступен");
+    expect(view.review).toHaveBeenCalledWith(expect.objectContaining({ afterId: null }));
+  });
+  it("requests enough canonical rows to detect duplicate master blocks", async () => {
+    const view = await render();
+    expect(view.from.mock.results[0].value.limit).toHaveBeenCalledWith(2);
+  });
   it.each(["42P01", "42501", "PGRST116", "57014"])("closes the editor on %s storage error", async (code) => {
     const view = await render({ response: { data: [block], error: { code, message: privateError } } }); expectBlocked(view);
     if (code === "42P01") expect(view.markup).toContain("Структура редакционной базы");

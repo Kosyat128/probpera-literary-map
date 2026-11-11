@@ -1,0 +1,14 @@
+{
+  "archive": "sql-evidence.zip",
+  "sha256": "0449763c0f5a507b476a5e8401c27b0d9cc8ae10ed636851557e12672e476659",
+  "bytes": 3025381,
+  "verifiedPayloads": 1642,
+  "physicalSources": 59,
+  "globalFrozenFingerprint": "8e5c3553807cef985efb3e05adf585df10b30953f986d6ce2ee184858492f9ab",
+  "nativeWireRecords": 196,
+  "actualConcurrencyGroups": 12,
+  "classification": "NATIVE_ONLY_SELECTED_SQL_SYNTHETIC_AUTH_FOUNDATION_NOT_MANAGED_BROWSER_E2E",
+  "externalFinalSdkReportSha256": "1997844ec7a936ef5ad06ec94e33f6e7a0b447e644077253039bdbe26aab518c",
+  "finalSdkReportEmbeddedInThisNativeZip": false,
+  "independentReadback": "root-native-packet-independent-readback.json"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "PASS_WITH_UNCHANGED_EXCLUDED_GATE_FAILURE",
+  "checkedAt": "2026-10-29T21:41:14.279Z",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "branch": "codex/admin-r3-data-errors",
+  "validationSourceFiles": 10433,
+  "validationSourceSha256": "f1f3582c13a5dee91c3aad9da3bee719a1e579ebbb09e3e7b73a92b10126b196",
+  "sameAsFullBroadAndGates": true,
+  "nonDocChanges": [],
+  "trackedDocumentChanges": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "size": 418278,
+      "sha256": "8d019e06e41844c43f94527ee0e35938127cf0b384ab943c56546e4b1874982e"
+    }
+  ],
+  "readonly": {
+    "exitCode": 1,
+    "byteIdenticalToFinalBroadGate": true,
+    "findings": 41,
+    "logSha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+    "normalizerWriteFlagUsed": false
+  },
+  "finalDocuments": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "sha256": "8d019e06e41844c43f94527ee0e35938127cf0b384ab943c56546e4b1874982e"
+    },
+    {
+      "path": "docs/admin-r3-evidence/2026-10-30-writer-admission/README.md",
+      "sha256": "8b5f6ac8587a8ed759d0651edbcfaa5c872028929331c0023c5e5f638b42afeb"
+    }
+  ],
+  "archiveHashes": [
+    {
+      "file": "next-library-country-admission-before.zip",
+      "sha256": "652bbe1367df8b92f267a418600d55ce76feb9fa1f9a69b969722a02c8f27cef"
+    },
+    {
+      "file": "sql-evidence.zip",
+      "sha256": "585272c0a49a8137e7bc5c7885b409ceb75a0ba8d2a2490749051c8446c4ffa0"
+    },
+    {
+      "file": "whole-validation-evidence.zip",
+      "sha256": "289c7b4b26d237c2c7b21bc724375398fc04a4d81e4de25e59647fc87ee65b6b"
+    },
+    {
+      "file": "writer-admission-controlled-tests.zip",
+      "sha256": "1092eb007c1a699903525eb20bd4537a070a85a0bde8f60b9a008df6f5d0f11e"
+    }
+  ]
+}

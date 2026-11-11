@@ -19,23 +19,33 @@ type TranslationUsage = {
 
 type TranslationPassLabel = "translation" | "repair" | "review";
 
+export type TranslationProviderResponseMetadata = {
+  callId: string;
+  provider: "cloudflare" | "openai";
+  model: string;
+  pass: TranslationPassLabel;
+  httpStatus: number | null;
+  requestId: string | null;
+  responseId: string | null;
+  inputTokens: number | null;
+  outputTokens: number | null;
+};
+
+export type TranslationPrivateResponseArtifacts = {
+  record(response: TranslationProviderResponseMetadata & {
+    requestHash: string;
+    body: unknown;
+  }): Promise<void>;
+};
+
 export type TranslationProviderCallJournal = {
   beforeDispatch: (call: {
     provider: "cloudflare" | "openai";
     model: string;
     pass: TranslationPassLabel;
+    requestHash?: string;
   }) => Promise<string>;
-  responseReceived: (response: {
-    callId: string;
-    provider: "cloudflare" | "openai";
-    model: string;
-    pass: TranslationPassLabel;
-    httpStatus: number | null;
-    requestId: string | null;
-    responseId: string | null;
-    inputTokens: number | null;
-    outputTokens: number | null;
-  }) => Promise<void>;
+  responseReceived: (response: TranslationProviderResponseMetadata) => Promise<void>;
 };
 
 type TranslationPassResult = TranslationUsage & {
@@ -84,7 +94,14 @@ export type PremiumEnglishTranslationOptions<T> = {
   fetchImpl?: typeof fetch;
   operationBudget?: TranslationOperationBudget;
   providerJournal?: TranslationProviderCallJournal;
+  responseArtifacts?: TranslationPrivateResponseArtifacts;
 };
+
+async function privateRequestHash(value: unknown) {
+  const bytes = new TextEncoder().encode(JSON.stringify(value));
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+}
 
 async function journalBeforeDispatch(
   journal: TranslationProviderCallJournal,
@@ -428,6 +445,7 @@ async function openAiStructuredPass(input: {
   label: TranslationPassLabel;
   operationBudget?: TranslationOperationBudget;
   providerJournal?: TranslationProviderCallJournal;
+  responseArtifacts?: TranslationPrivateResponseArtifacts;
 }): Promise<TranslationPassResult> {
   const body = JSON.stringify({
     model: input.model,
@@ -448,10 +466,13 @@ async function openAiStructuredPass(input: {
       },
     },
   });
+  const requestHash = input.responseArtifacts === undefined ? null
+    : await privateRequestHash({ provider: "openai", body });
   input.operationBudget?.beforeProviderCall();
   const callId = input.providerJournal === undefined ? null : await journalBeforeDispatch(
     input.providerJournal,
-    { provider: "openai", model: input.model, pass: input.label },
+    { provider: "openai", model: input.model, pass: input.label,
+      ...(requestHash === null ? {} : { requestHash }) },
     input.operationBudget
   );
   const controller = new AbortController();
@@ -473,7 +494,7 @@ async function openAiStructuredPass(input: {
       return null;
     })) as unknown;
     if (input.providerJournal && callId) {
-      await input.providerJournal.responseReceived({
+      const metadata: TranslationProviderResponseMetadata = {
         callId,
         provider: "openai",
         model: input.model,
@@ -483,7 +504,11 @@ async function openAiStructuredPass(input: {
         responseId: payload && typeof payload === "object" && typeof (payload as Record<string, unknown>).id === "string"
           ? (payload as Record<string, unknown>).id as string : null,
         ...usageFromRecord(payload),
-      });
+      };
+      if (input.responseArtifacts && requestHash) {
+        await input.responseArtifacts.record({ ...metadata, requestHash, body: payload });
+      }
+      await input.providerJournal.responseReceived(metadata);
     }
     if (!response.ok) {
       const message = apiErrorMessage(payload);
@@ -539,6 +564,7 @@ async function workersAiStructuredPass(input: {
   label: TranslationPassLabel;
   operationBudget?: TranslationOperationBudget;
   providerJournal?: TranslationProviderCallJournal;
+  responseArtifacts?: TranslationPrivateResponseArtifacts;
 }): Promise<TranslationPassResult> {
   const request = {
     messages: [
@@ -554,10 +580,13 @@ async function workersAiStructuredPass(input: {
       json_schema: input.schema,
     },
   };
+  const requestHash = input.responseArtifacts === undefined ? null
+    : await privateRequestHash({ provider: "cloudflare", model: input.model, request });
   input.operationBudget?.beforeProviderCall();
   const callId = input.providerJournal === undefined ? null : await journalBeforeDispatch(
     input.providerJournal,
-    { provider: "cloudflare", model: input.model, pass: input.label },
+    { provider: "cloudflare", model: input.model, pass: input.label,
+      ...(requestHash === null ? {} : { requestHash }) },
     input.operationBudget
   );
   let payload: unknown;
@@ -578,7 +607,7 @@ async function workersAiStructuredPass(input: {
       ? (payload as Record<string, unknown>)
       : {};
   if (input.providerJournal && callId) {
-    await input.providerJournal.responseReceived({
+    const metadata: TranslationProviderResponseMetadata = {
       callId,
       provider: "cloudflare",
       model: input.model,
@@ -587,7 +616,11 @@ async function workersAiStructuredPass(input: {
       requestId: null,
       responseId: typeof record.id === "string" ? record.id : null,
       ...usageFromRecord(payload),
-    });
+    };
+    if (input.responseArtifacts && requestHash) {
+      await input.responseArtifacts.record({ ...metadata, requestHash, body: payload });
+    }
+    await input.providerJournal.responseReceived(metadata);
   }
   let value: unknown;
   try {
@@ -610,6 +643,16 @@ async function workersAiStructuredPass(input: {
     requestId: typeof record.id === "string" ? record.id : null,
     ...usageFromRecord(payload),
   };
+}
+
+/** Decode retained provider JSON through the same parser used by live passes. */
+export function retainedPremiumTranslationResponseValue(
+  provider: "cloudflare" | "openai", body: unknown, pass: TranslationPassLabel,
+) {
+  if (provider === "cloudflare") return workersAiValue(body, pass);
+  const text = openAiResponseText(body);
+  if (!text) throw new Error(`OpenAI returned no ${pass} output`);
+  return parseJsonText(text, pass);
 }
 
 function selectedProvider<T>(
@@ -640,6 +683,11 @@ function combinedTokenCount(
 export async function premiumTranslateToEnglish<T>(
   options: PremiumEnglishTranslationOptions<T>
 ): Promise<PremiumEnglishTranslationResult<T>> {
+  if (options.responseArtifacts !== undefined && (
+    !options.responseArtifacts || typeof options.responseArtifacts.record !== "function" || !options.providerJournal
+  )) {
+    throw new Error("Private translation response artifacts require a provider journal");
+  }
   const provider = selectedProvider(options);
   const review = options.review ?? adminEnv.openAiPremiumTranslationReview;
   const maxOutputTokens = Math.max(
@@ -679,6 +727,7 @@ export async function premiumTranslateToEnglish<T>(
       label: "translation",
       operationBudget: options.operationBudget,
       ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+      ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
     });
     let draft: T;
     try {
@@ -703,6 +752,7 @@ export async function premiumTranslateToEnglish<T>(
         label: "repair",
         operationBudget: options.operationBudget,
         ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+        ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
       });
       draft = options.validate(repair.value);
     }
@@ -721,6 +771,7 @@ export async function premiumTranslateToEnglish<T>(
         label: "review",
         operationBudget: options.operationBudget,
         ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+        ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
       });
     }
 
@@ -748,6 +799,7 @@ export async function premiumTranslateToEnglish<T>(
           label: "repair",
           operationBudget: options.operationBudget,
           ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+          ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
         });
         finalValue = options.validate(finalRepair.value);
       }
@@ -799,6 +851,7 @@ export async function premiumTranslateToEnglish<T>(
     label: "translation",
     operationBudget: options.operationBudget,
     ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+    ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
   });
   let draft: T;
   try {
@@ -827,6 +880,7 @@ export async function premiumTranslateToEnglish<T>(
       label: "repair",
       operationBudget: options.operationBudget,
       ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+      ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
     });
     draft = options.validate(repair.value);
   }
@@ -849,6 +903,7 @@ export async function premiumTranslateToEnglish<T>(
       label: "review",
       operationBudget: options.operationBudget,
       ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+      ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
     });
   }
 
@@ -880,6 +935,7 @@ export async function premiumTranslateToEnglish<T>(
         label: "repair",
         operationBudget: options.operationBudget,
         ...(options.providerJournal === undefined ? {} : { providerJournal: options.providerJournal }),
+        ...(options.responseArtifacts === undefined ? {} : { responseArtifacts: options.responseArtifacts }),
       });
       finalValue = options.validate(finalRepair.value);
     }

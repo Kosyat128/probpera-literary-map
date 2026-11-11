@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-30T12:16:34.841237+00:00",
+  "classification": "INDEPENDENT_NATIVE_ARCHIVE_READBACK_FROZEN_SOURCE_AND_EXTERNAL_FINAL_SDK_BINDING_PASS",
+  "archiveSha256": "0449763c0f5a507b476a5e8401c27b0d9cc8ae10ed636851557e12672e476659",
+  "payloadsVerified": 1642,
+  "physicalSourcesVerified": 59,
+  "frozenFingerprint": "8e5c3553807cef985efb3e05adf585df10b30953f986d6ce2ee184858492f9ab",
+  "nativeRows": 196,
+  "actualTypedWrappers": 8,
+  "externalSdkReportSha256": "1997844ec7a936ef5ad06ec94e33f6e7a0b447e644077253039bdbe26aab518c",
+  "nativeRealJsBuilderParityCases": 1,
+  "actualConcurrencyGroupsPassed": 12,
+  "ownClientsTerminal": 26,
+  "oldFunctionsExact": 186,
+  "oldTargetTablesExact": 8,
+  "oldRelationsExact": 53,
+  "rolesExact": 19,
+  "securityAdvisorsSame15ZeroNew": true,
+  "ownedServerStoppedAndPortFreeProof": true,
+  "scope": "Selected real SQL and synthetic Auth foundation; raw native wire through installed SDK is a separately bound replay, not a managed PostgREST/Auth/browser run. Original orchestration failures remain in the immutable archive."
+}

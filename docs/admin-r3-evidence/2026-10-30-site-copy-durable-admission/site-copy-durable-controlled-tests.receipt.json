@@ -1,0 +1,122 @@
+{
+  "classification": "SEALED_SITE_COPY_CONTROLLED_TEST_EVIDENCE_PENDING_SEPARATE_INDEPENDENT_AUDIT",
+  "zip": "site-copy-durable-controlled-tests.zip",
+  "bytes": 19676926,
+  "sha256": "de02e1bdddb90e5f8c187fe34fb8a893832ebc8bdfba9ad412f96eab90d899df",
+  "manifestSha256": "9069053e6ae4426cbaabf8e20622820f169ff6edcdc7f8f262d03de6a428b631",
+  "payloads": 2659,
+  "archiveEntries": 2660,
+  "currentBindings": 151,
+  "globalSourceSha256": "b0b79b534a1f02c326b951224d2b82482840c5397acb1d99afe7930532efda38",
+  "sourceInventorySha256": "bdfcb79eac99df1121ac27b6457e12194a00721cb13bf56c4a46b358cc03c7ad",
+  "focused": {
+    "total": 398,
+    "passed": 398,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0
+  },
+  "core": {
+    "groups": 45,
+    "originalOracleChecks": 22,
+    "currentTargetFail": 0,
+    "genuineBeforeTargetFail": 2,
+    "unchangedOtherDomainGuards": 9,
+    "canonicalPublicationPreservation": 11
+  },
+  "nativeSdk": {
+    "total": 196,
+    "passed": 196,
+    "inputSha256": "fada405569b97282eb71e36f791ae315cf20e11cb94f0359ee862710954aad41",
+    "realSourceBuilderParity": {
+      "status": "passed",
+      "positiveCases": 1,
+      "sourceHash": "428450394708d92b258fe25a1360ef780c7899187952036ae000a13e8a851944",
+      "operationId": "6067f745-55ec-419b-9a4c-fb7062623f99",
+      "candidateHash": "f54b705a44ff634069dbb04cbc855d8b607327e4a40bba5b48aa20c435e73752",
+      "actualCandidate": {
+        "payload": {
+          "items": [
+            {
+              "key": "cta",
+              "text": "Find books in the catalogue"
+            },
+            {
+              "key": "intro",
+              "text": "Find books in the catalogue"
+            }
+          ]
+        },
+        "provenance": {
+          "provider": "cloudflare",
+          "translatorModel": "fixture-translator",
+          "reviewerModel": null,
+          "translatorRequestId": "controlled-site-copy-1",
+          "reviewerRequestId": null,
+          "generatedAt": "2026-10-30T12:06:19.281Z"
+        },
+        "translatorCallId": "8cfceffb-ca8e-4a93-8e0d-5f11eaa397cb",
+        "reviewerCallId": null
+      },
+      "externalProviderCalls": 0,
+      "newBegin": 0,
+      "canonicalWrites": 0
+    },
+    "scope": "Every original native row passes installed SDK plus its actual corresponding typed wrapper; ONE real-JS-source stored native candidate also matches the actual retained builder. Other opaque native rows are not claimed helperE2E. SQL execution and races remain separate.",
+    "currentConformanceSha256": "1b2b1b961753714bb44a9487618c4a5ef40ba76efedaeb9c5f85cc3cd48ad80c",
+    "currentActualSourceCount": 17
+  },
+  "portable": {
+    "commands": 3,
+    "passed": 3,
+    "sourceInventorySha256": "bdfcb79eac99df1121ac27b6457e12194a00721cb13bf56c4a46b358cc03c7ad",
+    "scope": "Captured core45/SAME22, original66 assertions and exact native wire through every real typed wrapper plus ONE actual native retained candidate. Raw focused and UI scopes are separate and overlap these.",
+    "nativeConformanceSha256": "1b2b1b961753714bb44a9487618c4a5ef40ba76efedaeb9c5f85cc3cd48ad80c"
+  },
+  "currentWhole": {
+    "numTotalTests": 7193,
+    "numPassedTests": 7187,
+    "numFailedTests": 6,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "currentUi": {
+    "cases": 389,
+    "passed": 389,
+    "files": 6,
+    "subsetOfCurrentWhole": true,
+    "newTestsExecutedByDerivation": 0,
+    "rawSubsetSha256": "f0cf0d13aaa63ceb1c2f01722413b40051619ccf2476cd9200d33fb6b1b8f2ca",
+    "historicalDifferences": [
+      {
+        "file": "apps/admin/app/(dashboard)/translations/page.tsx",
+        "historicalSha256": "e10fbc23e82bdad35c0d36c930581ae15caf7ef2067880aa8dd8386e99743138",
+        "currentSha256": "5168711927467d98f6ae0d0f90a4e65a78094abb3d7fd3493f413f084edc9c01"
+      },
+      {
+        "file": "apps/admin/lib/premium-translation-review.ts",
+        "historicalSha256": "c509886eb6f67124d10a95ad1cce068d556f4079ad165c5c2d1a433cd9f03649",
+        "currentSha256": "97b9886d62749873b61ad0afff8dd7dcd62d2d117b8d6fb21b23c3055ab9fc28"
+      }
+    ]
+  },
+  "documentDrift": {
+    "allFullInputEntryArraysIdentical": false,
+    "nonDocInputEntryArraysIdentical": true,
+    "allowedDocumentPaths": [
+      "docs/CODEX_ADMIN_EXECUTION_STATE.md"
+    ]
+  },
+  "qualifications": [
+    "Genuine cf1 original WIP capture is not uniformly1af:41 of44 captured source entries match V2 and3 support differences are retained. Separate current44 original-observer bindings match1af. No source or original three-call diagnostic expectation was relabeled.",
+    "Exact original a63 oracle remains unchanged. The CURRENT observer keeps all11 actual triggers, removing only original diagnostic expectations requiring the site-copy defect to cause3calls.",
+    "Durable reservations differ from confirmed external dispatch/invoices. Refused native-shaped dispatch RPCs are not additional accepted reservations/provider calls.",
+    "Historical startup/SDK/source-edit/harness failures and intermediate passing scopes remain separately qualified; no stale source is relabeled final.",
+    "Genuine6b reviewc509 changed to97b only by removing the static site-copy freshness reader import and awaiting the same reader inside the original guarded try after canPromote.15other functions and remaining guard/catch body are exact. Current398 was rerun; old398/core/old66/portable8e5 raw are historical rather than reused after this actual source drift.",
+    "Olde63 UI inventory now differs at exactly page explanatory copy and guarded domain-lazy review import. Current physical UI inputs are frozen; current389 assertions require the later actualwhole7193 subset and two fresh automatic graphs. No currentUI PASS is asserted by preparation.",
+    "WholeV1 retained7121PASS/72FAIL and wholeV2 retained7181PASS/12FAIL, with all9then6 default5s timeout signatures and original6M02 errors. No snapshot/failure is relabeled or overwritten. No test-cache shortcut, timeout increase or permanent skip was introduced.",
+    "Controlled provider/Auth/CMS/RPC boundaries, native SQL/RLS/concurrency, UI scope and whole gates remain distinct. No production, keys, provider billing, managed browser acceptance or fullM07/M24/R3 completion is claimed.",
+    "Old portableV1 missing-source failure, subsequent8e5 portable3PASS, V1whole72FAIL and V2whole12FAIL remain historical. Actual review source changed fromc509 to97b; CURRENT398 and all3portablecommands were freshly rerun onb0b. NativeSQL was not rerun. Current389UI derives from actualwholeV3, not an extra389run.",
+    "Nativefinal uses the same selected M24 fixture foundation before/after, including synthetic outbox/queue stub support and no editor_autosaves.186oldroutine exact is not actual M04 queue/whole production DB acceptance. Fresh M04/M20 foundation proof requires actual20260814 publication outbox and20260828_zz_editor_autosaves; no M24 SQL retest is implied."
+  ]
+}

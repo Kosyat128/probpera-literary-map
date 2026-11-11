@@ -1,0 +1,19 @@
+{
+  "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\profile-budget-current-evidence-v2.zip",
+  "sha256": "63bad20db74b9a90a13427798fd313b9ad06a92a8c5abdc0bceda4995a44d9fd",
+  "bytes": 760319,
+  "members": 189,
+  "verifiedPayloadFiles": 188,
+  "currentSourceAggregate": "5bfacc1f38758a714f61bd9bcde8e36abcc3d76ac08e698a3296704c57e96034",
+  "maintainedTests": {
+    "total": 39,
+    "passed": 39,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0
+  },
+  "currentScenarios": {
+    "total": 33,
+    "passed": 33
+  }
+}

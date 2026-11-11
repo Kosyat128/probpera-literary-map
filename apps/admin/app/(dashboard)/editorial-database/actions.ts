@@ -20,6 +20,8 @@ import {
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import type { CatalogTranslationOperation } from "@/lib/catalog-translation-operation";
+import type { WriterTranslationOperation } from "@/lib/writer-translation-operation";
 import {
   buildWriterBiographySaveModel,
   type WriterBiographyLocale,
@@ -362,23 +364,9 @@ export async function saveEditorialProfileAction(formData: FormData) {
     model?: string;
     reviewerModel?: string | null;
     error?: string;
+    operation?: WriterTranslationOperation | CatalogTranslationOperation;
   } = { state: "skipped" };
-  if (sourceFields) {
-    translation = isWriter
-      ? await ensureWriterEnglishBiography({
-          supabase,
-          actorId: session.user.id,
-          countryId: edit.countryId,
-          writerId: edit.writerId!,
-          sourceFields,
-        })
-      : await ensureCountryEnglishProfile({
-          supabase,
-          actorId: session.user.id,
-          countryId: edit.countryId,
-          sourceFields: editorialSourceFields(editorialCatalog, edit.countryId, null),
-        });
-  }
+
 
   const { error: auditError } = await supabase
     .from("admin_audit_log")
@@ -395,10 +383,7 @@ export async function saveEditorialProfileAction(formData: FormData) {
           existingFields,
           protectedField
         ),
-        autoTranslationState: translation.state,
-        autoTranslationModel: translation.model || null,
-        autoTranslationReviewerModel: translation.reviewerModel || null,
-        autoTranslationError: translation.error?.slice(0, 500) || null,
+        autoTranslationStarted: false,
         editor: "editorial-database",
       },
     });
@@ -413,13 +398,29 @@ export async function saveEditorialProfileAction(formData: FormData) {
       countryId: edit.countryId,
       writerId: edit.writerId,
       fields: Object.keys(edit.fields),
-      translationState: translation.state,
-      translationModel: translation.model || null,
-      translationReviewerModel: translation.reviewerModel || null,
-      translationError: translation.error?.slice(0, 500) || null,
+      translationStarted: false,
       auditError: auditError?.message || null,
     },
   });
+
+  if (sourceFields && !isWriter) {
+    translation = await ensureCountryEnglishProfile({
+      supabase,
+      actorId: session.user.id,
+      countryId: edit.countryId,
+      sourceFields: editorialSourceFields(editorialCatalog, edit.countryId, null),
+    });
+  }
+
+  if (sourceFields && isWriter) {
+    translation = await ensureWriterEnglishBiography({
+      supabase,
+      actorId: session.user.id,
+      countryId: edit.countryId,
+      writerId: edit.writerId!,
+      sourceFields: editorialSourceFields(editorialCatalog, edit.countryId, edit.writerId),
+    });
+  }
 
   revalidatePath("/editorial-database");
   revalidatePath("/library");
@@ -431,11 +432,17 @@ export async function saveEditorialProfileAction(formData: FormData) {
     translation: translation.state,
   });
   if (edit.writerId) params.set("writer_id", edit.writerId);
+  if (translation.operation?.receipt) {
+    params.set("translation_operation", translation.operation.receipt.operationId);
+  }
   if (auditError) params.set("warning", "audit");
   if (
     translation.state === "failed" ||
     translation.state === "conflict" ||
-    translation.state === "not-configured"
+    translation.state === "not-ready" ||
+    translation.state === "not-configured" ||
+    translation.state === "unconfirmed" ||
+    translation.state === "cancelled"
   ) {
     params.set("warning", `translation-${translation.state}`);
   }
@@ -615,7 +622,7 @@ export async function saveWriterBiographyAction(formData: FormData) {
       editor: "structured-writer-biography",
     },
   });
-  let publication = await requestPublicBuild({
+  const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
     entityType: "writer_profile",
@@ -644,23 +651,6 @@ export async function saveWriterBiographyAction(formData: FormData) {
     sourceFields,
     replaceEnglishTombstone: model.invalidatedMachineEnglish,
   });
-  if (translation.state === "translated") {
-    publication = await requestPublicBuild({
-      supabase,
-      actorId: session.user.id,
-      entityType: "writer_profile",
-      entityId: translation.overrideId || saved.data.id,
-      reason: "writer_profile.biography.english_generated",
-      metadata: {
-        countryId,
-        writerId,
-        locale: "en",
-        translationModel: translation.model || null,
-        translationReviewerModel: translation.reviewerModel || null,
-        source: "structured-writer-biography",
-      },
-    });
-  }
 
   revalidatePath("/editorial-database");
   revalidatePath("/translations");
@@ -672,6 +662,12 @@ export async function saveWriterBiographyAction(formData: FormData) {
     translation: translation.state,
   });
   if (auditError) params.set("warning", "audit");
+  if (translation.operation?.receipt) {
+    params.set("translation_operation", translation.operation.receipt.operationId);
+  }
+  if (translation.state === "unconfirmed" || translation.state === "cancelled") {
+    params.set("warning", `translation-${translation.state}`);
+  }
   redirect(`/editorial-database?${params.toString()}`);
 }
 

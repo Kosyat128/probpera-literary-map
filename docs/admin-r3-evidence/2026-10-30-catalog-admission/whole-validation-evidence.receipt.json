@@ -1,0 +1,16 @@
+{
+  "archive": "whole-validation-evidence.zip",
+  "bytes": 3233921,
+  "sha256": "9a6a7bc4f636b9fc58e16efe591d5cf42d3d873f7753d35f74d0a0b959242d6a",
+  "verifiedPayloads": 51,
+  "manifestSha256": "3007d3b163dafdf3b0c922a2f4669665c8ec315be1b0ac4b33961ba378e61368",
+  "sourceFingerprint": "91cd9cc89f2d3c2e9c62b630b97ce56269a9dce15009aed0d5d574e6641e6f79",
+  "testFiles": 207,
+  "testsPassed": 6292,
+  "testsFailed": 6,
+  "gatesPassed": 4,
+  "gatesTotal": 5,
+  "readonlyBaselineFindings": 41,
+  "sameSixHistoricalFailures": true,
+  "zeroValidationSourceDrift": true
+}

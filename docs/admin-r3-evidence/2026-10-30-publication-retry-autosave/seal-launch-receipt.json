@@ -1,0 +1,22 @@
+{
+  "classification": "ACTUAL_SECOND_SEAL_LAUNCH_WITH_ORIGINAL_RAW_PROCESS_BYTE_CAPTURE_NOT_TEST_EXECUTION",
+  "startedAt": "2026-10-30T18:41:05.553371+00:00",
+  "finishedAt": "2026-10-30T18:41:12.479389+00:00",
+  "args": [
+    "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\package-publication-retry-autosave-final-validation-v2.py",
+    "--execute-seal"
+  ],
+  "exitCode": 0,
+  "producerSha256": "f86ffe3849343dcbb7fec1b6d8d02dc5d4604d99b2c1a79bba4e0ab7af157968",
+  "stdoutSha256": "c34bf168120e68172f81dec0dcdd8666b719eef9a825745bdaa0d36df5312704",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdoutBytes": 2504,
+  "stderrBytes": 0,
+  "environment": "OS allowlist plus task TEMP/TMP and explicit UTF-8 console encoding; no credentials inherited",
+  "rawByteFiles": [
+    "stdout.bin",
+    "stderr.bin"
+  ],
+  "newTestExecutions": 0
+}

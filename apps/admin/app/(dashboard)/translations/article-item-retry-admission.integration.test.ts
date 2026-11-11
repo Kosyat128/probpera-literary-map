@@ -88,6 +88,14 @@ function nativeSignal() { try { navigation.redirect("/item-retry-native-signal")
 function uiFixture(options: { phase?: "ready" | "running" | "finished" | "blocked"; readError?: boolean; denied?: boolean; reviewing?: boolean; legacyView?: boolean; listCount?: number } = {}) {
   const actionNames = ["translatePremiumArticleBatchAction", "translatePremiumLibraryBatchAction", "translatePremiumWriterBatchAction", "translatePremiumCountryBatchAction", "translatePremiumSiteCopyBatchAction", "runPremiumTranslationSelfTestAction", "resumeTranslationJobAction", "retryArticleTranslationItemAction"];
   const actions = Object.fromEntries(actionNames.map(name => [name, vi.fn()]));
+  const recoverSiteCopy = vi.fn(async () => { throw Error("SSR must not execute site-copy recovery"); });
+  const getStaffSession = async () => ({ configured: true, user: { id: actorId }, role: options.denied ? null : "admin",
+    mfa: { required: false, checkError: null }, authError: null, membershipError: null });
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
   const selected = options.phase === "running" ? runningReceipt() : options.phase === "finished" ? finishedReceipt()
     : options.phase === "blocked" ? receipt({ phase: "blocked", retryable: false, blockReason: "manual_english" }) : receipt();
   const job = { id: jobId, kind: "article", status: options.reviewing ? "reviewing" : "partial", totalItems: options.listCount ?? 10,
@@ -131,13 +139,17 @@ function uiFixture(options: { phase?: "ready" | "running" | "finished" | "blocke
   const modules = actualModules({
     "@/components/TranslationSubmitButton": { __esModule: true, default: ({ children, disabled }: { children?: ReactNode; disabled?: boolean }) => createElement("button", { type: "submit", disabled }, children) },
     "@/lib/admin-read-access": { requireStaffRead: staff },
+    "@/lib/auth": { getStaffSession },
     "@/lib/env": { adminEnv: { premiumTranslationProvider: "cloudflare", cloudflareTranslationModel: "local-model", cloudflareTranslationReviewModel: "local-review", openAiPremiumTranslationReview: true } },
     "apps/admin/lib/env": { adminEnv: { premiumTranslationProvider: "cloudflare", cloudflareTranslationModel: "local-model", cloudflareTranslationReviewModel: "local-review", openAiPremiumTranslationReview: true } },
     "@/lib/editorial-catalog": { loadEditorialCatalog: async () => ({ version: 1, countries: [] }) },
     "@opennextjs/cloudflare": { getCloudflareContext: () => ({ env: { AI: { run: async () => { throw Error("Read-only page must not dispatch the provider"); } } } }) },
-    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ from, rpc }) },
+    // Keep the article RPC spy and read counters scoped to their original calls.
+    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ from, rpc: (...args: [name: string, input?: Row]) =>
+      args[0] === "reconcile_site_copy_translation_operation" ? operationMetadataRead(args[0], args[1]) : rpc(...args) }) },
     "./actions": actions, "./article-actions": actions, "./country-actions": actions, "./self-test-action": actions,
     "./resume-action": actions, "./article-item-retry-action": actions,
+    "./site-copy-operation-actions": { recoverSiteCopyTranslationOperationAction: recoverSiteCopy },
   }, true);
   const Page = modules.load(pageFile).default;
   async function render(overrides: Row = {}) {
@@ -145,8 +157,12 @@ function uiFixture(options: { phase?: "ready" | "running" | "finished" | "blocke
     const query = options.legacyView ? {} : { retryJob: jobId, retryItem: itemId,
       ...(options.phase === "running" || options.phase === "finished" ? { retryOperation: operationId } : {}) };
     const markup = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ ...query, ...overrides }) }));
+    expect(recoverSiteCopy).not.toHaveBeenCalled();
+    expect(operationMetadataRead).toHaveBeenCalledTimes(options.denied ? 0 : 1);
     for (const action of Object.values(actions)) expect(action).not.toHaveBeenCalled();
-    expect(markup).not.toContain(privateError); traces.push({ kind: "actual-page", options, called, markup });
+    expect(markup).not.toContain(privateError); traces.push({ kind: "actual-page", options, called, markup,
+      siteCopyMetadataReads: operationMetadataRead.mock.calls, siteCopyRecoveryCalls: recoverSiteCopy.mock.calls,
+      scopeAddition: "Actual site-copy metadata reader/adapter; exact null reconcile response and matching staff; separate from original article RPC/read/action traces" });
     return { markup, $: loadHtml(markup) };
   }
   return { render, staff, from, rpc };

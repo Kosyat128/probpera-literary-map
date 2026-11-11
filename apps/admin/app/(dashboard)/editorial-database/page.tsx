@@ -1,4 +1,7 @@
 import Link from "next/link";
+import CatalogTranslationOperationReceiptPanel from "@/components/CatalogTranslationOperationReceiptPanel";
+import { parseCatalogTranslationOperationReceipt, reconcileCatalogTranslationOperation } from "@/lib/catalog-translation-operation-rpc";
+import { z } from "zod";
 import PremiumTranslationReviewPanel from "@/components/PremiumTranslationReviewPanel";
 
 import {
@@ -13,6 +16,11 @@ import { adminReadMessage, readAdminResult } from "@/lib/admin-read-result";
 import { getAdminBasePathFromEnv } from "@/lib/admin-path";
 import { safeCount } from "@/lib/format";
 import { loadPremiumTranslationReview } from "@/lib/premium-translation-review";
+import { writerBiographyCandidateIdentity } from "@/lib/premium-translation-working-draft";
+import {
+  parseWriterTranslationOperationReceipt, reconcileWriterTranslationOperation,
+  type WriterTranslationOperationReceipt,
+} from "@/lib/writer-translation-operation-rpc";
 import {
   validEditorialCatalogRead, validEditorialOverrideRead, type EditorialOverrideRead,
 } from "@/lib/editorial-database-load-validation";
@@ -42,6 +50,7 @@ type SearchParams = {
   error?: string;
   warning?: string;
   translation?: string;
+  translation_operation?: string;
 };
 
 const countryFieldGroups = [
@@ -57,14 +66,38 @@ const writerFieldGroups = [
 ] as const;
 
 const biographyTranslationMessages: Record<string, string> = {
-  translated: "Создание перевода",
+  translated: "Создание машинного черновика, который требует отдельной проверки перед публикацией",
+  "review-pending": "Машинный черновик ожидает проверки",
+  stale: "Машинный черновик устарел",
   current: "Проверка актуальности перевода",
   manual: "Ручной перевод",
   skipped: "Пропуск автоматического перевода",
   "not-configured": "Настройка автоматического перевода",
+  "not-ready": "Хранилище машинных черновиков недоступно",
   conflict: "Конкурентное изменение перевода",
   failed: "Ошибка автоматического перевода",
+  unconfirmed: "Итог перевода ещё не подтверждён",
+  cancelled: "В журнале перевода отмечена отмена",
 };
+
+function writerOperationMessage(receipt: WriterTranslationOperationReceipt) {
+  if (receipt.blockReason === "provider_outcome_unknown") {
+    return "Ответ провайдера не подтверждён. Операция приостановлена; новый запрос для этого автора заблокирован.";
+  }
+  if (receipt.blockReason === "operation_owned_by_another_actor") {
+    return "С этой карточкой уже связана операция другого редактора. Проверьте её состояние в журнале переводов.";
+  }
+  if (receipt.blockReason === "operation_stopped" || receipt.result?.state === "cancelled") {
+    return "В журнале операции зафиксирована отмена. Это состояние редакционного задания; сведения о полученных ответах доступны в журнале.";
+  }
+  if (receipt.phase !== "finished") return "У операции пока нет подтверждённого итогового результата. Проверьте её запись в журнале.";
+  if (receipt.result?.state === "translated") return "В квитанции зафиксировано сохранение машинного черновика. Его текущее состояние проверяйте в карточке автора.";
+  if (receipt.result?.state === "stale") return "Русский источник изменился. Результат этой операции требует проверки по актуальной карточке.";
+  if (receipt.result?.state === "conflict") return "Карточка или приватный черновик изменились во время операции. Проверьте сохранённые результаты в журнале.";
+  if (receipt.result?.state === "failed") return "Операция завершилась с ошибкой. Подробное состояние доступно в журнале переводов.";
+  if (receipt.result?.state === "not-configured") return "Операция остановлена из-за недоступной настройки перевода.";
+  return "Операция завершена без создания нового машинного черновика.";
+}
 
 const labels: Record<string, string> = {
   name: "Название / имя",
@@ -499,7 +532,7 @@ function WriterBiographyEditor({
           <p>
             Публичный сайт использует именно эти структурированные языковые версии.{" "}
             {adminEnv.openAiAutoTranslateProfiles
-              ? "Правка русского текста удаляет устаревший машинный перевод на английский и запускает новый двухпроходный перевод; ручной английский текст, включая черновик, модель никогда не заменяет."
+              ? "Правка русского текста удаляет устаревший машинный перевод на английский и запускает новый двухпроходный перевод в машинный черновик. Его нужно отдельно проверить и принять перед публикацией. Ручной английский текст, включая черновик, модель никогда не заменяет."
               : "Правка русского текста удаляет устаревший машинный перевод на английский. Автоматический перевод биографий сейчас приостановлен; английский текст можно сохранить вручную."}
           </p>
         </div>
@@ -545,9 +578,11 @@ export default async function EditorialDatabasePage({
   searchParams: Promise<SearchParams>;
 }) {
   const query = await searchParams;
+  const requestedOperation = z.string().uuid().safeParse(query.translation_operation);
   const retryParams = new URLSearchParams();
   if (query.country_id) retryParams.set("country_id", query.country_id);
   if (query.writer_id) retryParams.set("writer_id", query.writer_id);
+  if (requestedOperation.success) retryParams.set("translation_operation", requestedOperation.data);
   const retryHref = getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH) + "/editorial-database"
     + (retryParams.size ? "?" + retryParams.toString() : "");
   const retryLink = <a href={retryHref}>Повторить загрузку</a>;
@@ -594,6 +629,28 @@ export default async function EditorialDatabasePage({
       })
     : { status: "none" } as const;
   const writerReady = Boolean(selectedWriter) && writerRead.status === "success";
+  const writerTranslationReview = writerReady && selectedWriter
+    ? await loadPremiumTranslationReview({
+        supabase, entityType: "writer_biography",
+        entityId: writerBiographyCandidateIdentity(countryId, writerId), sourceFields: selectedWriter.fields,
+      })
+    : { status: "none" } as const;
+  const [operationResult] = requestedOperation.success && selectedCountry && selectedWriter
+    ? await Promise.allSettled([reconcileWriterTranslationOperation(supabase, { countryId, writerId }, requestedOperation.data)
+        .then(data => ({ data, error: null }))])
+    : [];
+  const operationRead = operationResult ? readAdminResult(operationResult, receipt => receipt === null ||
+    (parseWriterTranslationOperationReceipt(receipt, { countryId, writerId }) !== null &&
+      receipt.operationId.toLowerCase() === requestedOperation.data?.toLowerCase() && !receipt.canExecute && !receipt.canDispatch)) : null;
+  const writerOperation = operationRead?.status === "success" ? operationRead.data : null;
+  const [countryOperationResult] = requestedOperation.success && selectedCountry && !writerId
+    ? await Promise.allSettled([reconcileCatalogTranslationOperation(supabase,
+        { entityType: "country", entityId: countryId }, requestedOperation.data).then(data => ({ data, error: null }))])
+    : [];
+  const countryOperationRead = countryOperationResult ? readAdminResult(countryOperationResult, receipt => receipt === null ||
+    (parseCatalogTranslationOperationReceipt(receipt, { entityType: "country", entityId: countryId }) !== null &&
+      receipt.operationId.toLowerCase() === requestedOperation.data?.toLowerCase() && !receipt.canExecute && !receipt.canDispatch)) : null;
+  const countryOperation = countryOperationRead?.status === "success" ? countryOperationRead.data : null;
   const canPublish = countryReady && (!writerId || writerReady) && countryCount !== null && writerCount !== null;
   const totalWriters = editorialCatalog.countries.reduce((total, country) => total + country.writers.length, 0);
 
@@ -615,10 +672,22 @@ export default async function EditorialDatabasePage({
         </form>}
       </header>
 
-      {(query.error || query.result || query.publication || query.translation || query.warning) && <p className="form-message" role="status">
+      {(query.error || query.result || query.publication || query.translation || query.warning || query.translation_operation) && <p className="form-message" role="status">
         Результат действия и публикации не подтверждён параметрами страницы. Проверьте актуальные записи и очередь публикаций.
         {query.translation && Object.hasOwn(biographyTranslationMessages, query.translation)
           ? ` Параметр перевода: ${biographyTranslationMessages[query.translation]}.` : ""}
+      </p>}
+      {writerOperation && <section className="panel" aria-label="Квитанция операции перевода">
+        <h2>Операция перевода автора</h2>
+        <p role="status">{writerOperationMessage(writerOperation)}</p>
+        {writerOperation.result?.humanReview === "pending" && <p>Эта операция не публиковала машинный результат.
+          Для публикации используется отдельное редакторское одобрение; актуальный статус черновика показан в карточке автора.</p>}
+        <Link href={`/translations#translation-job-${writerOperation.jobId}`}>Открыть журнал переводов</Link>
+      </section>}
+      {countryOperation && <CatalogTranslationOperationReceiptPanel receipt={countryOperation} />}
+      {query.translation_operation && !writerOperation && !countryOperation && <p className="form-message form-error" role="alert">
+        {writerId ? "Не удалось подтвердить состояние операции для выбранного автора. Проверьте выбранную карточку и журнал переводов."
+          : "Не удалось подтвердить состояние операции для выбранной страны. Проверьте выбранную карточку и журнал переводов."}
       </p>}
       {!selectedCountry && <p className="form-message form-error" role="alert">Запрошенная страна не найдена. Выберите существующую карточку. {retryLink}</p>}
       {selectedCountry && writerId && !selectedWriter && <p className="form-message form-error" role="alert">Запрошенный автор не найден в выбранной стране. Выберите существующую карточку. {retryLink}</p>}
@@ -690,6 +759,10 @@ export default async function EditorialDatabasePage({
             expectedUpdatedAt={writerRead.status === "success" ? writerRead.data?.updated_at : undefined}
           />
         </section>
+      )}
+
+      {writerReady && selectedWriter && (
+        <PremiumTranslationReviewPanel view={writerTranslationReview} returnTo="editorial-database" />
       )}
 
       <section className="panel">

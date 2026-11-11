@@ -4,12 +4,16 @@ import { z } from "zod";
 
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
+import { premiumTranslationConfigurationIdentity } from "./premium-translation-probe";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
-import { translationErrorCode } from "./translation-errors";
+import { translationErrorCode, type TranslationErrorCode } from "./translation-errors";
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 import {
-  PremiumTranslationDraftError, premiumTranslationCandidateOutcome,
-  readPremiumTranslationWorkingDraft, samePremiumTranslationJson, stagePremiumTranslationWorkingDraft,
+  createTranslationOperationBudget, TranslationOperationBudgetError, type TranslationOperationBudget, type TranslationOperationBudgetStop,
+} from "./translation-operation-budget";
+import {
+  premiumTranslationCandidateOutcome,
+  readPremiumTranslationWorkingDraft, samePremiumTranslationJson,
   type PremiumTranslationCandidateOutcome,
 } from "./premium-translation-working-draft";
 
@@ -18,6 +22,11 @@ const timelineItemSchema = z.object({
   title: z.string().max(500),
   description: z.string().max(2_000),
 });
+
+import { catalogTranslationOperationResult, createCatalogTranslationOperation, retainedCatalogTranslationPass,
+  type CatalogTranslationOperation } from "./catalog-translation-operation";
+import { CatalogTranslationOperationRpcError, catalogTranslationConfigurationSchema,
+  type CatalogTranslationOperationArtifacts, type CatalogTranslationOperationCandidate } from "./catalog-translation-operation-rpc";
 
 const translatedCountrySchema = z.object({
   name: z.string().trim().min(1).max(160),
@@ -219,6 +228,23 @@ function compactFields(value: CountryTranslationSource) {
   );
 }
 
+async function retainedCountryCandidate(artifact: CatalogTranslationOperationArtifacts): Promise<CatalogTranslationOperationCandidate | null> {
+  try {
+    if (artifact.receipt.entityType !== "country" || artifact.rawSeed.version !== 1) return null;
+    const catalog = objectValue(artifact.rawSeed.catalogFields), override = objectValue(artifact.rawSeed.override);
+    const fields = { ...catalog, ...objectValue(override.fields) };
+    const source = sourceFromFields(fields);
+    if (!source.name || (!source.description && !source.history && !source.historicalNote) ||
+      await sha256(source) !== artifact.receipt.sourceHash || !samePremiumTranslationJson(source, artifact.sourceSnapshot) ||
+      !("catalogSourceHash" in artifact.sourceRevision) ||
+      !samePremiumTranslationJson(catalog, objectValue(artifact.expectedState.catalogFields))) return null;
+    const pass = retainedCatalogTranslationPass(artifact);
+    if (!pass) return null;
+    return { payload: { fields: validateCountryTranslation(source, pass.value) },
+      provenance: pass.provenance, translatorCallId: pass.translatorCallId, reviewerCallId: pass.reviewerCallId };
+  } catch (error) { unstable_rethrow(error); return null; }
+}
+
 export type CountryTranslationState =
   | "translated"
   | "review-pending"
@@ -229,6 +255,8 @@ export type CountryTranslationState =
   | "skipped"
   | "not-configured"
   | "conflict"
+  | "unconfirmed"
+  | "cancelled"
   | "failed";
 
 export async function ensureCountryEnglishProfile(input: {
@@ -237,12 +265,21 @@ export async function ensureCountryEnglishProfile(input: {
   countryId: string;
   sourceFields: Record<string, unknown>;
   runtimeApproved?: boolean;
+  operationBudget?: TranslationOperationBudget;
+  operationCursor?: { current: Record<string, unknown>; next: Record<string, unknown> };
+  operationAdmission?: (receipt: import("./catalog-translation-operation-rpc").CatalogTranslationOperationReceipt) => Promise<void>;
 }): Promise<{
   state: CountryTranslationState;
   model?: string;
   reviewerModel?: string | null;
   error?: string;
+  errorCode?: TranslationErrorCode;
+  operation?: CatalogTranslationOperation;
+  budgetStop?: TranslationOperationBudgetStop;
 } & Partial<PremiumTranslationCandidateOutcome>> {
+  const operationBudget = input.operationBudget ?? createTranslationOperationBudget({
+    maxAttempts: 1, maxProviderCalls: 4, deadlineMs: 300_000,
+  });
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
   if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
     return { state: "not-configured" };
@@ -259,6 +296,11 @@ export async function ensureCountryEnglishProfile(input: {
 
   const existing = existingResponse.data;
   const overrideFields = objectValue(existing?.fields);
+  for (const fields of [input.sourceFields, overrideFields]) {
+    if (Object.hasOwn(fields, "translations") && (!fields.translations || typeof fields.translations !== "object" || Array.isArray(fields.translations))) {
+      return { state: "manual" };
+    }
+  }
   const effectiveFields = { ...input.sourceFields, ...overrideFields };
   const source = sourceFromFields(effectiveFields);
   if (!source.name || (!source.description && !source.history && !source.historicalNote)) {
@@ -318,14 +360,30 @@ export async function ensureCountryEnglishProfile(input: {
   }
 
   const runtime = premiumTranslationRuntimeMetadata();
+  const providerCallsBefore = operationBudget.snapshot().providerCalls;
+  let attemptStarted = false;
+  let operation: ReturnType<typeof createCatalogTranslationOperation> | null = null;
+  const unconfirmed = () => ({ state: "unconfirmed" as const, error: "translation_retry_pending",
+    errorCode: "translation_retry_pending" as const, operation: operation?.operation() });
+  const fromReceipt = (receipt: import("./catalog-translation-operation-rpc").CatalogTranslationOperationReceipt | null) =>
+    catalogTranslationOperationResult({ supabase: input.supabase, operation: operation!, receipt, candidateFromArtifacts: retainedCountryCandidate });
   try {
+    const identity = await premiumTranslationConfigurationIdentity({ review: runtime.twoPassReview });
+    const configuration = catalogTranslationConfigurationSchema.parse({ ...identity.configuration,
+      schemaName: "probpera_country_profile_translation", maxOutputTokens: 12_000 });
+    operation = createCatalogTranslationOperation({ supabase: input.supabase,
+      intent: { jobId: crypto.randomUUID(), itemId: crypto.randomUUID(), operationId: crypto.randomUUID(),
+        actorId: input.actorId, entityType: "country", entityId: input.countryId, provider: runtime.provider,
+        sourceHash, sourceSnapshot: source, sourceRevision, targetRevision, expectedState: JSON.parse(JSON.stringify({ version: 1, catalogFields: input.sourceFields, override: existing })),
+        configuration, currentCursor: input.operationCursor?.current || {}, resumeCursor: input.operationCursor?.next || {} },
+      onAdmission: input.operationAdmission, candidateFromArtifacts: retainedCountryCandidate });
+    if (!(await operation.admit())) return fromReceipt(await operation.recoverCandidate());
+    operationBudget.startAttempt();
+    attemptStarted = true;
     const translated = await premiumTranslateToEnglish({
-      source,
-      schema: translatedCountryJsonSchema,
-      schemaName: "probpera_country_profile_translation",
-      validate: (value) => validateCountryTranslation(source, value),
-      review: runtime.twoPassReview,
-      maxOutputTokens: 12_000,
+      source, schema: translatedCountryJsonSchema, schemaName: "probpera_country_profile_translation",
+      validate: (value) => validateCountryTranslation(source, value), review: runtime.twoPassReview,
+      maxOutputTokens: 12_000, operationBudget, providerJournal: operation.providerJournal, responseArtifacts: operation.responseArtifacts,
       domainInstructions: [
         "This is a factual country profile for a world-literature encyclopedia.",
         "Use established English country, region, capital and language names.",
@@ -335,84 +393,26 @@ export async function ensureCountryEnglishProfile(input: {
         "Do not invent historical facts, literary movements, authors, institutions or dates.",
       ],
     });
-
-    const latest = existing
-      ? await input.supabase
-          .from("country_profile_overrides")
-          .select("updated_at")
-          .eq("id", existing.id)
-          .maybeSingle()
-      : null;
-    if (
-      existing &&
-      (latest?.error ||
-        !latest?.data ||
-        latest.data.updated_at !== existing.updated_at)
-    ) {
-      return { state: "conflict", error: "country override changed during translation" };
-    }
-
-    const saved = await stagePremiumTranslationWorkingDraft(input.supabase, {
-      entityType: "country", entityId: input.countryId,
-      sourceHash, sourceSnapshot: source, sourceRevision, targetRevision,
-      payload: { fields: translated.value },
-      provenance: {
-        provider: runtime.provider, translatorModel: translated.translatorModel,
-        reviewerModel: translated.reviewerModel, translatorRequestId: translated.translatorRequestId || null,
-        reviewerRequestId: translated.reviewerRequestId || null, generatedAt: new Date().toISOString(),
-      },
-    });
-
-    await input.supabase.from("admin_audit_log").insert({
-      actor_id: input.actorId,
-      action: "country_profile.auto_translation.staged",
-      entity_type: "country_profile",
-      entity_id: input.countryId,
-      metadata: {
-        countryId: input.countryId,
-        locale: "en",
-        source_hash: sourceHash,
-        provider: runtime.provider,
-        model: translated.translatorModel,
-        reviewer_model: translated.reviewerModel,
-        translator_request_id: translated.translatorRequestId,
-        reviewer_request_id: translated.reviewerRequestId,
-        input_tokens: translated.inputTokens,
-        output_tokens: translated.outputTokens,
-        review_input_tokens: translated.reviewInputTokens,
-        review_output_tokens: translated.reviewOutputTokens,
-        working_draft_id: saved.id,
-        human_review: "pending",
-      },
-    });
-
-    return {
-      state: "translated",
-      ...premiumTranslationCandidateOutcome(saved),
-      model: translated.translatorModel,
-      reviewerModel: translated.reviewerModel,
-    };
+    return fromReceipt(await operation.complete({ fields: translated.value }));
   } catch (error) {
     unstable_rethrow(error);
-    if (error instanceof PremiumTranslationDraftError && error.code === "conflict") {
-      return { state: "conflict", error: error.message };
+    const receipt = operation ? await operation.failed(error) : null;
+    if (receipt?.phase === "finished" && receipt.result?.candidateHash !== null) return fromReceipt(receipt);
+    if (error instanceof TranslationOperationBudgetError) {
+      const providerCalls = operationBudget.snapshot().providerCalls - providerCallsBefore;
+      return { ...(providerCalls > 0 ? unconfirmed() : { state: "skipped" as const, operation: operation?.operation() }),
+        error: error.message, errorCode: "translation_operation_stopped",
+        budgetStop: { reason: error.reason, attemptStarted, providerCalls } };
     }
-    const message =
-      error instanceof Error ? error.message : "country profile translation failed";
-    await input.supabase.from("admin_audit_log").insert({
-      actor_id: input.actorId,
-      action: "country_profile.auto_translation.failed",
-      entity_type: "country_profile",
-      entity_id: input.countryId,
-      metadata: {
-        locale: "en",
-        provider: runtime.provider,
-        model: runtime.model,
-        reviewer_model: runtime.reviewerModel,
-        error_code: translationErrorCode(message),
-      },
-    });
-    return { state: "failed", error: message };
+    if (receipt?.phase === "finished" && receipt.result?.state !== "skipped") return fromReceipt(receipt);
+    if (operation?.receipt) return unconfirmed();
+    const errorCode = error instanceof CatalogTranslationOperationRpcError ? error.errorCode : translationErrorCode(error);
+    await input.supabase.from("admin_audit_log").insert({ actor_id: input.actorId,
+      action: "country_profile.auto_translation.failed", entity_type: "country_profile", entity_id: input.countryId,
+      metadata: { locale: "en", provider: runtime.provider, model: runtime.model,
+        reviewer_model: operation?.receipt?.configuration.reviewerModel ?? runtime.reviewerModel, error_code: errorCode } });
+    return { state: errorCode === "translation_migration_required" ? "not-ready" : "failed",
+      error: errorCode, errorCode, operation: operation?.operation() };
   }
 }
 
@@ -421,3 +421,5 @@ export {
   validateCountryTranslation as validateCountryTranslationCandidate,
   compactFields as compactCountryTranslationFields,
 };
+
+export { retainedCountryCandidate as retainedCountryTranslationCandidate };

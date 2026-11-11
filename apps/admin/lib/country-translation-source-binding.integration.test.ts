@@ -84,12 +84,24 @@ async function fixture() {
   const provider = vi.fn(async () => ({ response: JSON.stringify(english), id: "controlled-source-binding" }));
   const network = vi.fn(async () => { throw Error("Real network is forbidden"); });
   const build = vi.fn(async () => ({ configured: true, ok: true, provider: "deploy-hook" }));
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const admission = createCatalogAdmissionBoundary({ actorId,
+    getSeed() { return structuredClone({ catalogFields, override: row }); }, getPrivateCandidate() { return draft; },
+    setPrivateCandidate(_type: string, _id: string, value: Record<string, any>) { draft = structuredClone(value); } });
   const sdkFetch: typeof globalThis.fetch = async (input, init) => {
     const url = new URL(typeof input === "string" || input instanceof URL ? input : input.url);
     expect(url.origin).toBe("https://source-binding.fixture.invalid");
     const name = url.pathname.split("/").at(-1)!, method = init?.method ?? "GET";
     const payload = init?.body ? JSON.parse(String(init.body)) : null;
     wire.push({ name, method, params: Object.fromEntries(url.searchParams), payload: structuredClone(payload) });
+    if (admission.handles(name)) {
+      if (name === "finish_catalog_translation_operation" && payload.p_candidate) {
+        const operation = admission.operations.get(payload.p_operation_id);
+        expect(operation.targetRevision).toEqual({ id: rowId, updatedAt: savedStamp }); expect(operation.sourceSnapshot.description).toBe(editedDescription);
+        expect(payload.p_candidate.payload.fields).toEqual(english);
+      }
+      return admission.fetchRpc(name, payload);
+    }
     let data: unknown;
     if (url.pathname.includes("/rpc/")) {
       if (name === "ensure_editorial_reference" || name === "mark_public_build_dispatched") data = null;
@@ -113,7 +125,8 @@ async function fixture() {
         expect(url.searchParams.get("updated_at")).toBe(`eq.${oldStamp}`);
         row = { ...row, ...payload, updated_at: savedStamp };
       } else expect(method).toBe("GET");
-      data = [structuredClone(row)];
+      const columns = url.searchParams.get("select");
+      data = [columns && columns !== "*" ? Object.fromEntries(columns.split(",").map(column => [column, structuredClone(row[column])])) : structuredClone(row)];
     } else if (name === "admin_audit_log" && method === "POST") data = null;
     else throw Error(`Uncontrolled caller SDK request ${method} ${name}`);
     return new Response(JSON.stringify(data), { status: 200, headers: { "Content-Type": "application/json" } });

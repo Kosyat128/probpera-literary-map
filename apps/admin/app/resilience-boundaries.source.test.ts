@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
+import ts from "typescript";
 
 import { describe, expect, it } from "vitest";
 
@@ -29,14 +30,31 @@ const layoutStylesSource = readFileSync(
   "utf8"
 );
 
+function isNullableSupabasePage(source: string): boolean {
+  const parsed = ts.createSourceFile("page.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const page = parsed.statements.find((statement): statement is ts.FunctionDeclaration =>
+    ts.isFunctionDeclaration(statement) && Boolean(statement.body) &&
+    Boolean(statement.modifiers?.some(modifier => modifier.kind === ts.SyntaxKind.DefaultKeyword)));
+  if (!page?.body) return false;
+  let createsClient = false, nullableReturn = false;
+  const visitsPageBody = (node: ts.Node) => {
+    // Helper declarations/callbacks have their own dependency contract.
+    if (ts.isFunctionLike(node)) return;
+    if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === "createServerSupabaseClient") createsClient = true;
+    if (ts.isIfStatement(node) && ts.isPrefixUnaryExpression(node.expression) &&
+      node.expression.operator === ts.SyntaxKind.ExclamationToken && ts.isIdentifier(node.expression.operand) && node.expression.operand.text === "supabase" &&
+      (ts.isReturnStatement(node.thenStatement) || ts.isBlock(node.thenStatement) && node.thenStatement.statements.some(ts.isReturnStatement))) nullableReturn = true;
+    ts.forEachChild(node, visitsPageBody);
+  };
+  visitsPageBody(page.body);
+  return createsClient && nullableReturn;
+}
+
 describe("admin resilience boundaries", () => {
   it("replaces every nullable Supabase page with one shared dependency state", () => {
     const nullableSupabasePages = dashboardPages.filter((file) => {
       const source = readFileSync(file, "utf8");
-      return (
-        source.includes("createServerSupabaseClient") &&
-        /if\s*\(\s*!supabase\s*\)\s*return\b/u.test(source)
-      );
+      return isNullableSupabasePage(source);
     });
     const dependencyPages = dashboardPages.filter((file) =>
       readFileSync(file, "utf8").includes("<AdminDependencyState />")
@@ -54,6 +72,20 @@ describe("admin resilience boundaries", () => {
         'import { AdminDependencyState } from "@/components/AdminStatusState"'
       );
     }
+    expect(isNullableSupabasePage(`export default async function Page() {
+      const supabase = await createServerSupabaseClient();
+      if (!supabase) return <AdminDependencyState />;
+      return <main />;
+    }`)).toBe(true);
+    expect(isNullableSupabasePage(`async function readHelper() {
+      const supabase = await createServerSupabaseClient();
+      if (!supabase) return { status: "failed" };
+    }
+    export default async function Page() {
+      const supabase = await createServerSupabaseClient();
+      async function nestedHelper() { if (!supabase) return { status: "failed" }; }
+      return <main />;
+    }`)).toBe(false);
   });
 
   it("keeps route and root failures recoverable without exposing raw errors", () => {

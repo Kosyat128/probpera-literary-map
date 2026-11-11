@@ -1,14 +1,1413 @@
 # Codex Admin Execution State
 
+## Главная цель по исходному промпту
+
+**Реализовать и проверить все применимые доработки существующей админки «Проба пера» по пакету R3 FINAL, доведя редакционную систему до надёжного завершённого цикла:**
+
+Найти материал → открыть полные данные → отредактировать → сохранить черновик → проверить → опубликовать → подтвердить публичный результат → безопасно восстановить при необходимости.
+
+Полный объём: **26 модулей M00-M25 и 230 критериев приёмки** с проверками требуемого уровня и сохранением авторского контента, ручных RU/EN, источников, прав и существующей архитектуры. Текущие работы M07/M24 входят в эту общую цель; завершение отдельного исправления не завершает весь проект. Фактический прогресс, ограничения и следующий шаг приведены ниже.
+
+Источник: `docs/admin-r3-task-package/CORE_RULES.md` и `docs/admin-r3-task-package/START_CODEX.txt`.
+
 Phase 4 production baseline: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
 
 Current continuation branch: `codex/admin-r3-data-errors`
 
-Last updated: `2026-10-09`
+Last updated: `2026-11-11`
 
-Current work status: **GitHub handoff; M07-T05 book/country private machine candidates and explicit human review implemented and focused checks passed. Final broad tests and build/gates were interrupted and remain NOT_VERIFIED. Full M07/M04/M02/M13/R3 acceptance pending.**
+Execution model: **GPT-6.1 Sol, Ultra only**, for the main agent and subagents,
+as explicitly requested by the user on 2026-10-29. Earlier model preferences in
+historical entries below are superseded.
 
-Latest rechecked source snapshot: `62b00fe41d04d4dbc11f1e911ec91bfa926235fc6e487bbeadce9968f6c008a4` (246 files, zero drift on 2026-10-09). Historical pre-commit HEAD: `9d9efe7fdd7702c7ee38630aca986be0c863f225`. Resume the latest commit on the branch, not this historical base. Previous fingerprints and their evidence remain below.
+Current work status: **Full R3 IN_PROGRESS. Portable transfer checkpoint prepared on2026-11-11 at the user's explicit commit/continuation request. Start with docs/ADMIN_R3_CONTINUE_ON_ANOTHER_COMPUTER.md and docs/ADMIN_R3_NEXT_CODEX_PROMPT.txt. Curated sibling-work archivef15aad11 contains732 payloads, hash-verified and actually restored into a fresh directory; no keys/runtimes/PGdata. Six reviewed M19/M20 production files remain WIP and NOT AFTER-VERIFIED. Latest historical whole4dfef15f remains224files/7424tests/7418PASS/exact6knownM02FAIL/0pending; immutable1e666195 evidence is preserved. M04T12 has ZERO native executions: both setup attempts ended before PG; corrected syntax-only proof is separate. Full26-module/230-criterion acceptance remains open; GPT-6.1 Sol /Ultra only.**
+
+Previous working-tree checkpoint AFTER b0b was TARGETED-VERIFIED on990d7eb981fe115b365e6f86f9c827698b4353fb1067e3643e3d962123d193fc:458/458 cases,seven files,four gates PASS and byte-exact41 inherited readonly findings. This includes398 site-copy core+29 known-partial+7 parameter+24 M11 API cases,not additional counts. M20 actual8 React/Chrome scenarios/16 unchanged oracle checks and47 old tests; M11 actual14 browser scenarios/103 checks and11 old guards PASS with exact executed-input bindings. Old245 known-partial cases are covered across187+60 successful focused results with2 overlap; the original187 PASS/58 pending and inner56/58 failure remain retained,with exactlytwo superseded old automatic-retry intents. Separate actual old M04/M20 foundation loaded and25 SQL/RLS/exact-delete checks PASS; no managed Auth/PostgREST/canonical-write or atomic-retry acceptance is inferred. That222-file/expected7253-case selection was NOT run as a whole; the historical b0b whole7193 remains below. Full R3 stays active.
+
+## 2026-11-11: portable Git checkpoint for another computer; full R3 active
+
+- User authorized committing the latest work and the material required for
+  continuation on another computer. No production release or paid/provider
+  execution is part of the handoff. The full M00-M25/230 goal remains active.
+- Main handoff: docs/ADMIN_R3_CONTINUE_ON_ANOTHER_COMPUTER.md; copyable restart
+  prompt: docs/ADMIN_R3_NEXT_CODEX_PROMPT.txt; exact status in
+  docs/admin-r3-continuation/2026-11-11/continuation-status.json.
+- continuation-work.zip SHA256f15aad11f7b97d05ebd30ab6d09c8dab12d82abbe6b9dcb6037d7d7d63651c7b
+  contains732 payloads plus manifest,6821058bytes compressed. All payloads and
+  source stability verified; stdlib restore succeeded in a NEW work directory.
+  Old absolute paths and unexecuted-ready labels remain historical. Secrets,
+  dependency installs, binary runtimes, PGdata and owned PID descriptor excluded.
+- New portable metadata-only capturer prepares actual current source copies
+  for maintained creator/pending browser producers. Metadata smoke passed
+  creator70sources/23package identities and pending65/23; refused overwrite
+  and escaped-output paths. These are NOT app/test/browser execution results.
+  Creator observer received only3 BEFORE-to-AFTER metadata string fixes; its
+  original2837 producer and original genuine oracle remain preserved.
+- Exact-byte Git attributes protect10 immutable fixtures and the91e migration
+  whose raw hashes must survive LF/CRLF checkout differences. No oracle/hash
+  expectation or SQL/normalizer bytes were changed to achieve portability.
+- Native M04T12 actual attempts: v1 producer syntax error before PG; v2 local
+  PowerShell path stat failure before process start; corrected4JS syntax PASS
+  only. Latest v5 preparation/v3 launcher unexecuted. Fresh read-only host
+  audit2026-11-11T11:31:32Z found no PG family, historicalPID24836 absent,
+  no exact pidfile and no55438 listener. New machine needs NEW owned cluster,
+  roles/baseline and local path/PID guards. Do not import old PID authority.
+- Latest actual production proof remains historical4df/1e666195. The six
+  M19/M20 production files retain their WIP hashes and require original3/42
+  and5/76 AFTER plus real form/save/publish controls and affected gates.
+  Preserve the exact six inherited M02 missing-original failures; never
+  re-search or fabricate those originals. No overall percentage is inferred.
+
+## 2026-10-30: M19 creator and M20 pending implementation WIP
+
+- M19 five reviewed V2 files landed exactly: coherent escaped plain-text HTML/JSON,
+  bounded pre-insert content refusal, shared closed result parser, and the actual
+  create form preserving input on a known content refusal. This is implementation,
+  not runtime acceptance; native React reset/real form retention still need proof.
+  Receipt work/m19-creator-implementation-sol/production-ready.json SHA5979d30e.
+- M20 PageEditor exact reviewed pending patch landed, SHAff28fcca. Pending state
+  begins in guarded onSubmit; preflight exits clear only their own pending notice.
+  Original receipt/A-B/lookup guards remain. Receipt work/m20-page-pending-
+  implementation-sol/production-ready.json SHA96914f02. Original5/76 AFTER and
+  actual save/publish submitter controls have NOT run at this checkpoint.
+- Historical4df whole/evidence and original genuine BEFORE388d4fa6 remain immutable.
+  Do not treat their passing results as verification of the new six-file tree.
+  Native M04T12 six-case BEFORE is separately released; rc0 completion must be
+  distinguished from its finite oracle verdict and full criterion acceptance.
+- User status: remaining scope is substantial: functional gaps across the plan,
+  end-to-end editorial-cycle validation and environment-dependent Auth/DB/public
+  checks. Test totals do not yield a completed/230 percentage or reliable ETA.
+  Keys/environment remain separate; no missing M02 original is recreated/searched.
+  Full goal stays active; no production, paid provider, social send, git publish
+  or excluded normalizer changes were authorized or performed by this checkpoint.
+
+## 2026-10-30: whole V2 local increment VERIFIED; M19/M20 implementation next
+
+- Actual final session20278 finished exit1 after1350345ms:224 files,7424 cases,
+  7418 PASS/exact6 inherited M02 missing-original failures,zero pending/todo.
+  No new country failures or budget pending cases remain. Source4dfef15f is
+  exact across prepare,target,gates and whole non-doc arrays;10524 non-doc/
+  10751 full entries. Full equality is false solely because this progress
+  document changed after gates. Original V1 7424/7381/10/33 stays immutable.
+- Current573/573 in16 suites and four gates PASS;readonly log remains byte-
+  exact41 inherited findings. Both two-callback adaptations preserve their
+  old source/failure evidence and unrelated30 controls/35 country cases.
+  Paid partials stay admitted;no automatic fresh provider expense is restored.
+- Immutable docs/admin-r3-evidence/2026-10-30-publication-retry-autosave/
+  whole-validation-evidence.zip SHA1e666195050b0a2f05577874bbfc3dc6e71b0e932b1a887962e41a0c515c0031
+  has1777 payloads plus manifest,24796162 bytes and476 current captures.
+  Manifest304a153a and independentc4895f53 verify safe unique paths,all hashes,
+  full10751 physical inputs and the four DECLARED nested archives. Optional
+  deeper historical manifest discovery stopped on a schema difference;that
+  tool limitation is retained and is not a payload mismatch or arbitrary-depth
+  verification claim. No new test/native/browser run was performed by sealing.
+- First constructor57f stopped before destination writes on a mixed gate/whole
+  document-stage assertion. Exact producer/inputs and decoded tool transcript
+  are retained. Minimal f86 correction keeps gate equality true and accounts
+  for the separate later document delta. Actual second launch exits0 with
+  captured original stdout bytes and empty stderr;no test guard was weakened.
+- Next-stage genuine BEFORE388d4fa6 remains separate: M20 five cases71/76,
+  one missing visual-pending family repeated5times;M19 three cases31/42 with
+  coherent positive12/12 and11 target failures. Original read guard/loader
+  remains active. No duplicate-click,native creation-loss or full M19/M20
+  acceptance is inferred. New M19 strict-result/helper/form and M20 urgent-
+  pending drafts require actual same-case replay and additive form/publish
+  controls after review;their code has not been applied by this checkpoint.
+- Full26-module/230 objective remains active. Native expired-lease/versioned
+  release,complete editor/account/managed Auth/PostgREST and other criteria
+  remain open. Do not recreate or re-search missing genuine M02 originals.
+  No commit,push,PR,production migration/deploy,paid provider,social send,key
+  setup or excluded normalizer change occurred.
+
+## 2026-10-30: V2 targeted573 and gates verified; whole20278 active
+
+- Source4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78
+  has10524 non-doc/10751 full entries. Actual573/573 PASS in16 files,zero
+  failed/pending/todo,32218ms. This includes old466 plus country39,budget39
+  and known-partial29; none are extra whole cases. Admin TS20765ms/build49822ms/
+  Cloudflare TS1074ms/client-secret105ms PASS. Readonly2027ms remains byte-exact41.
+  Prepare/target/gates full arrays match. Sessions90078/34743 are consumed.
+- Exactly budget driver3cfc29f8 and country test8bede855 changed fromd2;all10522
+  other non-doc inputs and production are exact. One shared callback/three
+  domain intents and one parameterized callback/four invalid-output intents
+  now prove admitted hold/no renewed expense instead of terminal failure and
+  automatic paid retry. All other30 controls/35 country cases remain exact.
+  Actual full focused39+39 and independent saved-report reviews pass; original
+  V1/filtered diagnostic and restricted-temp0-test failure remain immutable.
+- Current physical rebind7373250c matches107 unique current inputs to4df,with
+  15 dependencies and declared historical native references. Originald2
+  execution receipts are unchanged. The fresh whole224-file run is active
+  in session20278 since18:07:37.285Z;7424 is expected,not an observed result.
+  No source/test/DB/browser writes or parallel execution while it remains live.
+- Before wholeV2 started,two new current-source probes ran without code edits.
+  Capsule work/m19-m20-genuine-controlled-before.zip SHA388d4fa6021a94acc98cf5fe1a01f27959e305b95a4424be4033c590d3d8851d
+  has260 verified payloads plus manifest. Actual54 source reads are physically
+  exact to4df;originald2 preparation fields remain unchanged and qualified.
+- M20 actor-bound PageEditor:five cases/76 checks,71 PASS/five FAIL. These are
+  five instances of one missing rendered pending/disabled indication while
+  the actual action response is held. A/B,own receipt,refusal,lostACK lookup
+  and post-submit storage paths pass within controlled action/SDK scope.
+  A ref guard exists in source;no duplicate-click test was performed.
+- M19 creator:three cases/42 checks,31 PASS/11 target failures;the coherent
+  positive control passes12/12. Actual creator emits emptyJSON for nonempty
+  HTML and interprets literal tag text. The actual read guard/loader blocks
+  editing those incoherent rows. No raw component bypass,active script,
+  initial automatic save or native data-loss conclusion is claimed.
+  Both browsers/servers are closed. These are genuine NEXT-stage BEFORE
+  failures,not current573 acceptance or completed M19/M20 criteria.
+- Outside-repo drafts for those two issues and the lower-ID late-commit probe
+  may be prepared only. No new implementation before current whole terminal
+  classification and immutable seal. Full26-module/230 goal remains active;
+  no production release,paid provider,key setup or excluded subsystem change.
+
+## 2026-10-30: whole V1 retained; exact paid-partial test intents under review
+
+- Authoritative session98296 finished exit1 after1281579ms. Original
+  work/m04-m20-final-validation-v1 contains actual224 files/7424 cases:
+  7381 PASS,ten failed assertions,33 pending,zero todo. All10524 non-doc
+  inputs remain exactd2c8 across prepare/gates/whole. Full10751 path sets
+  are equal; only the canonical progress document changed after gates.
+  Original canonical bytes at whole terminal are captured in
+  work/m04-m20-whole-v1-failure-history/canonical-at-whole-terminal.md.
+- Four country invalid-provider cases expect finished failed,while the actual
+  coordinator keeps accepted paid responses admitted without a complete
+  candidate; the helper returns unconfirmed. There is no missing yield RPC.
+  Original country manual data preservation assertions remain required.
+- Retained budget child report actually executes33 controls:30 PASS/three
+  fail. The three first-failed/automatic-second-paid-attempt controls conflict
+  with the same-source paid-partial hold. Its unchanged beforeAll rejects the
+  failed child report,so33 parent CURRENT cases serialize skipped; six older
+  SAME-contract cases pass. No permanent skip or timeout change was introduced.
+- Original six missing genuine M02 BEFORE failures remain separate and are not
+  reconstructed or re-searched. New total7424 is7193 historical cases plus223
+  cases in five added files plus eight additional publication-page cases.
+  The earlier expected7416 is not relabeled an actual result.
+- Production safety is not rolled back for these old expectations. Proposed
+  adaptations must retain full preimages/failure reports,all unrelated callbacks,
+  raw response bodies,manual content and shared budgets,and prove no new BEGIN
+  or provider expense on an ordinary same-source repeat. Targeted verification,
+  current gates and a fresh whole run are required afterward. Final packager
+  remains PREPARED/UNEXECUTED and its earlier success guards were not bypassed.
+  Next M20 actor-bound PageEditor,M19 creation and lower-ID late-commit work
+  remains prepared/source-only while this verification issue is resolved.
+
+## 2026-10-30: M04 atomic retry and M20 scope fixes targeted verified on d2c8
+
+- Frozen source d2c8d66694778b8b8ad92a210ab48d116c6d63f1f7f2b7640b04077c13e8b5a2
+  has10524 non-doc/10751 full entries. Actual466/466 PASS in13 files,zero
+  failed/pending/todo,12789ms. This INCLUDES163 current retry cases,256 old
+  publication cases and47 old autosave/ownership cases; earlier98/163/256 are
+  not extra cases. Admin TS26663ms/build51868ms/Cloudflare TS1017ms/client-secret
+  108ms PASS. Readonly2166ms exits1 with byte-exact41 inherited findings.
+  Four normalizers,19 rules/tests,16 direct import/call scopes,72 old migrations,
+  six Telegram paths and three package files remain exact. Sessions41369/43306
+  are terminal; full-test session98296 is also terminal with its original
+  failed result retained in the newer entry above.
+- New additive migration20261030161000_publication_retry_admission.sql SHA91e11a46
+  binds one global operation UUID and exact raw source-version token to one
+  append-only child. A failed original source receives at most one native child
+  across all current statuses. Mandatory audit commits with admission; only the
+  first committed admission grants dispatch. Active/completed/stale/root-child
+  observations never grant another external call. Old generic enqueue refuses
+  reserved retry selectors; ordinary full rebuild,trigger and explicit events
+  remain separate. Bound core/full metadata and actor identity are immutable;
+  the actual Auth FK deletion preserves its NULL tombstone. RR stale snapshots
+  can refuse23505/40001; a uniform success receipt is not promised.
+- Native SQL used the actual retained22-file foundation,not the M24 outbox stub.
+  Actual51 sequential checks and13 race groups PASS,with nine exact backendPID/
+  pg_blocking_pids/ungranted-lock observations.25 interactive race clients and
+  actual own-backend absence are recorded;70 synchronous observer queries have
+  successful producer results but no individual OS PID receipts. Original51/41
+  and race13/23 exports remain immutable; final64-row ASCII export ab042301 is a
+  lossless aggregate.56 valid typed inputs produce43 parsed receipts/13 native
+  error refusals; eight malformed native-only inputs stop before typed SDK.
+  This is120 declared controlled-transport wires,not120 new native executions.
+- Same actual schema before/after races is exact. New migration changes only
+  its declared two columns,two constraints,two indexes,one trigger,two functions
+  and old enqueue body;21 capture triggers,policies,roles and old grants remain.
+  Native packet work/m04-publication-retry-native-evidence.zip SHAfc1df1e2 has
+  1049 payloads plus manifest,all read back.38 repository captures are23 current
+  whole SQL inputs plus15 historical references; the two old publication Page/
+  action references differ and are not called current. Owned PG24836 stopped;
+  fresh host16:57:22 confirms no process,pidfile or listener. No DB is active.
+- Actual M04 browser7 scenarios/103 checks PASS:14 real forms generated by the
+  current Page reach actual action/coordinator/SDK through a controlled local
+  bridge; actual useActionState preserves UUID/raw token across results and
+  unrelated rerenders. Known external acceptance remains started when dispatch
+  marking is false/failed/malformed. No query success flag proves publication.
+  This is not actual Next RSC transport,managed Auth/PostgREST or public E2E.
+  One erased it.each row type fix and one obsolete source-literal migration
+  preserve original failure/preimage evidence; runtime intents are retained.
+- Additional genuine M20 BEFORE fd9bcac3 was sealed BEFORE production edits:
+  ten actual Chrome scenarios/34 checks had23 PASS/11 FAIL,including eight
+  target,one matching-recovery control and two crypto-crash preservation failures.
+  Matching recovery caused a duplicate save INVOCATION with pending action;
+  no duplicate committed DB write is claimed. Current RecoveryController SHA
+  ad43ea30 resets saved-content scope on locator change,rechecks the queued timer
+  and reports session creation failure without removing the editor. Same ten
+  scenarios/all34 oracle checks now PASS; exact original eight scenarios/16
+  checks also PASS. Harness/oracle body and entry are retained,with only declared
+  path/stage adapters; original23/34 is not relabeled green. Canonical cleanup,
+  complete editor/account paths and managed DB acceptance remain separate.
+- Final evidence packaging is prepared separately and remains unexecuted after
+  the actual whole V1 result failed its intended seal preconditions. No7416
+  result or whole PASS is claimed; actual7424/10failed/33pending is retained.
+  Expired-lease recovery,version-bound deployment/live delivery,time/DST and
+  other module criteria remain open. Missing genuine M02 BEFORE files are not
+  reconstructed or re-searched. No commit,push,PR,production release/migration,
+  paid provider,real social send,key setup or excluded normalizer change occurred.
+
+## 2026-10-30: required local fixes TARGETED-VERIFIED; M04 atomic retry next
+
+- Frozen990d7eb9 has10509 non-doc/10736 full entries,all identical across
+  prepare,targeted458 and gates. Compared with1af,31 existing files changed,
+  33 were added and10445 earlier files remain exact. Source-only documentation
+  after this seal is checked separately. No whole7253 result is claimed.
+- Current458/458 PASS,zero pending/todo. Admin TS55527ms/build87207ms/
+  Cloudflare TS2145ms/client-secret220ms PASS. Readonly log3107ms exits1 but
+  remains byte-exact41 inherited findings. Four normalizers,19 rules/tests,
+  16 direct import/call scopes,72 old migrations,6 Telegram paths and3 package
+  files remain exact. V4 sessions79200/20801/87921 are terminal/consumed.
+- M20 now shows a resolved lookup refusal,keeps a copy after deleted:false,
+  and ignores an old explicit-delete ACK after locator change. All8 original
+  component scenarios/16 checks PASS;47 old tests PASS. Both actual editor
+  callers still pass savedAfterSubmit=false; canonical receipt authority,
+  backend exact-delete predicates and the dormant automatic branch are unchanged.
+  Same-snapshot/new-locator autosave and full managed account/browser paths
+  remain separate acceptance,not silently closed by the explicit-discard fix.
+- M11 uses the existing focus hook and actor/entity remount. Dialog60-card
+  pages use61-row lookahead,raw created_at+id cursor,four escaped search fields,
+  strict11-field asset/envelope validation and request generation/abort.
+  Existing queue IDs reaching done trigger refresh. API24 is INCLUDED458;
+  actual browser14/103 and11 old guards PASS. The original12 scenarios remain;
+  only the over-specific raw<=60 check was declared raw<=61/display<=60.
+  Actual upload/attachment workflow,PostgREST server parsing and concurrent
+  canonical/private reference-save availability remain separately required.
+- Known writer/library/country paid partials and same-source historical paid
+  dead letters stay admitted/held when no full candidate can be rebuilt.
+  Zero-call retry and changed-source policy remain; raw accepted bodies and
+  original deadlines/configuration are preserved. Actual default1attempt/4calls/
+  300000ms for those domains and45000ms site-copy remain,with explicit45s tests.
+  No automatic paid continuation or fresh addressed retry protocol is invented.
+- M24 count checks cover exactly9 actual managed keys used by3 first-only
+  public count substitutions. Per-pass,retained-candidate and human approval
+  checks reject missing/renamed/duplicated/additional variables. Bad historical
+  candidates stay visible with a specific problem and cannot be approved;
+  compatible repair follows the old bounded review path. Four genuine prior
+  drafts are exact parsed-value projections,not reconstructed candidates.
+  Manual source-save/full public E2E/native bypass proof remains open.
+- Evidence:docs/admin-r3-evidence/2026-10-30-required-fixes/targeted-validation-evidence.zip
+  SHA3ce0b326014c423e08707db13ef190df000d4b5ae30ff2e7331afda1a9239f08,
+  2645 verified payloads,158 current physical bindings. Genuine BEFORE44ace998
+  with91 source copies and all failure histories is retained. V1/V2 test-env
+  type failures,V3 four-gate PASS/readonly42,new test literal's exact ASCII
+  encoding change and all old callback preservation qualifications remain.
+- Separate native packet6a8b1902bb16e8a0b88bc22a7f18d8b48bbf7485465c2859c0dca18665c7c0d8
+  contains109 payloads/37 real source bindings. Actual schema+21 whole migrations
+  loaded;25/25 old autosave RPC/FORCE-RLS/exact-five-predicate checks PASS with
+  fixture ROLLBACK. All10 clients exited0; owned5668 stopped and host liveness
+  confirms process/pidfile/listener absence. Canonical articles/pages grants
+  are actually absent in this bare environment and were not fabricated.
+  The first parent launch/pipe-EOF failure stopped before any SQL; it remains
+  separate from actual v2 native results. No Realtime delivery is claimed.
+- Next M04 uses this actual native foundation,not the old M24 outbox scaffold.
+  Controlled13 genuine BEFORE scenarios already show7 retry failures. Proposed
+  atomic UUID/raw-version admission/client trusted result drafts are parent-only
+  until implemented and tested; full lease/versioned deployment and all other
+  M00-M25/230 acceptance remain active. No commit,push,PR,production release,
+  production migration,keys,paid provider or actual social send occurred.
+
+Latest whole-validated source/test snapshot: `4dfef15fce331db39acc97da710c1a814b30554434b72754239f95111e4edb78` (10524 non-doc/10751 tracked-or-task-owned full entries). Actual V2 whole224/7424 has7418 PASS/exact6 inherited missing-genuine-M02 failures/zero pending/todo. Prepare,target,gates and whole non-doc arrays match;full arrays differ only in the canonical progress document after gates. Current immutable evidence1e666195 preserves all prior V1 failures,explicit test-intent adaptations and separately scoped next-stage BEFORE failures. Base HEAD remains `acb910d89133396e8e9794e91bd5db74128dab3b`;all implementation remains local/uncommitted/unpushed. New phases must invalidate current-source claims when their relevant inputs change.
+
+## 2026-10-30: site-copy durable admission local increment VERIFIED; full R3 active
+
+- Final whole V3 finished on b0b79b53 after1741679ms:219 files,7193 tests,
+  7187 PASS/exact6 original M02 missing BEFORE failures,zero pending/todo.
+  Session66588 is terminal/consumed. No timing failures,timeout override,
+  test-name filter,permanent skip or test-loader cache change.
+- Build99670ms/admin TS52040ms/Cloudflare TS1674ms/client-secret165ms PASS.
+  Readonly normalizer exits1 with the byte-exact prior41 findings. Session42260
+  is terminal/consumed. Protected4 normalizers,19 rule/tests,16 direct import/
+  call scopes,72 old migrations,6 Telegram paths and3 package files are exact.
+- Fresh original library117/117 PASS at default5s; fresh affected site-copy
+  398/398 PASS. Three fresh portable commands PASS with151 actual/current/
+  captured/frozen input bindings andzero drift. Current196 SDK records/all8
+  wrappers andone real native/retained-builder parity are re-executed without
+  starting a new database. Native SQL archive0449763c remains unchanged.
+- Current389 UI cases are a subset of the actual final whole run,not an extra
+  run. Both fresh automatic read graphs and79 source bindings are retained.
+  Historical e63 UI has two declared differences:queue copy and guarded lazy
+  review import. All V1/V2 failures and the original fixture/portable failures
+  remain immutable,not hidden by unioning isolated passes.
+- Evidence folder:docs/admin-r3-evidence/2026-10-30-site-copy-durable-admission.
+  Controlled ZIPde02e1bdddb90e5f8c187fe34fb8a893832ebc8bdfba9ad412f96eab90d899df,
+  2659 verified payloads;whole ZIP29259cc6665725332e8967228999cd08230185ae876ee8209b31aa1a2c6d0ba4,
+  449 verified payloads. Their manifests/receipts retain exact scope and sources.
+- Native186-routine equality concerns the selected M24 fixture foundation
+  before/after. Its outbox support is synthetic and editor_autosaves is absent;
+  it is NOT an actual M04 queue or whole-production-schema baseline. M04/M20
+  need a NEW foundation with actual unchanged outbox/autosave DDL and real
+  explicit grants; missing managed default grants must not be invented.
+- Next prepared scenarios remain UNEXECUTED until explicit controlled release:
+  actual M20 React/Chrome component8 scenarios (both editor callers currently
+  set savedAfterSubmit=false; only reachable explicit discard is targeted),
+  actual M04 action/SDK13 scenarios,actual M11 dialog/GET12 scenarios with137
+  synthetic assets,known editorial-partial v2 and real-count-parameter v2.
+  Real Auth/native DB/full editor/public delivery acceptance remains separate.
+  No keys,paid providers,production migration/deploy,push,PR or live social send.
+
+## 2026-10-30: M24/site-copy durable admission: IN_PROGRESS
+
+Latest continuation, superseding the pending-V2 notes below:
+
+- V2 on6b8df83c524d0090de6e497a13725132e5748a428b71cfe4efd531979f5dd875
+  finished2026-10-30T13:35:26.984Z,1967321ms:219 files/7193 tests,
+  7181 PASS/12 FAIL,zero pending/todo. Session95498 was consumed; both owned
+  Node PIDs terminated. Six failures remain the original missing M02 BEFORE
+  inputs. The other six are library timeout signatures at5062-5455ms with
+  saved declaration stacks; all six passed in V1. Neither the six older
+  failure causes nor a union of isolated passes is a new whole-suite PASS.
+- The only subsequent production change is a dependency boundary in
+  premium-translation-review.ts: remove the eager site-copy freshness import
+  and await the same adapter inside the existing withSiteCopyFreshness try,
+  after its canPromote false return. All remaining target body/catch and15
+  other functions are byte-exact. BEFOREc509886e is retained in parent work;
+  CURRENT97b9886d is independently checked. Shared working-draft and contract
+  dependencies remain; no claim of eliminating all shared translation code.
+  No test cache, timeout, selected test or normalizer is changed.
+- Fresh V3 freezes current sources and first runs the original complete117-case
+  library suite with its existing5s limit, then the actual398 site-copy cases.
+  Full7193 tests, current source-bound UI/portable evidence and gates remain
+  pending. Native196 actual17 inputs are exact and reusable; changed review
+  bindings make older core/old66/UI proof historical until re-executed or
+  derived from a qualifying current full run. Final controlled sealing is held.
+- Parent-only gap inventories now map all230 unique criteria across26 modules.
+  Their27 LOCAL_PROOF/120 PARTIAL/43 LEVEL_DEFERRED/40 UNMAPPED labels are a
+  work index, not accepted counts or completion percentages. Prepared known
+  editorial-partial, site-copy-parameter and publication-retry scenarios are
+  unexecuted; source-only suspicions are not established runtime defects.
+
+Latest actual execution, before the historical intermediate notes below:
+
+- Final native-only archive0449763c0f5a507b476a5e8401c27b0d9cc8ae10ed636851557e12672e476659
+  is copied as sql-evidence.zip in the new site-copy evidence folder. Independent
+  readback verifies1642 payloads and59 physical inputs against the frozen8e5
+  snapshot. All196 official ASCII records have SHA
+  fada405569b97282eb71e36f791ae315cf20e11cb94f0359ee862710954aad41.
+  Separate final SDK report1997844ec7a936ef5ad06ec94e33f6e7a0b447e644077253039bdbe26aab518c
+  covers all8 typed wrappers and1 actual real-source retained reconstruction.
+  Native12/12 races and26 clients terminate; the owned server is stopped and
+  port55438 is free. All186 old routines,8 target table metadata sets,53 schema
+  relations and19 roles are exact. Index35→36,trigger22→27 andconstraint95→96
+  deltas are only the intended additions/entity CHECK extension. Same15
+  security advisors,zero new findings. Full native prefix uses selected actual
+  old DDL and synthetic Auth; managed/browser acceptance is not claimed.
+- Final four-file focused check398/398 PASS on original8e5 inputs:core67,
+  journal243 (46 guards,196 native records,1 retained parity),freshness22,old66.
+  PortableV1 correctly refused one omitted exporter source. The unchanged
+  CURRENT exporter bytes were verified against8e5 and added to stageV2;
+  all3 portable commands then PASS with103 exact physical/frozen bindings.
+  The failed portable capture and all original native orchestration failures
+  remain retained with their own scope.
+- Frozen first whole source8e5c3553807cef985efb3e05adf585df10b30953f986d6ce2ee184858492f9ab
+  had10493 non-doc/10720 full entries,16 changed+17 added versus1af and10460
+  earlier sources exact. Protected4 normalizers/19 rules-tests/16 import-call
+  scopes/72 old migrations/6 Telegram paths/3 package files PASS.
+  First whole219 files finished in812804ms:7193 tests,7121 PASS,72 FAIL,
+  zero pending/todo. Original raw/receipt/snapshots remain in
+  work/site-copy-durable-final-validation-v1; its terminal session64303 exit1
+  was consumed. Do not restart that producer.
+- The72 failures are exactly55 old SSR fixture boundaries reaching React.cache
+  through a newly rendered recovery action/auth import;9 default5s timeout
+  signatures (library8/editorial1);2 superseded source guards;6 original missing
+  M02 BEFORE files. No production React defect is established by the fixture
+  errors. The9 raw stacks lose the timeout message and have no recorded
+  assertion mismatch; isolated terminal replay is still required.
+- Five affected old SSR setups now add matching fresh staff and separate exact
+  readonly metadata traces without changing their732 full assertions or115
+  old test declaration/call bodies (preservation35/35 PASS). Two source guards
+  have3 explicitly declared replacements for four cursor forms plus site-copy
+  fresh UUID and plain bounded manual-runner copy. Five unrelated whole source
+  cases and all other matcher calls remain exact; actual fresh UUID/marker
+  checks are added. The page changes only its queue explanatory string.
+  This makes old UI archivee63c historical for that one copy difference.
+- Current check sequence uses parent
+  work/site-copy-durable-final-validation-v2-runner.mjs: repair-focus7 passed
+  204/204 withzero pending in83458ms. The exact9 original timeout-signature
+  cases then passed as a CLI diagnostic in34895ms at the original5s limit;
+  its247 unselected cases are not claimed as rerun. A fresh whole V2 still
+  selects every7193 case and219 files,
+  with maxWorkers1 instead of2 to avoid simultaneous slow SSR transforms.
+  No test timeout/cache or permanent skip is changed. No native/helper/adapter/
+  official JSON source changed. Bind identical398/native inputs to the new
+  snapshot instead of rerunning old SQL merely for unrelated fixture/copy edits.
+  Controlled stageV2/8e5 and old UI packet remain immutable; final seal is held.
+
+Intermediate continuation checkpoint, not whole-increment acceptance:
+
+- Current helper/coordinator retains raw responses before acknowledgement, observes
+  the logical scope before today's CMS/runtime/feature flag, and distinguishes an
+  addressed zero-cost recovery from an explicit fresh UUID command. Actual
+  source-save ordering remains save RPC, ordinary build, optional translation.
+- Actual pages/resume read strict five-field job markers and exact native
+  job/operation/actor/intent bindings. Old numeric site-copy resume is refused;
+  this is one explicitly superseded legacy UI intent. Owner-only previews
+  validate retained source/candidate parity, render only key/RU/EN, and preserve
+  historical versus current candidate/publication distinctions. Other staff
+  receive metadata without raw-provider artifacts or an owner recovery form.
+- UI-only archive in
+  docs/admin-r3-evidence/2026-10-30-site-copy-durable-admission/site-copy-ui-evidence.zip
+  has SHA256 e63c52edb96360435dfa2eb3509bebf96921c1c2ccc54926123ac5a564e14be1:
+  142 payloads,79 physical current source bindings,389 distinct passed Vitest
+  cases,zero pending/todo. Independent payload/source readback PASS. Separate
+  old article SSR/terminal scope117/117 PASS; its original full assertions remain.
+  These are local controlled/SSR checks, not browser or managed Auth E2E.
+- Native v14 is an INTERMEDIATE result on SQLc3f3f2b and fixture1717c572.
+  Existing unknown/cancel/recreate, two actual45s deadlines, exact full-row paid
+  promotion refusal, ordinary manual/history-shaped saves, legacy/discard,
+  consumed UUID INSERT/UPDATE refusal, reverse construction and omitted-terminal
+  proof, readiness reader drop/rollback and all configured repair/call caps PASS.
+  Its123 official native records replay through installed SDK and all8 actual
+  typed wrappers. One real-JS source/hash/native-body case additionally passes
+  actual retained-candidate reconstruction and full JSON-value parity.
+  Other opaque-hash native examples prove wire/DTO behavior, not JS rebuilding.
+- The native foundation includes unchanged actual homepage revision/singleton
+  DDL. History snapshots are read by the fixture owner; actual guarded staff CAS
+  mutations are exercised. Bare-PG staff history SELECT grants were not invented,
+  and old direct site-copy history UPDATE remains denied. This is not full
+  history UI/managed RLS acceptance.
+- First concurrency execution passed11 of12 groups; the last failed in the
+  parent harness waiting for an impossible intermediate ready event, not with a
+  native40P01 deadlock. Original raw evidence is retained. The parent gate was
+  corrected without raising the12s timeout. The corrected v14 rerun passed12/12
+  groups; all26 owned psql clients terminated. Its raw PID/blocking/lock evidence
+  and the honest known-complete FINISH cleanup are retained. The fresh final
+  full-prefix run still remains pending.
+- Required next sequence: fresh50/51/singleton and12 race groups in the final
+  native full-prefix run;
+  same-foundation old-object/advisor comparison; official
+  final JSON and typed-wrapper/real-JS focus; freeze all maintained sources;
+  run controlled portable checks before the whole suite; then build/type/client
+  gates and exact inherited41-finding readonly comparison. Do not run heavy
+  controlled/native work concurrently with whole tests. Prepared parent runners:
+  work/site-copy-durable-final-validation-v1-runner.mjs,
+  work/site-copy-durable-preservation-v1.mjs and
+  work/site-copy-durable-increment-comparison-v1.mjs. They have not run yet.
+- NEXT producers remain PREPARED, UNEXECUTED and parent-only:
+  work/next-known-editorial-partial-sol/before.cjs with same-contract.cjs
+  tests known editorial-pass failure followed by an ordinary same-source helper;
+  no failure is assumed before execution. The original a63 guards remain intact.
+  work/next-site-copy-parameters-before.cjs targets two actual count-replacement
+  sites plus a plain-text control through the actual catalog parser, helper and
+  explicit human-approval action against a synthetic SDK boundary. It requires
+  NEXT_SITE_COPY_PARAMETER_SNAPSHOT and a fresh NEXT_SITE_COPY_PARAMETER_OUTPUT;
+  optional NEXT_SITE_COPY_PARAMETER_SOURCE_ROOT supports captured sources. Its
+  syntax was checked, but no scenario ran. Readonly inventory found9 used count keys and
+  3 first-occurrence replacement sites; page/total is catalog-only context with
+  no proven current caller, and no ICU mechanism was found. No new policy or
+  application implementation has landed for either next scope.
+- Parent-only acceptance-gap inventory for all21 M07/M24 criteria is in
+  work/acceptance-gap-inventory-sol/m07-m24-gap-inventory.json. Its9 LOCAL_PROOF,
+  7 PARTIAL,4 LEVEL_DEFERRED and1 UNMAPPED classifications are bookkeeping of
+  evidence/remaining levels, not accepted criteria or a project percentage.
+  Addressed nonarticle item/version retry and10=8+2 Continue/Retry, real token
+  compatibility, intentional-empty/inherit policy and actual template role/apply
+  acceptance still need work. Required browser/DB levels are recorded separately.
+
+The validated profile snapshot1af below remains immutable. Newly maintained
+site-copy migration/adapter and ongoing integration are unvalidated as a whole.
+The next increment uses the existing journal/private catalog artifact store,
+closed site-copy APIs and one logical site-copy-overrides scope, preserving actual
+physical block identity and the old50-key/1-attempt/4-call/45000ms/12000-token policy.
+It must retain accepted raw responses before acknowledgement, prevent duplicate
+unknown calls after source/config/actor/block replacement, and enforce the existing
+site-copy feature flag before new expense. Read/complete-body recovery stays
+separate from new paid work. Deferred reverse cache-to-journal construction and
+actual native promotion/pending-draft/full-row/CAS authority require verification;
+no new table/column/role or old paid-API expansion is intended.
+
+Source-save ordering already is save RPC then ordinary build then optional
+translation. Preserve author data, original normalizer calls and this ordering.
+The genuine cf1/a63 BEFORE and current1af report still have2 site-copy targets FAIL,
+9 guard controls and11 canonical/publication controls PASS. Do not substitute
+reconstructed BEFORE sources or regard conservative partial/unknown holds in
+other domains as authority to start another paid pass. Parent drafts and their
+initial failures remain retained; native/SDK/CURRENT acceptance is not yet claimed.
+
+## 2026-10-30: stable writer/country traversal locally verified
+
+This increment is not full M07 or R3 acceptance. Keys/setup and managed/browser
+E2E remain separately deferred. No paid provider, production migration/deploy,
+push, PR, mass backfill or real social send ran. Root and agents remain Sol /Ultra.
+
+- Existing jobs/items/attempts store the entire initial ordered tuple/hash
+  manifest atomically: at most10000 members,20 windows of500,4MiB; overflow is
+  refused, not truncated. No new queue/table/column/role. Writer tuples preserve
+  country+writer identity, including equal writer IDs in different countries.
+  Legacy JS catalog hashes stay opaque; native JSONB hashes are separate.
+- All eager windows are created together. Immediate child insertion verifies
+  root/predecessor identity; the root's deferred event proves the whole committed
+  chain. Future-window attach/checkpoint requires every earlier window disposed
+  with no active child. An eager successor pointer never means current completion.
+  Reordering cannot change membership; missing/changed pending members are disposed
+  once, and other original members continue. A catalog outage holds position.
+- Five new closed staff metadata RPCs and strict DTOs preserve original paid
+  APIs, scalar cursors and service-role lease permissions. Actual zero-call paid
+  children attach before admission/expense. Unknown active calls pin identity
+  before current catalog/runtime/flag checks. Own complete retained responses
+  recover through the original seed/builders at zero further cost; foreign work
+  exposes no private artifacts. Terminal results advance by one free observation;
+  zero-call cleanup holds position. Cancellation guards the actual window and
+  retains an accepted response; it does not retroactively cancel active successors.
+- Actual writer/country actions and SSR/resume use durable requested-window IDs,
+  explicit fresh UUID intents and verified metadata. Old numeric-only resume is
+  refused. UI counts are window-local: inspecting a future eager window does not
+  imply500 earlier records were confirmed. Library action and site-copy action
+  bodies remain byte-exact da9. Writer3 attempts/12 reservations/120 inspections,
+  mandatory review/4000 tokens and country2/8/30,optional review-repair/12000 tokens
+  retain300000ms request budgets and existing standalone behavior.
+- CLI migration20261030072209,63267B SHA256
+  5ea2ad07b06b0f8fba6aebf0d9adf6f582df76ae729ca67d934644a9621d53e7.
+  Maintained fixture35470B SHA0285234b6d148ea00aa9b29c5cc8a2eb9983d2bb237aea6d969b33dd22b5075e.
+  Native21 stored labels (setup/intermediates included),14 forgery/constraint
+  cases,10 real two-session and2 three-session groups PASS.139 old routines,
+  5 core tables/ACL/RLS and24 old indexes exact;3 indexes are additive. Same15
+  advisors/zero new; lint NOT_RUN (extension absent, nothing installed). Owned
+  PostgreSQL processes stopped, port55438 free, no service. Measured10000-item
+  BEGIN+COMMIT5751ms versus33683ms before eliminating repeated full-chain work;
+  full proof remains twice (pre-return and root commit), not a production guarantee.
+- Genuine original profile BEFORE5489 remains immutable:6/8 targets FAIL.
+  CURRENT unchanged a988 contract passes all8. Actual controlled35 groups/44
+  tests include501-member continuation, missing/drift, paid caps, lost ACKs,
+  private complete-body recovery with changed runtime/catalog and foreign holds.
+  Focused14 files495/495 and combined SSR/static6 files254/254 PASS. These scopes
+  overlap conceptually, not230 criteria. Native56 raw RPC goldens replay through
+  installed SDK/strict parser and GET adapter; other mutator wrappers have separate
+  controlled guard/action checks. This is not all-mutator native end-to-end proof.
+- Four legacy ordinal intents were explicitly superseded (two library UI and
+  two old routing cases); other full assertions/normalizer/public-admission
+  scopes remain exact. Corrected SAME scenarios execute two distinct fresh UUID
+  commands without old job IDs. Earlier493-case Continue-as-fresh proof is retained
+  as invalid for that trigger. Original1032 country action-only graph control
+  remains unsupported after removing posthoc aggregation. The original failure
+  is retained. An explicitly versioned combined verification graph adds a separate
+  real empty legacy API probe (zero HTTP/RPC/provider/write/build deltas), never
+  an action dependency. Original behavioral assertions remain unchanged.
+- FullV3:6758/6774,16 FAIL:6 historical plus10 library timeout-only failures at
+  5000ms. The original unchanged library117/117 then passed at the same5000ms
+  limit,168123ms total/max2575ms. Final fullV4:215 files,6768/6774 PASS, exactly6
+  historical M02 FAIL,zero pending/todo,553007ms. No code/assertion/cache/timeout
+  change resolved these timings. Build48435ms, admin TS20819ms, Cloudflare TS872ms,
+  client-secret check105ms PASS; exact41-finding readonly log remains unchanged.
+  All complete source-entry arrays match between original gates and final tests.
+  Protected4 normalizers/19 rules-tests/16 AST scopes/64 old migrations/6 Telegram
+  paths/3 package files exact. No normalizer write flag was used.
+
+Evidence: `docs/admin-r3-evidence/2026-10-30-profile-stable-traversal/`.
+Whole archiveb66820cc11c51824d68a1c59968bd34077e18c52eb96f06dcd14f1c84a535326,
+101 payloads; controlled1cefd3a893d19096dd6d1aa32165cc511727b9086c0fb4d1500c1cf87724e4b9,
+2627 payloads/128 current bindings; native-onlycc0ceb177384bea9ddf2a575fafd3a1dec629fe27c1b5de9601837b22a7601b6,
+988 payloads/39 SQL inputs. Independent readback/source/provenance audits and
+all original failures remain retained. Prior da9/library evidence is immutable.
+
+Next: durable site-copy admission/response retention, then explicit partial-pass
+continuation, global budgets and addressed nonarticle retry. Genuine NEXT archive
+cf1a17f1033b1ab3bec07cf484c6d0ad1bec9a5dadfd800199d397bd58805b3b (714 payloads)
+preserves2 site-copy duplicate-translation targets FAIL,9 existing guards and11
+canonical/publication controls PASS under unchanged a63 oracle. Original44 sources
+are a genuine working capture, not a uniform validatedV2 snapshot (41 matchV2,
+3 controlled-support differences); CURRENT44 match1af, with43 exact versus original
+and1 declared support drift. No production helper was reconstructed. Article
+partial-pass observations are source-only, not reproduced runtime failures.
+Site-copy source-save ordering already is save→ordinary build→optional translation;
+preserve it. Private helper/batch/UI still need logical-scope admission, raw-response
+retention and feature gating. Parent-only SQL/DTO/test drafts are uncompiled and
+unexecuted; reverse journal binding, native promotion/CAS/lock/legacy/discard and
+SDK proofs remain mandatory before acceptance. Full26-module/230-criterion goal
+remains active; no global completion percentage is inferred from test totals.
+
+## 2026-10-30: M07-T12 stable library traversal, profile continuation
+
+Latest locally verified library increment, not whole M07 or full R3 acceptance.
+All root/agent execution remains GPT-6.1 Sol /Ultra. No keys, paid provider,
+production migration/deploy, browser/managed E2E, push, PR or real social send.
+
+- Existing jobs/items/attempts hold UUID-ordered windows of at most500 books,
+  captured high-water and stable next-key boundary. Tied dates/visited updates
+  cannot move fixed members. No modulo/OFFSET resume or false whole-corpus100%.
+  Future tails use keyset: new IDs behind the boundary or above the high-water
+  require an explicit fresh scan; this is not an immutable all-future corpus.
+- Five additive staff metadata RPCs enforce actor/config/version/membership.
+  Actual new zero-call paid child attaches before dispatch. Unknown/foreign
+  active calls hold the current member before runtime/source eligibility.
+  Complete retained private bodies recover without another provider request.
+  Terminal paid results advance once through a free observation; zero-call
+  cleanup holds position. Actual-window cancellation blocks new dispatch and
+  retains an accepted response. Already active successors are separate jobs.
+- Actual UI reads durable receipts and distinguishes fresh scan from continue.
+  Numeric legacy restart is refused. Requested-window identity is preserved,
+  including stopped historical windows; no shortcut around cancellation.
+  Writer/site-copy action tail and whole country action remain byte-exact c482.
+  Existing limits remain60 inspected/4 attempts/16 reservations/300000ms with
+  at most60 successor hops. No service-role lease permission was expanded.
+- CLI migration20261029235455,49762B SHA256
+  1966f749db15362b245d32b0e5b355b3f37dc4c154e2381c578b5ba11aba721b.
+  Native13 groups+7 real multi-session race groups PASS;27 actual SDK/strictDTO
+  goldens PASS.36 old routines,21 old indexes, columns/tableACL remain exact.
+  Same15 inherited advisors/zero new; lint NOT_RUN (extension absent, no install).
+  All owned PostgreSQL processes stopped; no service was created.
+- Genuine library BEFORE preserves4/6 target failures; CURRENT same a988d0df
+  invariant passes6/6. Final focused214/214, actual UI52/52, compatibility162/162
+  and legacy-book16/16 PASS; scopes overlap. Archived older focus213 remains
+  immutable; supplemental genuine final214 raw and explicit erratum resolve
+  the count distinction. All145 current/native source bindings match da9.
+  Old full assertions/public admission closure and read graphs were verified.
+- BroadV1 initially6521/6532,11 failures. Corrected SDK test setup, two static
+  scopes and legacy non-scan book label; old assertions/calls preserved. FinalV2
+  212 files/6532 tests:6526 PASS, exactly6 historical missing-original M02 FAIL,
+  zero pending/todo,537796ms. Build69993ms, admin TS30837ms, Cloudflare TS1727ms,
+  client-secret check171ms PASS. Initial readonly42 included one new documentation
+  heading; only that heading was corrected. Final readonly41 is byte-identical
+  to c482. Both logs remain retained. No excluded normalizer write flag was used.
+- Protected4 normalizers/19 rules-and-tests/16 AST scopes/64 old migrations/
+  6 Telegram paths/3 package files remain exact. All application bytes are frozen
+  through broad/gates; documentation-only final check has separate receipt.
+
+Evidence directory: `docs/admin-r3-evidence/2026-10-30-stable-traversal/`.
+Whole archive549bd5b93aaf65da2ae913cdcedb9b233b4407f4f85a894987610cf3841fff28,
+65 payloads; controlled321a14785250ef53a0ce760de67a63fc231c7ac9c902122e63567f822baedf66,
+473 payloads; SQL661b061b6ada98aab93b8d12aba1a346749db25d227958eabf2a8630d146ef59,
+1085 payloads. Root/independent archive checks, final214 supplement, count erratum,
+original failures and exact source inventories remain alongside the evidence.
+
+Next active work is stable writer/country traversal. Genuine original BEFORE
+5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a remains immutable;
+CURRENT47cf32cefdb447dbe903fd2eb8cebb482399cf60a2e1f876c0fccda1ed76afa8
+still fails6/8 original coverage/no-repeat targets (country30+30,writer120+120),
+zero provider/canonical/build. Its42 source bindings also match da9. The parent-only
+proposal freezes the complete finite tuple/hash manifest atomically in existing
+jobs/items, at most10000 members/20 windows/4MiB. A global catalog-fingerprint
+stale-stop is not a coverage fix. No profile implementation/native acceptance is
+claimed by this library result. Continue with additive profile SQL/SDK/engine/
+actual actions/UI and unchanged genuine a988 contract; then partial-pass replay,
+global budgets, addressed retry and the remaining full R3 acceptance work.
+
+## 2026-10-30: full-source freshness in book/country review
+
+Latest fully validated continuation point, still GPT-6.1 Sol /Ultra for root and
+agents. The full26-module/230-criterion goal remains active, not completed by this
+increment. Keys/setup remain separately deferred. No live provider, managed
+database/browser E2E, production migration/deploy, push, PR or social send ran.
+
+The genuine original book22-module/country21-module BEFORE archives remain
+immutable (f45180... and2c7588... below). A shared versioned harness runs these
+captured sources and CURRENT with the same inputs and exact contract SHA256
+`3aa0ccaa251cb9faa45ca7d1c59a374e10d2dd3b667b4f58748b68822664cb8e`:
+BEFORE six controls PASS/two approval targets FAIL; CURRENT all eight PASS.
+After only licence/opaque rights drift, timestamps/master/catalog/EN remain exact,
+the candidate remains visible, approval closes, and no additional provider call,
+canonical write or build is made. Original diagnostic/loader adaptations are
+declared separately, without pretending an unchanged original runner.
+
+Implemented:
+
+- One new metadata-only RPC binds actual pending draft.id first, exact entity
+  text identity, version, candidate/source hashes and the full stored seed.
+  Any fresh staff reviewer can inspect metadata; owner-only private body access
+  stays restricted. No raw source/body/provider/dispatch capability is returned.
+- Only confirmed linked:false/canPromote:true/reason:null preserves an existing
+  unlinked legacy candidate's old checks. Missing, malformed or mixed receipt
+  bindings never imply legacy. Country uses the fresh trusted server catalog
+  and its original JS hash; book legacy UUID text/case is preserved.
+- Book/country inspection adds the freshness predicate only when old source/
+  manual guards permit approval. Stale/unavailable metadata closes approval
+  while keeping pending preview/discard and editable canonical content. Native
+  Next signals rethrow. Explicit human confirmation, fresh staff mutation checks
+  and the existing atomic promotion guard remain final authority after a race.
+- Existing writer/site-copy branches, seven admission RPCs, premium transport,
+  budgets, models, prompts and all old migration files stay unchanged. All147
+  original human/CAS/publication/ACK/discard/source/opaque review assertions
+  retain exact AST text/order. Confirmed-old disabled branches add no extra read.
+
+New CLI migration `20261029230111_catalog_translation_candidate_freshness.sql`,
+4704 bytes, SHA256
+`716027ea34885bc5a809e73506bb78a9f928890d592bbb2f613277acd30f20dd`.
+New maintained fixture `catalog-translation-candidate-freshness.sql`, SHA256
+`5c89f26b104f5eccad8ce0f2ef026ba07cc7ecb30f872e2fdc1dcccd8aa9522b`.
+
+Verification (overlapping scopes, not additional acceptance criteria):
+
+- Focused482/482 in17 files, including prior395 and new87; admin TypeScript0.
+  New53 typed adapter checks plus34 actual review/SSR/paired checks pass.
+- Native26 result groups,23 ordinary and4 concurrent exact metadata/request
+  goldens, actual installed-SDK/TS27/27 replay pass. Two actual sessions per kind
+  exercise shared-staff read versus discard, real DB blocking without deadlock,
+  then consumed->candidate_missing. Canonical/journal/cache hashes and provider
+  call counts remain exact except the explicitly tested discard/source controls.
+  All35 old routine bodies/security/config and35 source inputs match.
+- Freshness native v1 exposed a synthetic bootstrap clock_timestamp mismatch;
+  the exact existing canonical now() statement from immutable CMS source was
+  appended for freshness-only tests, without disabling triggers or changing old
+  sources. Original failure and later full passes remain retained. Advisors keep
+  the same15 inherited fixture findings/zero new; lint NOT_RUN because extension
+  absent, nothing installed. All owned native processes stopped, no service.
+- Final209-file broad:6385 tests,6379 PASS/same6 historical M02 FAIL, zero
+  pending/todo,523960ms. Build53629ms, admin TypeScript25763ms, Cloudflare
+  TypeScript/client-secret checks PASS. Readonly text gate the exact41 baseline
+  findings and byte-identical log. No excluded normalizer write flag used.
+- Source c482 has3 existing changes/9 additions versus91cd,10,442 prior files
+  exact. Protected4 normalizers/19 rules-and-tests/16 AST scopes/64 old migrations/
+  6 Telegram paths/3 package files pass. Broad/gates show zero source drift.
+
+Evidence: `docs/admin-r3-evidence/2026-10-30-catalog-review-freshness/`.
+
+- `whole-validation-evidence.zip` SHA256
+  `3f6f7b8b3bc02578a92feaaf4f72ed9cc9049453c2c5a7d6c47bacdb660fa6a1`,38 verified payloads.
+- `catalog-review-freshness-controlled-tests.zip` SHA256
+  `b6b63d0f6919dc4224fc7fde398cfd526f1d442560bff24ef39d4620917c8965`,210 payloads,
+  136 source bindings matching frozen c482. Portable32-group actual review/SSR,
+  BEFORE two targets FAIL/CURRENT zero FAIL, six controls and27 native replay PASS.
+- `sql-evidence.zip` SHA256
+  `93c02052ee11250946780c36cfeb7fc16ae6512e9cd06723037c043a4a9d747b`,136 payloads/35 inputs.
+- Root independently reopened archives, verified unique safe paths/lengths/SHA256
+  and all136 current source bindings. Prior91cd evidence remains immutable.
+
+Next: M07-T12 stable library/profile traversal. The SQL agent has a genuine
+parent-only native-backed BEFORE:62 reviewed-RU books with deliberate human EN,
+actual action/SDK/native order/range reads, zero provider calls/builds. Updating
+one visited RU timestamp produces60+2 processed,61 distinct initial IDs, one
+omission and one repeat when the scalar cursor wraps0. Delete/insert cases also
+execute with tied dates; these are bounded-sweep defects, not proven permanent
+starvation or a UI100% claim. Full text/EN/source/licence/rights remain exact
+except declared timestamp/entity controls. Portable capture/design packaging is
+still parent-only; no stable-traversal source implementation exists yet.
+Writer/catalog paid receipt cursors are deliberately closed numeric DTOs; do not
+smuggle a scan state into them or expand service-role claim/complete permissions.
+Reuse existing jobs/items with a deliberate additive scan/operation linkage.
+Partial-pass replay, global budgets, operator retry and broader R3 acceptance
+remain pending. Do not mark the full goal complete or fabricate M02 baselines.
+
+## 2026-10-30: durable library/country admission and private recovery
+
+This is the latest fully validated continuation point. The full goal remains
+M00-M25 /230 criteria; this increment is not whole M07 or R3 acceptance. The
+requested GPT-6.1 Sol /Ultra remains mandatory for root and every subagent.
+Keys/local managed setup are separately deferred. No paid provider, production
+migration/deploy, managed/browser E2E, push, PR or social send ran.
+
+Implemented and verified:
+
+- Isolated book/country RPC adapters/coordinator/marker enforce admission inside
+  both actual helpers. Writer APIs/cache/helper, premium transport, providers,
+  prompts and existing source hashes stay unchanged. Book4000/country12000 token
+  settings and optional review remain: review=false may complete in one pass or
+  translation+repair, with nullable reviewer provenance for the single pass.
+- Existing jobs/items/attempts remain the journal. One private artifact cache
+  retains server-captured full book/RU/EN/all-source rows or raw country catalog
+  plus full override. Client SELECT projections are not mislabeled full rows.
+  Separate rawSeedHash binds these JSONB snapshots; original country catalog
+  JSON.stringify hashes are not recomputed from reordered JSONB.
+- Default helper budget is1attempt/4reservations/300000ms; supplied library4/16
+  and country2/8 batch limits remain. Unknown ACKs hold current cursor across
+  new UUID/source/provider/actor/cancellation. No partial-pass replay or global
+  billing/concurrency budget is claimed. Complete accepted output can finish
+  privately after deadline, conflict or cancellation. A competing private slot
+  is preserved, with no borrowed draft references in the retained receipt.
+- Raw seed limit4MiB precedes expense; response envelope1MiB/call, combined
+  calls4MiB and complete candidate1MiB fail closed. Raw body is untrusted, not
+  a validated candidate. Recovery uses the production decoder/domain validator
+  and original seed, with zero additional provider calls.
+- FINISH retains complete candidates independently of current CAS. New linked
+  book/country promotion checks the actual draft.id/version/hash/body and full
+  current seed, including source licence/metadata drift without master timestamp
+  changes. Legacy unlinked candidates and writer/site-copy branches preserve
+  the prior function behavior. Removing the one new conditional guard recovers
+  the previous promotion function body exactly.
+- All book/country callers use the boundary. Ordinary saves secure source audit
+  and publication request before optional model work. Paid receipts are not
+  duplicated as legacy batch records; unknown operations stop before processed
+  counts/cursor advance. Separate operation markers cannot launch a legacy scan
+  through forged resume POSTs or queue buttons. Receipt displays are historical;
+  consumed/discarded candidates are never regenerated/restaged automatically.
+- Opaque/malformed country locale maps retain the exact manual/zero-call result.
+  Manual EN, titles, Russian text, sources, rights and metadata remain exact.
+
+New migration `20261029220832_catalog_translation_operation_admission.sql`:
+SHA256 `3f485b84d445d6bd3dad9d0733c8d3975d77ad85a6bcc785e7ad1af8dc033056`.
+Maintained SQL fixture SHA256
+`a84660a72517c9943ac5656472ccacc56517a758cc559029e92a8981c28ca828`.
+All64 original migrations and excluded normalizer/Telegram/package scopes pass
+preservation. Existing newer writer/budget/site-copy migrations also stay exact.
+
+Verification scopes (not additive criterion counts):
+
+- Focused395/395 in15 files across361+34 sessions, plus admin TypeScript0.
+  Additional compatibility324/324 in five files is an earlier overlapping scope;
+  its initial240-second timeout is retained and its263-second rerun passes.
+- Original four-target admission invariant SHA
+  `1032b8b03fa702b1ab44a22681a5db4630626cf4ac323841191dedc684a20d04`
+  remains exact. Same adapted boundary: genuine BEFORE4targets FAIL/current4
+  PASS, all controls PASS. Original BEFORE archive652bbe... remains unchanged.
+- Native27 groups PASS,21 native function bodies match source, actual two-session
+  admission gives one execute grant/one block for each kind. Queued BEGIN waits
+  on the real DB lock and cannot pay again after prior FINISH creates a draft.
+  Actual installed-SDK/TS native DTO conformance41/41 PASS, zero provider calls.
+  Advisors:15 inherited fixture findings/zero new production findings. SQL lint
+  NOT_RUN because the extension is absent; nothing installed. Owned processes
+ 5804/18088 stopped; no process, pidfile or service remains. Old native v1-v6
+  full logs were overwritten by their runner; observed excerpts are honest,
+  while full actual v7/v8 histories are retained. No first-pass-all claim.
+- Final broad V2:207 files,6298 tests,6292 PASS/same6 historical M02 FAIL,
+  zero pending/todo,514147ms. Build48457ms, admin TypeScript24144ms, Cloudflare
+  TypeScript, client-secret check PASS. Readonly text gate FAIL with the exact
+  previous41 findings, byte-identical log. No normalizer write flag was used.
+- First frozen V1 retained6268/6298 and30 failures:24 old review stage-only
+  fixture setup failures plus6 historical M02. V2 changed only that faithful
+  test transport/SELECT projection/FINISH observer, preserving all147 original
+  expect() AST texts/order and all production bytes. Both raw runs are retained.
+
+Evidence directory: `docs/admin-r3-evidence/2026-10-30-catalog-admission/`.
+
+- `whole-validation-evidence.zip`: SHA256
+  `9a6a7bc4f636b9fc58e16efe591d5cf42d3d873f7753d35f74d0a0b959242d6a`,51 payloads.
+- `catalog-admission-controlled-tests.zip`: SHA256
+  `bda52fadf61c67fac65e09881139006801656c451ae945b6fd6449bc37a95ab9`,229 payloads,
+  144 source bindings matching frozen V2. Portable replay58 runtime groups,
+  original BEFORE FAIL/CURRENT PASS contract and41 native checks pass with
+  extracted sources/read-only installed dependencies, no links/network/work paths.
+- `sql-evidence.zip`: SHA256
+  `2aaef4668139ff281e84bc48981284e09bb2378b7722abdfc8266f794f3ed887`,103 payloads/33 source inputs.
+- Root independently reopened all archives and verified unique safe paths,
+  exact byte lengths/SHA256 and all144 current source bindings.
+
+Next bounded work, already genuinely reproduced: old book/country review
+preflight still reports canPromote=true after licence-only book-source drift or
+opaque country override rights drift, with timestamps/master/catalog/EN exact.
+Atomic SQL promotion already refuses both; these are earlier UI offers, not
+unsafe canonical writes. Original controls PASS/target FAIL, with two unchanged
+controlled calls and zero canonical writes/builds. Frozen next BEFORE archives:
+
+- Book22 modules: `next-catalog-review-full-seed-before.zip`, SHA256
+  `f45180d64f50bde36a74189641958cfc7e2aec6d899ee09cb08321572b9fd2c4`.
+- Country21 modules: `next-catalog-country-review-full-seed-before.zip`, SHA256
+  `2c7588bdc02a5cec9c1e8c1088a1b2b50386d2882df209b4cd0436fca438871a`.
+
+Use a new metadata-only freshness RPC bound to the actual pending draft and full
+seed; any fresh staff reviewer may inspect metadata without raw-body access.
+Only confirmed unlinked legacy success may retain old behavior. Missing,
+malformed or mixed bindings must close approval while keeping preview/discard.
+Reuse atomic guards; writer/site-copy and the seven admission RPCs stay unchanged.
+Both Sol/Ultra agents prepared templates/paired harness in parent scratch only;
+new source implementation starts after the catalog post-documentation check.
+Partial-pass replay, global budgets, stable traversal, operator retry and broader
+M07/M24/M04/M02/M13/R3 acceptance remain pending. Do not mark the full goal done.
+
+## 2026-10-30: durable writer admission and private paid-response recovery
+
+This is the latest fully validated continuation point. Work and all agents use
+the requested GPT-6.1 Sol /Ultra. The full goal is still M00-M25 /230 criteria;
+this increment does not establish full M07 or whole-project acceptance.
+Keys/local managed environment remain separately deferred by the user. No paid
+provider, real self-test, managed database, production release, push or PR ran.
+
+The genuine BEFORE capture executes the actual writer batch/helper/premium/SDK:
+one accepted controlled call loses delivery and leaves no private candidate;
+a fresh action on identical source/target revisions makes two more calls.
+The original invariant contract is preserved exactly (SHA256
+`239bf9786db1c2c998edb5a4b6092b4460d8b1b9efeace0c94071deffaccc3ea`).
+One identical adapted SDK/observer harness revision executes original BEFORE
+sources and CURRENT: BEFORE four controls PASS/two targets FAIL, CURRENT all
+six PASS and zero repeated provider calls. Loader/boundary changes are explicit;
+the defect-specific original diagnostic is not mislabeled an unchanged runner.
+
+Implemented:
+
+- Mandatory admission inside `ensureWriterEnglishBiography` covers the batch,
+  generic profile save and structured biography save. Cheap manual/current/
+  pending guards remain before admission. Ordinary calls use one attempt/four
+  reservations/300000 ms; a supplied batch budget remains three/twelve/300000.
+  Existing provider/models/repair rules are unchanged, with no paid fallback.
+- Existing jobs/items/attempts are the operational journal. One narrow private
+  artifact cache retains full original source/revisions/raw override fields,
+  configuration and at most four request-bound response bodies. No source or
+  provider prose enters public job/progress/audit metadata. Raw retained JSON
+  remains untrusted; it is not a completed or human-reviewed candidate.
+- The optional premium response recorder persists body plus metadata before the
+  metadata-only ACK. Exact request hashes exclude credentials. Existing article
+  and other callers without the recorder retain the previous metadata shape and
+  behavior. Raw output is decoded through the actual provider parser and the
+  existing writer fidelity validator using the original full source snapshot.
+- Only first confirmed BEGIN/DISPATCH replies authorize work. GET/replayed ACKs
+  never authorize resending. Lost ACKs reconcile exact operation/call/body
+  identities. Unknown dispatch remains active across fresh UUIDs, changed source,
+  provider, actor and cancellation, without automatic expiry or blind retry.
+  A confirmed zero-dispatch failed BEGIN may close skipped while preserving the
+  current cursor. Partial-pass deadline retains its admission/body and holds
+  position; no partial-pass automatic replay is claimed.
+- Valid complete output survives RU/EN/rights drift. When the existing private
+  slot is free it stages with original bindings and stays stale/conflicted as
+  applicable; strict current-source/manual/CAS checks still govern promotion.
+  A competing pending draft is never replaced: the completed result remains a
+  private artifact with null borrowed-draft references. FINISH, the terminal
+  attempt and confirmed cursor advance are atomic and exactly once.
+- Writer batches stop before processed/cursor accounting on an unconfirmed item.
+  Paid items use their authoritative operation receipts; legacy batch records
+  contain free observations only. Zero-call skipped admission keeps the current
+  position. Known cancellation stops later dispatch. Existing conflict limits
+  and four original writer cap expectations (3/6/3/cursor3) remain unchanged.
+- Both ordinary writer saves secure RU/source audit and its publication request
+  before optional model work. Country ordering is unchanged. URL parameters do
+  not confirm outcomes: only a valid selected writer/op UUID and freshly parsed
+  bound database receipt can show the operation/link. The receipt is explicitly
+  historical; it does not assert that an already consumed draft still awaits
+  review. A consumed/discarded completed candidate is not restaged or regenerated.
+- Separate paid-operation jobs cannot be resumed through the legacy numeric scan
+  command. Both UI and forged POST guard this distinction; malformed markers
+  have no fallback. Legacy writer scan jobs retain their actual stored cursor.
+  No placeholder operator retry button or service-role worker claim was added.
+
+The additive migration is
+`supabase/migrations/20261029202308_writer_translation_operation_admission.sql`,
+SHA256 `f09a8d9b727e9d3a3948e027ed503bfecdd86535f6d4021b78c1e205a338fca5`.
+Its maintained fixture is
+`scripts/database/fixtures/writer-translation-operation-admission.sql`, SHA256
+`5918c13f6643dbd10e06102737e56fd0542f179d02537b1898f594ff2e118d15`.
+The private cache is not another queue: scheduling/state remain existing
+jobs/items/attempts. Fresh actor checks, owner-bound artifact access, immutable
+identity/write proofs, global active-entity uniqueness and restrictive FKs
+protect the journal. No new database role or widened lease privilege is used.
+All fourteen native function bodies match the migration bytes.
+
+| Executed check | Actual result | Boundary |
+| --- | --- | --- |
+| Original invariant, adapted paired harness | BEFORE controls4 PASS/targets2 FAIL; CURRENT6/6 | Actual actions/helper/premium/installed SDK; immutable original assertions |
+| Final focused selection | 154/154 in six files, exit0 | Twenty new runtime groups, paired assertions, old40 review/new39 budgets, premium19, malformed RPC18, routing/SSR16 |
+| Native PostgreSQL17.11 | Twelve groups PASS, exit0 | Fourteen actual legacy SQL sources plus new migration/fixture, synthetic Auth/staff |
+| Actual two-session admission | One admitted/one blocked, one active item | Real PostgreSQL concurrency, no fake in-memory exclusion |
+| Native envelopes through actual TypeScript DTO | 20/20, exit0 | Native receipt/artifact bytes unchanged; real parser/adapters, SDK return controlled |
+| Ordinary page/save regression | 145/145 in two existing files, exit0 | Source/build ordering, current data and existing protected editor behavior |
+| Final broad selection | 6178/6184 in 204 files, exit1; no skips/todos | Same six missing original M02 capture cases/first errors |
+| Final gates | 4/5 | Build, both TypeScript checks and client secret scanner PASS; readonly text gate exact41 baseline FAIL |
+| Preservation | PASS | Four normalizers,19 rules/tests,16 AST scopes,64 old migrations,six Telegram paths/patch,three package files |
+
+Focused test counts are assertions/groups, not completed criteria. Test fixtures
+control Auth/SDK transport/provider/clock boundaries. Real managed Auth and
+PostgREST, full authenticated browser/T13 workflow and deployed public delivery
+remain unverified. Source/manual RU/EN/rights/provenance/other locales stay exact;
+machine canonical writes and public builds remain zero except the independently
+requested ordinary RU/source publication.
+
+Native advisors retain fifteen inherited synthetic findings (eleven WARN/four
+ERROR), with zero findings on new production objects. PL/pgSQL lint is NOT_RUN
+because the extension is unavailable; nothing was installed. Both owned final
+PostgreSQL processes stopped cleanly, with no service/PID/pidfile left. Historical
+failed diagnostics/corrections remain separate and were not relabeled PASS.
+
+Final inventory: 10,660 files, aggregate
+`cb74d31b1c313523638265ab8425e411df6ce04ba6d303e94d4b7dc9b9c0f935`.
+The non-doc fingerprint at the top is exact before/after tests and gates.
+No subsequent application/test/SQL edits were made; checkpoint/evidence prose
+has its separately declared scope.
+
+Portable evidence is in
+`docs/admin-r3-evidence/2026-10-30-writer-admission/README.md`. Readback-verified
+archives: whole validation SHA256
+`289c7b4b26d237c2c7b21bc724375398fc04a4d81e4de25e59647fc87ee65b6b`,
+controlled tests/runtime
+`1092eb007c1a699903525eb20bd4537a070a85a0bde8f60b9a008df6f5d0f11e`,
+native SQL
+`585272c0a49a8137e7bc5c7885b409ceb75a0ba8d2a2490749051c8446c4ffa0`.
+
+NEXT independent implementation is the same accepted-request uncertainty in
+library/country helpers, which still lack durable admission. Both genuine new
+BEFORE graphs now reproduce one accepted/lost call followed by two further
+same-source calls in a fresh actual action, with canonical/manual/source/rights
+preservation and no build. Library17/country16 executed modules are frozen;
+execution/control failures are zero and all four target assertions fail.
+Unchanged frozen replay and invariant contract are portable in
+`next-library-country-admission-before.zip`, SHA256
+`652bbe1367df8b92f267a418600d55ce76feb9fa1f9a69b969722a02c8f27cef`.
+This is an unresolved defect, not acceptance PASS. Reuse existing journal and
+the proven private-artifact protocol with entity-specific identities/guards;
+do not send book/country IDs through writer/article-only RPCs or add a queue.
+
+Partial-pass retry, stable M07-T12 windows and full T03/T13 operator actions
+still require implementation/proof. Keep all three per-invocation budgets and
+the human-review boundary. Do not recreate the genuine missing M02 baseline,
+weaken checks, infer completion percentages from tests or close the full goal
+on this writer increment. Broader M24/M04/M02/M13/R3 acceptance remains pending.
+
+## 2026-10-29: shared profile/library operation budgets and schema readiness
+
+This is the preceding validated increment within the full M00-M25 /230-criterion
+goal. All agents for this increment used the user's required GPT-6.1 Sol /Ultra.
+The preceding private review/source-preservation implementation remains intact.
+The eight conventional root/admin environment-file locations are still absent;
+keys and managed-service setup remain separate. No production/paid/social work,
+push, PR or deployment was performed.
+
+Genuine frozen BEFORE graphs reproduce success-only batch limits being bypassed
+by conflicts: writer five attempts /ten provider passes /five conflicts despite
+cap three; library five /ten /five despite cap four; country three /six /three
+despite cap two. Canonical machine writes/public builds are zero. V2 SAME
+fixtures add only a controlled SDK `profile_translation_budget_ready=true`
+response. Exact reversal proofs preserve the original inputs and four target
+assertions per domain; all twelve BEFORE targets still fail. V1 originals and
+their real source graphs remain unchanged. CURRENT passes the same targets:
+writer three /six /cursor three, library four /eight /cursor four, country
+two /four /cursor two.
+
+Implemented:
+
+- A single existing operation-budget object covers each whole batch and every
+  helper translation, review and repair. Maximum expensive attempts remain
+  library four, writer three and country two; admitted request ceilings are
+  sixteen, twelve and eight respectively. All use the existing article
+  operation's 300000 ms ceiling. Existing scan windows (60/120/30), provider,
+  models and transport retry behavior are unchanged. Cheap manual/current/
+  pending guards occur before admission and do not consume the paid attempt cap.
+- A stop before any provider reservation retains that candidate's cursor and
+  creates no fictitious processed item. An admitted partial request is recorded
+  as one failed item and advances once. A completed response may finish private
+  persistence after the deadline; no new external request starts after stop.
+  Attempt/request counters mean admitted work, not verified provider billing.
+  An unconfirmed run acknowledgement reports its existing explicit error and
+  claims no saved cursor or complete success. Private output is retained.
+- Additive migration
+  `supabase/migrations/20261029194216_profile_translation_operation_budget.sql`
+  (SHA256 `0223dcc55e874d2b00deac81d4a7ac300dca396877f4f404f8247307d08cf732`)
+  extends exactly two existing error-code CHECK allowlists with
+  `translation_operation_stopped`, retaining all nine old codes. The original
+  record/resume RPCs, tables, RLS and service-role lease API remain unchanged.
+- New staff-only `profile_translation_budget_ready()` returns strict boolean
+  capability from exact validated single-column guards, required RPC signatures,
+  return types and authenticated execute rights. It is STABLE SECURITY INVOKER,
+  with empty search_path and no anon/service-role execute grant. Missing actor
+  or revoked staff access raises 42501. All three batch actions check it before
+  source scanning or provider work. Missing/false capability gives the existing
+  migration-required message; malformed results/read errors fail closed.
+
+Executed checks and actual evidence boundaries:
+
+| Check | Result | Scope |
+| --- | --- | --- |
+| Frozen V2 SAME conflict fixtures | BEFORE twelve target FAIL; CURRENT twelve target PASS | Actual action/helper/premium/SDK, original assertions; zero execution/preservation failures |
+| Maintained budget integration | 39/39, exit 0 | Six SAME assertions and 33 CURRENT controls across all three domains |
+| Focused legacy compatibility | 251/251 in nine files, exit 0 | Existing private review/save/public admission with only faithful readiness transport support |
+| Native PostgreSQL 17.11 BEFORE | Three actual 23514 failures, no orphan jobs | Both original runtime migrations unchanged; existing error code accepts the same budget JSON |
+| Native PostgreSQL 17.11 CURRENT | Ten result groups PASS, exit 0 | Three stop/cursor JSON roundtrips, both error columns, all nine old codes, null/invalid boundary, strict readiness and ACL/lease guards |
+| Final V2 broad selection | 6103/6109 in 200 files, exit 1; no skips/todos | Exact same six historical M02 missing-capture case names and first errors |
+| Final V2 gates | 4/5 | Build, admin TypeScript, Cloudflare TypeScript and client secret scanner PASS; readonly text gate FAIL with the exact same 41 baseline files |
+| Preservation | PASS | Four normalizers, 19 rules/tests, 16 AST import/call scopes, 64 old migrations, six Telegram paths/patch and three package files |
+
+CURRENT controls also cover shared call limits across repairs and helper retry,
+manual/current/private-pending zero expense, deadline before first call, partial
+work, completed private output retained after deadline, and journal ACK loss.
+Provider/Auth/catalog/SDK transport and clocks are controlled. Warm-up calls are
+recorded separately. Native SQL uses synthetic Auth/staff/audit boundaries;
+managed Auth/PostgREST, authenticated browser and deployed public acceptance are
+not established. All three owned PostgreSQL starts stopped cleanly; no service
+or extension was installed. Native advisors retain one FAIL finding on the
+synthetic receipt table only, with no finding on the new readiness function.
+PL/pgSQL lint is NOT_RUN because that extension is unavailable locally.
+
+The first broad run is retained separately (also 6103/6109). Its new test had
+an inferred child-environment type incompatible with the admin's augmented
+ProcessEnv. The sole correction adds `as NodeJS.ProcessEnv`; before/after
+emitted JavaScript is byte-identical. Fresh 39/39, 33 CURRENT controls and admin
+TypeScript pass. V2 repeats the whole broad selection and all gates on the
+corrected final bytes. Initial Windows mkdir EPERM, the type failures and the
+unsuccessful first build retry remain raw failures; none was relabelled PASS.
+
+Final V2 inventory has 10,648 files, full aggregate
+`d1327427541aa78eca1081fe96e6a5fe58c582113b6aed1c8b288418ba085651`.
+The non-doc fingerprint at the top is identical before/after tests and gates.
+No subsequent application/test/SQL edit was made; the checkpoint and evidence
+documentation have their separate declared scope.
+
+Portable archives and replay details are in
+`docs/admin-r3-evidence/2026-10-29-profile-budgets/README.md`:
+final whole-validation SHA256
+`383dcab8d3789600025c07ca796ab98bbca28714232ddd78dd08971fcc559d07`,
+final runtime/typefix
+`143141b7d38d093a26572752f69231fb865951dbd868cd1b3d6e84af1c2c38b3`,
+native SQL
+`958ea4df53fba7890ecc739bdf1ec8e23cbb00611e8ada1ba13d67e4a089f2ec`.
+All ZIP payload/member hashes were verified after readback.
+
+Next independent implementation: durable profile admission and uncertain
+provider-result recovery, starting with writer biographies (M07 R3/T11 and
+T03/T13). A fresh actual-action BEFORE reproduction now records one controlled
+accepted request with lost delivery, a failed journal and no private candidate.
+A fresh action on identical source/target revisions then sends two more passes
+and creates a candidate. Source, canonical text, manual sentinel, rights and
+revision tokens stay exact; public builds remain zero. Frozen replay has seven
+control/binding/preservation PASS and two target FAIL, no execution failures.
+The separate invariant SAME contract has four controls PASS/two target FAIL.
+This is a failing defect proof, not implemented cross-run safety. Its genuine
+17-module capture and unchanged contract are in
+`next-writer-admission-before.zip`, SHA256
+`44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949`.
+Reuse the existing premium provider journal and jobs/items/attempts; profile
+adapters must respect entity identities and may not invoke article-only RPCs
+with writer IDs or broaden service-role claim/complete grants. Global/concurrent
+budgets are also not established by this per-invocation increment.
+
+After that, M07-T12 still needs stable library/profile scan-resume: the current
+book path uses updated_at-only OFFSET and profiles reload circular arrays.
+The existing article bounded-ID protocol is already separate; do not reopen it
+or increase scan windows. Do not recreate the genuine missing M02 baseline.
+Full M07 and the other R3 modules remain pending. The package's 230 NOT_RUN
+template rows are initial requirements, not an audited current completion count;
+test assertion totals do not establish a completed/230 percentage.
+
+## 2026-10-29: site-copy private review, recovery and source preservation
+
+This is the latest continuation point, still within the full M00-M25 /230-criterion
+goal. The branch/HEAD and preceding 10,404-file code snapshot were revalidated
+before editing; all preceding writer runtime/SQL archive hashes matched. No
+AGENTS.md was found in the repository or its absolute ancestors. Keys and the
+managed-service environment remain unconfigured separately as the user stated.
+
+Fresh reproduction executed the original site-copy batch action, actual premium
+two-pass transport, installed Supabase SDK and public exporter with controlled
+external boundaries. A successful response changed canonical EN, requested one
+public build and dropped a synthetic third locale. Seven common checks gave
+one execution/control PASS, five expected T05 failures and one distinct raw
+preservation failure; execution failures were zero. The same frozen fixture now
+executes both model passes and leaves canonical/public EN unchanged.
+
+Implemented:
+
+- Site-copy machine output now uses the existing private premium draft storage.
+  It never writes canonical EN or requests a build on provider success. Repeating
+  a pending candidate performs no new provider call. Missing/malformed private
+  reads and uncertain stage acknowledgements do not report confirmed completion.
+- Captures bind complete raw settings, selected RU keys and legacy source hashes,
+  exact block identity/timestamp and ordered candidate keys. Existing admitted
+  current machine EN and manual/ambiguous EN remain protected. Known machine
+  blank/corrupt output cannot become current merely because its hash matches.
+- The ordinary editor saves its accepted source through the existing guarded
+  scalar-UUID RPC before optional translation. Runtime/provider failure leaves
+  RU and previous EN saved. Only changed nonempty RU keys can initiate the one
+  bounded private batch. Existing ordinary RU publication remains independent.
+  Unedited submitted values retain raw RU/EN whitespace/CRLF and metadata; other
+  locales, unsubmitted keys and unknown settings are preserved. Stale forms with
+  a deleted canonical source cannot silently create a replacement master.
+- Valid completed provider output is retained privately after a concurrent RU/EN
+  change or canonical deletion. It becomes stale; fresh approval independently
+  verifies current singleton identity, full settings, CAS and ownership. The
+  editor displays RU/canonical EN/candidate, requires explicit human confirmation,
+  checks the promotion receipt and only then uses the existing build coordinator.
+  Exact-candidate discard never changes canonical text or regenerates output.
+- A new staff-only metadata read RPC discovers private site-copy candidates even
+  after canonical deletion/recreation. Keyset pages contain at most ten IDs and
+  no source/payload text. The actual page shows/discards stale candidates and
+  keeps canonical editing available when private discovery is unavailable.
+  Multiple review panels have distinct IDs. The four existing RPC signatures,
+  direct-table privacy and old book/country/writer behavior are retained.
+- Additive migration
+  `supabase/migrations/20261029181630_site_copy_private_translation_review.sql`
+  and fixture `scripts/database/fixtures/site-copy-private-translation-review.sql`
+  use the actual singleton lock and matching TypeScript/PostgreSQL UTF-16 length
+  boundaries. No historical migration was edited or applied to production.
+
+Evidence already completed before the final broad run:
+
+| Check | Result | Scope |
+| --- | --- | --- |
+| Identical frozen site-copy fixture | BEFORE common 7: 1 control PASS /6 expected failures; CURRENT 66/66, exits 1/0 | Actual actions, SDK, two provider passes, public exporter; no execution failures |
+| Current recovery page fixture | 4/4, exit 0 | Deleted/recreated master, stale discard, keyset pagination, unavailable discovery; actual modules with controlled services |
+| Focused compatibility | 248/248, exit 0 | Nine files on an intermediate current test revision; later new controls verified separately, final broad run supersedes this |
+| Whole-admin TypeScript | exit 0 | Fresh after the discovery/UI change; final gate repeats on frozen source |
+| Final V2 broad selection | 6064/6070 in 199 files, exit 1; no skips/todos | Only the same six absent historical M02 baseline errors |
+| Effective final gates | 4/5 | Same-source build retry, both TypeScript checks and secret scanner pass; readonly gate exactly repeats the 41 excluded baseline findings |
+| Native PostgreSQL 17.11 | 28 groups plus actual two-session singleton lock, exit 0 | Existing book/country 10, writer 7, site-copy 11; synthetic Auth/staff/outbox boundaries |
+| Actual TypeScript DTO with native envelopes | 14 assertions, exit 0 | Strict identities/revisions/receipts, metadata discovery, paging and UTF-16 boundaries |
+| Old SQL branch comparison | 7/7 | Existing branches retained literally, with the isolated new site-copy stage branch |
+
+The isolated advisor run remains FAIL: eleven warnings and four errors in inherited
+synthetic fixture objects; the new migration and owned fixture functions have
+zero findings. Raw failures and diagnostic attempts are retained. This is not a
+managed production advisor result. All owned PostgreSQL processes/listeners were
+stopped, and no service or credential was installed.
+
+Preservation audit passes: four normalizers, 19 related rules/tests, 16 AST
+import/call scopes, 64 old migrations, six Telegram paths and its saved patch,
+three dependency manifests. The seven direct site-copy normalizer calls/imports,
+`submittedRows` and both existing book/writer batch functions remain exact after
+CRLF/LF-only evidence comparison. The normalizer subsystem was not changed.
+
+The final V2 validation freezes 10,639 tracked plus new owned files, full aggregate
+`93196d153c81f2ab628c232f1be98bec8786692839d518d32e070ca32d3d8aec`.
+Its current selection is 199 files: inherited 196 plus maintained writer,
+site-copy and recovery tests, distinct from the historical 197-file selection.
+The six missing historical M02 BEFORE-fixture failures and the excluded 41-file
+text gate are expected baseline blockers; only terminal output can establish
+their actual final result. No skip, substitute BEFORE or weakened check is used.
+
+The first final broad run is preserved separately: 6058/6070, twelve failures.
+Six match the missing historical M02 capture; six SSR button assertions in
+`article-scan.integration.test.ts` and `article-terminal.integration.test.ts`
+used a supposedly ready provider probe with `last_test_at` fixed to 2026-10-08.
+The actual 24-hour freshness guard correctly rejected it on 2026-10-29. Each
+test file now supplies `new Date().toISOString()` for that one ready-probe field,
+independently of its fixed article CAS timestamps. All assertions and production
+freshness code remain unchanged. The full two-file targeted run passes 117/117;
+V1/V2 manifests and a whole-file replacement proof retain the exact two changes.
+The fresh V2 199-file run passes 6064/6070 with only the same six M02 errors;
+V1 was not overwritten or labeled PASS.
+
+The initial final build compiled/typechecked/generated pages but failed during
+Windows trace-copy with EPERM. One narrow same-source build retry completed
+exit 0; the original FAIL/log and retry receipt are both retained. The other
+three code gates passed without a retry.
+
+The first readonly text check reported 43 findings: the 41 inherited files plus
+literal long-dash characters in two new synthetic fixture sources. Only those
+new fixture literals were rewritten as Unicode escapes, preserving all 499 CJS
+literal/template values and the complete executed SQL stage arguments/candidate
+digest. The migration, assertions and application code did not change. Fresh
+maintained runtime checks pass 70/70; native Run10 passes 28 groups, the shared
+lock and 14 DTO checks. The final readonly command is byte-identical to the
+41-file baseline failure, exit 1. No excluded subsystem file/rule was altered.
+
+Final source comparison is explicit: exactly these two presentation-only fixture
+files differ from the V2 broad snapshot; all other 10,410 non-doc files are exact.
+Final non-doc fingerprint is at the top; the post-presentation 10,639-file
+inventory aggregate is
+`5b6a5c965f424b16ecf4bdf934ed85dcb52e4687f391f013b08391f07594c3ec`.
+Subsequent checkpoint/evidence additions are documentation, outside that code
+comparison. Final results do not relabel V2 as a rerun on changed fixture bytes.
+
+A bounded recovery search additionally checked configured project metadata and
+matching local checkouts under Documents/Codex, including hidden/ignored capture
+paths. No genuine `m02-operation-wiring-before` directory/manifest was found.
+Ordinary source copies in other checkouts have no BEFORE provenance and were
+not substituted for the missing historical fixture.
+
+Portable evidence, runtime boundaries, archive/source hashes, replay notes and
+the compatible release/backout plan are in
+`docs/admin-r3-evidence/2026-10-29-site-copy-review/README.md`.
+Provider/Auth/catalog/SDK/build boundaries in runtime fixtures are controlled;
+native SQL uses synthetic role/schema boundaries. Real managed Auth/PostgREST,
+authenticated full-app browser and deployed public delivery acceptance remain
+unverified. No push, PR, paid provider, social send, production migration or
+deployment was performed.
+
+Next independent implementation step after final verification: M07-T10/T11 for
+book/writer batches. The existing actions still cap successful translations only
+(4 books /3 writers), so conflicts can invoke many expensive helpers within the
+60/120 scan window. A fresh actual writer diagnostic already reproduces five
+expensive attempts /ten validated provider passes /zero success /five conflicts
+despite the success cap of three, with no canonical machine write/public build.
+Its original 15-module graph and frozen replay are retained separately as a
+defect reproduction, not acceptance PASS. The analogous actual library scenario
+also produces five attempts/ten passes/zero success/five conflicts despite its
+cap of four, with five real bibliographic checks. Both immutable BEFORE graphs,
+diagnostics and already-failing SAME budget acceptance fixtures are portable in
+today's evidence directory; use them rather than recreating a baseline. Thread the
+existing shared operation budget through both helpers/passes and preserve the
+correct cursor/accounting. Do not restart the completed site-copy slice or
+fabricate the absent M02 historical capture. Remaining M24 criteria and the
+other modules still require their specified proof levels; do not infer ICU or
+token requirements for plain strings without actual runtime support.
+
+## 2026-10-09: local continuation; writer biography machine review
+
+This is the latest continuation point. The requested branch was cloned at
+`acb910d89133396e8e9794e91bd5db74128dab3b`. Dependencies were installed locally
+with Node 24.18.1 and npm 11.16.0, within the declared engine ranges. Keys and
+managed-service environment configuration remain separate. No push, production
+migration, deployment, paid provider call or social delivery was performed.
+
+Implemented in this local increment:
+
+- A successful two-pass writer biography translation stages a private candidate
+  in the existing premium review storage. It does not replace canonical EN,
+  claim human review or request publication. An ordinary accepted RU profile
+  save retains its existing publication request.
+- Repeated pending candidates cost no additional provider call. Missing or
+  malformed private reads fail closed; unconfirmed stage acknowledgements are
+  not reported as success. Source/target changes remain stale or conflicted.
+- The writer editor presents current RU, canonical EN, candidate text, captured
+  sources and raw rights metadata. Explicit approval reloads the uncached catalog,
+  verifies ownership, exact revisions, full raw RU/catalog bindings and the
+  candidate receipt, then requests the existing publication coordinator.
+  Discard operates on the exact private candidate even when its source is stale.
+- Existing manual, malformed/ambiguous and admitted current machine EN remain
+  protected. Promotion preserves raw RU, unrelated locales, custom metadata and
+  rights. Explicit EN tombstones require the existing intentional replacement
+  path; incomplete catalog EN and malformed legacy metadata fail closed.
+- The generic writer profile save now supplies the unchanged catalog to the
+  helper, which separately reads the saved override. Batch summaries distinguish
+  new private candidates, pending candidates and stale candidates.
+- The CLI-created additive migration
+  `supabase/migrations/20261009082816_writer_biography_private_translation_review.sql`
+  extends existing storage/RPCs. Existing book/country branches, staff checks and
+  public RPC signatures are retained. It was applied only to an owned isolated
+  PostgreSQL instance, which was stopped after testing.
+
+Verified evidence for this working tree:
+
+| Check | Result | Boundary |
+| --- | --- | --- |
+| Original writer graph, identical paired fixture | BEFORE 7/15; CURRENT 15/15, exits 1/0 | 50 actual modules; seven T05 failures plus one separately identified malformed-EN preservation failure before; no execution/control failures |
+| Maintained writer regression | 40/40, exit 0 | Helper, actual SDK transport, batch/save actions, public admission, review actions and React component; controlled external boundaries |
+| Existing book/country/review compatibility | 69/69, exit 0 | Four maintained files; no skipped tests |
+| Native PostgreSQL 17.11 | Existing 10 groups plus writer 7 groups, exit 0 | Actual SQL, synthetic Auth/staff and outbox capture; CAS, ACL, ownership, raw preservation and rollback |
+| Current TypeScript DTO with native SQL envelopes | 14 assertions, exit 0 | Real current parser and installed dependencies; UUIDs, microseconds, JSONB ordering, Unicode limits and acknowledgement checks |
+| Final broad selection | 5992/5998 in 197 files, exit 1; no skip/todo | Same six missing historical M02 baseline failures as the pristine clone; 42 additional passing tests |
+| Final required gates | 4/5 | Admin build, admin TypeScript without incremental cache, Cloudflare TypeScript and client-secret scanner pass; readonly hyphen gate fails unchanged |
+
+The final selection is the current inherited 196 files plus the new writer test.
+It is not the historical 197-file/5982-test selection: the independent Telegram
+footer test is still absent, and its preserved patch was not applied.
+
+The pristine clone already had the six failures in
+`apps/admin/app/(dashboard)/articles/article-operation-server.integration.test.ts`:
+the original `.tmp/m02-operation-wiring-before/save-article-action.ts` capture
+is absent. That fixture needs four genuine original files. The portable handoff
+inventory does not contain them; no substitute baseline, skip or weakened
+assertion was introduced. The readonly text gate still reports the same 41 files
+(39 imported task-package documents and two inherited review tests), with a
+byte-identical failure log. This is a recorded excluded baseline, not a passing
+gate or permission to alter the excluded subsystem.
+
+Preservation verification found all four normalizer files, 19 related rules/tests,
+16 AST import/call scopes, 64 old migrations, six independent Telegram paths,
+the saved Telegram patch and dependency manifests unchanged. AST call comparison
+normalizes only CRLF/LF in the evidence comparison, not source text. Changed
+caller files are recorded separately from unchanged excluded call scopes.
+Final tests and gates had zero byte drift across the 10,627 tracked plus four
+new owned source files (10,631 total), aggregate
+`c7696f106005ad4bde994f17b56378fd9beac7874acb9a16f8f61d7d8cec2dc4`.
+The non-doc fingerprint at the top allows this subsequent checkpoint/evidence
+addition to be distinguished from tested code.
+
+Portable reports, command receipts, selection lists, source manifests and exact
+BEFORE/CURRENT captures are in
+`docs/admin-r3-evidence/2026-10-09-writer-review/`. Read its README and verify
+archive hashes before replay. Maintained CURRENT tests use current root sources
+and do not depend on ignored historical captures. No credentials, dependencies,
+native binaries, database data directory or personal sessions are packaged.
+Runtime proof uses controlled Auth/catalog/provider/database/publication
+boundaries; native SQL proof does not claim managed Auth/PostgREST, production
+schema, real FK registry, authenticated browser or deployed-public acceptance.
+
+Next continuation:
+
+1. Preserve this working tree and evidence. Recover the genuine M02 historical
+   fixture to unblock the six inherited tests; do not fabricate a new BEFORE
+   snapshot from current code or treat the excluded text gate as passing.
+2. Configure keys and the local managed-service environment separately, as the
+   user stated. Verify the additive migration and authenticated writer
+   approve/discard/publication path there before claiming DB/admin-E2E acceptance.
+   Do not apply production migrations or publish without current authorization.
+3. Continue the remaining M07 criteria and the M04/M02/M13/R3 work from the
+   original task package. This is a verified local T05 writer slice, not full
+   M07 acceptance or completion of M00-M25 / all 230 criteria. Independent
+   helper/DTO/review and SQL code reviews found no actionable issue in this slice.
 
 ## 2026-10-09: GitHub handoff; M07-T05 book/country review work in progress
 

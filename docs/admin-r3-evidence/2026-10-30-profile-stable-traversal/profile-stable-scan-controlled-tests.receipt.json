@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "status": "ALL_PAYLOAD_SHA_LENGTH_PATHS_AND_EXTRACTED_PORTABLE_REPLAY_PASS",
+  "archive": "profile-stable-scan-controlled-tests.zip",
+  "sha256": "1cefd3a893d19096dd6d1aa32165cc511727b9086c0fb4d1500c1cf87724e4b9",
+  "bytes": 15827736,
+  "payloadCount": 2627,
+  "members": 2628,
+  "manifestSha256": "c3e287c3627bab32c133256647fca839301abc0c5f31114d1a82d7785f84fbfd",
+  "globalSourceSha256": "1af04f3230b3395637a3e06090c1b25c72c66735d4c185be36c626374e4df02e",
+  "currentSourceCount": 128,
+  "focused": {
+    "files": 14,
+    "total": 495,
+    "passed": 495,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0
+  },
+  "core": {
+    "scenarioGroups": 35,
+    "vitestCases": 44,
+    "originalTargets": 8,
+    "currentTargetFailures": 0,
+    "genuineBeforeTargetFailures": 6
+  },
+  "nativeSdk": {
+    "goldens": 56,
+    "passed": 56,
+    "inputSha256": "e338b3303355bbc57cf4bcb9eee84d72fd1a5a889ab29d48bc15fd42af0cad15"
+  },
+  "portableStageResults": [
+    {
+      "name": "profile-scan35",
+      "status": 0,
+      "error": null,
+      "durationMs": 89032
+    },
+    {
+      "name": "writer-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2578
+    },
+    {
+      "name": "country-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2325
+    },
+    {
+      "name": "library-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2287
+    },
+    {
+      "name": "original33-shared-budget-controls",
+      "status": 0,
+      "error": null,
+      "durationMs": 22214
+    },
+    {
+      "name": "native56-sdk-parser-get",
+      "status": 0,
+      "error": null,
+      "durationMs": 1472
+    }
+  ],
+  "portableReadbackResults": [
+    {
+      "name": "profile-scan35",
+      "status": 0,
+      "error": null,
+      "durationMs": 87128
+    },
+    {
+      "name": "writer-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2343
+    },
+    {
+      "name": "country-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2318
+    },
+    {
+      "name": "library-original-cap-four-targets",
+      "status": 0,
+      "error": null,
+      "durationMs": 2522
+    },
+    {
+      "name": "original33-shared-budget-controls",
+      "status": 0,
+      "error": null,
+      "durationMs": 21580
+    },
+    {
+      "name": "native56-sdk-parser-get",
+      "status": 0,
+      "error": null,
+      "durationMs": 1463
+    }
+  ],
+  "sourceInventorySha256": "d71ab2bc2e61c371f3fb39eae294f2b85d4fc83c19ac09baf3f3456f74b7256a",
+  "history": [
+    "Original genuine5489/a988 BEFORE remains six failed targets/eight; CURRENT all eight pass.",
+    "Initial fixture/readiness/relative-loader failures and original old-admission setup failures remain raw development history.",
+    "Original country1032 graph control failure remains retained. Current combined verification graph explicitly separates a real zero-RPC empty legacy API probe from actionSources; original assertion module is unchanged.",
+    "Intermediate global9df493PASS second nominal fresh command actually continued the same scan; it is not accepted fresh-trigger evidence. Current V3 captures distinct explicit fresh UUID POST forms with no oldjob, both old SAME contracts and fresh changed/absent-source controls pass.",
+    "Two old legacy-ordinal routing intents deliberately change to durable-scan stale refusal. All bytes outside those two it expressions, including the old library refusal branch, remain exact.",
+    "Independent final CURRENT actionSources-only original1032 country graph control remains FAIL1 while all4targetsPASS (actual contractexit2), separately from the explicitly combined verification graph. Both raw outputs and an initial audit exit-code1expectation mistake are retained."
+  ],
+  "limitations": [
+    "Scopes overlap and are not230 acceptance criteria or fullM07/R3 acceptance.",
+    "Controlled SDK/Auth/catalog/provider boundaries are synthetic. Native SQL/RLS/concurrency/advisors and10000 COMMIT evidence are separate.",
+    "Portable commands run captured actual application sources through a strict read-location mapper with installed dependency identities. No current application source fallback or uncontrolled network is permitted.",
+    "No real provider invoice, managed DB/browser E2E, production migration/deploy, keys/setup, push, PR or social send is claimed."
+  ]
+}

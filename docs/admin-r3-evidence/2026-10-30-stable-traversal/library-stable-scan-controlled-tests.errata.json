@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "classification": "OUTER_RECEIPT_COUNT_CORRECTION_IMMUTABLE_ARCHIVE_RETAINED",
+  "checkedAt": "2026-10-30T07:15:36.680776+00:00",
+  "archive": "library-stable-scan-controlled-tests.zip",
+  "archiveSha256": "321a14785250ef53a0ce760de67a63fc231c7ac9c902122e63567f822baedf66",
+  "archiveBytesUnchanged": true,
+  "correction": "Archived focused core213/213PASS; final wholeV2 has214/214PASS in the same five files. These are distinct actual executions and are not relabeled as one run. A genuine pre-existing focused-v5.json214/214PASS run, explicitly hash-referenced by the sealed owned12 freeze but omitted from ZIP payload, is now retained as a separate untouched raw supplemental artifact.",
+  "internalStaleClaims": [
+    "GLOBAL-BINDING.json/focused/core and STAGE.json/focused/core retain original214 metadata. The archived focused-v2/v3 raw reports remain213 cases; the genuine final focused-v5 and final wholeV2 separately substantiate214."
+  ],
+  "originalOuterReceiptSha256": "a89a46c076fc7fcb3ab5a28fecf844d3910f0315d1e36dfe17204cac88e66f63",
+  "correctedOuterReceiptSha256": "3b959b27058e7887bb6ba08902a2782d5ae9f95a6c36c3e21e3976230d55b430",
+  "originalOuterReceipt": {
+    "schemaVersion": 1,
+    "status": "ZIP_READBACK_ALL_MEMBERS_AND_PORTABLE_REPLAY_PASS",
+    "zip": "docs/admin-r3-evidence/2026-10-30-stable-traversal/library-stable-scan-controlled-tests.zip",
+    "sha256": "321a14785250ef53a0ce760de67a63fc231c7ac9c902122e63567f822baedf66",
+    "bytes": 7415427,
+    "members": 474,
+    "payloadCount": 473,
+    "manifestSha256": "e39b6e59b195fe0c7b586377aac5268b58fe75c5094e73e6498edc7bcbc86560",
+    "globalSourceSha256": "da9ee3fa7dab3dd2ea1f5cc2f5c3aa174bf3c3b9061d2729fd3201fe21ccecbd",
+    "currentSourceCount": 108,
+    "nativeSourceInputCount": 37,
+    "owned12SourceFreezeSha256": "aaa332ff1889fa3f0e0603042eeecd389c2889d4d49a64aaec8c6dbe79d77d33",
+    "focused": {
+      "core": 214,
+      "legacyBook": 16,
+      "ui": 52,
+      "uiStaticCompatibility": 162,
+      "allPass": true,
+      "overlap": "UI52 is included within the162 compatibility run; totals are not summed as independent cases."
+    },
+    "nativeGolden": {
+      "count": 27,
+      "sha256": "759bb4b6a360285a74f79dc2dc21d4e43bf157e8225b98a2dffdd0e3e32f033c",
+      "actualParserInstalledSdkPass": 27
+    },
+    "readback": {
+      "allPathsBytesAndSha256Verified": true,
+      "portableReplay": [
+        {
+          "name": "library-scan26",
+          "status": 0,
+          "error": null
+        },
+        {
+          "name": "library-cap-original-four-targets",
+          "status": 0,
+          "error": null
+        },
+        {
+          "name": "writer-library-country-existing33-budget-controls",
+          "status": 0,
+          "error": null
+        },
+        {
+          "name": "native27-actual-sdk-and-parser",
+          "status": 0,
+          "error": null
+        }
+      ],
+      "sourceInventorySha256": "cac8ce28d9924107ee210ab7a0c6f5051b8a6579d76a3706afd6eafa84b945f8"
+    },
+    "history": "Full original BEFORE raw4FAIL/6, full broadV1 11 failures and development diagnostic/adaptation history retained. No first-pass or global fullgoal acceptance claim.",
+    "limitations": [
+      "Library-only traversal; profiles retain genuine unresolved BEFORE evidence in separate immutable archives.",
+      "Neither fullM07 nor26-module/230-criterion completion is claimed.",
+      "Existing full assertion expressions and public admission normalization closure are preserved; unchanged read dependencies are snapshotted, with no new normalizer test/direct-call behavior.",
+      "Native/provider acceptance is separated: SDK/provider boundaries are synthetic, native SQL is separately verified; no external invoice is proved."
+    ]
+  },
+  "archivedFocusedReports": [
+    {
+      "path": "evidence/focused-v2.json",
+      "sha256": "12812305e37fd7ddd3add50f4975139cbc5016a936658f03b2fcd6b2f6fccb6f",
+      "total": 213
+    },
+    {
+      "path": "evidence/focused-v3.json",
+      "sha256": "e2fbc6878e3e532f355972c684cb24e1d46b3d8ffacc46c745d4dfcf4c4c8607",
+      "total": 213
+    }
+  ],
+  "wholeV2RawReport": {
+    "relativeToWork": "library-stable-scan-final-validation-v2/selected-tests.raw.json",
+    "sha256": "87a75247cba6137ba0a63c4b32b098b56d4d22596f03bb352a46d7c393dcf75c",
+    "totalTests": 6532,
+    "passed": 6526,
+    "failed": 6,
+    "pending": 0,
+    "todo": 0,
+    "matchingFiles": [
+      {
+        "file": "apps/admin/lib/catalog-admission-routing.integration.test.ts",
+        "archivedFocusedCases": 20,
+        "wholeV2Cases": 20,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/catalog-admission.integration.test.ts",
+        "archivedFocusedCases": 60,
+        "wholeV2Cases": 60,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/library-translation-scan-rpc.integration.test.ts",
+        "archivedFocusedCases": 62,
+        "wholeV2Cases": 62,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/library-translation-scan.integration.test.ts",
+        "archivedFocusedCases": 32,
+        "wholeV2Cases": 33,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/profile-library-batch-budgets.integration.test.ts",
+        "archivedFocusedCases": 39,
+        "wholeV2Cases": 39,
+        "allPassed": true
+      }
+    ],
+    "additionalFinalCase": [
+      "M07 library-only bounded stable scan through actual application and installed SDK Real metadata read failure remains dead-letter and Continue scans remaining IDs without retry"
+    ],
+    "startedAt": "2026-10-30T01:17:49.365Z",
+    "finishedAt": "2026-10-30T01:26:47.161Z",
+    "durationMs": 537796,
+    "exitCode": 1,
+    "status": "FAIL",
+    "executionReceiptSha256": "36dbd6f1684ff6c40b8b29c3b1f2bfb87cf94413c008fa8ea4e340e67d00e710"
+  },
+  "globalSourceFingerprint": "da9ee3fa7dab3dd2ea1f5cc2f5c3aa174bf3c3b9061d2729fd3201fe21ccecbd",
+  "scope": "Count erratum only. No source, test assertion, SDK boundary, raw report or archive member was modified. No added execution, provider request or whole-goal acceptance claim.",
+  "finalFocusedSupplemental": {
+    "path": "library-stable-scan-focused-final214.raw.json",
+    "bytes": 87677,
+    "sha256": "3b20af8082641306a9c5a178ab6d302eb7948d144d950eef88f463edd9093e34",
+    "total": 214,
+    "passed": 214,
+    "failed": 0,
+    "pending": 0,
+    "todo": 0,
+    "startedAt": "2026-10-30T00:57:10.039000+00:00",
+    "matchingFiles": [
+      {
+        "file": "apps/admin/lib/catalog-admission-routing.integration.test.ts",
+        "total": 20,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/catalog-admission.integration.test.ts",
+        "total": 60,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/library-translation-scan-rpc.integration.test.ts",
+        "total": 62,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/library-translation-scan.integration.test.ts",
+        "total": 33,
+        "allPassed": true
+      },
+      {
+        "file": "apps/admin/lib/profile-library-batch-budgets.integration.test.ts",
+        "total": 39,
+        "allPassed": true
+      }
+    ],
+    "sealedOwned12Freeze": {
+      "pathInArchive": "evidence/owned12-source-freeze-v3.json",
+      "sha256": "aaa332ff1889fa3f0e0603042eeecd389c2889d4d49a64aaec8c6dbe79d77d33",
+      "referencedFocusedHashExact": true,
+      "all12CurrentAndGlobalSourceExact": true
+    },
+    "scope": "Actual final214-case focused run existed before sealing and was referenced by sealed owned12 freeze; raw was omitted from the immutable ZIP. Added now as a separate untouched raw artifact. The final wholeV2 independently covers these same214 cases against the global source freeze."
+  }
+}

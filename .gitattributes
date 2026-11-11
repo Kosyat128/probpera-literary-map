@@ -31,3 +31,16 @@ scripts/lib/historical-globe-proof.test.mjs text eol=lf
 src/data/countries/generated/*.json text eol=lf
 scripts/database/fixtures/book-canon-source-registry-before-r49n.json text eol=lf
 scripts/database/fixtures/wells-editorial-repair-content-20260913.jsonb.txt text eol=lf
+
+# Keep raw native evidence and original oracle hashes stable across checkouts.
+apps/admin/lib/fixtures/publication-retry-native-goldens.json -text
+apps/admin/lib/fixtures/site-copy-translation-operation-native-goldens.json -text
+apps/admin/lib/fixtures/profile-translation-scan-native-goldens.json -text
+apps/admin/lib/fixtures/catalog-review-preflight.same-contract.cjs -text
+apps/admin/lib/fixtures/known-editorial-partial.same-contract.cjs -text
+apps/admin/lib/fixtures/publication-retry-before-oracle.cjs -text
+apps/admin/lib/fixtures/page-creator-original-oracle.cjs -text
+apps/admin/lib/fixtures/writer-batch-budget-cap.cjs -text
+apps/admin/lib/fixtures/library-batch-budget-cap.cjs -text
+apps/admin/lib/fixtures/country-batch-budget-cap.cjs -text
+supabase/migrations/20261030161000_publication_retry_admission.sql -text

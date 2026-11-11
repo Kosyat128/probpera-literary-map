@@ -5,8 +5,8 @@ import { z } from "zod";
 const uuid = z.string().uuid();
 const timestamp = z.string().datetime({ offset: true });
 const hash = z.string().regex(/^[a-f0-9]{64}$/u);
-const entityType = z.enum(["literary_work", "country"]);
-const entityId = z.string().min(1).max(120);
+const entityType = z.enum(["literary_work", "country", "writer_biography", "site_copy"]);
+const entityId = z.string().min(1).max(481);
 const version = z.number().int().positive().max(Number.MAX_SAFE_INTEGER);
 const revisionSchema = z.object({ id: uuid.nullable(), updatedAt: timestamp.nullable() }).strict()
   .refine((value) => (value.id === null) === (value.updatedAt === null));
@@ -34,6 +34,24 @@ const bookSourceRevisionSchema = z.object({
 const countrySourceRevisionSchema = z.object({
   overrideId: uuid.nullable(), overrideUpdatedAt: timestamp.nullable(), catalogSourceHash: hash,
 }).strict().refine((value) => (value.overrideId === null) === (value.overrideUpdatedAt === null));
+const writerSourceRevisionSchema = z.object({
+  countryId: z.string(), writerId: z.string(), overrideId: uuid.nullable(),
+  overrideUpdatedAt: timestamp.nullable(), catalogSourceHash: hash,
+  replaceEnglishTombstone: z.boolean(),
+}).strict().refine((value) => (value.overrideId === null) === (value.overrideUpdatedAt === null));
+const writerSourceSchema = z.object({
+  writerName: z.string(), text: z.string(), sourceLanguage: z.string(),
+  sources: z.array(z.object({
+    provider: z.string(), url: z.string(), fields: z.array(z.enum([
+      "identity", "life-dates", "biography-facts", "awards", "works",
+    ])), usage: z.enum(["structured-data", "fact-check", "licensed-copy"]), retrievedAt: z.string(),
+    author: z.string().optional(), title: z.string().optional(),
+    licenseName: z.string().optional(), licenseUrl: z.string().optional(),
+  }).strict()),
+  // These raw JSON records preserve authored source metadata beyond the provider projection.
+  russianProfile: z.record(z.string(), z.unknown()),
+  catalogFields: z.record(z.string(), z.unknown()),
+}).strict();
 
 const bookPayloadSchema = z.object({
   description: z.string().min(140).max(900), sourceLanguage: z.literal("Russian"),
@@ -44,6 +62,17 @@ const bookPayloadSchema = z.object({
   }).strict(),
 }).strict();
 const countryPayloadSchema = z.object({ fields: premiumTranslationCountryFieldsSchema }).strict();
+const writerPayloadSchema = z.object({ text: z.string().min(120).max(1_600) }).strict();
+const siteCopyKey = z.string().min(1).max(1_200)
+  .refine((value) => value.trim() === value && !/[\u0000-\u001f\u007f]/u.test(value) &&
+    !/(?:^|\.)(?:__proto__|prototype|constructor)(?:\.|$)/iu.test(value));
+const siteCopyItem = z.object({ key: siteCopyKey, text: z.string().min(1).max(4_000) }).strict();
+const siteCopySourceItem = siteCopyItem.extend({ sourceHash: hash }).strict();
+const siteCopySourceSchema = z.object({
+  settings: z.record(z.string(), z.unknown()), items: z.array(siteCopySourceItem).min(1).max(50),
+}).strict();
+const siteCopySourceRevisionSchema = z.object({ blockId: uuid, blockUpdatedAt: timestamp }).strict();
+const siteCopyPayloadSchema = z.object({ items: z.array(siteCopyItem).min(1).max(50) }).strict();
 const provenanceSchema = z.object({
   provider: z.enum(["cloudflare", "openai"]), translatorModel: z.string().min(1).max(300),
   reviewerModel: z.string().min(1).max(300).nullable(),
@@ -60,7 +89,16 @@ export const premiumTranslationWorkingDraftSchema = z.discriminatedUnion("entity
   z.object({ ...draftBase, entityType: z.literal("country"),
     sourceRevision: countrySourceRevisionSchema, sourceSnapshot: premiumTranslationCountryFieldsSchema,
     payload: countryPayloadSchema }).strict(),
+  z.object({ ...draftBase, entityType: z.literal("writer_biography"),
+    sourceRevision: writerSourceRevisionSchema, sourceSnapshot: writerSourceSchema,
+    payload: writerPayloadSchema }).strict(),
+  z.object({ ...draftBase, entityType: z.literal("site_copy"),
+    sourceRevision: siteCopySourceRevisionSchema, sourceSnapshot: siteCopySourceSchema,
+    payload: siteCopyPayloadSchema }).strict(),
 ]).superRefine((draft, context) => {
+  if (!validIdentity(draft)) {
+    context.addIssue({ code: "custom", message: "Invalid translation entity identity" });
+  }
   if (draft.entityType === "literary_work" &&
       (!uuid.safeParse(draft.entityId).success || draft.sourceRevision.workId !== draft.entityId ||
        draft.targetRevision.id === null || draft.targetRevision.updatedAt === null)) {
@@ -70,6 +108,25 @@ export const premiumTranslationWorkingDraftSchema = z.discriminatedUnion("entity
       (draft.sourceRevision.overrideId !== draft.targetRevision.id ||
        draft.sourceRevision.overrideUpdatedAt !== draft.targetRevision.updatedAt)) {
     context.addIssue({ code: "custom", message: "Country draft revision is inconsistent" });
+  }
+  if (draft.entityType === "writer_biography") {
+    const identity = parseWriterBiographyCandidateIdentity(draft.entityId);
+    if (!identity || identity.countryId !== draft.sourceRevision.countryId ||
+        identity.writerId !== draft.sourceRevision.writerId ||
+        draft.sourceRevision.overrideId !== draft.targetRevision.id ||
+        draft.sourceRevision.overrideUpdatedAt !== draft.targetRevision.updatedAt ||
+        !draft.provenance.reviewerModel) {
+      context.addIssue({ code: "custom", message: "Writer draft identity or review provenance is inconsistent" });
+    }
+  }
+  if (draft.entityType === "site_copy" &&
+      (draft.sourceRevision.blockId !== draft.entityId || draft.targetRevision.id !== draft.entityId ||
+       draft.targetRevision.updatedAt !== draft.sourceRevision.blockUpdatedAt ||
+       draft.sourceSnapshot.settings.systemKey !== "site-copy-overrides" ||
+       new Set(draft.sourceSnapshot.items.map((item) => item.key)).size !== draft.sourceSnapshot.items.length ||
+       draft.payload.items.length !== draft.sourceSnapshot.items.length ||
+       draft.payload.items.some((item, index) => item.key !== draft.sourceSnapshot.items[index].key))) {
+    context.addIssue({ code: "custom", message: "Site copy source, target or candidate keys are inconsistent" });
   }
 });
 
@@ -82,6 +139,9 @@ const consumedBase = {
 const promotedSchema = z.object({ ...consumedBase, state: z.literal("promoted"),
   canonicalId: uuid, canonicalUpdatedAt: timestamp, reviewedBy: uuid, reviewedAt: timestamp }).strict();
 const discardedSchema = z.object({ ...consumedBase, state: z.literal("discarded") }).strict();
+const siteCopyDraftListSchema = z.object({
+  schemaVersion: z.literal(1), entityIds: z.array(uuid).max(10), nextCursor: uuid.nullable(),
+}).strict();
 
 export type PremiumTranslationEntityType = z.infer<typeof entityType>;
 export type PremiumTranslationCountryFields = z.infer<typeof premiumTranslationCountryFieldsSchema>;
@@ -114,9 +174,27 @@ export class PremiumTranslationDraftError extends Error {
 type Identity = { entityType: PremiumTranslationEntityType; entityId: string };
 type ExpectedCandidate = Identity & { draftId: string; version: number; candidateHash: string };
 
+export function parseWriterBiographyCandidateIdentity(value: string): { countryId: string; writerId: string } | null {
+  const parts = value.split(":");
+  if (parts.length !== 2) return null;
+  const [countryId, writerId] = parts;
+  const writerLength = Array.from(writerId).length;
+  if (!/^[a-z0-9][a-z0-9_-]{1,119}$/u.test(countryId) ||
+      writerLength < 2 || writerLength > 180 || /[\s\p{Cc}/:]/u.test(writerId)) return null;
+  return { countryId, writerId };
+}
+
+export function writerBiographyCandidateIdentity(countryId: string, writerId: string): string {
+  const identity = `${countryId}:${writerId}`;
+  if (!parseWriterBiographyCandidateIdentity(identity)) throw new PremiumTranslationDraftError("unconfirmed");
+  return identity;
+}
+
 function validIdentity(input: Identity) {
   return entityType.safeParse(input.entityType).success && entityId.safeParse(input.entityId).success &&
-    (input.entityType !== "literary_work" || uuid.safeParse(input.entityId).success);
+    (input.entityType === "writer_biography" ? parseWriterBiographyCandidateIdentity(input.entityId) !== null
+      : input.entityId.length <= 120 &&
+        (!(input.entityType === "literary_work" || input.entityType === "site_copy") || uuid.safeParse(input.entityId).success));
 }
 
 // SQL JSONB may reorder object keys; compare every value without altering text.
@@ -164,6 +242,19 @@ export async function readPremiumTranslationWorkingDraft(supabase: SupabaseClien
   }), identity).draft;
 }
 
+export async function listSiteCopyPremiumTranslationWorkingDrafts(supabase: SupabaseClient, afterId: string | null = null) {
+  if (afterId !== null && !uuid.safeParse(afterId).success) throw new PremiumTranslationDraftError("unconfirmed");
+  const parsed = siteCopyDraftListSchema.safeParse(await rpc(supabase, "list_site_copy_premium_translation_working_drafts", {
+    p_after_id: afterId, p_limit: 10,
+  }));
+  if (!parsed.success || new Set(parsed.data.entityIds).size !== parsed.data.entityIds.length ||
+      (parsed.data.nextCursor !== null && (parsed.data.entityIds.length !== 10 ||
+        afterId !== null && parsed.data.nextCursor.toLowerCase() <= afterId.toLowerCase()))) {
+    throw new PremiumTranslationDraftError("unconfirmed");
+  }
+  return parsed.data;
+}
+
 export async function stagePremiumTranslationWorkingDraft(supabase: SupabaseClient, input: PremiumTranslationDraftStage) {
   if (!validIdentity(input)) throw new PremiumTranslationDraftError("unconfirmed");
   const staged = parseRead(await rpc(supabase, "stage_premium_translation_working_draft", {
@@ -202,7 +293,7 @@ export async function promotePremiumTranslationWorkingDraft(supabase: SupabaseCl
     catalogSourceFields: Record<string, unknown> | null; actorId: string }) {
   const args = consumeArgs(input);
   if (!hash.safeParse(input.sourceHash).success || !uuid.safeParse(input.actorId).success ||
-      (input.entityType === "country"
+      (input.entityType === "country" || input.entityType === "writer_biography"
         ? !hash.safeParse(input.catalogSourceHash).success || !input.catalogSourceFields ||
           typeof input.catalogSourceFields !== "object" || Array.isArray(input.catalogSourceFields)
         : input.catalogSourceHash !== null || input.catalogSourceFields !== null)) {

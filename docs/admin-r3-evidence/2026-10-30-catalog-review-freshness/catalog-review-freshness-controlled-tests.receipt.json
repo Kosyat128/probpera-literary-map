@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "atUtc": "2026-10-29T23:19:17.276Z",
+  "archive": "catalog-review-freshness-controlled-tests.zip",
+  "sha256": "b6b63d0f6919dc4224fc7fde398cfd526f1d442560bff24ef39d4620917c8965",
+  "bytes": 1394692,
+  "members": 211,
+  "verifiedEntries": 210,
+  "manifestSha256": "f66a2a8c4d596338f00766b5c3d37d217afd936825abc4710410e2c445328f00",
+  "sourceFiles": 136,
+  "ownedMaintainedFiles": 8,
+  "focused": {
+    "tests": 482,
+    "passed": 482,
+    "files": 17,
+    "typecheckExit": 0
+  },
+  "nativeMetadata": {
+    "checks": 27,
+    "passed": 27
+  },
+  "portable": {
+    "reviewGroups": 32,
+    "nativeChecks": 27,
+    "beforeTargetFailures": 2,
+    "currentTargetFailures": 0,
+    "controlFailures": 0
+  },
+  "readback": "Every ZIP member path/length/SHA verified after reopening; all relevant current source hashes match rootglobalc482 freeze and owned8before/after hashes.",
+  "limitations": "Scoped controlled evidence, root full regression/gates separately reported; human review/atomic promotion remain mandatory. No live/provider/billing/fullgoal completion claim."
+}

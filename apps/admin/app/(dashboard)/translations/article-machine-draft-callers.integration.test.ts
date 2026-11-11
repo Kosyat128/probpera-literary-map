@@ -126,9 +126,17 @@ function callerFixture(result: Record<string, any> = privateResult) {
 }
 
 async function renderPage(kind = "article", query: Record<string, string> = {}) {
+  const recoverSiteCopy = vi.fn(async () => { throw Error("SSR must not execute site-copy recovery"); });
+  const getStaffSession = async () => ({ configured: true, user: { id: actorId }, role: "admin",
+    mfa: { required: false, checkError: null }, authError: null, membershipError: null });
+  const operationMetadataRead = vi.fn(async (name: string, args: unknown) => {
+    expect(name).toBe("reconcile_site_copy_translation_operation");
+    expect(args).toEqual({ p_operation_id: null });
+    return { data: null, error: null };
+  });
   const job = { id: jobId, kind, status: "completed", totalItems: 1, succeededItems: 1, failedItems: 0,
     createdAt: stamp, updatedAt: stamp, resumeCursor: {} };
-  const rpc = async (name: string) => ({ data: name === "get_translation_operations_status"
+  const rpc = async (name: string, _args?: unknown) => ({ data: name === "get_translation_operations_status"
     ? { queued: 0, running: 0, completed: 1, attention: 0, deadLetterItems: 0, recent: [job] } : true, error: null });
   const from = (table: string) => {
     let head = false;
@@ -141,7 +149,9 @@ async function renderPage(kind = "article", query: Record<string, string> = {}) 
   };
   const noop = async () => {};
   const loaded = modules({
-    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ from, rpc }) },
+    "@/lib/auth": { getStaffSession },
+    "@/lib/supabase/server": { createServerSupabaseClient: async () => ({ from, rpc: (...args: [name: string, input?: unknown]) =>
+      args[0] === "reconcile_site_copy_translation_operation" ? operationMetadataRead(args[0], args[1]) : rpc(...args) }) },
     "@/lib/editorial-catalog": { loadEditorialCatalog: async () => ({ version: 1, countries: [] }) },
     "@opennextjs/cloudflare": { getCloudflareContext: () => ({ env: { AI: { run: async () => { throw Error("Read-only page must not dispatch the provider"); } } } }) },
     "@/lib/translation-runtime-gate": { premiumTranslationSelfTestFresh: () => true },
@@ -152,10 +162,15 @@ async function renderPage(kind = "article", query: Record<string, string> = {}) 
     "apps/admin/app/(dashboard)/translations/country-actions": { translatePremiumCountryBatchAction: noop },
     "apps/admin/app/(dashboard)/translations/self-test-action": { runPremiumTranslationSelfTestAction: noop },
     "apps/admin/app/(dashboard)/translations/resume-action": { resumeTranslationJobAction: noop },
+    "apps/admin/app/(dashboard)/translations/site-copy-operation-actions": { recoverSiteCopyTranslationOperationAction: recoverSiteCopy },
   });
   const tree = await loaded.load("apps/admin/app/(dashboard)/translations/page.tsx").default({ searchParams: Promise.resolve(query) });
   const html = nativeRequire("react-dom/server").renderToStaticMarkup(tree);
-  traces.push({ scope: "article-page", kind, query, html });
+  expect(recoverSiteCopy).not.toHaveBeenCalled();
+  expect(operationMetadataRead).toHaveBeenCalledTimes(1);
+  traces.push({ scope: "article-page", kind, query, html, siteCopyMetadataReads: operationMetadataRead.mock.calls,
+    siteCopyRecoveryCalls: recoverSiteCopy.mock.calls,
+    scopeAddition: "Actual site-copy metadata reader/adapter; exact null reconcile response and matching staff; original caller/publication RPC/provider/build traces remain separate" });
   return nativeRequire("cheerio").load(html);
 }
 

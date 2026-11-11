@@ -1,0 +1,20 @@
+{
+  "archive": "whole-validation-evidence.zip",
+  "sha256": "29259cc6665725332e8967228999cd08230185ae876ee8209b31aa1a2c6d0ba4",
+  "bytes": 12249249,
+  "verifiedPayloads": 449,
+  "sourceFingerprint": "b0b79b534a1f02c326b951224d2b82482840c5397acb1d99afe7930532efda38",
+  "testFiles": 219,
+  "testsTotal": 7193,
+  "testsPassed": 7187,
+  "testsFailed": 6,
+  "sameSixHistoricalM02Failures": true,
+  "gatesPassed": 4,
+  "gatesTotal": 5,
+  "readonlyBaselineFindings": 41,
+  "zeroNonDocSourceDrift": true,
+  "allFullInputEntryArraysIdentical": false,
+  "allowedDocumentDrift": [
+    "docs/CODEX_ADMIN_EXECUTION_STATE.md"
+  ]
+}

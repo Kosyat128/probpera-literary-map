@@ -138,6 +138,13 @@ async function fixture(options: FixtureOptions = {}) {
   const writes: Array<{ table: string; operation: string; payload: any; filters: Array<[string, unknown]> }> = [];
   const rpcCalls: Array<{ name: string; args: any }> = [];
   let draft: Record<string, any> | null = null;
+  const { createCatalogAdmissionBoundary } = nativeRequire("./fixtures/catalog-admission-boundary.cjs");
+  const catalogAdmission = createCatalogAdmissionBoundary({ actorId,
+    getSeed() { return structuredClone({ catalogFields: inputSource, override: row }); },
+    getPrivateCandidate() { return draft; }, setPrivateCandidate(_type: string, _entity: string, value: Record<string, any>) { draft = structuredClone(value); } });
+  const { createProfileTranslationScanBoundary } = nativeRequire("./fixtures/profile-translation-scan-boundary.cjs");
+  const profileScans = createProfileTranslationScanBoundary({ actorId, catalogServer: catalogAdmission });
+  let finishFaulted = false;
   let dispatches = 0;
   const provider = vi.fn(async (model: string, request: Record<string, any>) => {
     expect(["fixture-country-translator", "fixture-country-reviewer"]).toContain(model);
@@ -181,7 +188,7 @@ async function fixture(options: FixtureOptions = {}) {
       if (table !== "country_profile_overrides") throw Error("Uncontrolled country review SDK read");
       if (columns === "id,fields,updated_at") {
         expect(filters).toEqual([["country_id", countryId]]);
-        return { data: structuredClone(row), error: null };
+        return { data: { id: row.id, fields: structuredClone(row.fields), updated_at: row.updated_at }, error: null };
       }
       if (columns === "updated_at") return { data: { updated_at: row.updated_at }, error: null };
       throw Error(`Uncontrolled country review projection ${columns}`);
@@ -191,6 +198,20 @@ async function fixture(options: FixtureOptions = {}) {
   const rpcBoundary = async (name: string, args: unknown) => {
     rpcCalls.push({ name, args: structuredClone(args) });
     const params = args as Record<string, any>;
+    if (profileScans.handles(name)) {
+      const response = await profileScans.fetchRpc(name, params), value = await response.json();
+      return { data: response.ok ? value : null, error: response.ok ? null : value };
+    }
+    if (name === "premium_machine_translation_ready") return { data: true, error: null };
+    if (catalogAdmission.handles(name)) {
+      if (name === "finish_catalog_translation_operation" && params.p_candidate) {
+        expect(params.p_candidate.payload).toEqual({ fields: generated });
+        expect(catalogAdmission.operations.get(params.p_operation_id).sourceSnapshot).toEqual(russian);
+        if (options.stageIssue && !finishFaulted) { catalogAdmission.fault(name, options.stageIssue); finishFaulted = true; }
+      }
+      const response = await catalogAdmission.fetchRpc(name, params), value = await response.json();
+      return response.ok ? { data: value, error: null } : { data: null, error: value };
+    }
     if (name === "get_premium_translation_working_draft") {
       expect(params).toEqual({ p_entity_type: "country", p_entity_id: countryId });
       if (options.readIssue === "missing") return { data: null, error: { code: "PGRST202", message: "Controlled private draft API missing" } };
@@ -218,6 +239,7 @@ async function fixture(options: FixtureOptions = {}) {
       return { data: { schemaVersion: 1, entityType: "country", entityId: countryId,
         draft: options.stageIssue === "malformed-ack" ? { ...structuredClone(draft), version: 0 } : structuredClone(draft) }, error: null };
     }
+    if (name === "profile_translation_budget_ready") return { data: true, error: null };
     if (name === "record_translation_sync_run") return { data: runId, error: null };
     if (name === "enqueue_public_build_request") return { data: "1", error: null };
     if (name === "mark_public_build_dispatched") return { data: null, error: null };
@@ -259,6 +281,10 @@ async function fixture(options: FixtureOptions = {}) {
     "next/cache": { revalidatePath: revalidate },
     fetch: network,
   });
+  if (!baseline) {
+    const catalogModule = modules("apps/admin/lib/editorial-catalog.ts");
+    catalogModule.loadEditorialCatalog = async () => ({ version: 1, countries: [{ id: countryId, label: russian.name, fields: inputSource, writers: [] }] });
+  }
   const identity = await modules("apps/admin/lib/premium-translation-probe.ts").premiumTranslationConfigurationIdentity();
   probe = { provider: "cloudflare", configured: true, binding_found: true, test_passed: true,
     model: "fixture-country-translator", latency_ms: 5, last_error_code: null,
@@ -279,7 +305,8 @@ async function fixture(options: FixtureOptions = {}) {
     const publicAfter = publicView();
     traces.push({ options, entrypoint, result, originalRow, rowAfter: structuredClone(row), privateDraft: structuredClone(draft), publicBefore, publicAfter,
       providerCalls: provider.mock.calls.length, builds: build.mock.calls.length, reads: structuredClone(reads), writes: structuredClone(writes), rpcCalls: structuredClone(rpcCalls),
-      sdkWire: structuredClone(sdkWire), sourceUnchanged: JSON.stringify(inputSource) === JSON.stringify(originalSource) });
+      sdkWire: structuredClone(sdkWire), catalogOperations: structuredClone([...catalogAdmission.operations.values()]),
+      sourceUnchanged: JSON.stringify(inputSource) === JSON.stringify(originalSource) });
     return publicAfter;
   };
   const runHelper = async () => {
@@ -332,7 +359,8 @@ describe("M07-T05 country technical machine success remains pending human review
     const completed = await view.runBatch();
     expect(view.provider).toHaveBeenCalledTimes(2);
     expect({ builds: view.build.mock.calls.length, enqueues: view.rpcCalls.filter((entry) => entry.name === "enqueue_public_build_request").length, row: view.row(), selected: completed.publicAfter.selected }).toEqual({ builds: 0, enqueues: 0, row: view.originalRow, selected: null });
-    expect(view.rpcCalls.find((entry) => entry.name === "record_translation_sync_run")?.args.p_kind).toBe("country");
+    expect(view.rpcCalls.filter(entry => entry.name === "finish_catalog_translation_operation" && entry.args.p_candidate)).toHaveLength(1);
+    expect(view.rpcCalls.filter(entry => entry.name === "record_translation_sync_run")).toHaveLength(0);
     expect(completed.publicAfter.localized).toEqual(view.publicBefore.localized);
     expect(view.inputSource).toEqual(view.originalSource);
   });
@@ -369,7 +397,7 @@ describe("M07-T05 country technical machine success remains pending human review
     expect(second.result).toMatchObject({ state: "review-pending", humanReview: "pending", workingDraftId: candidate!.id,
       workingDraftVersion: candidate!.version, workingDraftHash: candidate!.candidateHash });
     expect(view.provider).toHaveBeenCalledTimes(2); expect(view.draft()).toEqual(candidate); expect(view.row()).toEqual(view.originalRow);
-    expect(view.rpcCalls.filter(call => call.name === "stage_premium_translation_working_draft")).toHaveLength(1);
+    expect(view.rpcCalls.filter(call => call.name === "finish_catalog_translation_operation" && call.args.p_candidate)).toHaveLength(1);
     expect(second.publicAfter).toEqual(view.publicBefore); expect(view.build).not.toHaveBeenCalled();
     expect(JSON.stringify(view.writes)).not.toContain(wrongEnglish.description);
   });
@@ -381,9 +409,9 @@ describe("M07-T05 country technical machine success remains pending human review
   });
   it.each(["lost-ack", "malformed-ack"] as const)("private stage %s never claims success and a fresh read recovers pending without expense", async (stageIssue) => {
     const view = await fixture({ stageIssue }); const first = await view.runHelper(), candidate = view.draft(), second = await view.runHelper();
-    expect(first.result.state).not.toBe("translated"); expect(candidate).not.toBeNull(); expect(second.result.state).toBe("review-pending");
+    expect(first.result).toMatchObject({ state: "translated", humanReview: "pending", publication: "unchanged", translationPersistence: "working-draft" }); expect(candidate).not.toBeNull(); expect(second.result.state).toBe("review-pending");
     expect(view.provider).toHaveBeenCalledTimes(2); expect(view.draft()).toEqual(candidate); expect(view.row()).toEqual(view.originalRow);
-    expect(view.rpcCalls.filter(call => call.name === "stage_premium_translation_working_draft")).toHaveLength(1);
+    expect(view.rpcCalls.filter(call => call.name === "finish_catalog_translation_operation" && call.args.p_candidate)).toHaveLength(1);
     expect(second.publicAfter).toEqual(view.publicBefore); expect(view.build).not.toHaveBeenCalled();
   });
   it("changed static source metadata retains pending text and blocks expensive regeneration", async () => {
@@ -401,7 +429,11 @@ describe("M07-T05 country technical machine success remains pending human review
   });
   it("a concurrent human English winner prevents canonical overwrite and private staging", async () => {
     const view = await fixture({ race: "manual" }), completed = await view.runHelper();
-    expect(completed.result.state).toBe("conflict"); expect(view.provider).toHaveBeenCalledTimes(2);
+    // The original takeover remains between translator and reviewer. The new
+    // dispatch guard blocks review while preserving the received private body.
+    expect(completed.result.state).toBe("unconfirmed"); expect(view.provider).toHaveBeenCalledTimes(1);
+    expect(view.rpcCalls.filter(call => call.name === "record_catalog_translation_operation_response")).toHaveLength(1);
+    expect(view.rpcCalls.filter(call => call.name === "finish_catalog_translation_operation" && call.args.p_candidate)).toHaveLength(0);
     expect(view.row().fields.translations.en).toMatchObject({ method: "human-translation", status: "draft", author: "Concurrent human editor" });
     expect(view.writes.filter(write => write.table === "country_profile_overrides")).toEqual([]); expect(view.draft()).toBeNull();
     expect(view.row().fields.translations.fr).toEqual(view.originalRow.fields.translations.fr);

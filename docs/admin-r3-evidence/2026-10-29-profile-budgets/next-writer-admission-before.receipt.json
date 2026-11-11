@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-29T19:57:46.551Z",
+  "archive": {
+    "path": "docs/admin-r3-evidence/2026-10-29-profile-budgets/next-writer-admission-before.zip",
+    "sha256": "44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949",
+    "bytes": 138357,
+    "members": 51
+  },
+  "externalManifest": {
+    "file": "next-writer-admission-before.manifest.json",
+    "sha256": "66cc4b3a3bf68af33f0f4a4c4237710ca7c07be2aff52ffe8de8f1aa47a7bb33"
+  },
+  "checks": {
+    "originalArtifactsMatchStoredProvenance": true,
+    "exactArchiveMemberSet": true,
+    "internalManifestReadbackMatches": true,
+    "everyMemberSha256ReadbackMatches": true,
+    "everyMemberSizeReadbackMatches": true,
+    "unrelatedMembers": 0,
+    "narrowSecretPatternMatches": 0,
+    "credentialFileMembers": 0,
+    "currentExecutedSourceMatchesCapture": true
+  },
+  "beforeResult": {
+    "scenarioExit": 1,
+    "contractExit": 1,
+    "scenarioExecutionPreservationAndBindingPasses": 7,
+    "scenarioExecutionFailures": 0,
+    "scenarioTargetFailures": 2,
+    "invariantControlsPassed": 4,
+    "invariantTargetFailures": 2,
+    "firstActionProviderCalls": 1,
+    "firstActionPrivateCandidates": 0,
+    "secondActionProviderCalls": 2,
+    "secondActionPrivateCandidates": 1
+  },
+  "limitations": [
+    "No live network, provider, paid dispatch, Auth, DB, RLS, browser, public build, social or production operation.",
+    "Acceptance is simulated at the controlled Cloudflare AI binding, followed immediately by TimeoutError; this proves neither elapsed timeout duration nor external billing.",
+    "The invariant contract evaluates the actual runtime report. The original diagnostic runner additionally asserts defect-specific extra calls; future boundary/runner changes must be disclosed and cannot be described as an identical whole-runner PASS.",
+    "This is not full M07-T03 10-item/2-failure proof, T11 complete deadline/429 acceptance, T13 UI Continue-vs-Retry acceptance, concurrency admission proof, or completion of M07 /26 modules /230 criteria.",
+    "capture-provenance.cjs is the original historical binding verifier with original workspace-relative assumptions; portable member verification uses ARCHIVE_MEMBERS.sha256.json."
+  ],
+  "implementationScope": "No application/test/migration/README edits, no live services; archive preserves BEFORE failure, not completed acceptance."
+}

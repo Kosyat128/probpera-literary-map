@@ -1,0 +1,32 @@
+{
+  "classification": "SEPARATE_CURRENT_PROFILE_GLOBAL_1DE717_NEXT_PROOF_UNRESOLVED_NOT_ACCEPTANCE",
+  "archive": "docs/admin-r3-evidence/2026-10-30-stable-traversal/next-profile-traversal-current-1de717.zip",
+  "archiveBytes": 1885743,
+  "archiveSha256": "47cf32cefdb447dbe903fd2eb8cebb482399cf60a2e1f876c0fccda1ed76afa8",
+  "manifestSha256": "7f17145946392d41ead6645a6180547675a6d0c1728ca2a34cdfc3d92cedbb68",
+  "payloads": 66,
+  "zipEntries": 67,
+  "sourceCount": 36,
+  "supportCount": 6,
+  "globalSourceSha256": "1de7172827ad785bb99967618fb662e77ceeb556fa1c7ce5490d4084ad08bb47",
+  "globalSnapshotSha256": "a7791d3cb2ef5ec86a90e4686b2d0680cd48696ce3e334c44aa26bfb3c4f305c",
+  "all42BindingsMatchGlobal": true,
+  "currentDiagnosticSha256": "27129022a33a53f02166daa9c8ce734badd609d82217fe5f0bd182f92a34659c",
+  "currentReportSha256": "645d847c41da8cb93cc9775d709d5ca10f5c2aa85a070612792ec0a384b1bfca",
+  "originalBeforeArchiveSha256": "5489cdc6aa59f823d69357b5b76f9be057300882696569f297632080cb3a261a",
+  "contractSha256": "a988d0df137b66ef6822450d0307fb76222e2c706cc341a2b04a6ee5e5378008",
+  "independentExtractedReplay": {
+    "receiptSha256": "8724254710597adef9d75ab526ff8cc38330553d5264ce5a6110fdfc15935b85",
+    "normalizedActualReportSha256": "645d847c41da8cb93cc9775d709d5ca10f5c2aa85a070612792ec0a384b1bfca",
+    "targets": 8,
+    "targetFailures": 6,
+    "executionFailures": 0,
+    "providerCalls": 0,
+    "canonicalWrites": 0,
+    "publicBuilds": 0,
+    "allInputBytesUnchanged": true
+  },
+  "safeUniquePaths": true,
+  "noMaintainedSourceWrites": true,
+  "scope": "CURRENT unresolved next profile target failure on global frozen1de717. Original5489 BEFORE and intermediate63eb/f407 retained unchanged. Root broad/gates are separate; no M07/R3 acceptance or native profile proof."
+}

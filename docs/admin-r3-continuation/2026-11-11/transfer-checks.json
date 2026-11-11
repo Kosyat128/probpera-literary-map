@@ -1,0 +1,16 @@
+{
+  "classification": "TRANSFER_ARTIFACT_VERIFICATION_NOT_APPLICATION_TESTS",
+  "date": "2026-11-11",
+  "archivePayloadsVerified": 732,
+  "actualFreshRestore": true,
+  "freshIndexCheckouts": 2,
+  "exactByteChecksPassed": 22,
+  "gitDiffCheck": "PASS with cr-at-eol recognition for intentional raw CRLF fixtures",
+  "protectedSourceCheck": "PASS:4 normalizers,19 rule/test paths,16 import/call scopes,72 old migrations,6 Telegram paths,3 package files",
+  "independentAuditSha256": "9ca8e3ff2180686a9c283a7408eca0d3c476c9e6b0f90ed21abce468d56b3dff",
+  "applicationTestsRun": 0,
+  "latestM19M20ProductionStatus": "WIP_UNVERIFIED",
+  "remoteBefore": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "remoteBranch": "codex/admin-r3-data-errors",
+  "workflowTriggerReadback": "Production deploy/reconciliation workflows are main-only; no manual workflow dispatch performed"
+}

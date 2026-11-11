@@ -1,0 +1,12 @@
+{
+  "archive": "site-copy-ui-evidence.zip",
+  "sha256": "e63c52edb96360435dfa2eb3509bebf96921c1c2ccc54926123ac5a564e14be1",
+  "bytes": 496677,
+  "verifiedPayloads": 142,
+  "currentPhysicalBindings": 79,
+  "distinctVitestCasesPassed": 389,
+  "pending": 0,
+  "classification": "LOCAL_UI_ONLY_NOT_NATIVE_BROWSER_OR_FULL_R3_ACCEPTANCE",
+  "sourceReceipt": "parent work/site-copy-engine-sol/ui-evidence-receipt.json",
+  "independentReadback": "root-ui-packet-independent-readback.json"
+}

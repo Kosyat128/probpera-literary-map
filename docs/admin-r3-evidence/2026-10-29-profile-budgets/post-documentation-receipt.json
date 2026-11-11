@@ -1,0 +1,61 @@
+{
+  "status": "PASS_WITH_UNCHANGED_EXCLUDED_GATE_FAILURE",
+  "checkedAt": "2026-10-29T20:08:02.876Z",
+  "head": "acb910d89133396e8e9794e91bd5db74128dab3b",
+  "branch": "codex/admin-r3-data-errors",
+  "validationSourceFiles": 10421,
+  "validationSourceSha256": "a2134c72d6abd557c9c7821f55b637dd4483f711e58ff861d8a4385053589c31",
+  "sameAsFullBroadAndGates": true,
+  "nonDocChanges": [],
+  "trackedDocumentChanges": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "size": 408825,
+      "sha256": "abae6f6c06d58dc0b48e20f7ad74b46a219275c7eb7df560605f521912797800"
+    }
+  ],
+  "readonly": {
+    "exitCode": 1,
+    "byteIdenticalToFinalV2": true,
+    "findings": 41,
+    "logSha256": "6a73a9afae8202a6eb74c82c2388616c9bda13b5594949adc88e0e8688dbca8b",
+    "normalizerWriteFlagUsed": false
+  },
+  "verificationDiagnostic": "The first post-documentation wrapper incorrectly expected this existing console.error report on stdout. Only the wrapper stream assertion was corrected; gate remained the identical41-file stderr failure. This wrapper issue changed no repository source.",
+  "finalDocuments": [
+    {
+      "path": "docs/CODEX_ADMIN_EXECUTION_STATE.md",
+      "sha256": "abae6f6c06d58dc0b48e20f7ad74b46a219275c7eb7df560605f521912797800"
+    },
+    {
+      "path": "docs/admin-r3-evidence/2026-10-29-profile-budgets/README.md",
+      "sha256": "412cd02f8fd353696aa7732823a7039d1f1b4d84cb22b87948532023601397ba"
+    }
+  ],
+  "archiveHashes": [
+    {
+      "file": "country-budget-before.zip",
+      "sha256": "6fc49faa517a1d0c544cde0b3c7d8ecf95aba62fa0465c199e293d804bb17875"
+    },
+    {
+      "file": "next-writer-admission-before.zip",
+      "sha256": "44eceea641f3b19178a24b0824fa14b6adef0c77f4933db038d9a2404e498949"
+    },
+    {
+      "file": "runtime-regression-evidence-typefix.zip",
+      "sha256": "143141b7d38d093a26572752f69231fb865951dbd868cd1b3d6e84af1c2c38b3"
+    },
+    {
+      "file": "runtime-regression-evidence.zip",
+      "sha256": "63bad20db74b9a90a13427798fd313b9ad06a92a8c5abdc0bceda4995a44d9fd"
+    },
+    {
+      "file": "sql-evidence.zip",
+      "sha256": "958ea4df53fba7890ecc739bdf1ec8e23cbb00611e8ada1ba13d67e4a089f2ec"
+    },
+    {
+      "file": "whole-validation-evidence.zip",
+      "sha256": "383dcab8d3789600025c07ca796ab98bbca28714232ddd78dd08971fcc559d07"
+    }
+  ]
+}

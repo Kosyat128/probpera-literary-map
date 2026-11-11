@@ -1,12 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { unstable_rethrow } from "next/navigation";
+import { z } from "zod";
 import { redirect } from "@/lib/navigation";
 
-import {
-  translateSiteCopyBatchToEnglish,
-  translationSourceHash,
-} from "@/lib/auto-translate-site-copy";
+import { ensureSiteCopyEnglishTranslation } from "@/lib/auto-translate-site-copy-private";
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import {
@@ -29,39 +28,11 @@ import {
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 const SITE_COPY_DISPLAY_ORDER = 2_000_000_000;
 const MAX_COPY_LENGTH = 4_000;
-const TRANSLATION_BATCH_SIZE = 50;
-
-type MachineCopyState = Record<
-  string,
-  {
-    sourceHash: string;
-    model?: string;
-    reviewerModel?: string | null;
-    generatedAt?: string;
-  }
->;
 
 function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : {};
-}
-
-function readMachineCopyState(value: unknown): MachineCopyState {
-  const result: MachineCopyState = {};
-  for (const [key, rawEntry] of Object.entries(objectValue(value))) {
-    const entry = objectValue(rawEntry);
-    if (typeof entry.sourceHash !== "string" || !entry.sourceHash.trim()) continue;
-    result[key] = {
-      sourceHash: entry.sourceHash.trim(),
-      model: typeof entry.model === "string" ? entry.model : undefined,
-      reviewerModel:
-        typeof entry.reviewerModel === "string" ? entry.reviewerModel : null,
-      generatedAt:
-        typeof entry.generatedAt === "string" ? entry.generatedAt : undefined,
-    };
-  }
-  return result;
 }
 
 function isAllowedCopyKey(key: string, allowedKeys: ReadonlySet<string>) {
@@ -127,98 +98,6 @@ function submittedRows(
   return rows;
 }
 
-async function autoTranslateChangedRows({
-  rows,
-  existingSettings,
-  supabase,
-}: {
-  rows: ReturnType<typeof submittedRows>;
-  existingSettings: Record<string, unknown>;
-  supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>;
-}) {
-  const current = readSiteCopyValues(existingSettings.siteCopy);
-  const premiumState = objectValue(existingSettings.premiumTranslation);
-  const machine = readMachineCopyState(premiumState.siteCopyEn);
-  const pending: Array<{ key: string; text: string; sourceHash: string }> = [];
-
-  for (const row of rows) {
-    const previousRu = current.ru[row.key] || "";
-    const previousEn = current.en[row.key] || "";
-    const ruChanged = row.ru !== previousRu;
-    const enChanged = row.en !== previousEn;
-
-    if (!row.ru) {
-      delete machine[row.key];
-      continue;
-    }
-    if (enChanged) {
-      // Any explicit English edit becomes human-owned immediately.
-      delete machine[row.key];
-    }
-    if (!ruChanged) continue;
-
-    const sourceHash = await translationSourceHash({ key: row.key, text: row.ru });
-    const machineOwned = Boolean(machine[row.key]);
-    const shouldTranslate = !row.en || (machineOwned && !enChanged);
-    if (shouldTranslate) pending.push({ key: row.key, text: row.ru, sourceHash });
-  }
-
-  if (!pending.length || !adminEnv.openAiAutoTranslateSiteCopy) {
-    return {
-      rows,
-      machine,
-      translationCalls: 0,
-      translationModel: null as string | null,
-      translationReviewerModel: null as string | null,
-    };
-  }
-  if (!(await premiumTranslationRuntimeGate(supabase))) {
-    throw new Error("translation provider is not configured");
-  }
-
-  const runtime = premiumTranslationRuntimeMetadata();
-  const translatedByKey = new Map<string, string>();
-  let translationCalls = 0;
-  let lastModel = runtime.model;
-  let lastReviewerModel: string | null = runtime.reviewerModel;
-  for (let start = 0; start < pending.length; start += TRANSLATION_BATCH_SIZE) {
-    const batch = pending.slice(start, start + TRANSLATION_BATCH_SIZE);
-    const translated = await translateSiteCopyBatchToEnglish(
-      batch.map(({ key, text }) => ({ key, text }))
-    );
-    if (!translated) continue;
-    translationCalls += 1;
-    lastModel = translated.translatorModel;
-    lastReviewerModel = translated.reviewerModel;
-    for (const item of translated.value.items) {
-      translatedByKey.set(item.key, item.text);
-    }
-  }
-
-  const generatedAt = new Date().toISOString();
-  const enrichedRows = rows.map((row) => {
-    const translated = translatedByKey.get(row.key);
-    if (!translated) return row;
-    const pendingItem = pending.find((item) => item.key === row.key);
-    if (!pendingItem) return row;
-    machine[row.key] = {
-      sourceHash: pendingItem.sourceHash,
-      model: lastModel,
-      reviewerModel: lastReviewerModel,
-      generatedAt,
-    };
-    return { ...row, en: translated };
-  });
-
-  return {
-    rows: enrichedRows,
-    machine,
-    translationCalls,
-    translationModel: translationCalls ? lastModel : null,
-    translationReviewerModel: translationCalls ? lastReviewerModel : null,
-  };
-}
-
 export async function saveSiteCopyAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
@@ -242,37 +121,46 @@ export async function saveSiteCopyAction(formData: FormData) {
     .select("id,settings,updated_at")
     .contains("settings", { systemKey: SITE_COPY_SYSTEM_KEY })
     .order("updated_at", { ascending: false })
-    .limit(1);
-  if (existingError) {
+    .limit(2);
+  unstable_rethrow(existingError);
+  const existingResult = z.array(z.object({
+    id: z.string().uuid(), settings: z.record(z.string(), z.unknown()),
+    updated_at: z.string().datetime({ offset: true }),
+  })).max(1).safeParse(existingRows);
+  if (existingError || !existingResult.success) {
     redirect("/site-copy?errorCode=database_read_failed");
   }
 
-  const existing = existingRows?.[0];
-  if (existing && (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt)) {
+  const existing = existingResult.data[0];
+  if ((!existing && expectedUpdatedAt) ||
+      (existing && (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt))) {
     redirect(
       "/site-copy?errorCode=write_conflict"
     );
   }
   const existingSettings = objectValue(existing?.settings);
 
-  let translationResult: Awaited<ReturnType<typeof autoTranslateChangedRows>>;
-  try {
-    translationResult = await autoTranslateChangedRows({
-      rows,
-      existingSettings,
-      supabase,
-    });
-  } catch (error) {
-    redirect(
-      `/site-copy?errorCode=${translationErrorCode(error)}`
-    );
+  const rawCopy = objectValue(existingSettings.siteCopy);
+  const existingPremium = objectValue(existingSettings.premiumTranslation);
+  const rawMachine = existingPremium.siteCopyEn;
+  const rawMaps = [existingSettings.siteCopy, rawCopy.ru, rawCopy.en,
+    existingSettings.premiumTranslation, rawMachine];
+  if (rawMaps.some(value => value != null && (typeof value !== "object" || Array.isArray(value)))) {
+    redirect("/site-copy?errorCode=database_read_failed");
+  }
+  const previousCopy = readSiteCopyValues(existingSettings.siteCopy);
+  const machine = { ...objectValue(rawMachine) };
+  const changedRussianKeys: string[] = [];
+  for (const row of rows) {
+    if (row.ru && row.ru !== (previousCopy.ru[row.key] || "")) changedRussianKeys.push(row.key);
+    if ((!row.ru && row.ru !== (previousCopy.ru[row.key] || "")) ||
+        row.en !== (previousCopy.en[row.key] || "")) delete machine[row.key];
   }
 
   const { ru, en } = mergeSiteCopyRows(
     readSiteCopyValues(existingSettings.siteCopy),
-    translationResult.rows
+    rows
   );
-  const existingPremium = objectValue(existingSettings.premiumTranslation);
   const runtime = premiumTranslationRuntimeMetadata();
 
   const payload = {
@@ -285,7 +173,7 @@ export async function saveSiteCopyAction(formData: FormData) {
       siteCopy: normalizeShortHyphensDeep({ ru, en }),
       premiumTranslation: {
         ...existingPremium,
-        siteCopyEn: translationResult.machine,
+        siteCopyEn: machine,
         provider: runtime.provider,
         model: runtime.model,
         reviewerModel: runtime.reviewerModel,
@@ -300,27 +188,44 @@ export async function saveSiteCopyAction(formData: FormData) {
     updated_by: session.user.id,
   };
 
+  // Apply the existing editor projection only to submitted keys. Unsubmitted
+  // authored values, other locales and unrelated settings retain their raw JSON.
+  const retainedCopy = { ...rawCopy, ru: { ...objectValue(rawCopy.ru) }, en: { ...objectValue(rawCopy.en) } };
+  for (const row of rows) {
+    if (row.ru !== (previousCopy.ru[row.key] || "") || !Object.hasOwn(retainedCopy.ru, row.key)) {
+      if (Object.hasOwn(payload.settings.siteCopy.ru, row.key)) retainedCopy.ru[row.key] = payload.settings.siteCopy.ru[row.key];
+      else delete retainedCopy.ru[row.key];
+    }
+    if (row.en !== (previousCopy.en[row.key] || "") || !Object.hasOwn(retainedCopy.en, row.key)) {
+      if (Object.hasOwn(payload.settings.siteCopy.en, row.key)) retainedCopy.en[row.key] = payload.settings.siteCopy.en[row.key];
+      else delete retainedCopy.en[row.key];
+    }
+  }
+  payload.settings.siteCopy = retainedCopy as typeof payload.settings.siteCopy;
+
   const { data: blockId, error: saveError } = await supabase.rpc(
     "save_site_copy_block",
     {
-      p_expected_updated_at: existing ? expectedUpdatedAt : null,
+      p_expected_updated_at: expectedUpdatedAt || null,
       p_payload: payload,
       p_audit_metadata: {
         russian_overrides: Object.keys(ru).length,
         english_overrides: Object.keys(en).length,
-        premium_translation_calls: translationResult.translationCalls,
+        premium_translation_calls: 0,
         translation_provider: runtime.provider,
-        translation_model: translationResult.translationModel || runtime.model,
-        translation_reviewer_model:
-          translationResult.translationReviewerModel ?? runtime.reviewerModel,
+        translation_model: runtime.model,
+        translation_reviewer_model: runtime.reviewerModel,
       },
     }
   );
+  unstable_rethrow(saveError);
   if (saveError?.message === "SITE_COPY_WRITE_CONFLICT") {
     redirect("/site-copy?errorCode=write_conflict");
   }
   if (saveError) redirect("/site-copy?errorCode=database_write_failed");
-  if (!blockId) redirect("/site-copy?errorCode=database_write_failed");
+  if (!z.string().uuid().safeParse(blockId).success || existing && blockId !== existing.id) {
+    redirect("/site-copy?errorCode=database_write_failed");
+  }
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
@@ -330,7 +235,40 @@ export async function saveSiteCopyAction(formData: FormData) {
     metadata: { storage: "homepage_blocks" },
   });
 
+  let translationState = "";
+  let translationError = "";
+  let translationOperation = "";
+  if (adminEnv.openAiAutoTranslateSiteCopy && changedRussianKeys.length) {
+    try {
+      if (!(await premiumTranslationRuntimeGate(supabase))) {
+        translationState = "not-configured";
+        translationError = "translation_not_configured";
+      } else {
+        const translation = await ensureSiteCopyEnglishTranslation({
+          supabase, actorId: session.user.id, blockId, keys: [...new Set(changedRussianKeys)], runtimeApproved: true,
+        });
+        translationState = translation.state;
+        translationOperation = translation.operation?.operationId || "";
+        if (["failed", "not-ready", "not-configured", "conflict", "unconfirmed", "cancelled"].includes(translation.state)) {
+          translationError = translation.errorCode || (translation.state === "unconfirmed" ? "translation_retry_unconfirmed"
+            : translation.state === "cancelled" ? "translation_operation_stopped"
+            : translation.state === "not-ready" ? "translation_migration_required"
+            : translation.state === "not-configured" ? "translation_not_configured"
+              : translation.state === "conflict" ? "write_conflict" : translationErrorCode(translation.error));
+        }
+      }
+    } catch (error) {
+      unstable_rethrow(error);
+      translationState = "failed";
+      translationError = translationErrorCode(error);
+    }
+  }
+
   revalidatePath("/site-copy");
   revalidatePath("/homepage");
-  redirect(`/site-copy?saved=1&published=${publication.state}`);
+  const query = new URLSearchParams({ saved: "1", published: publication.state });
+  if (translationState) query.set("translation", translationState);
+  if (translationError) query.set("errorCode", translationError);
+  if (translationOperation) query.set("translation_operation", translationOperation);
+  redirect(`/site-copy?${query.toString()}`);
 }

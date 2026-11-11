@@ -1,0 +1,22 @@
+{
+  "archive": "sql-evidence.zip",
+  "sha256": "2aaef4668139ff281e84bc48981284e09bb2378b7722abdfc8266f794f3ed887",
+  "bytes": 639702,
+  "verifiedPayloads": 103,
+  "sourceCount": 33,
+  "nativeGroupsPassed": 27,
+  "nativeFunctionsMatched": 21,
+  "nativeDtoChecksPassed": 41,
+  "advisors": {
+    "exitCode": 1,
+    "inheritedFixtureFindings": 15,
+    "newProductionFindings": 0
+  },
+  "lint": "NOT_RUN_PLPGSQL_CHECK_UNAVAILABLE_NO_INSTALL",
+  "ownedPids": [
+    5804,
+    18088
+  ],
+  "ownedProcessesStopped": true,
+  "historyScope": "Full old v1-v6 logs were overwritten by their runner; honest observed excerpts only. Genuine full v7 history and final v8 raw retained. No first-pass claim."
+}

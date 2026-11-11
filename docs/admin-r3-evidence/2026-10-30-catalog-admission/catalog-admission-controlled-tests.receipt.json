@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "atUtc": "2026-10-29T22:48:41.888Z",
+  "archive": "catalog-admission-controlled-tests.zip",
+  "sha256": "bda52fadf61c67fac65e09881139006801656c451ae945b6fd6449bc37a95ab9",
+  "bytes": 1579515,
+  "verifiedEntries": 229,
+  "members": 230,
+  "manifestSha256": "b91959dbb79bd590b3f0c35d3c91860e738ed5151783cbcd6e0c3475d958d982",
+  "sourceFiles": 144,
+  "ownedMaintainedFiles": 16,
+  "focused": {
+    "uniqueTests": 395,
+    "passed": 395,
+    "files": 15,
+    "sessions": [
+      361,
+      34
+    ],
+    "typecheckExitAfter16thAdapter": 0
+  },
+  "nativeDto": {
+    "checks": 41,
+    "passed": 41
+  },
+  "originalInvariant": {
+    "beforeTargetFailures": 4,
+    "currentTargetFailures": 0,
+    "controlFailures": 0
+  },
+  "readback": "Every internal path, byte length and SHA256 verified after reopening written ZIP. Root globalV2 selected source hashes and all16owned freeze hashes match.",
+  "limitations": "Scoped controlled evidence; independent next book/country review-preflight failures remain open. Root broadV1failurehistory retained; V2/gates separately reported. No production/live/billing/global completion claim."
+}

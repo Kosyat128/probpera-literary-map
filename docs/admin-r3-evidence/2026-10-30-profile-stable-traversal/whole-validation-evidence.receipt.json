@@ -1,0 +1,15 @@
+{
+  "archive": "whole-validation-evidence.zip",
+  "sha256": "b66820cc11c51824d68a1c59968bd34077e18c52eb96f06dcd14f1c84a535326",
+  "bytes": 4512244,
+  "verifiedPayloads": 101,
+  "sourceFingerprint": "1af04f3230b3395637a3e06090c1b25c72c66735d4c185be36c626374e4df02e",
+  "testFiles": 215,
+  "testsPassed": 6768,
+  "testsFailed": 6,
+  "sameSixHistoricalM02Failures": true,
+  "gatesPassed": 4,
+  "gatesTotal": 5,
+  "readonlyBaselineFindings": 41,
+  "zeroSourceDrift": true
+}

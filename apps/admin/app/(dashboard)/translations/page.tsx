@@ -7,6 +7,13 @@ import {
 } from "@/lib/admin-read-result";
 import { adminEnv } from "@/lib/env";
 import { decodeArticleTranslationResumeCursor } from "@/lib/article-translation-scan";
+import { catalogTranslationOperationMarker } from "@/lib/catalog-translation-operation-marker";
+import { writerTranslationOperationMarker } from "@/lib/writer-translation-operation-marker";
+import { siteCopyTranslationOperationMarker, siteCopyTranslationMarkerMatchesReceipt } from "@/lib/site-copy-translation-operation-marker";
+import { readSiteCopyTranslationOperation } from "@/lib/site-copy-translation-operation-read";
+import { getLibraryTranslationScan, type LibraryTranslationScanReceipt } from "@/lib/library-translation-scan-rpc";
+import { getProfileTranslationScan, profileTranslationScanOrdinal, type ProfileTranslationScanKind,
+  type ProfileTranslationScanReceipt } from "@/lib/profile-translation-scan-rpc";
 import type { ArticleTranslationItemRetryReceipt, ArticleTranslationItemRetryProgress, ArticleTranslationItemRetryCandidate } from "@/lib/article-translation-item-retry";
 import { canFinalizeOrdinaryCandidate, type ArticleTranslationOrdinaryReceipt } from "@/lib/article-translation-ordinary-rpc";
 import { formatDate, safeCount } from "@/lib/format";
@@ -34,6 +41,7 @@ import {
 import { translatePremiumCountryBatchAction } from "./country-actions";
 import { runPremiumTranslationSelfTestAction } from "./self-test-action";
 import { resumeTranslationJobAction } from "./resume-action";
+import SiteCopyTranslationOperationReceiptPanel from "./SiteCopyTranslationOperationReceiptPanel";
 
 export const metadata = { title: "Premium English" };
 export const dynamic = "force-dynamic";
@@ -41,9 +49,13 @@ export const dynamic = "force-dynamic";
 type BackfillCursorQuery = {
   articleJob?: string;
   articleCursor?: string;
+  libraryJob?: string;
   libraryCursor?: string;
   writerCursor?: string;
   countryCursor?: string;
+  writerJob?: string;
+  countryJob?: string;
+  siteCopyOperation?: string;
 };
 
 type RetryQuery = { retryJob?: string; retryItem?: string; retryOperation?: string };
@@ -90,7 +102,7 @@ const candidateBlockMessages: Record<NonNullable<ArticleTranslationItemRetryCand
 
 function retrySelectionHref(query: BackfillCursorQuery, selection: RetryQuery) {
   const search = new URLSearchParams();
-  for (const key of ["articleJob", "articleCursor", "libraryCursor", "writerCursor", "countryCursor"] as const) {
+  for (const key of ["articleJob", "articleCursor", "libraryJob", "libraryCursor", "writerJob", "writerCursor", "countryJob", "countryCursor", "siteCopyOperation"] as const) {
     if (typeof query[key] === "string") search.set(key, query[key]);
   }
   for (const [key, value] of Object.entries(selection)) {
@@ -196,6 +208,9 @@ function BackfillCursorFields({ query, articleScan = false }: { query: BackfillC
   return (
     <>
       {query.articleJob !== undefined && <input type="hidden" name="articleJob" value={query.articleJob} />}
+      {query.libraryJob !== undefined && <input type="hidden" name="libraryJob" value={query.libraryJob} />}
+      {query.writerJob !== undefined && <input type="hidden" name="writerJob" value={query.writerJob} />}
+      {query.countryJob !== undefined && <input type="hidden" name="countryJob" value={query.countryJob} />}
       {!articleScan && <input type="hidden" name="articleCursor" value={query.articleCursor || "0"} />}
       <input type="hidden" name="libraryCursor" value={query.libraryCursor || "0"} />
       <input type="hidden" name="writerCursor" value={query.writerCursor || "0"} />
@@ -235,6 +250,56 @@ function validDate(value: unknown) {
 // Read validity and the resume action's accepted IDs are separate contracts.
 function supportsJobResumeId(id: string) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(id);
+}
+
+async function readLibraryScan(
+  supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>,
+  jobId: string,
+): Promise<AdminReadResult<LibraryTranslationScanReceipt>> {
+  if (!supportsJobResumeId(jobId)) return { status: "failed", issue: "invalid" };
+  if (!supabase) return { status: "failed", issue: "unavailable" };
+  try {
+    return { status: "success", data: await getLibraryTranslationScan(supabase, jobId) };
+  } catch (error) {
+    unstable_rethrow(error);
+    return { status: "failed", issue: "unavailable" };
+  }
+}
+
+function canContinueLibraryScan(scan: LibraryTranslationScanReceipt) {
+  return !scan.exhausted && (scan.child !== null ||
+    scan.status !== "cancelled" && scan.status !== "cancelling");
+}
+
+async function readProfileScan(
+  supabase: Awaited<ReturnType<typeof createServerSupabaseClient>>,
+  jobId: string,
+  kind: ProfileTranslationScanKind,
+): Promise<AdminReadResult<ProfileTranslationScanReceipt>> {
+  if (!supportsJobResumeId(jobId)) return { status: "failed", issue: "invalid" };
+  if (!supabase) return { status: "failed", issue: "unavailable" };
+  try {
+    return { status: "success", data: await getProfileTranslationScan(supabase, jobId, kind) };
+  } catch (error) {
+    unstable_rethrow(error);
+    return { status: "failed", issue: "unavailable" };
+  }
+}
+
+function canContinueProfileScan(scan: ProfileTranslationScanReceipt) {
+  return !scan.exhausted && (scan.child !== null ||
+    scan.status !== "cancelled" && scan.status !== "cancelling");
+}
+
+function ProfileScanSummary({ scan }: { scan: ProfileTranslationScanReceipt }) {
+  return <p role="status">Окно {scan.windowIndex + 1} из {scan.windowCount}: подтверждено {scan.nextPosition} из {scan.totalItems} записей этого окна.
+    {" "}В исходном наборе {scan.totalMembership} записей.
+    {scan.status === "cancelled" || scan.status === "cancelling"
+      ? scan.child !== null ? " Обход остановлен в этом окне. Продолжение сначала проверит сохранённый результат текущей записи."
+        : " Обход остановлен в этом окне. Новый обход начинается отдельно."
+      : scan.exhausted ? " Этот обход завершён. Новые записи проверяются новым обходом."
+      : scan.child !== null ? " Сначала будет проверен сохранённый результат текущей записи."
+      : " Продолжение использует исходный список. Перестановка записей в каталоге не меняет этот порядок."}</p>;
 }
 
 function validSiteCopyRow(row: Record<string, unknown>) {
@@ -347,13 +412,17 @@ export default async function PremiumTranslationsPage({
     publication?: string;
     articleCursor?: string;
     articleJob?: string;
+    libraryJob?: string;
     libraryCursor?: string;
     writerCursor?: string;
     countryCursor?: string;
+    writerJob?: string;
+    countryJob?: string;
     selfTest?: string;
     retryJob?: string;
     retryItem?: string;
     retryOperation?: string;
+    siteCopyOperation?: string;
   }>;
 }) {
   const query = await searchParams;
@@ -362,11 +431,15 @@ export default async function PremiumTranslationsPage({
     ? { status: "fulfilled", value: { data: catalogResult.value, error: null } }
     : catalogResult, validEditorialCatalog);
   const retrySearch = new URLSearchParams();
-  for (const key of ["articleCursor", "articleJob", "libraryCursor", "writerCursor", "countryCursor", "retryJob", "retryItem", "retryOperation"] as const) {
+  for (const key of ["articleCursor", "articleJob", "libraryJob", "libraryCursor", "writerJob", "writerCursor", "countryJob", "countryCursor", "retryJob", "retryItem", "retryOperation", "siteCopyOperation"] as const) {
     if (query[key] !== undefined) retrySearch.set(key, query[key]);
   }
   const retryHref = `${getAdminBasePathFromEnv(process.env.ADMIN_BASE_PATH)}/translations${retrySearch.size ? `?${retrySearch.toString()}` : ""}`;
   const supabase = await createServerSupabaseClient();
+  const siteCopyScopeRead = await readSiteCopyTranslationOperation(supabase);
+  const selectedSiteCopyRead = query.siteCopyOperation === undefined ? siteCopyScopeRead
+    : await readSiteCopyTranslationOperation(supabase, { operationId: query.siteCopyOperation });
+  const siteCopyIntent = crypto.randomUUID();
   const unavailableRead = { status: "rejected", reason: null } as const;
 
   const [
@@ -408,7 +481,7 @@ export default async function PremiumTranslationsPage({
           .select("settings")
           .contains("settings", { systemKey: "site-copy-overrides" })
           .order("updated_at", { ascending: false })
-          .limit(1),
+          .limit(2),
         supabase.rpc("premium_machine_translation_ready"),
         supabase.rpc("translation_operations_ready"),
         supabase.rpc("get_translation_operations_status"),
@@ -425,7 +498,8 @@ export default async function PremiumTranslationsPage({
   const articleEnglishCountRead = countRead(articleEnglishCountResult);
   const workRussianCountRead = countRead(workRussianCountResult);
   const workEnglishCountRead = countRead(workEnglishCountResult);
-  const siteCopyRead = readAdminList(siteCopyResult, validSiteCopyRow);
+  let siteCopyRead = readAdminList(siteCopyResult, validSiteCopyRow);
+  if (siteCopyRead.status === "success" && siteCopyRead.data.length > 1) siteCopyRead = { status: "failed", issue: "invalid" };
   const machineRead = readAdminResult(machineWorkReadiness, (data) => typeof data === "boolean");
   const operationsReadinessRead = readAdminResult(translationOperationsReadiness, (data) => typeof data === "boolean");
   const operationsRead = readAdminResult(translationOperationsStatus, validOperations);
@@ -464,11 +538,19 @@ export default async function PremiumTranslationsPage({
     (operationsReady === false || operationsRead.status === "success");
   const articleReady = batchReady && articleSyncRead.status === "success" && articleSyncRead.data === true &&
     articleCountRead.status === "success" && articleEnglishCountRead.status === "success";
-  const libraryReady = batchReady && bookDbReady === true && workRussianCountRead.status === "success" && workEnglishCountRead.status === "success";
-  const writerReady = batchReady && catalogRead.status === "success";
+  const libraryReady = batchReady && operationsReady === true && bookDbReady === true && workRussianCountRead.status === "success" && workEnglishCountRead.status === "success";
+  const writerReady = batchReady && operationsReady === true && catalogRead.status === "success";
   const countryReady = writerReady;
-  const siteCopyReady = batchReady && siteCopyRead.status === "success";
+  const siteCopyReady = batchReady && operationsReady === true && adminEnv.openAiAutoTranslateSiteCopy &&
+    siteCopyRead.status === "success" && siteCopyScopeRead.status === "success" &&
+    (siteCopyScopeRead.data === null || siteCopyScopeRead.data.phase === "finished");
   const resumeReadyByKind = { article: articleReady, literary_work: libraryReady, writer: writerReady, country: countryReady, site_copy: siteCopyReady };
+  const siteCopyJobReads = new Map(await Promise.all(recentJobs.slice(0, 6).flatMap(job => {
+    const marker = siteCopyTranslationOperationMarker(job.resumeCursor);
+    return job.kind === "site_copy" && typeof job.id === "string" && marker.kind === "operation"
+      ? [readSiteCopyTranslationOperation(supabase, { operationId: marker.operationId, jobId: job.id })
+        .then(read => [String(job.id).toLowerCase(), read] as const)] : [];
+  })));
   const selectedArticleJobRead = query.articleJob === undefined ? null : readAdminResult(
     (await Promise.allSettled([supabase && supportsJobResumeId(query.articleJob)
       ? supabase.rpc("get_translation_job_resume", { p_job_id: query.articleJob })
@@ -481,6 +563,38 @@ export default async function PremiumTranslationsPage({
   const selectedArticleStatus = selectedArticleJobRead?.status === "success" ? objectValue(selectedArticleJobRead.data).status : null;
   const canContinueArticleScan = selectedArticleScan?.kind === "scan" && !selectedArticleScan.state.exhausted &&
     selectedArticleStatus !== "cancelled" && selectedArticleStatus !== "cancelling" && selectedArticleStatus !== "reviewing";
+  const libraryJobIds = [...new Set([
+    ...(query.libraryJob === undefined ? [] : [query.libraryJob]),
+    ...recentJobs.slice(0, 6).filter(job => job.kind === "literary_work" &&
+      Object.hasOwn(objectValue(job.resumeCursor), "libraryScan") &&
+      catalogTranslationOperationMarker(job.resumeCursor).kind === "none").map(job => String(job.id)),
+  ])];
+  const libraryScanReads = new Map(await Promise.all(libraryJobIds.map(async id => [id.toLowerCase(), await readLibraryScan(supabase, id)] as const)));
+  const selectedLibraryRead = query.libraryJob === undefined ? null : libraryScanReads.get(query.libraryJob.toLowerCase())!;
+  const selectedLibraryScan = selectedLibraryRead?.status === "success" ? selectedLibraryRead.data : null;
+  const libraryScanIntent = crypto.randomUUID();
+  const staleLibraryOrdinal = query.libraryJob === undefined && query.libraryCursor !== undefined && query.libraryCursor !== "0";
+  const profileRequests = new Map<string, { id: string; kind: ProfileTranslationScanKind }>();
+  for (const kind of ["writer", "country"] as const) {
+    const id = query[kind === "writer" ? "writerJob" : "countryJob"];
+    if (id !== undefined) profileRequests.set(`${kind}:${id.toLowerCase()}`, { id, kind });
+  }
+  for (const job of recentJobs.slice(0, 6)) {
+    if ((job.kind === "writer" || job.kind === "country") && Object.hasOwn(objectValue(job.resumeCursor), "profileScan") &&
+      writerTranslationOperationMarker(job.resumeCursor).kind === "none" && catalogTranslationOperationMarker(job.resumeCursor).kind === "none") {
+      const id = String(job.id);
+      profileRequests.set(`${job.kind}:${id.toLowerCase()}`, { id, kind: job.kind });
+    }
+  }
+  const profileScanReads = new Map(await Promise.all([...profileRequests].map(async ([key, request]) =>
+    [key, await readProfileScan(supabase, request.id, request.kind)] as const)));
+  const selectedWriterRead = query.writerJob === undefined ? null : profileScanReads.get(`writer:${query.writerJob.toLowerCase()}`)!;
+  const selectedCountryRead = query.countryJob === undefined ? null : profileScanReads.get(`country:${query.countryJob.toLowerCase()}`)!;
+  const selectedWriterScan = selectedWriterRead?.status === "success" ? selectedWriterRead.data : null;
+  const selectedCountryScan = selectedCountryRead?.status === "success" ? selectedCountryRead.data : null;
+  const writerScanIntent = crypto.randomUUID(), countryScanIntent = crypto.randomUUID();
+  const staleWriterOrdinal = query.writerJob === undefined && query.writerCursor !== undefined && query.writerCursor !== "0";
+  const staleCountryOrdinal = query.countryJob === undefined && query.countryCursor !== undefined && query.countryCursor !== "0";
   const retrySelection = await readRetrySelection(query, supabase);
   const retryReceipt = retrySelection?.receipt?.status === "success" ? retrySelection.receipt.data : null;
   const retryCandidate = retrySelection?.candidate?.status === "success" ? retrySelection.candidate.data : null;
@@ -565,6 +679,22 @@ export default async function PremiumTranslationsPage({
       {selectedArticleStatus === "reviewing" && (
         <p className="notice" role="status">{translationErrorMessage("translation_retry_pending")}</p>
       )}
+      {selectedLibraryRead?.status === "failed" && (
+        <LoadNotice label="Позиция обхода книг" issue={selectedLibraryRead.issue} retryHref={retryHref} />
+      )}
+      {staleLibraryOrdinal && <p className="notice" role="status">
+        Прежняя числовая позиция не подтверждает сохранённый состав книг. Начните новый обход библиотеки с нуля.
+      </p>}
+      {selectedWriterRead?.status === "failed" && <LoadNotice label="Позиция обхода биографий" issue={selectedWriterRead.issue} retryHref={retryHref} />}
+      {selectedCountryRead?.status === "failed" && <LoadNotice label="Позиция обхода стран" issue={selectedCountryRead.issue} retryHref={retryHref} />}
+      {(staleWriterOrdinal || staleCountryOrdinal) && <p className="notice" role="status">
+        Прежняя числовая позиция не подтверждает исходный список биографий или стран. Начните нужный обход отдельной кнопкой.
+      </p>}
+
+      <SiteCopyTranslationOperationReceiptPanel read={selectedSiteCopyRead} />
+      {query.siteCopyOperation !== undefined && selectedSiteCopyRead.status === "failed" &&
+        siteCopyScopeRead.status === "success" && siteCopyScopeRead.data !== null &&
+        <SiteCopyTranslationOperationReceiptPanel read={siteCopyScopeRead} />}
 
       <section className="dashboard-grid">
         <article className="panel">
@@ -601,7 +731,7 @@ export default async function PremiumTranslationsPage({
           {operationsReady === null
             ? "Не удалось проверить готовность очереди. Повторите чтение данных перед запуском задания."
             : operationsReady
-            ? "Каждый малый пакет сохраняет задания, элементы, попытки, статусы и следующий курсор в приватной базе без исходных текстов и сырых ответов провайдера. Кнопка продолжения - активный ограниченный staff-runner с сохранённой позиции. Service-role lease API также закрыт от браузера и готов для отдельного фонового worker, но расписание worker в этом интерфейсе не заявляется."
+            ? "Журнал сохраняет задания, попытки, статусы и подтверждённую позицию. Полученные ответы хранятся отдельно и позволяют проверить результат без повторной отправки к модели. Продолжение использует сохранённую попытку или исходный список. По кнопке запускается один ограниченный пакет."
             : "Пока миграция Translation Operations не применена, доступны только малые ограниченные пакеты в текущем запросе. Интерфейс не выдаёт их за фоновые задания."}
         </p>
         {operationsReady && (
@@ -620,19 +750,62 @@ export default async function PremiumTranslationsPage({
               const id = typeof job.id === "string" ? job.id : "";
               if (!id) return null;
               const articleScan = job.kind === "article" ? decodeArticleTranslationResumeCursor(job.resumeCursor) : null;
-              const scanCanResume = articleScan === null || (articleScan.kind === "scan" && !articleScan.state.exhausted &&
-                job.status !== "cancelled" && job.status !== "cancelling" && job.status !== "reviewing");
+              const writerOperation = job.kind === "writer" ? writerTranslationOperationMarker(job.resumeCursor) : { kind: "none" };
+              const catalogOperation = job.kind === "literary_work" || job.kind === "country" ? catalogTranslationOperationMarker(job.resumeCursor) : { kind: "none" };
+              const siteCopyMarker = siteCopyTranslationOperationMarker(job.resumeCursor);
+              const siteCopyJobRead = siteCopyJobReads.get(id.toLowerCase());
+              const siteCopyCanRecover = job.kind === "site_copy" && siteCopyMarker.kind === "operation" &&
+                siteCopyJobRead?.status === "success" && siteCopyJobRead.data !== null && siteCopyJobRead.owned &&
+                siteCopyTranslationMarkerMatchesReceipt(siteCopyMarker, siteCopyJobRead.data, id);
+              const hasLibraryScan = Object.hasOwn(objectValue(job.resumeCursor), "libraryScan");
+              const libraryRead = hasLibraryScan && job.kind === "literary_work" ? libraryScanReads.get(id.toLowerCase()) : null;
+              const libraryScan = libraryRead?.status === "success" ? libraryRead.data : null;
+              const hasProfileScan = Object.hasOwn(objectValue(job.resumeCursor), "profileScan");
+              const profileRead = hasProfileScan && (job.kind === "writer" || job.kind === "country")
+                ? profileScanReads.get(`${job.kind}:${id.toLowerCase()}`) : null;
+              const profileScan = profileRead?.status === "success" ? profileRead.data : null;
+              const scanCanResume = (job.kind === "site_copy" ? siteCopyCanRecover : siteCopyMarker.kind === "none") &&
+                catalogOperation.kind === "none" && writerOperation.kind === "none" &&
+                !(hasLibraryScan && hasProfileScan) &&
+                (hasProfileScan ? profileScan !== null && canContinueProfileScan(profileScan)
+                  : job.kind !== "writer" && job.kind !== "country") &&
+                (hasLibraryScan ? libraryScan !== null && canContinueLibraryScan(libraryScan) : job.kind !== "literary_work") && (articleScan === null || (articleScan.kind === "scan" && !articleScan.state.exhausted &&
+                job.status !== "cancelled" && job.status !== "cancelling" && job.status !== "reviewing"));
               return (
-                <form className="status-list" action={resumeTranslationJobAction} key={id}>
+                <form className="status-list" id={`translation-job-${id}`} action={resumeTranslationJobAction} key={id}>
                   <input type="hidden" name="job_id" value={id} />
                   <div>
                     <span>{translationKindLabels[String(job.kind)] || "Перевод"} · {String(job.status || "unknown")}</span>
-                    <strong>{job.kind === "article" ? "Технически выполнено" : "Переведено"} {String(job.succeededItems)} из {String(job.totalItems)} просмотренных</strong>
+                    <strong>{profileScan ? `Окно ${profileScan.windowIndex + 1} из ${profileScan.windowCount}: подтверждено ${profileScan.nextPosition} из ${profileScan.totalItems} записей этого окна`
+                      : libraryScan ? `Окно ${libraryScan.windowIndex + 1}: подтверждено ${libraryScan.nextPosition} из ${libraryScan.totalItems} элементов`
+                      : `${job.kind === "article" || job.kind === "site_copy" || writerOperation.kind !== "none" || catalogOperation.kind !== "none" ? "Технически выполнено" : "Переведено"} ${String(job.succeededItems)} из ${String(job.totalItems)} просмотренных`}</strong>
                   </div>
                   {articleScan && !scanCanResume && <p>{translationErrorMessage(job.status === "reviewing" ? "translation_retry_pending" : job.status === "cancelled" || job.status === "cancelling"
                     ? "translation_operation_stopped" : articleScan.kind === "scan"
                     ? "translation_scan_complete" : "translation_resume_stale")}</p>}
-                  <button className="button-secondary" type="submit" disabled={operationsReady !== true || !supportsJobResumeId(id) || !scanCanResume || !resumeReadyByKind[job.kind as keyof typeof resumeReadyByKind]} title={supportsJobResumeId(id) ? undefined : "Это задание нельзя продолжить из текущего интерфейса."}>{job.kind === "article" ? "Продолжить оставшихся кандидатов" : "Продолжить со следующего курсора"}</button>
+                  {writerOperation.kind !== "none" && <p>Это отдельная попытка перевода автора. Проверьте её состояние в карточке автора и журнале.
+                    Продолжение обхода не возобновляет эту попытку.</p>}
+                  {catalogOperation.kind !== "none" && !hasLibraryScan && <p>Это отдельная попытка перевода карточки. Проверьте её состояние в карточке и журнале.
+                    Продолжение обхода не возобновляет эту попытку.</p>}
+                  {hasLibraryScan && !libraryScan && <p>Сохранённое окно книг не подтверждено. Продолжение недоступно.</p>}
+                  {hasProfileScan && !profileScan && <p>Сохранённый список биографий или стран не подтверждён. Продолжение недоступно.</p>}
+                  {profileScan && <ProfileScanSummary scan={profileScan} />}
+                  {(job.kind === "writer" || job.kind === "country") && !hasProfileScan && writerOperation.kind === "none" && catalogOperation.kind === "none" &&
+                    <p>Прежний пакет не содержит исходного списка записей. Начните новый обход биографий или стран отдельной кнопкой.</p>}
+                  {libraryScan && <p>{libraryScan.status === "cancelled" || libraryScan.status === "cancelling"
+                    ? libraryScan.child !== null ? "Обход остановлен в этом окне. Продолжение сначала проверит её сохранённый результат."
+                      : "Обход остановлен в этом окне. Новый обход начинается отдельной кнопкой ниже."
+                    : libraryScan.exhausted ? "Этот обход библиотеки завершён. Новый обход начинается отдельной кнопкой ниже."
+                    : libraryScan.child !== null ? "У текущей книги есть отдельная попытка. Продолжение сначала проверит её сохранённый результат."
+                    : "Продолжение использует сохранённый состав окна книг; числовая позиция не выбирает материалы."}</p>}
+                  {job.kind === "literary_work" && !hasLibraryScan && catalogOperation.kind === "none" && <p>Прежний пакет не содержит сохранённого состава книг. Начните новый обход библиотеки с нуля.</p>}
+                  {job.kind === "site_copy" && <p>{siteCopyCanRecover
+                    ? "Проверка использует только сохранённые ответы этой попытки и не запускает новый платный перевод."
+                    : "Сохранённая попытка этого редактора не подтверждена. Продолжение по числовому курсору недоступно."}</p>}
+                  <button className="button-secondary" type="submit" disabled={operationsReady !== true || !supportsJobResumeId(id) || !scanCanResume ||
+                    !(siteCopyCanRecover || profileScan?.child !== null && profileScan?.child !== undefined || resumeReadyByKind[job.kind as keyof typeof resumeReadyByKind])}
+                    title={supportsJobResumeId(id) ? undefined : "Это задание нельзя продолжить из текущего интерфейса."}>{job.kind === "site_copy" ? "Проверить сохранённый результат"
+                      : job.kind === "article" || hasLibraryScan || hasProfileScan ? "Продолжить оставшихся кандидатов" : "Продолжить со следующего курсора"}</button>
                   {job.kind === "article" && <a href={retrySelectionHref(query, { retryJob: id })}>Выбрать неудавшийся элемент</a>}
                 </form>
               );
@@ -830,62 +1003,89 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumLibraryBatchAction}>
-          <BackfillCursorFields query={query} />
+          <BackfillCursorFields query={{ ...query, libraryJob: selectedLibraryScan?.jobId ?? query.libraryJob,
+            libraryCursor: selectedLibraryScan ? String(selectedLibraryScan.windowIndex * 500 + selectedLibraryScan.nextPosition) : "0" }} />
           <span className="eyebrow">Библиотека «Проба Пера»</span>
           <h2>Премиальный EN книг</h2>
           <p>
             До четырёх проверенных RU-карточек за запуск. Ручной EN имеет абсолютный
             приоритет и не заменяется моделью. Новый машинный EN сохраняется отдельно
             и ждёт проверки редактора в карточке книги; прежний EN остаётся на месте.
-            Перевод модели не запускает публикацию. Позиция обхода сохраняется
-            между пакетами, поэтому архив постепенно проходит целиком.
+            Перевод модели не запускает публикацию. Обход сохраняет фиксированный состав
+            каждого окна до 500 книг и подтверждённую позицию в нём. Изменения уже просмотренных
+            книг и новые книги позади этой позиции проверяются новым обходом.
           </p>
-          <TranslationSubmitButton disabled={!libraryReady}>
-            Перевести следующий пакет книг
-          </TranslationSubmitButton>
+          {selectedLibraryScan && <p role="status">Окно {selectedLibraryScan.windowIndex + 1}: подтверждено {selectedLibraryScan.nextPosition} из {selectedLibraryScan.totalItems} элементов.
+            {selectedLibraryScan.status === "cancelled" || selectedLibraryScan.status === "cancelling" ? selectedLibraryScan.child !== null
+                ? " Обход остановлен в этом окне. Продолжение сначала проверит сохранённый результат текущей книги."
+                : " Обход остановлен в этом окне. Новый обход начинается отдельно с нуля."
+              : selectedLibraryScan.exhausted ? " Этот обход завершён. Новый обход начинается отдельно с нуля."
+              : " Это прогресс сохранённого окна; общее число книг в новом обходе может отличаться."}</p>}
+          {query.libraryJob !== undefined && <TranslationSubmitButton disabled={!libraryReady || selectedLibraryScan === null || !canContinueLibraryScan(selectedLibraryScan)}>
+            Продолжить оставшиеся книги
+          </TranslationSubmitButton>}
+          <button className="button-secondary" type="submit" name="libraryScanIntent" value={libraryScanIntent} disabled={!libraryReady}>
+            Начать новый обход библиотеки с нуля
+          </button>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumWriterBatchAction}>
-          <BackfillCursorFields query={query} />
+          <BackfillCursorFields query={{ ...query, writerJob: selectedWriterScan?.jobId ?? query.writerJob,
+            writerCursor: selectedWriterScan ? String(profileTranslationScanOrdinal(selectedWriterScan)) : "0" }} />
           <span className="eyebrow">Писатели</span>
           <h2>Премиальный EN биографий</h2>
           <p>
             Переводятся только проверенные редакционные RU-оригиналы с provenance.
-            По три новых биографии за запуск; следующий пакет продолжает с места,
-            на котором закончился предыдущий.
+            До трёх попыток перевода за запуск. Исходный список сохраняется один раз;
+            продолжение не зависит от перестановки записей в каталоге. Новые записи
+            проверяются отдельным новым обходом. Изменённые или удалённые записи
+            отмечаются отдельно, остальные продолжают обрабатываться.
           </p>
-          <TranslationSubmitButton disabled={!writerReady}>
-            Перевести следующий пакет биографий
-          </TranslationSubmitButton>
+          {selectedWriterScan && <ProfileScanSummary scan={selectedWriterScan} />}
+          {query.writerJob !== undefined && <TranslationSubmitButton disabled={selectedWriterScan === null || !canContinueProfileScan(selectedWriterScan) ||
+            operationsReady !== true || !writerReady && selectedWriterScan.child === null}>
+            Продолжить оставшиеся биографии
+          </TranslationSubmitButton>}
+          <button className="button-secondary" type="submit" name="writerScanIntent" value={writerScanIntent} disabled={!writerReady}>
+            Начать новый обход биографий
+          </button>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumCountryBatchAction}>
-          <BackfillCursorFields query={query} />
+          <BackfillCursorFields query={{ ...query, countryJob: selectedCountryScan?.jobId ?? query.countryJob,
+            countryCursor: selectedCountryScan ? String(profileTranslationScanOrdinal(selectedCountryScan)) : "0" }} />
           <span className="eyebrow">Страны</span>
           <h2>Премиальный EN профилей стран</h2>
           <p>
             История, описание, литературные периоды, движения, факты и места переводятся
-            по две страны за запуск. Курсор переносится между пакетами; коды, координаты,
-            годы и числовые показатели не меняются.
+            не более двух попыток перевода за запуск. Продолжение использует сохранённый
+            исходный список стран. Коды, координаты, годы и числовые показатели не меняются.
+            Новые записи проверяются новым обходом; изменение одной страны не меняет
+            порядок остальных записей.
             Новый машинный EN ждёт отдельного подтверждения в карточке страны;
             прежний EN сохраняется, публикация автоматически не запускается.
           </p>
-          <TranslationSubmitButton disabled={!countryReady}>
-            Перевести следующий пакет стран
-          </TranslationSubmitButton>
+          {selectedCountryScan && <ProfileScanSummary scan={selectedCountryScan} />}
+          {query.countryJob !== undefined && <TranslationSubmitButton disabled={selectedCountryScan === null || !canContinueProfileScan(selectedCountryScan) ||
+            operationsReady !== true || !countryReady && selectedCountryScan.child === null}>
+            Продолжить оставшиеся страны
+          </TranslationSubmitButton>}
+          <button className="button-secondary" type="submit" name="countryScanIntent" value={countryScanIntent} disabled={!countryReady}>
+            Начать новый обход стран
+          </button>
         </form>
 
         <form className="panel settings-stack" action={translatePremiumSiteCopyBatchAction}>
-          <BackfillCursorFields query={query} />
           <span className="eyebrow">Интерфейс</span>
           <h2>Догнать CMS site-copy</h2>
           <p>
-            До 50 русских CMS-переопределений за один двухпроходный запрос.
-            Существующий ручной английский не меняется.
+            До 50 русских CMS-переопределений за один запуск.
+            Существующий ручной английский не меняется. Новый запуск создаёт отдельную попытку;
+            незавершённая попытка сначала требует проверки сохранённого результата.
           </p>
-          <TranslationSubmitButton disabled={!siteCopyReady}>
-            Перевести site-copy
-          </TranslationSubmitButton>
+          <button className="button" type="submit" name="siteCopyIntent" value={siteCopyIntent} disabled={!siteCopyReady}>
+            Начать новый перевод site-copy
+          </button>
         </form>
       </section>
 

@@ -1,0 +1,256 @@
+{
+  "classification": "INDEPENDENT_READ_ONLY_GIT_SAFETY_AND_PORTABLE_CONTINUATION_AUDIT",
+  "atUtc": "2026-11-11T11:49:21.227349+00:00",
+  "verdict": "PASS_NO_CURRENT_SECRET_SIZE_OR_PORTABILITY_BLOCKER_FOUND",
+  "existingChangedSetAtAudit": {
+    "trackedChanged": 52,
+    "untrackedFiles": 258,
+    "files": 310,
+    "bytes": 164880994,
+    "zipFiles": 44,
+    "zipBytes": 156607313,
+    "largestFileBytes": 24796162,
+    "filesAtLeast40MiB": 0,
+    "filesOverGitHub100MiB": 0,
+    "categories": {
+      "appsAdminProductionAndMaintainedTests": 170,
+      "sqlFixtures": 9,
+      "newMigrations": 10,
+      "immutableEvidenceAndMetadata": 120,
+      "canonicalDoc": 1
+    },
+    "secretScan": {
+      "distinctZipPackets": 51,
+      "uniquePayloads": 5631,
+      "uniqueBytes": 752488257,
+      "highConfidenceKeyTokenPrivateKeyFindings": 0,
+      "knownExistingHEADSecurityTestLiteralCandidates": 4,
+      "localFixtureCredentialedURLCandidates": 1
+    },
+    "looseEnvCredentialsCacheExecutablesOrPersonalFilesFound": 0,
+    "intentionalArchivedVendorProofMembers": 15,
+    "actualToolChunks": [
+      "a62b75",
+      "c86f4c",
+      "97261d",
+      "4d4ed9"
+    ]
+  },
+  "continuationArchive": {
+    "file": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-continuation\\2026-11-11\\continuation-work.zip",
+      "bytes": 6821058,
+      "sha256": "f15aad11f7b97d05ebd30ab6d09c8dab12d82abbe6b9dcb6037d7d7d63651c7b"
+    },
+    "receipt": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-continuation\\2026-11-11\\continuation-work.receipt.json",
+      "bytes": 507,
+      "sha256": "99412f5c08de88d9a047aa923c8b55e747d3c2e299bcefb3f1198097051e4408"
+    },
+    "sidecarManifest": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\admin-r3-continuation\\2026-11-11\\continuation-work.manifest.json",
+      "bytes": 162748,
+      "sha256": "f7297f0552eb6ba3c610c9beaa00691b0125b7a23394f752c757b4524cc492a3"
+    },
+    "payloads": 732,
+    "entries": 733,
+    "uncompressedPayloadBytes": 18375130,
+    "safeCanonicalRegularUniqueCasefoldPaths": true,
+    "allPayloadSizesAndSHA256Exact": true,
+    "internalAndSidecarManifestBytesIdentical": true,
+    "all732ArchivedBytesMatchCurrentSelectedWork": true,
+    "requiredContinuationDependenciesPresent": true,
+    "unsafeRawPGDataPIDDescriptorEnvCacheExecutableMembers": 0,
+    "actualCompleteReadbackToolChunk": "e93a08",
+    "secretScan": {
+      "uniquePayloads": 333,
+      "uniqueBytes": 22216042,
+      "highConfidenceKeyTokenPrivateKeyFindings": 0,
+      "supplementalLowEntropyCandidates": {
+        "occurrences": 6,
+        "paths": [
+          "next-m04-publication-cut-before-sol/sources/scripts/verify-publication-deploy-head.test.mjs",
+          "next-m04-publication-cut-before-sol/sources/scripts/coalesce-publication-followup.test.mjs"
+        ],
+        "classification": "PREEXISTING_UNCHANGED_HEAD_CONTROLLED_SECURITY_TEST_LITERALS_NOT_REAL_KEYS",
+        "archiveCurrentHEADParityVerified": true,
+        "classificationToolChunks": [
+          "29b686",
+          "89dddb"
+        ]
+      },
+      "initialConservativeSupplementStop": {
+        "chunk": "f2b117",
+        "exitCode": 1,
+        "cause": "Unclassified low-entropy test markers; no credential values printed; classified explicitly against existing HEAD before final receipt.",
+        "noReceiptWrittenOnInitialStop": true
+      },
+      "secretValuesPrinted": false
+    },
+    "historicalAbsoluteWindowsUserPathPayloads": 48,
+    "nestedGenuineBefore": {
+      "sha256": "388d4fa6021a94acc98cf5fe1a01f27959e305b95a4424be4033c590d3d8851d",
+      "payloads": 260,
+      "entries": 261,
+      "allMemberPathsBytesAndHashesExact": true,
+      "failedChecksRetained": 16,
+      "countedAsCurrentAcceptance": false
+    }
+  },
+  "portableCapturer": {
+    "file": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\scripts\\prepare-admin-r3-browser-inputs.py",
+      "bytes": 16034,
+      "sha256": "bc877c958753e73224f5894d68340bb6c54b7641d02ea6933f84459b516309a5"
+    },
+    "staticReview": "PASS; new siblingwork-only output; existing/reparse/pathescape guards; complete actual current literal-import candidates+explicit computed fixtures; no global historical fingerprint relabel.",
+    "existingMetadataSmoke": {
+      "creator": {
+        "sources": 70,
+        "packageIdentities": 23,
+        "manifestSha256": "738ae2985bf3abd76a8cc94b9c2207405cfe25ad5a5897b6cad4d99765726823"
+      },
+      "pending": {
+        "sources": 65,
+        "packageIdentities": 23,
+        "manifestSha256": "b8789be1e1abce84c0449d15ff3aae90890d1ec2b21cba7cbb235de2151adc41"
+      }
+    },
+    "allCurrentCapturedSmokeSourceBytesExact": true,
+    "bothNewM19PureImportsIncluded": true,
+    "independentApplicationExecution": false
+  },
+  "restoreTool": {
+    "file": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\scripts\\restore-admin-r3-continuation.py",
+      "bytes": 5199,
+      "sha256": "df3a0507b190378a8dc04f79b7d824500c6b13be993905bde43ab1d9ad7d964a"
+    },
+    "staticReview": "PASS; stdlib; verifyeverypayloadbeforewrite; safeWindowsnames/regularfiles/casefoldunique; refuseexistingdestination; restoreoutsidecheckout; no childprocess/application/database.",
+    "executedByIndependentAuditor": false
+  },
+  "handoffGuide": {
+    "file": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\docs\\ADMIN_R3_CONTINUE_ON_ANOTHER_COMPUTER.md",
+      "bytes": 11816,
+      "sha256": "262b9a624c37135e9c0f48c83667c4bffb9ec89780c6bae0f8bb8cdcef5a1715"
+    },
+    "staticReview": "PASS; historical4df7424/7418/exact6 and unverifiedsix-fileM19/M20 WIP are distinguished; newcaptures and Chromeoverride provided; oldPIDnotauthority; keys/nativeenvironment separate; exactM02absence preserved."
+  },
+  "exactByteGitProtection": {
+    "attributesFile": {
+      "path": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\probpera-literary-map\\.gitattributes",
+      "bytes": 2488,
+      "sha256": "18bc99583c0f8caf3d5ad51ffade8eca4787fd78d3d0eb36cd3e765d6c3dcc80"
+    },
+    "inputs": [
+      {
+        "path": "apps/admin/lib/fixtures/publication-retry-native-goldens.json",
+        "bytes": 77221,
+        "sha256": "ab04230150490f180b5fe8449584bbd5f495cfcc89fc31864fdfd904f9e3e64c",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/site-copy-translation-operation-native-goldens.json",
+        "bytes": 834165,
+        "sha256": "fada405569b97282eb71e36f791ae315cf20e11cb94f0359ee862710954aad41",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/profile-translation-scan-native-goldens.json",
+        "bytes": 502306,
+        "sha256": "e338b3303355bbc57cf4bcb9eee84d72fd1a5a889ab29d48bc15fd42af0cad15",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/catalog-review-preflight.same-contract.cjs",
+        "bytes": 2881,
+        "sha256": "3aa0ccaa251cb9faa45ca7d1c59a374e10d2dd3b667b4f58748b68822664cb8e",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/known-editorial-partial.same-contract.cjs",
+        "bytes": 2495,
+        "sha256": "69d4a92ab61ce40218da726f71f0f8b6fdbdece0b52125035ce70bf33f873c80",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/publication-retry-before-oracle.cjs",
+        "bytes": 4627,
+        "sha256": "a688b198a79a56202c871ab9aa87956ac0aca6b698a97b9564fafe703b1751d9",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/page-creator-original-oracle.cjs",
+        "bytes": 3687,
+        "sha256": "72a1e6337fdbd4ed66cb4970258809de212a23e43ae2a5a0d63fdeb618accb33",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/writer-batch-budget-cap.cjs",
+        "bytes": 17179,
+        "sha256": "42546f807423531e30fdc7491e73f0096f5b7cdb88e5b870152d256d269787f3",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/library-batch-budget-cap.cjs",
+        "bytes": 19747,
+        "sha256": "2918441e4e14361cc8f4ff7571bf488e2f0876c2000152ef0e64eef57675badf",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "apps/admin/lib/fixtures/country-batch-budget-cap.cjs",
+        "bytes": 18251,
+        "sha256": "e067f3c14ec361766c7cd704edbb2104813d3188d22c940470d0360a5167f98d",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      },
+      {
+        "path": "supabase/migrations/20261030161000_publication_retry_admission.sql",
+        "bytes": 13160,
+        "sha256": "91e11a46e6db2834cf69bf5dda41a40151195cc410be85ce549a3a083debd320",
+        "text": "unset",
+        "gitCleanFilterPreservesWholeBytes": true
+      }
+    ],
+    "count": 11,
+    "allTextUnsetAndReadOnlyGitCleanHashExact": true,
+    "remainingKnownFixedRawSHAFileOmissions": 0,
+    "rootMadeOnlyAttributeEditsNoFixtureByteEdits": true
+  },
+  "safeInclude": [
+    "apps/admin current implementation and maintained tests/fixtures",
+    "Nine SQL fixture files and ten additive migration files",
+    "Original immutable evidenceZIPs and sidecars",
+    "Canonical state, handoff guide, stdlibrestore and portable currentmetadata capturer",
+    "Curated continuation ZIP/sidecars"
+  ],
+  "exclude": [
+    "Local .env/key files and installed node_modules/.next/caches",
+    "PostgreSQL binaries/live data/operationalPIDauthority",
+    "Unselected siblingwork directories and personal browser profiles"
+  ],
+  "limitations": [
+    "Bounded pattern scanning cannot mathematically rule out arbitrary undisclosed secrets; no candidate credential value was printed.",
+    "Historical absolute local user paths remain in immutable receipts/source captures; treat as historical and prepare fresh captures.",
+    "Current M19/M20 AFTER application/unit/browser/compile acceptance remains NOTRUN; six inheritedM02 failures and fullR3 gaps remain open.",
+    "Actual nativeSQL and controlled SDK/browser evidence do not imply managed Auth/JWT/PostgREST/production acceptance."
+  ],
+  "mutationsByIndependentAuditor": {
+    "repoEdits": 0,
+    "staging": 0,
+    "commits": 0,
+    "networkPushOrDatabase": 0,
+    "applicationTestsCompilerBrowser": 0,
+    "soleAuthorizedReceipt": "C:\\Users\\\u041a\u043e\u0441\u0442\u044f\\Documents\\Codex\\2026-10-09\\v\\work\\admin-transfer-independent-audit-20261111.json"
+  }
+}
