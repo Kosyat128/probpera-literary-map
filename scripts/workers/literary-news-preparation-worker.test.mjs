@@ -280,14 +280,16 @@ describe('Private native daily preparation and bounded public source adapter',()
     const all=Array.from({length:9},(_,n)=>detail(n)),unknown=detail(99);unknown.evidence.publishedDates=[];
     const rejected=await checkedDailyCandidate(all[0],current,sources);
     const bounded=await boundedNativeNewsCandidates({details:[unknown,...all]},
-      {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
+      {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded',
+        protocolVersion:'literal-evidence-refs-v1',detailReason:'identity'}]},current,sources);
     expect(bounded.intake.details).toEqual(all.slice(1,6));expect(bounded.held.map(row=>row.reason)).toEqual(['daily_publication_date_unknown','daily_draft_ungrounded']);
     const legacy=await boundedNativeNewsCandidates({details:all},
       {...emptyDailyLedger(current),reviewCache:[{key:rejected.legacyKey,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
-    expect(legacy.intake.details).toEqual(all.slice(1,6));
+    expect(bounded.held[1]).toMatchObject({protocolVersion:'literal-evidence-refs-v1',detailReason:'identity'});
+    expect(legacy.intake.details).toEqual(all.slice(0,5));
     const wrapper=structuredClone(all[0]);wrapper.evidence.responseSha256='b'.repeat(64);
     const stable=await boundedNativeNewsCandidates({details:[wrapper,...all.slice(1)]},
-      {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
+      {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded',protocolVersion:'literal-evidence-refs-v1'}]},current,sources);
     expect(stable.intake.details).toEqual(all.slice(1,6));
     const annual=await boundedNativeNewsCandidates({details:all},{...emptyDailyLedger(current),accepted:new Array(3000)},current,sources);
     expect(annual.maximum).toBe(2);expect(annual.intake.details).toHaveLength(2);

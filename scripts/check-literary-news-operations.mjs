@@ -15,6 +15,7 @@ import { createNewsRuntimeStore, newsPostKey, newsSemanticRevision } from './lib
 import { NEWS_DELIVERY_MAX_INTERVAL_SECONDS, inspectNewsDeliveryPacing, newsDeliveryPacingKey } from './lib/literary-news-pacing.mjs';
 import { currentNativeNewsDueRows, selectNativeNewsAdmissionIds } from './lib/literary-news-native-admissions.mjs';
 import { dailyInferenceBudgetGate } from './lib/literary-news-inference-budget.mjs';
+import { DAILY_NEWS_DRAFT_DETAIL_REASONS, DAILY_NEWS_DRAFT_PROTOCOLS } from './lib/literary-news-draft-diagnostics.mjs';
 import { trustedSupabaseOrigin } from './lib/trusted-server-url.mjs';
 import { canonicalUrl, validTimestamp } from './lib/literary-news-reviewed.mjs';
 import { createDeliverySupabaseFetch, checkedDeliveryDayStatus, checkedDeliveryDueRows } from './workers/literary-news-delivery-worker.mjs';
@@ -45,6 +46,11 @@ const HELD_REASONS = new Set(['daily_article_evidence_unavailable', 'daily_draft
   'daily_record_proof_invalid', 'daily_profile_capacity']);
 const DEFERRED_BUDGET_REASONS = new Set(['ai_daily_budget_deferred', 'ai_daily_candidate_budget_deferred']);
 const EXHAUSTED_BUDGET_REASONS = new Set(['ai_daily_budget_exhausted', 'ai_daily_candidate_budget_exhausted']);
+const DRAFT_DETAIL_REASONS = new Set(DAILY_NEWS_DRAFT_DETAIL_REASONS);
+const DRAFT_PROTOCOLS = new Set(DAILY_NEWS_DRAFT_PROTOCOLS);
+const AI_DRAFT_HELD_REASONS = new Set(['daily_draft_ungrounded', 'daily_model_held',
+  'daily_independent_review_rejected', 'daily_duplicate_topic']);
+const safeDraftProtocol = value => value === undefined ? 'legacy' : DRAFT_PROTOCOLS.has(value) ? value : 'unspecified';
 
 function heldReasonCounts(rows) {
   if (!Array.isArray(rows) || rows.length > 5000) return null;
@@ -56,6 +62,25 @@ function heldReasonCounts(rows) {
   return counts;
 }
 
+function draftDiagnostics(rows, { cache = false } = {}) {
+  if (!Array.isArray(rows) || rows.length > 5000) return null;
+  const ungroundedDetailCounts = {}, protocolCounts = {};
+  for (const row of rows) {
+    if (row?.reason === 'daily_draft_ungrounded') {
+      const detail = DRAFT_DETAIL_REASONS.has(row.detailReason) ? row.detailReason : 'unspecified';
+      ungroundedDetailCounts[detail] = (ungroundedDetailCounts[detail] || 0) + 1;
+    }
+    // Source/date preflight holds did not invoke the draft model. Only actual
+    // AI-origin holds, explicitly versioned rows and validated cache entries
+    // can establish a protocol count; missing legacy details remain unknown.
+    if (cache || AI_DRAFT_HELD_REASONS.has(row?.reason) || row?.protocolVersion !== undefined) {
+      const protocol = safeDraftProtocol(row?.protocolVersion);
+      protocolCounts[protocol] = (protocolCounts[protocol] || 0) + 1;
+    }
+  }
+  return { ungroundedDetailCounts, protocolCounts };
+}
+
 function reviewCacheCounts(rows, day) {
   const today = rows.filter(row => dailyNewsDay(new Date(row.checkedAt)) === day);
   const statuses = entries => Object.fromEntries(['draft', 'rejected', 'accepted']
@@ -65,7 +90,8 @@ function reviewCacheCounts(rows, day) {
   return { entries: rows.length, capacity: DAILY_NEWS_LIMITS.cacheEntries, statusCounts: statuses(rows),
     reasonCounts: reasons(rows), checkedTodayCount: today.length, checkedTodayStatusCounts: statuses(today),
     checkedTodayReasonCounts: reasons(today), distinctSourceUrlCount: urls(rows), repeatedUrlCount: rows.length - urls(rows),
-    checkedTodayDistinctSourceUrlCount: urls(today), checkedTodayRepeatedUrlCount: today.length - urls(today) };
+    checkedTodayDistinctSourceUrlCount: urls(today), checkedTodayRepeatedUrlCount: today.length - urls(today),
+    draftDiagnostics: draftDiagnostics(rows, { cache: true }), checkedTodayDraftDiagnostics: draftDiagnostics(today, { cache: true }) };
 }
 
 const sameBudgetGate = (actual, expected) => actual && ['allowed', 'reason', 'nextEligibleAt',
@@ -492,6 +518,10 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       lastRunCounts: preparationCounts,
       heldReasons: preparationEnabled ? heldReasonCounts(preparationReport?.held) : null,
       deterministicHeldReasons: heldReasonCounts(deterministicHeld),
+      draftProtocolVersion: preparationEnabled && preparationReport?.schemaVersion === 1
+        ? safeDraftProtocol(preparationReport.draftProtocolVersion) : null,
+      draftDiagnostics: preparationEnabled ? draftDiagnostics(preparationReport?.held) : null,
+      deterministicDraftDiagnostics: draftDiagnostics(deterministicHeld),
       providerStop: preparationEnabled ? activeProviderStop?.reason || (quotaCooldown ? 'ai_quota_exceeded' : budgetDeferred ? null
         : preparationReport?.stoppedReason ? safeCode(preparationReport.stoppedReason) : null)
         : preparationBlockReason === 'ai_quota_exceeded' ? 'ai_quota_exceeded' : null,

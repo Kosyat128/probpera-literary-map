@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { runDailyNewsAutomation } from "./literary-news-daily-automation.mjs";
+import { referencedDraftFixture } from "./literary-news-evidence.test-fixture.mjs";
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LIMITS, makeDailyApprovedPayload } from "./literary-news-daily-profile.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { buildNewsIngestion } from "./literary-news-ingestion.mjs";
@@ -23,7 +24,8 @@ const review = { accepted: true, literaryTopic: true, categoryMatches: true, tra
   unsupportedClaims: [], factChecks: [{ factIndex: 0, supported: true }] };
 async function approved() {
   const result = await runDailyNewsAutomation({ intake: { details: [detail] }, current,
-    ai: { request: async ({ phase }) => structuredClone(phase === "draft" ? draft : review) } });
+    ai: { request: async ({ phase, messages }) => phase === "draft"
+      ? referencedDraftFixture(structuredClone(draft), messages) : structuredClone(review) } });
   expect(result.profile.records).toHaveLength(1);
   return result.profile;
 }

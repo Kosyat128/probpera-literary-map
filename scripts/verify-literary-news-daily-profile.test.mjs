@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { runDailyNewsAutomation } from "./lib/literary-news-daily-automation.mjs";
+import { referencedDraftFixture } from "./lib/literary-news-evidence.test-fixture.mjs";
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, makeDailyApprovedPayload } from "./lib/literary-news-daily-profile.mjs";
 import { buildPublishedNewsFeed, newsDigest, newsSnapshotPayload } from "./lib/literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./lib/literary-news-state.mjs";
@@ -20,7 +21,8 @@ const draft = { status: "draft", reason: "", title: { ru: "Издатель вы
 const review = { accepted: true, literaryTopic: true, categoryMatches: true, translationsMatch: true,
   titleSupported: true, summarySupported: true, publicationDateMatches: true, duplicateOf: null,
   unsupportedClaims: [], factChecks: [{ factIndex: 0, supported: true }] };
-const ai = () => ({ request: vi.fn(async ({ phase }) => phase === "draft" ? structuredClone(draft) : structuredClone(review)) });
+const ai = () => ({ request: vi.fn(async ({ phase, messages }) => phase === "draft"
+  ? referencedDraftFixture(structuredClone(draft), messages) : structuredClone(review)) });
 const base = [{ id: "static-fixture", eventKey: "static-fixture", kind: "news", category: "releases",
   eventDate: "2026-09-25", publishedAt: null, verifiedAt: "2026-09-25T12:00:00Z", verification: "confirmed",
   title: { ru: "Проверенная книга", en: "Verified book" }, summary: { ru: "Сообщение издателя.", en: "A publisher statement." },

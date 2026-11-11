@@ -1,6 +1,7 @@
 import { canonicalUrl, selectReviewed, validDate, validTimestamp, CATEGORIES } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import {newsJsonByteSize,newsJsonDigest} from './literary-news-json.mjs';
+import {validateDailyDraftEvidenceProof} from './literary-news-draft-proof.mjs';
 
 // Worker-safe publication contract: no filesystem, image decoder or provider client.
 export const DAILY_NEWS_PROFILE_KEY = "literary-news:v1:approved-profile:daily-grounded";
@@ -107,6 +108,7 @@ export async function validateDailyNewsRecord(record, current = new Date(), { so
     || !["og:image", "twitter:image"].includes(thumbnail.method) || thumbnail.sourceDocumentSha256 !== e.documentSha256
     || thumbnail.displayOnly !== true || thumbnail.socialReuseApproved !== false
     || thumbnail.alt?.ru !== record.title.ru || thumbnail.alt?.en !== record.title.en)) fail("daily_thumbnail_invalid");
+  await validateDailyDraftEvidenceProof(record);
   if (record.id !== "daily-" + (await dailyNewsDigest(record.source.url)).slice(0, 32)
     || p.recordSha256 !== await dailyNewsDigest(dailyRecordHashPayload(record))
     || selectReviewed([record], current, DAILY_NEWS_WINDOW.timeZone).length !== 1) fail("daily_record_proof_invalid");

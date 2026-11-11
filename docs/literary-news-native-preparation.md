@@ -51,6 +51,36 @@ attribution and destination policy; the default automation report explicitly hol
 unverified photos. Photo materialization uses the separate Node media runner and
 private KV bytes; this preparer does not write Supabase Storage or send Telegram.
 
+## Exact source evidence
+
+New draft requests use `literal-evidence-refs-v1`. The server divides the complete
+source text into deterministic, ordered fragments with identifiers and UTF-16
+offsets. Each fragment contains at most 125 characters; the catalogue permits up
+to 256 fragments for the existing 14,000-character source limit. The model selects
+identifiers instead of copying quotations. The server resolves them against the
+actual source and applies the existing strict draft validator. Four fact fragments
+still fit the existing 500-character total quotation limit.
+
+The independent reviewer receives the original complete source text and the
+resolved draft. A valid identifier does not establish that a summary is accurate:
+the separate factual review remains mandatory. Unknown fields, invented fragment
+identifiers, duplicate fact references, altered offsets and mismatched catalogue
+hashes fail closed. The bounded request is checked before a durable AI reservation;
+there are no additional inference retries or counter resets.
+
+New accepted records retain compact evidence metadata. Its wire digest covers the
+canonical parsed response, not transport bytes. Profile validation checks internal
+consistency; ingestion and cache reuse additionally check membership against the
+actual source. Existing accepted records remain readable without rewriting their
+proofs. New draft caches are bound to this protocol, while the ordinary source
+cooldown and daily budget continue to apply.
+
+Operational reports distinguish a fixed set of draft rejection causes, including
+format, language, length and evidence-reference failures. Reports contain counts
+and known protocol names only, never arbitrary model text or source contents.
+Unknown or older rejection details are reported as unspecified. Delivery deficit
+and reserve alerts remain active when too few reviewed stories are available.
+
 ## Storage recovery
 
 The Durable Object stores a seven-minute lease, the expected ledger SHA, a

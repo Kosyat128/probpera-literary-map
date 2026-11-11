@@ -650,7 +650,9 @@ describe('bounded read-only news operations projection', () => {
       statusCounts: { draft: 1, rejected: 3, accepted: 0 }, reasonCounts: { daily_model_held: 1, other: 1, daily_duplicate_topic: 1 },
       checkedTodayCount: 3, checkedTodayStatusCounts: { draft: 1, rejected: 2, accepted: 0 },
       checkedTodayReasonCounts: { daily_model_held: 1, other: 1 }, distinctSourceUrlCount: 2, repeatedUrlCount: 2,
-      checkedTodayDistinctSourceUrlCount: 2, checkedTodayRepeatedUrlCount: 1 });
+      checkedTodayDistinctSourceUrlCount: 2, checkedTodayRepeatedUrlCount: 1,
+      draftDiagnostics: { ungroundedDetailCounts: {}, protocolCounts: { legacy: 4 } },
+      checkedTodayDraftDiagnostics: { ungroundedDetailCounts: {}, protocolCounts: { legacy: 3 } } });
     const serialized = JSON.stringify(report).toLowerCase();
     for (const secret of [privateMarker.toLowerCase(), 'private.example', '1'.repeat(64), '2'.repeat(64)])
       expect(serialized).not.toContain(secret);
@@ -669,6 +671,119 @@ describe('bounded read-only news operations projection', () => {
     expect(invalid.preparation.reviewCache).toBeNull(); expect(invalid.preparation.inferenceBudget).toBeNull();
     expect(JSON.stringify(invalid)).not.toContain(privateMarker);
   });
+  it.each(['schema', 'status', 'category', 'length', 'whitespace', 'language', 'identity', 'literal_evidence',
+    'fact_shape', 'fact_total_length', 'evidence_reference', 'evidence_catalog', 'evidence_source_hash'])(
+    'counts the fixed ungrounded detail %s without exposing any draft', async detailReason => {
+      const value = await input(); value.preparationReport.draftProtocolVersion = 'literal-evidence-refs-v1';
+      value.preparationReport.held = [{ reason: 'daily_draft_ungrounded', detailReason,
+        protocolVersion: 'literal-evidence-refs-v1', draft: privateMarker, sourceUrl: privateMarker }];
+      const report = await summarizeNewsOperations(value);
+      expect(report.preparation.draftProtocolVersion).toBe('literal-evidence-refs-v1');
+      expect(report.preparation.draftDiagnostics).toEqual({ ungroundedDetailCounts: { [detailReason]: 1 },
+        protocolCounts: { 'literal-evidence-refs-v1': 1 } });
+      expect(report.preparation.heldReasons).toEqual({ daily_draft_ungrounded: 1 });
+      expect(JSON.stringify(report)).not.toContain(privateMarker);
+    });
+  it('keeps legacy ungrounded rows unspecified and excludes source preflight from AI protocol counts', async () => {
+    const value = await input();
+    value.preparationReport.held = [{ reason: 'daily_draft_ungrounded' }, { reason: 'daily_model_held' },
+      { reason: 'daily_independent_review_rejected' }, { reason: 'daily_duplicate_topic' },
+      { reason: 'daily_publication_date_unknown' }, { reason: 'daily_article_evidence_unavailable' }];
+    value.preparationReport.native.deterministicHeld = [{ reason: 'daily_draft_ungrounded' },
+      { reason: 'daily_source_not_approved' }];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.preparation.draftProtocolVersion).toBe('legacy');
+    expect(report.preparation.draftDiagnostics).toEqual({ ungroundedDetailCounts: { unspecified: 1 }, protocolCounts: { legacy: 4 } });
+    expect(report.preparation.deterministicDraftDiagnostics).toEqual({ ungroundedDetailCounts: { unspecified: 1 },
+      protocolCounts: { legacy: 1 } });
+  });
+  it('sanitizes attacker-controlled diagnostic labels in reports and fixed GitHub annotations', async () => {
+    const value = await overdueInput('2026-10-09T19:50:00Z'); value.dueRows = [];
+    Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 });
+    value.preparationReport.draftProtocolVersion = { raw: privateMarker };
+    value.preparationReport.held = [
+      { reason: 'daily_draft_ungrounded', detailReason: privateMarker, protocolVersion: privateMarker, raw: privateMarker },
+      { reason: 'daily_draft_ungrounded', detailReason: { text: privateMarker }, protocolVersion: [privateMarker] },
+      { reason: 'daily_draft_ungrounded', detailReason: 'schema_' + privateMarker.toLowerCase() },
+      { reason: 'daily_model_held', detailReason: 'identity', protocolVersion: 'literal-evidence-refs-v1' },
+      { reason: 'daily_publication_date_unknown', detailReason: 'language' },
+      { reason: privateMarker, detailReason: privateMarker, protocolVersion: 'literal-evidence-refs-v1' },
+    ];
+    value.preparationReport.native.deterministicHeld = [{ reason: 'daily_draft_ungrounded', detailReason: 'evidence_reference',
+      protocolVersion: 'literal-evidence-refs-v1', sourceUrl: privateMarker },
+    { reason: 'daily_draft_ungrounded', detailReason: null, protocolVersion: null }];
+    const report = await summarizeNewsOperations(value), annotations = newsOperationsWorkflowWarnings(report, { GITHUB_ACTIONS: 'true' });
+    expect(report.preparation.draftProtocolVersion).toBe('unspecified');
+    expect(report.preparation.draftDiagnostics).toEqual({ ungroundedDetailCounts: { unspecified: 3 },
+      protocolCounts: { unspecified: 2, legacy: 1, 'literal-evidence-refs-v1': 2 } });
+    expect(report.preparation.deterministicDraftDiagnostics).toEqual({ ungroundedDetailCounts: { evidence_reference: 1, unspecified: 1 },
+      protocolCounts: { 'literal-evidence-refs-v1': 1, unspecified: 1 } });
+    expect(annotations).toHaveLength(1); expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
+    expect(JSON.stringify({ report, annotations }).toLowerCase()).not.toContain(privateMarker.toLowerCase());
+    expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+  });
+  it('counts exact cache details separately for all retained rows and rows checked today', async () => {
+    const value = await input();
+    value.ledger.reviewCache = [
+      { key: '1'.repeat(64), sourceUrl: 'https://private.example/one', checkedAt: current.toISOString(), status: 'rejected',
+        reason: 'daily_draft_ungrounded', detailReason: 'identity', protocolVersion: 'literal-evidence-refs-v1' },
+      { key: '2'.repeat(64), sourceUrl: 'https://private.example/two', checkedAt: current.toISOString(), status: 'rejected',
+        reason: 'daily_draft_ungrounded', detailReason: 'length', protocolVersion: 'literal-evidence-refs-v1' },
+      { key: '3'.repeat(64), sourceUrl: 'https://private.example/three', checkedAt: current.toISOString(), status: 'rejected',
+        reason: 'daily_draft_ungrounded' },
+      { key: '4'.repeat(64), sourceUrl: 'https://private.example/four', checkedAt: current.toISOString(), status: 'rejected',
+        reason: 'daily_model_held', protocolVersion: 'literal-evidence-refs-v1' },
+      { key: '5'.repeat(64), sourceUrl: 'https://private.example/five', checkedAt: '2026-09-30T10:00:00.000Z', status: 'rejected',
+        reason: 'daily_draft_ungrounded', detailReason: 'literal_evidence', protocolVersion: 'literal-evidence-refs-v1' },
+    ];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]);
+    expect(report.preparation.reviewCache.draftDiagnostics).toEqual({ ungroundedDetailCounts: {
+      identity: 1, length: 1, unspecified: 1, literal_evidence: 1 }, protocolCounts: { 'literal-evidence-refs-v1': 4, legacy: 1 } });
+    expect(report.preparation.reviewCache.checkedTodayDraftDiagnostics).toEqual({ ungroundedDetailCounts: {
+      identity: 1, length: 1, unspecified: 1 }, protocolCounts: { 'literal-evidence-refs-v1': 3, legacy: 1 } });
+    expect(JSON.stringify(report)).not.toContain('private.example');
+  });
+  it('handles malformed held rows without projecting labels or mistaking missing rows for AI attempts', async () => {
+    const value = await input();
+    value.preparationReport.held = [null, false, 0, privateMarker, [], {},
+      { reason: 'daily_draft_ungrounded', detailReason: [], protocolVersion: {} },
+      { reason: 'daily_article_evidence_unavailable' }];
+    const report = await summarizeNewsOperations(value);
+    expect(report.preparation.draftDiagnostics).toEqual({ ungroundedDetailCounts: { unspecified: 1 },
+      protocolCounts: { unspecified: 1 } });
+    expect(report.failures).toEqual([]); expect(JSON.stringify(report)).not.toContain(privateMarker);
+  });
+  it('bounds diagnostic arrays at the existing held-row limit and returns null for invalid shapes', async () => {
+    const value = await input(), row = { reason: 'daily_draft_ungrounded', detailReason: 'schema', protocolVersion: 'literal-evidence-refs-v1' };
+    value.preparationReport.held = Array(5000).fill(row);
+    expect((await summarizeNewsOperations(value)).preparation.draftDiagnostics).toEqual({ ungroundedDetailCounts: { schema: 5000 },
+      protocolCounts: { 'literal-evidence-refs-v1': 5000 } });
+    for (const invalid of [Array(5001).fill(row), { raw: privateMarker }, null, privateMarker]) {
+      value.preparationReport.held = invalid; value.preparationReport.native.deterministicHeld = invalid;
+      const report = await summarizeNewsOperations(value);
+      expect(report.preparation.draftDiagnostics).toBeNull(); expect(report.preparation.deterministicDraftDiagnostics).toBeNull();
+      expect(JSON.stringify(report)).not.toContain(privateMarker);
+    }
+    disablePreparation(value); const disabled = await summarizeNewsOperations(value);
+    expect(disabled.preparation.draftProtocolVersion).toBeNull(); expect(disabled.preparation.draftDiagnostics).toBeNull();
+  });
+  it.each(['quota', 'cadence', 'reserve', 'read_failed'])(
+    'retains the existing %s signal when draft diagnostics are present', async scenario => {
+      const value = scenario === 'cadence' ? await cadenceInput('2026-10-09T15:00:00Z', 3)
+        : scenario === 'reserve' ? await overdueInput('2026-10-09T09:18:00Z') : await input();
+      if (scenario === 'quota') value.preparationReport.stoppedReason = 'ai_quota_exceeded';
+      if (scenario === 'reserve') { value.dueRows = []; Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 }); }
+      if (scenario === 'read_failed') { value.dueRows = null; value.readFailures = ['operations_due_queue_read_failed']; }
+      const baseline = await summarizeNewsOperations(value);
+      value.preparationReport.draftProtocolVersion = 'literal-evidence-refs-v1';
+      value.preparationReport.held = [{ reason: 'daily_draft_ungrounded', detailReason: 'evidence_reference',
+        protocolVersion: 'literal-evidence-refs-v1', raw: privateMarker }];
+      const report = await summarizeNewsOperations(value);
+      expect(report.status).toBe('failed'); expect(report.failures).toEqual(baseline.failures); expect(report.warnings).toEqual(baseline.warnings);
+      expect(report.preparation.draftDiagnostics.ungroundedDetailCounts).toEqual({ evidence_reference: 1 });
+      expect(JSON.stringify(report)).not.toContain(privateMarker);
+    });
   it('distinguishes a failed runtime read from a successfully read invalid queue or disabled destination', async () => {
     const value = await input(); value.dueRows = null; value.control = null;
     value.readFailures = ['operations_due_queue_read_failed', 'operations_destination_read_failed', privateMarker];

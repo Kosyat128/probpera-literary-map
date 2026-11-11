@@ -4,6 +4,7 @@ import { checkedDailyCandidate, createDailyNewsStorageClient, createDailyWorkers
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_WINDOW, DAILY_NEWS_MODELS,
   dailyNewsDigest, dailyRecordHashPayload, makeDailyApprovedPayload, validateDailyApprovedPayload } from "./literary-news-daily-profile.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
+import { referencedDraftFixture } from './literary-news-evidence.test-fixture.mjs';
 
 const current = new Date("2026-09-29T12:00:00Z"), accountId = "a".repeat(32), apiToken = "isolated-token";
 const sources = [{ id: "fixture", name: "Literary Fixture", url: "https://source.example/news/", language: "en",
@@ -31,8 +32,8 @@ function aiFixture({ mutateDraft, mutateReview, intercept } = {}) {
   return { requests, request: vi.fn(async ({ phase, messages }) => {
     const input = JSON.parse(messages[1].content), n = Number(/item(\d+)$/.exec(input.SOURCE_DATA.url)[1]);
     requests.push({ phase, n, messages }); const intercepted = intercept?.({ phase, n });
-    if (intercepted) return intercepted;
-    return phase === "draft" ? { ...draft(n), ...mutateDraft?.(n) } : { ...review(), ...mutateReview?.(n) };
+    if (intercepted) return phase === 'draft' ? referencedDraftFixture(intercepted, messages) : intercepted;
+    return phase === "draft" ? referencedDraftFixture({ ...draft(n), ...mutateDraft?.(n) }, messages) : { ...review(), ...mutateReview?.(n) };
   }) };
 }
 function options(details, ai = aiFixture(), extra = {}) {
@@ -169,6 +170,9 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     expect(nextAi.request).not.toHaveBeenCalled(); expect(replay.report.publicationConfirmed).toBe(true);
     expect(values.get(DAILY_NEWS_PROFILE_KEY).records[0]).toEqual(accepted);
     const altered = structuredClone(accepted); altered.summary.ru += " Уточнение.";
+    // A separately supplied legacy proof still hits the immutable-history guard;
+    // new reference-proof tampering is independently rejected before this guard.
+    delete altered.provenance.draftEvidence;
     altered.provenance.recordSha256 = await dailyNewsDigest(dailyRecordHashPayload(altered));
     const conflicting = await makeDailyApprovedPayload([altered], current);
     await expect(mergeDailyLedgers(replay.state, conflicting, null, current, { sources })).rejects.toThrow("daily_accepted_history_conflict");
@@ -183,6 +187,7 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     expect(merged.accepted).not.toBe(first.state.accepted);
     expect(await dailyNewsDigest(merged.accepted)).toBe(priorSha);
     const changed = structuredClone(record); changed.summary.en += " Unsupported correction.";
+    delete changed.provenance.draftEvidence;
     changed.provenance.recordSha256 = await dailyNewsDigest(dailyRecordHashPayload(changed));
     await expect(mergeDailyLedgers(first.state, await makeDailyApprovedPayload([changed], current), null, current, { sources }))
       .rejects.toThrow("daily_accepted_history_conflict");
@@ -227,19 +232,22 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     expect(renewed.profile.records).toHaveLength(1);
     expect(renewed.profile.records[0].provenance.sourceEvidence.documentSha256).toBe('b'.repeat(64));
   });
-  it('reuses an exact legacy rejected-cache key and preserves accepted raw-document proofs', async () => {
+  it('keeps legacy rejections immutable while checking the new protocol once and preserving accepted proofs', async () => {
     const article = detail(0), candidate = await checkedDailyCandidate(article, current, sources);
     const previous = emptyDailyLedger(current);
     previous.reviewCache = [{ key: candidate.legacyKey, sourceUrl: candidate.url,
       checkedAt: current.toISOString(), status: 'rejected', reason: 'daily_model_held' }];
     const ai = aiFixture(), replay = await runDailyNewsAutomation(options([article], ai, { previous }));
-    expect(ai.request).not.toHaveBeenCalled();
-    expect(replay.state.reviewCache[0].key).toBe(candidate.key);
+    expect(ai.requests.map(row => row.phase)).toEqual(['draft', 'review']);
+    expect(replay.state.reviewCache.find(row => row.key === candidate.legacyKey)).toEqual(previous.reviewCache[0]);
+    const calls = ai.requests.length;
+    await runDailyNewsAutomation(options([article], ai, { previous: replay.state }));
+    expect(ai.requests).toHaveLength(calls);
     const accepted = await runDailyNewsAutomation(options([detail(1)]));
     const original = accepted.state.accepted[0], originalSha = original.provenance.recordSha256;
     const wrapper = detail(1); wrapper.evidence.responseSha256 = 'c'.repeat(64);
     const unchanged = await runDailyNewsAutomation(options([wrapper], ai, { previous: accepted.state }));
-    expect(ai.request).not.toHaveBeenCalled();
+    expect(ai.requests).toHaveLength(calls);
     expect(unchanged.state.accepted[0].provenance.recordSha256).toBe(originalSha);
     expect(unchanged.state.accepted[0].provenance.sourceEvidence.documentSha256).toBe('a'.repeat(64));
   });
