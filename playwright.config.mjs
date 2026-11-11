@@ -22,6 +22,8 @@ const webglRegressionSpecs = [
   "**/archive-search-calendar.spec.mjs",
   "**/calendar-design-quality.spec.mjs",
   "**/calendar-runtime-coverage.spec.mjs",
+  // The CMS preview opens the real homepage in an iframe, including its globe.
+  "**/cms-direct-edit.spec.mjs",
   "**/article-book-reading.spec.mjs",
   "**/article-book-zoom.spec.mjs",
   "**/image-delivery.spec.mjs",
