@@ -4,8 +4,9 @@ import { parse } from 'yaml';
 import { checkNewsOperations, createNewsOperationsReportReader, createNewsOperationsRuntimeReadFetch,
   newsDeliveryCheckpointAge, newsOperationsSupplyCandidates, newsOperationsWorkflowWarnings, summarizeNewsOperations } from './check-literary-news-operations.mjs';
 import { makeDailyApprovedPayload, DAILY_NEWS_WINDOW, DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY,
-  DAILY_NEWS_OWNER_KEY, DAILY_NEWS_LIMITS } from './lib/literary-news-daily-profile.mjs';
+  DAILY_NEWS_OWNER_KEY, DAILY_NEWS_LIMITS, dailyNewsDigest } from './lib/literary-news-daily-profile.mjs';
 import { emptyDailyLedger } from './lib/literary-news-daily-automation.mjs';
+import { dailyInferenceBudgetGate } from './lib/literary-news-inference-budget.mjs';
 import { buildPublishedNewsFeed } from './lib/literary-news-publication.mjs';
 import { pendingNewsSourceState } from './lib/literary-news-state.mjs';
 import { newsPostKey, prepareNewsPost } from './lib/literary-news-social.mjs';
@@ -82,12 +83,29 @@ async function cappedDraftInput() {
   Object.assign(value.dayStatus, { editorialDay: '2026-10-09', minimum: 8, maximum: 10,
     acknowledgedCreates: 5, acknowledgedPhotoCreates: 1, freshCreates: 5, freshPhotoCreates: 1, deficitToMinimum: 3 });
   Object.assign(value.preparationReport, { checkedAt: '2026-10-09T18:18:09.757Z', publicationConfirmed: true,
+    day: '2026-10-09', status: 'provider_degraded', retryAfterAt: null,
     stoppedReason: 'ai_daily_candidate_budget_exhausted', draftRequestsToday: DAILY_NEWS_LIMITS.draftRequestsPerDay,
-    reservedAiCallsToday: 48, aiCalls: 0 });
+    reservedAiCallsToday: DAILY_NEWS_LIMITS.draftRequestsPerDay + 8, aiCalls: 0 });
   value.preparationAttempt = { schemaVersion: 1, startedAt: '2026-10-09T18:18:00.579Z',
     finishedAt: '2026-10-09T18:18:10.160Z', status: 'provider_degraded', reason: 'ai_daily_candidate_budget_exhausted',
     publicationConfirmed: true, retryAfterAt: null };
-  value.ledger.inferenceBudgets = [{ day: '2026-10-09', draftRequests: DAILY_NEWS_LIMITS.draftRequestsPerDay, reservedCalls: 48 }];
+  value.ledger.inferenceBudgets = [{ day: '2026-10-09', draftRequests: DAILY_NEWS_LIMITS.draftRequestsPerDay,
+    reservedCalls: DAILY_NEWS_LIMITS.draftRequestsPerDay + 8 }];
+  return value;
+}
+
+async function deferredBudgetInput({ phase = 'draft', reservedCalls = 30, draftRequests = 24,
+  reportAt = '2026-10-09T06:00:00.000Z', currentAt = '2026-10-09T06:01:00.000Z' } = {}) {
+  const value = await input(new Date(currentAt)), day = '2026-10-09';
+  value.dayStatus.editorialDay = day;
+  const gate = dailyInferenceBudgetGate({ day, phase, current: new Date(reportAt), reservedCalls, draftRequests });
+  Object.assign(value.preparationReport, { checkedAt: reportAt, day, status: 'budget_deferred',
+    stoppedReason: gate.reason, draftRequestsToday: draftRequests, reservedAiCallsToday: reservedCalls,
+    retryAfterAt: gate.nextEligibleAt, inferenceBudget: { ...gate, phase }, aiCalls: 0 });
+  value.preparationAttempt = { schemaVersion: 1, startedAt: reportAt,
+    finishedAt: new Date(Date.parse(reportAt) + 1000).toISOString(), status: 'budget_deferred', reason: gate.reason,
+    publicationConfirmed: true, retryAfterAt: gate.nextEligibleAt };
+  value.ledger.inferenceBudgets = [{ day, draftRequests, reservedCalls }];
   return value;
 }
 
@@ -321,22 +339,23 @@ describe('bounded read-only news operations projection', () => {
     expect(report.failures).toEqual([]); expect(report.status).toBe('supply_degraded');
     expect(report.preparation).toMatchObject({ budgetDeferred: true, budgetDeferredReason: 'ai_daily_candidate_budget_exhausted',
       providerStop: null, quotaCooldown: false, admittedToday: 0, minimum: 8, minimumDeficit: 8 });
-    expect(report.preparation.lastRunCounts).toMatchObject({ draftRequestsToday: 40, reservedAiCallsToday: 48, aiCalls: 0 });
+    expect(report.preparation.lastRunCounts).toMatchObject({ draftRequestsToday: 70, reservedAiCallsToday: 78, aiCalls: 0 });
     expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
     expect(report.telegram.reserve.status).toBe('shortfall');
     expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
   });
-  it.each(['below_cap', 'string_cap', 'over_cap', 'ledger_below_cap', 'missing_ledger_budget', 'reserved_below_drafts',
+  it.each(['below_cap', 'string_cap', 'over_cap', 'ledger_below_cap', 'ledger_reserved_mismatch', 'missing_ledger_budget', 'reserved_below_drafts',
     'reserved_above_limit', 'unconfirmed_report', 'unconfirmed_attempt', 'invalid_report', 'future_report', 'missing_attempt', 'mismatched_reason',
     'mismatched_status', 'future_attempt', 'stale_attempt', 'unrelated_report', 'previous_day'])(
     'does not hide a claimed daily draft stop with %s evidence', async boundary => {
       const value = await cappedDraftInput();
-      if (boundary === 'below_cap') value.preparationReport.draftRequestsToday = 39;
-      if (boundary === 'string_cap') value.preparationReport.draftRequestsToday = '40';
-      if (boundary === 'over_cap') value.preparationReport.draftRequestsToday = 41;
-      if (boundary === 'ledger_below_cap') value.ledger.inferenceBudgets[0].draftRequests = 39;
+      if (boundary === 'below_cap') value.preparationReport.draftRequestsToday = DAILY_NEWS_LIMITS.draftRequestsPerDay - 1;
+      if (boundary === 'string_cap') value.preparationReport.draftRequestsToday = String(DAILY_NEWS_LIMITS.draftRequestsPerDay);
+      if (boundary === 'over_cap') value.preparationReport.draftRequestsToday = DAILY_NEWS_LIMITS.draftRequestsPerDay + 1;
+      if (boundary === 'ledger_below_cap') value.ledger.inferenceBudgets[0].draftRequests = DAILY_NEWS_LIMITS.draftRequestsPerDay - 1;
+      if (boundary === 'ledger_reserved_mismatch') value.ledger.inferenceBudgets[0].reservedCalls++;
       if (boundary === 'missing_ledger_budget') value.ledger.inferenceBudgets = [];
-      if (boundary === 'reserved_below_drafts') value.preparationReport.reservedAiCallsToday = 39;
+      if (boundary === 'reserved_below_drafts') value.preparationReport.reservedAiCallsToday = DAILY_NEWS_LIMITS.draftRequestsPerDay - 1;
       if (boundary === 'reserved_above_limit') value.preparationReport.reservedAiCallsToday = 81;
       if (boundary === 'unconfirmed_report') value.preparationReport.publicationConfirmed = false;
       if (boundary === 'unconfirmed_attempt') value.preparationAttempt.publicationConfirmed = false;
@@ -355,7 +374,7 @@ describe('bounded read-only news operations projection', () => {
       expect(report.preparation).toMatchObject({ budgetDeferred: false, budgetDeferredReason: null,
         providerStop: 'ai_daily_candidate_budget_exhausted' });
     });
-  it('preserves genuine provider quota and delivery failures even with forty reserved drafts', async () => {
+  it('preserves genuine provider quota and delivery failures even at the daily draft cap', async () => {
     const value = await cappedDraftInput(); value.deliveryHeartbeat.status = 'blocked';
     const deliveryBlocked = await summarizeNewsOperations(value);
     expect(deliveryBlocked.preparation.budgetDeferred).toBe(true);
@@ -366,6 +385,148 @@ describe('bounded read-only news operations projection', () => {
     const quota = await summarizeNewsOperations(value);
     expect(quota.failures).toEqual(expect.arrayContaining(['operations_preparation_degraded', 'operations_delivery_blocked']));
     expect(quota.preparation).toMatchObject({ budgetDeferred: false, quotaCooldown: true, providerStop: 'ai_quota_exceeded' });
+  });
+  it.each([70, 75, 79])('recognizes a proven hard draft cap with %i reserved calls below the AI cap', async reservedCalls => {
+    const value = await cappedDraftInput();
+    value.ledger.inferenceBudgets[0].reservedCalls = value.preparationReport.reservedAiCallsToday = reservedCalls;
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.preparation.budgetDeferred).toBe(true);
+    expect(report.preparation.inferenceBudget.nextEligibility.draft).toEqual({ allowed: false,
+      reason: 'ai_daily_candidate_budget_exhausted', nextEligibleAt: null });
+  });
+  it('recognizes the confirmed hard 80-call stop independently of the draft cap', async () => {
+    const value = await cappedDraftInput(), budget = value.ledger.inferenceBudgets[0];
+    budget.draftRequests = value.preparationReport.draftRequestsToday = 55;
+    budget.reservedCalls = value.preparationReport.reservedAiCallsToday = 80;
+    value.preparationReport.stoppedReason = value.preparationAttempt.reason = 'ai_daily_budget_exhausted';
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]);
+    expect(report.preparation).toMatchObject({ budgetDeferred: true, budgetDeferredReason: 'ai_daily_budget_exhausted',
+      providerStop: null, quotaCooldown: false, retryAfterAt: null });
+    expect(report.preparation.inferenceBudget.nextEligibility.review).toEqual({ allowed: false,
+      reason: 'ai_daily_budget_exhausted', nextEligibleAt: null });
+  });
+  it.each([{ phase: 'draft', reservedCalls: 30 }, { phase: 'review', reservedCalls: 43 }])(
+    'accepts a proven future $phase budget release while preserving supply status', async scenario => {
+      const value = await deferredBudgetInput(scenario), report = await summarizeNewsOperations(value);
+      expect(report.failures).toEqual([]); expect(report.status).toBe('supply_degraded');
+      expect(report.preparation).toMatchObject({ budgetDeferred: true, budgetDeferredReason: value.preparationReport.stoppedReason,
+        retryAfterAt: value.preparationReport.retryAfterAt, providerStop: null, quotaCooldown: false });
+      expect(report.preparation.inferenceBudget).toMatchObject({ day: '2026-10-09', reservedCalls: scenario.reservedCalls,
+        draftRequests: 24, releasedBudget: { aiCalls: 43, draftRequests: 24 } });
+      expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+    });
+  it('recomputes the still-blocking draft gate after the call release occurs first', async () => {
+    const value = await deferredBudgetInput({ reservedCalls: 55, draftRequests: 40,
+      reportAt: '2026-10-09T09:40:00.000Z', currentAt: '2026-10-09T09:50:00.000Z' });
+    expect(value.preparationReport.stoppedReason).toBe('ai_daily_budget_deferred');
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.preparation.budgetDeferred).toBe(true);
+    expect(report.preparation.inferenceBudget.nextEligibility.draft).toEqual({ allowed: false,
+      reason: 'ai_daily_candidate_budget_deferred', nextEligibleAt: '2026-10-09T10:03:00.000Z' });
+  });
+  it.each(['missing_gate', 'malformed_gate', 'wrong_phase', 'gate_allowed', 'gate_release', 'gate_reason', 'gate_retry',
+    'report_day', 'report_status', 'report_reason', 'report_retry', 'attempt_status', 'attempt_reason', 'attempt_retry',
+    'ledger_calls', 'ledger_drafts', 'missing_budget', 'unconfirmed_report', 'unconfirmed_attempt', 'capture_failure',
+    'future_report', 'unrelated_report', 'stale_attempt', 'stale_profile', 'stale_ledger', 'quota', 'http_429', 'provider_http',
+    'ledger_read', 'profile_read', 'report_read', 'attempt_read'])(
+    'keeps preparation failure for an unproven temporary budget stop: %s', async boundary => {
+      const value = await deferredBudgetInput();
+      if (boundary === 'missing_gate') delete value.preparationReport.inferenceBudget;
+      if (boundary === 'malformed_gate') value.preparationReport.inferenceBudget = privateMarker;
+      if (boundary === 'wrong_phase') value.preparationReport.inferenceBudget.phase = privateMarker;
+      if (boundary === 'gate_allowed') value.preparationReport.inferenceBudget.allowed = true;
+      if (boundary === 'gate_release') value.preparationReport.inferenceBudget.releasedCalls++;
+      if (boundary === 'gate_reason') value.preparationReport.inferenceBudget.reason = privateMarker;
+      if (boundary === 'gate_retry') value.preparationReport.inferenceBudget.nextEligibleAt = '2026-10-09T07:00:00.000Z';
+      if (boundary === 'report_day') value.preparationReport.day = '2026-10-08';
+      if (boundary === 'report_status') value.preparationReport.status = 'provider_degraded';
+      if (boundary === 'report_reason') value.preparationReport.stoppedReason = null;
+      if (boundary === 'report_retry') value.preparationReport.retryAfterAt = null;
+      if (boundary === 'attempt_status') value.preparationAttempt.status = 'provider_degraded';
+      if (boundary === 'attempt_reason') value.preparationAttempt.reason = 'ai_quota_exceeded';
+      if (boundary === 'attempt_retry') value.preparationAttempt.retryAfterAt = '2026-10-09T07:00:00.000Z';
+      if (boundary === 'ledger_calls') value.ledger.inferenceBudgets[0].reservedCalls++;
+      if (boundary === 'ledger_drafts') value.ledger.inferenceBudgets[0].draftRequests++;
+      if (boundary === 'missing_budget') value.ledger.inferenceBudgets = [];
+      if (boundary === 'unconfirmed_report') value.preparationReport.publicationConfirmed = false;
+      if (boundary === 'unconfirmed_attempt') value.preparationAttempt.publicationConfirmed = false;
+      if (boundary === 'capture_failure') { value.feed = null; value.readFailures = ['operations_public_feed_read_failed'];
+        value.preparationReport.publicationConfirmed = false; value.preparationAttempt.publicationConfirmed = false; }
+      if (boundary === 'future_report') value.preparationReport.checkedAt = '2026-10-09T06:02:00.000Z';
+      if (boundary === 'unrelated_report') value.preparationReport.checkedAt = '2026-10-09T05:59:59.999Z';
+      if (boundary === 'stale_attempt') value.preparationAttempt.startedAt = value.preparationAttempt.finishedAt = '2026-10-09T04:00:00.000Z';
+      if (boundary === 'stale_profile') value.profile = await makeDailyApprovedPayload([], new Date('2026-10-08T23:00:00.000Z'));
+      if (boundary === 'stale_ledger') value.ledger.updatedAt = '2026-10-08T23:00:00.000Z';
+      if (boundary === 'quota' || boundary === 'http_429') value.ledger.providerStop = {
+        reason: boundary === 'quota' ? 'ai_quota_exceeded' : 'ai_http_429', retryAfterAt: '2026-10-10T00:00:00.000Z', httpStatus: 429 };
+      if (boundary === 'provider_http') value.preparationReport.providerHttpStatus = 429;
+      const failedReads = { ledger_read: 'operations_ledger_read_failed', profile_read: 'operations_profile_read_failed',
+        report_read: 'operations_preparation_report_read_failed', attempt_read: 'operations_preparation_attempt_read_failed' };
+      if (failedReads[boundary]) value.readFailures = [failedReads[boundary]];
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures).toContain('operations_preparation_degraded');
+      expect(report.preparation.budgetDeferred).toBe(false);
+      if (boundary === 'capture_failure') expect(report.failures).toContain('operations_public_feed_read_failed');
+      if (boundary === 'quota' || boundary === 'http_429') expect(report.preparation.providerStop).toBe(value.ledger.providerStop.reason);
+      expect(JSON.stringify(report)).not.toContain(privateMarker);
+    });
+  it.each(['2026-10-09T06:12:00.000Z', '2026-10-09T06:13:00.000Z', '2026-10-09T06:57:00.000Z'])(
+    'allows the next preparation schedule to resume after the confirmed release at %s', async currentAt => {
+      const value = await deferredBudgetInput({ currentAt }), report = await summarizeNewsOperations(value);
+      expect(report.preparation.budgetDeferred).toBe(true); expect(report.failures).toEqual([]);
+      expect(report.preparation.retryAfterAt).toBe('2026-10-09T06:12:00.000Z');
+      expect(report.preparation.inferenceBudget.nextEligibility.draft).toEqual({ allowed: true, reason: null, nextEligibleAt: null });
+    });
+  it.each(['2026-10-09T06:57:00.001Z', '2026-10-09T07:00:00.000Z'])(
+    'alerts when preparation has not resumed more than 45 minutes after release at %s', async currentAt => {
+      const value = await deferredBudgetInput({ currentAt }), report = await summarizeNewsOperations(value);
+      expect(report.preparation.budgetDeferred).toBe(false);
+      expect(report.failures).toEqual(['operations_preparation_retry_overdue', 'operations_preparation_degraded']);
+      expect(report.preparation.inferenceBudget.nextEligibility.draft).toEqual({ allowed: true, reason: null, nextEligibleAt: null });
+    });
+  it('allows more requests after 14 MSK with the observed 40 drafts and 47 calls', async () => {
+    const value = await input(new Date('2026-11-11T11:01:00.000Z')); value.dayStatus.editorialDay = '2026-11-11';
+    value.ledger.inferenceBudgets = [{ day: '2026-11-11', reservedCalls: 47, draftRequests: 40 }];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]);
+    expect(report.preparation.inferenceBudget).toEqual({ day: '2026-11-11', reservedCalls: 47, draftRequests: 40,
+      releasedBudget: { aiCalls: 60, draftRequests: 45 }, nextEligibility: {
+        draft: { allowed: true, reason: null, nextEligibleAt: null }, review: { allowed: true, reason: null, nextEligibleAt: null } } });
+  });
+  it('retains a confirmed per-run request budget stop with its real provider_degraded attempt', async () => {
+    const value = await input();
+    Object.assign(value.preparationReport, { stoppedReason: 'ai_request_budget_exhausted', status: 'provider_degraded' });
+    value.preparationAttempt = completedPreparationAttempt(current.toISOString(), { status: 'provider_degraded',
+      reason: 'ai_request_budget_exhausted' });
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]); expect(report.status).toBe('supply_degraded');
+    expect(report.preparation).toMatchObject({ budgetDeferred: false, quotaCooldown: false,
+      providerStop: 'ai_request_budget_exhausted' });
+  });
+  it('keeps the observed cadence deficit actionable during a proven temporary budget wait', async () => {
+    const value = await cadenceInput('2026-10-09T09:01:00.000Z', 0);
+    const budget = await deferredBudgetInput({ reservedCalls: 47, draftRequests: 36,
+      reportAt: '2026-10-09T09:00:00.000Z', currentAt: '2026-10-09T09:01:00.000Z' });
+    Object.assign(value, { profile: budget.profile, ledger: budget.ledger,
+      preparationReport: budget.preparationReport, preparationAttempt: budget.preparationAttempt });
+    const report = await summarizeNewsOperations(value);
+    expect(report.preparation.budgetDeferred).toBe(true);
+    expect(report.failures).toEqual(['operations_delivery_cadence_deficit']);
+    expect(report.telegram.cadence.status).toBe('deficit');
+  });
+  it('keeps empty reserve failure and shortfall warning during a proven temporary budget wait', async () => {
+    const value = await overdueInput('2026-10-09T09:18:00.000Z'); value.dueRows = [];
+    const budget = await deferredBudgetInput({ reservedCalls: 47, draftRequests: 37,
+      reportAt: '2026-10-09T09:17:00.000Z', currentAt: '2026-10-09T09:18:00.000Z' });
+    Object.assign(value, { profile: budget.profile, ledger: budget.ledger,
+      preparationReport: budget.preparationReport, preparationAttempt: budget.preparationAttempt });
+    Object.assign(value.supply, { readyNow: 0, readyByClose: 0, missing: 1 });
+    const report = await summarizeNewsOperations(value);
+    expect(report.preparation.budgetDeferred).toBe(true);
+    expect(report.failures).toEqual(['operations_delivery_reserve_empty']);
+    expect(report.warnings).toEqual(['operations_delivery_reserve_shortfall']);
+    expect(report.telegram.reserve.status).toBe('empty');
   });
   it.each([[90 * 60000 - 1, false], [90 * 60000, false], [90 * 60000 + 1, true]])(
     'checks preparation attempts independently of fresh publication state at age %i ms', async (age, stale) => {
@@ -470,6 +631,43 @@ describe('bounded read-only news operations projection', () => {
     const invalid = await summarizeNewsOperations(value);
     expect(invalid.preparation.lastRunCounts.aiCalls).toBeNull();
     expect(invalid.preparation.lastRunCounts.maximumAiCalls).toBeNull(); expect(invalid.preparation.heldReasons).toBeNull();
+  });
+  it('projects validated cache status, daily reasons and repeated URL counts without private content', async () => {
+    const value = await input(), draft = { text: privateMarker };
+    value.ledger.reviewCache = [
+      { key: '1'.repeat(64), sourceUrl: 'https://private.example/' + privateMarker, checkedAt: current.toISOString(),
+        status: 'rejected', reason: 'daily_model_held', article: privateMarker },
+      { key: '2'.repeat(64), sourceUrl: 'https://private.example/' + privateMarker + '?utm_source=private', checkedAt: current.toISOString(),
+        status: 'draft', draft, draftSha256: await dailyNewsDigest(draft) },
+      { key: '3'.repeat(64), sourceUrl: 'https://private.example/other', checkedAt: current.toISOString(),
+        status: 'rejected', reason: 'daily_' + privateMarker.toLowerCase() },
+      { key: '4'.repeat(64), sourceUrl: 'https://private.example/' + privateMarker, checkedAt: '2026-09-30T10:00:00.000Z',
+        status: 'rejected', reason: 'daily_duplicate_topic' },
+    ];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toEqual([]);
+    expect(report.preparation.reviewCache).toEqual({ entries: 4, capacity: 120,
+      statusCounts: { draft: 1, rejected: 3, accepted: 0 }, reasonCounts: { daily_model_held: 1, other: 1, daily_duplicate_topic: 1 },
+      checkedTodayCount: 3, checkedTodayStatusCounts: { draft: 1, rejected: 2, accepted: 0 },
+      checkedTodayReasonCounts: { daily_model_held: 1, other: 1 }, distinctSourceUrlCount: 2, repeatedUrlCount: 2,
+      checkedTodayDistinctSourceUrlCount: 2, checkedTodayRepeatedUrlCount: 1 });
+    const serialized = JSON.stringify(report).toLowerCase();
+    for (const secret of [privateMarker.toLowerCase(), 'private.example', '1'.repeat(64), '2'.repeat(64)])
+      expect(serialized).not.toContain(secret);
+    expect(report.readonly).toBe(true); expect(report.externalWrites).toBe(0);
+  });
+  it('retains the 120-entry cache boundary and refuses to summarize an invalid ledger', async () => {
+    const value = await input();
+    value.ledger.reviewCache = Array.from({ length: 120 }, (_, index) => ({ key: index.toString(16).padStart(64, '0'),
+      sourceUrl: 'https://private.example/' + index, checkedAt: current.toISOString(), status: 'rejected', reason: privateMarker }));
+    const valid = await summarizeNewsOperations(value);
+    expect(valid.failures).toEqual([]); expect(valid.preparation.reviewCache.entries).toBe(120);
+    expect(valid.preparation.reviewCache.reasonCounts).toEqual({ other: 120 });
+    value.ledger.reviewCache.push({ ...value.ledger.reviewCache[0], key: 'f'.repeat(64) });
+    const invalid = await summarizeNewsOperations(value);
+    expect(invalid.failures).toContain('operations_checkpoint_missing_or_invalid');
+    expect(invalid.preparation.reviewCache).toBeNull(); expect(invalid.preparation.inferenceBudget).toBeNull();
+    expect(JSON.stringify(invalid)).not.toContain(privateMarker);
   });
   it('distinguishes a failed runtime read from a successfully read invalid queue or disabled destination', async () => {
     const value = await input(); value.dueRows = null; value.control = null;

@@ -282,6 +282,13 @@ describe('Private native daily preparation and bounded public source adapter',()
     const bounded=await boundedNativeNewsCandidates({details:[unknown,...all]},
       {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
     expect(bounded.intake.details).toEqual(all.slice(1,6));expect(bounded.held.map(row=>row.reason)).toEqual(['daily_publication_date_unknown','daily_draft_ungrounded']);
+    const legacy=await boundedNativeNewsCandidates({details:all},
+      {...emptyDailyLedger(current),reviewCache:[{key:rejected.legacyKey,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
+    expect(legacy.intake.details).toEqual(all.slice(1,6));
+    const wrapper=structuredClone(all[0]);wrapper.evidence.responseSha256='b'.repeat(64);
+    const stable=await boundedNativeNewsCandidates({details:[wrapper,...all.slice(1)]},
+      {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
+    expect(stable.intake.details).toEqual(all.slice(1,6));
     const annual=await boundedNativeNewsCandidates({details:all},{...emptyDailyLedger(current),accepted:new Array(3000)},current,sources);
     expect(annual.maximum).toBe(2);expect(annual.intake.details).toHaveLength(2);
   });

@@ -205,6 +205,71 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     const again = await runDailyNewsAutomation(options([detail(0)], failing, { previous: reserved.state }));
     expect(again.state.inferenceBudgets[0].reservedCalls).toBe(2);
   });
+  it('does not spend another inference on an unchanged rejected article when only the HTML wrapper changes', async () => {
+    const rejected = await runDailyNewsAutomation(options([detail(0)], aiFixture({
+      mutateDraft: () => ({ literaryEvidence: 'Invented evidence absent from the source' })
+    })));
+    expect(rejected.report.held[0].reason).toBe('daily_draft_ungrounded');
+    const later = new Date(current.getTime() + 7 * 3600000), wrapper = detail(0, later);
+    wrapper.evidence.responseSha256 = 'b'.repeat(64);
+    const ai = aiFixture(), replay = await runDailyNewsAutomation(options([wrapper], ai,
+      { previous: rejected.state, current: later }));
+    expect(ai.request).not.toHaveBeenCalled();
+    expect(replay.state.inferenceBudgets).toEqual(rejected.state.inferenceBudgets);
+    expect(replay.report.held[0].reason).toBe('daily_draft_ungrounded');
+    const changedHeadline = structuredClone(wrapper); changedHeadline.evidence.headline += ' Updated';
+    expect((await checkedDailyCandidate(changedHeadline, later, sources)).key)
+      .not.toBe((await checkedDailyCandidate(wrapper, later, sources)).key);
+    const changed = structuredClone(wrapper); changed.evidence.text += ' The publisher provided additional literary evidence.';
+    const renewed = await runDailyNewsAutomation(options([changed], ai,
+      { previous: replay.state, current: later }));
+    expect(ai.requests.map(row => row.phase)).toEqual(['draft', 'review']);
+    expect(renewed.profile.records).toHaveLength(1);
+    expect(renewed.profile.records[0].provenance.sourceEvidence.documentSha256).toBe('b'.repeat(64));
+  });
+  it('reuses an exact legacy rejected-cache key and preserves accepted raw-document proofs', async () => {
+    const article = detail(0), candidate = await checkedDailyCandidate(article, current, sources);
+    const previous = emptyDailyLedger(current);
+    previous.reviewCache = [{ key: candidate.legacyKey, sourceUrl: candidate.url,
+      checkedAt: current.toISOString(), status: 'rejected', reason: 'daily_model_held' }];
+    const ai = aiFixture(), replay = await runDailyNewsAutomation(options([article], ai, { previous }));
+    expect(ai.request).not.toHaveBeenCalled();
+    expect(replay.state.reviewCache[0].key).toBe(candidate.key);
+    const accepted = await runDailyNewsAutomation(options([detail(1)]));
+    const original = accepted.state.accepted[0], originalSha = original.provenance.recordSha256;
+    const wrapper = detail(1); wrapper.evidence.responseSha256 = 'c'.repeat(64);
+    const unchanged = await runDailyNewsAutomation(options([wrapper], ai, { previous: accepted.state }));
+    expect(ai.request).not.toHaveBeenCalled();
+    expect(unchanged.state.accepted[0].provenance.recordSha256).toBe(originalSha);
+    expect(unchanged.state.accepted[0].provenance.sourceEvidence.documentSha256).toBe('a'.repeat(64));
+  });
+  it('reserves an evening opportunity after rejected morning candidates without increasing the daily AI ceiling', async () => {
+    const ai = aiFixture({ intercept: ({ phase, n }) => phase === 'draft' && n >= 1000
+      ? { status: 'held', reason: 'Not literary', title: { ru: '', en: '' }, summary: { ru: '', en: '' },
+        category: 'releases', eventIdentity: '', literaryEvidence: '', facts: [] } : null });
+    let state = null, morningDrafts = 0;
+    for (let slot = 0; slot < 48; slot++) {
+      const at = new Date(Date.parse('2026-09-29T00:00:00+03:00') + slot * 30 * 60000);
+      const afternoon = slot >= 24;
+      const details = Array.from({ length: afternoon ? 10 : 5 }, (_, index) => {
+        const row = detail(afternoon ? index : 1000 + slot * 5 + index, at);
+        row.evidence.publishedDates[0].value = '2026-09-28T20:00:00Z';
+        return row;
+      });
+      const result = await runDailyNewsAutomation(options(details, ai,
+        { current: at, previous: state, maxAiCalls: 10 }));
+      state = result.state;
+      const budget = state.inferenceBudgets.find(row => row.day === '2026-09-29');
+      expect(budget.reservedCalls).toBeLessThanOrEqual(80);
+      expect(budget.draftRequests).toBeLessThanOrEqual(70);
+      if (slot < 16) morningDrafts = budget.draftRequests;
+    }
+    expect(morningDrafts).toBe(20);
+    expect(state.accepted).toHaveLength(10);
+    expect(state.accepted.every(record => Date.parse(record.provenance.firstAcceptedAt)
+      >= Date.parse('2026-09-29T12:00:00+03:00'))).toBe(true);
+    expect(ai.requests.length).toBe(state.inferenceBudgets[0].reservedCalls);
+  });
   it("requires a current explicit owner record proving native is off and drained before any Node fallback writes", () => {
     const control = { schemaVersion: 1, owner: "node-fallback", nativeEnabled: false, drained: true,
       drainedAt: "2026-09-29T11:50:00Z", validUntil: "2026-09-29T13:00:00Z" };

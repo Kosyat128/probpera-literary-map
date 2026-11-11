@@ -9,7 +9,9 @@ export const DAILY_NEWS_OWNER_KEY = "literary-news:v1:daily-automation:owner";
 export const DAILY_NEWS_PROFILE_ID = "daily-grounded-v1";
 export const DAILY_NEWS_WINDOW = Object.freeze({ start: "2026-09-29", endExclusive: "2027-09-30", timeZone: "Europe/Moscow" });
 export const DAILY_NEWS_LIMITS = Object.freeze({ minimum: 8, maximum: 10, records: 5490,
-  aiCallsPerDay: 80, draftRequestsPerDay: 40,
+  // Failed/held drafts do not need a review. Use the existing 80-call ceiling
+  // while retaining room for ten independently reviewed accepted stories.
+  aiCallsPerDay: 80, draftRequestsPerDay: 70,
   profileBytes: 18 * 1024 * 1024, ledgerBytes: 24 * 1024 * 1024, cacheEntries: 120 });
 // The owner reduced the current admission target to 8-10. Retained proofs may
 // contain days admitted under the earlier 15-story cap; never invalidate them

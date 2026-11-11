@@ -1,5 +1,6 @@
 import { newsJsonByteSize as bytes } from "./literary-news-json.mjs";
 import { checkedDailyIntakeHistory, mergeDailyIntakeHistory } from './literary-news-intake-history.mjs';
+import { dailyInferenceBudgetGate } from './literary-news-inference-budget.mjs';
 import { canonicalUrl, CATEGORIES, validDate, validTimestamp } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DAILY_NEWS_POLICY, DAILY_NEWS_MODELS,
@@ -268,8 +269,14 @@ export async function checkedDailyCandidate(detail, current, sources = LITERARY_
     || typeof e.text !== "string" || e.text.trim().length < 120 || e.text.length > 14000
     || typeof e.headline !== "string" || !e.headline.trim()) fail("daily_article_evidence_unavailable");
   const publication = publicationEvidence(e, current), textSha256 = await dailyNewsDigest(e.text);
+  const identity = { url, headline: e.headline.slice(0, 500), textSha256, publication,
+    policy: DAILY_NEWS_POLICY, models: DAILY_NEWS_MODELS };
   return { url, source, publication, text: e.text, headline: e.headline.slice(0, 500), evidence: e, detail,
-    key: await dailyNewsDigest({ url, documentSha256: e.responseSha256, textSha256, publication,
+    // Advertising, navigation and other HTML wrappers can change independently
+    // of the reviewed article. Keep raw-document hashes in the accepted proof,
+    // but reuse the review only for identical article text/date/policy/models.
+    key: await dailyNewsDigest(identity),
+    legacyKey: await dailyNewsDigest({ url, documentSha256: e.responseSha256, textSha256, publication,
       policy: DAILY_NEWS_POLICY, models: DAILY_NEWS_MODELS }), textSha256 };
 }
 function checkedDraft(draft, candidate) {
@@ -367,6 +374,7 @@ export async function runDailyNewsAutomation({ intake, previous = null, ai, revi
     state.intakeHistory = mergeDailyIntakeHistory(current, state.intakeHistory, intake.intakeHistory);
   const day = dailyNewsDay(current), withinWindow = day >= DAILY_NEWS_WINDOW.start && day < DAILY_NEWS_WINDOW.endExclusive;
   const held = [], media = []; let calls = 0, newlyAccepted = 0, stoppedReason = null, providerHttpStatus = null;
+  let budgetPhase = 'draft';
   state.inferenceBudgets = (state.inferenceBudgets || []).filter(row => row.day >=
     dailyNewsDay(new Date(current.getTime() - 7 * DAY)));
   let dailyBudget = state.inferenceBudgets.find(row => row.day === day);
@@ -394,12 +402,17 @@ export async function runDailyNewsAutomation({ intake, previous = null, ai, revi
     if (urls.has(candidate.url) || removed.has(id) || removed.has(detail.id)) {
       held.push({ sourceId: candidate.source.id, reason: "daily_existing_or_withdrawn" }); continue;
     }
-    const cached = cache.get(candidate.key);
+    const cached = cache.get(candidate.key) || cache.get(candidate.legacyKey);
+    if (cached && !cache.has(candidate.key)) {
+      cache.delete(candidate.legacyKey);
+      cache.set(candidate.key, { ...cached, key: candidate.key });
+    }
     if (cached?.status === "rejected") { held.push({ sourceId: candidate.source.id, reason: cached.reason }); continue; }
     async function request(phase, draft) {
       if (calls >= maxAiCalls) fail("ai_request_budget_exhausted");
-      if (dailyBudget.reservedCalls >= DAILY_NEWS_LIMITS.aiCallsPerDay) fail("ai_daily_budget_exhausted");
-      if (phase === "draft" && dailyBudget.draftRequests >= DAILY_NEWS_LIMITS.draftRequestsPerDay) fail("ai_daily_candidate_budget_exhausted");
+      budgetPhase = phase;
+      const gate = dailyInferenceBudgetGate({ ...dailyBudget, phase, current, limits: DAILY_NEWS_LIMITS });
+      if (!gate.allowed) fail(gate.reason);
       // Reserve before inference; timeouts and failures consume the durable daily budget too.
       dailyBudget.reservedCalls++; if (phase === "draft") dailyBudget.draftRequests++;
       await save(); calls++;
@@ -450,9 +463,14 @@ export async function runDailyNewsAutomation({ intake, previous = null, ai, revi
   const photoReady = media.filter(row => row.status === "photo_ready").length;
   const profile = await makeDailyApprovedPayload(state.accepted, current);
   await validateDailyApprovedPayload(profile, current, { sources });
+  const inferenceBudget = { ...dailyInferenceBudgetGate({ ...dailyBudget, phase: budgetPhase, current,
+    limits: DAILY_NEWS_LIMITS }), phase: budgetPhase };
+  const budgetDeferred = ['ai_daily_budget_deferred', 'ai_daily_candidate_budget_deferred'].includes(stoppedReason);
   return { state, profile, report: { schemaVersion: 1, checkedAt: current.toISOString(), day, window: DAILY_NEWS_WINDOW,
-    status: !withinWindow ? "outside_admission_window" : stoppedReason ? "provider_degraded" : minimumDeficit ? "supply_degraded" : "target_met",
+    status: !withinWindow ? "outside_admission_window" : budgetDeferred ? "budget_deferred"
+      : stoppedReason ? "provider_degraded" : minimumDeficit ? "supply_degraded" : "target_met",
     stoppedReason, providerHttpStatus, newlyAccepted, admittedToday, minimum: DAILY_NEWS_LIMITS.minimum, maximum: DAILY_NEWS_LIMITS.maximum,
+    retryAfterAt: budgetDeferred ? inferenceBudget.nextEligibleAt : null, inferenceBudget,
     minimumDeficit, targetDeficit: Math.max(0, DAILY_NEWS_LIMITS.maximum - admittedToday), acceptedHistorical: state.accepted.length,
     aiCalls: calls, reservedAiCallsToday: dailyBudget.reservedCalls, draftRequestsToday: dailyBudget.draftRequests, totalSourceDetails: intake.details.length, heldCount: held.length, photoReady,
     newlyAcceptedPhotoHeld: media.filter(row => row.status !== "photo_ready").length,
