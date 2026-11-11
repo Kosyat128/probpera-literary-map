@@ -33,8 +33,15 @@ memory guidance](https://developers.cloudflare.com/workers/platform/limits/#memo
 Only exact source publication metadata within seven days is eligible. Up to five
 eligible candidates can enter the shared two-pass grounded RU/EN engine per run.
 Both provider calls use the existing Cloudflare AI binding and a 45-second abort
-signal. Durable budgets reserve calls before inference: 40 draft requests and 80
-provider calls per Moscow day. Admission stops at 10 distinct accepted stories per
+signal. Durable budgets reserve calls before inference: up to 70 draft requests
+within the unchanged ceiling of 80 total provider calls per Moscow day. A held
+draft needs no review, so its unused review allowance no longer stops all later
+candidates at 40 drafts. Failed requests and timeouts still consume their saved
+reservations. Before 08:00 Moscow, at most 20 drafts and 40 total calls are available;
+the remaining allowance opens gradually, by whole minutes, from 08:00 to 20:00.
+Temporary exhaustion records the exact next eligible time, separately from a
+provider outage. It never resets a counter or permits a request past either hard cap.
+Admission stops at 10 distinct accepted stories per
 day from October 9; earlier ledger days retain their original limit of 15. The shared admission window is 2026-09-29 inclusive to 2027-09-30 exclusive.
 Provider quota/rate errors stop further inference and retain prior checkpoints.
 
@@ -148,7 +155,7 @@ Official references: [Durable Objects limits](https://developers.cloudflare.com/
 
 ## October 2026 recovery improvements
 
-Preparation checks sources at minutes 17 and 47 each hour. The owner's October 9 setting is 8-10 accepted stories daily; existing inference ceilings remain 40 draft requests and 80 total provider calls. Historical days with up to 15 accepted stories remain readable without rewriting their hashes. A bounded persistent least-recently-fetched history rotates article details even when sources repeatedly expose undated or rejected links; a rejected URL rests for six hours. Exact source publication dates and two independent grounded RU/EN passes remain mandatory.
+Preparation checks sources at minutes 17 and 47 each hour. The owner's October 9 setting is 8-10 accepted stories daily; the November 11 recovery distributes preparation attempts across the Moscow day and allows up to 70 drafts inside the existing 80-call ceiling. Historical days with up to 15 accepted stories remain readable without rewriting their hashes. A bounded persistent least-recently-fetched history rotates article details even when sources repeatedly expose undated or rejected links; a rejected URL rests for six hours. Review-cache identities use the canonical URL, exact headline/article text, explicit publication metadata, policy and models. An HTML-wrapper change cannot repeat an unchanged review, while changed article evidence is reviewed again. Exact legacy cache keys remain readable; accepted records keep their original raw-document hashes. Exact source publication dates and two independent grounded RU/EN passes remain mandatory.
 
 During the delivery window, the separate five-minute delivery scheduler also checks for a missed preparation run after completing capture and dispatch. At actual UTC minutes 25-29 and 55-59 it calls `/recover` through a private cross-worker binding to the existing `daily-news-preparation` Durable Object. Both the primary `/run` and recovery route atomically claim the same persistent half-hour slot before preparation. A duplicate, early recovery, disabled worker or out-of-window request does not start inference or refresh the attempt checkpoint. Failed attempts retain their slot and can retry in the next half-hour; the existing lease and digest fences still protect every write. Recovery failures are isolated from delivery, both public Worker handlers still return 404, and no AI credential is added to the delivery worker. Deploying delivery first remains compatible with an older preparation worker, which returns 404 for the optional recovery request.
 

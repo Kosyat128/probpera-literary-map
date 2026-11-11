@@ -11,8 +11,10 @@ function configuredSuites() {
 }
 
 describe("browser CI suite ownership", () => {
-  it("runs the real Canvas typography matrix exactly once per platform in the serial GPU suite", () => {
-    const target = "**/typography-and-card-geometry.spec.mjs";
+  it.each([
+    { label: "real Canvas typography matrix", target: "**/typography-and-card-geometry.spec.mjs" },
+    { label: "real WebGL CMS iframe", target: "**/cms-direct-edit.spec.mjs" },
+  ])("runs the $label exactly once per platform in the serial GPU suite", ({ target }) => {
     const { "webgl-regression": serial, regression: parallel, "premium-globe": premium } = configuredSuites();
     expect(serial.testMatch.filter(pattern => pattern === target)).toHaveLength(1);
     expect(serial.workers).toBe(1);

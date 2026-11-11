@@ -432,7 +432,7 @@ export async function scheduleNextNativeNewsAlarm(storage,env,summary,current=ne
 }
 
 const preparationStatuses=new Set(['disabled','outside_admission_window','busy','provider_quota_cooldown',
-  'degraded','provider_degraded','supply_degraded','target_met','skipped']);
+  'degraded','provider_degraded','budget_deferred','supply_degraded','target_met','skipped']);
 
 /** The same preparation DO owns the lease, AI budgets and durable slot gate.
  * A missing/older binding or failed preparation must not retry delivery. */

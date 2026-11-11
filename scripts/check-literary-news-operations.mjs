@@ -14,13 +14,15 @@ import { verifyPublishedNewsSnapshot } from './lib/literary-news-publication.mjs
 import { createNewsRuntimeStore, newsPostKey, newsSemanticRevision } from './lib/literary-news-social.mjs';
 import { NEWS_DELIVERY_MAX_INTERVAL_SECONDS, inspectNewsDeliveryPacing, newsDeliveryPacingKey } from './lib/literary-news-pacing.mjs';
 import { currentNativeNewsDueRows, selectNativeNewsAdmissionIds } from './lib/literary-news-native-admissions.mjs';
+import { dailyInferenceBudgetGate } from './lib/literary-news-inference-budget.mjs';
 import { trustedSupabaseOrigin } from './lib/trusted-server-url.mjs';
-import { validTimestamp } from './lib/literary-news-reviewed.mjs';
+import { canonicalUrl, validTimestamp } from './lib/literary-news-reviewed.mjs';
 import { createDeliverySupabaseFetch, checkedDeliveryDayStatus, checkedDeliveryDueRows } from './workers/literary-news-delivery-worker.mjs';
 import { PREPARATION_REPORT_KEY, PREPARATION_ATTEMPT_KEY } from './workers/literary-news-preparation-worker.mjs';
 
 const MAX_AGE = 6 * 3600000;
 const PREPARATION_ATTEMPT_MAX_AGE = 90 * 60000;
+const PREPARATION_BUDGET_RETRY_GRACE = 45 * 60000;
 const DELIVERY_OVERDUE_GRACE = 15 * 60000;
 const NAMESPACE = 'f3ae59fd55ee4c0cac8ff1613db81680';
 const fail = code => { throw Error(code); };
@@ -41,6 +43,8 @@ const HELD_REASONS = new Set(['daily_article_evidence_unavailable', 'daily_draft
   'daily_publication_date_future', 'daily_publication_date_invalid', 'daily_publication_date_stale',
   'daily_publication_date_unknown', 'daily_source_not_approved', 'daily_review_cache_corrupt', 'daily_record_invalid',
   'daily_record_proof_invalid', 'daily_profile_capacity']);
+const DEFERRED_BUDGET_REASONS = new Set(['ai_daily_budget_deferred', 'ai_daily_candidate_budget_deferred']);
+const EXHAUSTED_BUDGET_REASONS = new Set(['ai_daily_budget_exhausted', 'ai_daily_candidate_budget_exhausted']);
 
 function heldReasonCounts(rows) {
   if (!Array.isArray(rows) || rows.length > 5000) return null;
@@ -52,16 +56,41 @@ function heldReasonCounts(rows) {
   return counts;
 }
 
+function reviewCacheCounts(rows, day) {
+  const today = rows.filter(row => dailyNewsDay(new Date(row.checkedAt)) === day);
+  const statuses = entries => Object.fromEntries(['draft', 'rejected', 'accepted']
+    .map(status => [status, entries.filter(row => row.status === status).length]));
+  const urls = entries => new Set(entries.map(row => canonicalUrl(row.sourceUrl).href)).size;
+  const reasons = entries => heldReasonCounts(entries.filter(row => row.reason !== undefined));
+  return { entries: rows.length, capacity: DAILY_NEWS_LIMITS.cacheEntries, statusCounts: statuses(rows),
+    reasonCounts: reasons(rows), checkedTodayCount: today.length, checkedTodayStatusCounts: statuses(today),
+    checkedTodayReasonCounts: reasons(today), distinctSourceUrlCount: urls(rows), repeatedUrlCount: rows.length - urls(rows),
+    checkedTodayDistinctSourceUrlCount: urls(today), checkedTodayRepeatedUrlCount: today.length - urls(today) };
+}
+
+const sameBudgetGate = (actual, expected) => actual && ['allowed', 'reason', 'nextEligibleAt',
+  'releasedDraftRequests', 'releasedCalls'].every(key => actual[key] === expected[key]);
+
+function inferenceBudgetCounts(day, row, current) {
+  const reservedCalls = row?.reservedCalls ?? 0, draftRequests = row?.draftRequests ?? 0;
+  const draft = dailyInferenceBudgetGate({ day, phase: 'draft', current, reservedCalls, draftRequests });
+  const review = dailyInferenceBudgetGate({ day, phase: 'review', current, reservedCalls, draftRequests });
+  const eligibility = ({ allowed, reason, nextEligibleAt }) => ({ allowed, reason, nextEligibleAt });
+  return { day, reservedCalls, draftRequests,
+    releasedBudget: { aiCalls: draft.releasedCalls, draftRequests: draft.releasedDraftRequests },
+    nextEligibility: { draft: eligibility(draft), review: eligibility(review) } };
+}
+
 function checkedPreparationAttempt(value, current) {
   const statuses = ['disabled', 'outside_admission_window', 'provider_quota_cooldown', 'busy', 'degraded',
-    'provider_degraded', 'supply_degraded', 'target_met'];
+    'provider_degraded', 'budget_deferred', 'supply_degraded', 'target_met'];
   if (value?.schemaVersion !== 1 || !safeTime(value.startedAt) || !safeTime(value.finishedAt)
     || Date.parse(value.startedAt) > Date.parse(value.finishedAt) || Date.parse(value.finishedAt) > current.getTime()
     || !statuses.includes(value.status) || typeof value.publicationConfirmed !== 'boolean'
     || value.reason !== null && typeof value.reason !== 'string'
     || value.retryAfterAt !== null && !safeTime(value.retryAfterAt)) fail('operations_preparation_attempt_invalid');
   const reasons = ['ai_quota_exceeded', 'ai_http_429', 'ai_request_budget_exhausted', 'ai_daily_budget_exhausted',
-    'ai_daily_candidate_budget_exhausted', 'provider_cooldown', 'ai_request_unavailable', 'ai_response_incomplete',
+    'ai_daily_candidate_budget_exhausted', ...DEFERRED_BUDGET_REASONS, 'provider_cooldown', 'ai_request_unavailable', 'ai_response_incomplete',
     'ai_response_json_invalid', 'daily_checkpoint_unconfirmed', 'daily_provider_unavailable'];
   const reason = value.reason === null ? null : reasons.includes(value.reason) ? value.reason : 'operations_check_failed';
   return { startedAt: value.startedAt, finishedAt: value.finishedAt, status: value.status, reason,
@@ -237,36 +266,76 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     ? attempt.retryAfterAt || (attempt.status === 'provider_degraded' ? nextUtcDay : null) : null;
   const quotaCooldown = Boolean(attempt && quotaRetryAt === nextUtcDay && Date.parse(quotaRetryAt) > current.getTime()
     && current - Date.parse(attempt.finishedAt) < MAX_AGE);
-  // The provider did not receive another draft when the durable configured
-  // daily cap was already reached. Require the confirmed publication report
-  // and its matching, fresh completed attempt; a claimed budget reason alone
-  // must never hide quota, checkpoint, stale-state or provider failures.
+  // Budget stops are editorial pacing only when the independently read ledger,
+  // confirmed report and fresh completed attempt prove the same reservation.
+  // Recompute both the historical gate and today's gate; caller-supplied labels
+  // or retry times cannot hide quota, stale state or publication failures.
   const ledgerBudget = ledgerValid ? ledger.inferenceBudgets?.find(row => row.day === day) : null;
-  const candidateBudgetDeferred = Boolean(preparationEnabled && profileValid && ledgerValid
+  const activeProviderStop = ledgerValid && ledger.providerStop && Date.parse(ledger.providerStop.retryAfterAt) > current.getTime()
+    ? ledger.providerStop : null;
+  const inferenceBudget = preparationEnabled && ledgerValid ? inferenceBudgetCounts(day, ledgerBudget, current) : null;
+  const budgetProof = Boolean(preparationEnabled && profileValid && ledgerValid && ledgerBudget && !activeProviderStop
+    && !failures.some(code => ['operations_profile_read_failed', 'operations_ledger_read_failed',
+      'operations_preparation_report_read_failed', 'operations_preparation_attempt_read_failed'].includes(code))
     && preparationReport?.schemaVersion === 1 && preparationReport.publicationConfirmed === true && preparationAt
-    && preparationReport.stoppedReason === 'ai_daily_candidate_budget_exhausted'
-    && safeCount(preparationReport.draftRequestsToday) === DAILY_NEWS_LIMITS.draftRequestsPerDay
-    && safeCount(preparationReport.reservedAiCallsToday) !== null
-    && preparationReport.reservedAiCallsToday >= DAILY_NEWS_LIMITS.draftRequestsPerDay
-    && preparationReport.reservedAiCallsToday <= DAILY_NEWS_LIMITS.aiCallsPerDay
-    && ledgerBudget?.draftRequests === DAILY_NEWS_LIMITS.draftRequestsPerDay
-    && ledgerBudget.reservedCalls >= preparationReport.reservedAiCallsToday
-    && attempt?.status === 'provider_degraded' && attempt.reason === 'ai_daily_candidate_budget_exhausted'
-    && attempt.publicationConfirmed === true && attempt.retryAfterAt === null
+    && preparationReport.day === day && preparationReport.providerHttpStatus == null
+    && safeCount(preparationReport.draftRequestsToday) === ledgerBudget.draftRequests
+    && safeCount(preparationReport.reservedAiCallsToday) === ledgerBudget.reservedCalls
+    && current - Date.parse(profile.generatedAt) <= MAX_AGE && current - Date.parse(ledger.updatedAt) <= MAX_AGE
+    && current - Date.parse(preparationAt) <= MAX_AGE
+    && attempt && attempt.reason === preparationReport.stoppedReason && attempt.publicationConfirmed === true
     && current - Date.parse(attempt.finishedAt) <= PREPARATION_ATTEMPT_MAX_AGE
     && Date.parse(preparationAt) >= Date.parse(attempt.startedAt) && Date.parse(preparationAt) <= Date.parse(attempt.finishedAt)
     && dailyNewsDay(new Date(preparationAt)) === day && dailyNewsDay(new Date(attempt.finishedAt)) === day);
+  let budgetDeferred = false, budgetRetryAt = null;
+  if (budgetProof) {
+    const temporary = DEFERRED_BUDGET_REASONS.has(preparationReport.stoppedReason);
+    const exhausted = EXHAUSTED_BUDGET_REASONS.has(preparationReport.stoppedReason);
+    // Older hard-cap reports predate the optional gate projection. Their draft
+    // phase remains independently provable; temporary deferrals require it.
+    const phase = preparationReport.inferenceBudget?.phase ?? (exhausted ? 'draft' : null);
+    if (['draft', 'review'].includes(phase)) {
+      const atReport = dailyInferenceBudgetGate({ ...ledgerBudget, phase, current: new Date(preparationAt) });
+      const atCheck = dailyInferenceBudgetGate({ ...ledgerBudget, phase, current });
+      const gateConfirmed = (preparationReport.inferenceBudget == null && exhausted)
+        || sameBudgetGate(preparationReport.inferenceBudget, atReport);
+      const stopConfirmed = gateConfirmed && !atReport.allowed && atReport.reason === preparationReport.stoppedReason;
+      const retryAt = Date.parse(atReport.nextEligibleAt);
+      // Preparation runs every half-hour. A newly released reservation remains
+      // a normal budget wait until the next scheduled run has had time to finish.
+      const retryPending = current.getTime() < retryAt
+        ? !atCheck.allowed && DEFERRED_BUDGET_REASONS.has(atCheck.reason) && atReport.nextEligibleAt === atCheck.nextEligibleAt
+        : atCheck.allowed && current.getTime() <= retryAt + PREPARATION_BUDGET_RETRY_GRACE;
+      const temporaryConfirmed = temporary && stopConfirmed && preparationReport.status === 'budget_deferred'
+        && attempt.status === 'budget_deferred' && retryAt > Date.parse(preparationAt) && retryPending
+        && preparationReport.retryAfterAt === atReport.nextEligibleAt && attempt.retryAfterAt === atReport.nextEligibleAt;
+      const exhaustedConfirmed = exhausted && stopConfirmed && preparationReport.status === 'provider_degraded'
+        && attempt.status === 'provider_degraded' && attempt.retryAfterAt === null
+        && preparationReport.retryAfterAt == null && !atCheck.allowed && atCheck.reason === atReport.reason
+        && atReport.nextEligibleAt === null && atCheck.nextEligibleAt === null;
+      budgetDeferred = Boolean(temporaryConfirmed || exhaustedConfirmed);
+      if (temporaryConfirmed) budgetRetryAt = atReport.nextEligibleAt;
+    }
+  }
+  const claimedBudgetDeferral = preparationReport?.status === 'budget_deferred' || attempt?.status === 'budget_deferred'
+    || DEFERRED_BUDGET_REASONS.has(preparationReport?.stoppedReason) || DEFERRED_BUDGET_REASONS.has(attempt?.reason);
+  const requestBudgetStop = preparationReport?.stoppedReason === 'ai_request_budget_exhausted'
+    && attempt?.reason === 'ai_request_budget_exhausted' && attempt.publicationConfirmed === true
+    && preparationReport.publicationConfirmed === true;
   if (preparationEnabled && (!preparationAt || preparationReport?.schemaVersion !== 1 || preparationReport.publicationConfirmed !== true))
     add('operations_preparation_checkpoint_missing');
   if (inWindow) {
     if (attempt && current - Date.parse(attempt.finishedAt) > PREPARATION_ATTEMPT_MAX_AGE) add('operations_preparation_attempt_stale');
     if (quotaRetryAt && Date.parse(quotaRetryAt) <= current.getTime()) add('operations_preparation_retry_overdue');
+    if (DEFERRED_BUDGET_REASONS.has(attempt?.reason) && attempt.retryAfterAt
+      && Date.parse(attempt.retryAfterAt) + PREPARATION_BUDGET_RETRY_GRACE < current.getTime()) add('operations_preparation_retry_overdue');
     if (preparationAt && (Date.parse(preparationAt) > current.getTime() || !quotaCooldown && current - Date.parse(preparationAt) > MAX_AGE))
       add('operations_preparation_stale');
     if (profileValid && !quotaCooldown && current - Date.parse(profile.generatedAt) > MAX_AGE) add('operations_profile_stale');
     if (ledgerValid && !quotaCooldown && current - Date.parse(ledger.updatedAt) > MAX_AGE) add('operations_ledger_stale');
-    if (quotaCooldown || attempt?.status === 'degraded' || preparationEnabled && preparationReport?.stoppedReason
-      && preparationReport.stoppedReason !== 'ai_request_budget_exhausted' && !candidateBudgetDeferred)
+    if (quotaCooldown || activeProviderStop || attempt?.status === 'degraded'
+      || !budgetDeferred && ((attempt?.status === 'provider_degraded' && !requestBudgetStop) || claimedBudgetDeferral
+        || preparationEnabled && preparationReport?.stoppedReason && preparationReport.stoppedReason !== 'ai_request_budget_exhausted'))
       add('operations_preparation_degraded');
     if (control?.mode !== 'on' || control.paused !== false || control.historyReconciled !== true) add('operations_destination_not_enabled');
     const firstDelivery = Date.parse(DAILY_NEWS_WINDOW.start + 'T08:00:00+03:00');
@@ -411,8 +480,10 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       readFailure: failures.includes('operations_public_feed_read_failed') ? publicAgendaReadFailure(publicReadFailure) : null },
     preparation: { enabled: preparationEnabled, status: preparationEnabled ? 'enabled' : 'preparation_disabled',
       reason: preparationEnabled ? null : disabledPreparationReason(preparationBlockReason),
-      lastRunAt: preparationAt, lastAttempt: attempt, quotaCooldown, retryAfterAt: quotaRetryAt,
-      budgetDeferred: candidateBudgetDeferred, budgetDeferredReason: candidateBudgetDeferred ? 'ai_daily_candidate_budget_exhausted' : null,
+      lastRunAt: preparationAt, lastAttempt: attempt, quotaCooldown,
+      retryAfterAt: quotaRetryAt || activeProviderStop?.retryAfterAt || budgetRetryAt,
+      budgetDeferred, budgetDeferredReason: budgetDeferred ? preparationReport.stoppedReason : null,
+      inferenceBudget, reviewCache: preparationEnabled && ledgerValid ? reviewCacheCounts(ledger.reviewCache, day) : null,
       profileUpdatedAt: preparationEnabled ? safeTime(profile?.generatedAt) : null,
       ledgerUpdatedAt: preparationEnabled ? safeTime(ledger?.updatedAt) : null,
       publishedHistorical: preparationEnabled ? records.length : null, checkpointAccepted: ledgerValid ? ledger.accepted.length : null,
@@ -421,8 +492,8 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       lastRunCounts: preparationCounts,
       heldReasons: preparationEnabled ? heldReasonCounts(preparationReport?.held) : null,
       deterministicHeldReasons: heldReasonCounts(deterministicHeld),
-      providerStop: preparationEnabled ? quotaCooldown ? 'ai_quota_exceeded' : candidateBudgetDeferred ? null
-        : preparationReport?.stoppedReason ? safeCode(preparationReport.stoppedReason) : null
+      providerStop: preparationEnabled ? activeProviderStop?.reason || (quotaCooldown ? 'ai_quota_exceeded' : budgetDeferred ? null
+        : preparationReport?.stoppedReason ? safeCode(preparationReport.stoppedReason) : null)
         : preparationBlockReason === 'ai_quota_exceeded' ? 'ai_quota_exceeded' : null,
       acceptedPerDay: preparationEnabled ? [...perDay].filter(([acceptedDay]) => acceptedDay >= since).sort()
         .map(([acceptedDay, count]) => ({ day: acceptedDay, count })) : null },

@@ -11,18 +11,25 @@ test("редактор выбирает текст внутри фона гла�
   const parentUrl = new URL("/__cms-direct-edit-parent", publicUrl);
   await page.route(parentUrl.toString(), (route) => route.fulfill({
     contentType: "text/html",
-    body: `<!doctype html><html><body style="margin:0">
+    body: `<!doctype html><html><head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head><body style="margin:0">
       <script>window.cmsMessages=[];addEventListener('message',event=>{
         if(event.origin===location.origin&&event.data?.channel==='probpera:cms-edit')
           window.cmsMessages.push(event.data);
       });</script>
-      <iframe title="Предпросмотр сайта" style="width:100%;height:100vh;border:0"
+      <iframe title="Предпросмотр сайта" style="display:block;width:100%;height:100vh;border:0"
         src="${publicUrl.toString().replaceAll("&", "&amp;")}"></iframe>
     </body></html>`,
   }));
   await page.goto(parentUrl.toString());
   const preview = page.frameLocator("iframe");
   await expect(preview.locator("html")).toHaveClass(/cms-edit-mode/u);
+  // The test parent must preserve the emulated viewport instead of expanding
+  // the mobile preview into a 980px tablet layout and activating more WebGL.
+  expect(await preview.locator("html").evaluate(() => ({
+    width: window.innerWidth, height: window.innerHeight,
+  }))).toEqual(page.viewportSize());
 
   const lastMessage = () => page.evaluate(() => window.cmsMessages.at(-1));
   await preview.locator(".hero-editorial h1").click();

@@ -26,6 +26,35 @@ describe('private preparation recovery after native delivery',()=>{
     expect(f.log.mock.calls.map(([value])=>JSON.parse(value))).toContainEqual(
       {component:'literary-news-preparation-capture',status:'capture_not_due'});
   });
+  it.each(['ai_daily_budget_deferred','ai_daily_candidate_budget_deferred'])(
+    'recognizes confirmed %s recovery and captures once without repeating delivery',async stoppedReason=>{
+      const f=fixture({recover:async()=>Response.json({status:'budget_deferred',stoppedReason,publicationConfirmed:true,
+        retryAfterAt:'2026-10-09T13:30:00.000Z',privateDetails:'PRIVATE editorial draft'})});
+      expect(await f.run()).toEqual(f.report);
+      expect(f.events).toEqual(['capture','dispatch','recover','capture']);
+      expect(f.delivery.fetch.mock.calls.filter(([url])=>new URL(url).pathname==='/dispatch')).toHaveLength(1);
+      expect(f.recovery.fetch).toHaveBeenCalledOnce();expect(f.controller.noRetry).not.toHaveBeenCalled();
+      expect(f.log.mock.calls.map(([value])=>JSON.parse(value))).toContainEqual({component:'literary-news-preparation-recovery',
+        status:'budget_deferred',publicationConfirmed:true});
+      expect(JSON.stringify(f.log.mock.calls)).not.toContain('PRIVATE');
+      expect(f.log.mock.calls.map(([value])=>JSON.parse(value))).not.toContainEqual(
+        expect.objectContaining({component:'literary-news-preparation-recovery',status:'unavailable'}));
+    });
+  it('recognizes an unconfirmed budget wait without another capture or provider dispatch',async()=>{
+    const f=fixture({recover:async()=>Response.json({status:'budget_deferred',publicationConfirmed:false})});
+    expect(await f.run()).toEqual(f.report);expect(f.events).toEqual(['capture','dispatch','recover']);
+    expect(f.log.mock.calls.map(([value])=>JSON.parse(value))).toContainEqual({component:'literary-news-preparation-recovery',
+      status:'budget_deferred',publicationConfirmed:false});
+    expect(f.controller.noRetry).not.toHaveBeenCalled();
+  });
+  it('preserves delivery reconciliation and its no-retry decision when confirmed recovery defers more inference',async()=>{
+    const summary={status:'dispatch_reconciliation_required',deliveredThisRun:0};
+    const f=fixture({dispatch:async()=>Response.json(summary),
+      recover:async()=>Response.json({status:'budget_deferred',publicationConfirmed:true})});
+    expect(await f.run()).toEqual(summary);expect(f.events).toEqual(['capture','dispatch','recover','capture']);
+    expect(f.delivery.fetch.mock.calls.filter(([url])=>new URL(url).pathname==='/dispatch')).toHaveLength(1);
+    expect(f.controller.noRetry).toHaveBeenCalledOnce();
+  });
   it.each([
     ['13:24:59.999',false],['13:25:00.000',true],['13:29:59.999',true],['13:30:00.000',false],
     ['13:54:59.999',false],['13:55:00.000',true],['13:59:59.999',true],['14:00:00.000',false],

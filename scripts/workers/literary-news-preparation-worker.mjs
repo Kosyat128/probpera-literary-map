@@ -112,7 +112,7 @@ export async function boundedNativeNewsCandidates(intake,state,current,sources=L
     let candidate;
     try{candidate=await checkedDailyCandidate(detail,current,sources);}
     catch(error){held.push({sourceId:detail?.sourceId||null,reason:safeError(error)});continue;}
-    const cached=cache.get(candidate.key);
+    const cached=cache.get(candidate.key)||cache.get(candidate.legacyKey);
     if(cached?.status==='rejected'){held.push({sourceId:candidate.source.id,reason:cached.reason});continue;}
     if(details.length<maximum)details.push(detail);
   }

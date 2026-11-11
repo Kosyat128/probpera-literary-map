@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';
 import { readFileSync } from 'node:fs';
 
 // Additive runtime compatibility evidence; previous authority remains immutable.
@@ -9,7 +10,7 @@ export const adminWorkerCompatibilitySha256 = source => createHash('sha256')
 
 /** Remove only the complete exact adapter update and mandatory runtime gate. */
 export function projectReviewedAdminWorkerCompatibility(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectReviewedCmsPreviewWebglFollowup(relativePath, source);
   const deltas = adminWorkerCompatibilityAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   const markers = adminWorkerCompatibilityAttestation.markers[relativePath];
