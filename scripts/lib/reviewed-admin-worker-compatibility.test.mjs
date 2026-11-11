@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { adminWorkerCompatibilityAttestation as packet, adminWorkerCompatibilitySha256 as sha,
@@ -7,7 +8,7 @@ import { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-ru
 import { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';
 
 // Raw current reads independently reject rollback, missing gates and hidden drift.
-const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
+const read = path => projectReviewedCmsPreviewWebglFollowup(path, readFileSync(path, 'utf8'));
 const historical = (path, commit = packet.baselineCommitSha) => execFileSync('git',
   ['-c', `safe.directory=${process.cwd()}`, 'show', `${commit}:${path}`],
   { encoding: 'utf8', maxBuffer: 40 * 1024 * 1024 }).replace(/\r\n?/gu, '\n');

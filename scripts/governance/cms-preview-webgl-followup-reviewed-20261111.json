@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "id": "CMS-PREVIEW-WEBGL-FOLLOWUP-20261111",
+  "baselineCommitSha": "5e086d92680fe15864f379f5fc81b831b9ac6ade",
+  "repairSourceCommitSha": "afdaa558b902406333b3d7350f0b81b3c40fd131",
+  "authorization": {
+    "userAuthorized": true,
+    "packetSpecificHumanApprovalClaim": false,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "historicalPinsChanged": false,
+  "historicalAssertionsChanged": false,
+  "scope": {
+    "serialWebglClassificationOnly": true,
+    "configAddedLines": 2,
+    "testSpec": "tests/e2e/cms-direct-edit.spec.mjs",
+    "testAssertionsChanged": false,
+    "testTimeoutsChanged": false,
+    "testRetriesChanged": false,
+    "testSkipsAdded": false,
+    "workflowCommandsChanged": false,
+    "productionCodeChanged": false,
+    "existingSerialWebglWorkerLimitChanged": false,
+    "outerReadBoundaryOnly": true
+  },
+  "allowedProjectionPaths": [
+    "playwright.config.mjs",
+    "scripts/lib/reviewed-admin-worker-compatibility.mjs",
+    "scripts/lib/reviewed-admin-worker-compatibility.test.mjs"
+  ],
+  "sourceBaselines": {
+    "playwright.config.mjs": "518640e0426c0bf391dbb2317fccfa6c7855950fa280bdc10866b72f4d55e22f",
+    "scripts/lib/reviewed-admin-worker-compatibility.mjs": "1ee41b14a96d8e81ac85d97791b6ae42d0e199ad36f3a4b71f14ad8fc57dc8a2",
+    "scripts/lib/reviewed-admin-worker-compatibility.test.mjs": "afc02d57c4b2f1fe365a2048e2d9e0a0f5a5aa537a96580ca50c90be43261589"
+  },
+  "reviewedSources": {
+    "playwright.config.mjs": "c37195f4b9d2f95be0d7c76127752d241263031f43c133da76b3e4dd63d7e2b1",
+    "scripts/lib/reviewed-admin-worker-compatibility.mjs": "e33b37a41414b750fbd111ec130499b1e02470ebe45a74b4fa66206bcda19a15",
+    "scripts/lib/reviewed-admin-worker-compatibility.test.mjs": "c263ada8da318a8849af02355fb7097e5f07aeb1ee046ae0454e2f0fd55560ca"
+  },
+  "markers": {
+    "playwright.config.mjs": [
+      {
+        "text": "// The CMS preview opens the real homepage in an iframe, including its globe.",
+        "count": 1
+      },
+      {
+        "text": "\"**/cms-direct-edit.spec.mjs\"",
+        "count": 1
+      }
+    ],
+    "scripts/lib/reviewed-admin-worker-compatibility.mjs": [
+      {
+        "text": "import { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';",
+        "count": 1
+      },
+      {
+        "text": "  let projected = projectReviewedCmsPreviewWebglFollowup(relativePath, source);",
+        "count": 1
+      }
+    ],
+    "scripts/lib/reviewed-admin-worker-compatibility.test.mjs": [
+      {
+        "text": "import { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';",
+        "count": 1
+      },
+      {
+        "text": "const read = path => projectReviewedCmsPreviewWebglFollowup(path, readFileSync(path, 'utf8'));",
+        "count": 1
+      }
+    ]
+  },
+  "projections": [
+    {
+      "id": "playwright.config.mjs:1",
+      "path": "playwright.config.mjs",
+      "before": "  \"**/calendar-runtime-coverage.spec.mjs\",\n  \"**/article-book-reading.spec.mjs\",\n",
+      "after": "  \"**/calendar-runtime-coverage.spec.mjs\",\n  // The CMS preview opens the real homepage in an iframe, including its globe.\n  \"**/cms-direct-edit.spec.mjs\",\n  \"**/article-book-reading.spec.mjs\",\n",
+      "beforeSha256Lf": "9ded21c0a36fc0ca084d7b0fe6f7cf512c850a55270b211c78238744a17a239a",
+      "afterSha256Lf": "f058c262e0670affe7bbc5c7e37a8cdfd4a56c22d7048b673fc344d49f90de2d"
+    },
+    {
+      "id": "scripts/lib/reviewed-admin-worker-compatibility.mjs:1",
+      "path": "scripts/lib/reviewed-admin-worker-compatibility.mjs",
+      "before": "import { createHash } from 'node:crypto';\nimport { readFileSync } from 'node:fs';\n\n// Additive runtime compatibility evidence; previous authority remains immutable.\nexport const adminWorkerCompatibilityAttestation = JSON.parse(readFileSync(\n  new URL('../governance/admin-worker-compatibility-reviewed-20261025.json', import.meta.url), 'utf8'));\nexport const adminWorkerCompatibilitySha256 = source => createHash('sha256')\n  .update(source.replace(/\\r\\n?/gu, '\\n')).digest('hex');\n\n/** Remove only the complete exact adapter update and mandatory runtime gate. */\nexport function projectReviewedAdminWorkerCompatibility(relativePath, source) {\n  let projected = source.replace(/\\r\\n?/gu, '\\n');\n",
+      "after": "import { createHash } from 'node:crypto';\nimport { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';\nimport { readFileSync } from 'node:fs';\n\n// Additive runtime compatibility evidence; previous authority remains immutable.\nexport const adminWorkerCompatibilityAttestation = JSON.parse(readFileSync(\n  new URL('../governance/admin-worker-compatibility-reviewed-20261025.json', import.meta.url), 'utf8'));\nexport const adminWorkerCompatibilitySha256 = source => createHash('sha256')\n  .update(source.replace(/\\r\\n?/gu, '\\n')).digest('hex');\n\n/** Remove only the complete exact adapter update and mandatory runtime gate. */\nexport function projectReviewedAdminWorkerCompatibility(relativePath, source) {\n  let projected = projectReviewedCmsPreviewWebglFollowup(relativePath, source);\n",
+      "beforeSha256Lf": "4310d889b4a11a147faa1ae40cb4af39e79a9a746beac59c37bd6216fe4da2fe",
+      "afterSha256Lf": "b0fd9854c7722f7caba49fd817e4c6c53af5152f501494834807bd26355b5c23"
+    },
+    {
+      "id": "scripts/lib/reviewed-admin-worker-compatibility.test.mjs:1",
+      "path": "scripts/lib/reviewed-admin-worker-compatibility.test.mjs",
+      "before": "import { readFileSync } from 'node:fs';\nimport { execFileSync } from 'node:child_process';\nimport { describe, expect, it } from 'vitest';\nimport { adminWorkerCompatibilityAttestation as packet, adminWorkerCompatibilitySha256 as sha,\n  projectReviewedAdminWorkerCompatibility as project } from './reviewed-admin-worker-compatibility.mjs';\nimport { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';\nimport { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';\n\n// Raw current reads independently reject rollback, missing gates and hidden drift.\nconst read = path => readFileSync(path, 'utf8').replace(/\\r\\n?/gu, '\\n');\n",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedCmsPreviewWebglFollowup } from './reviewed-cms-preview-webgl-followup.mjs';\nimport { execFileSync } from 'node:child_process';\nimport { describe, expect, it } from 'vitest';\nimport { adminWorkerCompatibilityAttestation as packet, adminWorkerCompatibilitySha256 as sha,\n  projectReviewedAdminWorkerCompatibility as project } from './reviewed-admin-worker-compatibility.mjs';\nimport { projectReviewedNewsRuntimeDependencySecurity } from './reviewed-news-runtime-dependency-security.mjs';\nimport { projectReviewedNextBuilderFollowup } from './reviewed-next-builder-followup.mjs';\n\n// Raw current reads independently reject rollback, missing gates and hidden drift.\nconst read = path => projectReviewedCmsPreviewWebglFollowup(path, readFileSync(path, 'utf8'));\n",
+      "beforeSha256Lf": "2c8a65125430b8abcfc03489e64407dcb4541dba16d87956807bd9c4c7f4f552",
+      "afterSha256Lf": "848d01df9c758f1e7087b7ca30d0837fe5e8a6bf8a0060448e6ea12c86f529b4"
+    }
+  ],
+  "additions": [
+    {
+      "path": "scripts/lib/reviewed-cms-preview-webgl-followup.mjs",
+      "sha256Lf": "37e60edabeacba4725fcd2f5f397926bd394bc50d31e176e6e6ac65f569e33dc"
+    }
+  ],
+  "supportingSources": [
+    {
+      "path": "scripts/lib/quality-browser-matrix.test.mjs",
+      "sha256Lf": "22f6d28faffed1335079f1fd0eca798fe3160f4d39167f7ccffcdb71a58c7082"
+    },
+    {
+      "path": "scripts/lib/reviewed-live-ui-followup.test.mjs",
+      "sha256Lf": "184288e2ec580410a35094af177740b304e33d7abb589ad4924bc8e82240abd0"
+    },
+    {
+      "path": ".github/workflows/quality.yml",
+      "sha256Lf": "63698e8b67cc6d4b244bba76132fdfb448ae4ff81b27713a55baf135abb05aa2"
+    },
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "sha256Lf": "30f5568f71fb4dc8098d3a0ca9c8bfd9fb0fe456ad025915eccdc584bcc6abd7"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+      "sha256Lf": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c",
+      "jsonSha256": "a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    },
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "jsonSha256": "686317fc56832427bf3226d6013bd37c08186164a03ea3f8772a7809f915c2d7"
+    },
+    {
+      "path": "scripts/governance/undici-security-followup-reviewed-20260930.json",
+      "sha256Lf": "6e38b20b86d86437cfacd9d9419641ce2c385a562704d6e76d35bbd3b2966ee8",
+      "jsonSha256": "bdfa16eeae3719d13585559b56f693bd50e44b15cedb84c19b19242456daa997"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    },
+    {
+      "path": "scripts/governance/next-security-followup-reviewed-20261002.json",
+      "sha256Lf": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "jsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc"
+    },
+    {
+      "path": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "sha256Lf": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748",
+      "jsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e"
+    },
+    {
+      "path": "scripts/governance/author-column-reference-removal-reviewed-20261002.json",
+      "sha256Lf": "5afa96685dff6076ed29479587d8365d3fc94bf35e85d559cd9a18deb784de80",
+      "jsonSha256": "26c4c0193ec8d681f1983a71eabe188d9a0c0725a810afba1fca8121ce53e459"
+    },
+    {
+      "path": "scripts/governance/live-ui-followup-reviewed-20261002.json",
+      "sha256Lf": "e1cbda9237776d14855a67901a01d70008374d5a45cd699ead86530a68fd75b0",
+      "jsonSha256": "951e041cd53bb776d2acd9606c92d56e06d49cfde91b8f998c8b0f5a8f33b352"
+    },
+    {
+      "path": "scripts/governance/news-dependency-security-followup-reviewed-20261009.json",
+      "sha256Lf": "a87c6896024b0935eb4f0e1786f44d4058651914bb00e697ae2ae01f5713ca50",
+      "jsonSha256": "262db8c61f772fa04f9ad0e8045109f913d9a599ba29f7a67f847a414e8f64cb"
+    },
+    {
+      "path": "scripts/governance/postgres-test-image-reviewed-20261010.json",
+      "sha256Lf": "09398194008c31b78f646c67e61071ab7c7bb866f5df40c236e1ad903cc3c47d",
+      "jsonSha256": "9d211f7b8e11c9e61e0bd41081ba8bbeb52e8d8dc672a70cfaf172e7495a9684"
+    },
+    {
+      "path": "scripts/governance/news-runtime-dependency-security-reviewed-20261025.json",
+      "sha256Lf": "f23ba3de47ad33f283799aaa46dbbe7332632d5df1c59227b9021e36bf577a5d",
+      "jsonSha256": "3adc05cdd427637af55adf3c1fa4c0c13d828e345eabf54ecdb483408b95ff0c"
+    },
+    {
+      "path": "scripts/governance/admin-worker-compatibility-reviewed-20261025.json",
+      "sha256Lf": "6091f8544351a7b8fa3ef97095638b9a5c61d876589bdbde3a5c2aecf5b46814",
+      "jsonSha256": "371c26e0e66b06cef6b7a62ff5692ac4bb91ea32082efde9017f4c0dc2fb3ead"
+    }
+  ]
+}
