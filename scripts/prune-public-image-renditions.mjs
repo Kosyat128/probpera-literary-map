@@ -1,8 +1,38 @@
 import { createHash } from "node:crypto";
-import { lstat, readdir, readFile, realpath, unlink } from "node:fs/promises";
+import { constants } from "node:fs";
+import { lstat, open, readdir, readFile, realpath, unlink } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { planPublicImageRenditions, publicRenditionPath } from "./lib/public-image-rendition-plan.mjs";
+
+const readFlags = constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0);
+
+function sameBuildFile(entry, opened) {
+  return entry.isFile() && opened.isFile() && entry.dev === opened.dev && entry.ino === opened.ino;
+}
+
+async function removeBuildRendition(filename, src, previous) {
+  const file = await open(filename, readFlags);
+  try {
+    const opened = await file.stat({ bigint: true });
+    if (!sameBuildFile(await lstat(filename, { bigint: true }), opened)) {
+      throw new Error(`Image rendition is not a regular build file: ${src}`);
+    }
+    if (previous) {
+      const bytes = opened.size === BigInt(previous.bytes) ? await file.readFile() : null;
+      const current = await lstat(filename, { bigint: true });
+      if (!bytes || bytes.length !== previous.bytes ||
+        createHash("sha256").update(bytes).digest("hex") !== previous.sha256 ||
+        !sameBuildFile(current, opened) || current.size !== opened.size ||
+        current.mtimeNs !== opened.mtimeNs || current.ctimeNs !== opened.ctimeNs) {
+        throw new Error(`Retired image rendition differs from its prior inventory: ${src}`);
+      }
+    }
+    await unlink(filename);
+  } finally {
+    await file.close();
+  }
+}
 
 export async function prunePublicImageRenditions() {
   const report = JSON.parse(await readFile(new URL("../reports/public-image-delivery.json", import.meta.url), "utf8"));
@@ -31,21 +61,12 @@ export async function prunePublicImageRenditions() {
     const previous = retiredByPath.get(src);
     if (!previous && !omittedPaths.has(src)) continue;
 
-    const filename = path.join(outputDirectory, basename);
-    const stat = await lstat(filename);
-    if (!entry.isFile() || !stat.isFile()) {
+    if (!entry.isFile()) {
       throw new Error(`Image rendition is not a regular build file: ${src}`);
     }
-    if (previous) {
-      const bytes = stat.size === previous.bytes ? await readFile(filename) : null;
-      if (!bytes || bytes.length !== previous.bytes || createHash("sha256").update(bytes).digest("hex") !== previous.sha256) {
-        throw new Error(`Retired image rendition differs from its prior inventory: ${src}`);
-      }
-      removedRetired++;
-    } else {
-      removedOverlapping++;
-    }
-    await unlink(filename);
+    await removeBuildRendition(path.join(outputDirectory, basename), src, previous);
+    if (previous) removedRetired++;
+    else removedOverlapping++;
   }
   console.log(`Omitted ${removedOverlapping} overlapping and ${removedRetired} retired image renditions from dist.`);
 }

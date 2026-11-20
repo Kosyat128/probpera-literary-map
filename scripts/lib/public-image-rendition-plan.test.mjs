@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { copyFile, mkdir, mkdtemp, readFile, rm, rmdir, symlink, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { describe, expect, it } from "vitest";
 import { authoredPublicRenditions, planPublicImageRenditions, retiredPublicImageRenditions } from "./public-image-rendition-plan.mjs";
@@ -109,6 +110,7 @@ describe("published article image renditions", () => {
         await mkdir(path.join(root, dir), { recursive: true });
       }
       const scriptPath = path.join(root, "scripts/prune-public-image-renditions.mjs");
+      const handleGuard = path.join(root, "require-rendition-file-handle.mjs");
       await Promise.all([
         copyFile(new URL("../prune-public-image-renditions.mjs", import.meta.url), scriptPath),
         copyFile(new URL("./public-image-rendition-plan.mjs", import.meta.url), path.join(root, "scripts/lib/public-image-rendition-plan.mjs")),
@@ -119,9 +121,22 @@ describe("published article image renditions", () => {
         writeFile(path.join(root, "dist", desktop.src), Buffer.alloc(content.length)),
         writeFile(path.join(root, "dist", largest.src), content),
         writeFile(path.join(root, "dist", mobile.src), content),
+        writeFile(handleGuard, `
+          import fs from "node:fs/promises";
+          import { syncBuiltinESMExports } from "node:module";
+          const readFile = fs.readFile;
+          fs.readFile = (file, ...options) => {
+            const filename = file instanceof URL ? file.pathname : file;
+            if (typeof filename === "string" && filename.endsWith(".webp")) {
+              throw new Error("Rendition checks must read the opened file handle");
+            }
+            return readFile(file, ...options);
+          };
+          syncBuiltinESMExports();
+        `),
       ]);
 
-      const prune = () => promisify(execFile)(process.execPath, [scriptPath]);
+      const prune = () => promisify(execFile)(process.execPath, ["--import", pathToFileURL(handleGuard).href, scriptPath]);
       await expect(prune()).rejects.toMatchObject({ stderr: expect.stringContaining("Retired image rendition differs") });
       const distDesktop = path.join(root, "dist", desktop.src);
       expect(await readFile(distDesktop)).toEqual(Buffer.alloc(content.length));
