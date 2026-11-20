@@ -1,6 +1,6 @@
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { copyFile, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, mkdtemp, readFile, rm, rmdir, symlink, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -125,6 +125,13 @@ describe("published article image renditions", () => {
       await expect(prune()).rejects.toMatchObject({ stderr: expect.stringContaining("Retired image rendition differs") });
       const distDesktop = path.join(root, "dist", desktop.src);
       expect(await readFile(distDesktop)).toEqual(Buffer.alloc(content.length));
+      await unlink(distDesktop);
+      if (process.platform === "win32") await mkdir(distDesktop);
+      else await symlink(path.join(root, "public", desktop.src), distDesktop);
+      await expect(prune()).rejects.toMatchObject({ stderr: expect.stringContaining("Image rendition is not a regular build file") });
+      expect(await readFile(path.join(root, "public", desktop.src))).toEqual(content);
+      if (process.platform === "win32") await rmdir(distDesktop);
+      else await unlink(distDesktop);
       await writeFile(distDesktop, content);
       await prune();
       await expect(readFile(distDesktop)).rejects.toMatchObject({ code: "ENOENT" });

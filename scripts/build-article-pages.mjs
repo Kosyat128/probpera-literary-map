@@ -38,7 +38,7 @@ const siteBasePath =
   configuredBase === "/" ? "" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}`;
 const siteUrl = `${siteOrigin}${siteBasePath}`;
 const siteRootPath = `${siteBasePath || ""}/`;
-await prunePublicImageRenditions(projectRoot, { allowMissingReport: Boolean(process.env.ARTICLE_BUILD_PROJECT_ROOT) });
+if (!process.env.ARTICLE_BUILD_PROJECT_ROOT) await prunePublicImageRenditions();
 const imageDeliveryManifest = await fs.readFile(path.join(projectRoot, "src/data/imageDelivery.generated.json"), "utf8")
   .then(JSON.parse).catch(error => { if (error.code === "ENOENT") return {}; throw error; });
 const publicArticleImages = createPublicImageHtmlRenderer(imageDeliveryManifest, siteRootPath);

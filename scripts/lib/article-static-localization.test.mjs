@@ -29,6 +29,8 @@ describe("localized static article pages", () => {
   it("writes an approved English slug and marks it as an English route", () => {
     const fixtureRoot = mkdtempSync(path.join(tmpdir(), "probpera-article-build-"));
     temporaryRoots.push(fixtureRoot);
+    // Rendering fixtures must never enter the release-only pruning step.
+    writeJson(path.join(fixtureRoot, "reports", "public-image-delivery.json"), { version: 1, completed: false });
     mkdirSync(path.join(fixtureRoot, "dist"), { recursive: true });
     writeFileSync(
       path.join(fixtureRoot, "dist", "index.html"),
