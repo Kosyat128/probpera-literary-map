@@ -198,6 +198,7 @@ export default async function EditArticlePage({
     adminEnv.publicSiteUrl,
     articlePublicPath(article.slug, categorySlug)
   );
+  const publicationHref = `/publication?${new URLSearchParams({ q: id })}`;
 
   return (
     <>
@@ -236,20 +237,13 @@ export default async function EditArticlePage({
       {query.saved && !query.publish && (
         <p className="form-message form-success">Изменения сохранены.</p>
       )}
-      {query.publish === "started" && (
-        <p className="form-message form-success publication-result">
-          Изменения сохранены. Обновление публичного сайта запущено.
-          {query.released === "published" && (
-            <>{" "}<a href={publicArticleUrl} target="_blank" rel="noreferrer">
-              Публичный адрес статьи →
-            </a></>
-          )}
-        </p>
-      )}
-      {query.publish === "queued" && (
-        <p className="form-message form-success publication-result">
-          Изменения сохранены и поставлены в очередь. Обновление обычно занимает
-          5-10 минут.
+      {(query.publish === "started" || query.publish === "queued") && (
+        <p className="form-message form-success publication-result" role="status">
+          Изменения сохранены.{" "}
+          {query.publish === "started"
+            ? "Запрос на сборку публичного сайта принят."
+            : "Обновление публичного сайта ожидает сборки."}
+          {" "}<Link href={publicationHref}>Проверить выпуск →</Link>
           {query.released === "published" && (
             <>{" "}<a href={publicArticleUrl} target="_blank" rel="noreferrer">
               Публичный адрес статьи →
@@ -259,14 +253,13 @@ export default async function EditArticlePage({
       )}
       {query.publish === "queue-error" && (
         <p className="form-message" role="alert">
-          Статья сохранена, но не удалось отправить в очередь публикации. Проверьте
-          консоль и повторите позже.
+          Изменения сохранены. Не удалось подтвердить постановку обновления в очередь.
+          {" "}<Link href={publicationHref}>Открыть журнал публикаций →</Link>
         </p>
       )}
       {query.translation === "deferred" && (
-        <p className="form-message form-success" role="status">
-          Русская версия опубликована. Английский перевод отложен и не блокирует
-          выпуск; его можно подготовить или повторить позже.
+        <p className="form-message" role="status">
+          Английский перевод отложен. Его можно подготовить позже.
         </p>
       )}
       {Number(query.replaced || 0) > 0 && (

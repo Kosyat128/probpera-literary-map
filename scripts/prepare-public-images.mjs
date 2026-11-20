@@ -6,7 +6,10 @@ import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import sharp from "sharp";
 import ts from "typescript";
+import performanceBudget from "../performance-budget.json" with { type: "json" };
 import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
+import { encodePublicRasterRendition } from "./lib/public-image-output-fit.mjs";
+import { authoredPublicRenditions, planPublicImageRenditions, retiredPublicImageRenditions } from "./lib/public-image-rendition-plan.mjs";
 import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
 import { hasSmallEditorialImageWidth } from "../src/utils/editorialImagePresentation.ts";
 
@@ -20,10 +23,12 @@ const articleRuntimePath = "src/data/imageDelivery.articles.generated.json";
 const reportPath = "reports/public-image-delivery.json";
 const outputDirectory = "public/media/optimized";
 const cacheDirectory = ".tmp/public-images";
+const maxRenditionBytes = performanceBudget.individualImageBytes;
 const imageFields = /^(?:image|imageUrl|dzenImageUrl|ogImageUrl|backgroundImageUrl|background_image_url|coverUrl|cover_external_url|portrait|poster|thumbnailUrl)$/iu;
 const rasterOrVector = /\.(?:png|jpe?g|webp|avif|gif|svg|tiff?|bmp)(?:[?#].*)?$/iu;
 const sourceContexts = new Map();
 const smallInlineSources = new Set();
+const authoredRenditions = new Set();
 const argv = process.argv.slice(2);
 const limitArgument = argv.find(value => value.startsWith("--limit="));
 const limit = limitArgument ? Number(limitArgument.split("=")[1]) : Infinity;
@@ -109,14 +114,24 @@ async function walk(directory, accept) {
   return files;
 }
 
+function rememberAuthoredRenditions(text) {
+  for (const rendition of authoredPublicRenditions(text)) authoredRenditions.add(rendition);
+}
+
 export async function collectPublicImageSources() {
   sourceContexts.clear();
   smallInlineSources.clear();
+  authoredRenditions.clear();
   const articleFiles = [...await walk("public/articles", name => name.endsWith(".json")), ...await walk("public/cms", name => name.endsWith(".json"))];
-  for (const filename of articleFiles) jsonSources(JSON.parse(await readFile(absolute(filename), "utf8")), filename);
+  for (const filename of articleFiles) {
+    const document = JSON.parse(await readFile(absolute(filename), "utf8"));
+    rememberAuthoredRenditions(JSON.stringify(document));
+    jsonSources(document, filename);
+  }
   const typedFiles = ["src/App.tsx", "src/components/HeaderArticlesMenu.tsx", "src/data/cms/site.generated.ts"];
   for (const filename of typedFiles) {
     const source = await readFile(absolute(filename), "utf8");
+    rememberAuthoredRenditions(source);
     const syntax = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true, filename.endsWith("tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS);
     const visit = node => {
       if (ts.isPropertyAssignment(node) && imageFields.test(node.name.getText(syntax).replace(/^["']|["']$/gu, "")) && ts.isStringLiteralLike(node.initializer)) addSource(node.initializer.text, filename);
@@ -125,7 +140,18 @@ export async function collectPublicImageSources() {
     visit(syntax);
     backgroundSources(source, filename);
   }
-  for (const filename of ["src/index.css", ...await walk("src/styles", name => name.endsWith(".css"))]) backgroundSources(await readFile(absolute(filename), "utf8"), filename);
+  const styleFiles = ["src/index.css", ...await walk("src/styles", name => name.endsWith(".css"))];
+  for (const filename of styleFiles) {
+    const source = await readFile(absolute(filename), "utf8");
+    rememberAuthoredRenditions(source);
+    backgroundSources(source, filename);
+  }
+  const alreadyRead = new Set([...articleFiles, ...typedFiles, ...styleFiles, runtimePath, initialRuntimePath, articleRuntimePath]);
+  const referenceFile = (name) => /\.(?:[cm]?jsx?|tsx?|css|html|json|xml|svg)$/iu.test(name) && !alreadyRead.has(name);
+  for (const filename of [...await walk("src", referenceFile), ...await walk("public", referenceFile)]) {
+    const text = await readFile(absolute(filename), "utf8");
+    rememberAuthoredRenditions(filename.endsWith(".json") ? JSON.stringify(JSON.parse(text)) : text);
+  }
   return [...sourceContexts].map(([sourceUrl, contexts]) => ({ sourceUrl, contexts: [...contexts].sort(), ...(smallInlineSources.has(sourceUrl) ? { smallInlineImage: true } : {}) })).sort((a, b) => a.sourceUrl.localeCompare(b.sourceUrl));
 }
 
@@ -181,19 +207,32 @@ export function smallInlineRenditionWidths(source, metadata) {
 
 export function missingSmallInlineRenditions(source, record) {
   if (record.flags?.includes("animation-preserved")) return [];
-  return smallInlineRenditionWidths(source, record.source).filter(width => !record.outputs.some(output => output.width === width));
+  return smallInlineRenditionWidths(source, record.source).filter(width =>
+    !record.outputs.some(output => output.width === width || output.fittedFromWidths?.includes(width)));
 }
 
 async function encodeRasterRendition(bytes, width) {
-  return sharp(bytes, { limitInputPixels: false }).rotate()
-    .resize({ width, height: 8192, fit: "inside", withoutEnlargement: true })
-    .webp({ quality: 90, effort: 5, smartSubsample: true }).toBuffer({ resolveWithObject: true });
+  return encodePublicRasterRendition(bytes, width, maxRenditionBytes);
 }
 
 async function saveRendition(buffer, hash, width, height, extension, suffix = `${width}w`) {
   const src = `media/optimized/${hash.slice(0, 24)}-${suffix}.${extension}`;
   await writeFile(absolute(`public/${src}`), buffer);
   return { src, width, height, bytes: buffer.length, sha256: digest(buffer) };
+}
+
+async function addRasterRendition(outputs, save, data, info, targetWidth) {
+  // A measured downscale can land on an already-written width. Keep its bytes.
+  const existing = outputs.findIndex(output => output.width === info.width);
+  if (existing >= 0) {
+    const output = outputs[existing];
+    if (targetWidth !== info.width) outputs[existing] = {
+      ...output, fittedFromWidths: [...(output.fittedFromWidths || []), targetWidth],
+    };
+    return;
+  }
+  const output = await save(data, info.width, info.height, "webp");
+  outputs.push(info.width === targetWidth ? output : { ...output, fittedFromWidths: [targetWidth] });
 }
 
 /** Extend a ready checkpoint without rewriting its reviewed large renditions. */
@@ -204,7 +243,8 @@ export async function extendSmallInlineRenditions(source, record, bytes, save = 
   const outputs = [...record.outputs];
   for (const width of widths) {
     const { data, info } = await encodeRasterRendition(bytes, width);
-    outputs.push(await save(data, record.source.sha256, info.width, info.height, "webp"));
+    await addRasterRendition(outputs, (data, w, h, extension) => save(data, record.source.sha256, w, h, extension),
+      data, info, width);
   }
   return { ...record, outputs: outputs.sort((left, right) => left.width - right.width) };
 }
@@ -220,26 +260,36 @@ async function prepareRenditions(bytes, hash, source) {
     const flags = [];
     const format = metadata.format === "jpeg" ? "jpg" : metadata.format === "heif" && metadata.compression === "av1" ? "avif" : metadata.format;
     const unchanged = metadata.format === "svg" || (metadata.pages || 1) > 1;
+    const originalFits = bytes.length <= maxRenditionBytes && /^(?:avif|gif|jpg|png|svg|webp)$/u.test(format);
     const hasTransparency = Boolean(metadata.hasAlpha) && !(await sharp(bytes, { limitInputPixels: false }).stats()).isOpaque;
     const oversized = Math.max(width, height) > 8192;
-    if (oversized) flags.push("native-original-preserved-above-8192; responsive renditions capped");
+    if (oversized && originalFits) flags.push("native-original-preserved-above-8192; responsive renditions capped");
+    if (oversized && !originalFits) flags.push("native-rendition-fitted-to-production-budget");
     if (unchanged) flags.push(metadata.format === "svg" ? "vector-preserved" : "animation-preserved");
     const variants = [];
     async function save(buffer, targetWidth, targetHeight, extension, suffix = `${targetWidth}w`) {
       return saveRendition(buffer, hash, targetWidth, targetHeight, extension, suffix);
     }
     if (unchanged) {
+      if (!originalFits) {
+        throw new Error(`Cannot prepare ${format} without losing its vector or animated content (${bytes.length} bytes, limit ${maxRenditionBytes})`);
+      }
       const nativeFile = await save(bytes, width, height, format, "original");
       return { width, height, format, hasAlpha: Boolean(metadata.hasAlpha), hasTransparency, flags, variants: [nativeFile], largest: nativeFile };
     }
-    const targets = [...new Set([...smallInlineRenditionWidths(source, { ...metadata, width, height }), 640, 1280, 1920, ...(!oversized ? [width] : [])].filter(size => size <= width))];
+    const fullTarget = oversized && originalFits ? [] : [Math.min(width, 8192)];
+    const targets = [...new Set([...smallInlineRenditionWidths(source, { ...metadata, width, height }), 640, 1280, 1920, ...fullTarget].filter(size => size <= width))];
     if (!targets.length) targets.push(width);
     for (const target of targets.sort((a, b) => a - b)) {
       const { data, info } = await encodeRasterRendition(bytes, target);
-      if (info.width === width && info.height === height && bytes.length <= data.length) variants.push(await save(bytes, width, height, format, "original"));
-      else variants.push(await save(data, info.width, info.height, "webp"));
+      if (!oversized && target === width && originalFits &&
+        (info.width < width || info.height < height || bytes.length <= data.length)) {
+        variants.push(await save(bytes, width, height, format, "original"));
+      } else {
+        await addRasterRendition(variants, save, data, info, target);
+      }
     }
-    if (oversized) variants.push(await save(bytes, width, height, format, "original"));
+    if (oversized && originalFits) variants.push(await save(bytes, width, height, format, "original"));
     const largest = variants.toSorted((a, b) => b.width * b.height - a.width * a.height)[0];
     return { width, height, format, hasAlpha: Boolean(metadata.hasAlpha), hasTransparency, flags, variants, largest };
   })();
@@ -254,6 +304,7 @@ async function readyCheckpoint(source) {
     const checkpoint = await readFile(absolute(filename), "utf8").then(JSON.parse).catch(() => publishedRecords.get(source.sourceUrl));
     if (!checkpoint) return null;
     if (checkpoint.status !== "ready" || checkpoint.pipelineVersion !== 1 || checkpoint.source.format === "heif") return null;
+    if (checkpoint.outputs.some(output => output.bytes > maxRenditionBytes)) return null;
     if (!/^https?:/iu.test(source.sourceUrl)) {
       const local = await sourceBytes(source.sourceUrl);
       if (digest(local.bytes) !== checkpoint.source.sha256) return null;
@@ -300,7 +351,8 @@ function runtimeEntry(record) {
   return { ...small(record.largest), variants: record.outputs.map(small) };
 }
 
-async function publishRuntime(records) {
+async function publishRuntime(report) {
+  const { records } = planPublicImageRenditions(report);
   const runtime = Object.fromEntries(records.filter(record => record.status === "ready").map(record => [record.sourceUrl, runtimeEntry(record)]));
   const { initial, articles } = partitionImageDeliveryManifest(runtime, records);
   await atomicJson(runtimePath, runtime);
@@ -315,11 +367,20 @@ function reportSummary(records, sourceCount, started) {
   return { inventoriedSources: sourceCount, processedSources: records.length, ready: ready.length, failed: records.length - ready.length, uniqueSourceImages: unique.length, sourceBytes: unique.reduce((sum, record) => sum + record.source.bytes, 0), largestRenditionBytes: unique.reduce((sum, record) => sum + record.largest.bytes, 0), allRenditionBytes: [...uniqueOutputs.values()].reduce((sum, output) => sum + output.bytes, 0), elapsedSeconds: Math.round((Date.now() - started) / 1000) };
 }
 
-async function publishReport(records, inventory, started, completed) {
+async function publishReport(records, inventory, started, completed, previous) {
   const ordered = records.toSorted((a, b) => a.sourceUrl.localeCompare(b.sourceUrl));
   const report = { version: 1, completed, transform: { quality: 90, widths: [640, 1280, 1920], nativeResolution: "preserved", crop: false, autoOrient: true, alpha: "preserved", sourceTimeoutMs: timeoutMs, retryCount: retries, workers: workerCount }, summary: reportSummary(ordered, inventory.length, started), images: ordered };
+  if (!completed) {
+    await atomicJson(`${cacheDirectory}/progress.json`, report);
+    return report;
+  }
+  report.delivery = {
+    version: 1,
+    authoredRenditions: [...authoredRenditions].sort(),
+    retiredRenditions: retiredPublicImageRenditions(previous, ordered),
+  };
   await atomicJson(reportPath, report);
-  if (completed && !argv.includes("--defer-runtime")) await publishRuntime(ordered);
+  if (!argv.includes("--defer-runtime")) await publishRuntime(report);
   return report;
 }
 
@@ -329,16 +390,25 @@ async function checkInventory(inventory) {
   const initialRuntime = JSON.parse(await readFile(absolute(initialRuntimePath), "utf8"));
   const articleRuntime = JSON.parse(await readFile(absolute(articleRuntimePath), "utf8"));
   const known = new Map(report.images.map(record => [record.sourceUrl, record]));
+  const plan = planPublicImageRenditions(report);
+  const delivered = new Map(plan.records.map(record => [record.sourceUrl, record]));
   const errors = [];
+  if ([...plan.omitted, ...plan.retired.map(({ src }) => src)].some(src => authoredRenditions.has(src))) {
+    errors.push("Public image delivery would omit an authored rendition URL");
+  }
   const partition = partitionImageDeliveryManifest(runtime, report.images);
   if (JSON.stringify(initialRuntime) !== JSON.stringify(compactImageDeliveryManifest(partition.initial))) errors.push("Initial runtime differs from the complete image delivery manifest");
   if (JSON.stringify(articleRuntime) !== JSON.stringify(compactImageDeliveryManifest(partition.articles))) errors.push("Article runtime differs from the complete image delivery manifest");
   for (const source of inventory) {
     const record = known.get(source.sourceUrl);
     if (!record) { errors.push(`Unaccounted source: ${source.sourceUrl}`); continue; }
-    if (record.status !== "ready") continue;
+    if (record.status !== "ready") {
+      const sourceLabel = source.sourceUrl.split(/[?#]/u, 1)[0];
+      errors.push(`Image preparation failed for ${sourceLabel} (${source.contexts.join(", ")}): ${record.error || "Unknown error"}`);
+      continue;
+    }
     if (missingSmallInlineRenditions(source, record).length) errors.push(`Missing small inline renditions: ${source.sourceUrl}`);
-    if (JSON.stringify(runtime[source.sourceUrl]) !== JSON.stringify(runtimeEntry(record))) errors.push(`Runtime entry differs: ${source.sourceUrl}`);
+    if (JSON.stringify(runtime[source.sourceUrl]) !== JSON.stringify(runtimeEntry(delivered.get(source.sourceUrl)))) errors.push(`Runtime entry differs: ${source.sourceUrl}`);
   }
   const outputs = new Map(report.images.filter(record => record.status === "ready").flatMap(record => record.outputs.map(output => [output.src, output])));
   const alpha = new Map(report.images.filter(record => record.status === "ready").flatMap(record => record.outputs.map(output => [output.src, record.source.hasTransparency])));
@@ -354,6 +424,14 @@ async function checkInventory(inventory) {
     }
     catch { errors.push(`Output missing: ${output.src}`); }
   }
+  for (const output of plan.preservedRetired) {
+    try {
+      const bytes = await readFile(absolute(`public/${output.src}`));
+      if (bytes.length !== output.bytes || digest(bytes) !== output.sha256) {
+        errors.push(`Authored rendition checksum differs: ${output.src}`);
+      }
+    } catch { errors.push(`Authored rendition missing: ${output.src}`); }
+  }
   if (errors.length) throw new Error(errors.join("\n"));
   console.log(JSON.stringify({ status: "passed", sources: inventory.length, outputs: outputs.size, unavailable: report.images.filter(record => record.status !== "ready").length }));
 }
@@ -362,14 +440,15 @@ async function main() {
   const started = Date.now();
   if (argv.includes("--publish-runtime")) {
     const report = JSON.parse(await readFile(absolute(reportPath), "utf8"));
-    await publishRuntime(report.images);
+    await publishRuntime(report);
     console.log(JSON.stringify({ status: "runtime-published", ready: report.summary.ready }));
     return;
   }
   const inventory = await collectPublicImageSources();
   if (argv.includes("--check")) return checkInventory(inventory);
+  let previous;
   try {
-    const previous = JSON.parse(await readFile(absolute(reportPath), "utf8"));
+    previous = JSON.parse(await readFile(absolute(reportPath), "utf8"));
     publishedRecords = new Map(previous.images.map(record => [record.sourceUrl, record]));
   } catch { /* A first preparation has no committed provenance to reuse. */ }
   for (const directory of [outputDirectory, `${cacheDirectory}/originals`, `${cacheDirectory}/checkpoints`]) await mkdir(absolute(directory), { recursive: true });
@@ -404,7 +483,7 @@ async function main() {
   await reportWrites.drain();
   const failedWorker = workers.find(result => result.status === "rejected");
   if (failedWorker) throw failedWorker.reason;
-  const report = await publishReport(records, inventory, started, true);
+  const report = await publishReport(records, inventory, started, selected.length === inventory.length, previous);
   console.log(JSON.stringify(report.summary));
 }
 

@@ -14,6 +14,8 @@ describe("upload preservation before browser canvas", () => {
     expect(result.file.type).toBe("image/avif");
     expect(result.file.name).toBe("wrong.avif");
     expect(Buffer.from(await result.file.arrayBuffer())).toEqual(bytes);
+    await expect(optimizeUploadImage(result.file, { maxOutputBytes: bytes.length - 1, fitToUploadLimit: true }))
+      .rejects.toMatchObject({ code: "preservedOutputSize" });
     expect(decode).not.toHaveBeenCalled();
   });
 
@@ -28,6 +30,8 @@ describe("upload preservation before browser canvas", () => {
     expect(result).toMatchObject({ width: 96, height: 64 });
     expect(Buffer.from(await result.file.arrayBuffer())).toEqual(bytes);
     await expect(optimizeUploadImage(file, { maxOutputBytes: bytes.length - 1 })).rejects.toMatchObject({ code: "outputSize" });
+    await expect(optimizeUploadImage(file, { maxOutputBytes: bytes.length - 1, fitToUploadLimit: true }))
+      .rejects.toMatchObject({ code: "preservedOutputSize" });
     expect(decode).not.toHaveBeenCalled();
   });
 

@@ -1,4 +1,4 @@
-const renditionPath = /^media\/optimized\/[a-f0-9]{24}-(?:[1-9][0-9]*w|original)\.(?:avif|jpe?g|png|webp|svg|gif)$/u;
+import { planPublicImageRenditions, verifiedRenditionMetadata } from "./public-image-rendition-plan.mjs";
 
 // Only independently inventoried image files may leave the existing application
 // budget. Unknown files, incomplete provenance and size mismatches fail closed.
@@ -24,8 +24,7 @@ export function measurePublishedImageCorpus({ files, report, budget }) {
     }
     sources.add(image.sourceUrl);
     for (const output of image.outputs) {
-      if (!renditionPath.test(output?.src || "") || !Number.isSafeInteger(output.bytes) ||
-          output.bytes <= 0 || !/^[a-f0-9]{64}$/u.test(output.sha256 || "")) {
+      if (!verifiedRenditionMetadata(output)) {
         errors.push(`invalid published image output: ${output?.src || "<missing>"}`);
         continue;
       }
@@ -36,6 +35,18 @@ export function measurePublishedImageCorpus({ files, report, budget }) {
       outputs.set(output.src, output);
     }
   }
+
+  if (errors.length) return { errors, bytes: 0, fileCount: 0, sourceCount: 0 };
+  let plan;
+  try {
+    plan = planPublicImageRenditions(report);
+  } catch (error) {
+    errors.push(error.message);
+    return { errors, bytes: 0, fileCount: 0, sourceCount: 0 };
+  }
+  const archiveBytes = [...outputs.values()].reduce((sum, output) => sum + output.bytes, 0);
+  for (const src of plan.omitted) outputs.delete(src);
+  for (const output of plan.preservedRetired) outputs.set(output.src, output);
 
   const measured = files.filter((file) => file.relative.startsWith("media/optimized/"));
   const delivered = new Set();
@@ -52,8 +63,8 @@ export function measurePublishedImageCorpus({ files, report, budget }) {
   const bytes = measured.reduce((sum, file) => sum + file.bytes, 0);
   const summary = report.summary;
   if (summary?.inventoriedSources !== sources.size || summary.processedSources !== sources.size ||
-      summary.ready !== sources.size || summary.failed !== 0 || summary.allRenditionBytes !== bytes) {
-    errors.push("published image summary differs from the delivered inventory");
+      summary.ready !== sources.size || summary.failed !== 0 || summary.allRenditionBytes !== archiveBytes) {
+    errors.push("published image summary differs from the prepared inventory");
   }
   return { errors, bytes, fileCount: measured.length, sourceCount: sources.size };
 }

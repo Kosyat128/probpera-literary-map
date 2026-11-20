@@ -3,9 +3,17 @@ import { describe, expect, it } from "vitest";
 import {
   CLIENT_IMAGE_ACCEPT_ATTRIBUTE,
   isAcceptedClientImageType,
+  prepareClientImage,
 } from "./client-image-upload";
 
 describe("safe client image source formats", () => {
+  it("identifies a file that cannot be prepared", async () => {
+    await expect(prepareClientImage(new File([], "Обложка.png"))).rejects.toMatchObject({
+      code: "empty",
+      message: expect.stringContaining("Обложка.png"),
+    });
+  });
+
   it.each([
     "image/jpeg",
     "image/png",

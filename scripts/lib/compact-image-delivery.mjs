@@ -1,3 +1,8 @@
+export function usesOnlyArticleBodyImages(contexts) {
+  return contexts?.length > 0 &&
+    contexts.every((context) => /^public\/(?:articles|cms\/articles)\/[^:]+\.json$/u.test(context));
+}
+
 /** Lossless structural compaction; the complete editorial URL map remains available for audits. */
 export function partitionImageDeliveryManifest(manifest, records) {
   const contexts = new Map(records.map(record => [record.sourceUrl, record.contexts]));
@@ -6,7 +11,7 @@ export function partitionImageDeliveryManifest(manifest, records) {
     const uses = contexts.get(source);
     // Only article-body-only images can wait for the article reader. Covers,
     // cards, CMS pages, homepage HTML, CSS and unknown contexts stay immediate.
-    const articleOnly = uses?.length > 0 && uses.every(context => /^public\/(?:articles|cms\/articles)\/[^:]+\.json$/u.test(context));
+    const articleOnly = usesOnlyArticleBodyImages(uses);
     (articleOnly ? articles : initial)[source] = entry;
   }
   return { initial, articles };

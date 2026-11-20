@@ -210,6 +210,47 @@ describe("performance budget audit", () => {
     });
   });
 
+  it("fits both limits by shipping two useful widths while preserving full provenance", async () => {
+    const base = "media/optimized/1123456789abcdef01234567-";
+    const output = (suffix, width, height, bytes) => ({
+      src: `${base}${suffix}.webp`, width, height, bytes,
+      sha256: createHash("sha256").update(Buffer.alloc(bytes)).digest("hex"),
+    });
+    const mobile = output("640w", 640, 427, 100);
+    const desktop = output("1280w", 1280, 853, 400);
+    const largest = output("original", 1536, 1024, 475);
+    const publishedImageReport = {
+      version: 1,
+      completed: true,
+      images: [{
+        sourceUrl: "https://example.org/article-image.png",
+        status: "ready",
+        contexts: ["public/cms/articles/example.json"],
+        largest,
+        outputs: [mobile, desktop, largest],
+      }],
+      summary: { inventoriedSources: 1, processedSources: 1, ready: 1, failed: 0, allRenditionBytes: 975 },
+    };
+    const options = { publishedImageBudget: { totalBytes: 600, fileCount: 2, sourceCount: 1 } };
+    const before = await fixture({
+      ...options, publishedImageReport, publishedImageFiles: [mobile, desktop, largest],
+    });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd: before })).rejects.toMatchObject({
+      stdout: expect.stringMatching(/FAIL published image corpus total:[\s\S]*FAIL published image corpus count:/u),
+    });
+    const after = await fixture({
+      ...options, publishedImageFiles: [mobile, largest],
+      publishedImageReport: { ...publishedImageReport, delivery: { version: 1, authoredRenditions: [] } },
+    });
+    const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd: after });
+    expect(stdout).toContain("PASS published image corpus total: 575 / 600 bytes");
+    expect(stdout).toContain("PASS published image corpus count: 2 / 2 files");
+    await unlink(path.join(after, "dist", largest.src));
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd: after })).rejects.toMatchObject({
+      stderr: expect.stringContaining(`missing published image file: ${largest.src}`),
+    });
+  });
+
   it("rejects files omitted from the published image provenance", async () => {
     const cwd = await fixture({ publishedImageFiles: [{ src: publishedImage, bytes: 200 }] });
     await writeFile(path.join(cwd, "dist", "media", "optimized", "unlisted.js"), "export default {};");
