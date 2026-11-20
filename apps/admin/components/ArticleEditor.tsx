@@ -2012,7 +2012,14 @@ export default function ArticleEditor({
           getURLFromRedirectError(error) || "/",
           window.location.href
         );
-        if (destination.searchParams.get("saved") === "1") {
+        const saveResult = destination.searchParams.get("saved");
+        const savedWorkingDraft =
+          saveResult === "working-draft" &&
+          article.id &&
+          destination.origin === window.location.origin &&
+          destination.pathname === "/articles/edit" &&
+          destination.searchParams.get("id") === article.id;
+        if (saveResult === "1" || savedWorkingDraft) {
           setConfirmedRecoverySave(true);
           try {
             const marker = pendingRecoveryMarkerRef.current;

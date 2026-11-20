@@ -65,7 +65,9 @@ const entry = `
     article={{
       id: query.has("other") ? "77777777-7777-4777-8777-777777777777" : existing ? ${JSON.stringify(id)} : undefined,
       updated_at: existing ? "2026-11-20T11:30:00+00:00" : undefined,
-      title: "Новая рукопись", slug: "article", status: "draft",
+      title: "Новая рукопись", slug: "article",
+      status: query.has("published") ? "published" : "draft",
+      working_draft_version: query.has("published") ? 3 : 0,
       category_id: categoryId, excerpt: summary, seo_description: summary, sources: ["Редакционный источник"],
       content_html: html("ru", russian), content_json: doc("ru", russian),
       cover_external_url: "https://fixture.invalid/cover", cover_alt: "Ручное описание",
@@ -236,6 +238,44 @@ test("preview and Enter preserve intent and forward the real Next router signal"
     await expect(page.getByText("Сервер не подтвердил результат.", { exact: false })).toHaveCount(0);
     const recovery = await page.evaluate((articleId) => localStorage.getItem(`probpera-editor-${articleId}`), id);
     expect(recovery === null).toBe(saved);
+  }
+});
+
+test("a published article's working-draft redirect clears its submitted copy and retains newer edits", async ({ page }) => {
+  const recoveryKey = `probpera-editor-${id}`;
+  const readRecovery = () => page.evaluate((key) => {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved).title : null;
+  }, recoveryKey);
+  const otherArticleId = "77777777-7777-4777-8777-777777777777";
+
+  for (const [redirectId, newerTitle, expectedRecovery] of [
+    [id, null, null],
+    [id, titleAfter, titleAfter],
+    [otherArticleId, null, titleBefore],
+  ]) {
+    await page.goto(`${origin}/editor?existing&published&saved=working-draft`);
+    await expect(page.locator(".tiptap")).toContainText("Авторский текст");
+    const title = page.getByRole("textbox", { name: "Заголовок", exact: true });
+    await title.fill(titleBefore);
+    await page.getByRole("button", { name: "Сохранить черновик", exact: true }).click();
+    await expect(page.getByText("Сохраняем черновик…")).toBeVisible();
+    const [request] = await page.evaluate(() => window.fixture.calls);
+    expect(request).toMatchObject({
+      id, intent: "save", previous_status: "published", working_draft_version: "3",
+      title: titleBefore,
+    });
+    expect(await readRecovery()).toBe(titleBefore);
+
+    if (newerTitle) {
+      await title.fill(newerTitle);
+      await expect.poll(readRecovery).toBe(newerTitle);
+    }
+    const destination = `/articles/edit?id=${redirectId}&saved=working-draft`;
+    await page.evaluate((to) => window.fixture.redirect(to), destination);
+    await expect(page.locator("[data-router-signal]"))
+      .toHaveAttribute("data-router-signal", `NEXT_REDIRECT;push;${destination};307;`);
+    expect(await readRecovery()).toBe(expectedRecovery);
   }
 });
 
