@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
+import { projectPublicationImageFix } from './reviewed-publication-image-fix.mjs';
 
 // Additive browser repair evidence; historical assertions and acceptance stay intact.
 export const cmsPreviewWebglFollowupAttestation = JSON.parse(readFileSync(
@@ -9,7 +10,7 @@ export const cmsPreviewWebglFollowupSha256 = source => createHash('sha256')
 
 /** Reverse only the exact serial-lane addition and its outer read boundaries. */
 export function projectReviewedCmsPreviewWebglFollowup(relativePath, source) {
-  let projected = source.replace(/\r\n?/gu, '\n');
+  let projected = projectPublicationImageFix(relativePath, source.replace(/\r\n?/gu, '\n'));
   const deltas = cmsPreviewWebglFollowupAttestation.projections.filter(delta => delta.path === relativePath);
   if (!deltas.length) return projected;
   const markers = cmsPreviewWebglFollowupAttestation.markers[relativePath];

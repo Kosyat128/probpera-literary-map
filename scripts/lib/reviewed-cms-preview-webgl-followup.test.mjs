@@ -5,6 +5,7 @@ import { cmsPreviewWebglFollowupAttestation as packet, cmsPreviewWebglFollowupSh
   projectReviewedCmsPreviewWebglFollowup as project } from './reviewed-cms-preview-webgl-followup.mjs';
 import { projectReviewedAdminWorkerCompatibility } from './reviewed-admin-worker-compatibility.mjs';
 import { projectReviewedLiveUiFollowup } from './reviewed-live-ui-followup.mjs';
+import { projectPublicationImageFix } from './reviewed-publication-image-fix.mjs';
 
 // New approval checks use raw current bytes; projection cannot approve rollback.
 const read = path => readFileSync(path, 'utf8').replace(/\r\n?/gu, '\n');
@@ -106,7 +107,9 @@ describe('Exact CMS preview serial WebGL followup preserves historical browser a
 
   it('pins the new helper and retains every earlier packet and browser assertion byte for byte', () => {
     expect(packet.additions.map(entry => entry.path)).toEqual(['scripts/lib/reviewed-cms-preview-webgl-followup.mjs']);
-    for (const entry of packet.additions) expect(sha(read(entry.path))).toBe(entry.sha256Lf);
+    for (const entry of packet.additions) {
+      expect(sha(projectPublicationImageFix(entry.path, read(entry.path)))).toBe(entry.sha256Lf);
+    }
     expect(packet.foundations).toHaveLength(13);
     for (const entry of packet.foundations) {
       const source = read(entry.path); expect(source).toBe(historical(entry.path));

@@ -3,6 +3,9 @@
 import type { JSONContent } from "@tiptap/core";
 import { useEditor } from "@tiptap/react";
 import NextLink from "next/link";
+import { getURLFromRedirectError } from "next/dist/client/components/redirect";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
+import { unstable_rethrow } from "next/navigation";
 import type { FormEvent as ReactFormEvent } from "react";
 import {
   useCallback,
@@ -14,6 +17,7 @@ import {
 } from "react";
 
 import { createSlug } from "@/lib/slug";
+import { articleEditPath } from "@/lib/admin-routes";
 import {
   ARTICLE_METADATA_DRAFT_FIELDS,
   buildArticleMetadataDraft,
@@ -106,6 +110,22 @@ import {
 
 type Category = { id: string; name: string; slug: string };
 type ImageUploadTarget = "article" | "cover";
+
+function hasUnconfirmedArticleSubmission(key: string) {
+  try {
+    return window.sessionStorage.getItem(key) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function clearUnconfirmedArticleSubmission(key: string) {
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch {
+    // An unavailable browser store cannot acknowledge this tab's marker.
+  }
+}
 type ImageSelectionContext = {
   selectedImage: boolean;
   attributes: Record<string, unknown>;
@@ -392,6 +412,11 @@ export default function ArticleEditor({
   );
   const [savedLocallyAt, setSavedLocallyAt] = useState<string | null>(null);
   const [draftStorageError, setDraftStorageError] = useState("");
+  const [pendingSubmission, setPendingSubmission] = useState("");
+  const [confirmedRecoverySave, setConfirmedRecoverySave] = useState(false);
+  const [protectLoadedRecovery, setProtectLoadedRecovery] = useState(false);
+  const [unconfirmedSubmissionTitle, setUnconfirmedSubmissionTitle] =
+    useState<string | null>(null);
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
@@ -452,6 +477,10 @@ export default function ArticleEditor({
   const previewSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const publishSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const submissionInFlightRef = useRef(false);
+  const submissionUnconfirmedRef = useRef(false);
+  const pendingRecoveryMarkerRef = useRef<string | null>(null);
+  const submissionCheckKey =
+    `probpera-editor-unconfirmed:${article.id || draftKey?.trim() || "new"}`;
   const coverFileInputRef = useRef<HTMLInputElement>(null);
   const workspaceSectionRefs = useRef<
     Record<ArticleWorkspaceSection, HTMLElement | null>
@@ -679,6 +708,23 @@ export default function ArticleEditor({
     imageUploadTarget !== null ||
     imageUploadInFlightRef.current ||
     editorMedia.busy;
+  const articleSubmissionBlocked =
+    isImageUploadActive ||
+    Boolean(pendingSubmission) ||
+    unconfirmedSubmissionTitle !== null;
+
+  useEffect(() => {
+    const unconfirmed = hasUnconfirmedArticleSubmission(submissionCheckKey);
+    submissionUnconfirmedRef.current = unconfirmed;
+    setUnconfirmedSubmissionTitle(unconfirmed ? "" : null);
+    setProtectLoadedRecovery(unconfirmed);
+  }, [submissionCheckKey]);
+
+  useEffect(() => {
+    setConfirmedRecoverySave(
+      saveConfirmed && !hasUnconfirmedArticleSubmission(submissionCheckKey)
+    );
+  }, [saveConfirmed, submissionCheckKey]);
 
   useEffect(() => {
     if (!slugEdited) setSlug(createSlug(title));
@@ -994,25 +1040,6 @@ export default function ArticleEditor({
 
   useEffect(() => {
     if (!recoveryKey || !recoverySourceKey) return;
-    if (saveConfirmed) {
-      try {
-        const { clearedCurrent } = clearConfirmedArticleRecovery(
-          window.localStorage,
-          window.sessionStorage,
-          recoveryKey
-        );
-        if (clearedCurrent) {
-          setHasRecoveryCopy(false);
-          setSavedLocallyAt(null);
-        }
-        setDraftStorageError("");
-      } catch {
-        setDraftStorageError(
-          "Статья сохранена, но браузер не дал удалить старую локальную копию."
-        );
-      }
-    }
-
     try {
       setHasRecoveryCopy(
         Boolean(window.localStorage.getItem(recoverySourceKey))
@@ -1022,7 +1049,7 @@ export default function ArticleEditor({
         "Браузер запретил доступ к локальным черновикам. Сохраняйте статью кнопкой чаще."
       );
     }
-  }, [recoveryKey, recoverySourceKey, saveConfirmed]);
+  }, [recoveryKey, recoverySourceKey]);
 
   const recoverySnapshot = useMemo<ArticleRecoverySnapshot>(
     () => ({
@@ -1168,7 +1195,7 @@ export default function ArticleEditor({
 
   useEffect(() => {
     const protectDraft = (event: BeforeUnloadEvent) => {
-      if (!isDirty || submissionInFlightRef.current) return;
+      if (!isDirty && !submissionInFlightRef.current) return;
       event.preventDefault();
       event.returnValue = "";
     };
@@ -1177,7 +1204,7 @@ export default function ArticleEditor({
   }, [isDirty]);
 
   useEffect(() => {
-    if (!recoveryKey || !isDirty) return;
+    if (!recoveryKey || !isDirty || protectLoadedRecovery) return;
     const timer = window.setTimeout(() => {
       try {
         persistArticleRecoverySnapshot(
@@ -1207,10 +1234,10 @@ export default function ArticleEditor({
       }
     }, 900);
     return () => window.clearTimeout(timer);
-  }, [isDirty, recoveryDraftScope, recoveryKey, recoverySnapshot]);
+  }, [isDirty, recoveryDraftScope, recoveryKey, recoverySnapshot, protectLoadedRecovery]);
 
   useEffect(() => {
-    if (!recoveryKey || !isDirty) return;
+    if (!recoveryKey || !isDirty || protectLoadedRecovery) return;
     const flushRecoveryCopy = () => {
       const snapshot = latestRecoverySnapshotRef.current;
       if (!snapshot) return;
@@ -1240,7 +1267,7 @@ export default function ArticleEditor({
       window.removeEventListener("pagehide", flushRecoveryCopy);
       document.removeEventListener("visibilitychange", flushWhenHidden);
     };
-  }, [isDirty, recoveryDraftScope, recoveryKey]);
+  }, [isDirty, recoveryDraftScope, recoveryKey, protectLoadedRecovery]);
 
   const {
     checks: bilingualPublicationChecks,
@@ -1350,11 +1377,15 @@ export default function ArticleEditor({
       ),
     };
   }, [activeLocale, contentJson, editor, englishContentJson]);
-  const workspaceSaveState = `${wordCount.toLocaleString(
+  const documentSaveState = `${wordCount.toLocaleString(
     activeLocale === "en" ? "en-US" : "ru-RU"
   )} ${activeLocale === "en" ? "английских слов" : "слов"}${
     savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""
   }${isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}`;
+  const workspaceSaveState =
+    pendingSubmission ||
+    (imageUploadTarget === "cover" && imageUploadMessage) ||
+    (isImageUploadActive ? "Подготавливаем и загружаем изображения…" : documentSaveState);
   const workspaceSnapshot = useMemo<ArticleEditorWorkspace["snapshot"]>(() => {
     const ready = publicationChecks.filter((item) => item.ok).length;
     return {
@@ -1371,14 +1402,14 @@ export default function ArticleEditor({
       ready,
       total: publicationChecks.length,
       saveState: workspaceSaveState,
-      canSave: !isImageUploadActive,
-      canPreview: !isImageUploadActive,
-      canPublish: canPublish && publicationActionReady && !isImageUploadActive,
+      canSave: !articleSubmissionBlocked,
+      canPreview: !articleSubmissionBlocked,
+      canPublish: canPublish && publicationActionReady && !articleSubmissionBlocked,
     };
   }, [
     activeLocale,
     canPublish,
-    isImageUploadActive,
+    articleSubmissionBlocked,
     publicationChecks,
     publicationActionReady,
     publicationReady,
@@ -1630,11 +1661,15 @@ export default function ArticleEditor({
     setImageUploadError("");
     setImageUploadMessage("Подготавливаем изображение без обрезки…");
     try {
-      setImageUploadMessage("Загружаем подготовленное изображение…");
       const result = await uploadEditorImage(file, {
         usage: "cover",
         altText,
         collectionName: "Обложки статей",
+        onProgress: (stage) => {
+          if (stage === "upload") {
+            setImageUploadMessage("Загружаем подготовленное изображение…");
+          }
+        },
       });
 
       setCoverUrl(result.url);
@@ -1943,6 +1978,7 @@ export default function ArticleEditor({
       } finally {
         switchingLocaleRef.current = false;
       }
+      setProtectLoadedRecovery(false);
       setIsDirty(true);
   };
 
@@ -1965,10 +2001,73 @@ export default function ArticleEditor({
     }
   };
 
+  const submitArticle = async (formData: FormData) => {
+    try {
+      await saveArticleAction(formData);
+    } catch (error) {
+      // Next uses a rejected promise for its normal action redirects.
+      if (isRedirectError(error)) {
+        clearUnconfirmedArticleSubmission(submissionCheckKey);
+        const destination = new URL(
+          getURLFromRedirectError(error) || "/",
+          window.location.href
+        );
+        if (destination.searchParams.get("saved") === "1") {
+          setConfirmedRecoverySave(true);
+          try {
+            const marker = pendingRecoveryMarkerRef.current;
+            if (marker && window.sessionStorage.getItem(PENDING_ARTICLE_SAVE_KEY) === marker) {
+              const { clearedCurrent } = clearConfirmedArticleRecovery(
+                window.localStorage,
+                window.sessionStorage,
+                recoveryKey
+              );
+              if (clearedCurrent) {
+                setHasRecoveryCopy(false);
+                setSavedLocallyAt(null);
+              }
+            }
+          } catch {
+            setDraftStorageError(
+              "Статья сохранена. Браузер сохранил старую локальную копию."
+            );
+          }
+        }
+      }
+      unstable_rethrow(error);
+      console.error("Article save response unavailable", {
+        articleId: article.id || null,
+        intent: formData.get("intent"),
+        errorName: error instanceof Error ? error.name : "UnknownError",
+      });
+    } finally {
+      submissionInFlightRef.current = false;
+      pendingRecoveryMarkerRef.current = null;
+      setPendingSubmission("");
+      const overrideInput = formRef.current?.elements.namedItem(
+        "publication_override"
+      );
+      if (overrideInput instanceof HTMLInputElement) overrideInput.value = "0";
+    }
+
+    // Every successful or rejected save redirects. A transport failure or a
+    // response without a redirect does not tell us whether the write happened.
+    const submittedTitle = String(formData.get("title") || "").trim().slice(0, 120);
+    submissionUnconfirmedRef.current = true;
+    setUnconfirmedSubmissionTitle(submittedTitle);
+  };
+
+  const acknowledgeSubmissionCheck = () => {
+    clearUnconfirmedArticleSubmission(submissionCheckKey);
+    submissionUnconfirmedRef.current = false;
+    setUnconfirmedSubmissionTitle(null);
+    setProtectLoadedRecovery(false);
+  };
+
   return (
     <ArticleEditorShell
       formRef={formRef}
-      action={saveArticleAction}
+      action={submitArticle}
       fullscreen={isFullscreen}
       hidden={{
         identity: {
@@ -2026,6 +2125,16 @@ export default function ArticleEditor({
         },
       }}
       onSubmit={(event: ReactFormEvent<HTMLFormElement>) => {
+        if (submissionInFlightRef.current || submissionUnconfirmedRef.current) {
+          event.preventDefault();
+          return;
+        }
+        if (hasUnconfirmedArticleSubmission(submissionCheckKey)) {
+          event.preventDefault();
+          submissionUnconfirmedRef.current = true;
+          setUnconfirmedSubmissionTitle("");
+          return;
+        }
         if (isImageUploadActive) {
           event.preventDefault();
           setImageUploadError(
@@ -2033,6 +2142,22 @@ export default function ArticleEditor({
           );
           return;
         }
+        submissionInFlightRef.current = true;
+        setConfirmedRecoverySave(false);
+        try {
+          window.sessionStorage.setItem(submissionCheckKey, "1");
+        } catch {
+          // The active editor still guards against another submission.
+        }
+        const submitter = (event.nativeEvent as SubmitEvent).submitter;
+        const intent = submitter instanceof HTMLButtonElement ? submitter.value : "save";
+        setPendingSubmission(
+          intent === "publish" || intent === "publish-ru"
+            ? "Сохраняем статью и отправляем запрос на обновление сайта…"
+            : intent === "preview"
+              ? "Сохраняем статью для предпросмотра…"
+              : "Сохраняем черновик…"
+        );
         if (recoveryKey) {
           const snapshot = latestRecoverySnapshotRef.current;
           try {
@@ -2048,29 +2173,26 @@ export default function ArticleEditor({
                 recoveryDraftScope
               );
               setRecoverySourceKey(recoveryKey);
+              setHasRecoveryCopy(true);
             }
           } catch {
             // Server-side saving still proceeds when browser storage is unavailable.
+            setDraftStorageError("Браузер не сохранил локальную копию статьи.");
           }
           if (snapshot) {
             try {
-              window.sessionStorage.setItem(
-                PENDING_ARTICLE_SAVE_KEY,
-                pendingArticleSaveValue(
-                  recoveryKey,
-                  snapshot,
-                  recoveryDraftScope
-                )
+              const marker = pendingArticleSaveValue(
+                recoveryKey,
+                snapshot,
+                recoveryDraftScope
               );
+              window.sessionStorage.setItem(PENDING_ARTICLE_SAVE_KEY, marker);
+              pendingRecoveryMarkerRef.current = marker;
             } catch {
               // The local draft itself remains available when session storage is blocked.
             }
           }
         }
-        submissionInFlightRef.current = true;
-        window.setTimeout(() => {
-          submissionInFlightRef.current = false;
-        }, 15_000);
       }}
     >
       <input
@@ -2088,8 +2210,8 @@ export default function ArticleEditor({
           baseUpdatedAt: article.updated_at || null,
         }}
         snapshot={{ ...recoverySnapshot }}
-        isDirty={isDirty}
-        savedAfterSubmit={saveConfirmed}
+        isDirty={isDirty && !protectLoadedRecovery}
+        savedAfterSubmit={confirmedRecoverySave}
         onRestore={(snapshot) =>
           applyRecoverySnapshot(snapshot as ArticleRecoverySnapshot)
         }
@@ -2550,8 +2672,33 @@ export default function ArticleEditor({
               {draftStorageError}
             </small>
           )}
+          {unconfirmedSubmissionTitle !== null && (
+            <div className="editor-save-error">
+              <p role="alert">
+                Сервер не подтвердил результат. Проверьте запись в новой вкладке.
+                Если изменения не сохранились, продолжите из редактора или
+                восстановите локальную копию, затем разрешите повтор.
+              </p>
+              <NextLink
+                href={article.id ? articleEditPath(article.id) : unconfirmedSubmissionTitle
+                  ? `/articles?${new URLSearchParams({ q: unconfirmedSubmissionTitle })}`
+                  : "/articles"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Проверить сохранение в админке
+              </NextLink>
+              <button
+                className="button-secondary"
+                type="button"
+                onClick={acknowledgeSubmissionCheck}
+              >
+                Результат проверен, разрешить повтор
+              </button>
+            </div>
+          )}
         </div>
-        <div className="editor-actions">
+        <div className="editor-actions" aria-busy={Boolean(pendingSubmission)}>
           {hasRecoveryCopy && (
             <button
               className="button-secondary"
@@ -2567,7 +2714,7 @@ export default function ArticleEditor({
             type="submit"
             name="intent"
             value="save"
-            disabled={isImageUploadActive}
+            disabled={articleSubmissionBlocked}
           >
             Сохранить черновик
           </button>
@@ -2577,7 +2724,7 @@ export default function ArticleEditor({
             type="submit"
             name="intent"
             value="preview"
-            disabled={isImageUploadActive}
+            disabled={articleSubmissionBlocked}
           >
             Сохранить и открыть предпросмотр
           </button>
@@ -2589,7 +2736,7 @@ export default function ArticleEditor({
                 type="submit"
                 name="intent"
                 value={russianOnlyPublication ? "publish-ru" : "publish"}
-                disabled={!publicationActionReady || isImageUploadActive}
+                disabled={!publicationActionReady || articleSubmissionBlocked}
                 title={
                   publicationActionReady
                     ? publicationActionLabel
@@ -2604,7 +2751,7 @@ export default function ArticleEditor({
                   type="submit"
                   name="intent"
                   value="publish"
-                  disabled={!publicationReady || isImageUploadActive}
+                  disabled={!publicationReady || articleSubmissionBlocked}
                   title="Обе версии должны пройти редакционный контроль"
                 >
                   {status === "scheduled"
@@ -2620,7 +2767,7 @@ export default function ArticleEditor({
                     type="submit"
                     name="intent"
                     value={russianOnlyPublication ? "publish-ru" : "publish"}
-                    disabled={isImageUploadActive}
+                    disabled={articleSubmissionBlocked}
                     onClick={(event) => {
                       const form = event.currentTarget.form;
                       const overrideInput = form?.querySelector(

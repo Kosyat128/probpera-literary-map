@@ -24,6 +24,7 @@ import {
 } from "./lib/article-publication-images.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
 import { createPublicImageHtmlRenderer } from "./lib/public-image-delivery.mjs";
+import { prunePublicImageRenditions } from "./prune-public-image-renditions.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -37,6 +38,7 @@ const siteBasePath =
   configuredBase === "/" ? "" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}`;
 const siteUrl = `${siteOrigin}${siteBasePath}`;
 const siteRootPath = `${siteBasePath || ""}/`;
+await prunePublicImageRenditions(projectRoot, { allowMissingReport: Boolean(process.env.ARTICLE_BUILD_PROJECT_ROOT) });
 const imageDeliveryManifest = await fs.readFile(path.join(projectRoot, "src/data/imageDelivery.generated.json"), "utf8")
   .then(JSON.parse).catch(error => { if (error.code === "ENOENT") return {}; throw error; });
 const publicArticleImages = createPublicImageHtmlRenderer(imageDeliveryManifest, siteRootPath);

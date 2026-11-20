@@ -85,6 +85,7 @@ export default function ArticleEditorShell({
       ref={formRef}
       action={action}
       onSubmit={onSubmit}
+      onReset={(event) => event.preventDefault()}
       className={
         fullscreen
           ? "article-form article-workspace-enabled is-fullscreen"

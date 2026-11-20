@@ -73,7 +73,7 @@ export async function uploadEditorImage(
   const usage = options.usage ?? "inline";
   if (options.signal?.aborted) throw new DOMException("Загрузка отменена.", "AbortError");
   options.onProgress?.("prepare", 0);
-  const prepared = await prepareClientImage(sourceFile, usage);
+  const prepared = await prepareClientImage(sourceFile, usage, options.signal);
   if (options.signal?.aborted) throw new DOMException("Загрузка отменена.", "AbortError");
   options.onProgress?.("prepare", 100);
   const formData = new FormData();
@@ -108,6 +108,7 @@ export async function uploadEditorImage(
       height: prepared.height,
       originalBytes: prepared.originalBytes,
       outputBytes: prepared.outputBytes,
+      resized: prepared.resized,
     },
   };
 }

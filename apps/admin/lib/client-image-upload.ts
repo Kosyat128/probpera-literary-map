@@ -2,6 +2,7 @@
 
 import {
   IMAGE_UPLOAD_ACCEPT,
+  ImageUploadError,
   MAX_IMAGE_SOURCE_BYTES,
   optimizeUploadImage,
   type OptimizedUploadImage,
@@ -17,7 +18,8 @@ export function formatImagePreparation(value: ClientImagePreparation) {
   const weight = value.outputBytes < value.originalBytes
     ? `${size(value.originalBytes)} → ${size(value.outputBytes)}`
     : `${size(value.outputBytes)}, исходный файл`;
-  return `${weight} · ${value.width} × ${value.height}, разрешение сохранено.`;
+  const dimensions = value.resized ? "разрешение уменьшено без обрезки" : "разрешение сохранено";
+  return `${weight} · ${value.width} × ${value.height}, ${dimensions}.`;
 }
 export const MAX_CLIENT_IMAGE_SOURCE_BYTES = MAX_IMAGE_SOURCE_BYTES;
 export const MAX_CLIENT_IMAGE_UPLOAD_BYTES = Math.floor(3.8 * 1024 * 1024);
@@ -30,7 +32,17 @@ export function isAcceptedClientImageType(value: unknown) {
 
 export async function prepareClientImage(
   file: File,
-  _usage: ClientImageUsage = "inline"
+  _usage: ClientImageUsage = "inline",
+  signal?: AbortSignal,
 ): Promise<PreparedClientImage> {
-  return optimizeUploadImage(file, { maxOutputBytes: MAX_CLIENT_IMAGE_UPLOAD_BYTES });
+  try {
+    return await optimizeUploadImage(file, {
+      maxOutputBytes: MAX_CLIENT_IMAGE_UPLOAD_BYTES,
+      fitToUploadLimit: true,
+      signal,
+    });
+  } catch (error) {
+    if (error instanceof ImageUploadError) throw new ImageUploadError(error.code, file.name);
+    throw error;
+  }
 }
