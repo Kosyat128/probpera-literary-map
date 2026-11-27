@@ -1,12 +1,86 @@
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { cachePublicEditorialOriginals } from "./cache-public-editorial-originals.mjs";
 
 const root = path.resolve(process.cwd());
 const read = (relativePath) =>
   readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n?/gu, "\n");
 
 describe("release workflow hardening", () => {
+  it("saves only changed editorial cache contents before the performance gate, even after a failed build", () => {
+    const source = read(".github/workflows/deploy-pages.yml");
+    const restore = source.indexOf("uses: actions/cache/restore@v5");
+    const seed = source.indexOf("node scripts/cache-public-editorial-originals.mjs restore");
+    const build = source.indexOf("id: build_site");
+    const stage = source.indexOf("node scripts/cache-public-editorial-originals.mjs stage");
+    const save = source.indexOf("uses: actions/cache/save@v5");
+    expect(restore).toBeGreaterThan(source.indexOf("Verify the frozen CMS publication snapshot"));
+    expect(seed).toBeGreaterThan(restore);
+    expect(build).toBeGreaterThan(seed);
+    expect(stage).toBeGreaterThan(build);
+    expect(save).toBeGreaterThan(stage);
+    expect(save).toBeLessThan(source.indexOf("Enforce production performance budget"));
+    expect(source.slice(build, save)).toContain("steps.build_site.outcome == 'failure'");
+    expect(source.slice(build, save)).toContain("steps.staged_editorial_originals.outputs.changed == 'true'");
+    expect(source.slice(restore, save)).toContain("github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main'");
+  });
+
+  it("keeps only verified current immutable public originals and repairs an incomplete cache", async () => {
+    const fixture = await mkdtemp(path.join(os.tmpdir(), "public-editorial-cache-test-"));
+    try {
+      const digest = value => createHash("sha256").update(value).digest("hex");
+      const origin = "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media";
+      const first = `${origin}/2026/11/11111111-1111-4111-8111-111111111111.webp`;
+      const second = `${origin}/2026/11/22222222-2222-4222-8222-222222222222.png`;
+      const noLongerPublic = `${origin}/2026/11/33333333-3333-4333-8333-333333333333.avif`;
+      const mutable = `${first}?download=1`;
+      const originals = path.join(fixture, ".tmp/public-images/originals");
+      const checkpoints = path.join(fixture, ".tmp/public-images/checkpoints");
+      const shared = path.join(fixture, ".tmp/editorial-source-cache");
+      const original = url => path.join(originals, `${digest(url)}.bin`);
+      const record = (url, bytes) => ({ sourceUrl: url, status: "ready", pipelineVersion: 1, source: { bytes: bytes.length, sha256: digest(bytes) } });
+      const firstBytes = Buffer.from("immutable prepared WebP bytes");
+      const secondBytes = Buffer.from("immutable prepared PNG bytes");
+      await Promise.all([mkdir(originals, { recursive: true }), mkdir(checkpoints, { recursive: true }), mkdir(path.join(fixture, "reports"))]);
+      await writeFile(path.join(fixture, "reports/public-image-delivery.json"), JSON.stringify({ images: [record(first, firstBytes)] }));
+      for (const url of [first, second, noLongerPublic, mutable]) {
+        const bytes = url === first ? firstBytes : secondBytes;
+        await writeFile(original(url), bytes);
+        await writeFile(path.join(checkpoints, `${digest(url)}.json`), JSON.stringify(record(url, bytes)));
+      }
+      await writeFile(original(second), "corrupt");
+
+      const inventory = [first, second, mutable].map(sourceUrl => ({ sourceUrl }));
+      const args = { root: fixture, inventory };
+      const staged = await cachePublicEditorialOriginals({ ...args, mode: "stage" });
+      expect(staged).toMatchObject({ count: 1, changed: true });
+      expect(JSON.parse(await readFile(path.join(shared, "manifest.json")))).toEqual([
+        { sourceUrl: first, bytes: firstBytes.length, sha256: digest(firstBytes) },
+      ]);
+      const matchedKey = `probpera-public-editorial-originals-v1-1-1-${staged.digest}`;
+      await rm(original(first));
+      expect(await cachePublicEditorialOriginals({ ...args, mode: "restore", matchedKey: "unrelated-key" })).toMatchObject({ count: 0 });
+      const restored = await cachePublicEditorialOriginals({ ...args, mode: "restore", matchedKey });
+      expect(restored).toMatchObject({ count: 1, digest: staged.digest });
+      expect(await readFile(original(first))).toEqual(firstBytes);
+      expect(await cachePublicEditorialOriginals({ ...args, mode: "stage", matchedKey, restoredDigest: restored.digest })).toMatchObject({ count: 1, changed: false });
+
+      await writeFile(original(second), secondBytes);
+      const expanded = await cachePublicEditorialOriginals({ ...args, mode: "stage", matchedKey, restoredDigest: restored.digest });
+      expect(expanded).toMatchObject({ count: 2, changed: true });
+      await writeFile(path.join(shared, `${digest(second)}.bin`), Buffer.alloc(secondBytes.length));
+      await rm(original(second));
+      expect(await cachePublicEditorialOriginals({ ...args, mode: "restore", matchedKey: `probpera-public-editorial-originals-v1-2-1-${expanded.digest}` })).toMatchObject({ count: 1, digest: "" });
+      expect(existsSync(original(second))).toBe(false);
+    } finally {
+      await rm(fixture, { recursive: true, force: true });
+    }
+  });
+
   it("serializes complete Pages releases without cancelling a code or CMS snapshot", () => {
     const source = read(".github/workflows/deploy-pages.yml");
     expect(source).toContain("group: pages-production");

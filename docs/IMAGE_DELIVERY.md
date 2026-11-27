@@ -8,6 +8,8 @@ The browser imports `src/data/imageDelivery.initial.generated.json`: a lossless 
 
 Use `npm run assets:images:prepare` after changing published images. The normal snapshot build runs preparation and verification automatically. Existing committed provenance and renditions are reusable without downloading everything again on a clean checkout. Changed local originals invalidate their derivative; `--refresh` explicitly refreshes remote originals. `npm run assets:images:check` checks coverage, manifest consistency and output checksums. Provenance and any unavailable sources are recorded in `reports/public-image-delivery.json`.
 
+Production Pages caches verified source bytes for immutable public editorial-media objects in the frozen site inventory. Each build checks the checksum and size before reusing a source. It saves newly verified originals after the build attempt and before the performance audit so a retry can reuse the same bytes.
+
 Use `publicImageAttributes` for content images and `publicImageUrl` for backgrounds or canvas textures. The resolver honors the site's base path and supports both original URLs and rendition URLs. Image-error handlers must remove `srcset` before assigning a fallback. Static article pages use the same selection model; external publication feeds keep their original media URLs.
 
 Article illustrations load lazily with reserved geometry. The visible article cover remains eager and receives high fetch priority. These choices follow the browser guidance on [image loading and dimensions](https://web.dev/articles/browser-level-image-lazy-loading) and [fetch priority](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority).

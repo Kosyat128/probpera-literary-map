@@ -176,7 +176,26 @@ jobs:
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run content:audit && npm run links:audit
 
+      - name: Restore cached public editorial originals
+        id: editorial_originals_cache
+        if: steps.release_gate.outputs.should_deploy == 'true' && github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main'
+        continue-on-error: true
+        uses: actions/cache/restore@v5
+        with:
+          path: .tmp/editorial-source-cache
+          key: probpera-public-editorial-originals-v1-restore-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: probpera-public-editorial-originals-v1-
+
+      - name: Verify cached originals before the build
+        id: verified_editorial_originals
+        if: steps.editorial_originals_cache.outputs.cache-matched-key != ''
+        continue-on-error: true
+        run: node scripts/cache-public-editorial-originals.mjs restore
+        env:
+          EDITORIAL_SOURCE_CACHE_MATCHED_KEY: ${{ steps.editorial_originals_cache.outputs.cache-matched-key }}
+
       - name: Build production site
+        id: build_site
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run build:domain
         env:
@@ -187,6 +206,23 @@ jobs:
           YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
           CMS_SNAPSHOT_PREEXPORTED: "true"
           RELEASE_COMMIT_SHA: ${{ github.sha }}
+
+      - name: Stage verified public originals for later releases
+        id: staged_editorial_originals
+        if: ${{ !cancelled() && (steps.build_site.outcome == 'success' || steps.build_site.outcome == 'failure') && github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main' }}
+        continue-on-error: true
+        run: node scripts/cache-public-editorial-originals.mjs stage
+        env:
+          EDITORIAL_SOURCE_CACHE_MATCHED_KEY: ${{ steps.editorial_originals_cache.outputs.cache-matched-key }}
+          EDITORIAL_SOURCE_CACHE_RESTORED_DIGEST: ${{ steps.verified_editorial_originals.outputs.digest }}
+
+      - name: Save changed public editorial originals
+        if: ${{ !cancelled() && steps.staged_editorial_originals.outputs.changed == 'true' }}
+        continue-on-error: true
+        uses: actions/cache/save@v5
+        with:
+          path: .tmp/editorial-source-cache
+          key: probpera-public-editorial-originals-v1-${{ github.run_id }}-${{ github.run_attempt }}-${{ steps.staged_editorial_originals.outputs.digest }}
 
       - name: Enforce production performance budget
         if: steps.release_gate.outputs.should_deploy == 'true'
