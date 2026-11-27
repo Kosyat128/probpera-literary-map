@@ -9,6 +9,7 @@ vi.mock("./save-article-action", () => ({
 }));
 
 import { saveArticleAction } from "./save-article-publication-action";
+import { articleSaveUnconfirmed } from "./article-save-result";
 
 describe("article publication action adapter", () => {
   beforeEach(() => saveCanonicalArticleAction.mockReset());
@@ -40,5 +41,13 @@ describe("article publication action adapter", () => {
 
     await expect(saveArticleAction(formData)).rejects.toBe(failure);
     expect(formData.get("intent")).toBe("save");
+  });
+
+  it.each(["save", "publish", "publish-ru"])("returns an unconfirmed %s without a success or retry redirect", async (intent) => {
+    saveCanonicalArticleAction.mockResolvedValueOnce(articleSaveUnconfirmed);
+    const formData = new FormData();
+    formData.set("intent", intent);
+    await expect(saveArticleAction(formData)).resolves.toEqual({ outcome: "unconfirmed" });
+    expect(saveCanonicalArticleAction).toHaveBeenCalledOnce();
   });
 });

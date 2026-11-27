@@ -1,12 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import performanceBudget from "../performance-budget.json" with { type: "json" };
 import { publishedImageSourceLimit } from "./lib/published-image-performance.mjs";
-import { createRemoteImageOriginalReader, extractPublicImageReferences, extractSmallInlineImageReferences, extendSmallInlineRenditions, missingSmallInlineRenditions, preparePublicImageRecord, smallInlineRenditionWidths } from "./prepare-public-images.mjs";
+import { createProductionEditorialStorageUsage, createRemoteImageOriginalReader, extractPublicImageReferences, extractSmallInlineImageReferences, extendSmallInlineRenditions, missingSmallInlineRenditions, preparePublicImageRecord, smallInlineRenditionWidths } from "./prepare-public-images.mjs";
 
 describe("public image delivery inventory", () => {
   it("enforces the configured source ceiling before preparing or checking images", async () => {
@@ -126,7 +128,8 @@ describe("public image original downloads", () => {
       .mockResolvedValueOnce(new Response(null, { status: 503 }))
       .mockResolvedValueOnce(new Response(png));
     const wait = vi.fn();
-    const readOriginal = createRemoteImageOriginalReader({ originalsDirectory, fetchImpl, wait });
+    const storageUsage = createProductionEditorialStorageUsage();
+    const readOriginal = createRemoteImageOriginalReader({ originalsDirectory, fetchImpl, wait, storageUsage });
     try {
       await writeFile(path.join(originalsDirectory, `${createHash("sha256").update(cached).digest("hex")}.bin`), png);
       await expect(readOriginal(otherProject)).rejects.toThrow("HTTP 402");
@@ -151,9 +154,72 @@ describe("public image original downloads", () => {
       const storedName = `${createHash("sha256").update(otherHost).digest("hex")}.bin`;
       expect(await readFile(path.join(originalsDirectory, storedName))).toEqual(png);
       expect(await readdir(originalsDirectory)).toHaveLength(2);
+      expect(storageUsage).toEqual({
+        ...createProductionEditorialStorageUsage(),
+        fetchAttempts: 2,
+        httpErrorResponses: 2,
+        directQuotaResponses: 1,
+        redirectedResponses: 1,
+        skippedAfterQuota: 1,
+        reusedLocalOriginals: 1,
+        reusedLocalOriginalBytes: png.length,
+      });
     } finally {
       await rm(originalsDirectory, { recursive: true, force: true });
     }
+  });
+
+  it("measures completed direct application payloads separately from saved originals", async () => {
+    const originalsDirectory = await mkdtemp(path.join(os.tmpdir(), "public-image-usage-"));
+    const storage = "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media";
+    const png = await sharp({ create: { width: 2, height: 2, channels: 3, background: "white" } }).png().toBuffer();
+    const invalid = Buffer.from("This is not an image.");
+    const fetchImpl = vi.fn()
+      .mockRejectedValueOnce(new Error("Transport failure"))
+      .mockResolvedValueOnce(new Response(png))
+      .mockResolvedValueOnce(new Response(invalid))
+      .mockResolvedValueOnce(Object.defineProperty(new Response(png), "redirected", { value: true }));
+    const wait = vi.fn();
+    const storageUsage = createProductionEditorialStorageUsage();
+    const readOriginal = createRemoteImageOriginalReader({ originalsDirectory, fetchImpl, wait, storageUsage });
+    try {
+      await expect(readOriginal(`${storage}/valid.png`)).resolves.toMatchObject({ attempts: 2, downloaded: true });
+      await expect(readOriginal(`${storage}/valid.png`)).resolves.toMatchObject({ attempts: 0, downloaded: false });
+      await expect(readOriginal(`${storage}/invalid.png`)).rejects.toThrow();
+      await expect(readOriginal(`${storage}/redirect.png`)).resolves.toMatchObject({ downloaded: true });
+      expect(wait.mock.calls).toEqual([[250]]);
+      expect(storageUsage).toEqual({
+        ...createProductionEditorialStorageUsage(),
+        fetchAttempts: 4,
+        redirectedResponses: 1,
+        completedDirectPayloads: 2,
+        completedDirectPayloadBytes: png.length + invalid.length,
+        savedDirectOriginals: 1,
+        savedDirectOriginalBytes: png.length,
+        reusedLocalOriginals: 1,
+        reusedLocalOriginalBytes: png.length,
+      });
+    } finally {
+      await rm(originalsDirectory, { recursive: true, force: true });
+    }
+  });
+
+  it("emits an accounting record before a failed preparation exits", () => {
+    const failInventory = `
+      import fs from "node:fs/promises";
+      import { syncBuiltinESMExports } from "node:module";
+      fs.readdir = async () => { throw new Error("Fixture inventory failure"); };
+      syncBuiltinESMExports();
+    `;
+    const script = fileURLToPath(new URL("./prepare-public-images.mjs", import.meta.url));
+    const failed = spawnSync(process.execPath, [`--import=data:text/javascript,${encodeURIComponent(failInventory)}`, script], { encoding: "utf8" });
+    expect(failed.error).toBeUndefined();
+    expect(failed.status).toBe(1);
+    expect(failed.stderr).toContain("Fixture inventory failure");
+    expect(JSON.parse(failed.stdout)).toMatchObject({
+      status: "production-editorial-storage-usage", commandSucceeded: false,
+      byteScope: "completed application payloads, not provider billing", fetchAttempts: 0,
+    });
   });
 
   it("checks the actual remote image format before storing new or reading restored originals", async () => {

@@ -104,6 +104,57 @@ describe("release workflow hardening", () => {
     expect(existsSync(path.join(root, "scripts/check-deployed-release-head.test.mjs"))).toBe(true);
   });
 
+  it("releases the public news API independently from Pages with the exact main and live feed guards", () => {
+    const pages = read(".github/workflows/deploy-pages.yml");
+    const news = parse(read(".github/workflows/deploy-public-literary-news-api.yml"));
+    expect(pages).not.toContain("wrangler.literary-news.jsonc");
+    expect(pages).not.toContain("CLOUDFLARE_API_TOKEN");
+    expect(pages).toContain("uses: actions/upload-pages-artifact@v5");
+    expect(pages).toContain("RSS Дзена проверен: в ленте есть запись о материале и её обложка.");
+    expect(news.on).toEqual({ push: { branches: ["main"] }, workflow_dispatch: null });
+    expect(news.permissions).toEqual({ contents: "read" });
+    expect(news.concurrency).toEqual({ group: "public-literary-news-api-production", "cancel-in-progress": false });
+    expect(news.env).toBeUndefined();
+    const { deploy } = news.jobs;
+    expect(deploy.if).toBe("github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main'");
+    expect(deploy.needs).toBeUndefined();
+    expect(deploy.permissions).toBeUndefined();
+    expect(deploy.env).toBeUndefined();
+    const release = deploy.steps.at(-1);
+    expect(release["continue-on-error"]).toBeUndefined();
+    expect(release.env).toEqual({
+      CLOUDFLARE_ACCOUNT_ID: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}",
+      CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}",
+      NEWS_RELEASE_SHA: "${{ github.sha }}",
+    });
+    expect(deploy.steps.slice(0, -1).every((step) => !step.env)).toBe(true);
+    expect(release.run.trim().split("\n")).toEqual([
+      'test "$GITHUB_REF" = "refs/heads/main"',
+      'news_main_head="$(git ls-remote --exit-code origin refs/heads/main | cut -f1)"',
+      'test "$NEWS_RELEASE_SHA" = "$news_main_head"',
+      'node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news.jsonc --var "NEWS_RELEASE_SHA:$NEWS_RELEASE_SHA"',
+      'node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"',
+    ]);
+  });
+
+  it("requires the same live Pages and exact news feed head before upgrading or activating native writes", () => {
+    const upgrade = parse(read(".github/workflows/upgrade-literary-news-workers.yml")).jobs.upgrade;
+    const mutation = upgrade.steps.find((step) => step.name === "Upgrade only already enabled workers and preserve credentials and state");
+    expect(mutation.run).toContain("EXPECTED_MAIN_SHA:process.env.EXPECTED_MAIN_SHA,PUBLIC_SITE_URL:'https://probpera.ru'");
+    const pages = mutation.run.indexOf("if(head.codePending)throw Error('public_site_release_unconfirmed');");
+    const feed = mutation.run.indexOf('node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"');
+    const writes = mutation.run.indexOf("wrangler.js deploy --keep-vars");
+    expect(pages).toBeGreaterThanOrEqual(0);
+    expect(feed).toBeGreaterThan(pages);
+    expect(writes).toBeGreaterThan(feed);
+
+    const activation = Object.values(parse(read(".github/workflows/deploy-literary-news-automation.yml")).jobs).flatMap((job) => job.steps);
+    const verify = activation.find((step) => step.name === "Verify the deployed public feed before activating writes");
+    expect(verify.run).toContain("if(head.codePending)throw Error('public_site_release_unconfirmed');");
+    expect(verify.run).toContain('node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"');
+    expect(activation.indexOf(verify)).toBeLessThan(activation.findIndex((step) => step.name === "Activate the verified native schedules"));
+  });
+
   it("re-exports a stable CMS head and refuses a stale artifact before deployment", () => {
     const source = read(".github/workflows/deploy-pages.yml");
     expect(source.match(/run: npm run content:export:cms/gu)).toHaveLength(2);

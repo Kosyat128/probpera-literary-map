@@ -5,7 +5,8 @@ import worker,{checkedPreparationSourceUrl,createPreparationSourceFetch,createPr
 import {NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
 import {NEWS_PREPARATION_SLOT_KEY} from '../lib/literary-news-preparation-slots.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
-import {emptyDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
+import {emptyDailyLedger,checkedDailyCandidate,runDailyNewsAutomation} from '../lib/literary-news-daily-automation.mjs';
+import {referencedDraftFixture} from '../lib/literary-news-evidence.test-fixture.mjs';
 import {DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_OWNER_KEY,
   DAILY_NEWS_WINDOW,DAILY_NEWS_POLICY,DAILY_NEWS_MODELS,makeDailyApprovedPayload,dailyNewsDigest,dailyRecordHashPayload} from '../lib/literary-news-daily-profile.mjs';
 
@@ -212,14 +213,51 @@ describe('Private native daily preparation and bounded public source adapter',()
     expect((await f.run({now:()=>new Date('2026-10-02T00:07:00Z'),execute})).status).toBe('supply_degraded');
     expect(f.env.AI.run).toHaveBeenCalledTimes(2);expect(JSON.parse(f.values.get(DAILY_NEWS_LEDGER_KEY)).providerStop).toBeNull();
   });
-  it('records the actual stop day when an inference run crosses UTC midnight',async()=>{
-    const f=fixture(),probe=quotaProbeExecution(),started=new Date('2026-09-30T23:59:58Z'),stopped=new Date('2026-10-01T00:00:02Z');
-    f.env.AI.run.mockResolvedValue({errors:[{code:4006}]});let ticks=0;
-    const execute=async args=>{const result=await probe(args);result.report.checkedAt=started.toISOString();return result;};
-    const report=await f.run({now:()=>ticks++===0?started:stopped,execute});
-    expect(report.checkedAt).toBe(stopped.toISOString());expect(report.stoppedReason).toBe('ai_quota_exceeded');
-    expect((await f.run({now:()=>new Date('2026-10-01T01:00:00Z'),execute})).status).toBe('provider_quota_cooldown');
-    expect(f.env.AI.run).toHaveBeenCalledTimes(1);
+  it('opens the next UTC slot when quota was observed before midnight and publication finished after it',async()=>{
+    const f=fixture(),observedAt='2026-09-30T23:59:50.000Z',retryAfterAt='2026-10-01T00:00:00.000Z';
+    let at=new Date(observedAt);
+    const now=()=>at,execute=args=>runDailyNewsAutomation({...args,sources,intake:{details:[detail(0)]}});
+    const put=f.env.NEWS_STATE.put.getMockImplementation();
+    f.env.NEWS_STATE.put.mockImplementation(async(key,value)=>{
+      await put(key,value);
+      if(key===DAILY_NEWS_PROFILE_KEY&&at.toISOString()===observedAt)at=new Date('2026-10-01T00:00:02Z');
+    });
+    f.env.AI.run.mockResolvedValueOnce({status:429,errors:[{code:3036}]}).mockResolvedValue({response:{status:'held'}});
+
+    const report=await f.run({now,execute});
+    expect(now().toISOString()).toBe('2026-10-01T00:00:02.000Z');
+    expect(report).toMatchObject({stoppedReason:'ai_quota_exceeded',checkedAt:observedAt,providerObservedAt:observedAt,retryAfterAt});
+    expect(JSON.parse(f.values.get(DAILY_NEWS_LEDGER_KEY)).providerStop).toMatchObject({observedAt,retryAfterAt});
+    at=new Date('2026-10-01T00:17:00Z');
+    expect((await f.run({now,execute})).status).toBe('supply_degraded');
+    expect(f.env.AI.run).toHaveBeenCalledTimes(2);
+  });
+  it('honors a refusal observed after midnight even while the fenced public checkpoint recovers',async()=>{
+    const f=fixture(),observedAt='2026-10-01T00:00:01.000Z',retryAfterAt='2026-10-02T00:00:00.000Z';
+    let at=new Date('2026-09-30T23:59:50Z'),failProfile=true;
+    const now=()=>at,execute=args=>runDailyNewsAutomation({...args,sources,intake:{details:[detail(0)]}});
+    const put=f.env.NEWS_STATE.put.getMockImplementation();
+    f.env.NEWS_STATE.put.mockImplementation(async(key,value)=>{
+      if(key===DAILY_NEWS_PROFILE_KEY&&failProfile){failProfile=false;throw Error('profile_write_unavailable');}
+      return put(key,value);
+    });
+    f.env.AI.run.mockImplementationOnce(async()=>{at=new Date(observedAt);return{status:429,errors:[{code:3036}]};});
+
+    await expect(f.run({now,execute})).rejects.toThrow('profile_write_unavailable');
+    expect(f.values.has(PREPARATION_REPORT_KEY)).toBe(false);
+    expect(JSON.parse(f.values.get(DAILY_NEWS_LEDGER_KEY)).providerStop).toMatchObject({observedAt,retryAfterAt});
+    at=new Date('2026-10-01T00:17:00Z');
+    expect(await f.run({now,execute})).toMatchObject({stoppedReason:'provider_cooldown',providerObservedAt:observedAt,retryAfterAt});
+    expect(f.values.has(DAILY_NEWS_PROFILE_KEY)).toBe(true);
+    expect(f.env.AI.run).toHaveBeenCalledOnce();
+  });
+  it('fails closed when a timed quota report contradicts its daily retry bound',async()=>{
+    const f=fixture(),observedAt='2026-09-30T08:00:00Z';
+    f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt:observedAt,stoppedReason:'ai_quota_exceeded',
+      providerObservedAt:observedAt,retryAfterAt:'2026-09-30T09:00:00.000Z'}));
+    await expect(f.run()).rejects.toThrow('daily_provider_quota_checkpoint_uncertain');
+    expect(f.env.AI.run).not.toHaveBeenCalled();
+    expect(await f.storage.get(NEWS_PREPARATION_FENCE_KEY)).toBeUndefined();
   });
   it.each([undefined,null,'2026-09-30','invalid','2026-10-01T00:00:00Z'])('invalid or future quota timestamp %s fails closed without touching the fence',async checkedAt=>{
     const f=fixture(),execute=quotaProbeExecution();f.values.set(PREPARATION_REPORT_KEY,JSON.stringify({checkedAt,stoppedReason:'ai_quota_exceeded'}));
@@ -293,6 +331,48 @@ describe('Private native daily preparation and bounded public source adapter',()
     expect(stable.intake.details).toEqual(all.slice(1,6));
     const annual=await boundedNativeNewsCandidates({details:all},{...emptyDailyLedger(current),accepted:new Array(3000)},current,sources);
     expect(annual.maximum).toBe(2);expect(annual.intake.details).toHaveLength(2);
+  });
+  it('uses one exact retained draft for regular review when only the draft budget is closed',async()=>{
+    const fresh=Array.from({length:5},(_,n)=>detail(n)),retained=[detail(6),detail(7)];
+    const draftAi={request:vi.fn(async({phase,messages})=>{
+      expect(phase).toBe('draft');
+      const number=JSON.parse(messages[1].content).SOURCE_DATA.url.at(-1);
+      return referencedDraftFixture({status:'draft',reason:'',category:'releases',eventIdentity:`literary fixture novel ${number} release`,
+        title:{ru:'Издательство выпустило роман',en:'Publisher released a new novel'},
+        summary:{ru:'Издательство выпустило новый литературный роман.',en:'The publisher released a new literary novel for readers.'},
+        literaryEvidence:'new literary novel',facts:[{quote:'The publisher released a new literary novel for readers.'}]},messages);
+    })};
+    let ledger=emptyDailyLedger(current);
+    for(const article of retained){
+      const result=await runDailyNewsAutomation({intake:{details:[article]},previous:ledger,current,sources,ai:draftAi,maxAiCalls:1});
+      expect(result.report.stoppedReason).toBe('ai_request_budget_exhausted');
+      ledger=result.state;
+    }
+    expect(ledger.reviewCache.map(row=>row.status)).toEqual(['draft','draft']);
+    const retryAt=new Date('2026-10-01T04:47:55Z'),budget={day:'2026-10-01',reservedCalls:20,draftRequests:20};
+    const previous={...ledger,inferenceBudgets:[...ledger.inferenceBudgets,budget]};
+    const ordered={details:[...fresh,...retained]},bounded=await boundedNativeNewsCandidates(ordered,previous,retryAt,sources);
+    expect(bounded.maximum).toBe(5);
+    expect(bounded.intake.details).toEqual([retained[0],...fresh.slice(0,4)]);
+    const reviewAi={request:vi.fn(async({phase,messages})=>{
+      expect(phase).toBe('review');
+      expect(JSON.parse(messages[1].content).SOURCE_DATA).toMatchObject({url:retained[0].source.url,text:retained[0].evidence.text});
+      return {accepted:true,literaryTopic:true,categoryMatches:true,translationsMatch:true,titleSupported:true,summarySupported:true,
+        publicationDateMatches:true,duplicateOf:null,unsupportedClaims:[],factChecks:[{factIndex:0,supported:true}]};
+    })};
+    const result=await runDailyNewsAutomation({intake:bounded.intake,previous,current:retryAt,sources,ai:reviewAi});
+    expect(reviewAi.request).toHaveBeenCalledOnce();
+    expect(result.report).toMatchObject({newlyAccepted:1,reservedAiCallsToday:21,draftRequestsToday:20,
+      stoppedReason:'ai_daily_candidate_budget_deferred'});
+    expect(result.profile.records[0].provenance).toMatchObject({reviewPassed:true,sourceEvidence:{publication:{
+      value:retained[0].evidence.publishedDates[0].value}}});
+
+    for(const counters of [{reservedCalls:19,draftRequests:19},{reservedCalls:40,draftRequests:20}]){
+      const state={...previous,inferenceBudgets:[{...budget,...counters}]};
+      expect((await boundedNativeNewsCandidates(ordered,state,retryAt,sources)).intake.details).toEqual(fresh);
+    }
+    const edited=structuredClone(retained[0]);edited.evidence.text+=' The publisher added a new detail.';
+    expect((await boundedNativeNewsCandidates({details:[...fresh,edited]},previous,retryAt,sources)).intake.details).toEqual(fresh);
   });
   it('reuses prior immutable records only after validating the incoming content, not just its copied old hash field',async()=>{
     const url='https://source.example/news/verified-proof',hash='a'.repeat(64),record={

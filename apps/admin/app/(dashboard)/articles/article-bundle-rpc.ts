@@ -1,4 +1,5 @@
 import type { createServerSupabaseClient } from "@/lib/supabase/server";
+import { requestArticleMutation, UnconfirmedArticleSaveError } from "./article-save-result";
 
 type ServerSupabaseClient = NonNullable<
   Awaited<ReturnType<typeof createServerSupabaseClient>>
@@ -31,7 +32,8 @@ export type ArticleBundleRpcResult = {
 
 type ArticleRpcError = { code?: string; message?: string };
 
-function rpcErrorMessage(error: ArticleRpcError | null | undefined) {
+function rpcErrorMessage(error: ArticleRpcError, status: number) {
+  if (status === 402) return "Редакционная база временно ограничила запросы. Повторите сохранение позже.";
   const message = String(error?.message || "").trim();
   if (message.includes("WORKING_DRAFT_CONFLICT")) {
     return "Рабочий черновик уже изменён в другой вкладке. Обновите страницу и повторите выпуск.";
@@ -76,6 +78,7 @@ function rpcErrorMessage(error: ArticleRpcError | null | undefined) {
   if (error?.code === "23503") {
     return "Связанная запись больше недоступна. Проверьте выбранную рубрику перед сохранением.";
   }
+  if (status === 401 || status === 403) return "Недостаточно прав для сохранения статьи. Проверьте доступ и повторите попытку.";
   return "Не удалось сохранить статью. Изменения не опубликованы; повторите сохранение позже.";
 }
 
@@ -100,6 +103,8 @@ function articleBundleRpcArgs(input: ArticleBundleRpcInput) {
 function parseArticleBundleRpcResult(
   data: unknown,
   error: ArticleRpcError | null | undefined,
+  status: number,
+  expectedArticleId: string | null,
   operation: "save_article_bundle" | "promote_article_working_draft"
 ): ArticleBundleRpcResult {
   if (error) {
@@ -110,19 +115,21 @@ function parseArticleBundleRpcResult(
         ? error.code
         : "unknown",
     });
-    throw new Error(rpcErrorMessage(error));
+    throw new Error(rpcErrorMessage(error, status));
   }
 
-  const row = Array.isArray(data) ? data[0] : data;
+  const row = Array.isArray(data) ? (data.length === 1 ? data[0] : null) : data;
   if (!row || typeof row !== "object" || !("article_id" in row)) {
-    throw new Error("Атомарное сохранение не вернуло идентификатор статьи.");
+    throw new UnconfirmedArticleSaveError();
   }
 
   const result = row as Record<string, unknown>;
-  const articleId = String(result.article_id || "");
-  const articleUpdatedAt = String(result.article_updated_at || "");
-  if (!articleId || !articleUpdatedAt) {
-    throw new Error("Атомарное сохранение вернуло неполный результат.");
+  const articleId = result.article_id;
+  const articleUpdatedAt = result.article_updated_at;
+  if (typeof articleId !== "string" || !/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/iu.test(articleId) ||
+      (expectedArticleId && articleId.toLowerCase() !== expectedArticleId.toLowerCase()) ||
+      typeof articleUpdatedAt !== "string" || !Number.isFinite(Date.parse(articleUpdatedAt))) {
+    throw new UnconfirmedArticleSaveError();
   }
 
   return {
@@ -139,11 +146,9 @@ export async function saveArticleBundleRpc(
   supabase: ServerSupabaseClient,
   input: ArticleBundleRpcInput
 ): Promise<ArticleBundleRpcResult> {
-  const { data, error } = await supabase.rpc(
-    "save_article_bundle",
-    articleBundleRpcArgs(input)
-  );
-  return parseArticleBundleRpcResult(data, error, "save_article_bundle");
+  const args = articleBundleRpcArgs(input);
+  const { data, error, status } = await requestArticleMutation(() => supabase.rpc("save_article_bundle", args));
+  return parseArticleBundleRpcResult(data, error, status, input.articleId, "save_article_bundle");
 }
 
 export async function promoteArticleWorkingDraftRpc(
@@ -160,12 +165,10 @@ export async function promoteArticleWorkingDraftRpc(
       "Не удалось безопасно подтвердить выпуск статьи. Обновите страницу и повторите действие."
     );
   }
-  const { data, error } = await supabase.rpc(
-    "promote_article_working_draft",
-    {
-      ...articleBundleRpcArgs(input),
-      p_expected_working_draft_version: input.expectedWorkingDraftVersion,
-    }
-  );
-  return parseArticleBundleRpcResult(data, error, "promote_article_working_draft");
+  const args = {
+    ...articleBundleRpcArgs(input),
+    p_expected_working_draft_version: input.expectedWorkingDraftVersion,
+  };
+  const { data, error, status } = await requestArticleMutation(() => supabase.rpc("promote_article_working_draft", args));
+  return parseArticleBundleRpcResult(data, error, status, input.articleId, "promote_article_working_draft");
 }

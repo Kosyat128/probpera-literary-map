@@ -158,7 +158,8 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     const first = await runDailyNewsAutomation(options([detail(0, at), detail(1, at), detail(2, at)], ai, { current: at }));
     expect(first.report).toMatchObject({ stoppedReason: "ai_http_429", providerCode: 3040, newlyAccepted: 1,
       reservedAiCallsToday: 4, retryAfterAt: "2026-09-29T12:30:00.000Z" });
-    expect(first.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429, retryAfterAt: "2026-09-29T12:30:00.000Z" });
+    expect(first.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429,
+      observedAt: at.toISOString(), retryAfterAt: "2026-09-29T12:30:00.000Z" });
     expect(ai.requests.map(row => [row.n, row.phase])).toEqual([[0, "draft"], [0, "review"], [1, "draft"], [1, "review"]]);
 
     const coolingAt = new Date("2026-09-29T12:29:59Z"), cooling = aiFixture();
@@ -178,7 +179,8 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     const ai = aiFixture({ intercept: () => { throw Object.assign(new Error("ai_http_429"), { httpStatus: 429 }); } });
     const result = await runDailyNewsAutomation(options([detail(0), detail(1)], ai));
     expect(ai.request).toHaveBeenCalledOnce();
-    expect(result.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429, retryAfterAt: "2026-09-30T00:00:00.000Z" });
+    expect(result.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429,
+      observedAt: current.toISOString(), retryAfterAt: "2026-09-30T00:00:00.000Z" });
     expect(result.report).not.toHaveProperty("providerCode");
   });
   it("keeps accepted historical facts after the strict year window closes and makes no new requests", async () => {

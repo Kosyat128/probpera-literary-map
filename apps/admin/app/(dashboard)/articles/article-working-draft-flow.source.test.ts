@@ -69,6 +69,16 @@ describe("published article working-draft flow", () => {
     );
   });
 
+  it("returns unconfirmed mutations before either save branch can redirect or dispatch a release", () => {
+    expect(action.match(/if \(error instanceof UnconfirmedArticleSaveError\) return articleSaveUnconfirmed;/gu)).toHaveLength(2);
+    const working = action.slice(action.indexOf("if (saveToPublishedWorkingDraft) {"), action.indexOf("const redirectSourcePath"));
+    const bundle = action.slice(action.indexOf("let saved:"), action.indexOf("let publicationState:"));
+    for (const branch of [working, bundle]) {
+      expect(branch.indexOf("return articleSaveUnconfirmed")).toBeGreaterThanOrEqual(0);
+      expect(branch.indexOf("return articleSaveUnconfirmed")).toBeLessThan(branch.indexOf("redirect(saveErrorPath"));
+    }
+  });
+
   it("saves before an allowlisted internal preview redirect", () => {
     expect(action).toContain('["publish", "preview"].includes(submittedIntent)');
     expect(action).toContain(

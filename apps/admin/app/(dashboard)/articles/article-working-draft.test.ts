@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
+import { UnconfirmedArticleSaveError } from "./article-save-result";
 import {
   articleWithWorkingDraft,
   articleWorkingDraftEnglishEnvelope,
@@ -140,6 +141,20 @@ describe("published article working drafts", () => {
         expectedVersion: 0,
       })
     ).rejects.toThrow("Английская версия уже изменена");
+  });
+
+  it.each([0, 504, 200])("keeps an unconfirmed private draft save on HTTP %s out of the retry path", async (status) => {
+    const rpc = vi.fn().mockResolvedValue({ status, data: null,
+      error: status === 200 ? null : { message: "private provider error" } });
+    await expect(saveArticleWorkingDraftRpc({ rpc } as never, {
+      articleId: row.article_id,
+      baseArticleUpdatedAt: row.base_article_updated_at,
+      articlePayload,
+      englishEnvelope: { mode: "disabled" },
+      expectedEnglishUpdatedAt: row.expected_english_updated_at,
+      expectedVersion: 2,
+    })).rejects.toBeInstanceOf(UnconfirmedArticleSaveError);
+    expect(rpc).toHaveBeenCalledOnce();
   });
 
   it("discards only the expected draft version", async () => {

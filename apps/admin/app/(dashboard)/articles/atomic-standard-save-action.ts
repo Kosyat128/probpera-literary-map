@@ -54,6 +54,7 @@ import {
   saveArticleBundleRpc,
   type ArticleBundleRpcInput,
 } from "./article-bundle-rpc";
+import { articleSaveUnconfirmed, UnconfirmedArticleSaveError } from "./article-save-result";
 import {
   articleWorkingDraftEnglishEnvelope,
   saveArticleWorkingDraftRpc,
@@ -979,6 +980,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
         expectedVersion: expectedWorkingDraftVersion,
       });
     } catch (error) {
+      if (error instanceof UnconfirmedArticleSaveError) return articleSaveUnconfirmed;
       const safeMessage =
         error instanceof Error &&
         [
@@ -987,7 +989,6 @@ export async function saveStandardArticleAtomically(formData: FormData) {
           "Отдельный рабочий черновик",
           "Недостаточно прав",
           "Не удалось безопасно сохранить",
-          "Рабочий черновик сохранён",
         ].some((prefix) => error.message.startsWith(prefix))
           ? error.message
           : "Не удалось безопасно сохранить рабочий черновик. Опубликованная версия не изменена.";
@@ -1081,6 +1082,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
         })
       : await saveArticleBundleRpc(supabase, bundleInput);
   } catch (error) {
+    if (error instanceof UnconfirmedArticleSaveError) return articleSaveUnconfirmed;
     const message =
       error instanceof Error
         ? error.message

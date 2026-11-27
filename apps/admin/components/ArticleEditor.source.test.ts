@@ -57,4 +57,12 @@ describe("article editor publication and recovery wiring", () => {
     expect(editorSource).toContain('value="preview"');
     expect(editorSource).toContain("previewLocale: activeLocale");
   });
+
+  it("keeps the recovery and repeated-submission guard on a save with no confirmed redirect", () => {
+    const submit = editorSource.slice(editorSource.indexOf("const submitArticle ="), editorSource.indexOf("const acknowledgeSubmissionCheck ="));
+    expect(submit).toMatch(/if \(isRedirectError\(error\)\) \{\s*clearUnconfirmedArticleSubmission\(submissionCheckKey\)/u);
+    expect(submit.indexOf("submissionUnconfirmedRef.current = true")).toBeGreaterThan(submit.indexOf("} finally {"));
+    expect(editorSource).toContain("if (submissionInFlightRef.current || submissionUnconfirmedRef.current)");
+    expect(editorSource).toContain('window.sessionStorage.setItem(submissionCheckKey, "1")');
+  });
 });

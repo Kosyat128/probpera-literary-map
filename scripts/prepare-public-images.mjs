@@ -201,11 +201,33 @@ async function seedExistingOriginals() {
   }
 }
 
+function isProductionEditorialStorage(url) {
+  return url.origin === productionEditorialStorageOrigin && url.pathname.startsWith(productionEditorialStoragePath);
+}
+
+export function createProductionEditorialStorageUsage() {
+  return {
+    fetchAttempts: 0,
+    httpErrorResponses: 0,
+    directQuotaResponses: 0,
+    redirectedResponses: 0,
+    skippedAfterQuota: 0,
+    completedDirectPayloads: 0,
+    completedDirectPayloadBytes: 0,
+    savedDirectOriginals: 0,
+    savedDirectOriginalBytes: 0,
+    reusedLocalOriginals: 0,
+    reusedLocalOriginalBytes: 0,
+    reusedRenditionRecords: 0,
+  };
+}
+
 export function createRemoteImageOriginalReader({
   originalsDirectory = absolute(`${cacheDirectory}/originals`),
   refresh = false,
   fetchImpl = fetch,
   wait = sleep,
+  storageUsage = createProductionEditorialStorageUsage(),
 } = {}) {
   let productionStorageBlocked = false;
   return async function readRemoteImageOriginal(sourceUrl) {
@@ -214,25 +236,40 @@ export function createRemoteImageOriginalReader({
       const cached = await readFile(filename).catch(() => null);
       if (cached) {
         assertSourceImage(await sharp(cached, { limitInputPixels: false }).metadata(), sourceUrl);
+        if (URL.canParse(sourceUrl) && isProductionEditorialStorage(new URL(sourceUrl))) {
+          storageUsage.reusedLocalOriginals++;
+          storageUsage.reusedLocalOriginalBytes += cached.length;
+        }
         return { bytes: cached, downloaded: false, attempts: 0 };
       }
     }
-    const url = new URL(sourceUrl);
-    const fromProductionStorage = url.origin === productionEditorialStorageOrigin &&
-      url.pathname.startsWith(productionEditorialStoragePath);
+    const fromProductionStorage = isProductionEditorialStorage(new URL(sourceUrl));
     let failure;
     for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
       if (fromProductionStorage && productionStorageBlocked) {
+        storageUsage.skippedAfterQuota++;
         throw new Error("HTTP 402 (production editorial Storage downloads skipped after project restriction)");
       }
       let bytes;
+      let directStorageResponse = false;
       try {
+        if (fromProductionStorage) storageUsage.fetchAttempts++;
         const response = await fetchImpl(sourceUrl, { signal: AbortSignal.timeout(timeoutMs) });
+        directStorageResponse = fromProductionStorage && !response.redirected;
+        if (fromProductionStorage && response.redirected) storageUsage.redirectedResponses++;
         if (!response.ok) {
-          if (fromProductionStorage && response.status === 402 && !response.redirected) productionStorageBlocked = true;
+          if (fromProductionStorage) storageUsage.httpErrorResponses++;
+          if (directStorageResponse && response.status === 402) {
+            productionStorageBlocked = true;
+            storageUsage.directQuotaResponses++;
+          }
           throw new Error(`HTTP ${response.status}`);
         }
         bytes = Buffer.from(await response.arrayBuffer());
+        if (directStorageResponse) {
+          storageUsage.completedDirectPayloads++;
+          storageUsage.completedDirectPayloadBytes += bytes.length;
+        }
         if (!bytes.length) throw new Error("Empty response");
       } catch (error) {
         failure = error;
@@ -242,13 +279,18 @@ export function createRemoteImageOriginalReader({
       }
       assertSourceImage(await sharp(bytes, { limitInputPixels: false }).metadata(), sourceUrl);
       await writeImageAtomically(filename, bytes, 0o600);
+      if (directStorageResponse) {
+        storageUsage.savedDirectOriginals++;
+        storageUsage.savedDirectOriginalBytes += bytes.length;
+      }
       return { bytes, downloaded: true, attempts: attempt };
     }
     throw failure;
   };
 }
 
-const readRemoteImageOriginal = createRemoteImageOriginalReader({ refresh: argv.includes("--refresh") });
+const productionStorageUsage = createProductionEditorialStorageUsage();
+const readRemoteImageOriginal = createRemoteImageOriginalReader({ refresh: argv.includes("--refresh"), storageUsage: productionStorageUsage });
 
 async function sourceBytes(sourceUrl) {
   if (/^https?:/iu.test(sourceUrl)) return readRemoteImageOriginal(sourceUrl);
@@ -535,6 +577,9 @@ async function main() {
     while (next < selected.length) {
       const source = selected[next++];
       const record = await preparePublicImageRecord(source);
+      if (record.cached && URL.canParse(source.sourceUrl) && isProductionEditorialStorage(new URL(source.sourceUrl))) {
+        productionStorageUsage.reusedRenditionRecords++;
+      }
       records.push(record);
       if (records.length % 20 === 0) {
         if (!argv.includes("--quiet")) console.log(JSON.stringify(reportSummary(records, inventory.length, started)));
@@ -553,4 +598,19 @@ async function main() {
   console.log(JSON.stringify(report.summary));
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  let commandSucceeded = false;
+  try {
+    await main();
+    commandSucceeded = true;
+  } finally {
+    if (!argv.includes("--check") && !argv.includes("--publish-runtime")) {
+      console.log(JSON.stringify({
+        status: "production-editorial-storage-usage",
+        commandSucceeded,
+        byteScope: "completed application payloads, not provider billing",
+        ...productionStorageUsage,
+      }));
+    }
+  }
+}

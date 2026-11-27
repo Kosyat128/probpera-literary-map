@@ -37,7 +37,7 @@ export async function runNodeDailyAutomation({ env = process.env, commit = false
   const cooling = state.providerStop && Date.parse(state.providerStop.retryAfterAt) > clock().getTime();
   const intake = cooling ? { details: [] } : await prepareIntake({ current: clock(), sourceLimit: 32, detailLimit: 30, reviewed });
   const result = await runDailyNewsAutomation({ intake, previous: state, ai, reviewed, withdrawals,
-    current: clock(), saveCheckpoint: value => persist("automation-checkpoint.json", value) });
+    current: clock(), now: clock, saveCheckpoint: value => persist("automation-checkpoint.json", value) });
   await persist("approved-profile.json", result.profile); await persist("automation-report.json", result.report);
   if (commit) {
     // Never create/change owner control. Its drain and expiry are rechecked around both writes.

@@ -44,6 +44,7 @@ describe("automatic publication channel policy", () => {
 
   it("verifies that the selected Dzen cover reached the feed", () => {
     expect(publisher).toContain("dzenCoverForArticle(article)");
+    expect(publisher).toContain("await verifyDzenRssEntry(articleUrl(article), dzenCover)");
     expect(publisher).toContain("coverSource: dzenCover?.source");
     expect(publisher).toContain("typeof articleDocument.contentHtml");
     expect(publisher).toContain("latest.dzenImageAlt || latest.imageAlt");
@@ -55,6 +56,7 @@ describe("automatic publication channel policy", () => {
     expect(publisher).toContain("configuredRssUrl !== rssUrl");
     expect(publisher).toContain('redirect: "error"');
     expect(publisher).toContain("response.url !== rssUrl");
+    expect(publisher).not.toContain("localRssPath");
     expect(publisher).not.toContain("fetch(trustedHttpsUrl(rssUrl");
   });
 });
