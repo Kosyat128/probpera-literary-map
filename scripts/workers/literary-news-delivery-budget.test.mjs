@@ -30,7 +30,7 @@ const item=id=>({id,eventKey:id,verification:'confirmed',kind:'news',category:'r
   source:{name:'Isolated publisher fixture',url:`https://publisher.example/books/${id}`,language:'en'}});
 
 async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0,claimConflicts=0,captureConflicts=0,quotaAt=null,providerFailure=false,
-  priorPacing=false,extraFeedReads=0,cachedPhoto=false,feedBusyResponses=0,
+  priorPacing=false,extraFeedReads=0,cachedPhoto=false,feedBusyResponses=0,captureFeedTimeout=false,
   control={mode:'on',paused:false,historyReconciled:true}}={}){
   const records=Array.from({length:30},(_,i)=>item(`news-${String(i).padStart(2,'0')}`));
   const correctionRecords=Array.from({length:corrections},(_,i)=>item(`correction-${String(i).padStart(2,'0')}`));
@@ -80,6 +80,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
     expect(options.redirect).toBe('manual');requests.push({invocation,path:url.pathname,origin:url.origin,key:url.searchParams.get('entity_id')?.slice(3)});
     expect(requests.filter(row=>row.invocation===invocation).length).toBeLessThanOrEqual(50);
     if(url.href===NATIVE_NEWS_ADMISSION_FEED_URL){
+      if(captureFeedTimeout&&invocation.startsWith('capture'))throw new DOMException('fixture deadline','TimeoutError');
       const response=++publicAttempts<=feedBusyResponses
         ?Response.json({error:'public_projection_busy'},{status:503,headers:{'retry-after':'1'}})
         :Response.json(feed,{headers:{'x-probpera-news-release':release}});
@@ -224,6 +225,28 @@ describe('native capture and dispatch under the real SDK external-request budget
     for(const phase of ['capture','dispatch'])expect(f.requests.filter(row=>row.invocation===phase).length).toBeLessThanOrEqual(50);
     expect(f.requests).toHaveLength(reports[0].externalRequests+reports[1].externalRequests);
     expect(f.writes).toEqual(['sendPhoto']);expect(noRetry).not.toHaveBeenCalled();
+  });
+  it.each([null,'heartbeat'])('verifies and sends a prior admission once after a capture timeout, unless quota blocks the heartbeat (%s)',async quotaAt=>{
+    const f=await sdkFixture({creates:1,photo:false,captureFeedTimeout:true,quotaAt}),phases=[],reports=[],noRetry=vi.fn();
+    const delivery={idFromName:name=>name,get:()=>({fetch:async url=>{
+      const phase=new URL(url).pathname.slice(1);phases.push(phase);
+      const report=await f.run(phase);reports.push(report);
+      return Response.json(report,{status:report.status==='blocked'?503:200});
+    }})};
+    const schedule=()=>scheduleNativeNewsDelivery({noRetry},{NEWS_DELIVERY_ENABLED:'true',DELIVERY_COORDINATOR:delivery},
+      {now:()=>current,log:vi.fn()});
+    const first=await schedule();
+    expect(reports[0]).toMatchObject({phase:'public_feed',status:'blocked',providerWriteAttempts:0,
+      code:quotaAt?'runtime_quota_exceeded':'delivery_public_feed_transient',heartbeatRecorded:!quotaAt});
+    if(quotaAt){
+      expect(first).toEqual(reports[0]);expect(phases).toEqual(['capture']);expect(f.writes).toEqual([]);
+    }else{
+      expect(first.deliveredThisRun).toBe(1);
+      expect((await schedule()).deliveredThisRun).toBe(0);
+      expect(phases).toEqual(['capture','dispatch','capture','dispatch']);
+      expect(f.writes).toEqual(['sendMessage']);
+      expect(f.rows.get(newsPostKey('news-00',destination)).state).toMatchObject({status:'sent_current',remoteId:'901'});
+    }
   });
   it.each(['capture','dispatch'])('persists the paused %s heartbeat with three real SDK requests and zero provider requests',async phase=>{
     const control={mode:'on',paused:true,pauseReason:'release_operator_pause',historyReconciled:true};

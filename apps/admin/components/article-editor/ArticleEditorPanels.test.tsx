@@ -118,10 +118,10 @@ describe("article editor panels", () => {
   });
 
   it("keeps scheduling explicit and publication capability-bound", () => {
-    const scheduled = renderToStaticMarkup(
+    const renderPublication = (status: string, canPublish: boolean) => renderToStaticMarkup(
       <PublishPanel
         locale="ru"
-        status="scheduled"
+        status={status}
         onStatusChange={noop}
         scheduledAt=""
         onScheduledAtChange={noop}
@@ -137,33 +137,13 @@ describe("article editor panels", () => {
         onEnglishStatusChange={noop}
         englishConfirmedCurrentSource={false}
         onEnglishConfirmedCurrentSourceChange={noop}
-        canPublish
-        canOverridePublicationChecklist
+        canPublish={canPublish}
+        canOverridePublicationChecklist={canPublish}
       />
     );
-    const editorOnly = renderToStaticMarkup(
-      <PublishPanel
-        locale="ru"
-        status="draft"
-        onStatusChange={noop}
-        scheduledAt=""
-        onScheduledAtChange={noop}
-        featured={false}
-        onFeaturedChange={noop}
-        showOnHomepage={false}
-        onShowOnHomepageChange={noop}
-        pinned={false}
-        onPinnedChange={noop}
-        englishEnabled={false}
-        onEnglishEnabledChange={noop}
-        englishStatus="draft"
-        onEnglishStatusChange={noop}
-        englishConfirmedCurrentSource={false}
-        onEnglishConfirmedCurrentSourceChange={noop}
-        canPublish={false}
-        canOverridePublicationChecklist={false}
-      />
-    );
+    const scheduled = renderPublication("scheduled", true);
+    const editorOnly = renderPublication("draft", false);
+    const publication = renderPublication("published", true);
 
     expect(scheduled).toContain('type="datetime-local"');
     expect(scheduled).not.toMatch(/\srequired(?:=|\s|>)/u);
@@ -173,6 +153,8 @@ describe("article editor panels", () => {
     expect(scheduled).toContain("ручное подтверждение редакционного чек-листа");
     expect(editorOnly).not.toContain('value="published"');
     expect(editorOnly).toContain("Выпуск выполнит администратор");
+    expect(publication).toContain("После сохранения статус выпуска можно проверить в журнале публикаций.");
+    expect(publication).not.toContain("Доступна читателям на сайте.");
   });
 });
 

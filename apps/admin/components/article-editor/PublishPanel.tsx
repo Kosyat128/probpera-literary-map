@@ -10,7 +10,7 @@ const PUBLICATION_LABELS: Record<ArticlePublicationStatus, string> = {
   draft: "Черновик",
   review: "На проверке",
   scheduled: "По расписанию",
-  published: "Опубликована",
+  published: "Выпуск на сайт",
   hidden: "Скрыта",
   archived: "В архиве",
 };
@@ -19,8 +19,8 @@ const PUBLICATION_DESCRIPTIONS: Record<ArticlePublicationStatus, string> = {
   draft: "Сохранена только в редакции и не видна читателям.",
   review: "Готова к редакционной проверке, но ещё не опубликована.",
   scheduled: "Будет выпущена в указанную дату и время.",
-  published: "Доступна читателям на сайте.",
-  hidden: "Снята с публичного показа без удаления материалов.",
+  published: "После сохранения статус выпуска можно проверить в журнале публикаций.",
+  hidden: "Статья будет скрыта с сайта после развёртывания обновления.",
   archived: "Перенесена в редакционный архив.",
 };
 
@@ -189,7 +189,7 @@ export default function PublishPanel({
                   нельзя.
                 </small>
               ) : (
-                <small>Дата используется в часовом поясе редакции.</small>
+                <small>Дата и время по Москве.</small>
               )}
             </label>
           ) : null}

@@ -23,11 +23,12 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'runtime_due_response_invalid','runtime_day_status_invalid','delivery_media_index_invalid','delivery_media_index_unavailable',
   'delivery_credentials_missing','delivery_supabase_origin_invalid','delivery_network_rejected','delivery_response_too_large',
   'delivery_request_timeout','delivery_registry_binding_missing','delivery_runtime_failed',
-  'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid',
+  'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid','delivery_public_feed_transient',
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 safeCodes.add('delivery_request_budget_exhausted');
 safeCodes.add('delivery_capture_progress_invalid');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
+const runtimeQuotaBlocked = summary => summary?.status === 'blocked' && summary.code === 'runtime_quota_exceeded';
 const safePauseReasons = new Set(['destination_rights_unverified','release_operator_pause',
   'telegram_permission_denied','vk_permission_denied','provider_token_missing','provider_endpoint_invalid']);
 
@@ -333,7 +334,9 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
       :budget.exhausted?'delivery_request_budget_exhausted':safeCode(error),finishedAt:now().toISOString(),
       externalRequests:budget.requests,providerWriteAttempts:budget.providerWrites,deliveredThisRun:null,heartbeatRecorded:false};
     if(summary.code==='runtime_quota_exceeded')return summary;
-    try{return await heartbeat(summary);}catch{return {...summary,externalRequests:budget.requests};}
+    try{return await heartbeat(summary);}catch{
+      return {...summary,code:budget.quota?'runtime_quota_exceeded':summary.code,externalRequests:budget.requests};
+    }
   }
 }
 
@@ -391,8 +394,15 @@ export class LiteraryNewsDeliveryCoordinator {
       return new Response(null,{status:404});
     let summary;
     if(path==='/capture'&&this.env.NEWS_DELIVERY_ENABLED==='true'){
-      this.captureInFlight??=captureChangedNativeNews({storage:this.storage,
-        capture:options=>runDeliveryCaptureTick({env:this.env,...options})});
+      this.captureInFlight??=(async()=>{
+        const result=await captureChangedNativeNews({storage:this.storage,
+          capture:options=>runDeliveryCaptureTick({env:this.env,...options})});
+        if(runtimeQuotaBlocked(result)){
+          try{await scheduleNextNativeNewsAlarm(this.storage,this.env,result,this.now());}
+          catch{console.warn(JSON.stringify({component:'literary-news-delivery-alarm',status:'quota_alarm_clear_failed'}));}
+        }
+        return result;
+      })();
       try{summary=await this.captureInFlight;}finally{this.captureInFlight=null;}
     } else summary=path==='/dispatch'?await this.dispatch():await runDeliveryCaptureTick({env:this.env});
     return Response.json(summary,{status:summary.status==='blocked'?503:200});
@@ -406,7 +416,10 @@ async function scheduledDelivery(controller,env,log) {
   log(JSON.stringify(capture));
   if(!captureResponse.ok||capture.status==='blocked'){
     controller.noRetry();
-    if(capture.code!=='delivery_request_budget_exhausted')return capture;
+    // Dispatch checks the current public feed again before using any admission.
+    const feedInterrupted=captureResponse.status===503&&capture.status==='blocked'
+      &&capture.phase==='public_feed'&&capture.code==='delivery_public_feed_transient';
+    if(capture.code!=='delivery_request_budget_exhausted'&&!feedInterrupted)return capture;
   }
   const response=await stub.fetch('https://coordinator.internal/dispatch',{method:'POST'});
   const summary=await response.json();
@@ -418,7 +431,9 @@ async function scheduledDelivery(controller,env,log) {
 
 export async function scheduleNextNativeNewsAlarm(storage,env,summary,current=new Date()) {
   if(typeof storage?.setAlarm!=='function')return;
-  if(env.NEWS_DELIVERY_ENABLED!=='true'||['disabled','outside_authorized_window',
+  // An explicit quota block leaves recovery probes to Cron. A later healthy
+  // Cron dispatch restores the ordinary receipt-driven alarm.
+  if(env.NEWS_DELIVERY_ENABLED!=='true'||runtimeQuotaBlocked(summary)||['disabled','outside_authorized_window',
     'destination_not_enabled_or_history_gap','dispatch_reconciliation_required'].includes(summary?.status)) {
     if(typeof storage.deleteAlarm==='function')await storage.deleteAlarm();return;
   }

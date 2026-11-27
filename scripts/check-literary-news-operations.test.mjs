@@ -291,6 +291,64 @@ describe('bounded read-only news operations projection', () => {
       expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
       expect(report.telegram.cadence).toMatchObject({ status: 'not_evaluated', minimumFreshCreatesByNow: null });
     });
+  it.each([[3, 'deficit'], [8, 'within_tolerance']])(
+    'checks the final confirmed receipt count after closing (%s)', async (creates, expected) => {
+      const value = await cadenceInput('2026-10-09T20:27:00Z', creates);
+      value.deliveryHeartbeat.finishedAt = '2026-10-09T19:55:00Z';
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures.includes('operations_delivery_cadence_deficit')).toBe(expected === 'deficit');
+      expect(report.telegram.cadence).toMatchObject({ status: expected, minimumFreshCreatesByNow: 8 });
+      expect(report.telegram.freshAcknowledgedCreatesToday).toBe(creates);
+      expect(report.externalWrites).toBe(0);
+    });
+  it('does not claim a final delivery shortfall without a valid receipt count', async () => {
+    const value = await cadenceInput('2026-10-09T20:27:00Z', 3);
+    value.dayStatus = null;
+    value.readFailures = ['operations_day_metrics_read_failed'];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toContain('operations_day_metrics_read_failed');
+    expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+    expect(report.telegram.cadence.status).toBe('not_evaluated');
+  });
+  it.each([
+    ['2026-10-09T20:14:59.999Z', 'not_evaluated'],
+    ['2026-10-09T20:15:00.000Z', 'deficit'],
+  ])('keeps the 23:15 Moscow close cutoff independent of the preceding day (%s)', async (at, cadence) => {
+    const value = await cadenceInput(at, 3);
+    value.recentDayStatuses = [{ at: '2026-10-08T20:00:00Z',
+      status: { ...value.dayStatus, editorialDay: '2026-10-08', minimum: 10, maximum: 20, deficitToMinimum: 7 } }];
+    const report = await summarizeNewsOperations(value);
+    expect(report.telegram.cadence.status).toBe(cadence);
+    expect(report.telegram.previousFinalizedDay).toEqual({ day: '2026-10-08', status: 'below_minimum',
+      minimum: 10, freshAcknowledgedCreates: 3 });
+    expect(report.failures.includes('operations_delivery_cadence_deficit')).toBe(cadence === 'deficit');
+  });
+  it.each([
+    ['valid', 'below_minimum'], ['met', 'minimum_met'], ['missing', 'not_evaluated'],
+    ['failed', 'not_evaluated'], ['wrong_day', 'not_evaluated'], ['duplicate', 'not_evaluated'],
+  ])('projects only the exact Moscow prior day after midnight (%s)', async (history, expected) => {
+    const value = await cadenceInput('2026-10-09T21:00:00.000Z', 3);
+    value.dayStatus.editorialDay = '2026-10-10';
+    const previous = { at: '2026-10-08T21:00:00Z', status: { ...value.dayStatus, editorialDay: '2026-10-09' } };
+    value.recentDayStatuses = [{ at: '2026-10-07T21:00:00Z', status: {
+      ...previous.status, editorialDay: '2026-10-08', minimum: 10, maximum: 20, deficitToMinimum: 7 } }];
+    if (history === 'met') Object.assign(previous.status, { freshCreates: 8, acknowledgedCreates: 8, deficitToMinimum: 0 });
+    if (history === 'wrong_day') previous.status.editorialDay = '2026-10-08';
+    if (history === 'failed') {
+      previous.readFailed = true;
+      previous.status = null;
+      value.readFailures = ['operations_day_history_read_failed'];
+    }
+    if (history !== 'missing') value.recentDayStatuses.push(previous);
+    if (history === 'duplicate') value.recentDayStatuses.push(previous);
+    const report = await summarizeNewsOperations(value);
+    expect(report.telegram.cadence.status).toBe('not_evaluated');
+    expect(report.telegram.previousFinalizedDay).toEqual({ day: '2026-10-09', status: expected,
+      minimum: expected === 'not_evaluated' ? null : 8,
+      freshAcknowledgedCreates: history === 'valid' ? 3 : history === 'met' ? 8 : null });
+    expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+    expect(report.externalWrites).toBe(0);
+  });
   it.each(['stale_heartbeat', 'missing_count', 'string_count', 'negative_count', 'eligible_work', 'unconfirmed',
     'budget_deferred', 'inconsistent_metrics', 'invalid_metrics', 'failed_read', 'quota', 'disabled'])(
     'does not infer a cadence failure from %s', async boundary => {

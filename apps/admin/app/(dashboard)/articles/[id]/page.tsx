@@ -10,6 +10,7 @@ import { articlePublicPath } from "@/lib/article-route";
 import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
 import { operatorDataError } from "@/lib/operator-data-error";
+import { parsePublicationCatalogQuery, publicationCatalogHref } from "@/lib/publication-catalog-query";
 import { safePublicSiteHref } from "@/lib/public-link-boundary";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
@@ -198,7 +199,7 @@ export default async function EditArticlePage({
     adminEnv.publicSiteUrl,
     articlePublicPath(article.slug, categorySlug)
   );
-  const publicationHref = `/publication?${new URLSearchParams({ q: id })}`;
+  const publicationHref = publicationCatalogHref(parsePublicationCatalogQuery({ q: id }));
 
   return (
     <>
@@ -208,6 +209,11 @@ export default async function EditArticlePage({
           <h1>Редактирование статьи</h1>
           <p>Изменяйте текст, структуру и медиа прямо в редакторе.</p>
         </div>
+        {!query.publish && (
+          <Link href={publicationHref} className="button-secondary">
+            Журнал публикаций статьи
+          </Link>
+        )}
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
       {workingDraftLoadError && (

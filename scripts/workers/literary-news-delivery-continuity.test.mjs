@@ -1,6 +1,6 @@
 import {describe,expect,it,vi} from 'vitest';
 import {captureChangedNativeNews,planNewsCapture,completedNewsCaptureProgress,NEWS_CAPTURE_PROGRESS_KEY} from '../lib/literary-news-capture-progress.mjs';
-import {scheduleNextNativeNewsAlarm,LiteraryNewsDeliveryCoordinator} from './literary-news-delivery-worker.mjs';
+import {scheduleNativeNewsDelivery,scheduleNextNativeNewsAlarm,LiteraryNewsDeliveryCoordinator} from './literary-news-delivery-worker.mjs';
 const current=new Date('2026-10-09T13:25:00Z');
 const item=id=>({id,kind:'news',eventDate:'2026-10-09',publishedAt:current.toISOString(),verifiedAt:current.toISOString(),
   title:{ru:id,en:id},summary:{ru:'Описание',en:'Description'},source:{name:'Fixture',url:'https://fixture.example/'+id,language:'en'}});
@@ -84,6 +84,41 @@ describe('durable timer supplements Cron through the same dispatch fence',()=>{
       const s=storage();await scheduleNextNativeNewsAlarm(s,env,{status},current);
       expect(s.setAlarm).not.toHaveBeenCalled();expect(s.deleteAlarm).toHaveBeenCalledOnce();
     });
+  it('stops the alarm on quota and restores it after the next healthy Cron dispatch',async()=>{
+    const s=storage(),next='2026-10-09T15:10:29.592Z';
+    const healthy={status:'daily_minimum_reached',nextDispatchAt:next};
+    const runTick=vi.fn().mockResolvedValueOnce({status:'blocked',code:'runtime_quota_exceeded'})
+      .mockResolvedValueOnce(healthy);
+    const coordinator=new LiteraryNewsDeliveryCoordinator({storage:s},env,{runTick,now:()=>current});
+    await coordinator.alarm();
+    expect(s.deleteAlarm).toHaveBeenCalledOnce();
+    expect(s.setAlarm).not.toHaveBeenCalled();
+
+    const fetch=vi.fn((url,init)=>url.endsWith('/capture')
+      ?Response.json({status:'capture_not_due'}):coordinator.fetch(new Request(url,init)));
+    const controller={noRetry:vi.fn()};
+    const cronEnv={...env,DELIVERY_COORDINATOR:{idFromName:()=>1,get:()=>({fetch})}};
+    expect(await scheduleNativeNewsDelivery(controller,cronEnv,{now:()=>current,log:vi.fn()})).toEqual(healthy);
+    expect(runTick).toHaveBeenCalledTimes(2);
+    expect(controller.noRetry).not.toHaveBeenCalled();
+    expect(s.setAlarm).toHaveBeenCalledExactlyOnceWith(Date.parse(next));
+  });
+  it('clears an outstanding alarm when Cron capture observes quota before dispatch',async()=>{
+    const s={...storage(),get:async()=>undefined},runTick=vi.fn();
+    vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(current);
+    vi.stubGlobal('fetch',vi.fn(async()=>Response.json({code:'402'},{status:402})));
+    try{
+      const coordinator=new LiteraryNewsDeliveryCoordinator({storage:s},{...env,
+        SUPABASE_URL:'https://worker-fixture.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'fixture',TELEGRAM_BOT_TOKEN:'fixture'},
+      {runTick,now:()=>current});
+      const response=await coordinator.fetch(new Request('https://coordinator.internal/capture',{method:'POST'}));
+      expect(response.status).toBe(503);
+      expect(await response.json()).toMatchObject({status:'blocked',code:'runtime_quota_exceeded'});
+      expect(s.deleteAlarm).toHaveBeenCalledOnce();
+      expect(s.setAlarm).not.toHaveBeenCalled();
+      expect(runTick).not.toHaveBeenCalled();
+    }finally{vi.unstubAllGlobals();vi.useRealTimers();}
+  });
   it('routes an alarm through the exact private dispatch method without any public dispatch capability',async()=>{
     const coordinator=new LiteraryNewsDeliveryCoordinator({storage:storage()},{});
     coordinator.dispatch=vi.fn(async()=>({status:'disabled'}));await coordinator.alarm({retryCount:3});

@@ -149,6 +149,38 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     expect(resumedAi.requests.map(row => row.phase)).toEqual(["review"]);
     expect(resumed.state.accepted[0]).toEqual(result.state.accepted[0]); expect(resumed.state.accepted).toHaveLength(2);
   });
+  it("resumes after confirmed temporary capacity at the next slot without refunding calls or redrafting", async () => {
+    const at = new Date("2026-09-29T12:17:00Z");
+    const ai = aiFixture({ intercept: ({ n, phase }) => {
+      if (n === 1 && phase === "review")
+        throw Object.assign(new Error("ai_http_429"), { httpStatus: 429, providerCode: 3040 });
+    } });
+    const first = await runDailyNewsAutomation(options([detail(0, at), detail(1, at), detail(2, at)], ai, { current: at }));
+    expect(first.report).toMatchObject({ stoppedReason: "ai_http_429", providerCode: 3040, newlyAccepted: 1,
+      reservedAiCallsToday: 4, retryAfterAt: "2026-09-29T12:30:00.000Z" });
+    expect(first.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429, retryAfterAt: "2026-09-29T12:30:00.000Z" });
+    expect(ai.requests.map(row => [row.n, row.phase])).toEqual([[0, "draft"], [0, "review"], [1, "draft"], [1, "review"]]);
+
+    const coolingAt = new Date("2026-09-29T12:29:59Z"), cooling = aiFixture();
+    const cooldown = await runDailyNewsAutomation(options([detail(1, coolingAt)], cooling, { current: coolingAt, previous: first.state }));
+    expect(cooldown.report.stoppedReason).toBe("provider_cooldown");
+    expect(cooling.request).not.toHaveBeenCalled();
+    expect(cooldown.state.inferenceBudgets).toEqual(first.state.inferenceBudgets);
+
+    const nextSlot = new Date("2026-09-29T12:47:00Z"), resumed = aiFixture();
+    const next = await runDailyNewsAutomation(options([detail(1, nextSlot)], resumed, { current: nextSlot, previous: cooldown.state }));
+    expect(resumed.requests.map(row => row.phase)).toEqual(["review"]);
+    expect(next.report).toMatchObject({ newlyAccepted: 1, reservedAiCallsToday: 5 });
+    expect(next.state.accepted[0]).toEqual(first.state.accepted[0]);
+    expect(next.state.providerStop).toBeNull();
+  });
+  it("keeps an unclassified 429 stopped until the next UTC day", async () => {
+    const ai = aiFixture({ intercept: () => { throw Object.assign(new Error("ai_http_429"), { httpStatus: 429 }); } });
+    const result = await runDailyNewsAutomation(options([detail(0), detail(1)], ai));
+    expect(ai.request).toHaveBeenCalledOnce();
+    expect(result.state.providerStop).toEqual({ reason: "ai_http_429", httpStatus: 429, retryAfterAt: "2026-09-30T00:00:00.000Z" });
+    expect(result.report).not.toHaveProperty("providerCode");
+  });
   it("keeps accepted historical facts after the strict year window closes and makes no new requests", async () => {
     const admitted = await runDailyNewsAutomation(options([detail(0)])), ai = aiFixture();
     const end = new Date("2027-09-30T00:00:00+03:00");
@@ -329,6 +361,16 @@ describe("literal Cloudflare REST clients and real response envelopes", () => {
     const client = createDailyWorkersAiClient({ accountId, apiToken, fetchImpl });
     for (const phase of ["draft", "review"]) await expect(client.request({ phase, messages: [] })).rejects.toThrow("ai_quota_exceeded");
     expect(fetchImpl).toHaveBeenCalledTimes(1);
+  });
+  it.each([[3040, 3040], [429, undefined], [[3040], undefined]])("normalizes only a real REST capacity code %j", async (code, providerCode) => {
+    const fetchImpl = vi.fn(async () => Response.json({ success: false, errors: [{ code, message: "provider detail" }] }, { status: 429 }));
+    const client = createDailyWorkersAiClient({ accountId, apiToken, fetchImpl });
+    for (const phase of ["draft", "review"]) {
+      const error = await client.request({ phase, messages: [] }).catch(error => error);
+      expect(error).toMatchObject({ message: "ai_http_429", httpStatus: 429 });
+      expect(error.providerCode).toBe(providerCode);
+    }
+    expect(fetchImpl).toHaveBeenCalledOnce();
   });
   it("enforces an inference request budget, blocks incomplete responses and does not retry an unavailable provider", async () => {
     const noCalls = vi.fn(), zero = createDailyWorkersAiClient({ accountId, apiToken, fetchImpl: noCalls, maxCalls: 0 });

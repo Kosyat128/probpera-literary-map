@@ -414,12 +414,27 @@ describe('Private native daily preparation and bounded public source adapter',()
     const binding={run:vi.fn(async()=>({response:'{"status":"held"}'}))},ai=createPreparationBindingAi(binding);
     expect(await ai.request({phase:'review',messages:[]})).toEqual({status:'held'});expect(binding.run.mock.calls[0][0]).toMatch(/^@cf\//);
     expect(binding.run.mock.calls[0][2].signal).toBeInstanceOf(AbortSignal);
-    for(const result of [{errors:[{code:4006}]},{status:429,errors:[{code:429}]}]){
+    for(const [result,reason] of [
+      [{errors:[{code:4006}]},'ai_quota_exceeded'],
+      [{status:402},'ai_quota_exceeded'],
+      [{status:429,errors:[{code:3040},{code:3036}]},'ai_quota_exceeded'],
+      [{status:429,errors:[{code:[3040]}]},'ai_http_429'],
+      [{status:429,errors:[{code:429}]},'ai_http_429'],
+    ]){
       const provider={run:vi.fn(async()=>result)},limited=createPreparationBindingAi(provider);
-      const reason=result.status===429?'ai_http_429':'ai_quota_exceeded';
-      await expect(limited.request({phase:'draft',messages:[]})).rejects.toThrow(reason);
+      const error=await limited.request({phase:'draft',messages:[]}).catch(error=>error);
+      expect(error.message).toBe(reason);expect(error).not.toHaveProperty('providerCode');
       await expect(limited.request({phase:'draft',messages:[]})).rejects.toThrow(reason);expect(provider.run).toHaveBeenCalledTimes(1);
     }
+  });
+  it.each([
+    async()=>({status:429,errors:[{code:'3040'}]}),
+    async()=>{throw Object.assign(Error('capacity temporarily exceeded'),{code:3040,status:429});},
+  ])('normalizes an explicit binding capacity code while latching the current run',async run=>{
+    const provider={run:vi.fn(run)},ai=createPreparationBindingAi(provider);
+    for(const phase of ['draft','review'])
+      await expect(ai.request({phase,messages:[]})).rejects.toMatchObject({message:'ai_http_429',httpStatus:429,providerCode:3040});
+    expect(provider.run).toHaveBeenCalledOnce();
   });
   it('scheduled quota reports stop retries and keep all public routes closed',async()=>{
     const controller={noRetry:vi.fn()},log=vi.spyOn(console,'log').mockImplementation(()=>{});
