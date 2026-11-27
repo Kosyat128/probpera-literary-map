@@ -26,6 +26,21 @@ afterEach(() => {
 });
 
 describe("localized static article pages", () => {
+  it("rejects a fixture-shaped build root outside the directly approved temporary boundary", () => {
+    const outside = mkdtempSync(path.join(tmpdir(), "probpera-outside-"));
+    temporaryRoots.push(outside);
+    const nested = mkdtempSync(path.join(outside, "probpera-article-build-"));
+    const build = spawnSync(process.execPath, [path.join(process.cwd(), "scripts", "build-article-pages.mjs")], {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      env: { ...process.env, ARTICLE_BUILD_PROJECT_ROOT: nested },
+    });
+    expect(build.error).toBeUndefined();
+    expect(build.status).toBe(1);
+    expect(build.stderr).toContain("ARTICLE_BUILD_PROJECT_ROOT must refer to a temporary article-build fixture.");
+    expect(existsSync(path.join(nested, "dist"))).toBe(false);
+  });
+
   it("writes an approved English slug and marks it as an English route", () => {
     const fixtureRoot = mkdtempSync(path.join(tmpdir(), "probpera-article-build-"));
     temporaryRoots.push(fixtureRoot);

@@ -1,4 +1,5 @@
 import { promises as fs } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
@@ -26,9 +27,43 @@ import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs"
 import { createPublicImageHtmlRenderer, createPublicationImageDelivery } from "./lib/public-image-delivery.mjs";
 import { prunePublicImageRenditions } from "./prune-public-image-renditions.mjs";
 
-const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
-  ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
-  : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+async function approvedArticleBuildFixture(override) {
+  const temp = path.resolve(tmpdir());
+  const requested = path.resolve(override);
+  const name = path.basename(requested);
+  const invalid = "ARTICLE_BUILD_PROJECT_ROOT must refer to a temporary article-build fixture.";
+  if (!path.isAbsolute(override) || path.dirname(requested) !== temp ||
+      !/^probpera-article-build-[a-z0-9]{6}$/iu.test(name)) {
+    throw new Error(invalid);
+  }
+
+  const realTemp = await fs.realpath(temp);
+  const fixture = (await fs.readdir(realTemp, { withFileTypes: true }))
+    .find(entry => entry.isDirectory() && entry.name === name);
+  if (!fixture) throw new Error(invalid);
+  const root = path.join(realTemp, fixture.name);
+  if (await fs.realpath(root) !== root) throw new Error(invalid);
+  return root;
+}
+
+async function readDeliveredImagePaths(root) {
+  const directory = path.join(root, "dist", "media", "optimized");
+  try {
+    if (await fs.realpath(directory) !== directory) {
+      throw new Error("The optimized image directory must be inside the article build.");
+    }
+    const images = await fs.readdir(directory, { withFileTypes: true });
+    return new Set(images.filter(file => file.isFile()).map(file => `media/optimized/${file.name}`));
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+    return new Set();
+  }
+}
+
+const fixtureOverride = process.env.ARTICLE_BUILD_PROJECT_ROOT;
+const projectRoot = fixtureOverride
+  ? await approvedArticleBuildFixture(fixtureOverride)
+  : fileURLToPath(new URL("../", import.meta.url));
 const distDirectory = path.join(projectRoot, "dist");
 const publicDirectory = path.join(projectRoot, "public");
 const articleDirectory = path.join(projectRoot, "public", "articles");
@@ -38,14 +73,13 @@ const siteBasePath =
   configuredBase === "/" ? "" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}`;
 const siteUrl = `${siteOrigin}${siteBasePath}`;
 const siteRootPath = `${siteBasePath || ""}/`;
-if (!process.env.ARTICLE_BUILD_PROJECT_ROOT) await prunePublicImageRenditions();
+if (!fixtureOverride) await prunePublicImageRenditions();
 const imageDeliveryManifest = await fs.readFile(path.join(projectRoot, "src/data/imageDelivery.generated.json"), "utf8")
   .then(JSON.parse).catch(error => { if (error.code === "ENOENT") return {}; throw error; });
 const publicArticleImages = createPublicImageHtmlRenderer(imageDeliveryManifest, siteRootPath);
-const deliveredImages = await fs.readdir(path.join(distDirectory, "media/optimized"), { withFileTypes: true })
-  .catch(error => { if (error.code === "ENOENT") return []; throw error; });
-const publicationImages = createPublicationImageDelivery(imageDeliveryManifest, siteOrigin, siteRootPath,
-  new Set(deliveredImages.filter(file => file.isFile()).map(file => `media/optimized/${file.name}`)));
+const publicationImages = createPublicationImageDelivery(
+  imageDeliveryManifest, siteOrigin, siteRootPath, await readDeliveredImagePaths(projectRoot)
+);
 const buildDate = new Date().toISOString().slice(0, 10);
 const legacyLandingRedirects = [
   ["/read", "/stati/"],

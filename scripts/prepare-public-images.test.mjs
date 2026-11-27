@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import sharp from "sharp";
@@ -148,6 +148,31 @@ describe("public image original downloads", () => {
       await expect(readOriginal(otherHost)).resolves.toEqual({ bytes: png, downloaded: true, attempts: 3 });
       expect(fetchImpl.mock.calls.slice(3).map(([url]) => url)).toEqual([otherHost, otherHost, otherHost]);
       expect(wait.mock.calls).toEqual([[250], [500]]);
+      const storedName = `${createHash("sha256").update(otherHost).digest("hex")}.bin`;
+      expect(await readFile(path.join(originalsDirectory, storedName))).toEqual(png);
+      expect(await readdir(originalsDirectory)).toHaveLength(2);
+    } finally {
+      await rm(originalsDirectory, { recursive: true, force: true });
+    }
+  });
+
+  it("checks the actual remote image format before storing new or reading restored originals", async () => {
+    const originalsDirectory = await mkdtemp(path.join(os.tmpdir(), "public-image-format-"));
+    const source = "https://images.example.org/image.png";
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10"/></svg>';
+    const fetchImpl = vi.fn().mockResolvedValue(new Response(svg, { headers: { "content-type": "image/png" } }));
+    const wait = vi.fn();
+    const readOriginal = createRemoteImageOriginalReader({ originalsDirectory, fetchImpl, wait });
+    try {
+      await expect(readOriginal(source)).rejects.toThrow("Remote SVG originals");
+      expect(await readdir(originalsDirectory)).toEqual([]);
+      expect(fetchImpl).toHaveBeenCalledTimes(1);
+      expect(wait).not.toHaveBeenCalled();
+
+      const storedName = `${createHash("sha256").update(source).digest("hex")}.bin`;
+      await writeFile(path.join(originalsDirectory, storedName), svg);
+      await expect(readOriginal(source)).rejects.toThrow("Remote SVG originals");
+      expect(fetchImpl).toHaveBeenCalledTimes(1);
     } finally {
       await rm(originalsDirectory, { recursive: true, force: true });
     }
