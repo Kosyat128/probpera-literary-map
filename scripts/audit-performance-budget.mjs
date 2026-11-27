@@ -3,7 +3,7 @@ import path from "node:path";
 import { gzipSync } from "node:zlib";
 
 import { articleIdSet } from "./lib/cms-publication-state.mjs";
-import { measurePublishedImageCorpus } from "./lib/published-image-performance.mjs";
+import { measurePublishedImageCorpus, publishedImageSourceLimit } from "./lib/published-image-performance.mjs";
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
@@ -508,7 +508,8 @@ try {
     publishedImageBytes = corpus.bytes;
     enforce("published image corpus total", corpus.bytes, budget.publishedImageCorpus.totalBytes);
     enforce("published image corpus count", corpus.fileCount, budget.publishedImageCorpus.fileCount, "files");
-    enforce("published image source count", corpus.sourceCount, budget.publishedImageCorpus.sourceCount, "sources");
+    enforce("published image source count", corpus.sourceCount, publishedImageSourceLimit(budget.publishedImageCorpus), "sources");
+    enforce("published image source aliases", corpus.sourceAliasCount, budget.publishedImageCorpus.sourceAliasCount, "URLs");
   }
 } catch (error) {
   recordFailure("published image corpus", `provenance is missing or unreadable: ${error.message}`);

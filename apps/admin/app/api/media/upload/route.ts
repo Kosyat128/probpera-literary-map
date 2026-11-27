@@ -199,6 +199,7 @@ export async function POST(request: Request) {
       entityId: data.id,
       reason: "media.uploaded",
       metadata: { imageUsage: parsed.data.imageUsage },
+      dispatchImmediately: false,
     });
 
     return NextResponse.json({

@@ -19,6 +19,7 @@ type RequestPublicBuildOptions = {
   reason: string;
   metadata?: Record<string, unknown>;
   skipAutoTranslation?: boolean;
+  dispatchImmediately?: boolean;
 };
 
 function normalizeOutboxId(value: unknown): string | null {
@@ -41,9 +42,10 @@ export async function requestPublicBuild({
   reason,
   metadata = {},
   skipAutoTranslation = false,
+  dispatchImmediately = true,
 }: RequestPublicBuildOptions): Promise<{
   state: PublicationState;
-  build: PublicBuildResult;
+  build: PublicBuildResult | null;
   autoTranslation?: PremiumArticleBackfillState;
 }> {
   // Translate a published Russian article before dispatching the public build,
@@ -118,6 +120,10 @@ export async function requestPublicBuild({
         error: "durable-queue-unavailable",
       },
     };
+  }
+
+  if (!dispatchImmediately) {
+    return { state: "queued", build: null, autoTranslation: translation.state };
   }
 
   const build = await triggerPublicBuild(reason);

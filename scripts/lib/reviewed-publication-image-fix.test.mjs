@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -6,9 +7,21 @@ import { projectPublicationImageFix } from "./reviewed-publication-image-fix.mjs
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 
 describe("publication image fix historical source bindings", () => {
+  it("preserves the independently reviewed intermediate image preparation release", () => {
+    const path = "scripts/prepare-public-images.mjs";
+    const previous = execFileSync("git", ["show", `51b5c255d9e2822c17dda4c69b47d66e9b7fb831:${path}`], { encoding: "utf8" });
+    expect(sha256(previous)).toBe("480b6b7e1d3c70bb0c2a64f1ffb95e0d17dcea2aa560c09de298d70fedd1ed79");
+    expect(projectPublicationImageFix(path, readFileSync(path, "utf8"))).toBe(projectPublicationImageFix(path, previous));
+  });
+
   it.each([
     ["scripts/prepare-public-images.mjs", "d18e8f9310b03e0bc5324757034a92f4976c1edc4f8e3f16772588b5e076ee6d"],
+    ["scripts/prepare-public-images.test.mjs", "dd7379a7a1eab09a2172a8207fb81a48c310b8e6f1908d10c8b877b41a2689c8"],
+    ["scripts/lib/public-image-delivery.mjs", "e16ad45e2d2c4359ce20adb8d829d4abf5ee9f3a608d987e5c5998e51303879b"],
+    ["scripts/lib/public-image-delivery.test.mjs", "074574c8df85fb29a3a88e09d6cb051171a47a5229ab577e7c00e9c698913bea"],
     ["scripts/lib/reviewed-cms-preview-webgl-followup.mjs", "37e60edabeacba4725fcd2f5f397926bd394bc50d31e176e6e6ac65f569e33dc"],
+    [".github/workflows/deploy-pages.yml", "30f5568f71fb4dc8098d3a0ca9c8bfd9fb0fe456ad025915eccdc584bcc6abd7"],
+    ["apps/admin/lib/publication.ts", "bc668f90abd99c3e449ce8e59165543011d7269aaa0d19fcc4c7707875ab433e"],
   ])("pins the current fix and the immutable prior release for %s", (path, previousSha) => {
     const source = readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
     const previous = projectPublicationImageFix(path, source);

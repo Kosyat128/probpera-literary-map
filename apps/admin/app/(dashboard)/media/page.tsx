@@ -603,7 +603,7 @@ export default async function MediaPage({
               );
               return (
                 <article className="media-card" key={asset.id}>
-                  <img src={data.publicUrl} alt={asset.alt_text} />
+                  <img src={data.publicUrl} alt={asset.alt_text} loading="lazy" />
                   <div>
                     <label className="media-card-selection">
                       <input

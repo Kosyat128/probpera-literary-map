@@ -1,7 +1,8 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { setDefaultResultOrder } from "node:dns";
-import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { mkdir, open, readFile, readdir, rename, rm, stat } from "node:fs/promises";
 import path from "node:path";
+import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import sharp from "sharp";
@@ -10,6 +11,7 @@ import performanceBudget from "../performance-budget.json" with { type: "json" }
 import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 import { encodePublicRasterRendition } from "./lib/public-image-output-fit.mjs";
 import { authoredPublicRenditions, planPublicImageRenditions, retiredPublicImageRenditions } from "./lib/public-image-rendition-plan.mjs";
+import { publishedImageSourceLimit } from "./lib/published-image-performance.mjs";
 import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
 import { hasSmallEditorialImageWidth } from "../src/utils/editorialImagePresentation.ts";
 
@@ -26,6 +28,7 @@ const cacheDirectory = ".tmp/public-images";
 const maxRenditionBytes = performanceBudget.individualImageBytes;
 const imageFields = /^(?:image|imageUrl|dzenImageUrl|ogImageUrl|backgroundImageUrl|background_image_url|coverUrl|cover_external_url|portrait|poster|thumbnailUrl)$/iu;
 const rasterOrVector = /\.(?:png|jpe?g|webp|avif|gif|svg|tiff?|bmp)(?:[?#].*)?$/iu;
+const publicRenditionName = /^[a-f0-9]{24}-(?:original|[1-9]\d*w)\.(?:avif|gif|jpg|png|svg|webp)$/u;
 const sourceContexts = new Map();
 const smallInlineSources = new Set();
 const authoredRenditions = new Set();
@@ -35,12 +38,32 @@ const limit = limitArgument ? Number(limitArgument.split("=")[1]) : Infinity;
 const timeoutMs = 12_000;
 const workerCount = 6;
 const retries = 2;
+const productionEditorialStorageOrigin = "https://sjqejjmwpzfsczxdghvw.supabase.co";
+const productionEditorialStoragePath = "/storage/v1/object/public/editorial-media/";
 let publishedRecords = new Map();
 setDefaultResultOrder("ipv4first");
 sharp.concurrency(1);
 
 async function atomicJson(filename, value) {
   await writeJsonAtomically(absolute(filename), value);
+}
+
+// Only complete images reach the destination. The exclusive temporary file
+// prevents partial writes and rename never follows a destination symlink.
+async function writeImageAtomically(filename, bytes, mode, stagingDirectory = path.dirname(filename)) {
+  const temporary = path.join(stagingDirectory, `image-${randomUUID()}.tmp`);
+  const file = await open(temporary, "wx", mode);
+  try {
+    try {
+      await file.writeFile(bytes);
+    } finally {
+      await file.close();
+    }
+    await rename(temporary, filename);
+  } catch (error) {
+    await rm(temporary, { force: true }).catch(() => {});
+    throw error;
+  }
 }
 
 function normalizedImageSource(raw) {
@@ -51,6 +74,15 @@ function normalizedImageSource(raw) {
     try { const url = new URL(source); if (url.username || url.password) return ""; } catch { return ""; }
   } else if (!rasterOrVector.test(source) || !/^(?:\/?(?:brand|assets|media|textures|images)\/)/u.test(source)) return "";
   return source;
+}
+
+function assertSourceImage(metadata, sourceUrl) {
+  if (!metadata.format || !metadata.width || !metadata.height) {
+    throw new Error("Image format or dimensions are unreadable");
+  }
+  if (metadata.format === "svg" && /^https?:/iu.test(sourceUrl)) {
+    throw new Error("Remote SVG originals cannot be served as public images");
+  }
 }
 
 function addSource(raw, context, smallInlineImage = false) {
@@ -165,38 +197,64 @@ async function seedExistingOriginals() {
   }
   for (const source of manifest.images) {
     const bytes = available.get(source.source.sha256);
-    if (bytes) await writeFile(absolute(`${cacheDirectory}/originals/${digest(source.sourceUrl)}.bin`), bytes);
+    if (bytes) await writeImageAtomically(absolute(`${cacheDirectory}/originals/${digest(source.sourceUrl)}.bin`), bytes, 0o600);
   }
 }
 
-async function sourceBytes(sourceUrl) {
-  if (!/^https?:/iu.test(sourceUrl)) {
-    const filename = absolute(`public/${sourceUrl.replace(/^\/+/, "")}`);
-    if (!filename.startsWith(`${absolute("public")}${path.sep}`)) throw new Error("Local image path leaves public directory");
-    return { bytes: await readFile(filename), downloaded: false, attempts: 0 };
-  }
-  const filename = absolute(`${cacheDirectory}/originals/${digest(sourceUrl)}.bin`);
-  if (!argv.includes("--refresh")) {
-    try { return { bytes: await readFile(filename), downloaded: false, attempts: 0 }; } catch { /* First acquisition. */ }
-  }
-  let failure;
-  for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
-    try {
-      const response = await fetch(sourceUrl, { signal: AbortSignal.timeout(timeoutMs) });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const bytes = Buffer.from(await response.arrayBuffer());
-      if (!bytes.length) throw new Error("Empty response");
-      // Do not persist a temporary HTML/error response as an immutable image cache hit.
-      await sharp(bytes, { limitInputPixels: false }).metadata();
-      await writeFile(filename, bytes);
-      return { bytes, downloaded: true, attempts: attempt };
-    } catch (error) {
-      failure = error;
-      if (/HTTP (?:400|401|403|404|410)/u.test(error.message)) break;
-      if (attempt <= retries) await new Promise(resolve => setTimeout(resolve, 250 * attempt));
+export function createRemoteImageOriginalReader({
+  originalsDirectory = absolute(`${cacheDirectory}/originals`),
+  refresh = false,
+  fetchImpl = fetch,
+  wait = sleep,
+} = {}) {
+  let productionStorageBlocked = false;
+  return async function readRemoteImageOriginal(sourceUrl) {
+    const filename = path.join(originalsDirectory, `${digest(sourceUrl)}.bin`);
+    if (!refresh) {
+      const cached = await readFile(filename).catch(() => null);
+      if (cached) {
+        assertSourceImage(await sharp(cached, { limitInputPixels: false }).metadata(), sourceUrl);
+        return { bytes: cached, downloaded: false, attempts: 0 };
+      }
     }
-  }
-  throw failure;
+    const url = new URL(sourceUrl);
+    const fromProductionStorage = url.origin === productionEditorialStorageOrigin &&
+      url.pathname.startsWith(productionEditorialStoragePath);
+    let failure;
+    for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
+      if (fromProductionStorage && productionStorageBlocked) {
+        throw new Error("HTTP 402 (production editorial Storage downloads skipped after project restriction)");
+      }
+      let bytes;
+      try {
+        const response = await fetchImpl(sourceUrl, { signal: AbortSignal.timeout(timeoutMs) });
+        if (!response.ok) {
+          if (fromProductionStorage && response.status === 402 && !response.redirected) productionStorageBlocked = true;
+          throw new Error(`HTTP ${response.status}`);
+        }
+        bytes = Buffer.from(await response.arrayBuffer());
+        if (!bytes.length) throw new Error("Empty response");
+      } catch (error) {
+        failure = error;
+        if (/^HTTP (?:400|401|402|403|404|410)$/u.test(error.message)) break;
+        if (attempt <= retries) await wait(250 * attempt);
+        continue;
+      }
+      assertSourceImage(await sharp(bytes, { limitInputPixels: false }).metadata(), sourceUrl);
+      await writeImageAtomically(filename, bytes, 0o600);
+      return { bytes, downloaded: true, attempts: attempt };
+    }
+    throw failure;
+  };
+}
+
+const readRemoteImageOriginal = createRemoteImageOriginalReader({ refresh: argv.includes("--refresh") });
+
+async function sourceBytes(sourceUrl) {
+  if (/^https?:/iu.test(sourceUrl)) return readRemoteImageOriginal(sourceUrl);
+  const filename = absolute(`public/${sourceUrl.replace(/^\/+/, "")}`);
+  if (!filename.startsWith(`${absolute("public")}${path.sep}`)) throw new Error("Local image path leaves public directory");
+  return { bytes: await readFile(filename), downloaded: false, attempts: 0 };
 }
 
 const processing = new Map();
@@ -216,8 +274,10 @@ async function encodeRasterRendition(bytes, width) {
 }
 
 async function saveRendition(buffer, hash, width, height, extension, suffix = `${width}w`) {
-  const src = `media/optimized/${hash.slice(0, 24)}-${suffix}.${extension}`;
-  await writeFile(absolute(`public/${src}`), buffer);
+  const filename = `${hash.slice(0, 24)}-${suffix}.${extension}`;
+  if (!publicRenditionName.test(filename)) throw new Error("Invalid public image rendition filename");
+  const src = `media/optimized/${filename}`;
+  await writeImageAtomically(absolute(`public/${src}`), buffer, 0o644, absolute(cacheDirectory));
   return { src, width, height, bytes: buffer.length, sha256: digest(buffer) };
 }
 
@@ -254,9 +314,9 @@ async function prepareRenditions(bytes, hash, source) {
   if (processing.has(processingKey)) return processing.get(processingKey);
   const promise = (async () => {
     const metadata = await sharp(bytes, { limitInputPixels: false }).metadata();
+    assertSourceImage(metadata, source.sourceUrl);
     const native = metadata.autoOrient || metadata;
     const width = native.width, height = native.height;
-    if (!width || !height) throw new Error("Image dimensions are unreadable");
     const flags = [];
     const format = metadata.format === "jpeg" ? "jpg" : metadata.format === "heif" && metadata.compression === "av1" ? "avif" : metadata.format;
     const unchanged = metadata.format === "svg" || (metadata.pages || 1) > 1;
@@ -304,6 +364,7 @@ async function readyCheckpoint(source) {
     const checkpoint = await readFile(absolute(filename), "utf8").then(JSON.parse).catch(() => publishedRecords.get(source.sourceUrl));
     if (!checkpoint) return null;
     if (checkpoint.status !== "ready" || checkpoint.pipelineVersion !== 1 || checkpoint.source.format === "heif") return null;
+    assertSourceImage(checkpoint.source, source.sourceUrl);
     if (checkpoint.outputs.some(output => output.bytes > maxRenditionBytes)) return null;
     if (!/^https?:/iu.test(source.sourceUrl)) {
       const local = await sourceBytes(source.sourceUrl);
@@ -407,6 +468,7 @@ async function checkInventory(inventory) {
       errors.push(`Image preparation failed for ${sourceLabel} (${source.contexts.join(", ")}): ${record.error || "Unknown error"}`);
       continue;
     }
+    assertSourceImage(record.source, source.sourceUrl);
     if (missingSmallInlineRenditions(source, record).length) errors.push(`Missing small inline renditions: ${source.sourceUrl}`);
     if (JSON.stringify(runtime[source.sourceUrl]) !== JSON.stringify(runtimeEntry(delivered.get(source.sourceUrl)))) errors.push(`Runtime entry differs: ${source.sourceUrl}`);
   }
@@ -445,6 +507,10 @@ async function main() {
     return;
   }
   const inventory = await collectPublicImageSources();
+  const sourceLimit = publishedImageSourceLimit(performanceBudget.publishedImageCorpus);
+  if (inventory.length > sourceLimit) {
+    throw new Error(`Public image inventory contains ${inventory.length} sources, exceeding the limit of ${sourceLimit}.`);
+  }
   if (argv.includes("--check")) return checkInventory(inventory);
   let previous;
   try {

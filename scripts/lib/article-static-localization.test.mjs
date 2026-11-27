@@ -26,6 +26,21 @@ afterEach(() => {
 });
 
 describe("localized static article pages", () => {
+  it("rejects a fixture-shaped build root outside the directly approved temporary boundary", () => {
+    const outside = mkdtempSync(path.join(tmpdir(), "probpera-outside-"));
+    temporaryRoots.push(outside);
+    const nested = mkdtempSync(path.join(outside, "probpera-article-build-"));
+    const build = spawnSync(process.execPath, [path.join(process.cwd(), "scripts", "build-article-pages.mjs")], {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      env: { ...process.env, ARTICLE_BUILD_PROJECT_ROOT: nested },
+    });
+    expect(build.error).toBeUndefined();
+    expect(build.status).toBe(1);
+    expect(build.stderr).toContain("ARTICLE_BUILD_PROJECT_ROOT must refer to a temporary article-build fixture.");
+    expect(existsSync(path.join(nested, "dist"))).toBe(false);
+  });
+
   it("writes an approved English slug and marks it as an English route", () => {
     const fixtureRoot = mkdtempSync(path.join(tmpdir(), "probpera-article-build-"));
     temporaryRoots.push(fixtureRoot);
@@ -34,9 +49,30 @@ describe("localized static article pages", () => {
     mkdirSync(path.join(fixtureRoot, "dist"), { recursive: true });
     writeFileSync(
       path.join(fixtureRoot, "dist", "index.html"),
-      '<!doctype html><html lang="ru"><head><title>Fixture</title><meta name="description" content=""><meta name="robots" content="index,follow"><meta property="og:type" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:url" content="https://stale.example/old/"><link rel="canonical" href=""><link rel="alternate" type="application/rss+xml" href=""><script type="application/ld+json">{"url":"https://stale.example/old/"}</script></head><body><div id="root"></div><script type="module" src="/assets/app.js"></script></body></html>',
+      '<!doctype html><html lang="ru"><head><title>Fixture</title><meta name="description" content=""><meta name="robots" content="index,follow"><meta property="og:type" content=""><meta property="og:title" content=""><meta property="og:description" content=""><meta property="og:image" content=""><meta name="twitter:image" content=""><meta property="og:url" content="https://stale.example/old/"><link rel="canonical" href=""><link rel="alternate" type="application/rss+xml" href=""><script type="application/ld+json">{"url":"https://stale.example/old/"}</script></head><body><div id="root"></div><script type="module" src="/assets/app.js"></script></body></html>',
       "utf8"
     );
+    const sourcePrefix = "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/11/";
+    const leadSource = `${sourcePrefix}first.jpg`;
+    const inlineSource = `${sourcePrefix}second.jpg`;
+    const missingSource = `${sourcePrefix}missing.jpg`;
+    const coverSource = `${sourcePrefix}cover.jpg`;
+    const optimizedCover = "media/optimized/aaaaaaaaaaaaaaaaaaaaaaaa-1280w.webp";
+    const optimizedLead = "media/optimized/bbbbbbbbbbbbbbbbbbbbbbbb-1280w.webp";
+    const optimizedInline = "media/optimized/cccccccccccccccccccccccc-1280w.webp";
+    const inlineThumb = "media/optimized/cccccccccccccccccccccccc-640w.webp";
+    const absentRendition = "media/optimized/dddddddddddddddddddddddd-1280w.webp";
+    const variant = (src, width = 1280) => ({ src, width, height: width / 2 });
+    writeJson(path.join(fixtureRoot, "src/data/imageDelivery.generated.json"), {
+      [leadSource]: { ...variant(optimizedLead), variants: [] },
+      [coverSource]: { ...variant(optimizedCover), variants: [] },
+      [inlineSource]: { ...variant(optimizedInline), variants: [variant(inlineThumb, 640)] },
+      [missingSource]: { ...variant(absentRendition), variants: [] },
+    });
+    mkdirSync(path.join(fixtureRoot, "dist/media/optimized"), { recursive: true });
+    for (const file of [optimizedLead, optimizedCover, optimizedInline, inlineThumb]) {
+      writeFileSync(path.join(fixtureRoot, "dist", file), "test rendition");
+    }
     const sharedDescription =
       "Общее редакционное описание, намеренно повторённое для проверки уникальности итоговых метаданных.";
     const legacyArticle = {
@@ -111,6 +147,7 @@ describe("localized static article pages", () => {
       readingMinutes: 2,
       wordCount: 200,
       headingCount: 1,
+      imageUrl: coverSource,
       documentPath: "cms/articles/cms-fixture.json",
       allowIndexing: true,
       translations: { en: englishTranslation },
@@ -125,7 +162,7 @@ describe("localized static article pages", () => {
         ...article,
         headings: [{ id: "ru", level: 2, text: "Русский раздел" }],
         contentHtml:
-          '<h2>Русский раздел</h2><p>Русский текст со <a href="https://example.test/read/page-article/fixture-related/1">ссылкой на связанный материал</a>.</p>',
+          `<p>Введение.</p><figure><img src="${leadSource}" alt="Ведущая иллюстрация"></figure><h2>Русский раздел</h2><p>Русский текст со <a href="https://example.test/read/page-article/fixture-related/1">ссылкой на связанный материал</a>.</p><figure><img src="${inlineSource}" alt="Вторая иллюстрация"><figcaption><a href="${inlineSource}">Источник</a></figcaption></figure><img src="${missingSource}" alt="Иллюстрация без копии">`,
         plainText: "Русский раздел Русский текст.",
         translations: {
           en: {
@@ -196,6 +233,9 @@ describe("localized static article pages", () => {
     expect(englishSchemaTypes.has("ImageObject")).toBe(true);
     expect(englishSchemaTypes.has("Organization")).toBe(true);
     expect(englishSchemaTypes.has("BreadcrumbList")).toBe(true);
+    expect(englishSchemaNodes.find((node) => node["@id"] === `${englishCanonicalUrl}#primaryimage`)?.url).toBe(`https://example.test/${optimizedCover}`);
+    expect($english('meta[property="og:image"]').attr("content")).toBe(`https://example.test/${optimizedCover}`);
+    expect($english('meta[name="twitter:image"]').attr("content")).toBe(`https://example.test/${optimizedCover}`);
     expect(
       englishSchemaNodes.find((node) => node["@type"] === "Article")
         ?.mainEntityOfPage
@@ -216,6 +256,19 @@ describe("localized static article pages", () => {
     const russianHtml = readFileSync(russianFile, "utf8");
     const $russian = load(russianHtml);
     expect(russianHtml).toContain(`href="${englishCanonicalUrl}"`);
+    expect($russian('meta[property="og:image"]').attr("content")).toBe(`https://example.test/${optimizedCover}`);
+    expect($russian('meta[name="twitter:image"]').attr("content")).toBe(`https://example.test/${optimizedCover}`);
+    expect($russian('img[alt="Вторая иллюстрация"]').attr()).toMatchObject({
+      src: `/${optimizedInline}`, srcset: `/${inlineThumb} 640w, /${optimizedInline} 1280w`,
+    });
+    const feed = load(readFileSync(path.join(fixtureRoot, "dist", "rss.xml"), "utf8"), { xml: true });
+    const item = feed("item").filter((_index, entry) => feed(entry).children("link").text() === article.canonicalUrl);
+    expect(item.children("media\\:content").attr("url")).toBe(leadSource);
+    const feedHtml = load(item.children("content\\:encoded").text(), {}, false);
+    expect(feedHtml('img[alt="Ведущая иллюстрация"]').attr("src")).toBe(leadSource);
+    expect(feedHtml('img[alt="Вторая иллюстрация"]').attr("src")).toBe(`https://example.test/${optimizedInline}`);
+    expect(feedHtml('img[alt="Иллюстрация без копии"]').attr("src")).toBe(missingSource);
+    expect(feedHtml("figcaption a").attr("href")).toBe(inlineSource);
     const schemaTypes = new Set(
       $russian('script[type="application/ld+json"]')
         .toArray()

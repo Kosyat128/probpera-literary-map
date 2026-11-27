@@ -120,7 +120,8 @@ describe('Exact CMS preview serial WebGL followup preserves historical browser a
       'scripts/lib/quality-browser-matrix.test.mjs', 'scripts/lib/reviewed-live-ui-followup.test.mjs',
       '.github/workflows/quality.yml', '.github/workflows/deploy-pages.yml']);
     for (const entry of packet.supportingSources) {
-      expect(read(entry.path)).toBe(historical(entry.path)); expect(sha(read(entry.path))).toBe(entry.sha256Lf);
+      const source = projectPublicationImageFix(entry.path, read(entry.path));
+      expect(source).toBe(historical(entry.path)); expect(sha(source)).toBe(entry.sha256Lf);
     }
     for (const path of ['src/App.tsx', 'src/data/bookArchive.ts', 'unknown.json'])
       expect(project(path, 'unreviewed source\r\n')).toBe('unreviewed source\n');

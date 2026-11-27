@@ -51,7 +51,7 @@ export async function prunePublicImageRenditions() {
   }
   const omittedPaths = new Set(omitted);
   const retiredByPath = new Map(retired.map((output) => [output.src, output]));
-  let removedOverlapping = 0;
+  let removedVariants = 0;
   let removedRetired = 0;
   // The report can select a generated file, but only a directory entry can supply its name.
   for (const entry of await readdir(outputDirectory, { withFileTypes: true })) {
@@ -66,9 +66,9 @@ export async function prunePublicImageRenditions() {
     }
     await removeBuildRendition(path.join(outputDirectory, basename), src, previous);
     if (previous) removedRetired++;
-    else removedOverlapping++;
+    else removedVariants++;
   }
-  console.log(`Omitted ${removedOverlapping} overlapping and ${removedRetired} retired image renditions from dist.`);
+  console.log(`Omitted ${removedVariants} optional and ${removedRetired} retired image renditions from dist.`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

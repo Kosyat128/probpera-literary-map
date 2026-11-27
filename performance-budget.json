@@ -12,7 +12,7 @@
   "publishedImageCorpus": {
     "totalBytes": 671088640,
     "fileCount": 4200,
-    "sourceCount": 1900
+    "sourceAliasCount": 128
   },
   "publishedSiteTotalBytes": 900000000,
   "largestJavaScriptBytes": 2097152,
