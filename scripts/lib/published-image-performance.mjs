@@ -39,7 +39,7 @@ export function measurePublishedImageCorpus({ files, report, budget }) {
   if (errors.length) return { errors, bytes: 0, fileCount: 0, sourceCount: 0 };
   let plan;
   try {
-    plan = planPublicImageRenditions(report);
+    plan = planPublicImageRenditions(report, budget);
   } catch (error) {
     errors.push(error.message);
     return { errors, bytes: 0, fileCount: 0, sourceCount: 0 };

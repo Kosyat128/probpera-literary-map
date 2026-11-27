@@ -1,3 +1,4 @@
+import performanceBudget from "../../performance-budget.json" with { type: "json" };
 import { usesOnlyArticleBodyImages } from "./compact-image-delivery.mjs";
 
 const renditionDirectory = "media/optimized/";
@@ -20,6 +21,69 @@ function nearbyLargerRendition(output, next) {
     next.width * 4 <= output.width * 5 && next.bytes * 4 <= output.bytes * 5;
 }
 
+function isGeneratedDesktopRendition(output) {
+  return (output.width === 1280 || output.width === 1920) &&
+    publicRenditionPath.test(output.src) && output.src.endsWith(`-${output.width}w.webp`);
+}
+
+function hasResponsiveReplacement({ outputs, index }, omitted, maxWidthPercent) {
+  const replacement = outputs.slice(index + 1).find(({ src }) => !omitted.has(src));
+  if (!replacement) return false;
+
+  // An earlier omission may already depend on the current candidate as its next width.
+  for (let i = index; i >= 0; i--) {
+    const output = outputs[i];
+    const limit = i === index ? maxWidthPercent : omitted.get(output.src);
+    if (!limit) break;
+    if (replacement.width <= output.width || replacement.height < output.height ||
+      replacement.width * 100 > output.width * limit || replacement.bytes * 2 > output.bytes * 3) return false;
+  }
+  return true;
+}
+
+function fitPublishedRenditions(images, authored, preservedRetired, overlapping, budget) {
+  const omitted = new Map(overlapping.map((src) => [src, 125]));
+  const files = new Map(preservedRetired.map((output) => [output.src, output]));
+  const candidateUses = new Map();
+  const protectedPaths = new Set(authored);
+  for (const record of images) {
+    if (record.status !== "ready") continue;
+    const outputs = record.outputs.toSorted((left, right) => left.width - right.width);
+    const firstRetained = outputs.find(({ src }) => !omitted.has(src));
+    const articleBodyOnly = usesOnlyArticleBodyImages(record.contexts);
+    for (const [index, output] of outputs.entries()) {
+      if (omitted.has(output.src)) continue;
+      files.set(output.src, output);
+      if (!articleBodyOnly || output === firstRetained || output.src === record.largest?.src ||
+        !isGeneratedDesktopRendition(output)) {
+        protectedPaths.add(output.src);
+        continue;
+      }
+      const uses = candidateUses.get(output.src) ?? [];
+      uses.push({ outputs, index });
+      candidateUses.set(output.src, uses);
+    }
+  }
+
+  let bytes = [...files.values()].reduce((total, output) => total + output.bytes, 0);
+  const overBudget = () => files.size > budget.fileCount || bytes > budget.totalBytes;
+  if (!overBudget()) return overlapping;
+
+  const candidates = [...candidateUses.keys()].filter((src) => !protectedPaths.has(src))
+    .sort((left, right) => files.get(right).bytes - files.get(left).bytes || left.localeCompare(right));
+  for (const maxWidthPercent of [125, 150]) {
+    for (const src of candidates) {
+      if (!overBudget()) return [...omitted.keys()].sort();
+      if (omitted.has(src) || !candidateUses.get(src).every((use) =>
+        hasResponsiveReplacement(use, omitted, maxWidthPercent))) continue;
+      bytes -= files.get(src).bytes;
+      files.delete(src);
+      omitted.set(src, maxWidthPercent);
+    }
+  }
+  return [...omitted.keys()].sort();
+}
+
 export function verifiedRenditionMetadata(output) {
   return publicRenditionPath.test(output?.src || "") && Number.isSafeInteger(output.bytes) &&
     output.bytes > 0 && /^[a-f0-9]{64}$/u.test(output.sha256 || "");
@@ -39,8 +103,8 @@ export function retiredPublicImageRenditions(previous, current) {
     .sort((left, right) => left.src.localeCompare(right.src));
 }
 
-/** Keep archival checkpoints intact; ship only renditions that offer a distinct choice. */
-export function planPublicImageRenditions(report) {
+/** Keep archival checkpoints intact and fit the published responsive choices to the site budget. */
+export function planPublicImageRenditions(report, budget = performanceBudget.publishedImageCorpus) {
   if (!report.delivery) return { records: report.images, omitted: [], retired: [], preservedRetired: [] };
   const retiredRenditions = report.delivery.retiredRenditions ?? [];
   if (report.delivery.version !== 1 || !Array.isArray(report.delivery.authoredRenditions) ||
@@ -59,9 +123,7 @@ export function planPublicImageRenditions(report) {
     const articleBodyOnly = usesOnlyArticleBodyImages(record.contexts);
     for (const [index, output] of outputs.entries()) {
       active.add(output.src);
-      const generatedIntermediate = output.width === 1280 || output.width === 1920;
-      if (articleBodyOnly && generatedIntermediate && output.src !== record.largest?.src &&
-        publicRenditionPath.test(output.src) && output.src.endsWith(`-${output.width}w.webp`) &&
+      if (articleBodyOnly && isGeneratedDesktopRendition(output) && output.src !== record.largest?.src &&
         nearbyLargerRendition(output, outputs[index + 1])) {
         candidates.add(output.src);
       } else {
@@ -76,7 +138,9 @@ export function planPublicImageRenditions(report) {
     }
     historical.add(src);
   }
-  const omitted = [...candidates].filter((src) => !retained.has(src)).sort();
+  const preservedRetired = retiredRenditions.filter(({ src }) => authored.has(src));
+  const overlapping = [...candidates].filter((src) => !retained.has(src)).sort();
+  const omitted = fitPublishedRenditions(report.images, authored, preservedRetired, overlapping, budget);
   const omittedPaths = new Set(omitted);
   return {
     records: report.images.map((record) => record.status !== "ready" ? record : {
@@ -85,6 +149,6 @@ export function planPublicImageRenditions(report) {
     }),
     omitted,
     retired: retiredRenditions.filter(({ src }) => !authored.has(src)),
-    preservedRetired: retiredRenditions.filter(({ src }) => authored.has(src)),
+    preservedRetired,
   };
 }

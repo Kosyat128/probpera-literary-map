@@ -24,6 +24,19 @@ const report = (images, authoredRenditions = []) => ({
   delivery: { version: 1, authoredRenditions },
 });
 
+function pressureArticle(id, desktopBytes, fullWidth = 1536) {
+  const rebase = (output) => ({ ...output, src: output.src.replace(prefix, `media/optimized/${id.repeat(24)}-`) });
+  const narrow = rebase(mobile);
+  const wide = rebase({ ...desktop, bytes: desktopBytes });
+  const full = rebase({ ...largest, width: fullWidth, bytes: Math.ceil(desktopBytes * 1.3) });
+  return {
+    ...article,
+    sourceUrl: `https://cdn.example.org/${id}.png`,
+    largest: full,
+    outputs: [narrow, wide, full],
+  };
+}
+
 describe("published article image renditions", () => {
   it("keeps mobile and full-resolution renditions without modifying the reusable archive", () => {
     const input = report([article]);
@@ -75,6 +88,93 @@ describe("published article image renditions", () => {
     expect(planPublicImageRenditions(report([record])).omitted).toEqual([]);
   });
 
+  it.each([
+    { totalBytes: 3000, fileCount: 6, omitted: [] },
+    { totalBytes: 2250, fileCount: 6, omitted: ["b"] },
+    { totalBytes: 3000, fileCount: 5, omitted: ["b"] },
+    { totalBytes: 2500, fileCount: 4, omitted: ["a", "b"] },
+  ])("fits measured bytes and file count independently and together (%o)", ({ totalBytes, fileCount, omitted }) => {
+    const light = pressureArticle("a", 400);
+    const heavy = pressureArticle("b", 700);
+    const input = report([light, heavy]);
+    const plan = planPublicImageRenditions(input, { totalBytes, fileCount });
+    const byId = { a: light, b: heavy };
+    expect(plan.omitted).toEqual(omitted.map((id) => byId[id].outputs[1].src));
+    expect(plan.records.map(({ outputs, largest: full }) => [outputs[0], outputs.at(-1), full]))
+      .toEqual([[light.outputs[0], light.largest, light.largest], [heavy.outputs[0], heavy.largest, heavy.largest]]);
+    expect(input.images.map(({ outputs }) => outputs.length)).toEqual([3, 3]);
+  });
+
+  it("prefers the closer width tier and breaks equal savings by pathname regardless of inventory order", () => {
+    const first = pressureArticle("a", 400);
+    const equal = pressureArticle("b", 400);
+    const wider = pressureArticle("c", 900, 1850);
+    const budget = { totalBytes: 10_000, fileCount: 8 };
+    for (const rows of [[equal, wider, first], [wider, first, equal]]) {
+      expect(planPublicImageRenditions(report(rows), budget).omitted).toEqual([first.outputs[1].src]);
+      expect(planPublicImageRenditions(report(rows), { ...budget, fileCount: 6 }).omitted)
+        .toEqual([first, equal, wider].map(({ outputs }) => outputs[1].src));
+    }
+  });
+
+  it("keeps an intermediate rendition if its replacement would add more than 50% to reader download bytes", () => {
+    const current = pressureArticle("a", 400);
+    current.largest.bytes = 601;
+    expect(planPublicImageRenditions(report([current]), { totalBytes: 900, fileCount: 2 }).omitted)
+      .toEqual([]);
+  });
+
+  it("keeps an authored path or a shared path required by any owner", () => {
+    const ready = pressureArticle("a", 400);
+    const intermediate = ready.outputs[1];
+    const budget = { totalBytes: 900, fileCount: 2 };
+    expect(planPublicImageRenditions(report([ready], [intermediate.src]), budget).omitted).toEqual([]);
+    for (const changes of [
+      { contexts: ["public/cms/published-content.json:imageUrl"] },
+      { outputs: [intermediate, ready.largest] },
+      { largest: intermediate },
+      { outputs: [ready.outputs[0], intermediate, { ...ready.largest, width: 1930 }] },
+    ]) {
+      const alias = { ...ready, sourceUrl: "https://cdn.example.org/shared.png", ...changes };
+      expect(planPublicImageRenditions(report([ready, alias]), budget).omitted).toEqual([]);
+    }
+    const alias = { ...ready, sourceUrl: "https://cdn.example.org/shared.png" };
+    expect(planPublicImageRenditions(report([ready, alias]), { totalBytes: 1300, fileCount: 3 }).omitted)
+      .toEqual([]);
+    const shared = planPublicImageRenditions(report([ready, alias]), budget);
+    expect(shared.omitted).toEqual([intermediate.src]);
+    expect(shared.records.map(({ outputs }) => outputs.map(({ src }) => src)))
+      .toEqual([[ready.outputs[0].src, ready.largest.src], [ready.outputs[0].src, ready.largest.src]]);
+  });
+
+  it("counts a still-authored retired rendition against the delivery limits", () => {
+    const current = pressureArticle("a", 400);
+    const historical = { src: largest.src, bytes: 150, sha256: "b".repeat(64) };
+    const budget = { totalBytes: 1100, fileCount: 4 };
+    const inventory = report([current]);
+    inventory.delivery.retiredRenditions = [historical];
+    expect(planPublicImageRenditions(inventory, budget).omitted).toEqual([]);
+    inventory.delivery.authoredRenditions = [historical.src];
+    const plan = planPublicImageRenditions(inventory, budget);
+    expect(plan.preservedRetired).toEqual([historical]);
+    expect(plan.omitted).toEqual([current.outputs[1].src]);
+  });
+
+  it.each([
+    { fullWidth: 2400, retainedWidth: 1280 },
+    { fullWidth: 2650, retainedWidth: 1920 },
+  ])("keeps the remaining replacement when adjacent omissions would exceed the width limit (%o)", ({ fullWidth, retainedWidth }) => {
+    const current = pressureArticle("a", 700, fullWidth);
+    const wide = {
+      ...current.outputs[1], src: current.outputs[1].src.replace("1280w", "1920w"),
+      width: 1920, height: 900, bytes: 680,
+    };
+    current.outputs.splice(2, 0, wide);
+    const plan = planPublicImageRenditions(report([current]), { totalBytes: 1500, fileCount: 2 });
+    expect(plan.records[0].outputs.map(({ width }) => width)).toEqual([640, retainedWidth, fullWidth]);
+    expect(plan.omitted).toHaveLength(1);
+  });
+
   it("retires replaced outputs across builds while protecting active files and authored links", () => {
     const previous = {
       version: 1, completed: true,
@@ -115,6 +215,7 @@ describe("published article image renditions", () => {
         copyFile(new URL("../prune-public-image-renditions.mjs", import.meta.url), scriptPath),
         copyFile(new URL("./public-image-rendition-plan.mjs", import.meta.url), path.join(root, "scripts/lib/public-image-rendition-plan.mjs")),
         copyFile(new URL("./compact-image-delivery.mjs", import.meta.url), path.join(root, "scripts/lib/compact-image-delivery.mjs")),
+        copyFile(new URL("../../performance-budget.json", import.meta.url), path.join(root, "performance-budget.json")),
         writeFile(path.join(root, "reports/public-image-delivery.json"), JSON.stringify(inventory)),
         writeFile(path.join(root, "dist/index.html"), "<html></html>"),
         writeFile(path.join(root, "public", desktop.src), content),

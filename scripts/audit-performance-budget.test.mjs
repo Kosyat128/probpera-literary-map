@@ -251,6 +251,37 @@ describe("performance budget audit", () => {
     });
   });
 
+  it("audits the same pressure-selected delivery files under the configured corpus budget", async () => {
+    const base = "media/optimized/1123456789abcdef01234567-";
+    const image = (suffix, width, height, bytes) => ({
+      src: `${base}${suffix}.webp`, width, height, bytes,
+      sha256: createHash("sha256").update(Buffer.alloc(bytes)).digest("hex"),
+    });
+    const mobile = image("640w", 640, 427, 100);
+    const desktop = image("1280w", 1280, 853, 400);
+    const largest = image("original", 1536, 1024, 520);
+    const publishedImageReport = {
+      version: 1,
+      completed: true,
+      delivery: { version: 1, authoredRenditions: [] },
+      images: [{
+        sourceUrl: "https://example.org/article-image.png", status: "ready",
+        contexts: ["public/cms/articles/example.json"], largest, outputs: [mobile, desktop, largest],
+      }],
+      summary: { inventoriedSources: 1, processedSources: 1, ready: 1, failed: 0, allRenditionBytes: 1020 },
+    };
+    const options = { publishedImageBudget: { totalBytes: 650, fileCount: 2, sourceCount: 1 }, publishedImageReport };
+    const fit = await fixture({ ...options, publishedImageFiles: [mobile, largest] });
+    const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd: fit });
+    expect(stdout).toContain("PASS published image corpus total: 620 / 650 bytes");
+    expect(stdout).toContain("PASS published image corpus count: 2 / 2 files");
+
+    const accidental = await fixture({ ...options, publishedImageFiles: [mobile, desktop, largest] });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd: accidental })).rejects.toMatchObject({
+      stderr: expect.stringContaining(`unlisted published image file: ${desktop.src}`),
+    });
+  });
+
   it("rejects files omitted from the published image provenance", async () => {
     const cwd = await fixture({ publishedImageFiles: [{ src: publishedImage, bytes: 200 }] });
     await writeFile(path.join(cwd, "dist", "media", "optimized", "unlisted.js"), "export default {};");
