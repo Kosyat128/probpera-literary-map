@@ -39,7 +39,13 @@ describe("durable public publication requests", () => {
       "if: needs.build.outputs.publication_queue_marker != ''"
     );
     expect(workflow).toContain(
-      "--finalize=${{ needs.build.outputs.publication_queue_marker }}"
+      '--finalize="$CANDIDATE_PUBLICATION_QUEUE_MARKER"'
+    );
+    expect(workflow).toContain(
+      "CANDIDATE_PUBLICATION_QUEUE_MARKER: ${{ needs.build.outputs.publication_queue_marker }}"
+    );
+    expect(workflow).toContain(
+      "CANDIDATE_PENDING_OUTBOX_IDS: ${{ needs.build.outputs.publication_pending_outbox_ids }}"
     );
   });
 });

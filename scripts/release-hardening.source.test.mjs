@@ -325,7 +325,7 @@ describe("release workflow hardening", () => {
     const source = read("scripts/publish-scheduled-content.mjs");
     expect(source).toContain('status: "eq.approved"');
     expect(source).toContain('scheduled_at: `lte.${now}`');
-    expect(source).toContain("/rest/v1/rpc/publish_site_design_change_set");
+    expect(source).toContain('new URL("/rest/v1/rpc/publish_site_design_change_set", supabaseUrl)');
     expect(source).toContain("p_expected_cas_version: changeSet.cas_version");
     expect(source).toContain(
       "publishedArticles.length + publishedDesignChangeSets.length"

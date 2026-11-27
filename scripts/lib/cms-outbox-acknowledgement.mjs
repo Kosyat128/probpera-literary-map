@@ -56,7 +56,9 @@ export async function collectPendingOutboxIds({ supabaseUrl, serviceKey, outboxH
       order: "id.asc",
       limit: String(limit),
     });
-    const response = await fetchImpl(`${origin}/rest/v1/public_build_outbox?${query}`, {
+    const url = new URL("/rest/v1/public_build_outbox", origin);
+    url.search = query.toString();
+    const response = await fetchImpl(url, {
       headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` },
       redirect: "error",
       signal: AbortSignal.timeout(15_000),

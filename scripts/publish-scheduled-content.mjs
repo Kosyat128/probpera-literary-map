@@ -148,6 +148,7 @@ if (!dueArticles.length) {
 
 const publishedDesignChangeSets = [];
 if (!articlesOnly) {
+  const designEndpoint = new URL("/rest/v1/site_design_change_sets", supabaseUrl);
   const designQuery = new URLSearchParams({
     select: "id,cas_version,scheduled_at",
     status: "eq.approved",
@@ -155,8 +156,9 @@ if (!articlesOnly) {
     order: "scheduled_at.asc",
     limit: "25",
   });
+  designEndpoint.search = designQuery.toString();
   const dueDesignResponse = await fetch(
-    `${supabaseUrl}/rest/v1/site_design_change_sets?${designQuery.toString()}`,
+    designEndpoint,
     { headers, redirect: "error" }
   );
   if (!dueDesignResponse.ok) {
@@ -165,9 +167,10 @@ if (!articlesOnly) {
     );
   }
   const dueDesignChangeSets = await dueDesignResponse.json();
+  const publishDesignEndpoint = new URL("/rest/v1/rpc/publish_site_design_change_set", supabaseUrl);
   for (const changeSet of dueDesignChangeSets) {
     const publishResponse = await fetch(
-      `${supabaseUrl}/rest/v1/rpc/publish_site_design_change_set`,
+      publishDesignEndpoint,
       {
         method: "POST",
         redirect: "error",

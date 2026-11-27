@@ -14,6 +14,7 @@ describe("capture the frozen pending outbox", () => {
     const pages = [response("9"), response("11", "9223372036854775806"), response()];
     const seen = [];
     const fetchImpl = vi.fn(async (input, options) => {
+      expect(input).toBeInstanceOf(URL);
       const url = new URL(input);
       expect(url.origin).toBe(captureOptions.supabaseUrl);
       expect(url.pathname).toBe("/rest/v1/public_build_outbox");
