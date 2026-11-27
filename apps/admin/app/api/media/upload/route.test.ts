@@ -2,12 +2,17 @@ import sharp from "sharp";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  staff: vi.fn(), upload: vi.fn(), insert: vi.fn(), build: vi.fn(), remove: vi.fn(),
+  staff: vi.fn(), upload: vi.fn(), insert: vi.fn(), rpc: vi.fn(), dispatch: vi.fn(), remove: vi.fn(),
 }));
 vi.mock("@/lib/auth", () => ({ requireStaff: mocks.staff }));
-vi.mock("@/lib/publication", () => ({ requestPublicBuild: mocks.build }));
+vi.mock("@/lib/publication", () => import("../../../../lib/publication"));
+vi.mock("@/lib/public-build", () => ({ triggerPublicBuild: mocks.dispatch }));
+vi.mock("@/lib/auto-translate-published-article-premium", () => ({
+  ensurePublishedArticlePremiumEnglish: vi.fn(),
+}));
 vi.mock("@/lib/supabase/server", () => ({
   createServerSupabaseClient: async () => ({
+    rpc: mocks.rpc,
     storage: { from: () => ({
       upload: mocks.upload,
       remove: mocks.remove,
@@ -35,7 +40,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.staff.mockResolvedValue({ user: { id: "local-staff" } });
   mocks.upload.mockResolvedValue({ error: null });
-  mocks.build.mockResolvedValue({ state: "queued" });
+  mocks.rpc.mockResolvedValue({ data: 42, error: null });
 });
 
 describe("media upload format validation before storage", () => {
@@ -57,6 +62,20 @@ describe("media upload format validation before storage", () => {
     expect((await POST(request(bytes, "image/jpeg", 64, 96))).status).toBe(200);
   });
 
+  it("leaves an uploaded image in the durable queue for a scheduled build", async () => {
+    const bytes = await source().webp().toBuffer();
+    const response = await POST(request(bytes, "image/webp"));
+
+    expect(await response.json()).toMatchObject({ publication: "queued" });
+    expect(mocks.rpc).toHaveBeenCalledExactlyOnceWith("enqueue_public_build_request", expect.objectContaining({
+      p_entity_type: "media",
+      p_entity_id: "local-test-media",
+      p_reason: "media.uploaded",
+    }));
+    expect(mocks.dispatch).not.toHaveBeenCalled();
+    expect(mocks.insert).not.toHaveBeenCalledWith("admin_audit_log", expect.objectContaining({ action: "public_build.dispatched" }));
+  });
+
   it("preserves both frames of animated WebP", async () => {
     const pixels = Buffer.alloc(96 * 128 * 4, 255);
     pixels.fill(80, 96 * 64 * 4);
@@ -74,7 +93,8 @@ describe("media upload format validation before storage", () => {
     expect((await POST(request(new TextEncoder().encode("<svg><script/></svg>"), "image/png"))).status).toBe(415);
     expect(mocks.upload).not.toHaveBeenCalled();
     expect(mocks.insert).not.toHaveBeenCalled();
-    expect(mocks.build).not.toHaveBeenCalled();
+    expect(mocks.rpc).not.toHaveBeenCalled();
+    expect(mocks.dispatch).not.toHaveBeenCalled();
   });
 
   it("keeps the existing staff authorization gate", async () => {
