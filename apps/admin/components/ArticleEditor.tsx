@@ -2063,8 +2063,8 @@ export default function ArticleEditor({
       if (overrideInput instanceof HTMLInputElement) overrideInput.value = "0";
     }
 
-    // Every successful or rejected save redirects. A transport failure or a
-    // response without a redirect does not tell us whether the write happened.
+    // Confirmed results redirect. Keep the saved browser copy and the repeat
+    // guard when the server cannot confirm a mutation or the response is lost.
     const submittedTitle = String(formData.get("title") || "").trim().slice(0, 120);
     submissionUnconfirmedRef.current = true;
     setUnconfirmedSubmissionTitle(submittedTitle);

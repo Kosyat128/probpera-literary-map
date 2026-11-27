@@ -43,7 +43,10 @@ const entry = `
     calls: [],
     submit(data) {
       fixture.calls.push(Object.fromEntries(data.entries()));
-      return new Promise((resolve, reject) => { fixture.reject = reject; });
+      return new Promise((resolve, reject) => {
+        fixture.resolve = resolve;
+        fixture.reject = reject;
+      });
     },
     redirect(to) { fixture.reject(getRedirectError(to, "push")); },
     loadAutosave() {
@@ -197,6 +200,25 @@ test("one release stays pending and a lost response retains the article for a ch
     content_html: requests[0].content_html, content_json: requests[0].content_json,
     english_content_html: requests[0].english_content_html, english_content_json: requests[0].english_content_json,
   });
+});
+
+test("an unconfirmed server receipt preserves the copy and keeps repeated release blocked", async ({ page }) => {
+  await page.goto(`${origin}/editor`);
+  await expect(page.locator(".tiptap")).toContainText("Авторский текст");
+  const title = page.getByRole("textbox", { name: "Заголовок", exact: true });
+  await title.fill(titleBefore);
+  const release = page.getByRole("button", { name: "Опубликовать на русском", exact: true });
+  await release.click();
+  await expect.poll(() => page.evaluate(() => window.fixture.calls.length)).toBe(1);
+
+  await page.evaluate(() => window.fixture.resolve({ outcome: "unconfirmed" }));
+
+  const check = page.getByRole("link", { name: "Проверить сохранение в админке" });
+  await expect(check).toBeVisible();
+  await expect(release).toBeDisabled();
+  await expect(title).toHaveValue(titleBefore);
+  await expect.poll(() => page.evaluate(() => Object.values(localStorage).join(" "))).toContain(titleBefore);
+  expect(await page.evaluate(() => window.fixture.calls.length)).toBe(1);
 });
 
 test("reloading an in-flight save on an old success URL keeps the recovery copy", async ({ page }) => {

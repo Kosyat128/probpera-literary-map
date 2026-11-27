@@ -53,6 +53,11 @@ jobs:
         run: |
           set -Eeuo pipefail
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          node --input-type=module <<'NODE'
+          import {checkDeployedReleaseCodeHead} from './scripts/check-deployed-release-head.mjs';
+          const head=await checkDeployedReleaseCodeHead({EXPECTED_MAIN_SHA:process.env.EXPECTED_MAIN_SHA,PUBLIC_SITE_URL:'https://probpera.ru'});
+          if(head.codePending)throw Error('public_site_release_unconfirmed');
+          NODE
           # Readers must understand the additional publication-date provenance
           # before preparation can publish any new records using those methods.
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"

@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import type { createServerSupabaseClient } from "@/lib/supabase/server";
+import { requestArticleMutation, UnconfirmedArticleSaveError } from "./article-save-result";
 
 type ServerSupabaseClient = NonNullable<
   Awaited<ReturnType<typeof createServerSupabaseClient>>
@@ -176,7 +177,8 @@ export function previewEnglishTranslationWithWorkingDraft<
   };
 }
 
-function workingDraftRpcError(error: { message?: string } | null | undefined) {
+function workingDraftRpcError(error: { message?: string } | null | undefined, status?: number) {
+  if (status === 402) return "Не удалось безопасно сохранить рабочий черновик. Редакционная база временно ограничила запросы.";
   const message = String(error?.message || "");
   if (
     message.includes("article-version-conflict") ||
@@ -190,7 +192,7 @@ function workingDraftRpcError(error: { message?: string } | null | undefined) {
   if (message.includes("published-article-required")) {
     return "Отдельный рабочий черновик доступен только для опубликованной статьи.";
   }
-  if (message.includes("staff-required")) {
+  if (status === 401 || status === 403 || message.includes("staff-required")) {
     return "Недостаточно прав для сохранения рабочего черновика.";
   }
   if (message.includes("working-draft-not-found")) {
@@ -217,15 +219,16 @@ export async function saveArticleWorkingDraftRpc(
       "Не удалось безопасно сохранить рабочий черновик. Проверьте поля статьи."
     );
   }
-  const { data, error } = await supabase.rpc("save_article_working_draft", {
+  const args = {
     p_article_id: input.articleId,
     p_base_article_updated_at: input.baseArticleUpdatedAt,
     p_payload: articlePayload.data,
     p_english_payload: englishEnvelope.data,
     p_expected_english_updated_at: input.expectedEnglishUpdatedAt,
     p_expected_version: input.expectedVersion,
-  });
-  if (error) throw new Error(workingDraftRpcError(error));
+  };
+  const { data, error, status } = await requestArticleMutation(() => supabase.rpc("save_article_working_draft", args));
+  if (error) throw new Error(workingDraftRpcError(error, status));
 
   const result = z
     .object({
@@ -236,9 +239,7 @@ export async function saveArticleWorkingDraftRpc(
     .strict()
     .safeParse(data);
   if (!result.success || result.data.articleId !== input.articleId) {
-    throw new Error(
-      "Рабочий черновик сохранён с некорректным ответом сервера. Обновите страницу перед следующей правкой."
-    );
+    throw new UnconfirmedArticleSaveError();
   }
   return result.data;
 }

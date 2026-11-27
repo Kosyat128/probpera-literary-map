@@ -255,6 +255,11 @@ export async function validateDailyLedger(value, current = new Date(), options =
   if (value.providerStop !== null && (!object(value.providerStop)
     || !["ai_quota_exceeded", "ai_http_429"].includes(value.providerStop.reason)
     || !validTimestamp(value.providerStop.retryAfterAt)
+    || value.providerStop.observedAt !== undefined && (!validTimestamp(value.providerStop.observedAt)
+      || Date.parse(value.providerStop.observedAt) > current.getTime()
+      || Date.parse(value.providerStop.observedAt) >= Date.parse(value.providerStop.retryAfterAt)
+      || value.providerStop.reason === "ai_quota_exceeded"
+        && value.providerStop.retryAfterAt !== nextDailyNewsAiQuotaReset(new Date(value.providerStop.observedAt)))
     || value.providerStop.httpStatus != null && !Number.isInteger(value.providerStop.httpStatus))) fail("daily_provider_stop_invalid");
   return value;
 }
@@ -398,7 +403,9 @@ function messagesFor(phase, candidate, draft, records) {
     allowedTopics: candidate.source.topics, ...(phase === "review" ? { draft,
       recentExisting: recentReviewRecords(records) } : {}) }) }];
 }
-function nextUtcDay(current) { return new Date(Date.UTC(current.getUTCFullYear(), current.getUTCMonth(), current.getUTCDate() + 1)).toISOString(); }
+export function nextDailyNewsAiQuotaReset(current) {
+  return new Date(Date.UTC(current.getUTCFullYear(), current.getUTCMonth(), current.getUTCDate() + 1)).toISOString();
+}
 function nextPreparationSlot(current) {
   const next = (Math.floor(current.getTime() / NEWS_PREPARATION_SLOT_MS) + 1) * NEWS_PREPARATION_SLOT_MS;
   return new Date(next).toISOString();
@@ -429,7 +436,7 @@ async function approvedRecord(candidate, draft, review, current, draftEvidence) 
 }
 /** Serial caller owns the writer fence. Provider failures stop requests; prior accepted records are never rewritten. */
 export async function runDailyNewsAutomation({ intake, previous = null, ai, reviewed = [], withdrawals = [],
-  current = new Date(), sources = LITERARY_NEWS_SOURCES, maxAiCalls = 30,
+  current = new Date(), now = () => current, sources = LITERARY_NEWS_SOURCES, maxAiCalls = 30,
   saveCheckpoint = async () => {}, photoReadiness = async () => ({ status: "photo_held", reason: "rights_unverified" }) } = {}) {
   if (!Number.isFinite(current.getTime()) || !Array.isArray(intake?.details) || intake.details.length > 40
     || !Array.isArray(reviewed) || !Array.isArray(withdrawals) || !Number.isSafeInteger(maxAiCalls) || maxAiCalls < 0 || maxAiCalls > 60)
@@ -538,11 +545,15 @@ export async function runDailyNewsAutomation({ intake, previous = null, ai, revi
       stoppedReason = safeError(error); providerHttpStatus = error?.httpStatus ?? null;
       if (stoppedReason === "daily_checkpoint_unconfirmed") throw error;
       if (["ai_quota_exceeded", "ai_http_429"].includes(stoppedReason)) {
+        // The editorial evaluation time stays frozen. The provider can refuse
+        // after midnight while inference is running, or before a slow write.
+        const observed = now();
+        const observedAt = Number.isFinite(observed?.getTime?.()) && observed > current ? observed : current;
         const temporaryCapacity = stoppedReason === 'ai_http_429' && providerHttpStatus === 429
           && error?.providerCode === DAILY_NEWS_AI_CAPACITY_CODE;
         if (temporaryCapacity) providerCode = DAILY_NEWS_AI_CAPACITY_CODE;
-        state.providerStop = { reason: stoppedReason, httpStatus: providerHttpStatus,
-          retryAfterAt: temporaryCapacity ? nextPreparationSlot(current) : nextUtcDay(current) };
+        state.providerStop = { reason: stoppedReason, httpStatus: providerHttpStatus, observedAt: observedAt.toISOString(),
+          retryAfterAt: temporaryCapacity ? nextPreparationSlot(observedAt) : nextDailyNewsAiQuotaReset(observedAt) };
       }
       break;
     }
@@ -555,13 +566,16 @@ export async function runDailyNewsAutomation({ intake, previous = null, ai, revi
   const inferenceBudget = { ...dailyInferenceBudgetGate({ ...dailyBudget, phase: budgetPhase, current,
     limits: DAILY_NEWS_LIMITS }), phase: budgetPhase };
   const budgetDeferred = ['ai_daily_budget_deferred', 'ai_daily_candidate_budget_deferred'].includes(stoppedReason);
-  return { state, profile, report: { schemaVersion: 1, checkedAt: current.toISOString(), day, window: DAILY_NEWS_WINDOW,
+  const { observedAt: providerObservedAt, retryAfterAt: providerRetryAt } = state.providerStop || {};
+  return { state, profile, report: { schemaVersion: 1,
+    checkedAt: stoppedReason === "ai_quota_exceeded" && providerObservedAt ? providerObservedAt : current.toISOString(), day, window: DAILY_NEWS_WINDOW,
     status: !withinWindow ? "outside_admission_window" : budgetDeferred ? "budget_deferred"
       : stoppedReason ? "provider_degraded" : minimumDeficit ? "supply_degraded" : "target_met",
     stoppedReason, providerHttpStatus, ...(providerCode !== null ? { providerCode } : {}),
+    ...(providerObservedAt ? { providerObservedAt } : {}),
     newlyAccepted, admittedToday, minimum: DAILY_NEWS_LIMITS.minimum, maximum: DAILY_NEWS_LIMITS.maximum,
     draftProtocolVersion: DAILY_NEWS_DRAFT_PROTOCOL,
-    retryAfterAt: budgetDeferred ? inferenceBudget.nextEligibleAt : providerCode !== null ? state.providerStop.retryAfterAt : null,
+    retryAfterAt: budgetDeferred ? inferenceBudget.nextEligibleAt : providerRetryAt ?? null,
     inferenceBudget,
     minimumDeficit, targetDeficit: Math.max(0, DAILY_NEWS_LIMITS.maximum - admittedToday), acceptedHistorical: state.accepted.length,
     aiCalls: calls, reservedAiCallsToday: dailyBudget.reservedCalls, draftRequestsToday: dailyBudget.draftRequests, totalSourceDetails: intake.details.length, heldCount: held.length, photoReady,
@@ -584,7 +598,8 @@ export async function syncDailyNewsAutomation({ storage, local = null, intake, p
   const cooling = state.providerStop && Date.parse(state.providerStop.retryAfterAt) > startedAt.getTime();
   const collected = intake || (cooling ? { details: [] } : await prepareIntake());
   // Fetch timestamps precede the evaluation clock; observedAt never substitutes for publication.
-  const result = await runDailyNewsAutomation({ ...options, previous: state, current: current || now(), intake: collected });
+  const result = await runDailyNewsAutomation({ ...options, previous: state, current: current || now(),
+    now: current ? () => current : now, intake: collected });
   await storage.write(DAILY_NEWS_LEDGER_KEY, result.state);
   await storage.write(DAILY_NEWS_PROFILE_KEY, result.profile);
   result.report.publicationConfirmed = true;

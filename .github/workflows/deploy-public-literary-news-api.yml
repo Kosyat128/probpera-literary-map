@@ -1,0 +1,41 @@
+name: Deploy public literary news API
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-literary-news-api-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Deploy and verify the public literary news API
+        shell: bash
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          NEWS_RELEASE_SHA: ${{ github.sha }}
+        run: |
+          test "$GITHUB_REF" = "refs/heads/main"
+          news_main_head="$(git ls-remote --exit-code origin refs/heads/main | cut -f1)"
+          test "$NEWS_RELEASE_SHA" = "$news_main_head"
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news.jsonc --var "NEWS_RELEASE_SHA:$NEWS_RELEASE_SHA"
+          node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"

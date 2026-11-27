@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { editorialPreviewFonts } from "@/components/EditorialPreviewFonts";
 import previewStyles from "@/components/EditorialPreview.module.css";
 import { articleEditPath } from "@/lib/admin-routes";
 import { formatDate } from "@/lib/format";
 import { operatorDataError } from "@/lib/operator-data-error";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { ArticleReadUnavailable, isHiddenArticleRead } from "../../article-read-unavailable";
 import {
   parseArticleWorkingDraft,
   previewEnglishTranslationWithWorkingDraft,
@@ -35,10 +37,10 @@ export default async function ArticlePreviewPage({
   ) =>
     `/articles/${id}/preview?locale=${nextLocale}&viewport=${nextViewport}`;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) notFound();
+  if (!supabase) return <AdminDependencyState />;
   const [
-    { data: article },
-    { data: englishTranslation },
+    { data: article, error: articleLoadError, status: articleReadStatus },
+    { data: englishTranslation, error: englishTranslationLoadError },
     { data: workingDraftResult, error: workingDraftQueryError },
     { data: categoriesResult },
   ] = await Promise.all([
@@ -65,7 +67,14 @@ export default async function ArticlePreviewPage({
       .select("id,name")
       .eq("is_visible", true),
   ]);
+  if (articleLoadError) {
+    if (isHiddenArticleRead(articleReadStatus, articleLoadError.code)) notFound();
+    return <ArticleReadUnavailable retryHref={previewHref()} />;
+  }
   if (!article) notFound();
+  if (locale === "en" && englishTranslationLoadError) {
+    return <ArticleReadUnavailable retryHref={previewHref()} />;
+  }
   let workingDraft = null;
   let workingDraftLoadError = workingDraftQueryError
     ? operatorDataError("articles", "load")

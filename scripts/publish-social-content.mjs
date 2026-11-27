@@ -3,6 +3,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
+import { createDzenRssVerifier } from "./lib/dzen-rss-verification.mjs";
 import { trustedHttpsUrl, trustedProbperaOrigin, trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -12,6 +13,7 @@ const rawSupabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_UR
 const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
 const siteUrl = trustedProbperaOrigin(process.env.PUBLIC_SITE_URL || "https://probpera.ru");
+const rssUrl = "https://probpera.ru/rss.xml";
 const requiredPlatforms = new Set(
   (process.env.SOCIAL_REQUIRED_PLATFORMS || "dzen")
     .split(",")
@@ -500,36 +502,26 @@ async function publishOk(article) {
   return { ok: true, state: "published", remoteId: String(result || "") || null };
 }
 
-async function verifyDzenRss(article) {
-  const rssUrl = "https://probpera.ru/rss.xml";
+const verifyDzenRssEntry = createDzenRssVerifier(readDzenRss);
+
+async function readDzenRss() {
   const configuredRssUrl = (process.env.DZEN_RSS_URL || `${siteUrl}/rss.xml`).trim();
   if (configuredRssUrl !== rssUrl) {
     throw new Error("DZEN_RSS_URL must be the canonical https://probpera.ru/rss.xml feed.");
   }
-  const localRssPath = path.join(projectRoot, "dist", "rss.xml");
-  let rss = "";
-  try {
-    rss = await fs.readFile(localRssPath, "utf8");
-  } catch {
-    const response = await fetch(rssUrl, {
-      signal: AbortSignal.timeout(30_000),
-      redirect: "error",
-    });
-    if (!response.ok || response.redirected || response.url !== rssUrl) {
-      throw new Error(`RSS request failed or redirected (${response.status}).`);
-    }
-    rss = await response.text();
+  const response = await fetch(rssUrl, {
+    signal: AbortSignal.timeout(30_000),
+    redirect: "error",
+  });
+  if (!response.ok || response.redirected || response.url !== rssUrl) {
+    throw new Error(`RSS request failed or redirected (${response.status}).`);
   }
-  const canonical = articleUrl(article);
-  if (!rss.includes(canonical) && !rss.includes(article.slug)) {
-    throw new Error("Новая статья ещё не появилась в RSS после сборки.");
-  }
+  return response.text();
+}
+
+async function verifyDzenRss(article) {
   const dzenCover = dzenCoverForArticle(article);
-  if (dzenCover && !rss.replaceAll("&amp;", "&").includes(dzenCover.url)) {
-    throw new Error(
-      "Первая пригодная иллюстрация статьи ещё не стала обложкой в RSS Дзена."
-    );
-  }
+  await verifyDzenRssEntry(articleUrl(article), dzenCover);
   return {
     ok: true,
     state: "rss-ready",

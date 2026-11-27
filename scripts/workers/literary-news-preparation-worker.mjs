@@ -4,11 +4,13 @@ import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
 import {canonicalUrl,validTimestamp} from '../lib/literary-news-reviewed.mjs';
 import {newsJsonStream} from '../lib/literary-news-json.mjs';
 import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
-import {runDailyNewsAutomation,mergeDailyLedgers,validateDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
+import {runDailyNewsAutomation,mergeDailyLedgers,validateDailyLedger,checkedDailyCandidate,
+  nextDailyNewsAiQuotaReset} from '../lib/literary-news-daily-automation.mjs';
 import {createPreparationBindingAi} from '../lib/literary-news-preparation-binding-ai.mjs';
 export {createPreparationBindingAi} from '../lib/literary-news-preparation-binding-ai.mjs';
 import {DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_OWNER_KEY,DAILY_NEWS_WINDOW,DAILY_NEWS_LIMITS,
-  dailyNewsDay,dailyNewsDigest,approvedDailySource,makeDailyApprovedPayload,validateDailyApprovedPayload,validateDailyNewsRecord} from '../lib/literary-news-daily-profile.mjs';
+  dailyNewsDay,dailyNewsDigest,dailyPublicationEpoch,approvedDailySource,makeDailyApprovedPayload,validateDailyApprovedPayload,validateDailyNewsRecord} from '../lib/literary-news-daily-profile.mjs';
+import {dailyInferenceBudgetGate} from '../lib/literary-news-inference-budget.mjs';
 import {acquireNewsPreparationLease,stageNewsPreparationCheckpoint,confirmNewsPreparationCheckpoint,stageNewsPreparationPublication,
   confirmNewsPreparationPublication,releaseNewsPreparationLease,assertNewsPreparationWrite,readNewsPreparationPayload,
   NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
@@ -109,6 +111,10 @@ async function readJsonBinding(kv,key,maxBytes,{onEntry}={}){
 export async function boundedNativeNewsCandidates(intake,state,current,sources=LITERARY_NEWS_SOURCES){
   const maximum=(state.accepted?.length||0)>=3000?2:5;
   const details=[],held=[],cache=new Map((state.reviewCache||[]).map(row=>[row.key,row]));
+  const day=dailyNewsDay(current),used=state.inferenceBudgets?.find(row=>row.day===day);
+  const prioritizeRetained=used&&!dailyInferenceBudgetGate({...used,current,phase:'draft'}).allowed
+    &&dailyInferenceBudgetGate({...used,current,phase:'review'}).allowed;
+  let retained=null;
   for(const detail of intake.details||[]){
     let candidate;
     try{candidate=await checkedDailyCandidate(detail,current,sources);}
@@ -118,7 +124,16 @@ export async function boundedNativeNewsCandidates(intake,state,current,sources=L
       held.push({sourceId:candidate.source.id,reason:cached.reason,protocolVersion:DAILY_NEWS_DRAFT_PROTOCOL,
         ...(DAILY_NEWS_DRAFT_DETAIL_REASONS.includes(cached.detailReason)?{detailReason:cached.detailReason}:{})});continue;
     }
+    if(prioritizeRetained&&!retained&&cached?.status==='draft'&&!cached.review&&cached.protocolVersion===DAILY_NEWS_DRAFT_PROTOCOL
+      &&cached.sourceUrl===candidate.url&&cached.draftEvidence?.textSha256===candidate.textSha256
+      &&Date.parse(cached.checkedAt)>=dailyPublicationEpoch(candidate.publication.value))retained=detail;
     if(details.length<maximum)details.push(detail);
+  }
+  // An unreleased draft slot must not hide one reusable, currently grounded draft from its regular review.
+  if(retained){
+    const index=details.indexOf(retained);
+    if(index>=0)details.splice(index,1);else details.pop();
+    details.unshift(retained);
   }
   return{intake:{...intake,details},held,maximum};
 }
@@ -148,11 +163,15 @@ async function prepareNativeNews(env,storage,{now=()=>new Date(),collect=collect
   if(owner===null&&!bootstrap)fail('daily_native_owner_not_authorized');
   const previousReport=await readJsonBinding(env.NEWS_STATE,PREPARATION_REPORT_KEY,65536);
   if(previousReport?.stoppedReason==='ai_quota_exceeded'){
-    if(!validTimestamp(previousReport.checkedAt)||Date.parse(previousReport.checkedAt)>started.getTime())
+    const hasProviderTime=previousReport.providerObservedAt!==undefined;
+    const observedAt=hasProviderTime?previousReport.providerObservedAt:previousReport.checkedAt;
+    if(!validTimestamp(previousReport.checkedAt)||Date.parse(previousReport.checkedAt)>started.getTime()
+      ||!validTimestamp(observedAt)||Date.parse(observedAt)>started.getTime())
       fail('daily_provider_quota_checkpoint_uncertain');
-    const stoppedDay=new Date(previousReport.checkedAt).toISOString().slice(0,10);
-    if(stoppedDay===started.toISOString().slice(0,10))return{status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',
-      checkedAt:previousReport.checkedAt,retryAfterAt:new Date(Date.UTC(started.getUTCFullYear(),started.getUTCMonth(),started.getUTCDate()+1)).toISOString(),
+    const retryAfterAt=nextDailyNewsAiQuotaReset(new Date(observedAt));
+    if(hasProviderTime&&previousReport.retryAfterAt!==retryAfterAt)fail('daily_provider_quota_checkpoint_uncertain');
+    if(Date.parse(retryAfterAt)>started.getTime())return{status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',
+      checkedAt:previousReport.checkedAt,retryAfterAt,
       publicationConfirmed:false,deliveryConfirmed:false};
   }
   let previous=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_LIMITS.ledgerBytes,{onEntry:async record=>{
@@ -222,9 +241,9 @@ async function prepareNativeNews(env,storage,{now=()=>new Date(),collect=collect
       // deleting its checkpoint or changing the durable inference counters.
       reviewCache:state.reviewCache.filter(row=>row.protocolVersion===DAILY_NEWS_DRAFT_PROTOCOL),intakeHistory:state.intakeHistory,
       fetchImpl:createPreparationSourceFetch({fetchImpl,current:now,deadline})});
-    const bounded=await boundedNativeNewsCandidates(intake,state,now());
-    const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:bounded.maximum*2,
-      ai:createPreparationBindingAi(env.AI,{deadline,now:()=>now().getTime()}),saveCheckpoint:checkpoint});
+    const current=now(),bounded=await boundedNativeNewsCandidates(intake,state,current);
+    const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current,maxAiCalls:bounded.maximum*2,
+      now,ai:createPreparationBindingAi(env.AI,{deadline,now:()=>now().getTime()}),saveCheckpoint:checkpoint});
     await checkpoint(result.state);await validateDailyApprovedPayload(result.profile,now());
     const profileSha=await dailyNewsDigest(result.profile);
     await stageNewsPreparationPublication(storage,{leaseId:lease.leaseId,ledgerSha:lastLedgerSha,profileSha,payload:result.profile,current:now().getTime(),now:()=>now().getTime()});
@@ -234,8 +253,6 @@ async function prepareNativeNews(env,storage,{now=()=>new Date(),collect=collect
     result.report.native={window:DAILY_NEWS_WINDOW,writer:'native',sourceCounts:intake.counts||null,
       maximumCandidateAttempts:bounded.maximum,maximumAiCalls:bounded.maximum*2,deadlineMinutes:6,deterministicHeld:bounded.held,
       ownerFence:'durable-object-lease-and-staged-ledger-hash'};
-    // A quota result belongs to the UTC day when it was observed, including a run crossing midnight.
-    if(result.report.stoppedReason==='ai_quota_exceeded')result.report.checkedAt=now().toISOString();
     await env.NEWS_STATE.put(PREPARATION_REPORT_KEY,JSON.stringify(result.report));
     return result.report;
   }finally{await releaseNewsPreparationLease(storage,lease.leaseId);}

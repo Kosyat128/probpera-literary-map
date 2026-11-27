@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import ArticleEditorLoader, {
   type CustomTemplate,
 } from "@/components/ArticleEditorLoader";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminEnv } from "@/lib/env";
+import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
 import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
@@ -13,6 +15,7 @@ import { operatorDataError } from "@/lib/operator-data-error";
 import { parsePublicationCatalogQuery, publicationCatalogHref } from "@/lib/publication-catalog-query";
 import { safePublicSiteHref } from "@/lib/public-link-boundary";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { ArticleReadUnavailable, isHiddenArticleRead } from "../article-read-unavailable";
 import {
   articleWithWorkingDraft,
   englishTranslationWithWorkingDraft,
@@ -47,10 +50,10 @@ export default async function EditArticlePage({
   const query = await searchParams;
   const staff = await getStaffSession();
   const supabase = await createServerSupabaseClient();
-  if (!supabase) notFound();
+  if (!supabase) return <AdminDependencyState />;
   const [
-    { data: article },
-    { data: englishTranslation },
+    { data: article, error: articleLoadError, status: articleReadStatus },
+    { data: englishTranslation, error: englishTranslationLoadError },
     { data: categoriesResult },
     { data: revisionsResult },
     { data: templatesResult },
@@ -88,6 +91,15 @@ export default async function EditArticlePage({
       .maybeSingle(),
   ]);
 
+  if (articleLoadError) {
+    if (isHiddenArticleRead(articleReadStatus, articleLoadError.code)) notFound();
+    return <ArticleReadUnavailable retryHref={articleEditPath(id, query)} />;
+  }
+  if (!article) notFound();
+  if (englishTranslationLoadError) {
+    return <ArticleReadUnavailable retryHref={articleEditPath(id, query)} />;
+  }
+
   const categories = categoriesResult || [];
   const revisions = revisionsResult || [];
   const templates: CustomTemplate[] = (templatesResult || []).map((template) => ({
@@ -98,7 +110,6 @@ export default async function EditArticlePage({
     canDelete: template.owner_id === staff.user?.id,
   }));
 
-  if (!article) notFound();
   let workingDraft = null;
   let workingDraftLoadError = workingDraftQueryError
     ? operatorDataError("articles", "load")
