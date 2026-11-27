@@ -51,7 +51,7 @@ async function openAtlas(page) {
 
 async function clickAtlasDiscoveryControl(control) {
   await expect.poll(() => control.evaluate((element) => {
-    if (element.closest(".atlas-embedded-discovery")) {
+    if (element.closest(".atlas-embedded-discovery, .globe-nobel-status")) {
       // Re-measure and align in the same frame as the hit check: closing the
       // country sheet can still change page anchoring between browser calls.
       const stickyBottom = Math.max(0, ...Array.from(
@@ -1167,7 +1167,9 @@ test("Nobel layer keeps selection and its explicit article action separate", asy
         : Number.NEGATIVE_INFINITY;
     }).toBeGreaterThanOrEqual(8);
   }
-  await nobelStatus.locator("summary").click();
+  const nobelSummary = nobelStatus.locator("summary");
+  if (isMobile) await nobelSummary.click();
+  else await clickAtlasDiscoveryControl(nobelSummary);
   await expect(nobelStatus).toHaveAttribute("open", "");
   const nobelIndex = nobelStatus.getByRole("list", {
     name: /Нобелевские лауреаты|Nobel laureates/iu,
