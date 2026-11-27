@@ -21,4 +21,12 @@ describe("publication dashboard", () => {
     expect(actionsSource).toContain('entityId: "full-public-build"');
     expect(actionsSource).toContain("published: publication.state");
   });
+
+  it("distinguishes request acceptance from confirmed publication", () => {
+    expect(pageSource).toContain('dispatched: "Запрос принят"');
+    expect(pageSource).toContain("Запрос сохранён и принят системой сборки. Ожидает подтверждения сайта.");
+    expect(pageSource).toContain('event.status === "requested" || event.status === "dispatched"');
+    expect(pageSource).toContain('deployed: "Опубликовано"');
+    expect(pageSource).toContain("Публикация подтверждена");
+  });
 });

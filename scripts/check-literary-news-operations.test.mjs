@@ -291,6 +291,25 @@ describe('bounded read-only news operations projection', () => {
       expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
       expect(report.telegram.cadence).toMatchObject({ status: 'not_evaluated', minimumFreshCreatesByNow: null });
     });
+  it.each([[3, 'deficit'], [8, 'within_tolerance']])(
+    'checks the final confirmed receipt count after closing (%s)', async (creates, expected) => {
+      const value = await cadenceInput('2026-10-09T20:27:00Z', creates);
+      value.deliveryHeartbeat.finishedAt = '2026-10-09T19:55:00Z';
+      const report = await summarizeNewsOperations(value);
+      expect(report.failures.includes('operations_delivery_cadence_deficit')).toBe(expected === 'deficit');
+      expect(report.telegram.cadence).toMatchObject({ status: expected, minimumFreshCreatesByNow: 8 });
+      expect(report.telegram.freshAcknowledgedCreatesToday).toBe(creates);
+      expect(report.externalWrites).toBe(0);
+    });
+  it('does not claim a final delivery shortfall without a valid receipt count', async () => {
+    const value = await cadenceInput('2026-10-09T20:27:00Z', 3);
+    value.dayStatus = null;
+    value.readFailures = ['operations_day_metrics_read_failed'];
+    const report = await summarizeNewsOperations(value);
+    expect(report.failures).toContain('operations_day_metrics_read_failed');
+    expect(report.failures).not.toContain('operations_delivery_cadence_deficit');
+    expect(report.telegram.cadence.status).toBe('not_evaluated');
+  });
   it.each(['stale_heartbeat', 'missing_count', 'string_count', 'negative_count', 'eligible_work', 'unconfirmed',
     'budget_deferred', 'inconsistent_metrics', 'invalid_metrics', 'failed_read', 'quota', 'disabled'])(
     'does not infer a cadence failure from %s', async boundary => {

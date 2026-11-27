@@ -308,6 +308,24 @@ describe('native public feed retries preserve proof, stream capacity and invocat
     await expect(fetchNativeNewsAdmissionFeed({ fetchImpl, waitImpl, current })).rejects.toThrow('delivery_public_feed_unavailable');
     expect(fetchImpl).toHaveBeenCalledOnce(); expect(cancel).toHaveBeenCalledOnce(); expect(waitImpl).toHaveBeenCalledOnce();
   });
+  it('distinguishes an explicit fetch timeout and connection reset from an unknown failure', async () => {
+    const errors = [new DOMException('deadline', 'TimeoutError'),
+      new TypeError('request interrupted', { cause: { code: 'ECONNRESET' } }),
+      new TypeError('unknown request failure')];
+    const fetchImpl = vi.fn(async () => { throw errors.shift(); });
+    for (const code of ['delivery_public_feed_transient', 'delivery_public_feed_transient', 'delivery_public_feed_unavailable']) {
+      await expect(fetchNativeNewsAdmissionFeed({ fetchImpl, current })).rejects.toThrow(code);
+    }
+    expect(fetchImpl).toHaveBeenCalledTimes(3);
+  });
+  it('classifies an interrupted body without accepting a partial feed', async () => {
+    const incomplete = new ReadableStream({ start(controller) {
+      controller.error(new DOMException('deadline', 'TimeoutError'));
+    } });
+    const fetchImpl = vi.fn(async () => publicResponse(null, { raw: incomplete }));
+    await expect(fetchNativeNewsAdmissionFeed({ fetchImpl, current })).rejects.toThrow('delivery_public_feed_transient');
+    expect(fetchImpl).toHaveBeenCalledOnce();
+  });
   it.each(['wrong-origin', 'redirected'])('never retries %s busy responses or accepts their body', async kind => {
     const cancel = vi.fn(), response = publicResponse(null, { status: 503, headers: { 'retry-after': '1' },
       url: kind === 'wrong-origin' ? 'https://attacker.example/feed' : NATIVE_NEWS_ADMISSION_FEED_URL,

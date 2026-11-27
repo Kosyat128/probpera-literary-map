@@ -91,6 +91,7 @@ import GalleryEditor, {
   type GalleryEditorKind,
 } from "@/components/article-editor/GalleryEditor";
 import PublishPanel from "@/components/article-editor/PublishPanel";
+import { articleScheduleInput } from "@/lib/article-schedule";
 import SeoPanel from "@/components/article-editor/SeoPanel";
 import SourceBibliographyEditor from "@/components/article-editor/SourceBibliographyEditor";
 import ValidationChecklist from "@/components/article-editor/ValidationChecklist";
@@ -455,9 +456,7 @@ export default function ArticleEditor({
   const [templatePending, startTemplateTransition] = useTransition();
   const [excerpt, setExcerpt] = useState(article.excerpt || "");
   const [status, setStatus] = useState(article.status || "draft");
-  const [scheduledAt, setScheduledAt] = useState(
-    article.scheduled_at?.slice(0, 16) || ""
-  );
+  const [scheduledAt, setScheduledAt] = useState(() => articleScheduleInput(article.scheduled_at));
   const [featured, setFeatured] = useState(Boolean(article.featured));
   const [showOnHomepage, setShowOnHomepage] = useState(
     Boolean(article.show_on_homepage)

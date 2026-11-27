@@ -4,17 +4,13 @@ import { fileURLToPath } from "node:url";
 
 const beforeImagePreparationRelease = "ef750cbb90c4e07100253a4580e8b422dab05115";
 const beforeEgressRecoveryRelease = "51b5c255d9e2822c17dda4c69b47d66e9b7fb831";
-const beforeImageWriteHardening = "23f6ab03462d8a84a93e84c7942b26e46b908d2d";
+const beforeEditorialPublicationReliability = "0ec07b46c1d7eef93b224c7034f9dfca765c4935";
 const repository = fileURLToPath(new URL("../../", import.meta.url));
 const files = new Map([
   ["scripts/prepare-public-images.mjs", [{
-    release: beforeImageWriteHardening,
-    before: "f6eca3ec9f514506f7d71a59bc3da9317bc42a6ab630a2523d5bf25c6f1763b8",
-    after: "33957008d25ef2c6f7f0aaf165ad249ab59b8ce549bc574a20bbc8f19f4867a8",
-  }, {
     release: beforeEgressRecoveryRelease,
     before: "480b6b7e1d3c70bb0c2a64f1ffb95e0d17dcea2aa560c09de298d70fedd1ed79",
-    after: "f6eca3ec9f514506f7d71a59bc3da9317bc42a6ab630a2523d5bf25c6f1763b8",
+    after: "33957008d25ef2c6f7f0aaf165ad249ab59b8ce549bc574a20bbc8f19f4867a8",
   }, {
     release: beforeImagePreparationRelease,
     before: "d18e8f9310b03e0bc5324757034a92f4976c1edc4f8e3f16772588b5e076ee6d",
@@ -49,6 +45,11 @@ const files = new Map([
     release: beforeEgressRecoveryRelease,
     before: "bc668f90abd99c3e449ce8e59165543011d7269aaa0d19fcc4c7707875ab433e",
     after: "556703089fbf11efef99806c15e319602ad63fef2fc1802d597063adef0e04e8",
+  }]],
+  ["apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts", [{
+    release: beforeEditorialPublicationReliability,
+    before: "e28aad301592b976edc277775c56ef625aaa5dbe78a52881083daf9aef4ace33",
+    after: "56c1459ee6a13135b9c6490306804f127546adaa9e1cd9af8e17159c346a7b8a",
   }]],
 ]);
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");

@@ -31,7 +31,7 @@ type OutboxEvent = {
 
 const statusLabels: Record<OutboxEvent["status"], string> = {
   requested: "В очереди",
-  dispatched: "Сборка запущена",
+  dispatched: "Запрос принят",
   deployed: "Опубликовано",
   failed: "Требует повтора",
 };
@@ -96,8 +96,7 @@ export default async function PublicationPage({
           <span className="eyebrow">Путь изменения до продакшена</span>
           <h1>Публикация сайта</h1>
           <p>
-            Здесь видно не только принятие запроса, но и его очередь, запуск сборки,
-            число попыток и подтверждённое развёртывание.
+            Здесь видно состояние запроса, число попыток и подтверждение выхода на сайт.
           </p>
         </div>
         <form action={requestFullPublicBuildAction}>
@@ -108,7 +107,9 @@ export default async function PublicationPage({
 
       {query.error && <p className="form-message form-error" role="alert">{query.error}</p>}
       {query.published === "started" && (
-        <p className="form-message form-success">Запрос надёжно записан, сборка запущена.</p>
+        <p className="form-message form-success" role="status">
+          Запрос сохранён и принят системой сборки. Ожидает подтверждения сайта.
+        </p>
       )}
       {query.published === "queued" && (
         <p className="form-message form-success">
@@ -123,9 +124,9 @@ export default async function PublicationPage({
 
       <section className="stat-grid">
         <article className="stat-card">
-          <span>В работе</span>
+          <span>Ожидают подтверждения</span>
           <strong>{pendingResponse.count ?? "-"}</strong>
-          <small>очередь и запущенные сборки</small>
+          <small>в очереди или приняты системой сборки</small>
         </article>
         <article className="stat-card">
           <span>С ошибкой</span>
@@ -152,7 +153,7 @@ export default async function PublicationPage({
           <select name="status" defaultValue={catalog.status}>
             <option value="">Все состояния</option>
             <option value="requested">В очереди</option>
-            <option value="dispatched">Сборка запущена</option>
+            <option value="dispatched">Запрос принят</option>
             <option value="deployed">Опубликовано</option>
             <option value="failed">С ошибкой</option>
           </select>
@@ -192,6 +193,9 @@ export default async function PublicationPage({
                       <span className={`badge publication-status-${event.status}`}>
                         {statusLabels[event.status]}
                       </span>
+                      {(event.status === "requested" || event.status === "dispatched") && (
+                        <small>Ожидает подтверждения сайта</small>
+                      )}
                       <small>{event.provider || "обработчик не назначен"}</small>
                     </td>
                     <td>

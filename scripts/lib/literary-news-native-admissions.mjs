@@ -9,16 +9,22 @@ import { fetchNewsFeedWithTransientRetry } from './literary-news-feed-request.mj
 export const NATIVE_NEWS_ADMISSION_FEED_URL = 'https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=Europe%2FMoscow';
 export const NATIVE_NEWS_ADMISSION_MAX_ITEMS = 24;
 const fail = code => { throw Error(code); };
+const transientTransportCodes = new Set(['ECONNRESET', 'ETIMEDOUT', 'UND_ERR_CONNECT_TIMEOUT',
+  'UND_ERR_HEADERS_TIMEOUT', 'UND_ERR_BODY_TIMEOUT']);
+const feedTransportInterrupted = (error, signal) => error?.name === 'TimeoutError'
+  || (error?.name === 'AbortError' && signal.reason?.name === 'TimeoutError')
+  || transientTransportCodes.has(error?.cause?.code ?? error?.code);
 
 /** One fixed, complete public representation; its original proof is never replaced by a subset proof. */
 export async function fetchNativeNewsAdmissionFeed({ fetchImpl = fetch, waitImpl, current = new Date() } = {}) {
   if (!Number.isFinite(current.getTime())) fail('delivery_public_feed_invalid');
+  const signal = AbortSignal.timeout(20000);
   let response;
   try { response = await fetchNewsFeedWithTransientRetry(NATIVE_NEWS_ADMISSION_FEED_URL, { method: 'GET', redirect: 'error', cache: 'no-store',
-    signal: AbortSignal.timeout(20000), headers: { Accept: 'application/json' } }, { fetchImpl, waitImpl }); }
+    signal, headers: { Accept: 'application/json' } }, { fetchImpl, waitImpl }); }
   catch (error) {
     if (['delivery_request_budget_exhausted', 'runtime_quota_exceeded'].includes(error?.message)) throw error;
-    fail('delivery_public_feed_unavailable');
+    fail(feedTransportInterrupted(error, signal) ? 'delivery_public_feed_transient' : 'delivery_public_feed_unavailable');
   }
   if (response.url !== NATIVE_NEWS_ADMISSION_FEED_URL || response.redirected) {
     await response.body?.cancel().catch(() => {}); fail('delivery_public_feed_origin_invalid');
@@ -36,6 +42,9 @@ export async function fetchNativeNewsAdmissionFeed({ fetchImpl = fetch, waitImpl
       chunks.push(Buffer.from(value)); }
     try { feed = JSON.parse(Buffer.concat(chunks, length).toString('utf8')); }
     catch { fail('delivery_public_feed_invalid'); }
+  } catch (error) {
+    if (feedTransportInterrupted(error, signal)) fail('delivery_public_feed_transient');
+    throw error;
   } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
   try { await verifyPublishedNewsSnapshot(feed); } catch { fail('delivery_public_feed_invalid'); }
   if (response.headers.get('x-probpera-news-release') !== feed.snapshot.release) fail('delivery_public_feed_release_mismatch');

@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
+import { normalizeArticleScheduledAt } from "@/lib/article-schedule";
 import {
   buildArticleMetadataDraft,
   completeArticleMetadataDraft,
@@ -260,12 +261,15 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   const title = String(formData.get("title") || "");
   const rawSlug = String(formData.get("slug") || "");
   const generatedSlug = createSlug(rawSlug || title) || `material-${Date.now()}`;
-  const scheduledAt = optionalText(formData.get("scheduled_at"));
+  const scheduleInput = optionalText(formData.get("scheduled_at"));
+  const scheduledAt = scheduleInput && normalizeArticleScheduledAt(scheduleInput);
   if (requestedStatus === "scheduled" && !scheduledAt) {
     redirect(
       saveErrorPath(
         submittedArticleId,
-        "Для запланированной публикации укажите дату и время."
+        scheduleInput
+          ? "Укажите корректные дату и время запланированной публикации."
+          : "Для запланированной публикации укажите дату и время."
       )
     );
   }

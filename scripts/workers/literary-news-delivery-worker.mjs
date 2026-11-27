@@ -23,7 +23,7 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
   'runtime_due_response_invalid','runtime_day_status_invalid','delivery_media_index_invalid','delivery_media_index_unavailable',
   'delivery_credentials_missing','delivery_supabase_origin_invalid','delivery_network_rejected','delivery_response_too_large',
   'delivery_request_timeout','delivery_registry_binding_missing','delivery_runtime_failed',
-  'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid',
+  'delivery_public_feed_invalid','delivery_public_feed_unavailable','delivery_public_feed_origin_invalid','delivery_public_feed_transient',
   'delivery_public_feed_too_large','delivery_public_feed_release_mismatch','delivery_public_feed_not_current','bounded_capture_invalid']);
 safeCodes.add('delivery_request_budget_exhausted');
 safeCodes.add('delivery_capture_progress_invalid');
@@ -333,7 +333,9 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
       :budget.exhausted?'delivery_request_budget_exhausted':safeCode(error),finishedAt:now().toISOString(),
       externalRequests:budget.requests,providerWriteAttempts:budget.providerWrites,deliveredThisRun:null,heartbeatRecorded:false};
     if(summary.code==='runtime_quota_exceeded')return summary;
-    try{return await heartbeat(summary);}catch{return {...summary,externalRequests:budget.requests};}
+    try{return await heartbeat(summary);}catch{
+      return {...summary,code:budget.quota?'runtime_quota_exceeded':summary.code,externalRequests:budget.requests};
+    }
   }
 }
 
@@ -406,7 +408,10 @@ async function scheduledDelivery(controller,env,log) {
   log(JSON.stringify(capture));
   if(!captureResponse.ok||capture.status==='blocked'){
     controller.noRetry();
-    if(capture.code!=='delivery_request_budget_exhausted')return capture;
+    // Dispatch checks the current public feed again before using any admission.
+    const feedInterrupted=captureResponse.status===503&&capture.status==='blocked'
+      &&capture.phase==='public_feed'&&capture.code==='delivery_public_feed_transient';
+    if(capture.code!=='delivery_request_budget_exhausted'&&!feedInterrupted)return capture;
   }
   const response=await stub.fetch('https://coordinator.internal/dispatch',{method:'POST'});
   const summary=await response.json();

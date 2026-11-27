@@ -68,7 +68,7 @@ if (finalizeArgument) {
 }
 
 const query = new URLSearchParams({
-  select: "id,slug,scheduled_at",
+  select: "id,status,scheduled_at,updated_at",
   status: "in.(scheduled,published)",
   deleted_at: "is.null",
   scheduled_at: `lte.${now}`,
@@ -86,11 +86,19 @@ if (!dueResponse.ok) {
 }
 
 const dueArticles = await dueResponse.json();
-let publishedArticles = [];
-if (dueArticles.length) {
-  const ids = dueArticles.map((article) => article.id).join(",");
+const publishedArticles = [];
+for (const article of dueArticles) {
+  // A staff edit can supersede this selection before we send the mutation.
+  // Compare the selected article revision in the same statement as publication.
+  const updateQuery = new URLSearchParams({
+    id: `eq.${article.id}`,
+    status: `eq.${article.status}`,
+    scheduled_at: `eq.${article.scheduled_at}`,
+    deleted_at: "is.null",
+  });
+  if (article.updated_at) updateQuery.set("updated_at", `eq.${article.updated_at}`);
   const updateResponse = await fetch(
-    `${supabaseUrl}/rest/v1/articles?id=in.(${encodeURIComponent(ids)})`,
+    `${supabaseUrl}/rest/v1/articles?${updateQuery}`,
     {
       method: "PATCH",
       headers: {
@@ -112,8 +120,9 @@ if (dueArticles.length) {
       `Scheduled article update failed: ${updateResponse.status} ${await updateResponse.text()}`
     );
   }
-  publishedArticles = await updateResponse.json();
-} else {
+  publishedArticles.push(...await updateResponse.json());
+}
+if (!dueArticles.length) {
   console.log("No scheduled articles are due.");
 }
 

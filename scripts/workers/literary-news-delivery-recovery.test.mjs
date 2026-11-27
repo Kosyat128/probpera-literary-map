@@ -3,12 +3,12 @@ import { describe, expect, it, vi } from 'vitest';
 import worker, { scheduleNativeNewsDelivery } from './literary-news-delivery-worker.mjs';
 
 function fixture({time='2026-10-09T13:25:00Z',recover=async()=>Response.json({status:'supply_degraded',publicationConfirmed:false}),
-  dispatch=null,capture={status:'capture_not_due',deliveredThisRun:0}}={}) {
+  dispatch=null,capture={status:'capture_not_due',deliveredThisRun:0},captureStatus=capture.status==='blocked'?503:200}={}) {
   const events=[],report={status:'daily_target_deficit',deliveredThisRun:1},controller={noRetry:vi.fn(),scheduledTime:0},log=vi.fn();
   let current=new Date(time);
   const delivery={fetch:vi.fn(async url=>{
     const phase=new URL(url).pathname.slice(1);events.push(phase);
-    return phase==='capture'?Response.json(capture):dispatch?dispatch():Response.json(report);
+    return phase==='capture'?Response.json(capture,{status:captureStatus}):dispatch?dispatch():Response.json(report);
   })};
   const recovery={fetch:vi.fn(async(...args)=>{events.push('recover');return recover(...args);})};
   const binding=stub=>({idFromName:vi.fn(name=>name),get:vi.fn(()=>stub)});
@@ -105,6 +105,29 @@ describe('private preparation recovery after native delivery',()=>{
     const capture={status:'blocked',code:'delivery_public_feed_unavailable',deliveredThisRun:0};
     const f=fixture({capture,recover:async()=>{throw Error('recovery unavailable');}});
     expect(await f.run()).toEqual(capture);expect(f.events).toEqual(['capture','recover']);
+    expect(f.controller.noRetry).toHaveBeenCalledOnce();
+  });
+  it.each(['delivery_public_feed_transient','delivery_request_budget_exhausted'])('checks dispatch once after %s during capture',async code=>{
+    const capture={status:'blocked',phase:'public_feed',code,deliveredThisRun:null};
+    const f=fixture({capture,recover:async()=>Response.json({status:'target_met',publicationConfirmed:true})});
+    expect(await f.run()).toEqual(f.report);
+    expect(f.events).toEqual(['capture','dispatch','recover','capture']);
+    expect(f.controller.noRetry).toHaveBeenCalledOnce();
+  });
+  it.each([
+    ['public_feed','runtime_quota_exceeded',503],
+    ['public_feed','delivery_public_feed_invalid',503],
+    ['public_feed','delivery_public_feed_not_current',503],
+    ['public_feed','delivery_public_feed_release_mismatch',503],
+    ['public_feed','delivery_public_feed_origin_invalid',503],
+    ['public_feed','delivery_runtime_failed',503],
+    ['capture','delivery_public_feed_transient',503],
+    ['public_feed','delivery_public_feed_transient',502],
+  ])('holds dispatch after a capture block in %s (%s, HTTP %s)',async(phase,code,captureStatus)=>{
+    const capture={status:'blocked',phase,code,deliveredThisRun:null};
+    const f=fixture({capture,captureStatus,time:'2026-10-09T13:10:00Z'});
+    expect(await f.run()).toEqual(capture);
+    expect(f.events).toEqual(['capture']);
     expect(f.controller.noRetry).toHaveBeenCalledOnce();
   });
   it('preserves an original delivery error when recovery also fails',async()=>{

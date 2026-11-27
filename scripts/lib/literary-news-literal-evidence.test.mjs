@@ -93,19 +93,32 @@ describe('bounded exact source evidence references', () => {
 
 describe('real automation and native AI adapter retain the independent factual review and budget', () => {
   it('restores source literals, sends full text to the independent model and spends exactly two existing calls', async () => {
+    const body = `${text} ${Array.from({ length: 72 }, (_, index) =>
+      `The literary catalogue’s entry ${index + 1} names the edition and records the publisher’s announced date, title and author.`).join(' ')}`;
+    const catalog = await createLiteralEvidenceCatalog(body);
     const binding = { run: vi.fn(async (model, input) => {
-      if (model.includes('gpt-oss')) return { status: 'completed', output_text: JSON.stringify(referencedDraftFixture(canonical(), input.input)) };
+      if (model.includes('gpt-oss')) {
+        const payload = JSON.parse(input.input[1].content);
+        expect(payload.SOURCE_DATA.evidenceCatalog).toEqual({ protocolVersion: catalog.protocolVersion,
+          catalogSha256: catalog.catalogSha256, spans: catalog.spans.map(({ id, text }) => ({ id, text })) });
+        const fullInput = structuredClone(input);
+        payload.SOURCE_DATA.evidenceCatalog = catalog;
+        fullInput.input[1].content = JSON.stringify(payload);
+        const bytes = value => new TextEncoder().encode(JSON.stringify(value)).length;
+        expect(bytes(fullInput) - bytes(input)).toBeGreaterThan(2000);
+        return { status: 'completed', output_text: JSON.stringify(referencedDraftFixture(canonical(), input.input)) };
+      }
       const payload = JSON.parse(input.messages[1].content);
-      expect(payload.SOURCE_DATA.text).toBe(text);
+      expect(payload.SOURCE_DATA.text).toBe(body);
       expect(payload.SOURCE_DATA).not.toHaveProperty('evidenceCatalog');
-      expect(text.includes(payload.draft.facts[0].quote)).toBe(true);
+      expect(body.includes(payload.draft.facts[0].quote)).toBe(true);
       expect(input.messages[0].content).toContain('A literal quote alone does not imply a claim');
       return { response: review };
     }) };
     const previous = emptyDailyLedger(current);
     previous.inferenceBudgets = [{ day: '2026-11-11', reservedCalls: 47, draftRequests: 40 }];
     const checkpoints = [], result = await runDailyNewsAutomation(options(createPreparationBindingAi(binding), {
-      previous, saveCheckpoint: value => checkpoints.push(structuredClone(value)) }));
+      previous, intake: { details: [detail(current, body)] }, saveCheckpoint: value => checkpoints.push(structuredClone(value)) }));
     expect(result.report).toMatchObject({ newlyAccepted: 1, aiCalls: 2, reservedAiCallsToday: 49, draftRequestsToday: 41 });
     expect(binding.run).toHaveBeenCalledTimes(2);
     expect(checkpoints[0].inferenceBudgets[0]).toMatchObject({ reservedCalls: 48, draftRequests: 41 });
