@@ -4,6 +4,7 @@ import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { parse } from "yaml";
 import { cachePublicEditorialOriginals } from "./cache-public-editorial-originals.mjs";
 
 const root = path.resolve(process.cwd());
@@ -112,7 +113,7 @@ describe("release workflow hardening", () => {
     expect(source).toContain("CMS_SNAPSHOT_PREEXPORTED: \"true\"");
     expect(source).toContain("run: npm run content:publication:head-check");
     expect(source).toContain(
-      "--finalize=${{ needs.build.outputs.publication_queue_marker }}"
+      '--finalize="$CANDIDATE_PUBLICATION_QUEUE_MARKER"'
     );
     expect(source).toContain(
       "CANDIDATE_PUBLICATION_HEAD_SOURCE: ${{ needs.build.outputs.publication_head_source }}"
@@ -137,7 +138,7 @@ describe("release workflow hardening", () => {
       "- name: Verify complete writer biography release artifacts"
     );
     const finalExport = source.indexOf(
-      "- name: Re-export and freeze the complete CMS publication head"
+      "- name: Freeze the complete CMS publication head"
     );
     const frozenVerification = source.indexOf(
       "- name: Verify the frozen CMS publication snapshot"
@@ -198,10 +199,50 @@ describe("release workflow hardening", () => {
     );
   });
 
+  it("finalizes only outbox IDs read before the promoted snapshot's content", () => {
+    const { build, finalize_publication: finalize } = parse(read(".github/workflows/deploy-pages.yml")).jobs;
+    const capture = build.steps.find((step) => step.id === "pending_outbox_capture");
+    expect(capture).toMatchObject({
+      run: 'node scripts/check-public-build-requests.mjs --capture-outbox >> "$GITHUB_OUTPUT"',
+      if: "steps.release_gate.outputs.should_deploy == 'true'",
+    });
+    expect(build.steps[build.steps.indexOf(capture) + 1].id).toBe("publication_snapshot");
+    expect(build.outputs.publication_pending_outbox_ids).toBe("${{ steps.pending_outbox_capture.outputs.pending_outbox_ids }}");
+    expect(finalize.steps.at(-1).env).toMatchObject({
+      CANDIDATE_PENDING_OUTBOX_IDS: "${{ needs.build.outputs.publication_pending_outbox_ids }}",
+      CANDIDATE_PUBLICATION_QUEUE_MARKER: "${{ needs.build.outputs.publication_queue_marker }}",
+    });
+  });
+
+  it("uses one frozen export and one link audit on the manual CMS lane", () => {
+    const { steps } = parse(read(".github/workflows/deploy-pages.yml")).jobs.build;
+    const step = (name) => steps.find((entry) => entry.name === name);
+    const full = "steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')";
+    const fast = "steps.release_gate.outputs.should_deploy == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'";
+    const initial = step("Export current CMS snapshot for release verification");
+    const preliminaryLinks = step("Regenerate CMS-derived article and book links");
+    const fullVerification = step("Verify public site and editorial archive");
+    const frozen = step("Freeze the complete CMS publication head");
+    const fastVerification = step("Verify fast CMS publication");
+    const frozenVerification = step("Verify the frozen CMS publication snapshot");
+    expect(initial).toMatchObject({ if: full, run: "npm run content:export:cms" });
+    expect(preliminaryLinks).toMatchObject({ if: full, run: "npm run content:link-books" });
+    expect(fullVerification.if).toBe(full);
+    expect(fullVerification.run).toContain("npm run links:audit");
+    expect(frozen).toMatchObject({ if: "steps.release_gate.outputs.should_deploy == 'true'", id: "publication_snapshot",
+      run: "npm run content:export:cms", env: { CMS_EXPORT_REQUIRE_STABLE: "true" } });
+    expect(fastVerification).toMatchObject({ if: fast, run: "npm run lint:public" });
+    expect(frozenVerification).toMatchObject({ if: frozen.if, run: "npm run content:audit && npm run links:audit" });
+    expect(steps.indexOf(fastVerification)).toBeGreaterThan(steps.indexOf(frozen));
+    expect(steps.indexOf(frozenVerification)).toBeGreaterThan(steps.indexOf(fastVerification));
+    expect(steps.indexOf(step("Build production site"))).toBeGreaterThan(steps.indexOf(frozenVerification));
+    expect(JSON.parse(read("package.json")).scripts["build:from-snapshot"]).toContain("npm run content:link-books");
+  });
+
   it("refreshes CMS synopsis provenance after historical fixtures and before strict book checks", () => {
     const workflow = read(".github/workflows/deploy-pages.yml");
     const verificationStart = workflow.indexOf("- name: Verify public site and editorial archive");
-    const verification = workflow.slice(verificationStart, workflow.indexOf("- name: Verify fast CMS publication"));
+    const verification = workflow.slice(verificationStart, workflow.indexOf("- name: Verify registration and forum configuration"));
     const refresh = "node scripts/extract-article-book-synopsis-manifest.mjs";
     expect(verificationStart).toBeGreaterThan(workflow.indexOf("- name: Export current CMS snapshot for release verification"));
     expect(verification).toContain(`${refresh} && npm run books:audit`);
@@ -261,6 +302,23 @@ describe("release workflow hardening", () => {
       "Finalize the deployed composite CMS snapshot"
     );
     expect(workflow).not.toContain("Finalize scheduled publications");
+  });
+
+  it("picks up overdue articles on a main-branch CMS dispatch before reading the queue", () => {
+    const { steps } = parse(read(".github/workflows/deploy-pages.yml")).jobs.build;
+    const scheduled = steps.find((step) => step.id === "scheduled");
+    const recovery = steps.find((step) => step.name === "Publish overdue articles during a CMS release");
+    const queue = steps.find((step) => step.id === "rebuild");
+    expect(scheduled).toMatchObject({
+      if: "github.event_name == 'schedule'",
+      run: "npm run content:publish-scheduled",
+    });
+    expect(recovery).toMatchObject({
+      if: "github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'",
+      run: "npm run content:publish-scheduled -- --articles-only",
+    });
+    expect(steps.indexOf(recovery)).toBeLessThan(steps.indexOf(queue));
+    expect(steps.indexOf(queue)).toBeLessThan(steps.findIndex((step) => step.id === "publication_snapshot"));
   });
 
   it("publishes approved due Site Studio change sets through the atomic RPC", () => {

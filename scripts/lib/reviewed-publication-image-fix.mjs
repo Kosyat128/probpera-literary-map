@@ -37,6 +37,10 @@ const files = new Map([
     after: "5f27cfb2a244d414efc261c4d794c10a99338e64a969bc08315dc6311d82e59f",
   }]],
   [".github/workflows/deploy-pages.yml", [{
+    release: beforeEditorialPublicationReliability,
+    before: "66247c832c92e789005ee2b028b0cd2ca32a1883d77d9bc0f706b3e9a103297b",
+    after: "4f51ee1be6a052c69be261a95d54d6d872ba24a1e98aaf71119da13d8d509057",
+  }, {
     release: beforeEgressRecoveryRelease,
     before: "30f5568f71fb4dc8098d3a0ca9c8bfd9fb0fe456ad025915eccdc584bcc6abd7",
     after: "66247c832c92e789005ee2b028b0cd2ca32a1883d77d9bc0f706b3e9a103297b",

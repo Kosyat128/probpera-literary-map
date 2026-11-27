@@ -81,7 +81,7 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     const first = await f.run();
     expect(first).toMatchObject({ capturedCandidates: 4, newAdmissions: 4, deliveredThisRun: 1 });
     expect(f.store.list).not.toHaveBeenCalled(); expect(f.env.NEWS_STATE.get).toHaveBeenCalledTimes(1);
-    expect(f.client.rpc.mock.calls.filter(([name]) => name === 'read_due_literary_news_runtime_posts')).toHaveLength(2);
+    expect(f.client.rpc.mock.calls.filter(([name]) => name === 'read_due_literary_news_runtime_posts')).toHaveLength(1);
     expect(f.store.rows.has('admission:news:archive')).toBe(false);
     const admitted = f.store.rows.get('admission:news:fresh-0').state;
     expect(admitted.record).toEqual(feed.items.find(row => row.id === 'fresh-0'));
@@ -138,18 +138,17 @@ describe('native hourly capture uses the genuine complete public snapshot and ex
     }
     expect(store.list).not.toHaveBeenCalled();
   });
-  it('checks activation and both SQL prerequisites before fetching the feed or writing admissions', async () => {
+  it('checks activation and the day-status prerequisite before fetching the feed or writing admissions', async () => {
     const f = await tickFixture(await completeFeed([item('ready')]));
-    f.client.rpc.mockResolvedValueOnce({ data: dayStatus(0), error: null })
-      .mockResolvedValueOnce({ error: { code: 'PGRST202' }, status: 404 });
-    expect(await f.run()).toMatchObject({ status: 'blocked', code: 'runtime_due_rpc_required' });
+    f.client.rpc.mockResolvedValueOnce({ error: { code: 'PGRST202' }, status: 404 });
+    expect(await f.run()).toMatchObject({ status: 'blocked', code: 'runtime_day_status_rpc_required' });
     expect(f.fetchImpl).not.toHaveBeenCalled();
     expect(f.store.compareAppend.mock.calls.every(([key])=>key==='heartbeat:native-delivery-capture')).toBe(true);
     f.store.seed(controlKey, { mode: 'on', paused: true, historyReconciled: true });
     const pausedControl = structuredClone(f.store.rows.get(controlKey));
     expect(await f.run()).toMatchObject({ status: 'destination_not_enabled_or_history_gap', reason: 'destination_paused',
       heartbeatRecorded: true, providerWriteAttempts: 0, deliveredThisRun: 0 });
-    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.client.rpc).toHaveBeenCalledTimes(2);
+    expect(f.fetchImpl).not.toHaveBeenCalled(); expect(f.client.rpc).toHaveBeenCalledOnce();
     expect(f.store.compareAppend.mock.calls.map(([key])=>key))
       .toEqual(['heartbeat:native-delivery-capture', 'heartbeat:native-delivery-capture']);
     expect(f.store.rows.get('heartbeat:native-delivery-capture').state)
@@ -258,7 +257,7 @@ describe('public response trust and stream bounds fail before any native queue w
     const result = await runDeliveryCaptureTick({ env: f.env, now: () => current, fetchImpl: network });
     expect(result).toMatchObject({ status: 'blocked', code: 'runtime_quota_exceeded', deliveredThisRun: null });
     expect(network.mock.calls.filter(([input]) => String(input).includes('compare_append_literary_news_runtime'))).toHaveLength(1);
-    expect(network.mock.calls.filter(([input]) => String(input).includes('read_due_literary_news_runtime_posts'))).toHaveLength(1);
+    expect(network.mock.calls.filter(([input]) => String(input).includes('read_due_literary_news_runtime_posts'))).toHaveLength(0);
     expect(network.mock.calls.some(([input]) => new URL(String(input)).hostname === 'api.telegram.org')).toBe(false);
     expect(JSON.stringify(result)).not.toMatch(/PRIVATE|isolated-key|isolated-token/);
   });

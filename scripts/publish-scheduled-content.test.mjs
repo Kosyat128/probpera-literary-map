@@ -13,7 +13,7 @@ afterEach(() => {
 });
 
 describe("scheduled editorial publication", () => {
-  it("only publishes rows whose eligible state, timestamp and revision still match the due selection", async () => {
+  it.each([false, true])("preserves article CAS with articles-only = %s", async (articlesOnly) => {
     const now = "2026-11-27T08:00:00.000Z";
     vi.useFakeTimers({ toFake: ["Date"] });
     vi.setSystemTime(new Date(now));
@@ -35,12 +35,24 @@ describe("scheduled editorial publication", () => {
     current.hidden.status = "hidden";
     current.deleted.deleted_at = now;
     current.edited.updated_at = now;
+    const design = { id: "e7e7da44-6c7f-4793-86fb-d8f185594e97", cas_version: 3, scheduled_at: now };
 
     const fetchMock = vi.fn(async (input, options) => {
       const { origin, pathname, searchParams } = new URL(input);
       expect(origin).toBe("https://scheduled-test.supabase.co");
       expect(options.redirect).toBe("error");
-      if (pathname.endsWith("/site_design_change_sets")) return Response.json([]);
+      if (pathname.endsWith("/site_design_change_sets")) {
+        expect(articlesOnly).toBe(false);
+        expect(searchParams.get("status")).toBe("eq.approved");
+        expect(searchParams.get("scheduled_at")).toBe(`lte.${now}`);
+        return Response.json([design]);
+      }
+      if (pathname.endsWith("/rpc/publish_site_design_change_set")) {
+        expect(articlesOnly).toBe(false);
+        expect(options.method).toBe("POST");
+        expect(JSON.parse(options.body)).toEqual({ p_change_set_id: design.id, p_expected_cas_version: design.cas_version });
+        return Response.json({});
+      }
       expect(pathname).toBe("/rest/v1/articles");
       if (!options.method) {
         expect(Object.fromEntries(searchParams)).toMatchObject({
@@ -66,9 +78,15 @@ describe("scheduled editorial publication", () => {
       return Response.json([{ id: row.id }]);
     });
     vi.stubGlobal("fetch", fetchMock);
-    await import("./publish-scheduled-content.mjs");
+    const argv = process.argv;
+    if (articlesOnly) process.argv = [...argv, "--articles-only"];
+    try {
+      await import("./publish-scheduled-content.mjs");
+    } finally {
+      process.argv = argv;
+    }
 
-    expect(fetchMock).toHaveBeenCalledTimes(Object.keys(original).length + 2);
+    expect(fetchMock).toHaveBeenCalledTimes(Object.keys(original).length + (articlesOnly ? 1 : 3));
     expect(current.ready).toMatchObject({ status: "published", scheduled_at: null });
     expect(current.postponed).toMatchObject({ status: "scheduled", scheduled_at: "2026-11-27T09:00:00+00:00" });
     expect(current.moved).toMatchObject({ status: "scheduled", scheduled_at: "2026-11-27T07:30:00+00:00" });
@@ -76,7 +94,7 @@ describe("scheduled editorial publication", () => {
     expect(current.deleted).toMatchObject({ status: "scheduled", deleted_at: now });
     expect(current.edited).toMatchObject({ status: "scheduled", updated_at: now });
     expect(appendFile.mock.calls).toEqual([
-      ["mock-output", "published=1\n", "utf8"],
+      ["mock-output", `published=${articlesOnly ? 1 : 2}\n`, "utf8"],
       ["mock-output", `ids=${original.ready.id}\n`, "utf8"],
     ]);
   });

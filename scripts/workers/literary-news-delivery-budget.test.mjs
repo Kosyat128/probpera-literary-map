@@ -30,7 +30,7 @@ const item=id=>({id,eventKey:id,verification:'confirmed',kind:'news',category:'r
   source:{name:'Isolated publisher fixture',url:`https://publisher.example/books/${id}`,language:'en'}});
 
 async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0,claimConflicts=0,captureConflicts=0,quotaAt=null,providerFailure=false,
-  priorPacing=false,extraFeedReads=0,cachedPhoto=false,feedBusyResponses=0,captureFeedTimeout=false,
+  priorPacing=false,extraFeedReads=0,cachedPhoto=false,feedBusyResponses=0,captureFeedTimeout=false,dueFailure=null,
   control={mode:'on',paused:false,historyReconciled:true}}={}){
   const records=Array.from({length:30},(_,i)=>item(`news-${String(i).padStart(2,'0')}`));
   const correctionRecords=Array.from({length:corrections},(_,i)=>item(`correction-${String(i).padStart(2,'0')}`));
@@ -95,6 +95,9 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
       const body=JSON.parse(options.body);
       if(url.pathname.endsWith('/literary_news_delivery_day_status'))return Response.json(status());
       if(url.pathname.endsWith('/read_due_literary_news_runtime_posts')){
+        if(dueFailure==='quota')return Response.json({code:'402'},{status:402});
+        if(dueFailure==='invalid')return Response.json({unexpected:true});
+        if(dueFailure==='missing')return Response.json({code:'PGRST202'},{status:404});
         const due=[...rows].filter(([key,row])=>key.startsWith('post:')&&['pending','correction_pending','inflight'].includes(row.state.status)
           &&!(row.state.nextDueAt&&Date.parse(row.state.nextDueAt)>current.getTime()));
         due.sort((left,right)=>Number(Boolean(right[1].state.remoteId))-Number(Boolean(left[1].state.remoteId)));
@@ -161,7 +164,7 @@ describe('native capture and dispatch under the real SDK external-request budget
   it('stops a busy feed retry at the ordinary request ceiling and persists a zero-write failure heartbeat through the real SDK',async()=>{
     const f=await sdkFixture({photo:false,feedBusyResponses:1}),waitImpl=vi.fn();
     const report=await f.run('capture',{fetchFeedImpl:async args=>{
-      for(let index=0;index<44;index++)await args.fetchImpl('https://worker-fixture.supabase.co/budget-read');
+      for(let index=0;index<45;index++)await args.fetchImpl('https://worker-fixture.supabase.co/budget-read');
       return fetchNativeNewsAdmissionFeed({...args,waitImpl});
     }});
     expect(report).toMatchObject({status:'blocked',phase:'public_feed',code:'delivery_request_budget_exhausted',
@@ -263,16 +266,17 @@ describe('native capture and dispatch under the real SDK external-request budget
     expect(report).toMatchObject({status:'blocked',code:'runtime_quota_exceeded',externalRequests:3,heartbeatRecorded:false});
     expect(f.requests).toHaveLength(3);expect(f.writes).toEqual([]);expect(f.rows.has('heartbeat:native-delivery')).toBe(false);
   });
-  it('captures four of a full 30-record proof in 22 requests, then creates one photo and safely defers an old edit',async()=>{
+  it('captures four of a full 30-record proof without reading the due queue, then creates a photo and safely defers an old edit',async()=>{
     const f=await sdkFixture({corrections:14,creates:6});
     const original=JSON.stringify(f.feed),capture=await f.run('capture'),delivery=await f.run('dispatch');
     expect(capture).toMatchObject({status:'admissions_captured',capturedCandidates:4,deliveredThisRun:0,heartbeatRecorded:true});
-    expect(capture.externalRequests).toBeLessThanOrEqual(22);
+    expect(capture.externalRequests).toBeLessThanOrEqual(21);
     expect(delivery).toMatchObject({deliveredThisRun:1,ambiguousThisRun:0,heartbeatRecorded:true,selectedJobs:2,
       status:'request_budget_deferred',providerWriteAttempts:1,acknowledgedCreatesThisRun:1,acknowledgedCorrectionsThisRun:0});
     expect(f.writes).toEqual(['sendPhoto']);
     expect(delivery.dayStatus).toMatchObject({freshCreates:1,freshPhotoCreates:1});
     expect(f.requests.filter(row=>row.invocation==='dispatch'&&row.path.includes('compare_append')).length).toBeGreaterThan(0);
+    expect(f.requests.filter(row=>row.path.endsWith('/read_due_literary_news_runtime_posts')).map(row=>row.invocation)).toEqual(['dispatch']);
     for(const phase of ['capture','dispatch']){
       const result=phase==='capture'?capture:delivery;
       expect(result.externalRequests).toBe(f.requests.filter(row=>row.invocation===phase).length);
@@ -288,6 +292,16 @@ describe('native capture and dispatch under the real SDK external-request budget
     expect(next.acknowledgedCreatesThisRun).toBe(0);
     expect(f.rows.get(newsPostKey('correction-00',destination)).state).toMatchObject({status:'sent_current',remoteId:'700'});
   });
+  it.each([['quota','runtime_quota_exceeded',false],['invalid','runtime_due_response_invalid',true],
+    ['missing','runtime_due_rpc_required',true]])(
+    'admits new feed items but refuses dispatch when its due queue is %s',async(dueFailure,code,heartbeatRecorded)=>{
+      const f=await sdkFixture({creates:1,photo:false,dueFailure});
+      expect(await f.run('capture')).toMatchObject({newAdmissions:4,heartbeatRecorded:true,deliveredThisRun:0});
+      expect(await f.run('dispatch')).toMatchObject({status:'blocked',phase:'due_queue',code,heartbeatRecorded,providerWriteAttempts:0});
+      expect(f.requests.filter(row=>row.path.endsWith('/read_due_literary_news_runtime_posts')).map(row=>row.invocation)).toEqual(['dispatch']);
+      expect(f.writes).toEqual([]);
+    }
+  );
   it.each([{photo:false,extraFeedReads:10},{photo:true,extraFeedReads:4},{photo:true,cachedPhoto:true,extraFeedReads:3}])(
     'reserves the actual prior receipt, all claim and receipt CAS attempts, and heartbeat at the exact request boundary: %j',async options=>{
       const f=await sdkFixture({...options,creates:1,priorPacing:true,claimConflicts:4,receiptConflicts:4});
@@ -308,9 +322,9 @@ describe('native capture and dispatch under the real SDK external-request budget
       expect(f.writes).toEqual([]);expect(f.rows.get(f.pacingKey)).toEqual(before);
       expect(f.rows.get(newsPostKey('news-00',destination))).toEqual(job);
     });
-  it('makes four completely new admissions within 22 requests and never writes to a provider during capture',async()=>{
+  it('makes four completely new admissions in 21 requests and never writes to a provider during capture',async()=>{
     const f=await sdkFixture(),report=await f.run('capture');
-    expect(report).toMatchObject({newAdmissions:4,capturedCandidates:4,externalRequests:22,heartbeatRecorded:true});
+    expect(report).toMatchObject({newAdmissions:4,capturedCandidates:4,externalRequests:21,heartbeatRecorded:true});
     expect(f.writes).toEqual([]);expect(f.requests.some(row=>row.origin==='https://api.telegram.org')).toBe(false);
   });
   it('covers all 24 selected IDs across six ticks without replacing the full-feed proof',async()=>{

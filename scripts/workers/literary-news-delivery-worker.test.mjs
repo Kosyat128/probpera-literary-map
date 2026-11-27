@@ -18,7 +18,7 @@ const item=id=>({id,eventKey:id,verification:'confirmed',kind:'news',category:'r
 const row=(id,extra={})=>({id:1,entity_id:newsPostKey(id,{...destination,mode:'on'}),metadata:{key:newsPostKey(id,{...destination,mode:'on'}),newsId:id,
  destination:{platform:'telegram',id:destination.id},status:'pending',originalAdmission:now.toISOString(),
  prepared:{temporal:{kind:'news',eventDate:'2026-09-29',publishedAt:now.toISOString(),verifiedAt:now.toISOString()},media:{assetId:'unknown'}},...extra}});
-async function fixture({rows=[],status=day(),control={mode:'on',paused:false,historyReconciled:true},rpcError=null,index}={}){
+async function fixture({rows=[],status=day(),control={mode:'on',paused:false,historyReconciled:true},rpcError=null,index,feedRecords}={}){
  const state=new Map();let seq=1;
  state.set(`destination:telegram:${destination.id}`,{id:seq,state:control});
  for(const value of rows){
@@ -35,10 +35,10 @@ async function fixture({rows=[],status=day(),control={mode:'on',paused:false,his
  const env={NEWS_DELIVERY_ENABLED:'true',SUPABASE_URL:'https://worker-fixture.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'isolated-key',TELEGRAM_BOT_TOKEN:'isolated-token',
    NEWS_STATE:{get:vi.fn(async(key,type)=>key===DELIVERY_MEDIA_INDEX_KEY?JSON.stringify(registry):null)}};
  const dispatch=vi.fn(async()=>[]);
- const representativeFeed=await buildPublishedNewsFeed({records:rows.map(value=>({...item(value.metadata.newsId),...value.metadata.prepared.temporal})),
+ const representativeFeed=await buildPublishedNewsFeed({records:feedRecords??rows.map(value=>({...item(value.metadata.newsId),...value.metadata.prepared.temporal})),
    withdrawals:[],state:pendingNewsSourceState(),current:now,release:'a'.repeat(40)});
  const options={env,now:()=>now,createClientImpl:()=>client,storeFactory:()=>store,dispatchImpl:dispatch,fetchFeedImpl:async()=>representativeFeed};
- const run=()=>runDeliveryTick(options),capture=()=>runDeliveryCaptureTick(options);
+ const run=()=>runDeliveryTick(options),capture=overrides=>runDeliveryCaptureTick({...options,...overrides});
  return{env,store,client,dispatch,run,capture,state};
 }
 
@@ -132,6 +132,15 @@ describe('Private native delivery cron boundary',()=>{
  it('requires the bounded SQL prerequisites without a full-history fallback',async()=>{
    const f=await fixture({rpcError:true});const result=await f.run();expect(result.code).toBe('runtime_day_status_rpc_required');
    expect(f.client.rpc).toHaveBeenCalledTimes(1);expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.dispatch).not.toHaveBeenCalled();
+ });
+ it('reads no due rows or photo index when capture finds no candidate, even with a queued photo',async()=>{
+   const f=await fixture({rows:[row('queued-photo')],feedRecords:[]});
+   const result=await f.capture({captureProgress:{schemaVersion:1,entries:[]}});
+   expect(result).toMatchObject({status:'capture_not_due',capturedCandidates:0,newAdmissions:0,heartbeatRecorded:true});
+   expect(f.client.rpc).toHaveBeenCalledExactlyOnceWith('literary_news_delivery_day_status',
+     {p_destination_id:destination.id,p_now:now.toISOString()});
+   expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
+   expect(f.dispatch).not.toHaveBeenCalled();
  });
  it('reports fresh news counts separately from photos or legacy acknowledgments',async()=>{
    const f=await fixture();const result=await f.run();expect(result.status).toBe('daily_target_deficit');expect(result.dayStatus.deficitToMinimum).toBe(10);
