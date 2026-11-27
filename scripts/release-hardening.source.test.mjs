@@ -14,9 +14,9 @@ describe("release workflow hardening", () => {
   it("saves only changed editorial cache contents before the performance gate, even after a failed build", () => {
     const source = read(".github/workflows/deploy-pages.yml");
     const restore = source.indexOf("uses: actions/cache/restore@v5");
-    const seed = source.indexOf("node scripts/cache-public-editorial-originals.mjs restore");
+    const seed = source.indexOf('node scripts/cache-public-editorial-originals.mjs restore >> "$GITHUB_OUTPUT"');
     const build = source.indexOf("id: build_site");
-    const stage = source.indexOf("node scripts/cache-public-editorial-originals.mjs stage");
+    const stage = source.indexOf('node scripts/cache-public-editorial-originals.mjs stage >> "$GITHUB_OUTPUT"');
     const save = source.indexOf("uses: actions/cache/save@v5");
     expect(restore).toBeGreaterThan(source.indexOf("Verify the frozen CMS publication snapshot"));
     expect(seed).toBeGreaterThan(restore);

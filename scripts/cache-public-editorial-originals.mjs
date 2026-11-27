@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
-import { appendFile, lstat, mkdir, mkdtemp, readFile, rename, writeFile } from "node:fs/promises";
+import { constants } from "node:fs";
+import { mkdir, mkdtemp, open, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const maxOriginalBytes = Math.floor(3.9 * 1024 * 1024);
 const maxCacheBytes = 192 * 1024 * 1024;
 const maxManifestBytes = 1024 * 1024;
+const readFlags = constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0);
 const editorialUrl = /^https:\/\/sjqejjmwpzfsczxdghvw\.supabase\.co\/storage\/v1\/object\/public\/editorial-media\/20\d{2}\/(?:0[1-9]|1[0-2])\/[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\.(?:jpg|png|webp|avif)$/u;
 const sha256 = value => createHash("sha256").update(value).digest("hex");
 
@@ -26,11 +28,28 @@ function readySource(record, sourceUrl) {
 }
 
 async function readRegularFile(filename, limit) {
-  const info = await lstat(filename).catch(error => {
-    if (error.code !== "ENOENT") throw error;
-  });
-  if (!info?.isFile() || info.size > limit) return null;
-  return readFile(filename);
+  let file;
+  try {
+    file = await open(filename, readFlags);
+  } catch (error) {
+    if (error.code === "ENOENT" || error.code === "ELOOP") return null;
+    throw error;
+  }
+  try {
+    const info = await file.stat();
+    if (!info.isFile() || info.size > limit) return null;
+    // Read one extra byte to detect growth without exceeding the size limit by more than one byte.
+    const bytes = Buffer.alloc(info.size + 1);
+    let offset = 0;
+    while (offset < bytes.length) {
+      const { bytesRead } = await file.read(bytes, offset, bytes.length - offset, offset);
+      if (bytesRead === 0) break;
+      offset += bytesRead;
+    }
+    return offset === info.size ? bytes.subarray(0, offset) : null;
+  } finally {
+    await file.close();
+  }
 }
 
 function parseJson(bytes) {
@@ -122,8 +141,6 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
     matchedKey: process.env.EDITORIAL_SOURCE_CACHE_MATCHED_KEY,
     restoredDigest: process.env.EDITORIAL_SOURCE_CACHE_RESTORED_DIGEST,
   });
-  console.log(`Public editorial originals (${mode}): ${result.count}`);
-  if (process.env.GITHUB_OUTPUT) {
-    await appendFile(process.env.GITHUB_OUTPUT, `digest=${result.digest}\nchanged=${result.changed}\n`);
-  }
+  console.error(`Public editorial originals (${mode}): ${result.count}`);
+  process.stdout.write(`digest=${result.digest}\nchanged=${result.changed}\n`);
 }

@@ -190,7 +190,7 @@ jobs:
         id: verified_editorial_originals
         if: steps.editorial_originals_cache.outputs.cache-matched-key != ''
         continue-on-error: true
-        run: node scripts/cache-public-editorial-originals.mjs restore
+        run: node scripts/cache-public-editorial-originals.mjs restore >> "$GITHUB_OUTPUT"
         env:
           EDITORIAL_SOURCE_CACHE_MATCHED_KEY: ${{ steps.editorial_originals_cache.outputs.cache-matched-key }}
 
@@ -211,7 +211,7 @@ jobs:
         id: staged_editorial_originals
         if: ${{ !cancelled() && (steps.build_site.outcome == 'success' || steps.build_site.outcome == 'failure') && github.repository == 'Kosyat128/probpera-literary-map' && github.ref == 'refs/heads/main' }}
         continue-on-error: true
-        run: node scripts/cache-public-editorial-originals.mjs stage
+        run: node scripts/cache-public-editorial-originals.mjs stage >> "$GITHUB_OUTPUT"
         env:
           EDITORIAL_SOURCE_CACHE_MATCHED_KEY: ${{ steps.editorial_originals_cache.outputs.cache-matched-key }}
           EDITORIAL_SOURCE_CACHE_RESTORED_DIGEST: ${{ steps.verified_editorial_originals.outputs.digest }}
