@@ -9,6 +9,7 @@ const supabaseUrl = rawSupabaseUrl
   : "";
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const outputPath = process.env.GITHUB_OUTPUT || "";
+const articlesOnly = process.argv.includes("--articles-only");
 const finalizeArgument = process.argv.find((argument) =>
   argument.startsWith("--finalize=")
 );
@@ -145,43 +146,48 @@ if (!dueArticles.length) {
   console.log("No scheduled articles are due.");
 }
 
-const designQuery = new URLSearchParams({
-  select: "id,cas_version,scheduled_at",
-  status: "eq.approved",
-  scheduled_at: `lte.${now}`,
-  order: "scheduled_at.asc",
-  limit: "25",
-});
-const dueDesignResponse = await fetch(
-  `${supabaseUrl}/rest/v1/site_design_change_sets?${designQuery.toString()}`,
-  { headers, redirect: "error" }
-);
-if (!dueDesignResponse.ok) {
-  throw new Error(
-    `Scheduled Site Studio query failed: ${dueDesignResponse.status} ${await dueDesignResponse.text()}`
-  );
-}
-const dueDesignChangeSets = await dueDesignResponse.json();
 const publishedDesignChangeSets = [];
-for (const changeSet of dueDesignChangeSets) {
-  const publishResponse = await fetch(
-    `${supabaseUrl}/rest/v1/rpc/publish_site_design_change_set`,
-    {
-      method: "POST",
-      redirect: "error",
-      headers,
-      body: JSON.stringify({
-        p_change_set_id: changeSet.id,
-        p_expected_cas_version: changeSet.cas_version,
-      }),
-    }
+if (!articlesOnly) {
+  const designEndpoint = new URL("/rest/v1/site_design_change_sets", supabaseUrl);
+  const designQuery = new URLSearchParams({
+    select: "id,cas_version,scheduled_at",
+    status: "eq.approved",
+    scheduled_at: `lte.${now}`,
+    order: "scheduled_at.asc",
+    limit: "25",
+  });
+  designEndpoint.search = designQuery.toString();
+  const dueDesignResponse = await fetch(
+    designEndpoint,
+    { headers, redirect: "error" }
   );
-  if (!publishResponse.ok) {
+  if (!dueDesignResponse.ok) {
     throw new Error(
-      `Scheduled Site Studio release failed: ${publishResponse.status} ${await publishResponse.text()}`
+      `Scheduled Site Studio query failed: ${dueDesignResponse.status} ${await dueDesignResponse.text()}`
     );
   }
-  publishedDesignChangeSets.push(changeSet.id);
+  const dueDesignChangeSets = await dueDesignResponse.json();
+  const publishDesignEndpoint = new URL("/rest/v1/rpc/publish_site_design_change_set", supabaseUrl);
+  for (const changeSet of dueDesignChangeSets) {
+    const publishResponse = await fetch(
+      publishDesignEndpoint,
+      {
+        method: "POST",
+        redirect: "error",
+        headers,
+        body: JSON.stringify({
+          p_change_set_id: changeSet.id,
+          p_expected_cas_version: changeSet.cas_version,
+        }),
+      }
+    );
+    if (!publishResponse.ok) {
+      throw new Error(
+        `Scheduled Site Studio release failed: ${publishResponse.status} ${await publishResponse.text()}`
+      );
+    }
+    publishedDesignChangeSets.push(changeSet.id);
+  }
 }
 
 const publishedCount =

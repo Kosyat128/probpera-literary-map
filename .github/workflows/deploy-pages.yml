@@ -49,6 +49,7 @@ jobs:
       publication_outbox_high_water: ${{ steps.publication_snapshot.outputs.outbox_high_water }}
       publication_legacy_audit_high_water: ${{ steps.publication_snapshot.outputs.legacy_audit_high_water }}
       publication_queue_marker: ${{ steps.publication_snapshot.outputs.publication_queue_marker }}
+      publication_pending_outbox_ids: ${{ steps.pending_outbox_capture.outputs.pending_outbox_ids }}
       publication_content_sha256: ${{ steps.publication_snapshot.outputs.content_sha256 }}
 
     steps:
@@ -71,6 +72,13 @@ jobs:
         id: scheduled
         if: github.event_name == 'schedule'
         run: npm run content:publish-scheduled
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Publish overdue articles during a CMS release
+        if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'
+        run: npm run content:publish-scheduled -- --articles-only
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -114,7 +122,7 @@ jobs:
           PUBLIC_SITE_URL: https://probpera.ru
 
       - name: Export current CMS snapshot for release verification
-        if: steps.release_gate.outputs.should_deploy == 'true'
+        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
         run: npm run content:export:cms
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
@@ -125,7 +133,7 @@ jobs:
           CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
 
       - name: Regenerate CMS-derived article and book links
-        if: steps.release_gate.outputs.should_deploy == 'true'
+        if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
         run: npm run content:link-books
 
       - name: Prepare PostgreSQL integration test image
@@ -138,10 +146,6 @@ jobs:
         # Historical fixture tests run before refreshing this read-only provenance
         # report; books:audit then checks it against the freshly exported CMS head.
         run: npm run lint && npm test -- --exclude scripts/lib/stage5-content-data-lock.test.mjs && npm run content:audit && npm run links:audit && npm run media:audit && node scripts/extract-article-book-synopsis-manifest.mjs && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
-
-      - name: Verify fast CMS publication
-        if: steps.release_gate.outputs.should_deploy == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'
-        run: npm run lint:public && npm run links:audit
 
       - name: Verify registration and forum configuration
         if: steps.release_gate.outputs.should_deploy == 'true'
@@ -156,7 +160,17 @@ jobs:
         env:
           YANDEX_METRIKA_COUNTER_ID: ${{ vars.YANDEX_METRIKA_COUNTER_ID }}
 
-      - name: Re-export and freeze the complete CMS publication head
+      # An ID allocated earlier can commit later. Freeze exact pending IDs
+      # before reading the content so that a later edit cannot be acknowledged.
+      - name: Capture pending publication requests
+        id: pending_outbox_capture
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: node scripts/check-public-build-requests.mjs --capture-outbox >> "$GITHUB_OUTPUT"
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: Freeze the complete CMS publication head
         id: publication_snapshot
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run content:export:cms
@@ -167,6 +181,10 @@ jobs:
           PUBLIC_SITE_URL: https://probpera.ru
           CMS_EXPORT_REQUIRE_STABLE: "true"
           CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
+
+      - name: Verify fast CMS publication
+        if: steps.release_gate.outputs.should_deploy == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'
+        run: npm run lint:public
 
       - name: Verify complete writer biography release artifacts
         if: steps.release_gate.outputs.should_deploy == 'true'
@@ -375,10 +393,12 @@ jobs:
 
       - name: Finalize the deployed composite CMS snapshot
         if: needs.build.outputs.publication_queue_marker != ''
-        run: node scripts/check-public-build-requests.mjs --finalize=${{ needs.build.outputs.publication_queue_marker }}
+        run: node scripts/check-public-build-requests.mjs --finalize="$CANDIDATE_PUBLICATION_QUEUE_MARKER"
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          CANDIDATE_PUBLICATION_QUEUE_MARKER: ${{ needs.build.outputs.publication_queue_marker }}
+          CANDIDATE_PENDING_OUTBOX_IDS: ${{ needs.build.outputs.publication_pending_outbox_ids }}
 
   distribute:
     name: Distribute published articles

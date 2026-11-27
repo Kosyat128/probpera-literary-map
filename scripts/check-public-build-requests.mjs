@@ -1,5 +1,6 @@
 import { appendFile } from "node:fs/promises";
 import { isMissingPublicationOutbox } from "./lib/cms-publication-head.mjs";
+import { collectPendingOutboxIds, parsePendingOutboxIds, PENDING_OUTBOX_STATUS_FILTER } from "./lib/cms-outbox-acknowledgement.mjs";
 import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
 const rawSupabaseUrl = (
@@ -11,13 +12,18 @@ const outputPath = process.env.GITHUB_OUTPUT || "";
 const finalizeArgument = process.argv.find((argument) =>
   argument.startsWith("--finalize=")
 );
+const captureOutbox = process.argv.includes("--capture-outbox");
+
+if (captureOutbox && finalizeArgument) {
+  throw new Error("Outbox capture and finalization must run separately.");
+}
 
 async function setOutput(name, value) {
   if (outputPath) await appendFile(outputPath, `${name}=${value}\n`, "utf8");
 }
 
 if (!supabaseUrl || !serviceKey) {
-  if (process.env.GITHUB_ACTIONS === "true") {
+  if (process.env.GITHUB_ACTIONS === "true" || captureOutbox) {
     throw new Error(
       "Public build queue requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY."
     );
@@ -38,6 +44,7 @@ const headers = {
 async function request(path, options = {}) {
   return fetch(`${supabaseUrl}/rest/v1/${path}`, {
     ...options,
+    redirect: "error",
     headers: { ...headers, ...(options.headers || {}) },
   });
 }
@@ -78,6 +85,25 @@ async function hasOutbox() {
   throw new Error(`Public build outbox probe failed: ${response.status} ${body}`);
 }
 
+async function capturePendingOutbox() {
+  const query = new URLSearchParams({
+    select: "request_id:id::text",
+    status: PENDING_OUTBOX_STATUS_FILTER,
+    order: "id.desc",
+    limit: "1",
+  });
+  const response = await request(`public_build_outbox?${query}`, { signal: AbortSignal.timeout(15_000) });
+  if (!response.ok) {
+    const body = await response.text();
+    if (isMissingPublicationOutbox(response.status, body)) return [];
+    throw new Error(`Pending outbox head capture failed: ${response.status} ${body}`);
+  }
+  const newest = await response.json();
+  if (!Array.isArray(newest) || newest.length > 1) throw new Error("Invalid outbox head capture.");
+  if (!newest.length) return [];
+  return collectPendingOutboxIds({ supabaseUrl, serviceKey, outboxHighWater: newest[0]?.request_id });
+}
+
 function parseFinalizeMarkers(rawMarker) {
   const markers = new Map();
   for (const token of rawMarker.split(",")) {
@@ -90,27 +116,34 @@ function parseFinalizeMarkers(rawMarker) {
   return markers;
 }
 
-async function finalizeOutbox(maxId) {
-  const query = new URLSearchParams({
-    id: `lte.${maxId}`,
-    status: "in.(requested,dispatched,failed)",
+async function finalizeOutbox(ids) {
+  const batchSize = 100;
+  const body = JSON.stringify({
+    status: "deployed",
+    deployed_at: new Date().toISOString(),
+    deployment_run_id: process.env.GITHUB_RUN_ID || null,
+    last_error: null,
   });
-  const response = await request(`public_build_outbox?${query.toString()}`, {
-    method: "PATCH",
-    headers: { Prefer: "return=minimal" },
-    body: JSON.stringify({
-      status: "deployed",
-      deployed_at: new Date().toISOString(),
-      deployment_run_id: process.env.GITHUB_RUN_ID || null,
-      last_error: null,
-    }),
-  });
-  if (!response.ok) {
-    throw new Error(
-      `Public build outbox finalization failed: ${response.status} ${await response.text()}`
-    );
+  // Commit order can differ from identity order. Acknowledge only the exact
+  // requests seen before the export, never all IDs below its high-water mark.
+  for (let offset = 0; offset < ids.length; offset += batchSize) {
+    const query = new URLSearchParams({
+      id: `in.(${ids.slice(offset, offset + batchSize).join(",")})`,
+      status: PENDING_OUTBOX_STATUS_FILTER,
+    });
+    const response = await request(`public_build_outbox?${query}`, {
+      method: "PATCH",
+      headers: { Prefer: "return=minimal" },
+      signal: AbortSignal.timeout(15_000),
+      body,
+    });
+    if (!response.ok) {
+      throw new Error(
+        `Public build outbox finalization failed: ${response.status} ${await response.text()}`
+      );
+    }
   }
-  console.log(`Finalized transactional public builds through outbox ${maxId}.`);
+  console.log(`Processed ${ids.length} frozen transactional public build acknowledgements.`);
 }
 
 async function finalizeLegacyAudit(maxId) {
@@ -154,20 +187,6 @@ async function finalizeLegacyAudit(maxId) {
   console.log(`Finalized legacy public build requests through audit ${maxId}.`);
 }
 
-if (finalizeArgument) {
-  const rawMarker = finalizeArgument.slice("--finalize=".length).trim();
-  // Queue IDs are unrelated sequences. A bare numeric marker must fail closed:
-  // guessing its queue during a rollout could acknowledge content that was not
-  // present in this deploy.
-  const markers = parseFinalizeMarkers(rawMarker);
-
-  if (markers.has("outbox")) await finalizeOutbox(markers.get("outbox"));
-  if (markers.has("legacy-audit")) {
-    await finalizeLegacyAudit(markers.get("legacy-audit"));
-  }
-  process.exit(0);
-}
-
 async function pendingRequests(table, pendingFilter, releaseFilter, label) {
   const query = new URLSearchParams({
     select: "id",
@@ -198,7 +217,7 @@ async function pendingRequests(table, pendingFilter, releaseFilter, label) {
 function pendingOutboxRequests() {
   return pendingRequests(
     "public_build_outbox",
-    { status: "in.(requested,dispatched,failed)" },
+    { status: PENDING_OUTBOX_STATUS_FILTER },
     {
       and: "(not.and(entity_type.eq.media,reason.eq.media.uploaded),not.and(entity_type.eq.media_assets,reason.eq.database-insert))",
     },
@@ -233,34 +252,56 @@ async function pendingLegacyRequests() {
   );
 }
 
-const outboxAvailable = await hasOutbox();
-const outbox = outboxAvailable
-  ? await pendingOutboxRequests()
-  : { maxId: "", requiresRelease: false };
-// Keep draining compatibility records even after the migration appears. This
-// closes the short PostgREST schema-cache window in which the admin can receive
-// PGRST202 for the RPC while the scheduled worker can already see the table.
-const legacy = await pendingLegacyRequests();
-const marker = [
-  outbox.maxId ? `outbox:${outbox.maxId}` : "",
-  legacy.maxId ? `legacy-audit:${legacy.maxId}` : "",
-]
-  .filter(Boolean)
-  .join(",");
-const requiresRelease = outbox.requiresRelease || legacy.requiresRelease;
-const queue = outboxAvailable
-  ? legacy.maxId
-    ? "outbox+legacy-audit"
-    : "outbox"
-  : "legacy-audit";
+async function reportPendingRequests() {
+  const outboxAvailable = await hasOutbox();
+  const outbox = outboxAvailable
+    ? await pendingOutboxRequests()
+    : { maxId: "", requiresRelease: false };
+  // Keep draining compatibility records even after the migration appears. This
+  // closes the short PostgREST schema-cache window in which the admin can receive
+  // PGRST202 for the RPC while the scheduled worker can already see the table.
+  const legacy = await pendingLegacyRequests();
+  const marker = [
+    outbox.maxId ? `outbox:${outbox.maxId}` : "",
+    legacy.maxId ? `legacy-audit:${legacy.maxId}` : "",
+  ]
+    .filter(Boolean)
+    .join(",");
+  const requiresRelease = outbox.requiresRelease || legacy.requiresRelease;
+  const queue = outboxAvailable
+    ? legacy.maxId
+      ? "outbox+legacy-audit"
+      : "outbox"
+    : "legacy-audit";
 
-await setOutput("requested", requiresRelease ? "1" : "0");
-await setOutput("max_id", marker);
-await setOutput("queue", queue);
-if (requiresRelease) {
-  console.log(`Pending requests require a public release (${queue}; marker ${marker}).`);
-} else if (marker) {
-  console.log(`Staged media requests will be acknowledged by the next public release (${queue}; marker ${marker}).`);
+  await setOutput("requested", requiresRelease ? "1" : "0");
+  await setOutput("max_id", marker);
+  await setOutput("queue", queue);
+  if (requiresRelease) {
+    console.log(`Pending requests require a public release (${queue}; marker ${marker}).`);
+  } else if (marker) {
+    console.log(`Staged media requests will be acknowledged by the next public release (${queue}; marker ${marker}).`);
+  } else {
+    console.log(`No pending public build requests (${queue}).`);
+  }
+}
+
+if (captureOutbox) {
+  const ids = await capturePendingOutbox();
+  console.log(`pending_outbox_ids=${ids.join(",")}`);
+} else if (finalizeArgument) {
+  const rawMarker = finalizeArgument.slice("--finalize=".length).trim();
+  // Queue IDs are unrelated sequences. A bare numeric marker must fail closed:
+  // guessing its queue during a rollout could acknowledge content that was not
+  // present in this deploy.
+  const markers = parseFinalizeMarkers(rawMarker);
+  const outboxIds = markers.has("outbox")
+    ? parsePendingOutboxIds(process.env.CANDIDATE_PENDING_OUTBOX_IDS, markers.get("outbox"))
+    : [];
+  if (outboxIds.length) await finalizeOutbox(outboxIds);
+  if (markers.has("legacy-audit")) {
+    await finalizeLegacyAudit(markers.get("legacy-audit"));
+  }
 } else {
-  console.log(`No pending public build requests (${queue}).`);
+  await reportPendingRequests();
 }

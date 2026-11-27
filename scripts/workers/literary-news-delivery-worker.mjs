@@ -232,10 +232,14 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     phase='day_status';
     let dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
       {p_destination_id:destination.id,p_now:current.toISOString()}),current);
-    phase='due_queue';
-    const rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
-      {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
-    let candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    // Capture reconciles only its fresh feed IDs. The due queue authorizes dispatch work.
+    let rawDue=[],candidates=[];
+    if(invocation==='dispatch'){
+      phase='due_queue';
+      rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
+        {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
+      candidates=checkedDeliveryDueRows(rawDue,destination,current);
+    }
     phase='public_feed';
     const feed=await fetchFeedImpl({fetchImpl:budget.fetch,current});
     const capturePlan=invocation==='capture'&&captureProgress!==undefined?await planNewsCapture(feed,current,captureProgress):null;
