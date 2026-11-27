@@ -91,7 +91,12 @@ import GalleryEditor, {
   type GalleryEditorKind,
 } from "@/components/article-editor/GalleryEditor";
 import PublishPanel from "@/components/article-editor/PublishPanel";
-import { articleScheduleInput } from "@/lib/article-schedule";
+import {
+  ARTICLE_SCHEDULE_TIME_ZONE,
+  articleScheduleInput,
+  articleScheduleSubmission,
+  restoreArticleScheduleInput,
+} from "@/lib/article-schedule";
 import SeoPanel from "@/components/article-editor/SeoPanel";
 import SourceBibliographyEditor from "@/components/article-editor/SourceBibliographyEditor";
 import ValidationChecklist from "@/components/article-editor/ValidationChecklist";
@@ -212,6 +217,7 @@ type ArticleRecoverySnapshot = {
   contentJson?: string;
   status?: string;
   scheduledAt?: string;
+  scheduleTimeZone?: typeof ARTICLE_SCHEDULE_TIME_ZONE;
   featured?: boolean;
   showOnHomepage?: boolean;
   pinned?: boolean;
@@ -1064,6 +1070,7 @@ export default function ArticleEditor({
       contentJson,
       status,
       scheduledAt,
+      scheduleTimeZone: ARTICLE_SCHEDULE_TIME_ZONE,
       featured,
       showOnHomepage,
       pinned,
@@ -1868,7 +1875,7 @@ export default function ArticleEditor({
           recovery.contentJson || '{"type":"doc","content":[]}'
         );
         setStatus(recovery.status ?? "draft");
-        setScheduledAt(recovery.scheduledAt ?? "");
+        setScheduledAt(restoreArticleScheduleInput(recovery.scheduledAt, article.scheduled_at, recovery.scheduleTimeZone));
         setFeatured(Boolean(recovery.featured));
         setShowOnHomepage(Boolean(recovery.showOnHomepage));
         setPinned(Boolean(recovery.pinned));
@@ -2086,7 +2093,7 @@ export default function ArticleEditor({
         publication: {
           previousStatus: article.status || "draft",
           status,
-          scheduledAt,
+          scheduledAt: articleScheduleSubmission(scheduledAt, article.scheduled_at),
           featured,
           showOnHomepage,
           pinned,

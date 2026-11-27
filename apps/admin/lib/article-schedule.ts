@@ -1,5 +1,7 @@
+export const ARTICLE_SCHEDULE_TIME_ZONE = "Europe/Moscow";
+
 const editorialClock = new Intl.DateTimeFormat("en-GB", {
-  timeZone: "Europe/Moscow",
+  timeZone: ARTICLE_SCHEDULE_TIME_ZONE,
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
@@ -42,4 +44,22 @@ export function normalizeArticleScheduledAt(value: string): string | null {
 export function articleScheduleInput(value?: string | null): string {
   const timestamp = value && normalizeArticleScheduledAt(value);
   return timestamp ? editorialWallClock(Date.parse(timestamp)).slice(0, 16) : "";
+}
+
+export function restoreArticleScheduleInput(
+  value?: string,
+  stored?: string | null,
+  timeZone?: string
+): string {
+  const recovered = value ?? "";
+  // Older snapshots contained the first 16 characters of the database timestamp.
+  if (timeZone === undefined && stored && recovered === stored.slice(0, 16)) {
+    return articleScheduleInput(stored) || recovered;
+  }
+  return recovered;
+}
+
+export function articleScheduleSubmission(value: string, stored?: string | null): string {
+  // The form displays minutes. An unchanged field must keep the full stored instant.
+  return stored && value && value === articleScheduleInput(stored) ? stored : value;
 }

@@ -12,6 +12,15 @@ const outputPath = process.env.GITHUB_OUTPUT || "";
 const finalizeArgument = process.argv.find((argument) =>
   argument.startsWith("--finalize=")
 );
+const articleIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu;
+const articleTimestampPattern = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$/u;
+
+function isDatabaseTimestamp(value) {
+  const match = typeof value === "string" && articleTimestampPattern.exec(value);
+  if (!match || match[0] !== value || !Number.isFinite(Date.parse(value))) return false;
+  const calendar = Date.parse(`${match[1]}Z`);
+  return Number.isFinite(calendar) && new Date(calendar).toISOString().slice(0, 19) === match[1];
+}
 
 async function setOutput(name, value) {
   if (outputPath) await appendFile(outputPath, `${name}=${value}\n`, "utf8");
@@ -37,27 +46,26 @@ const headers = {
   "content-type": "application/json",
 };
 const now = new Date().toISOString();
+const articlesEndpoint = new URL("/rest/v1/articles", supabaseUrl);
 
 if (finalizeArgument) {
   const ids = finalizeArgument
     .slice("--finalize=".length)
     .split(",")
     .map((id) => id.trim())
-    .filter((id) =>
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu.test(id)
-    );
+    .filter((id) => articleIdPattern.test(id));
   if (!ids.length) {
     console.log("No scheduled publication ids to finalize.");
     process.exit(0);
   }
-  const finalizeResponse = await fetch(
-    `${supabaseUrl}/rest/v1/articles?id=in.(${encodeURIComponent(ids.join(","))})`,
-    {
-      method: "PATCH",
-      headers,
-      body: JSON.stringify({ scheduled_at: null }),
-    }
-  );
+  const finalizeUrl = new URL(articlesEndpoint);
+  finalizeUrl.searchParams.set("id", `in.(${ids.join(",")})`);
+  const finalizeResponse = await fetch(finalizeUrl, {
+    method: "PATCH",
+    redirect: "error",
+    headers,
+    body: JSON.stringify({ scheduled_at: null }),
+  });
   if (!finalizeResponse.ok) {
     throw new Error(
       `Scheduled article finalization failed: ${finalizeResponse.status} ${await finalizeResponse.text()}`
@@ -67,18 +75,16 @@ if (finalizeArgument) {
   process.exit(0);
 }
 
-const query = new URLSearchParams({
+const dueUrl = new URL(articlesEndpoint);
+dueUrl.search = new URLSearchParams({
   select: "id,status,scheduled_at,updated_at",
   status: "in.(scheduled,published)",
   deleted_at: "is.null",
   scheduled_at: `lte.${now}`,
   order: "scheduled_at.asc",
   limit: "100",
-});
-const dueResponse = await fetch(
-  `${supabaseUrl}/rest/v1/articles?${query.toString()}`,
-  { headers }
-);
+}).toString();
+const dueResponse = await fetch(dueUrl, { headers, redirect: "error" });
 if (!dueResponse.ok) {
   throw new Error(
     `Scheduled article query failed: ${dueResponse.status} ${await dueResponse.text()}`
@@ -86,21 +92,29 @@ if (!dueResponse.ok) {
 }
 
 const dueArticles = await dueResponse.json();
+if (!Array.isArray(dueArticles) || dueArticles.length > 100 || dueArticles.some((article) =>
+  typeof article?.id !== "string" || article.id.length !== 36 || !articleIdPattern.test(article.id) ||
+  (article.status !== "scheduled" && article.status !== "published") ||
+  !isDatabaseTimestamp(article.scheduled_at) || !isDatabaseTimestamp(article.updated_at)
+)) {
+  throw new Error("Scheduled article query returned an invalid row.");
+}
 const publishedArticles = [];
 for (const article of dueArticles) {
   // A staff edit can supersede this selection before we send the mutation.
   // Compare the selected article revision in the same statement as publication.
-  const updateQuery = new URLSearchParams({
-    id: `eq.${article.id}`,
-    status: `eq.${article.status}`,
-    scheduled_at: `eq.${article.scheduled_at}`,
-    deleted_at: "is.null",
-  });
-  if (article.updated_at) updateQuery.set("updated_at", `eq.${article.updated_at}`);
+  const updateUrl = new URL(articlesEndpoint);
+  updateUrl.searchParams.set("select", "id");
+  updateUrl.searchParams.set("id", `eq.${article.id}`);
+  updateUrl.searchParams.set("status", `eq.${article.status}`);
+  updateUrl.searchParams.set("scheduled_at", `eq.${article.scheduled_at}`);
+  updateUrl.searchParams.set("updated_at", `eq.${article.updated_at}`);
+  updateUrl.searchParams.set("deleted_at", "is.null");
   const updateResponse = await fetch(
-    `${supabaseUrl}/rest/v1/articles?${updateQuery}`,
+    updateUrl,
     {
       method: "PATCH",
+      redirect: "error",
       headers: {
         ...headers,
         Prefer: "return=representation",
@@ -120,7 +134,12 @@ for (const article of dueArticles) {
       `Scheduled article update failed: ${updateResponse.status} ${await updateResponse.text()}`
     );
   }
-  publishedArticles.push(...await updateResponse.json());
+  const updatedRows = await updateResponse.json();
+  if (!Array.isArray(updatedRows) || updatedRows.length > 1 ||
+      (updatedRows.length === 1 && updatedRows[0]?.id !== article.id)) {
+    throw new Error("Scheduled article update returned an invalid row.");
+  }
+  if (updatedRows.length === 1) publishedArticles.push(article);
 }
 if (!dueArticles.length) {
   console.log("No scheduled articles are due.");
@@ -135,7 +154,7 @@ const designQuery = new URLSearchParams({
 });
 const dueDesignResponse = await fetch(
   `${supabaseUrl}/rest/v1/site_design_change_sets?${designQuery.toString()}`,
-  { headers }
+  { headers, redirect: "error" }
 );
 if (!dueDesignResponse.ok) {
   throw new Error(
@@ -149,6 +168,7 @@ for (const changeSet of dueDesignChangeSets) {
     `${supabaseUrl}/rest/v1/rpc/publish_site_design_change_set`,
     {
       method: "POST",
+      redirect: "error",
       headers,
       body: JSON.stringify({
         p_change_set_id: changeSet.id,

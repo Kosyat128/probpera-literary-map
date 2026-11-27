@@ -37,7 +37,9 @@ describe("scheduled editorial publication", () => {
     current.edited.updated_at = now;
 
     const fetchMock = vi.fn(async (input, options) => {
-      const { pathname, searchParams } = new URL(input);
+      const { origin, pathname, searchParams } = new URL(input);
+      expect(origin).toBe("https://scheduled-test.supabase.co");
+      expect(options.redirect).toBe("error");
       if (pathname.endsWith("/site_design_change_sets")) return Response.json([]);
       expect(pathname).toBe("/rest/v1/articles");
       if (!options.method) {
@@ -51,14 +53,14 @@ describe("scheduled editorial publication", () => {
       }
 
       expect(options.method).toBe("PATCH");
+      expect(searchParams.get("select")).toBe("id");
       const selected = Object.values(original).find(({ id }) => searchParams.get("id") === `eq.${id}`);
       expect(selected).toBeDefined();
       const row = Object.values(current).find(({ id }) => id === selected.id);
       const patch = JSON.parse(options.body);
       expect(patch).toEqual({ status: "published", published_at: now, scheduled_at: null });
-      const matches = [...searchParams].every(([name, filter]) => filter === "is.null"
-        ? row[name] === null
-        : filter === `eq.${row[name]}`);
+      const matches = [...searchParams].filter(([name]) => name !== "select")
+        .every(([name, filter]) => filter === "is.null" ? row[name] === null : filter === `eq.${row[name]}`);
       if (!matches) return Response.json([]);
       Object.assign(row, patch);
       return Response.json([{ id: row.id }]);
@@ -77,5 +79,29 @@ describe("scheduled editorial publication", () => {
       ["mock-output", "published=1\n", "utf8"],
       ["mock-output", `ids=${original.ready.id}\n`, "utf8"],
     ]);
+  });
+
+  it.each([
+    { id: "e7e7da44-6c7f-4793-86fb-d8f185594e97\n" },
+    { status: "scheduled&status=eq.published" },
+    { scheduled_at: "2026-02-30T07:00:00+00:00" },
+    { updated_at: null },
+  ])("rejects an invalid selected record before sending a privileged mutation (%j)", async (invalid) => {
+    vi.stubEnv("SUPABASE_URL", "https://scheduled-test.supabase.co/untrusted-path?query=bad");
+    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "mock-service-key");
+    const fetchMock = vi.fn(async (input, options) => {
+      expect(new URL(input).pathname).toBe("/rest/v1/articles");
+      expect(options.redirect).toBe("error");
+      return Response.json([{
+        id: "e7e7da44-6c7f-4793-86fb-d8f185594e97",
+        status: "scheduled",
+        scheduled_at: "2026-11-27T07:00:00+00:00",
+        updated_at: "2026-11-27T06:00:00.123456+00:00",
+        ...invalid,
+      }]);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(import("./publish-scheduled-content.mjs")).rejects.toThrow("Scheduled article query returned an invalid row.");
+    expect(fetchMock).toHaveBeenCalledOnce();
   });
 });

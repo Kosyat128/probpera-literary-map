@@ -12,6 +12,11 @@ const origin = "http://127.0.0.1:39225";
 const id = "66666666-6666-4666-8666-666666666666";
 const titleBefore = "Новая рукопись с иллюстрациями";
 const titleAfter = "Новое название после отправки";
+const storedSchedule = "2026-11-27T22:30:15.123456+00:00";
+const legacyManualSnapshot = {
+  version: 2, activeLocale: "ru", title: "Восстановленная рукопись",
+  status: "scheduled", scheduledAt: "2026-11-27T22:30",
+};
 
 // Bundle the real editor and TipTap with Next's production React. These
 // boundaries supply no database, account, remote HTTP or Next router.
@@ -22,7 +27,7 @@ const virtual = new Map([
   ["@/app/(dashboard)/articles/template-actions", "export const saveEditorTemplateAction = async () => {}; export const deleteEditorTemplateAction = async () => {};"],
   ["@/app/(dashboard)/editor-links/actions", "export const searchEditorInternalLinksAction = async () => [];"],
   ["@/app/(dashboard)/editor-autosave/actions", [
-    "export const loadLatestEditorAutosaveAction = async () => ({ok: true});",
+    "export const loadLatestEditorAutosaveAction = async () => window.fixture.loadAutosave();",
     "export const saveEditorAutosaveAction = async () => ({ok: false, error: 'Local fixture'});",
     "export const deleteExactEditorAutosaveAction = async () => ({ok: true});",
   ].join("\n")],
@@ -41,6 +46,11 @@ const entry = `
       return new Promise((resolve, reject) => { fixture.reject = reject; });
     },
     redirect(to) { fixture.reject(getRedirectError(to, "push")); },
+    loadAutosave() {
+      return {ok: true, ...(new URLSearchParams(location.search).get("scheduleRecovery") === "server" ? {
+        recovery: {state: "saved", updatedAt: "2026-11-27T11:30:00Z", snapshot: ${JSON.stringify(legacyManualSnapshot)}},
+      } : {})};
+    },
   };
   class Boundary extends React.Component {
     state = {};
@@ -66,7 +76,8 @@ const entry = `
       id: query.has("other") ? "77777777-7777-4777-8777-777777777777" : existing ? ${JSON.stringify(id)} : undefined,
       updated_at: existing ? "2026-11-20T11:30:00+00:00" : undefined,
       title: "Новая рукопись", slug: "article",
-      status: query.has("published") ? "published" : "draft",
+      status: query.has("scheduleRecovery") ? "scheduled" : query.has("published") ? "published" : "draft",
+      scheduled_at: query.has("scheduleRecovery") ? ${JSON.stringify(storedSchedule)} : undefined,
       working_draft_version: query.has("published") ? 3 : 0,
       category_id: categoryId, excerpt: summary, seo_description: summary, sources: ["Редакционный источник"],
       content_html: html("ru", russian), content_json: doc("ru", russian),
@@ -212,6 +223,26 @@ test("reloading an in-flight save on an old success URL keeps the recovery copy"
   await page.getByRole("button", { name: "Восстановить локальную копию" }).click();
   await expect(title).toHaveValue(titleAfter);
 });
+
+for (const mode of ["local", "server"]) {
+  test(`keeps the stored schedule after restoring a legacy ${mode} autosave`, async ({ page }) => {
+    if (mode === "local") {
+      await page.addInitScript(({ key, snapshot }) => localStorage.setItem(key, JSON.stringify(snapshot)), {
+        key: `probpera-editor-${id}`, snapshot: legacyManualSnapshot,
+      });
+      page.on("dialog", (dialog) => dialog.accept());
+    }
+    await page.goto(`${origin}/editor?existing&scheduleRecovery=${mode}`);
+    const schedule = page.getByLabel("Обязательная дата и время публикации");
+    await expect(schedule).toHaveValue("2026-11-28T01:30");
+    await page.getByRole("button", {
+      name: mode === "local" ? "Восстановить локальную копию" : "Восстановить в редактор",
+    }).click();
+    await expect(page.getByRole("textbox", { name: "Заголовок", exact: true })).toHaveValue(legacyManualSnapshot.title);
+    await expect(schedule).toHaveValue("2026-11-28T01:30");
+    await expect(page.locator('input[type="hidden"][name="scheduled_at"]')).toHaveValue(storedSchedule);
+  });
+}
 
 test("preview and Enter preserve intent and forward the real Next router signal", async ({ page }) => {
   for (const [intent, destination, saved] of [

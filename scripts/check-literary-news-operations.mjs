@@ -389,15 +389,21 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
   for (const record of records) { const acceptedDay = dailyNewsDay(new Date(record.provenance.firstAcceptedAt));
     perDay.set(acceptedDay, (perDay.get(acceptedDay) || 0) + 1); }
   const since = dailyNewsDay(new Date(current.getTime() - 6 * 86400000));
+  const previousDay = dailyNewsDay(new Date(current.getTime() - 86400000));
+  let previousDayEntries = 0, previousDayStatus = null;
   const deliveries = new Map(); if (deliveryDay) deliveries.set(day, deliveryDay);
   if (!Array.isArray(recentDayStatuses) || recentDayStatuses.length > 6) add('operations_day_history_invalid');
   else for (const entry of recentDayStatuses) {
+    const at = validTimestamp(entry?.at) ? new Date(entry.at) : null;
+    const isPreviousDay = at && dailyNewsDay(at) === previousDay;
+    if (isPreviousDay) previousDayEntries++;
     if (entry?.readFailed === true && failures.includes('operations_day_history_read_failed')) continue;
     try {
-      if (!validTimestamp(entry?.at)) throw Error();
-      const historicalDay = checkedDeliveryDayStatus(entry.status, new Date(entry.at));
+      if (!at) throw Error();
+      const historicalDay = checkedDeliveryDayStatus(entry.status, at);
       if (historicalDay.editorialDay < since || historicalDay.editorialDay >= day || deliveries.has(historicalDay.editorialDay)) throw Error();
       deliveries.set(historicalDay.editorialDay, historicalDay);
+      if (isPreviousDay && entry.readFailed !== true) previousDayStatus = historicalDay;
     } catch { add('operations_day_history_invalid'); }
   }
   const admittedToday = preparationEnabled ? perDay.get(day) || 0 : null, publicIds = new Set(publicValid ? feed.items.map(row => row.id) : []);
@@ -444,6 +450,13 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
     Math.floor((current - deliveryOpening) / (NEWS_DELIVERY_MAX_INTERVAL_SECONDS * 1000)) - 1) : null;
   const cadenceDeficit = cadenceMinimum !== null && deliveryDay.freshCreates < cadenceMinimum;
   if (cadenceDeficit) add('operations_delivery_cadence_deficit');
+  // A missed closing check can use yesterday's already-read final receipts.
+  // Keep that result out of today's cadence and operator attention fingerprint.
+  const finalized = preparationEnabled && destinationActive && previousDayEntries === 1
+    && previousDay >= DAILY_NEWS_WINDOW.start && previousDay < DAILY_NEWS_WINDOW.endExclusive ? previousDayStatus : null;
+  const previousFinalizedDay = { day: previousDay,
+    status: !finalized ? 'not_evaluated' : finalized.deficitToMinimum ? 'below_minimum' : 'minimum_met',
+    minimum: finalized?.minimum ?? null, freshAcknowledgedCreates: finalized?.freshCreates ?? null };
   const publicationOpen = inWindow && current.getTime() >= deliveryOpening && current.getTime() < deliveryClosing;
   const freshQuietHeartbeat = Boolean(deliveryAt && current - Date.parse(deliveryAt) >= 0 && current - Date.parse(deliveryAt) <= 15 * 60000
     && ['daily_target_deficit', 'daily_minimum_reached'].includes(deliveryHeartbeat.status) && deliveryHeartbeat.phase === 'heartbeat'
@@ -545,6 +558,7 @@ export async function summarizeNewsOperations({ feed, profile, ledger, owner, pr
       cadence: { status: cadenceDeficit ? 'deficit' : cadenceChecked || closedDayChecked ? 'within_tolerance' : 'not_evaluated',
         minimumFreshCreatesByNow: cadenceMinimum, graceIntervals: 1, intervalSeconds: NEWS_DELIVERY_MAX_INTERVAL_SECONDS,
         scope: 'Observed acknowledged delivery shortfall only; due reads do not establish whether future jobs or pending supply exist.' },
+      previousFinalizedDay,
       acknowledgedPhotoCreatesToday: deliveryDay?.acknowledgedPhotoCreates ?? null,
       freshAcknowledgedCreatesToday: deliveryDay?.freshCreates ?? null, freshAcknowledgedPhotoCreatesToday: deliveryDay?.freshPhotoCreates ?? null,
       minimumDeficit: deliveryDay?.deficitToMinimum ?? null, legacyReceiptsWithUnknownFirstDate: deliveryDay?.legacyReceiptsWithUnknownFirstDate ?? null,

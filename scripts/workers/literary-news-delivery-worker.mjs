@@ -28,6 +28,7 @@ const safeCodes = new Set(['runtime_quota_exceeded','runtime_due_rpc_required','
 safeCodes.add('delivery_request_budget_exhausted');
 safeCodes.add('delivery_capture_progress_invalid');
 const safeCode = error => safeCodes.has(error?.message) ? error.message : 'delivery_runtime_failed';
+const runtimeQuotaBlocked = summary => summary?.status === 'blocked' && summary.code === 'runtime_quota_exceeded';
 const safePauseReasons = new Set(['destination_rights_unverified','release_operator_pause',
   'telegram_permission_denied','vk_permission_denied','provider_token_missing','provider_endpoint_invalid']);
 
@@ -393,8 +394,15 @@ export class LiteraryNewsDeliveryCoordinator {
       return new Response(null,{status:404});
     let summary;
     if(path==='/capture'&&this.env.NEWS_DELIVERY_ENABLED==='true'){
-      this.captureInFlight??=captureChangedNativeNews({storage:this.storage,
-        capture:options=>runDeliveryCaptureTick({env:this.env,...options})});
+      this.captureInFlight??=(async()=>{
+        const result=await captureChangedNativeNews({storage:this.storage,
+          capture:options=>runDeliveryCaptureTick({env:this.env,...options})});
+        if(runtimeQuotaBlocked(result)){
+          try{await scheduleNextNativeNewsAlarm(this.storage,this.env,result,this.now());}
+          catch{console.warn(JSON.stringify({component:'literary-news-delivery-alarm',status:'quota_alarm_clear_failed'}));}
+        }
+        return result;
+      })();
       try{summary=await this.captureInFlight;}finally{this.captureInFlight=null;}
     } else summary=path==='/dispatch'?await this.dispatch():await runDeliveryCaptureTick({env:this.env});
     return Response.json(summary,{status:summary.status==='blocked'?503:200});
@@ -423,7 +431,9 @@ async function scheduledDelivery(controller,env,log) {
 
 export async function scheduleNextNativeNewsAlarm(storage,env,summary,current=new Date()) {
   if(typeof storage?.setAlarm!=='function')return;
-  if(env.NEWS_DELIVERY_ENABLED!=='true'||['disabled','outside_authorized_window',
+  // An explicit quota block leaves recovery probes to Cron. A later healthy
+  // Cron dispatch restores the ordinary receipt-driven alarm.
+  if(env.NEWS_DELIVERY_ENABLED!=='true'||runtimeQuotaBlocked(summary)||['disabled','outside_authorized_window',
     'destination_not_enabled_or_history_gap','dispatch_reconciliation_required'].includes(summary?.status)) {
     if(typeof storage.deleteAlarm==='function')await storage.deleteAlarm();return;
   }
