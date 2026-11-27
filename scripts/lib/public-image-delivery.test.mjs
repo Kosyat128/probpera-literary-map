@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { load } from "cheerio";
-import { createPublicImageHtmlRenderer } from "./public-image-delivery.mjs";
+import { createPublicImageHtmlRenderer, createPublicationImageDelivery } from "./public-image-delivery.mjs";
 
 const source = "https://media.example.com/original.png";
 const render = createPublicImageHtmlRenderer({ [source]: {
@@ -34,5 +34,25 @@ describe("static public image delivery", () => {
     expect(cropped("img").css("aspect-ratio")).toBeUndefined();
     const unknown = load(render('<img src="https://new.example/a.jpg" data-image-width="20">'));
     expect(unknown("img").attr("sizes")).toBeUndefined();
+  });
+
+  it("publishes absolute base-aware URLs only for compatible files in the built site", () => {
+    const original = "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/cover.png";
+    const avifOnly = original.replace("cover.png", "cover.avif");
+    const names = "media/optimized/aaaaaaaaaaaaaaaaaaaaaaaa";
+    const variant = (src, width) => ({ src, width, height: width / 2 });
+    const largest = variant(`${names}-1920w.webp`, 1920);
+    const local = variant(`${names}-640w.webp`, 640);
+    const avif = variant(`${names}-original.avif`, 1920);
+    const entries = {
+      [original]: { ...largest, variants: [local] },
+      [source]: { ...local, variants: [] },
+      [avifOnly]: { ...avif, variants: [] },
+    };
+    const delivery = createPublicationImageDelivery(entries, "https://example.test", "/library/", new Set([local.src, avif.src]));
+    expect(delivery.url(original)).toBe(`https://example.test/library/${local.src}`);
+    expect(delivery.url(avifOnly)).toBe(avifOnly);
+    expect(delivery.url(source)).toBe(source);
+    expect(delivery.url(`${original}?query`)).toBe(`${original}?query`);
   });
 });

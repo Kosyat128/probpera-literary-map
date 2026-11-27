@@ -219,7 +219,7 @@ export default function EditorMediaDialog({
           <div className="media-grid" role="list" aria-label="Изображения медиатеки">
             {assets.map((asset) => (
               <article className="media-card" role="listitem" key={asset.id}>
-                <img src={asset.src} alt={asset.alt} />
+                <img src={asset.src} alt={asset.alt} loading="lazy" />
                 <div>
                   <strong>{asset.alt || "Без описания"}</strong>
                   <small>{asset.caption || asset.collectionName || "Без подписи"}</small>

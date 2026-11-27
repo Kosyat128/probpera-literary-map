@@ -5,7 +5,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const maxOriginalBytes = Math.floor(3.9 * 1024 * 1024);
-const maxCacheBytes = 192 * 1024 * 1024;
+const maxCacheBytes = 768 * 1024 * 1024;
 const maxManifestBytes = 1024 * 1024;
 const readFlags = constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0) | (constants.O_NONBLOCK ?? 0);
 const editorialUrl = /^https:\/\/sjqejjmwpzfsczxdghvw\.supabase\.co\/storage\/v1\/object\/public\/editorial-media\/20\d{2}\/(?:0[1-9]|1[0-2])\/[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\.(?:jpg|png|webp|avif)$/u;
@@ -94,7 +94,7 @@ export async function cachePublicEditorialOriginals({ mode, root, inventory, mat
       totalBytes += entry.bytes;
     }
     const digest = restored && restored === archive.length ? archiveHash : "";
-    return { count: restored, digest, changed: false };
+    return { count: restored, totalBytes, digest, changed: false };
   }
 
   if (mode !== "stage") throw new Error("Expected restore or stage.");
@@ -114,7 +114,7 @@ export async function cachePublicEditorialOriginals({ mode, root, inventory, mat
   }
   const nextManifest = JSON.stringify(entries);
   const digest = sha256(nextManifest);
-  if (entries.length === 0 || digest === restoredDigest) return { count: entries.length, digest, changed: false };
+  if (entries.length === 0 || digest === restoredDigest) return { count: entries.length, totalBytes, digest, changed: false };
 
   const staging = await mkdtemp(path.join(temporary, "editorial-source-staging-"));
   for (const entry of entries) {
@@ -128,7 +128,7 @@ export async function cachePublicEditorialOriginals({ mode, root, inventory, mat
     if (error.code !== "ENOENT") throw error;
   });
   await rename(staging, cache);
-  return { count: entries.length, digest, changed: true };
+  return { count: entries.length, totalBytes, digest, changed: true };
 }
 
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
@@ -141,6 +141,6 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
     matchedKey: process.env.EDITORIAL_SOURCE_CACHE_MATCHED_KEY,
     restoredDigest: process.env.EDITORIAL_SOURCE_CACHE_RESTORED_DIGEST,
   });
-  console.error(`Public editorial originals (${mode}): ${result.count}`);
+  console.error(`Public editorial originals (${mode}): ${result.count} files, ${result.totalBytes} verified bytes.`);
   process.stdout.write(`digest=${result.digest}\nchanged=${result.changed}\n`);
 }

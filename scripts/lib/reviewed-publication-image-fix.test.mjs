@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -6,6 +7,13 @@ import { projectPublicationImageFix } from "./reviewed-publication-image-fix.mjs
 const sha256 = (text) => createHash("sha256").update(text).digest("hex");
 
 describe("publication image fix historical source bindings", () => {
+  it("preserves the independently reviewed intermediate image preparation release", () => {
+    const path = "scripts/prepare-public-images.mjs";
+    const previous = execFileSync("git", ["show", `51b5c255d9e2822c17dda4c69b47d66e9b7fb831:${path}`], { encoding: "utf8" });
+    expect(sha256(previous)).toBe("480b6b7e1d3c70bb0c2a64f1ffb95e0d17dcea2aa560c09de298d70fedd1ed79");
+    expect(projectPublicationImageFix(path, readFileSync(path, "utf8"))).toBe(projectPublicationImageFix(path, previous));
+  });
+
   it.each([
     ["scripts/prepare-public-images.mjs", "d18e8f9310b03e0bc5324757034a92f4976c1edc4f8e3f16772588b5e076ee6d"],
     ["scripts/lib/reviewed-cms-preview-webgl-followup.mjs", "37e60edabeacba4725fcd2f5f397926bd394bc50d31e176e6e6ac65f569e33dc"],

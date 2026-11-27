@@ -1,9 +1,26 @@
 import { describe, expect, it, vi } from "vitest";
 import { createHash } from "node:crypto";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import sharp from "sharp";
-import { extractPublicImageReferences, extractSmallInlineImageReferences, extendSmallInlineRenditions, missingSmallInlineRenditions, preparePublicImageRecord, smallInlineRenditionWidths } from "./prepare-public-images.mjs";
+import performanceBudget from "../performance-budget.json" with { type: "json" };
+import { publishedImageSourceLimit } from "./lib/published-image-performance.mjs";
+import { createRemoteImageOriginalReader, extractPublicImageReferences, extractSmallInlineImageReferences, extendSmallInlineRenditions, missingSmallInlineRenditions, preparePublicImageRecord, smallInlineRenditionWidths } from "./prepare-public-images.mjs";
 
 describe("public image delivery inventory", () => {
+  it("enforces the configured source ceiling before preparing or checking images", async () => {
+    const script = await readFile(new URL("./prepare-public-images.mjs", import.meta.url), "utf8");
+    const { publishedImageCorpus } = performanceBudget;
+    expect(publishedImageSourceLimit(publishedImageCorpus)).toBe(publishedImageCorpus.fileCount + publishedImageCorpus.sourceAliasCount);
+    const budget = script.indexOf("const sourceLimit = publishedImageSourceLimit(performanceBudget.publishedImageCorpus);");
+    const guard = script.indexOf("if (inventory.length > sourceLimit)");
+    expect(budget).toBeGreaterThan(script.indexOf("const inventory = await collectPublicImageSources();"));
+    expect(guard).toBeGreaterThan(budget);
+    expect(guard).toBeLessThan(script.indexOf('if (argv.includes("--check")) return checkInventory(inventory);'));
+    expect(guard).toBeLessThan(script.indexOf("await seedExistingOriginals();"));
+  });
+
   it("collects actual bilingual article imagery while excluding canonical pages and image credits", () => {
     const references = extractPublicImageReferences({
       canonicalUrl: "https://example.org/article.png",
@@ -85,6 +102,54 @@ describe("public image delivery inventory", () => {
       await expect(preparePublicImageRecord(source, { loadCheckpoint: async () => record, acquire, storeCheckpoint })).rejects.toThrow(/Source unavailable|Source differs/u);
       expect(storeCheckpoint).not.toHaveBeenCalled();
       expect(record).toEqual(before);
+    }
+  });
+});
+
+describe("public image original downloads", () => {
+  it("stops HTTP 402 retries, skips further affected Storage downloads, and uses cached or unrelated originals", async () => {
+    const originalsDirectory = await mkdtemp(path.join(os.tmpdir(), "public-image-originals-"));
+    const storage = "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media";
+    const otherProject = "https://other.supabase.co/storage/v1/object/public/editorial-media/image.webp";
+    const cached = `${storage}/cached.webp`;
+    const redirected = `${storage}/redirected.webp`;
+    const first = `${storage}/first.webp`;
+    const unavailable = { sourceUrl: `${storage}/next.webp`, contexts: [] };
+    const otherHost = "https://images.example.org/retry.png";
+    const png = await sharp({ create: { width: 2, height: 2, channels: 3, background: "white" } }).png().toBuffer();
+    const redirectedPaymentError = Object.defineProperty(new Response(null, { status: 402 }), "redirected", { value: true });
+    const fetchImpl = vi.fn()
+      .mockResolvedValueOnce(new Response(null, { status: 402 }))
+      .mockResolvedValueOnce(redirectedPaymentError)
+      .mockResolvedValueOnce(new Response(null, { status: 402 }))
+      .mockResolvedValueOnce(new Response(null, { status: 429 }))
+      .mockResolvedValueOnce(new Response(null, { status: 503 }))
+      .mockResolvedValueOnce(new Response(png));
+    const wait = vi.fn();
+    const readOriginal = createRemoteImageOriginalReader({ originalsDirectory, fetchImpl, wait });
+    try {
+      await writeFile(path.join(originalsDirectory, `${createHash("sha256").update(cached).digest("hex")}.bin`), png);
+      await expect(readOriginal(otherProject)).rejects.toThrow("HTTP 402");
+      await expect(readOriginal(redirected)).rejects.toThrow("HTTP 402");
+      await expect(readOriginal(first)).rejects.toThrow("HTTP 402");
+      await expect(readOriginal(cached)).resolves.toEqual({ bytes: png, downloaded: false, attempts: 0 });
+
+      const storeCheckpoint = vi.fn();
+      const failedRecord = await preparePublicImageRecord(unavailable, {
+        loadCheckpoint: async () => null,
+        acquire: readOriginal,
+        storeCheckpoint,
+      });
+      expect(failedRecord).toMatchObject({ status: "failed", error: expect.stringContaining("HTTP 402") });
+      expect(storeCheckpoint).toHaveBeenCalledWith(unavailable, failedRecord);
+      expect(fetchImpl.mock.calls.map(([url]) => url)).toEqual([otherProject, redirected, first]);
+      expect(wait).not.toHaveBeenCalled();
+
+      await expect(readOriginal(otherHost)).resolves.toEqual({ bytes: png, downloaded: true, attempts: 3 });
+      expect(fetchImpl.mock.calls.slice(3).map(([url]) => url)).toEqual([otherHost, otherHost, otherHost]);
+      expect(wait.mock.calls).toEqual([[250], [500]]);
+    } finally {
+      await rm(originalsDirectory, { recursive: true, force: true });
     }
   });
 });

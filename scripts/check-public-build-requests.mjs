@@ -168,23 +168,42 @@ if (finalizeArgument) {
   process.exit(0);
 }
 
-async function pendingOutboxRequests() {
+async function pendingRequests(table, pendingFilter, releaseFilter, label) {
   const query = new URLSearchParams({
-    select: "id,status,entity_type,entity_id,requested_at",
-    status: "in.(requested,dispatched,failed)",
-    order: "id.asc",
-    limit: "1000",
+    select: "id",
+    order: "id.desc",
+    limit: "1",
+    ...pendingFilter,
   });
-  const requests = await jsonRows(
-    await request(`public_build_outbox?${query.toString()}`),
-    "Public build outbox query"
+  const newest = await jsonRows(await request(`${table}?${query}`), label);
+  if (newest.length === 0) return { maxId: "", requiresRelease: false };
+
+  // Staged uploads belong in the next release's acknowledgement, but a new
+  // unattached object does not change the current public content. Filter on
+  // the server before limiting the result so staging cannot hide an older edit.
+  const releaseQuery = new URLSearchParams(query);
+  for (const [key, value] of Object.entries(releaseFilter)) {
+    releaseQuery.set(key, value);
+  }
+  const releaseRequests = await jsonRows(
+    await request(`${table}?${releaseQuery}`),
+    `${label} release check`
   );
   return {
-    count: requests.length,
-    maxId: requests.length
-      ? normalizeId(requests.at(-1).id, "Public build outbox query")
-      : "",
+    maxId: normalizeId(newest[0].id, label),
+    requiresRelease: releaseRequests.length > 0,
   };
+}
+
+function pendingOutboxRequests() {
+  return pendingRequests(
+    "public_build_outbox",
+    { status: "in.(requested,dispatched,failed)" },
+    {
+      and: "(not.and(entity_type.eq.media,reason.eq.media.uploaded),not.and(entity_type.eq.media_assets,reason.eq.database-insert))",
+    },
+    "Public build outbox query"
+  );
 }
 
 async function pendingLegacyRequests() {
@@ -201,29 +220,23 @@ async function pendingLegacyRequests() {
   const markerValue = String(markers[0]?.entity_id || "");
   const lastProcessedId = /^\d+$/u.test(markerValue) ? markerValue : "0";
 
-  const requestQuery = new URLSearchParams({
-    select: "id,action,entity_type,entity_id,created_at",
-    action: "in.(public_build.requested,public_build.failed)",
-    id: `gt.${lastProcessedId}`,
-    order: "id.asc",
-    limit: "1000",
-  });
-  const requests = await jsonRows(
-    await request(`admin_audit_log?${requestQuery.toString()}`),
+  return pendingRequests(
+    "admin_audit_log",
+    {
+      action: "in.(public_build.requested,public_build.failed)",
+      id: `gt.${lastProcessedId}`,
+    },
+    {
+      or: "(entity_type.neq.media,metadata->>reason.neq.media.uploaded,metadata->>reason.is.null)",
+    },
     "Public build request query"
   );
-  return {
-    count: requests.length,
-    maxId: requests.length
-      ? normalizeId(requests.at(-1).id, "Public build request query")
-      : "",
-  };
 }
 
 const outboxAvailable = await hasOutbox();
 const outbox = outboxAvailable
   ? await pendingOutboxRequests()
-  : { count: 0, maxId: "" };
+  : { maxId: "", requiresRelease: false };
 // Keep draining compatibility records even after the migration appears. This
 // closes the short PostgREST schema-cache window in which the admin can receive
 // PGRST202 for the RPC while the scheduled worker can already see the table.
@@ -234,18 +247,20 @@ const marker = [
 ]
   .filter(Boolean)
   .join(",");
-const requestCount = outbox.count + legacy.count;
+const requiresRelease = outbox.requiresRelease || legacy.requiresRelease;
 const queue = outboxAvailable
-  ? legacy.count
+  ? legacy.maxId
     ? "outbox+legacy-audit"
     : "outbox"
   : "legacy-audit";
 
-await setOutput("requested", requestCount ? "1" : "0");
+await setOutput("requested", requiresRelease ? "1" : "0");
 await setOutput("max_id", marker);
 await setOutput("queue", queue);
-console.log(
-  requestCount
-    ? `Found ${requestCount} public build request(s): ${outbox.count} outbox, ${legacy.count} legacy; marker ${marker}.`
-    : `No pending public build requests (${queue}).`
-);
+if (requiresRelease) {
+  console.log(`Pending requests require a public release (${queue}; marker ${marker}).`);
+} else if (marker) {
+  console.log(`Staged media requests will be acknowledged by the next public release (${queue}; marker ${marker}).`);
+} else {
+  console.log(`No pending public build requests (${queue}).`);
+}

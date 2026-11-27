@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { setDefaultResultOrder } from "node:dns";
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { setTimeout as sleep } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import sharp from "sharp";
@@ -10,6 +11,7 @@ import performanceBudget from "../performance-budget.json" with { type: "json" }
 import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 import { encodePublicRasterRendition } from "./lib/public-image-output-fit.mjs";
 import { authoredPublicRenditions, planPublicImageRenditions, retiredPublicImageRenditions } from "./lib/public-image-rendition-plan.mjs";
+import { publishedImageSourceLimit } from "./lib/published-image-performance.mjs";
 import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
 import { hasSmallEditorialImageWidth } from "../src/utils/editorialImagePresentation.ts";
 
@@ -35,6 +37,8 @@ const limit = limitArgument ? Number(limitArgument.split("=")[1]) : Infinity;
 const timeoutMs = 12_000;
 const workerCount = 6;
 const retries = 2;
+const productionEditorialStorageOrigin = "https://sjqejjmwpzfsczxdghvw.supabase.co";
+const productionEditorialStoragePath = "/storage/v1/object/public/editorial-media/";
 let publishedRecords = new Map();
 setDefaultResultOrder("ipv4first");
 sharp.concurrency(1);
@@ -169,34 +173,55 @@ async function seedExistingOriginals() {
   }
 }
 
-async function sourceBytes(sourceUrl) {
-  if (!/^https?:/iu.test(sourceUrl)) {
-    const filename = absolute(`public/${sourceUrl.replace(/^\/+/, "")}`);
-    if (!filename.startsWith(`${absolute("public")}${path.sep}`)) throw new Error("Local image path leaves public directory");
-    return { bytes: await readFile(filename), downloaded: false, attempts: 0 };
-  }
-  const filename = absolute(`${cacheDirectory}/originals/${digest(sourceUrl)}.bin`);
-  if (!argv.includes("--refresh")) {
-    try { return { bytes: await readFile(filename), downloaded: false, attempts: 0 }; } catch { /* First acquisition. */ }
-  }
-  let failure;
-  for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
-    try {
-      const response = await fetch(sourceUrl, { signal: AbortSignal.timeout(timeoutMs) });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const bytes = Buffer.from(await response.arrayBuffer());
-      if (!bytes.length) throw new Error("Empty response");
-      // Do not persist a temporary HTML/error response as an immutable image cache hit.
-      await sharp(bytes, { limitInputPixels: false }).metadata();
-      await writeFile(filename, bytes);
-      return { bytes, downloaded: true, attempts: attempt };
-    } catch (error) {
-      failure = error;
-      if (/HTTP (?:400|401|403|404|410)/u.test(error.message)) break;
-      if (attempt <= retries) await new Promise(resolve => setTimeout(resolve, 250 * attempt));
+export function createRemoteImageOriginalReader({
+  originalsDirectory = absolute(`${cacheDirectory}/originals`),
+  refresh = false,
+  fetchImpl = fetch,
+  wait = sleep,
+} = {}) {
+  let productionStorageBlocked = false;
+  return async function readRemoteImageOriginal(sourceUrl) {
+    const filename = path.join(originalsDirectory, `${digest(sourceUrl)}.bin`);
+    if (!refresh) {
+      try { return { bytes: await readFile(filename), downloaded: false, attempts: 0 }; } catch { /* First acquisition. */ }
     }
-  }
-  throw failure;
+    const url = new URL(sourceUrl);
+    const fromProductionStorage = url.origin === productionEditorialStorageOrigin &&
+      url.pathname.startsWith(productionEditorialStoragePath);
+    let failure;
+    for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
+      if (fromProductionStorage && productionStorageBlocked) {
+        throw new Error("HTTP 402 (production editorial Storage downloads skipped after project restriction)");
+      }
+      try {
+        const response = await fetchImpl(sourceUrl, { signal: AbortSignal.timeout(timeoutMs) });
+        if (!response.ok) {
+          if (fromProductionStorage && response.status === 402 && !response.redirected) productionStorageBlocked = true;
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const bytes = Buffer.from(await response.arrayBuffer());
+        if (!bytes.length) throw new Error("Empty response");
+        // Do not persist a temporary HTML/error response as an immutable image cache hit.
+        await sharp(bytes, { limitInputPixels: false }).metadata();
+        await writeFile(filename, bytes);
+        return { bytes, downloaded: true, attempts: attempt };
+      } catch (error) {
+        failure = error;
+        if (/^HTTP (?:400|401|402|403|404|410)$/u.test(error.message)) break;
+        if (attempt <= retries) await wait(250 * attempt);
+      }
+    }
+    throw failure;
+  };
+}
+
+const readRemoteImageOriginal = createRemoteImageOriginalReader({ refresh: argv.includes("--refresh") });
+
+async function sourceBytes(sourceUrl) {
+  if (/^https?:/iu.test(sourceUrl)) return readRemoteImageOriginal(sourceUrl);
+  const filename = absolute(`public/${sourceUrl.replace(/^\/+/, "")}`);
+  if (!filename.startsWith(`${absolute("public")}${path.sep}`)) throw new Error("Local image path leaves public directory");
+  return { bytes: await readFile(filename), downloaded: false, attempts: 0 };
 }
 
 const processing = new Map();
@@ -445,6 +470,10 @@ async function main() {
     return;
   }
   const inventory = await collectPublicImageSources();
+  const sourceLimit = publishedImageSourceLimit(performanceBudget.publishedImageCorpus);
+  if (inventory.length > sourceLimit) {
+    throw new Error(`Public image inventory contains ${inventory.length} sources, exceeding the limit of ${sourceLimit}.`);
+  }
   if (argv.includes("--check")) return checkInventory(inventory);
   let previous;
   try {

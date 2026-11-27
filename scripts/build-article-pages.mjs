@@ -23,7 +23,7 @@ import {
   positionDzenLeadIllustration,
 } from "./lib/article-publication-images.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
-import { createPublicImageHtmlRenderer } from "./lib/public-image-delivery.mjs";
+import { createPublicImageHtmlRenderer, createPublicationImageDelivery } from "./lib/public-image-delivery.mjs";
 import { prunePublicImageRenditions } from "./prune-public-image-renditions.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
@@ -42,6 +42,10 @@ if (!process.env.ARTICLE_BUILD_PROJECT_ROOT) await prunePublicImageRenditions();
 const imageDeliveryManifest = await fs.readFile(path.join(projectRoot, "src/data/imageDelivery.generated.json"), "utf8")
   .then(JSON.parse).catch(error => { if (error.code === "ENOENT") return {}; throw error; });
 const publicArticleImages = createPublicImageHtmlRenderer(imageDeliveryManifest, siteRootPath);
+const deliveredImages = await fs.readdir(path.join(distDirectory, "media/optimized"), { withFileTypes: true })
+  .catch(error => { if (error.code === "ENOENT") return []; throw error; });
+const publicationImages = createPublicationImageDelivery(imageDeliveryManifest, siteOrigin, siteRootPath,
+  new Set(deliveredImages.filter(file => file.isFile()).map(file => `media/optimized/${file.name}`)));
 const buildDate = new Date().toISOString().slice(0, 10);
 const legacyLandingRedirects = [
   ["/read", "/stati/"],
@@ -692,6 +696,7 @@ for (const rawArticle of catalog) {
       ? description
       : conciseMetaDescription(article.ogDescription, description);
   const socialImageUrl = article.ogImageUrl || imageUrl;
+  const publicSocialImageUrl = publicationImages.url(socialImageUrl);
   const publishedDate = articlePublishedDate(article);
   const modifiedDate = articleModifiedDate(article);
   const safePublicBody = canonicalizeInternalArticleLinks(
@@ -727,14 +732,14 @@ for (const rawArticle of catalog) {
   $('meta[property="og:type"]').attr("content", "article");
   $('meta[property="og:title"]').attr("content", socialTitle);
   $('meta[property="og:description"]').attr("content", socialDescription);
-  $('meta[property="og:image"]').attr("content", socialImageUrl);
+  $('meta[property="og:image"]').attr("content", publicSocialImageUrl);
   $('meta[property="og:image:alt"]').attr(
     "content",
     article.imageAlt || article.title
   );
   $('meta[name="twitter:title"]').attr("content", socialTitle);
   $('meta[name="twitter:description"]').attr("content", socialDescription);
-  $('meta[name="twitter:image"]').attr("content", socialImageUrl);
+  $('meta[name="twitter:image"]').attr("content", publicSocialImageUrl);
   $('meta[name="twitter:image:alt"]').attr(
     "content",
     article.imageAlt || article.title
@@ -812,7 +817,7 @@ for (const rawArticle of catalog) {
         {
           "@type": "ImageObject",
           "@id": `${canonicalUrl}#primaryimage`,
-          url: imageUrl,
+          url: publicationImages.url(imageUrl),
         },
         {
           "@type": "BreadcrumbList",
@@ -957,6 +962,7 @@ for (const rawArticle of catalog) {
         usedDescriptions: usedMetaDescriptions,
       });
       const englishImageUrl = article.imageUrl || `${siteUrl}/og-v3.webp`;
+      const englishSocialImageUrl = publicationImages.url(article.ogImageUrl || englishImageUrl);
       const englishSocialTitle =
         englishTranslation.ogTitle ||
         englishTranslation.seoTitle ||
@@ -993,7 +999,7 @@ for (const rawArticle of catalog) {
       );
       englishDocumentPage('meta[property="og:image"]').attr(
         "content",
-        article.ogImageUrl || englishImageUrl
+        englishSocialImageUrl
       );
       englishDocumentPage('meta[property="og:image:alt"]').attr(
         "content",
@@ -1013,7 +1019,7 @@ for (const rawArticle of catalog) {
       );
       englishDocumentPage('meta[name="twitter:image"]').attr(
         "content",
-        article.ogImageUrl || englishImageUrl
+        englishSocialImageUrl
       );
       englishDocumentPage('meta[name="twitter:image:alt"]').attr(
         "content",
@@ -1101,7 +1107,7 @@ for (const rawArticle of catalog) {
             {
               "@type": "ImageObject",
               "@id": `${englishCanonicalUrl}#primaryimage`,
-              url: englishImageUrl,
+              url: publicationImages.url(englishImageUrl),
             },
             {
               "@type": "BreadcrumbList",
@@ -1286,8 +1292,9 @@ for (const page of cmsSnapshot.pages || []) {
     fallback: pageDescriptionFallback,
     usedDescriptions: usedMetaDescriptions,
   });
-  const pageImageUrl =
-    page.ogImageUrl || page.imageUrl || `${siteUrl}/og-v3.webp`;
+  const pageImageUrl = publicationImages.url(
+    page.ogImageUrl || page.imageUrl || `${siteUrl}/og-v3.webp`
+  );
   const pageImageAlt = page.imageAlt || page.title;
   $("title").text(`${page.seoTitle || page.title} - Проба Пера`);
   $('meta[name="description"]').attr("content", description);
@@ -1392,7 +1399,7 @@ ${rssEntries.slice(0, 40).map((article) => {
   const publishedAt = article.publishedAt
     ? new Date(article.publishedAt).toUTCString()
     : new Date().toUTCString();
-  const contentHtml = article.contentHtml;
+  const contentHtml = publicationImages.rssHtml(article.contentHtml, article.imageUrl);
   return `  <item>
     <title>${xmlEscape(article.title)}</title><link>${article.articleUrl}</link>
     <guid isPermaLink="true">${article.articleUrl}</guid>

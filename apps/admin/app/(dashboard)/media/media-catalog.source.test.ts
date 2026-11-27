@@ -37,6 +37,7 @@ describe("complete media catalog wiring", () => {
 
   it("offers list/grid display and a server-previewed atomic replacement", () => {
     expect(pageSource).toContain("mediaCatalogViews");
+    expect(pageSource).toContain('<img src={data.publicUrl} alt={asset.alt_text} loading="lazy" />');
     expect(pageSource).toContain('catalog.view === "list"');
     expect(pageSource).toContain('supabase.rpc("preview_media_asset_replacement"');
     expect(pageSource).toContain("replaceMediaCurrentUsagesAction");
